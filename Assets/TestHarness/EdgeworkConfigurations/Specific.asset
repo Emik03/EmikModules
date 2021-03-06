@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a4fefeeafb9a5439cfbd83306ba467, type: 3}
+  m_Name: Specific
+  m_EditorClassIdentifier: 
+  SerialNumberType: 0
+  CustomSerialNumber: 
+  TwoFactorResetTime: 30
+  Widgets:
+  - Type: 0
+    Count: 1
+    PortPlateType: 0
+    DVIPort: 0
+    ParallelPort: 0
+    PS2Port: 0
+    RJ45Port: 0
+    SerialPort: 0
+    StereoRCAPort: 0
+    ComponentVideoPort: 0
+    CompositeVideoPort: 0
+    HDMIPort: 0
+    VGAPort: 0
+    USBPort: 0
+    ACPort: 0
+    PCMCIAPort: 0
+    CustomPorts: []
+    BatteryType: 20
+    BatteryCount: 1
+    MinBatteries: 0
+    MaxBatteries: 0
+    IndicatorLabel: 0
+    CustomLabel: 
+    IndicatorState: 0
+    CustomQueryKey: 
+    CustomData: 

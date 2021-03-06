@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615501dbe4f3fe94fbf4b564abb10237, type: 3}
+  m_Name: ModConfig
+  m_EditorClassIdentifier: 
+  id: EmikModules
+  title: Emik's Modules
+  author: Emik
+  description: "PDFs: \n\nCoin, blackboard, and thumbnail done by Enitoni\r.\n\nAn
+    assortment of unique modules, all bundled up into one mod!\n\nmoduleIds:\n- 1DChess\n-
+    Coinage\n- Naming Conventions\n- Netherite\n\nHTML Manuals:\nhttps://ktane.timwi.de/HTML/1D%20Chess.html\nhttps://ktane.timwi.de/HTML/Coinage.html\nhttps://ktane.timwi.de/HTML/Naming%20Conventions.html\nhttps://ktane.timwi.de/HTML/Netherite.html\n\nTwitch
+    plays is supported for all of them.\n\nIs there a bug? Do you have a question?
+    Discord: @Emik#0001"
+  version: 1
+  outputFolder: build
+  previewImage: {fileID: 2800000, guid: 588042eeb44adae4cb0611f300e65f5e, type: 3}
