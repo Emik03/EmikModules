@@ -1,16 +1,12 @@
 ﻿using UnityEngine;
 
-namespace Coinage
+public class StatusLightScript : MonoBehaviour
 {
-    public class StatusLightScript : MonoBehaviour
-    {
-        private float Position { get; set; }
-        private const int Speed = 32;
+    private float _position;
 
-        private void FixedUpdate()
-        {
-            Position += 1f / Speed;
-            transform.localPosition = new Vector3(0, (Mathf.Sin(Position) / 100) - 0.03f, 0);
-        }
+    private void FixedUpdate()
+    {
+        _position += 1 / 32f;
+        transform.localPosition = new Vector3(0, (Mathf.Sin(_position) / 100) - 0.03f, 0);
     }
 }

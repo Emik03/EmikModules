@@ -12,30 +12,6 @@ using Rnd = UnityEngine.Random;
 /// </summary>
 public class NamingConventionsScript : ModuleScript
 {
-    public override ModuleConfig ModuleConfig
-    {
-        get
-        {
-            return new ModuleConfig(kmBombModule: Module, onTimerTick: new Tuple<Action, KMBombInfo>(() =>
-            {
-                if (IsSolve)
-                    return;
-
-                for (int i = 0; i < textStates.Length; i++)
-                    textStates[i] = !textStates[i];
-
-                if (_isSelected)
-                    Audio.Play(transform, Sounds.Tick);
-
-                UpdateIndexes();
-            }, Info));
-        }
-    }
-
-    public KMAudio Audio;
-    public KMBombInfo Info;
-    public KMBombModule Module;
-    public KMSelectable Component;
     public KMSelectable[] Buttons;
     public KMRuleSeedable Rule;
     public Renderer[] Texts;
@@ -50,58 +26,58 @@ public class NamingConventionsScript : ModuleScript
         {
             bool rnd = Rule.GetRNG().Seed != 1;
             return new Dictionary<DataType, bool[]>
+            {
                 {
-                    {
-                        DataType.Class,
-                        rnd ? RuleSeededSolutions[(int)DataType.Class]
-                            : new[] { true, false, true, false, true, false }
-                    },
-                    {
-                        DataType.Constructor,
-                        rnd ? RuleSeededSolutions[(int)DataType.Constructor]
-                            : new[] { true, false, true, false, true, false }
-                    },
-                    {
-                        DataType.Method,
-                        rnd ? RuleSeededSolutions[(int)DataType.Method]
-                            : new[] { true, true,  false, false, true, false }
-                    },
-                    {
-                        DataType.Argument,
-                        rnd ? RuleSeededSolutions[(int)DataType.Argument]
-                            : new[] { false, true, false, true, true, false }
-                    },
-                    {
-                        DataType.Local,
-                        rnd ? RuleSeededSolutions[(int)DataType.Local]
-                            : new[] { false, true, false, true, true, false }
-                    },
-                    {
-                        DataType.Constant,
-                        rnd ? RuleSeededSolutions[(int)DataType.Constant]
-                            : new[] { true, false, false, false, true, false }
-                    },
-                    {
-                        DataType.Field,
-                        rnd ? RuleSeededSolutions[(int)DataType.Field]
-                            : new[] { false, true, false, true, true, true }
-                    },
-                    {
-                        DataType.Property,
-                        rnd ? RuleSeededSolutions[(int)DataType.Property]
-                            : new[] { true, true, false, true, true, false }
-                    },
-                    {
-                        DataType.Delegate,
-                        rnd ? RuleSeededSolutions[(int)DataType.Delegate]
-                            : new[] { true, false, true, true, false, false }
-                    },
-                    {
-                        DataType.Enum,
-                        rnd ? RuleSeededSolutions[(int)DataType.Enum]
-                            : new[] { true, true, false, false, false, false }
-                    },
-                };
+                    DataType.Class,
+                    rnd ? RuleSeededSolutions[(int)DataType.Class]
+                        : new[] { true, false, true, false, true, false }
+                },
+                {
+                    DataType.Constructor,
+                    rnd ? RuleSeededSolutions[(int)DataType.Constructor]
+                        : new[] { true, false, true, false, true, false }
+                },
+                {
+                    DataType.Method,
+                    rnd ? RuleSeededSolutions[(int)DataType.Method]
+                        : new[] { true, true,  false, false, true, false }
+                },
+                {
+                    DataType.Argument,
+                    rnd ? RuleSeededSolutions[(int)DataType.Argument]
+                        : new[] { false, true, false, true, true, false }
+                },
+                {
+                    DataType.Local,
+                    rnd ? RuleSeededSolutions[(int)DataType.Local]
+                        : new[] { false, true, false, true, true, false }
+                },
+                {
+                    DataType.Constant,
+                    rnd ? RuleSeededSolutions[(int)DataType.Constant]
+                        : new[] { true, false, false, false, true, false }
+                },
+                {
+                    DataType.Field,
+                    rnd ? RuleSeededSolutions[(int)DataType.Field]
+                        : new[] { false, true, false, true, true, true }
+                },
+                {
+                    DataType.Property,
+                    rnd ? RuleSeededSolutions[(int)DataType.Property]
+                        : new[] { true, true, false, true, true, false }
+                },
+                {
+                    DataType.Delegate,
+                    rnd ? RuleSeededSolutions[(int)DataType.Delegate]
+                        : new[] { true, false, true, true, false, false }
+                },
+                {
+                    DataType.Enum,
+                    rnd ? RuleSeededSolutions[(int)DataType.Enum]
+                        : new[] { true, true, false, false, false, false }
+                },
+            };
         }
     }
 
@@ -150,7 +126,7 @@ public class NamingConventionsScript : ModuleScript
     {
         // Assigns the KMSelectables.
         Buttons.Assign(onInteract: HandlePresses);
-        Component.Assign(onInteract: () => _isSelected = true, onDefocus: () => _isSelected = false);
+        Selectable.Assign(onInteract: () => _isSelected = true, onDefocus: () => _isSelected = false);
 
         // Initializes the arrays.
         textStates = Helper.RandomBooleans(Length);
@@ -165,6 +141,20 @@ public class NamingConventionsScript : ModuleScript
         StartCoroutine(JiggleText());
 
         this.Log("The solution for {0} in rule seed {1} is {2}.".Form(DataType, Rule.GetRNG().Seed, Enumerable.Range(0, 6).Select(i => SetTextIndexes(i + 1, Solutions[DataType][i]).Trim()).Join(", ")));
+    }
+
+    public override void OnTimerTick()
+    {
+        if (IsSolve)
+            return;
+
+        for (int i = 0; i < textStates.Length; i++)
+            textStates[i] = !textStates[i];
+
+        if (_isSelected)
+            Audio.Play(transform, Sounds.Tick);
+
+        UpdateIndexes();
     }
 
     private IEnumerator JiggleText()

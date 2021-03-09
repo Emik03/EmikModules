@@ -1453,7 +1453,7 @@ GameObject:
   - component: {fileID: 114916480317687756}
   - component: {fileID: 114362839356583638}
   - component: {fileID: 114824187896700802}
-  - component: {fileID: 114578961675017814}
+  - component: {fileID: 114185057834900178}
   - component: {fileID: 114828432081042886}
   - component: {fileID: 114914526078472532}
   m_Layer: 0
@@ -6639,6 +6639,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Transparent/Mobile Diffuse Underlay200
+--- !u!114 &114185057834900178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870063977896854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf69c2de51bd3c43bbd9bc22578ee08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seed: 1
 --- !u!114 &114200698426596260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7273,18 +7285,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Transparent/Mobile Diffuse Underlay200
---- !u!114 &114578961675017814
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1870063977896854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adf69c2de51bd3c43bbd9bc22578ee08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _seed: 1
 --- !u!114 &114597077728995868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7557,9 +7557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359c2a6e27def3c41b831bd09ad45845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Audio: {fileID: 114916480317687756}
-  Info: {fileID: 114362839356583638}
-  Module: {fileID: 114824187896700802}
   Component: {fileID: 114054557359628616}
   Buttons:
   - {fileID: 114118859235215968}
@@ -7569,7 +7566,7 @@ MonoBehaviour:
   - {fileID: 114380954748505234}
   - {fileID: 114014841433623964}
   - {fileID: 114459666867463780}
-  Rule: {fileID: 114578961675017814}
+  Rule: {fileID: 114185057834900178}
   Texts:
   - {fileID: 23725083497847308}
   - {fileID: 23749651547148270}

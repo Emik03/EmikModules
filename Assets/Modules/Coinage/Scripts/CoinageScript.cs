@@ -10,11 +10,6 @@ using UnityEngine;
 /// </summary>
 public class CoinageScript : ModuleScript
 {
-    public override ModuleConfig ModuleConfig { get { return new ModuleConfig(kmBombModule: Module); } }
-
-    public KMAudio Audio;
-    public KMBombModule Module;
-    public KMBombInfo Info;
     public KMSelectable[] Coins;
     public Transform[] CoinHighlightableTransforms;
 
@@ -24,13 +19,13 @@ public class CoinageScript : ModuleScript
         {
             return new[]
             {
-                    CountCoins(2),
-                    CountCoins(4),
-                    CountCoins(8),
-                    CountCoins(16),
-                    CountCoins(32),
-                    CountCoins(64)
-                };
+                CountCoins(2),
+                CountCoins(4),
+                CountCoins(8),
+                CountCoins(16),
+                CountCoins(32),
+                CountCoins(64)
+            };
         }
     }
 
@@ -61,7 +56,7 @@ public class CoinageScript : ModuleScript
 
         coinStates = Helper.RandomBooleans(CoinCount);
 
-        hammingCodes = Info.GetSerialNumber()
+        hammingCodes = BombInfo.GetSerialNumber()
             .Select(c => Chars.Contains(c))
             .ToArray();
 
@@ -70,7 +65,7 @@ public class CoinageScript : ModuleScript
             ApplyRotation(i, 0, 0.6f);
 
         this.Log("The hamming code is {0}.".Form(hammingCodes.Select(b => b ? "1" : "0").Join("")));
-        this.Log("The coins are arranged as {0}, making one of the answers {1}. (chess-coordinates)".Form(CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join(""), ToCoordinate(GetExampleAnswer())));
+        this.Log("The coins are arranged as {0}, making the answer {1}. (chess-coordinates)".Form(CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join(""), ToCoordinate(GetExampleAnswer())));
     }
 
     private int CountCoins(int i)

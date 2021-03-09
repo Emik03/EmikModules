@@ -6,13 +6,12 @@ using UnityEngine;
 public class NamingConventionsTPScript : TPScript
 {
     public NamingConventionsScript Module;
-    public override ModuleScript ModuleScript { get { return Module; } }
 
 #pragma warning disable 414
     new private string TwitchHelpMessage = @"!{0} <###...> | Flips each button on <#>, then presses the first button to submit | Example: !{0} 123";
 #pragma warning restore 414
 
-    public override IEnumerator ProcessTwitchCommand(string command)
+    protected override IEnumerator ProcessTwitchCommand(string command)
     {
         yield return null;
         int[] numbers = command.ToCharArray().ToNumbers();
@@ -22,7 +21,7 @@ public class NamingConventionsTPScript : TPScript
             FlipCommand(numbers));
     }
 
-    public override IEnumerator TwitchHandleForcedSolve()
+    protected override IEnumerator TwitchHandleForcedSolve()
     {
         int[] answer = Enumerable.Range(2, 6).Where(i => Module.textStates[i - 1] != Module.Solutions[Module.DataType][i - 2]).ToArray();
         yield return FlipCommand(answer);

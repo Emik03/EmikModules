@@ -11,17 +11,6 @@ using UnityEngine;
 /// </summary>
 public class NetheriteScript : ModuleScript
 {
-    public override ModuleConfig ModuleConfig
-    {
-        get
-        {
-            return new ModuleConfig(kmBombModule: Module);
-        }
-    }
-
-    public KMAudio Audio;
-    public KMBombInfo Info;
-    public KMBombModule Module;
     public KMSelectable[] Buttons;
     public ParticleSystem Particle, ParticleOnSolve;
     public Renderer ModuleRenderer;
@@ -29,11 +18,11 @@ public class NetheriteScript : ModuleScript
 
     internal bool IsStrike { get; set; }
 
-    private IEnumerable<int> Serial { get { return Info.GetSerialNumberNumbers(); } }
+    private IEnumerable<int> Serial { get { return BombInfo.GetSerialNumberNumbers(); } }
     private IEnumerable<int> SerialWithSolves { get { return Serial.Prepend(NetheriteID); } }
 
     internal int Stage { get; set; }
-    private int NetheriteCount { get { return IsEditor ? 3 : Info.GetSolvableModuleNames().Where(m => m == "Netherite").Count(); } }
+    private int NetheriteCount { get { return IsEditor ? 3 : BombInfo.GetSolvableModuleNames().Where(m => m == "Netherite").Count(); } }
 
     private static int NetheriteID { get; set; }
     private static int CurrentlySolvingID
@@ -59,7 +48,7 @@ public class NetheriteScript : ModuleScript
     {
         get
         {
-            var query = Info.QueryWidgets("volt", "");
+            var query = BombInfo.QueryWidgets("volt", "");
             return query.Count != 0
                 ? (float?)float.Parse(JsonConvert.DeserializeObject<VoltData>(query.First()).Voltage)
                 : null;
@@ -102,12 +91,12 @@ public class NetheriteScript : ModuleScript
         // These are the rules for when a Voltage Meter widget is not on the bomb.
         else
         {
-            if (Info.GetOnIndicators().Count().ToString().Any(a => Serial.Sum().ToString().Any(b => a == b))
-                || Serial.Any(a => a == Info.GetOnIndicators().Count()))
+            if (BombInfo.GetOnIndicators().Count().ToString().Any(a => Serial.Sum().ToString().Any(b => a == b))
+                || Serial.Any(a => a == BombInfo.GetOnIndicators().Count()))
                 i = FlipIndexHorizontally(i);
 
-            if (Info.GetOffIndicators().Count().ToString().Any(a => Serial.Sum().ToString().Any(b => a == b))
-                || Serial.Any(a => a == Info.GetOffIndicators().Count()))
+            if (BombInfo.GetOffIndicators().Count().ToString().Any(a => Serial.Sum().ToString().Any(b => a == b))
+                || Serial.Any(a => a == BombInfo.GetOffIndicators().Count()))
                 i = FlipIndexVertically(i);
         }
 

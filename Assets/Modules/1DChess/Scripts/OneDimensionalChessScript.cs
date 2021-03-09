@@ -14,16 +14,6 @@ using Urnd = UnityEngine.Random;
 /// </summary>
 public class OneDimensionalChessScript : ModuleScript
 {
-    public override ModuleConfig ModuleConfig
-    {
-        get
-        {
-            return new ModuleConfig(Module); 
-        }
-    }
-
-    public KMAudio Audio;
-    public KMBombModule Module;
     public KMSelectable[] Buttons;
     public Renderer Renderer;
     public Renderer[] BoardRenderers, ButtonRenderers;
@@ -34,9 +24,10 @@ public class OneDimensionalChessScript : ModuleScript
 
     internal bool isReady;
     internal int movesLeft;
+    internal int? last;
     internal string position;
     internal PieceColor color;
-    List<string> souvenirPositions;
+    internal List<string> souvenirPositions;
 
     private int MovesLeft 
     { 
@@ -58,7 +49,6 @@ public class OneDimensionalChessScript : ModuleScript
 
     private static bool _isUsingThreads, _isRustLoaded;
     private int _boardLength;
-    private int? _last;
 
     private void Start()
     {
@@ -75,7 +65,7 @@ public class OneDimensionalChessScript : ModuleScript
         // In the event it gets here, the library has worked, and we can remove the default error message.
         ChangeText("", "");
 
-        Module.Assign(this, () =>
+        BombModule.Assign(this, () =>
         {
             // This ensures that the same positions generate if a bomb seed is used.
             Position.random = new Srnd(Urnd.Range(0, int.MaxValue));
@@ -99,11 +89,11 @@ public class OneDimensionalChessScript : ModuleScript
             return false;
 
         // This prevents you from selecting an empty space as the origin.
-        if (position[arg] == Position.PieceChars[0] && _last == null)
+        if (position[arg] == Position.PieceChars[0] && last == null)
             return false;
 
         // This prevents you from selecting a piece that isn't yours as the origin.
-        if (position[arg].GetPieceColor() != color && _last == null)
+        if (position[arg].GetPieceColor() != color && last == null)
             return false;
 
         // Gives button feedback.
@@ -113,12 +103,12 @@ public class OneDimensionalChessScript : ModuleScript
         BoardRenderers[arg].material.color = _colorScheme[2];
 
         // The destination is selected.
-        if (_last != null)
+        if (last != null)
         {
             // The user did not deselect.
-            if (_last != arg)
+            if (last != arg)
             {
-                bool isLegalMove = Engine.IsLegalMove(position, (sbyte)_last, (sbyte)arg);
+                bool isLegalMove = Engine.IsLegalMove(position, (sbyte)last, (sbyte)arg);
 
                 // Updates the position on a legal move, cancels the selection otherwise.
                 if (isLegalMove)
@@ -126,8 +116,8 @@ public class OneDimensionalChessScript : ModuleScript
                     // Creates the desired move.
                     var move = new PieceMove
                     {
-                        Piece = position[(int)_last].Piece(),
-                        Origin = (sbyte)_last,
+                        Piece = position[(int)last].Piece(),
+                        Origin = (sbyte)last,
                         Destination = (sbyte)arg
                     };
 
@@ -148,7 +138,7 @@ public class OneDimensionalChessScript : ModuleScript
         }
 
         // Toggle _lastSelect between null and the argument passed in to the method.
-        _last = _last == null ? (int?)arg : null;
+        last = last == null ? (int?)arg : null;
 
         return false;
     }
@@ -264,18 +254,13 @@ public class OneDimensionalChessScript : ModuleScript
 
         new Thread(() =>
         {
-            int i = 0;
             // Find a game that takes 5-9 moves to complete in ideal play, using the Rust library.
-            while (!Mathf.Abs(game.Evaluation).InRange(110, 118) && i != 1000)
+            while (!Mathf.Abs(game.Evaluation).InRange(110, 118))
             {
-                i++;
                 position = RandomPosition;
                 isEvaluating = true;
                 game = Engine.Calculate(position, Position.Depth, true);
             }
-
-            if (i == 1000)
-                Debug.LogError("badf");
 
             // Sometimes the evaluation is in favor of black, we need to advance the game by one move so that it is black to move.
             if (game.Evaluation < 0)

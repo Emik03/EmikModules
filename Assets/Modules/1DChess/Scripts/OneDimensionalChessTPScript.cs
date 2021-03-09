@@ -3,19 +3,23 @@ using OneDimensionalChess;
 using System.Collections;
 using System.Linq;
 using System.Threading;
+using UnityEngine;
 
 public class OneDimensionalChessTPScript : TPScript 
 {
     public OneDimensionalChessScript Module;
-    public override ModuleScript ModuleScript { get { return Module; } }
 
 #pragma warning disable 414
     new private string TwitchHelpMessage = @"!{0} <##> (# is a-h) | Moves piece in first character to second character. | Example: !{0} ab";
 #pragma warning restore 414
 
-    public override IEnumerator ProcessTwitchCommand(string command)
+    protected override IEnumerator ProcessTwitchCommand(string command)
     {
         yield return null;
+
+        // This cancels any selected square prior.
+        if (Module.last != null)
+            Module.Buttons[(int)Module.last].OnInteract();
 
         command = command.ToLowerInvariant();
 
@@ -37,8 +41,12 @@ public class OneDimensionalChessTPScript : TPScript
         };
     }
 
-    public override IEnumerator TwitchHandleForcedSolve()
+    protected override IEnumerator TwitchHandleForcedSolve()
     {
+        // This cancels any selected square prior.
+        if (Module.last != null)
+            Module.Buttons[(int)Module.last].OnInteract();
+
         while (!Module.IsSolve)
         {
             var game = new CGameResult { };
@@ -46,7 +54,10 @@ public class OneDimensionalChessTPScript : TPScript
             bool isReady = false;
 
             while (!Module.isReady)
+            { 
                 yield return true;
+                yield return new WaitForSecondsRealtime(1);
+            }
 
             new Thread(() => 
             {
@@ -59,9 +70,8 @@ public class OneDimensionalChessTPScript : TPScript
 
             int[] indices = new[] { (int)game.SuggestedMove.Origin, game.SuggestedMove.Destination };
 
-
             if (indices.Any(i => i == -1))
-                Module.Module.HandlePass();
+                Module.Solve("The autosolver seemed to trip up a bit there. Force-solving now.");
             else
                 yield return OnInteractSequence(Module.Buttons, indices, 1 / 64f);
         }

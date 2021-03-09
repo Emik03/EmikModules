@@ -14,11 +14,38 @@ MonoBehaviour:
   id: EmikModules
   title: Emik's Modules
   author: Emik
-  description: "PDFs: \n\nCoin, blackboard, and thumbnail done by Enitoni\r.\n\nAn
-    assortment of unique modules, all bundled up into one mod!\n\nmoduleIds:\n- 1DChess\n-
-    Coinage\n- Naming Conventions\n- Netherite\n\nHTML Manuals:\nhttps://ktane.timwi.de/HTML/1D%20Chess.html\nhttps://ktane.timwi.de/HTML/Coinage.html\nhttps://ktane.timwi.de/HTML/Naming%20Conventions.html\nhttps://ktane.timwi.de/HTML/Netherite.html\n\nTwitch
-    plays is supported for all of them.\n\nIs there a bug? Do you have a question?
-    Discord: @Emik#0001"
-  version: 1
+  description: 'Thanks to Enitoni for making the coin, the blackboard, and the thumbnail.
+
+
+    An assortment of unique modules, all bundled up into one mod!
+
+
+    moduleIds:
+
+    - 1DChess
+
+    - Coinage
+
+    - Naming Conventions
+
+    - Netherite
+
+
+    HTML Manuals:
+
+    https://ktane.timwi.de/HTML/1D%20Chess.html
+
+    https://ktane.timwi.de/HTML/Coinage.html
+
+    https://ktane.timwi.de/HTML/Naming%20Conventions.html
+
+    https://ktane.timwi.de/HTML/Netherite.html
+
+
+    Twitch plays is supported for all of them.
+
+
+    Is there a bug? Do you have a question? Discord: @Emik#0001'
+  version: 1.0.1
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 588042eeb44adae4cb0611f300e65f5e, type: 3}
