@@ -18,11 +18,11 @@ public class NetheriteScript : ModuleScript
 
     internal bool IsStrike { get; set; }
 
-    private IEnumerable<int> Serial { get { return BombInfo.GetSerialNumberNumbers(); } }
+    private IEnumerable<int> Serial { get { return Get<KMBombInfo>().GetSerialNumberNumbers(); } }
     private IEnumerable<int> SerialWithSolves { get { return Serial.Prepend(NetheriteID); } }
 
     internal int Stage { get; set; }
-    private int NetheriteCount { get { return IsEditor ? 3 : BombInfo.GetSolvableModuleNames().Where(m => m == "Netherite").Count(); } }
+    private int NetheriteCount { get { return IsEditor ? 3 : Get<KMBombInfo>().GetSolvableModuleNames().Where(m => m == "Netherite").Count(); } }
 
     private static int NetheriteID { get; set; }
     private static int CurrentlySolvingID
@@ -48,7 +48,7 @@ public class NetheriteScript : ModuleScript
     {
         get
         {
-            var query = BombInfo.QueryWidgets("volt", "");
+            var query = Get<KMBombInfo>().QueryWidgets("volt", "");
             return query.Count != 0
                 ? (float?)float.Parse(JsonConvert.DeserializeObject<VoltData>(query.First()).Voltage)
                 : null;
@@ -63,15 +63,15 @@ public class NetheriteScript : ModuleScript
         _currentlySolvingId = default(int);
         NetheriteID = 1;
 
-        this.Log("The 3x3 board will submit the following values:");
+        Log("The 3x3 board will submit the following values:");
 
         // This logs the entire board.
         for (int i = 0; i < 3; i++)
-            this.Log(Enumerable.Range(i * 3, 3).Select(j => ApplyRules(j)).Join(" "));
+            Log(Enumerable.Range(i * 3, 3).Select(j => ApplyRules(j)).Join(" "));
 
         // The only way to adjust the answer is to transmutate NetheriteID, this allows us to log each answer.
         for (NetheriteID = 1; NetheriteID <= NetheriteCount; NetheriteID++)
-            this.Log("The expected sequence ({0} netherite) is {1}.".Form(ToOrdinal(NetheriteID), Sequence.Join()));
+            Log("The expected sequence ({0} netherite) is {1}.", ToOrdinal(NetheriteID), Sequence.Join());
 
         NetheriteID = 1;
     }
@@ -91,12 +91,12 @@ public class NetheriteScript : ModuleScript
         // These are the rules for when a Voltage Meter widget is not on the bomb.
         else
         {
-            if (BombInfo.GetOnIndicators().Count().ToString().Any(a => Serial.Sum().ToString().Any(b => a == b))
-                || Serial.Any(a => a == BombInfo.GetOnIndicators().Count()))
+            if (Get<KMBombInfo>().GetOnIndicators().Count().ToString().Any(a => Serial.Sum().ToString().Any(b => a == b))
+                || Serial.Any(a => a == Get<KMBombInfo>().GetOnIndicators().Count()))
                 i = FlipIndexHorizontally(i);
 
-            if (BombInfo.GetOffIndicators().Count().ToString().Any(a => Serial.Sum().ToString().Any(b => a == b))
-                || Serial.Any(a => a == BombInfo.GetOffIndicators().Count()))
+            if (Get<KMBombInfo>().GetOffIndicators().Count().ToString().Any(a => Serial.Sum().ToString().Any(b => a == b))
+                || Serial.Any(a => a == Get<KMBombInfo>().GetOffIndicators().Count()))
                 i = FlipIndexVertically(i);
         }
 
@@ -104,22 +104,18 @@ public class NetheriteScript : ModuleScript
         return ++i;
     }
 
-    private bool OnInteract(int i)
+    private void OnInteract(int i)
     {
         // On solve the module disappears, it would be weird for it to still be possible to interact with it.
-        if (IsSolve)
-            return false;
+        if (IsSolved)
+            return;
 
         // Plays a random dig sound.
-        Buttons[i].Push(audio: Audio,
-            transform: Buttons[i].transform,
-            intensityModifier: 1,
-            customSound: Sounds.Dig,
-            gameSound: KMSoundOverride.SoundEffect.ButtonPress);
+        Buttons[i].Push(Get<KMAudio>(), 1, Sounds.Dig, KMSoundOverride.SoundEffect.ButtonPress);
 
         // Ping if this is the first time the module is being cracked.
         if (Stage == 0)
-            Audio.Play(transform, customSound: Sounds.Ping);
+            Get<KMAudio>().Play(transform, Sounds.Ping);
 
         // Plays the break block effect.
         Particle.Play();
@@ -130,8 +126,8 @@ public class NetheriteScript : ModuleScript
         // This strikes the module if either the condition is wrong or multiple of them are being solved.
         if (Sequence[Stage] != ApplyRules(i) || CurrentlySolvingID != ModuleId)
         {
-            Audio.Play(transform, customSound: Sounds.Hit);
-            this.Strike("While trying to mine for the {0} time, the value {1} was submitted, when {2} was expected! Strike!".Form(
+            Get<KMAudio>().Play(transform, Sounds.Hit);
+            Strike("While trying to mine for the {0} time, the value {1} was submitted, when {2} was expected! Strike!".Form(
                 ToOrdinal(Stage + 1),
                 ApplyRules(i),
                 Sequence[Stage]));
@@ -151,12 +147,10 @@ public class NetheriteScript : ModuleScript
 
             ParticleOnSolve.Play();
 
-            Audio.Play(transform, customSound: Sounds.Solve);
+            Get<KMAudio>().Play(transform, Sounds.Solve);
 
-            this.Solve("The Netherite block has been mined. Module solved!");
+            Solve("The Netherite block has been mined. Module solved!");
         }
-
-        return false;
     }
 
     private static int FlipIndexHorizontally(int i)

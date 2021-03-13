@@ -15,7 +15,6 @@ using Urnd = UnityEngine.Random;
 public class OneDimensionalChessScript : ModuleScript
 {
     public KMSelectable[] Buttons;
-    public Renderer Renderer;
     public Renderer[] BoardRenderers, ButtonRenderers;
     public TextMesh MovesLeftText, Title, Subtitle;
     public Texture[] BoardTextures, ButtonTextures;
@@ -47,8 +46,11 @@ public class OneDimensionalChessScript : ModuleScript
         new Color32(111, 133, 200, 255)
     };
 
+    private bool _isWinning;
     private static bool _isUsingThreads, _isRustLoaded;
     private int _boardLength;
+
+    private Work<string, int, bool, CGameResult> _bestMove;
 
     private void Start()
     {
@@ -56,16 +58,35 @@ public class OneDimensionalChessScript : ModuleScript
         if (!IsEditor && !_isRustLoaded)
         {
             _isRustLoaded = true;
-            DLLManager.Load("EmikModules", "rustmate", fileExtensionMacOS: ".so");
+            LibraryManager.Load("EmikModules", "rustmate", fileExtensionMacOS: "so");
         }
 
-        // This is a test to make sure the library works, if it isn't loaded the module will halt here.
-        Engine.Calculate("", 0, true);
+        // This is a test to make sure the library works, if it isn't loaded the module will solve here.
+        try
+        {
+            Engine.Calculate("", 0, true);
+        }
+        catch (DllNotFoundException)
+        {
+            Log("Oops! Looks like Rustmate didn't show up! You can claim a win by selecting the module. (The Rust library failed to load! Please provide a FULL log file to @Emik#0001 on Discord)");
+            
+            ChangeText("Rustmate", "failed to load!");
 
-        // In the event it gets here, the library has worked, and we can remove the default error message.
-        ChangeText("", "");
+            Get<KMSelectable>().Assign(onInteract: () =>
+            {
+                if (!IsSolved)
+                    Solve("Module was selected, that's a lousy solve.");
+            });
+            
+            return;
+        }
 
-        BombModule.Assign(this, () =>
+        _bestMove = new Work<string, int, bool, CGameResult>(
+            Engine.Calculate,
+            allowSimultaneousActive: true,
+            maximumThreadsActive: 1);
+
+        Get<KMBombModule>().Assign(this, () =>
         {
             // This ensures that the same positions generate if a bomb seed is used.
             Position.random = new Srnd(Urnd.Range(0, int.MaxValue));
@@ -82,22 +103,22 @@ public class OneDimensionalChessScript : ModuleScript
         });
     }
 
-    private bool OnInteract(int arg)
+    private void OnInteract(int arg)
     {
         // This prevents you from making a move while the computer is thinking.
         if (!isReady)
-            return false;
+            return;
 
         // This prevents you from selecting an empty space as the origin.
         if (position[arg] == Position.PieceChars[0] && last == null)
-            return false;
+            return;
 
         // This prevents you from selecting a piece that isn't yours as the origin.
         if (position[arg].GetPieceColor() != color && last == null)
-            return false;
+            return;
 
         // Gives button feedback.
-        Buttons[arg].Push(Audio, Buttons[arg].transform, 1, Sounds.Click);
+        Buttons[arg].Push(Get<KMAudio>(), 1, Sounds.Click);
 
         // Highlight the selected square.
         BoardRenderers[arg].material.color = _colorScheme[2];
@@ -121,9 +142,9 @@ public class OneDimensionalChessScript : ModuleScript
                         Destination = (sbyte)arg
                     };
 
-                    position = move.Move(position, Audio);
+                    position = move.Move(position, Get<KMAudio>());
 
-                    this.Log("You play {0}, the position is now {1}.".Form(ToLog(move), position));
+                    Log("You play {0}, the position is now {1}.", ToLog(move), position);
 
                     souvenirPositions.Add(ToLog(move));
 
@@ -131,7 +152,7 @@ public class OneDimensionalChessScript : ModuleScript
                     StartCoroutine(GetEngineMove());
                 }
 
-                Audio.Play(transform, isLegalMove ? Sounds.Self : Sounds.Illegal);
+                Get<KMAudio>().Play(transform, isLegalMove ? Sounds.Self : Sounds.Illegal);
             }
 
             RenderPosition(position);
@@ -139,8 +160,6 @@ public class OneDimensionalChessScript : ModuleScript
 
         // Toggle _lastSelect between null and the argument passed in to the method.
         last = last == null ? (int?)arg : null;
-
-        return false;
     }
 
     private IEnumerator GetEngineMove()
@@ -164,57 +183,60 @@ public class OneDimensionalChessScript : ModuleScript
             yield break;
         }
 
-        CGameResult game = new CGameResult { };
+        yield return _bestMove.Start(position, (movesLeft * 2) + 1, color == PieceColor.Black);
 
-        // This calls the external Rust library to generate the best first move.
-        new Thread(() =>
-        { 
-            game = Engine.Calculate(position, (movesLeft * 2) + 1, color == PieceColor.Black);
-            isReady = true; 
-        }).Start();
-
-        yield return new WaitUntil(() => isReady);
+        // This looks convoluted, but it's only asking if the player has made a blunder, to the point of an unwinnable position.
+        if (_isWinning &&
+           ((color == PieceColor.White && _bestMove.Result.Evaluation != sbyte.MaxValue - (movesLeft * 2)) || 
+            (color == PieceColor.Black && _bestMove.Result.Evaluation != (movesLeft * 2) - sbyte.MinValue)))
+        {
+            _isWinning = false;
+            Log("Rustmate has evaluated that this position is now unwinnable. Congratulations.");
+        }
 
         ChangeText("Mate in", "", MovesLeft.ToString());
 
-        Audio.Play(transform, Sounds.Opponent);
+        Get<KMAudio>().Play(transform, Sounds.Opponent);
 
         // This indicates if the game has ended.
-        if (game.SuggestedMove.IsEqual(Position.finishedGame))
+        if (_bestMove.Result.SuggestedMove.IsEqual(Position.finishedGame))
         {
-            Audio.Play(transform, Sounds.Check);
+            isReady = false;
+
+            Get<KMAudio>().Play(transform, Sounds.Check);
 
             // Stalemate.
-            if (game.Evaluation == 0)
+            if (_bestMove.Result.Evaluation == 0)
                 StartCoroutine(HandleStrike("You lose!", "Stalemate!"));
 
             // Checkmate against the player.
-            else if (color == PieceColor.White ^ game.Evaluation > 0)
+            else if (color == PieceColor.White ^ _bestMove.Result.Evaluation > 0)
                 StartCoroutine(HandleStrike("You lose!", "Checkmate!"));
 
             // Checkmate for the player.
             else
             {
-                Audio.Play(transform, Sounds.GameEnd);
-                Audio.Play(transform, Sounds.Solve);
+                Get<KMAudio>().Play(transform, Sounds.GameEnd, Sounds.Solve);
 
                 string message = new[] { "Good game!", "Well played!" }.PickRandom();
-                this.Solve(message);
+                Solve(message);
                 ChangeText("Solved!", message);
-
-                isReady = false;
             }
         }
 
         else
         {
-            position = game
+            // This allows the player to make a move again.
+            isReady = true;
+
+            position = _bestMove
+                .Result
                 .SuggestedMove
-                .Move(position, Audio);
+                .Move(position, Get<KMAudio>());
 
-            this.Log("Rustmate plays {0}, the position is now {1}.".Form(ToLog(game.SuggestedMove), position));
+            Log("Rustmate plays {0}, the position is now {1}.", ToLog(_bestMove.Result.SuggestedMove), position);
 
-            souvenirPositions.Add(ToLog(game.SuggestedMove));
+            souvenirPositions.Add(ToLog(_bestMove.Result.SuggestedMove));
 
             // Having the game end after an engine move always means a loss for the player.
             if (position.IsGameEnd(color))
@@ -233,6 +255,7 @@ public class OneDimensionalChessScript : ModuleScript
 
     private IEnumerator GetGoodPosition()
     {
+        _isWinning = true;
         isReady = false;
 
         ChangeText("Waiting for", "other modules...");
@@ -284,16 +307,16 @@ public class OneDimensionalChessScript : ModuleScript
 
             RenderPosition(position);
 
-            Audio.Play(transform, new[] { Sounds.Capture, Sounds.Check, Sounds.Opponent, Sounds.Self }.PickRandom());
+            Get<KMAudio>().Play(transform, new[] { Sounds.Capture, Sounds.Check, Sounds.Opponent, Sounds.Self }.PickRandom());
         }
 
         _isUsingThreads = false; 
 
         MovesLeft = (128 - Math.Abs(game.Evaluation)) / 2;
 
-        Audio.Play(transform, Sounds.GameStart);
+        Get<KMAudio>().Play(transform, Sounds.GameStart);
 
-        this.Log("The position is {0}, mate in {1}.".Form(position, movesLeft));
+        Log("The position is {0}, mate in {1}.", position, movesLeft);
         StartCoroutine(LogOptimalMoves(position, color, movesLeft));
 
         ChangeText("Mate in", "", MovesLeft.ToString());
@@ -304,41 +327,39 @@ public class OneDimensionalChessScript : ModuleScript
         var moves = new List<PieceMove>();
         bool isReady = false;
 
-        new Thread(() =>
+        // The bot plays against itself until the perfect game is constructed.
+        for (depth *= 2; depth > 0; depth--)
         {
-            // The bot plays against itself until the perfect game is constructed.
-            for (depth *= 2; depth > 0; depth--)
+            yield return _bestMove.Start(position, depth + 1, color == PieceColor.White);
+
+            try
             {
-                var game = Engine.Calculate(position, depth + 1, color == PieceColor.White);
-
-                try 
-                {
-                    position = game
-                   .SuggestedMove
-                   .Move(position);
-                }
-                // There are no moves to play when this exception is triggered.
-                catch (IndexOutOfRangeException)
-                {
-                    break;
-                }
-                
-                color = color.Flip();
-
-                moves.Add(game.SuggestedMove);
+                position = _bestMove
+                    .Result
+                    .SuggestedMove
+                    .Move(position);
             }
-            isReady = true;
-        }).Start();
+            // There are no moves to play when this exception is triggered.
+            catch (IndexOutOfRangeException)
+            {
+                break;
+            }
+
+            color = color.Flip();
+
+            moves.Add(_bestMove.Result.SuggestedMove);
+        }
+        isReady = true;
 
         yield return new WaitUntil(() => isReady);
 
-        this.Log("To beat Rustmate, the best sequence of moves are {0}.".Form(ToLog(moves)));
+        Log("To beat Rustmate, the best sequence of moves are {0}.", ToLog(moves));
     }
 
     private IEnumerator HandleStrike(string title, string subtitle)
     {
-        Audio.Play(transform, Sounds.GameEnd);
-        Audio.Play(transform, Sounds.Strike);
+        Get<KMAudio>().Play(transform, Sounds.GameEnd);
+        Get<KMAudio>().Play(transform, Sounds.Strike);
 
         ChangeText(title, subtitle);
 
@@ -346,7 +367,7 @@ public class OneDimensionalChessScript : ModuleScript
 
         yield return new WaitForSecondsRealtime(3);
 
-        this.Strike("Rustmate has bested you with: {0} That's a strike and reset!".Form(subtitle));
+        Strike("Rustmate has bested you with: {0} That's a strike and reset!".Form(subtitle));
 
         StartCoroutine(GetGoodPosition());
     }
@@ -398,7 +419,7 @@ public class OneDimensionalChessScript : ModuleScript
         return moves.Select(m => ToLog(m)).Join(", ");
     }
 
-    private string ToLog(PieceMove move)
+    private string ToLog(PieceMove move)    
     {
         string pos = "{0}{1}".Form(Alphabet[move.Origin], Alphabet[move.Destination]);
         return "{0}->{1}".Form(move.Piece.Symbol(), move.Piece.Color == PieceColor.White ? pos.ToUpperInvariant() : pos.ToLowerInvariant());

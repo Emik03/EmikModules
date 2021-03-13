@@ -126,7 +126,7 @@ public class NamingConventionsScript : ModuleScript
     {
         // Assigns the KMSelectables.
         Buttons.Assign(onInteract: HandlePresses);
-        Selectable.Assign(onInteract: () => _isSelected = true, onDefocus: () => _isSelected = false);
+        Get<KMSelectable>().Assign(onInteract: () => _isSelected = true, onDeselect: () => _isSelected = false);
 
         // Initializes the arrays.
         textStates = Helper.RandomBooleans(Length);
@@ -140,19 +140,22 @@ public class NamingConventionsScript : ModuleScript
         UpdateIndexes();
         StartCoroutine(JiggleText());
 
-        this.Log("The solution for {0} in rule seed {1} is {2}.".Form(DataType, Rule.GetRNG().Seed, Enumerable.Range(0, 6).Select(i => SetTextIndexes(i + 1, Solutions[DataType][i]).Trim()).Join(", ")));
+        Log("The solution for {0} in rule seed {1} is {2}.", 
+            DataType, 
+            Rule.GetRNG().Seed, 
+            Enumerable.Range(0, 6).Select(i => SetTextIndexes(i + 1, Solutions[DataType][i]).Trim()).Join(", "));
     }
 
     public override void OnTimerTick()
     {
-        if (IsSolve)
+        if (IsSolved)
             return;
 
         for (int i = 0; i < textStates.Length; i++)
             textStates[i] = !textStates[i];
 
         if (_isSelected)
-            Audio.Play(transform, Sounds.Tick);
+            Get<KMAudio>().Play(transform, Sounds.Tick);
 
         UpdateIndexes();
     }
@@ -170,14 +173,12 @@ public class NamingConventionsScript : ModuleScript
         }
     }
 
-    private bool HandlePresses(int i)
+    private void HandlePresses(int i)
     {
-        Buttons[i].Push(audio: Audio,
-            customSound: Sounds.Touch,
-            gameSound: KMSoundOverride.SoundEffect.ButtonPress);
+        Buttons[i].Push(Get<KMAudio>(), 0, Sounds.Touch, KMSoundOverride.SoundEffect.ButtonPress);
 
-        if (IsSolve)
-            return false;
+        if (IsSolved)
+            return;
 
         // The first button is the submit button.
         if (i == 0)
@@ -188,22 +189,20 @@ public class NamingConventionsScript : ModuleScript
 
         // Renders the text.
         UpdateIndexes();
-
-        return false;
     }
 
     private void Submit()
     {
         if (IsCorrect())
         {
-            Audio.Play(transform, customSound: Sounds.Solve);
-            this.Solve("The submission was correct, solved!");
+            Get<KMAudio>().Play(transform, Sounds.Solve);
+            Solve("The submission was correct, solved!");
         }
 
         else
         {
-            Audio.Play(transform, customSound: Sounds.Strike);
-            this.Strike("The incorrect option was submitted for button(s) {0}, that's 1 strike please!"
+            Get<KMAudio>().Play(transform, Sounds.Strike);
+            Strike("The incorrect option was submitted for button(s) {0}, that's 1 strike please!"
                 .Form(Enumerable.Range(2, 6).Where(i => textStates[i - 1] != Solutions[_DataType][i - 2]).Join(", ")));
         }
     }
@@ -221,12 +220,12 @@ public class NamingConventionsScript : ModuleScript
                 ? DataType.ToString().Remove(Index, 1)
                 : DataType.ToString(); break;
 
-            case 1: output = IsSolve ? "Is" : b ? "PascalCase" : "camelCase "; break;
-            case 2: output = IsSolve ? "Convention" : b ? True : False; break;
-            case 3: output = IsSolve ? "" : b ? True : False; break;
-            case 4: output = IsSolve ? "Module" : b ? True : False; break;
-            case 5: output = IsSolve ? "Is" : b ? "Alphameric" : "Numeric   "; break;
-            case 6: output = IsSolve ? "Solved" : b ? True : False; break;
+            case 1: output = IsSolved ? "Is" : b ? "PascalCase" : "camelCase "; break;
+            case 2: output = IsSolved ? "Convention" : b ? True : False; break;
+            case 3: output = IsSolved ? "" : b ? True : False; break;
+            case 4: output = IsSolved ? "Module" : b ? True : False; break;
+            case 5: output = IsSolved ? "Is" : b ? "Alphameric" : "Numeric   "; break;
+            case 6: output = IsSolved ? "Solved" : b ? True : False; break;
 
             default: throw new NotImplementedException("i: " + i);
         }

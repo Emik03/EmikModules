@@ -8,7 +8,9 @@ public class NamingConventionsTPScript : TPScript
     public NamingConventionsScript Module;
 
 #pragma warning disable 414
-    new private string TwitchHelpMessage = @"!{0} <###...> | Flips each button on <#>, then presses the first button to submit | Example: !{0} 123";
+#pragma warning disable IDE0051 // Remove unused private members
+    new private const string TwitchHelpMessage = @"!{0} <###...> | Flips each button on <#>, then presses the first button to submit | Example: !{0} 123";
+#pragma warning restore IDE0051 // Remove unused private members
 #pragma warning restore 414
 
     protected override IEnumerator ProcessTwitchCommand(string command)
@@ -35,7 +37,7 @@ public class NamingConventionsTPScript : TPScript
             yield return new WaitForSecondsRealtime(0.125f);
         }
 
-        while (!Module.IsSolve)
+        while (!Module.IsSolved)
         {
             yield return true;
             if (Module.textStates[1] == Module.Solutions[Module.DataType][0])

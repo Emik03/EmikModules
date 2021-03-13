@@ -6,7 +6,9 @@ public class CoinageTPScript : TPScript
     public CoinageScript Module;
 
 #pragma warning disable 414
-    new private string TwitchHelpMessage = @"!{0} <a-h><1-8> | Based on chess coordinates, where a-h represent left-to-right and 1-8 represent down-to-up. | Example: !{0} d4";
+#pragma warning disable IDE0051 // Remove unused private members
+    new private const string TwitchHelpMessage = @"!{0} <a-h><1-8> | Based on chess coordinates, where a-h represent left-to-right and 1-8 represent down-to-up. | Example: !{0} d4";
+#pragma warning restore IDE0051 // Remove unused private members
 #pragma warning restore 414
 
     protected override IEnumerator ProcessTwitchCommand(string command)
@@ -28,7 +30,7 @@ public class CoinageTPScript : TPScript
             yield return SendToChatError("Expected second character to be 1-8.");
 
         else
-            yield return Module.Coins[FirstChars.IndexOf(command[0].ToLower()) + (SecondChars.IndexOf(command[1].ToLower()) * 8)].ToArray();
+            yield return new[] { Module.Coins[FirstChars.IndexOf(command[0].ToLower()) + (SecondChars.IndexOf(command[1].ToLower()) * 8)] };
     }
 
     protected override IEnumerator TwitchHandleForcedSolve()

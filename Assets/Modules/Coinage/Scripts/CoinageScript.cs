@@ -50,13 +50,12 @@ public class CoinageScript : ModuleScript
 
         Coins.Assign(onInteract: i =>
         {
-            _rotateCoin.StartIfStopped(i, true);
-            return false;
+            _rotateCoin.Start(i, true, allowSimultaneousRuns: false);
         });
 
         coinStates = Helper.RandomBooleans(CoinCount);
 
-        hammingCodes = BombInfo.GetSerialNumber()
+        hammingCodes = Get<KMBombInfo>().GetSerialNumber()
             .Select(c => Chars.Contains(c))
             .ToArray();
 
@@ -64,8 +63,12 @@ public class CoinageScript : ModuleScript
         for (int i = 0; i < CoinCount; i++)
             ApplyRotation(i, 0, 0.6f);
 
-        this.Log("The hamming code is {0}.".Form(hammingCodes.Select(b => b ? "1" : "0").Join("")));
-        this.Log("The coins are arranged as {0}, making the answer {1}. (chess-coordinates)".Form(CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join(""), ToCoordinate(GetExampleAnswer())));
+        Log("The hamming code is {0}.", 
+            hammingCodes.Select(b => b ? "1" : "0").Join(""));
+
+        Log("The coins are arranged as {0}, making the answer {1}. (chess-coordinates)", 
+            CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join(""), 
+            ToCoordinate(GetExampleAnswer()));
     }
 
     private int CountCoins(int i)
@@ -99,7 +102,7 @@ public class CoinageScript : ModuleScript
     private IEnumerator RotateCoin(int arg, bool playSound)
     {
         if (playSound)
-            Audio.Play(Coins[arg].transform, customSound: Sounds.Flip);
+            Get<KMAudio>().Play(Coins[arg].transform, Sounds.Flip);
 
         float f = 0;
 
@@ -124,14 +127,14 @@ public class CoinageScript : ModuleScript
         // Since we flip a coin, we naturally need to flip the boolean.
         coinStates[arg] = !coinStates[arg];
 
-        if (IsSolve)
+        if (IsSolved)
             yield break;
 
         if (IsCorrect)
         {
-            Audio.Play(Coins[arg].transform, customSound: Sounds.Solve);
+            Get<KMAudio>().Play(Coins[arg].transform, Sounds.Solve);
 
-            this.Solve("The correct coin was flipped. Module solved!");
+            Solve("The correct coin was flipped. Module solved!");
 
             souvenirCoin = ToCoordinate(arg);
 
@@ -148,8 +151,9 @@ public class CoinageScript : ModuleScript
 
         else
         {
-            Audio.Play(Coins[arg].transform, customSound: Sounds.Strike);
-            this.Strike("Coin {0} was flipped, making the arrangement {1}, strike!".Form(ToCoordinate(arg), CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join("")),
+            Get<KMAudio>().Play(Coins[arg].transform, Sounds.Strike);
+
+            Strike("Coin {0} was flipped, making the arrangement {1}, strike!".Form(ToCoordinate(arg), CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join("")),
                 "One of the answers is now {1}. (chess-coordinates)".Form(CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join(""), ToCoordinate(GetExampleAnswer())));
         }
     }

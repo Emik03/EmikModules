@@ -7,7 +7,9 @@ public class NetheriteTPScript : TPScript
     public NetheriteScript Module;
 
 #pragma warning disable 414
+#pragma warning disable IDE0051 // Remove unused private members
     new private const string TwitchHelpMessage = @"!{0} ########### | Each # is a digit 1-9, presses in reading order regardless of rules | Example: !{0} 12345678901";
+#pragma warning restore IDE0051 // Remove unused private members
 #pragma warning restore 414
 
     private const float Wait = 0.2f;

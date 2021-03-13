@@ -47,7 +47,7 @@ public class OneDimensionalChessTPScript : TPScript
         if (Module.last != null)
             Module.Buttons[(int)Module.last].OnInteract();
 
-        while (!Module.IsSolve)
+        while (!Module.IsSolved)
         {
             var game = new CGameResult { };
 

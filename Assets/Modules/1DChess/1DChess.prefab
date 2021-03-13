@@ -2532,7 +2532,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1984949658409328}
-  m_Text: Rustmate
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.001
   m_LineSpacing: 1
@@ -2553,7 +2553,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1279285477079156}
-  m_Text: failed to load!
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.001
   m_LineSpacing: 1
@@ -3214,8 +3214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3de649175ea8424cb9e96dfb632e992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Audio: {fileID: 114570700965009918}
-  Module: {fileID: 114022699361379836}
   Buttons:
   - {fileID: 114275605187310706}
   - {fileID: 114937300371709038}
@@ -3226,7 +3224,6 @@ MonoBehaviour:
   - {fileID: 114166683819993746}
   - {fileID: 114123126029497328}
   - {fileID: 114091181609325476}
-  Renderer: {fileID: 23554773742187254}
   BoardRenderers:
   - {fileID: 23005383682127220}
   - {fileID: 23657935140456232}
