@@ -3,7 +3,7 @@
 namespace OneDimensionalChess
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal struct Piece
+    public struct Piece
     {
         public PieceType Type;
         public PieceColor Color;

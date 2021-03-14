@@ -54,21 +54,21 @@ public class OneDimensionalChessTPScript : TPScript
             bool isReady = false;
 
             while (!Module.isReady)
-            { 
+            {
                 yield return true;
                 yield return new WaitForSecondsRealtime(1);
             }
 
-            new Thread(() => 
+            new Thread(() =>
             {
-                game = Engine.Calculate(Module.position, Module.movesLeft * 2, Module.color == PieceColor.White);
+                //game = Engine.Calculate(Module.position, Module.movesLeft * 2, Module.color == PieceColor.White);
                 isReady = true;
             }).Start();
 
             while (!isReady)
                 yield return true;
 
-            int[] indices = new[] { (int)game.SuggestedMove.Origin, game.SuggestedMove.Destination };
+            int[] indices = new[] { (int)game.Origin, game.Destination };
 
             if (indices.Any(i => i == -1))
                 Module.Solve("The autosolver seemed to trip up a bit there. Force-solving now.");

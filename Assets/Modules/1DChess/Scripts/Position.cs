@@ -8,7 +8,7 @@ namespace OneDimensionalChess
 {
     internal static class Position
     {
-        internal static readonly PieceMove finishedGame = new PieceMove { Origin = -1, Destination = -1 };
+        internal static readonly CGameResult finishedGame = new CGameResult { Piece = new Piece { Type = PieceType.King, Color = PieceColor.White }, Origin = -1, Destination = -1 };
 
         internal const int Depth = 18;
         internal const string PieceChars = "_bknpqrBKNPQR";
@@ -54,7 +54,7 @@ namespace OneDimensionalChess
             return str.ToString();
         }
 
-        internal static string Move(this PieceMove move, string current, KMAudio audio = null)
+        internal static string Move(this CGameResult move, string current, KMAudio audio = null)
         {
             var str = new StringBuilder(current);
 
@@ -75,7 +75,7 @@ namespace OneDimensionalChess
             var game = Engine.Calculate(state, 1, color == PieceColor.White);
 
             // It is stalemate if it cannot make a move, and the evaluation is a draw.
-            return game.SuggestedMove.IsEqual(finishedGame) && game.Evaluation == 0;
+            return game.IsEqual(finishedGame) && game.Evaluation == 0;
         }
 
         internal static bool IsGameEnd(this string state, PieceColor color)
@@ -84,7 +84,7 @@ namespace OneDimensionalChess
             var game = Engine.Calculate(state, 1, color == PieceColor.White);
 
             // The game has ended if it cannot make a move.
-            return game.SuggestedMove.IsEqual(finishedGame);
+            return game.IsEqual(finishedGame);
         }
 
         internal static PieceColor Flip(this PieceColor color)
@@ -92,7 +92,7 @@ namespace OneDimensionalChess
             return color == PieceColor.White ? PieceColor.Black : PieceColor.White;
         }
 
-        internal static bool IsEqual(this PieceMove move, PieceMove other)
+        internal static bool IsEqual(this CGameResult move, CGameResult other)
         {
             return move.Origin == other.Origin && move.Destination == other.Destination;
         }

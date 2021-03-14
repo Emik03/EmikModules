@@ -532,6 +532,7 @@
             <remarks>
             If the library has already been loaded, then this method will prematurely halt.
             </remarks>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
             <param name="bundleFileName">The name of the bundle file.</param>
             <param name="libraryFileName">The library's name, excluding the extension.</param>
             <param name="fileExtensionWindows">The file extension of the library for Windows.</param>

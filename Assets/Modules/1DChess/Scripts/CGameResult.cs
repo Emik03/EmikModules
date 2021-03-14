@@ -1,12 +1,14 @@
 ﻿using System.Runtime.InteropServices;
+using System;
 
 namespace OneDimensionalChess
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal struct CGameResult
+    public struct CGameResult
     {
-        public sbyte Evaluation;
-        public PieceMove SuggestedMove;
+        internal Piece Piece;
+        internal SByte Origin;
+        internal SByte Destination;
+        internal SByte Evaluation;
     }
 }
-

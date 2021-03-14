@@ -1,6 +1,6 @@
 ﻿namespace OneDimensionalChess
 {
-    internal enum PieceColor
+    public enum PieceColor
     {
         White, 
         Black

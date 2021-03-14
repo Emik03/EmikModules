@@ -6,11 +6,11 @@ namespace OneDimensionalChess
     internal static class Engine
     {
         [DllImport(Rustmate, CallingConvention = CallingConvention.Cdecl)]
-        private static extern CGameResult best_move(string state, int limit, bool whiteFirst);
+        private static extern CGameResult best_move(String state, Int32 max_moves, Boolean white_first);
         internal static Func<string, int, bool, CGameResult> Calculate { get { return best_move; } }
 
         [DllImport(Rustmate, CallingConvention = CallingConvention.Cdecl)]
-        private static extern bool legality(string position, sbyte origin, sbyte destination);
+        private static extern Boolean legality(String position, SByte origin, SByte destination);
         internal static Func<string, sbyte, sbyte, bool> IsLegalMove { get { return legality; } }
 
         private const string Rustmate = "rustmate";

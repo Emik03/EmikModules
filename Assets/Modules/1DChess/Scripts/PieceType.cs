@@ -1,6 +1,6 @@
 ﻿namespace OneDimensionalChess
 {
-    internal enum PieceType
+    public enum PieceType
     {
         Bishop, 
         King, 
