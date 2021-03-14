@@ -61,7 +61,7 @@ public class OneDimensionalChessTPScript : TPScript
 
             new Thread(() =>
             {
-                //game = Engine.Calculate(Module.position, Module.movesLeft * 2, Module.color == PieceColor.White);
+                game = Engine.Calculate(Module.position, Module.movesLeft * 2, Module.color == PieceColor.White);
                 isReady = true;
             }).Start();
 
