@@ -11,6 +11,7 @@ using UnityEngine;
 public class CoinageScript : ModuleScript
 {
     public KMSelectable[] Coins;
+    public StatusLightScript Light;
     public Transform[] CoinHighlightableTransforms;
 
     internal int[] CoinValues
@@ -138,9 +139,12 @@ public class CoinageScript : ModuleScript
 
             souvenirCoin = ToCoordinate(arg);
 
+            Light.StartCoroutine(Light.Solve());
+
             for (int i = 0; i < 64; i++)
             {
                 int[] coinFlips = Enumerable.Range(0, 64).Where(j => (j % 8) + (j / 8) == i).ToArray();
+
                 foreach (var flip in coinFlips)
                 { 
                     StartCoroutine(RotateCoin(flip, false));

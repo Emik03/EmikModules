@@ -4573,7 +4573,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1813386293964130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4585609697729190}
@@ -18993,9 +18993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c8b122c3c6b7b488a5c9f5a720cd70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Audio: {fileID: 114935762331258688}
-  Module: {fileID: 114832008120899306}
-  Info: {fileID: 114489495972570034}
   Coins:
   - {fileID: 114216137226038034}
   - {fileID: 114830401129031332}
@@ -19061,6 +19058,7 @@ MonoBehaviour:
   - {fileID: 114488417353769860}
   - {fileID: 114375150271623928}
   - {fileID: 114261504019700778}
+  Light: {fileID: 114344601286564074}
   CoinHighlightableTransforms:
   - {fileID: 4583329629745304}
   - {fileID: 4170496584205200}
