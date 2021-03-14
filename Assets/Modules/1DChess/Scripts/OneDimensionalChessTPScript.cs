@@ -73,7 +73,7 @@ public class OneDimensionalChessTPScript : TPScript
             if (indices.Any(i => i == -1))
                 Module.Solve("The autosolver seemed to trip up a bit there. Force-solving now.");
             else
-                yield return OnInteractSequence(Module.Buttons, indices, 1 / 64f);
+                yield return OnInteractSequence(Module.Buttons, indices, 1 / 64f, Module);
         }
     }
 }

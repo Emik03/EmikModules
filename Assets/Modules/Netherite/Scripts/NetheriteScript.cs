@@ -16,8 +16,6 @@ public class NetheriteScript : ModuleScript
     public Renderer ModuleRenderer;
     public Texture[] ModuleTextures;
 
-    internal bool IsStrike { get; set; }
-
     private IEnumerable<int> Serial { get { return Get<KMBombInfo>().GetSerialNumberNumbers(); } }
     private IEnumerable<int> SerialWithSolves { get { return Serial.Prepend(NetheriteID); } }
 

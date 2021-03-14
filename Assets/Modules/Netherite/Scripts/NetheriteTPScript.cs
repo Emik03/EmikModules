@@ -27,12 +27,12 @@ public class NetheriteTPScript : TPScript
         if (stop.Any(b => b))
             yield break;
 
-        yield return OnInteractSequence(Module.Buttons, inputs.Select(i => i - 1).ToArray(), Wait, Module.IsStrike);
+        yield return OnInteractSequence(Module.Buttons, inputs.Select(i => i - 1).ToArray(), Wait, Module);
     }
 
     protected override IEnumerator TwitchHandleForcedSolve()
     {
         int[] answer = Module.Sequence.Select(i => i = Module.ApplyRules(i - 1) - 1).Skip(Module.Stage).ToArray();
-        yield return OnInteractSequence(Module.Buttons, answer, Wait);
+        yield return OnInteractSequence(Module.Buttons, answer, Wait, Module);
     }
 }

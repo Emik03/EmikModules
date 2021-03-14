@@ -563,6 +563,11 @@
             Determines if the module has been solved.
             </value>
         </member>
+        <member name="P:EmikBaseModules.ModuleScript.IsStrike">
+            <value>
+            Determines if the module has been struck. Twitch Plays script will set this to false when a command is interrupted.
+            </value>
+        </member>
         <member name="P:EmikBaseModules.ModuleScript.IsNeedyActive">
             <value>
             Determines if the needy is active.
@@ -977,14 +982,14 @@
             Declaring this field allows for Twitch Plays to inform the module that the bomb is in Time Mode, where solves change the timer. This is useful for modules that use the timer's value. This field is set in <c>Start()</c>, therefore there's no guarantee that it'll be available there, therefore the field must be first accessed in a delegate in <c>KMBombModule.OnActivate()</c> or <c>KMNeedyModule.OnActivate()</c> or later.
             </summary>
         </member>
-        <member name="M:EmikBaseModules.TPScript.OnInteractSequence(KMSelectable[],System.Int32[],System.Single,System.Boolean)">
+        <member name="M:EmikBaseModules.TPScript.OnInteractSequence(KMSelectable[],System.Int32[],System.Single,EmikBaseModules.ModuleScript)">
             <summary>
             Presses a sequence of buttons according to <paramref name="indices"/> within <paramref name="selectables"/>, waiting <paramref name="wait"/> seconds in-between each, and interrupting as soon as <paramref name="interrupt"/> is true.
             </summary>
             <param name="selectables">The array of selectables to interact with.</param>
             <param name="indices">The indices to press within the array.</param>
             <param name="wait">The delay between each button press in seconds.</param>
-            <param name="interrupt">A boolean that will interrupt this sequence as soon as it returns true.</param>
+            <param name="module">A reference is required to check if <see cref="P:EmikBaseModules.ModuleScript.IsStrike"/> is true.</param>
             <returns>A sequence of button presses for Twitch Plays to process.</returns>
         </member>
         <member name="M:EmikBaseModules.TPScript.HaltUntil(System.Boolean)">
