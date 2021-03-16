@@ -61,7 +61,7 @@ public class OneDimensionalChessScript : ModuleScript
             _isRustLoaded = true;
             try
             {
-                LibraryManager.Load("EmikModules", "rustmate");
+                PathManager.LoadLibrary("EmikModules", "rustmate");
             }
             catch (FileNotFoundException e)
             {

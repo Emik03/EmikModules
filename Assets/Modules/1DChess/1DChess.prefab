@@ -3214,6 +3214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3de649175ea8424cb9e96dfb632e992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ModBundleName: EmikModules
   Buttons:
   - {fileID: 114275605187310706}
   - {fileID: 114937300371709038}

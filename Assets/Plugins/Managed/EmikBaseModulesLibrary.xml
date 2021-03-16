@@ -513,32 +513,6 @@
             <typeparam name="T">The type of the enum.</typeparam>
             <returns>The enum as an array, ordered by smallest value to largest.</returns>
         </member>
-        <member name="T:EmikBaseModules.LibraryManager">
-            <summary>
-            Allows loading external libraries that aren't managed. Written by Emik.
-            </summary>
-        </member>
-        <member name="M:EmikBaseModules.LibraryManager.CombineMultiple(System.String[])">
-            <summary>
-            Combines multiple paths together.
-            </summary>
-            <param name="paths">The paths to combine with.</param>
-            <returns>A single path consisting of the combined path of the array.</returns>
-        </member>
-        <member name="M:EmikBaseModules.LibraryManager.Load(System.String,System.String,System.String,System.String,System.String)">
-            <summary>
-            Loads a library by searching for the bundle. Do not run this on the Editor.
-            </summary>
-            <remarks>
-            If the library has already been loaded, then this method will prematurely halt.
-            </remarks>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <param name="bundleFileName">The name of the bundle file.</param>
-            <param name="libraryFileName">The library's name, excluding the extension.</param>
-            <param name="fileExtensionWindows">The file extension of the library for Windows.</param>
-            <param name="fileExtensionMacOS">The file extension of the library for macOS</param>
-            <param name="fileExtensionLinux">The file extension of the library for Linux.</param>
-        </member>
         <member name="T:EmikBaseModules.ModuleScript">
             <summary>
             Base class for regular and needy modded modules in Keep Talking and Nobody Explodes. Written by Emik.
@@ -548,6 +522,11 @@
             <summary>
             Called when the timer's seconds-digit changes.
             </summary>
+        </member>
+        <member name="F:EmikBaseModules.ModuleScript.ModBundleName">
+            <value>
+            The name of the bundle. This is required for the version number.
+            </value>
         </member>
         <member name="P:EmikBaseModules.ModuleScript.IsActive">
             <value>
@@ -594,6 +573,13 @@
             The module's name, by first checking for a <see cref="T:KMBombModule"/> component, then a <see cref="T:KMNeedyModule"/> component.
             </value>
             <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:EmikBaseModules.ModuleScript.Version">
+            <value>
+            The version number of the entire mod. Requires instance of <see cref="F:EmikBaseModules.ModuleScript.ModBundleName"/>.
+            </value>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
         </member>
         <member name="F:EmikBaseModules.ModuleScript.TwitchPlaysActive">
             <value>
@@ -659,6 +645,47 @@
             </summary>
             <param name="message">The message to log.</param>
             <param name="args">All of the arguments to embed into <paramref name="message"/>.</param>
+        </member>
+        <member name="T:EmikBaseModules.PathManager">
+            <summary>
+            Allows loading external information stored on the module. Do not use this code on the Editor. Written by Emik.
+            </summary>
+        </member>
+        <member name="M:EmikBaseModules.PathManager.CombineMultiple(System.String[])">
+            <summary>
+            Combines multiple paths together.
+            </summary>
+            <param name="paths">The paths to combine with.</param>
+            <returns>A single path consisting of the combined path of the array.</returns>
+        </member>
+        <member name="M:EmikBaseModules.PathManager.ModInfoVersion(System.String)">
+            <summary>
+            Retrieves the version number from the JSON file in the mod folder.
+            </summary>
+            <param name="bundleFileName">The name of the bundle assembly.</param>
+            <returns>The version number of the mod.</returns>
+        </member>
+        <member name="M:EmikBaseModules.PathManager.GetPath(System.String)">
+            <summary>
+            Finds a path of a given file within each mod.
+            </summary>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <param name="fileName">The file name to search for.</param>
+            <returns>The path to <paramref name="fileName"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.PathManager.LoadLibrary(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Loads a library by searching for the bundle. Do not run this on the Editor.
+            </summary>
+            <remarks>
+            If the library has already been loaded, then this method will prematurely halt.
+            </remarks>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <param name="bundleFileName">The name of the bundle file.</param>
+            <param name="libraryFileName">The library's name, excluding the extension.</param>
+            <param name="fileExtensionWindows">The file extension of the library for Windows.</param>
+            <param name="fileExtensionMacOS">The file extension of the library for macOS</param>
+            <param name="fileExtensionLinux">The file extension of the library for Linux.</param>
         </member>
         <member name="T:EmikBaseModules.Routine">
             <summary>
@@ -985,7 +1012,7 @@
         </member>
         <member name="M:EmikBaseModules.TPScript.OnInteractSequence(KMSelectable[],System.Int32[],System.Single,EmikBaseModules.ModuleScript)">
             <summary>
-            Presses a sequence of buttons according to <paramref name="indices"/> within <paramref name="selectables"/>, waiting <paramref name="wait"/> seconds in-between each, and interrupting as soon as <paramref name="interrupt"/> is true.
+            Presses a sequence of buttons according to <paramref name="indices"/> within <paramref name="selectables"/>, waiting <paramref name="wait"/> seconds in-between each, and interrupting as soon as <see cref="P:EmikBaseModules.ModuleScript.IsStrike"/> is true.
             </summary>
             <param name="selectables">The array of selectables to interact with.</param>
             <param name="indices">The indices to press within the array.</param>

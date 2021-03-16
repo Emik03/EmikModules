@@ -126,7 +126,7 @@ public class NamingConventionsScript : ModuleScript
     {
         // Assigns the KMSelectables.
         Buttons.Assign(onInteract: HandlePresses);
-        Get<KMSelectable>().Assign(onInteract: () => _isSelected = true, onDeselect: () => _isSelected = false);
+        Get<KMSelectable>().Assign(onInteract: () => _isSelected = true, onDefocus: () => _isSelected = false);
 
         // Initializes the arrays.
         textStates = Helper.RandomBooleans(Length);
