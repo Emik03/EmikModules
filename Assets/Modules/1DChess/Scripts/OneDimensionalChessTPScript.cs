@@ -56,12 +56,11 @@ public class OneDimensionalChessTPScript : TPScript
             while (!Module.isReady)
             {
                 yield return true;
-                yield return new WaitForSecondsRealtime(1);
             }
 
             new Thread(() =>
             {
-                game = Engine.Calculate(Module.position, Module.movesLeft * 2, Module.color == PieceColor.White);
+                game = Engine.Calculate(Module.position, Position.Depth, Module.color == PieceColor.White);
                 isReady = true;
             }).Start();
 

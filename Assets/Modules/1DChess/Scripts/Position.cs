@@ -10,7 +10,7 @@ namespace OneDimensionalChess
     {
         internal static readonly CGameResult finishedGame = new CGameResult { Piece = new Piece { Type = PieceType.King, Color = PieceColor.White }, Origin = -1, Destination = -1 };
 
-        internal const int Depth = 18;
+        internal const int Depth = 16;
         internal const string PieceChars = "_bknpqrBKNPQR";
         internal static Random random = new Random();
 
@@ -132,35 +132,14 @@ namespace OneDimensionalChess
             }
         }
 
-        internal static string Symbol(this Piece piece)
+        internal static char Symbol(this Piece piece)
         {
-            char c;
-
             switch (piece.Type)
             {
-                case PieceType.Bishop:
-                    c = 'b';
-                    break;
-                case PieceType.King:
-                    c = 'k';
-                    break;
-                case PieceType.Knight:
-                    c = 'n';
-                    break;
-                case PieceType.Pawn:
-                    c = 'p';
-                    break;
-                case PieceType.Rook:
-                    c = 'r';
-                    break;
-                case PieceType.Queen:
-                    c = 'q';
-                    break;
-                default:
-                    throw new NotImplementedException("char: " + piece.Type);
+                // The knight is notated with N because the king starts with a K.
+                case PieceType.Knight: return 'N';
+                default: return piece.Type.ToString().First();
             }
-
-            return piece.Color == PieceColor.White ? c.ToUpper().ToString() : c.ToLower().ToString();
         }
     }
 }

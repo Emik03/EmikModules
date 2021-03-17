@@ -19,26 +19,27 @@ public class OneDimensionalChessScript : ModuleScript
     public Renderer[] BoardRenderers, ButtonRenderers;
     public TextMesh MovesLeftText, Title, Subtitle;
     public Texture[] BoardTextures, ButtonTextures;
+    public string DebugPosition;
+
+    internal int MovesLeft
+    {
+        get { return _movesLeft; }
+        set
+        {
+            MovesLeftText.text = value.ToString();
+            _movesLeft = value;
+        }
+    }
 
     internal string Alphabet { get { return "abcdefghijklmnopqrstuvwxyz".Substring(0, _boardLength); } }
 
     internal bool isReady;
-    internal int movesLeft;
     internal int? last;
     internal string position;
     internal PieceColor color;
     internal List<string> souvenirPositions;
 
-    private int MovesLeft 
-    { 
-        get { return movesLeft; } 
-        set 
-        { 
-            MovesLeftText.text = value.ToString(); 
-            movesLeft = value;
-        }
-    }
-    private string RandomPosition { get { return Position.Generate(_boardLength, 2); } }
+    private string RandomPosition { get { return DebugPosition.IsNullOrEmpty() ? Position.Generate(_boardLength, 2) : DebugPosition; } }
 
     private static readonly Color32[] _colorScheme =
     {
@@ -49,7 +50,7 @@ public class OneDimensionalChessScript : ModuleScript
 
     private bool _isWinning;
     private static bool _isUsingThreads, _isRustLoaded;
-    private int _boardLength;
+    private int _boardLength, _movesLeft;
 
     private Work<string, int, bool, CGameResult> _bestMove;
 
@@ -61,7 +62,7 @@ public class OneDimensionalChessScript : ModuleScript
             _isRustLoaded = true;
             try
             {
-                PathManager.LoadLibrary("EmikModules", "rustmate");
+                PathManager.LoadLibrary("EmikModules", Engine.LibraryName);
             }
             catch (FileNotFoundException e)
             {
@@ -83,7 +84,7 @@ public class OneDimensionalChessScript : ModuleScript
         }
 
         _bestMove = new Work<string, int, bool, CGameResult>(
-            Engine.Calculate,
+            work: Engine.Calculate,
             allowSimultaneousActive: true,
             maximumThreadsActive: 1);
 
@@ -184,12 +185,12 @@ public class OneDimensionalChessScript : ModuleScript
             yield break;
         }
 
-        yield return _bestMove.Start(position, (movesLeft * 2) + 1, color == PieceColor.Black);
+        yield return _bestMove.Start(position, (MovesLeft * 2) + 1, color == PieceColor.Black);
 
         // This looks convoluted, but it's only asking if the player has made a blunder, to the point of an unwinnable position.
         if (_isWinning &&
-           ((color == PieceColor.White && _bestMove.Result.Evaluation != sbyte.MaxValue - (movesLeft * 2)) ||
-            (color == PieceColor.Black && _bestMove.Result.Evaluation != (movesLeft * 2) + sbyte.MinValue)))
+           ((color == PieceColor.White && _bestMove.Result.Evaluation != sbyte.MaxValue - (MovesLeft * 2)) ||
+            (color == PieceColor.Black && _bestMove.Result.Evaluation != (MovesLeft * 2) + sbyte.MinValue)))
         {
             _isWinning = false;
             Log("Rustmate has evaluated that this position is now unwinnable for you. Congratulations.");
@@ -269,6 +270,7 @@ public class OneDimensionalChessScript : ModuleScript
         _isUsingThreads = true;
 
         bool isEvaluating = false;
+
         string position = "";
 
         ChangeText("Preparing...", "Please wait.");
@@ -277,20 +279,59 @@ public class OneDimensionalChessScript : ModuleScript
 
         new Thread(() =>
         {
-            // Find a game that takes 5-9 moves to complete in ideal play, using the Rust library.
-            while (!Mathf.Abs(game.Evaluation).InRange(110, 118))
+            // Find a game that takes 6-8 moves to complete in ideal play, using the Rust library.
+            while (true)
             {
                 position = RandomPosition;
                 isEvaluating = true;
                 game = Engine.Calculate(position, Position.Depth, true);
+
+                if (!Mathf.Abs(game.Evaluation).InRange(112, 116))
+                    continue;
+
+                // Sometimes the evaluation is in favor of black, we need to advance the game by one move so that it is black to move.
+                if (game.Evaluation < 0)
+                    position = game.Move(position);
+
+                // Set the player side to always whichever one is winning.
+                color = (PieceColor)Convert.ToInt32(game.Evaluation < 0);
+
+                var colorMut = color;
+                var moves = new List<CGameResult>();
+                string positionMut = position;
+                bool isGameCorrectlyOver = false;
+
+                // The bot plays against itself until the perfect game is constructed.
+                for (int depth = Position.Depth; depth > 0; depth--)
+                {
+                    var gameMut = Engine.Calculate(positionMut, depth, colorMut == PieceColor.White);
+
+                    if ((gameMut.Evaluation == sbyte.MaxValue && color == PieceColor.White) ||
+                        (gameMut.Evaluation == sbyte.MinValue && color == PieceColor.Black))
+                        isGameCorrectlyOver = true;
+
+                    try
+                    {
+                        positionMut = gameMut.Move(positionMut);
+                    }
+                    // There are no moves to play when this exception is triggered.
+                    catch (IndexOutOfRangeException)
+                    {
+                        break;
+                    }
+
+                    colorMut = colorMut.Flip();
+
+                    moves.Add(gameMut);
+                }
+
+                // Ensures that what it logs is indeed a checkmate. This reverifies that the puzzle is possible.
+                if (isGameCorrectlyOver && moves.Count == (128 - Math.Abs(game.Evaluation) - (color == PieceColor.White ? 1 : 0)))
+                {
+                    Log("The position is {0}; {1} to play, mate in {2}. To beat Rustmate, the best sequence of moves are {3}.", position, color, (128 - Math.Abs(game.Evaluation)) / 2, ToLog(moves));
+                    break;
+                }
             }
-
-            // Sometimes the evaluation is in favor of black, we need to advance the game by one move so that it is black to move.
-            if (game.Evaluation < 0)
-                position = game.Move(position, null);
-
-            // Set the player side to always whichever one is winning.
-            color = (PieceColor)Convert.ToInt32(game.Evaluation < 0);
 
             this.position = position;
 
@@ -310,49 +351,13 @@ public class OneDimensionalChessScript : ModuleScript
             Get<KMAudio>().Play(transform, new[] { Sounds.Capture, Sounds.Check, Sounds.Opponent, Sounds.Self }.PickRandom());
         }
 
-        _isUsingThreads = false;
-
         MovesLeft = (128 - Math.Abs(game.Evaluation)) / 2;
+
+        _isUsingThreads = false;
 
         Get<KMAudio>().Play(transform, Sounds.GameStart);
 
-        Log("The position is {0}, mate in {1}.", position, movesLeft);
-        StartCoroutine(LogOptimalMoves(position, color, movesLeft));
-
         ChangeText("Mate in", "", MovesLeft.ToString());
-    }
-
-    private IEnumerator LogOptimalMoves(string position, PieceColor color, int depth)
-    {
-        var moves = new List<CGameResult>();
-        bool isReady = false;
-
-        // The bot plays against itself until the perfect game is constructed.
-        for (depth *= 2; depth > 0; depth--)
-        {
-            yield return _bestMove.Start(position, depth + 1, color == PieceColor.White);
-
-            try
-            {
-                position = _bestMove
-                    .Result
-                    .Move(position);
-            }
-            // There are no moves to play when this exception is triggered.
-            catch (IndexOutOfRangeException)
-            {
-                break;
-            }
-
-            color = color.Flip();
-
-            moves.Add(_bestMove.Result);
-        }
-        isReady = true;
-
-        yield return new WaitUntil(() => isReady);
-
-        Log("To beat Rustmate, the best sequence of moves are {0}.", ToLog(moves));
     }
 
     private IEnumerator HandleStrike(string title, string subtitle)
@@ -434,7 +439,7 @@ public class OneDimensionalChessScript : ModuleScript
 
     private string ToLog(CGameResult move)
     {
-        string pos = "{0}{1}".Form(Alphabet[move.Origin], Alphabet[move.Destination]);
-        return "{0}->{1}".Form(move.Piece.Symbol(), move.Piece.Color == PieceColor.White ? pos.ToUpperInvariant() : pos.ToLowerInvariant());
+        string log = "{0} {1}→{2}".Form(move.Piece.Symbol(), Alphabet[move.Origin], Alphabet[move.Destination]);
+        return move.Piece.Color == PieceColor.White ? log : "[{0}]".Form(log);
     }
 }
