@@ -8,7 +8,7 @@ namespace OneDimensionalChess
     {
         public bool IsEnabled;
         [Range(6, 9)]
-        public byte BoardLength;
-        public string DebugPosition;
+        public byte Length;
+        public string Position;
     }
 }

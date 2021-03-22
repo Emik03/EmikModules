@@ -31,7 +31,7 @@ public partial class OneDimensionalChessScript : ModuleScript
         }
     }
 
-    internal string Alphabet { get { return "abcdefghijklmnopqrstuvwxyz".Substring(0, Debugger.IsEnabled ? Debugger.BoardLength : _boardLength); } }
+    internal string Alphabet { get { return "abcdefghijklmnopqrstuvwxyz".Substring(0, Debugger.IsEnabled ? Debugger.Length : _boardLength); } }
 
     internal bool isReady;
     internal int? last;
@@ -39,7 +39,7 @@ public partial class OneDimensionalChessScript : ModuleScript
     internal PieceColor color;
     internal List<string> souvenirPositions;
 
-    private string RandomPosition { get { return Debugger.IsEnabled ? Debugger.DebugPosition.IsNullOrEmpty() ? Position.Generate(Debugger.BoardLength, 2) : Debugger.DebugPosition : Position.Generate(_boardLength, 2); } }
+    private string RandomPosition { get { return Debugger.IsEnabled ? Debugger.Position.IsNullOrEmpty() ? Position.Generate(Debugger.Length, 2) : Debugger.Position : Position.Generate(_boardLength, 2); } }
 
     private static readonly Color32[] _colorScheme =
     {
