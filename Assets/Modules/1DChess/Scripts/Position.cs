@@ -60,7 +60,7 @@ namespace OneDimensionalChess
 
             // If the destination is occupied, this implies a capture.
             if (str[move.Destination] != '_' && audio != null)
-                audio.Play(audio.transform, Sounds.Capture);
+                audio.Play(audio.transform, Sounds._1dch.Capture);
 
             // Moves origin to destination, leaving origin empty.
             str[move.Destination] = str[move.Origin];

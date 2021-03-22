@@ -13,7 +13,6 @@ using Rnd = UnityEngine.Random;
 public class NamingConventionsScript : ModuleScript
 {
     public KMSelectable[] Buttons;
-    public KMRuleSeedable Rule;
     public Renderer[] Texts;
     public Texture[] Textures;
 
@@ -24,7 +23,7 @@ public class NamingConventionsScript : ModuleScript
     {
         get
         {
-            bool rnd = Rule.GetRNG().Seed != 1;
+            bool rnd = Get<KMRuleSeedable>().GetRNG().Seed != 1;
             return new Dictionary<DataType, bool[]>
             {
                 {
@@ -117,7 +116,7 @@ public class NamingConventionsScript : ModuleScript
     {
         get
         {
-            var rule = Rule.GetRNG();
+            var rule = Get<KMRuleSeedable>().GetRNG();
             return Enumerable.Range(0, 10).Select(i => Enumerable.Range(0, 6).Select(j => rule.Next(2) == 0).ToArray()).ToArray();
         }
     }
@@ -141,8 +140,8 @@ public class NamingConventionsScript : ModuleScript
         StartCoroutine(JiggleText());
 
         Log("The solution for {0} in rule seed {1} is {2}.", 
-            DataType, 
-            Rule.GetRNG().Seed, 
+            DataType,
+            Get<KMRuleSeedable>().GetRNG().Seed, 
             Enumerable.Range(0, 6).Select(i => SetTextIndexes(i + 1, Solutions[DataType][i]).Trim()).Join(", "));
     }
 
@@ -155,7 +154,7 @@ public class NamingConventionsScript : ModuleScript
             textStates[i] = !textStates[i];
 
         if (_isSelected)
-            Get<KMAudio>().Play(transform, Sounds.Tick);
+            Get<KMAudio>().Play(transform, Sounds.Nc.Tick);
 
         UpdateIndexes();
     }
@@ -175,7 +174,7 @@ public class NamingConventionsScript : ModuleScript
 
     private void HandlePresses(int i)
     {
-        Buttons[i].Push(Get<KMAudio>(), 0, Sounds.Touch, KMSoundOverride.SoundEffect.ButtonPress);
+        Buttons[i].Push(Get<KMAudio>(), 0, Sounds.Nc.Touch, KMSoundOverride.SoundEffect.ButtonPress);
 
         if (IsSolved)
             return;
@@ -195,13 +194,13 @@ public class NamingConventionsScript : ModuleScript
     {
         if (IsCorrect())
         {
-            Get<KMAudio>().Play(transform, Sounds.Solve);
+            Get<KMAudio>().Play(transform, Sounds.Nc.Solve);
             Solve("The submission was correct, solved!");
         }
 
         else
         {
-            Get<KMAudio>().Play(transform, Sounds.Strike);
+            Get<KMAudio>().Play(transform, Sounds.Nc.Strike);
             Strike("The incorrect option was submitted for button(s) {0}, that's 1 strike please!"
                 .Form(Enumerable.Range(2, 6).Where(i => textStates[i - 1] != Solutions[_DataType][i - 2]).Join(", ")));
         }

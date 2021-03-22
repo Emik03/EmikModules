@@ -1,8 +1,6 @@
-﻿using Coinage;
-using EmikBaseModules;
+﻿using EmikBaseModules;
 using KModkit;
 using System.Collections;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -104,7 +102,7 @@ public class CoinageScript : ModuleScript
     private IEnumerator RotateCoin(int arg, bool playSound)
     {
         if (playSound)
-            Get<KMAudio>().Play(Coins[arg].transform, Sounds.Flip);
+            Get<KMAudio>().Play(Coins[arg].transform, Sounds.Coin.Flip);
 
         float f = 0;
 
@@ -134,7 +132,7 @@ public class CoinageScript : ModuleScript
 
         if (IsCorrect)
         {
-            Get<KMAudio>().Play(Coins[arg].transform, Sounds.Solve);
+            Get<KMAudio>().Play(Coins[arg].transform, Sounds.Coin.Solve);
 
             Solve("The correct coin was flipped. Module solved!");
 
@@ -156,7 +154,7 @@ public class CoinageScript : ModuleScript
 
         else
         {
-            Get<KMAudio>().Play(Coins[arg].transform, Sounds.Strike);
+            Get<KMAudio>().Play(Coins[arg].transform, Sounds.Coin.Strike);
 
             Strike("Coin {0} was flipped, making the arrangement {1}, strike!".Form(ToCoordinate(arg), CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join("")),
                 "One of the answers is now {1}. (chess-coordinates)".Form(CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join(""), ToCoordinate(GetExampleAnswer())));

@@ -348,7 +348,7 @@
             <param name="kmSelectable">This is required to check the children field.</param>
             <returns>True if <see cref="F:KMSelectable.Children"/> is empty.</returns>
         </member>
-        <member name="M:EmikBaseModules.Helper.IsIndexNull(System.Object[],System.Int32)">
+        <member name="M:EmikBaseModules.Helper.IsIndexNull``1(``0[],System.Int32)">
             <summary>
             Determines if the index is pointing to null in any way.
             </summary>
@@ -662,6 +662,7 @@
             <summary>
             Retrieves the version number from the JSON file in the mod folder.
             </summary>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
             <param name="bundleFileName">The name of the bundle assembly.</param>
             <returns>The version number of the mod.</returns>
         </member>

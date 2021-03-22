@@ -13,13 +13,13 @@ using System.IO;
 /// <summary>
 /// On the Subject of 1D Chess - A modded "Keep Talking and Nobody Explodes" module created by Emik.
 /// </summary>
-public class OneDimensionalChessScript : ModuleScript
+public partial class OneDimensionalChessScript : ModuleScript
 {
+    public CustomValues Debugger;
     public KMSelectable[] Buttons;
     public Renderer[] BoardRenderers, ButtonRenderers;
     public TextMesh MovesLeftText, Title, Subtitle;
     public Texture[] BoardTextures, ButtonTextures;
-    public string DebugPosition;
 
     internal int MovesLeft
     {
@@ -31,7 +31,7 @@ public class OneDimensionalChessScript : ModuleScript
         }
     }
 
-    internal string Alphabet { get { return "abcdefghijklmnopqrstuvwxyz".Substring(0, _boardLength); } }
+    internal string Alphabet { get { return "abcdefghijklmnopqrstuvwxyz".Substring(0, Debugger.IsEnabled ? Debugger.BoardLength : _boardLength); } }
 
     internal bool isReady;
     internal int? last;
@@ -39,7 +39,7 @@ public class OneDimensionalChessScript : ModuleScript
     internal PieceColor color;
     internal List<string> souvenirPositions;
 
-    private string RandomPosition { get { return DebugPosition.IsNullOrEmpty() ? Position.Generate(_boardLength, 2) : DebugPosition; } }
+    private string RandomPosition { get { return Debugger.IsEnabled ? Debugger.DebugPosition.IsNullOrEmpty() ? Position.Generate(Debugger.BoardLength, 2) : Debugger.DebugPosition : Position.Generate(_boardLength, 2); } }
 
     private static readonly Color32[] _colorScheme =
     {
@@ -120,7 +120,7 @@ public class OneDimensionalChessScript : ModuleScript
             return;
 
         // Gives button feedback.
-        Buttons[arg].Push(Get<KMAudio>(), 1, Sounds.Click);
+        Buttons[arg].Push(Get<KMAudio>(), 1, Sounds._1dch.Click);
 
         // Highlight the selected square.
         BoardRenderers[arg].material.color = _colorScheme[2];
@@ -154,7 +154,7 @@ public class OneDimensionalChessScript : ModuleScript
                     StartCoroutine(GetEngineMove());
                 }
 
-                Get<KMAudio>().Play(transform, isLegalMove ? Sounds.Self : Sounds.Illegal);
+                Get<KMAudio>().Play(transform, isLegalMove ? Sounds._1dch.Self : Sounds._1dch.Illegal);
             }
 
             RenderPosition(position);
@@ -198,14 +198,14 @@ public class OneDimensionalChessScript : ModuleScript
 
         ChangeText("Mate in", "", MovesLeft.ToString());
 
-        Get<KMAudio>().Play(transform, Sounds.Opponent);
+        Get<KMAudio>().Play(transform, Sounds._1dch.Opponent);
 
         // This indicates if the game has ended.
         if (_bestMove.Result.IsEqual(Position.finishedGame))
         {
             isReady = false;
 
-            Get<KMAudio>().Play(transform, Sounds.Check);
+            Get<KMAudio>().Play(transform, Sounds._1dch.Check);
 
             // Stalemate.
             if (_bestMove.Result.Evaluation == 0)
@@ -218,7 +218,7 @@ public class OneDimensionalChessScript : ModuleScript
             // Checkmate for the player.
             else
             {
-                Get<KMAudio>().Play(transform, Sounds.GameEnd, Sounds.Solve);
+                Get<KMAudio>().Play(transform, Sounds._1dch.GameEnd, Sounds._1dch.Solve);
 
                 string message = new[] { "Good game!", "Well played!" }.PickRandom();
                 Solve(message);
@@ -348,22 +348,22 @@ public class OneDimensionalChessScript : ModuleScript
 
             RenderPosition(position);
 
-            Get<KMAudio>().Play(transform, new[] { Sounds.Capture, Sounds.Check, Sounds.Opponent, Sounds.Self }.PickRandom());
+            Get<KMAudio>().Play(transform, new[] { Sounds._1dch.Capture, Sounds._1dch.Check, Sounds._1dch.Opponent, Sounds._1dch.Self }.PickRandom());
         }
 
         MovesLeft = (128 - Math.Abs(game.Evaluation)) / 2;
 
         _isUsingThreads = false;
 
-        Get<KMAudio>().Play(transform, Sounds.GameStart);
+        Get<KMAudio>().Play(transform, Sounds._1dch.GameStart);
 
         ChangeText("Mate in", "", MovesLeft.ToString());
     }
 
     private IEnumerator HandleStrike(string title, string subtitle)
     {
-        Get<KMAudio>().Play(transform, Sounds.GameEnd);
-        Get<KMAudio>().Play(transform, Sounds.Strike);
+        Get<KMAudio>().Play(transform, Sounds._1dch.GameEnd);
+        Get<KMAudio>().Play(transform, Sounds._1dch.Strike);
 
         ChangeText(title, subtitle);
 
@@ -439,7 +439,14 @@ public class OneDimensionalChessScript : ModuleScript
 
     private string ToLog(CGameResult move)
     {
-        string log = "{0} {1}→{2}".Form(move.Piece.Symbol(), Alphabet[move.Origin], Alphabet[move.Destination]);
-        return move.Piece.Color == PieceColor.White ? log : "[{0}]".Form(log);
+        try
+        {
+            string log = "{0} {1}→{2}".Form(move.Piece.Symbol(), Alphabet[move.Origin], Alphabet[move.Destination]);
+            return move.Piece.Color == PieceColor.White ? log : "[{0}]".Form(log);
+        }
+        catch (IndexOutOfRangeException)
+        {
+            return "<unknown>";
+        }
     }
 }

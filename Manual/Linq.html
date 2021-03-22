@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <title>Linq — Keep Talking and Nobody Explodes Module</title>
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/ktane-utils.js"></script>
+</head>
+<body>
+    <div class="section">
+        <div class="page page-bg-01">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Linq</span>
+            </div>
+            <div class="page-content">
+                <img src="img/Component/Linq.svg" class="diagram">
+                <h2>On the Subject of Linq</h2>
+                <p class="flavour-text">using System.SlightlyInaccurateVersionOfLinq;</p>
+                <p>The module has 6 toggleable LEDs, and text that acts as a submit button. There are 3 stages.</p>
+                <p>Listen to LEDs' pitches when pressed to identify which order they follow from the table. This determines their position, and which of the 6 characters from the serial number they use.</p>
+                <table style="margin-left: auto; margin-right: auto; margin-top: 25px; margin-bottom: 25px; transform: scale(2);">
+                    <tr>
+                        <th><sup>1</sup><sub>2</sub><sup>3</sup><sub>4</sub><sup>5</sup><sub>6</sub></th>
+                        <th><sup>1</sup><sub>4</sub><sup>2</sup><sub>5</sub><sup>3</sup><sub>6</sub></th>
+                    </tr>
+                </table>
+                <p>Refer to the row in the table below that matches the first line of the text. If the LED follows the condition, set it to the table's "Set". Otherwise, ignore them. In this table, <strong>¤</strong> refers to things shown in the second line of the text.</p>
+                <table>
+                    <tr>
+                        <th>Text</th>
+                        <th>Condition</th>
+                        <th>Set</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="background-color: black;"></td>
+                    </tr>
+                    <tr>
+                        <td>First</td>
+                        <td>It isn't the first lit LED.</td>
+                        <td>OFF</td>
+                    </tr>
+                    <tr>
+                        <td>Last</td>
+                        <td>It isn't the last lit LED.</td>
+                        <td>OFF</td>
+                    </tr>
+                    <tr>
+                        <td>Min</td>
+                        <td>Its character isn't the lowest value* of the lit LEDs.</td>
+                        <td>OFF</td>
+                    </tr>
+                    <tr>
+                        <td>Max</td>
+                        <td>Its character isn't the highest value* of the lit LEDs.</td>
+                        <td>OFF</td>
+                    </tr>
+                    <tr>
+                        <td>Distinct</td>
+                        <td>An earlier position has its character.</td>
+                        <td>OFF</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="background-color: black;"></td>
+                    </tr>
+                    <tr>
+                        <td>Skip</td>
+                        <td>It is part of the first <strong>¤</strong> lit LEDs.</td>
+                        <td>OFF</td>
+                    </tr>
+                    <tr>
+                        <td>SkipLast</td>
+                        <td>It is part of the last <strong>¤</strong> lit LEDs.</td>
+                        <td>OFF</td>
+                    </tr>
+                    <tr>
+                        <td>Take</td>
+                        <td>It isn't part of the first <strong>¤</strong> lit LEDs.</td>
+                        <td>OFF</td>
+                    </tr>
+                    <tr>
+                        <td>TakeLast</td>
+                        <td>It isn't part of the last <strong>¤</strong> lit LEDs.</td>
+                        <td>OFF</td>
+                    </tr>
+                    <tr>
+                        <td>ElementAt</td>
+                        <td>Its not the (<strong>¤</strong> + 1)th lit LED.</td>
+                        <td>OFF</td>
+                    </tr>
+                    <tr>
+                        <td>Except</td>
+                        <td>Its character is shown in <strong>¤</strong>.</td>
+                        <td>OFF</td>
+                    </tr>
+                    <tr>
+                        <td>Intersect</td>
+                        <td>Its character is not shown in <strong>¤</strong>.</td>
+                        <td>OFF</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="background-color: black;"></td>
+                    </tr>
+                    <tr>
+                        <td>Concat</td>
+                        <td>Its character is shown in <strong>¤</strong>.</td>
+                        <td><strong>ON</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Append</td>
+                        <td>Its character is shown in <strong>¤, AND</strong> it is after all lit LEDs.</td>
+                        <td><strong>ON</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Prepend</td>
+                        <td>Its character is shown in <strong>¤, AND</strong> it is before all lit LEDs.</td>
+                        <td><strong>ON</strong></td>
+                    </tr>
+                </table>
+                <p><i><sup>* Value = If it's a letter, their value is 10 plus their alphanumerical position.</sup></i></p>
+            </div>
+            <div class="page-footer relative-footer">Page 1 of 1</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,535 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Sorting — Keep Talking and Nobody Explodes Module</title>
+    <meta name="viewport" content="initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/ktane-utils.js"></script>
+    <style>
+            .section-row {
+                background-color: #000000;
+                color: white;
+				width: 100%;
+            }
+
+            .invis-row {
+                border: 1px solid #FFF;
+                border-collapse: collapse;
+            }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <div class="page page-bg-01">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Sorting</span>
+            </div>
+            <div class="page-content">
+                <img src="img/Component/sorting.svg" class="diagram">
+                <h2>On the Subject of Sorting</h2>
+                <p class="flavour-text">What is the point of implementing a sorting algorithm if you are going to do it manually anyway?</p>
+
+                <ul>
+                    <li>The module has a screen and 5 buttons. Refer to the algorithm provided by said screen.</li>
+                    </br>
+					
+					<li><strong>Positions refer to order from left to right, ignoring vertical offset.</strong>
+                    For example, 1st position classifies as bottom left.</li>
+					</br>
+
+                    <li>It solves when all positions go in ascending value, and strikes if a swap defies the algorithm.</li>
+                </ul>
+
+                <p></p>
+                <table>
+                    <tr>
+                        <th style="color:white" class="section-row" colspan="2">Bubble Sort</th>
+                    </tr>
+                    <tr>
+                        <th>Swap them if...</th>
+                    </tr>
+                    <tr>
+                        <td>1st position's label is greater than 2nd position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>2nd position's label is greater than 3rd position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>3rd position's label is greater than 4th position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>4th position's label is greater than 5th position's label.</td>
+                    </tr>
+                    <tr>
+                        <th class="center" colspan="2">Repeat Bubble Sort.</th>
+                    </tr>
+                </table>
+                <p></p>
+                <table>
+                    <tr>
+                        <th style="color:white" class="section-row">Slow Sort</th>
+                    </tr>
+					<tr>
+					    <th>Swap them if...</th>
+					</tr>
+                    <tr>
+                        <td>1st position's label is greater than 2nd position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>2nd position's label is greater than 3rd position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>1st position's label is greater than 2nd position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>4th position's label is greater than 5th position's label.</td>
+					<tr>
+                    <tr>
+                        <td>3rd position's label is greater than 5th position's label.</td>
+					<tr>
+                    <tr>
+                        <td>1st position's label is greater than 2nd position's label.</td>
+					<tr>
+                    <tr>
+                        <td>3rd position's label is greater than 4th position's label.</td>
+					<tr>
+                    <tr>
+                        <td>2nd position's label is greater than 4th position's label.</td>
+					<tr>
+					<tr>
+					    <th>Repeat Slow Sort.</th>
+					</tr>
+                </table>
+            </div>
+            <div class="page-footer relative-footer">Page 1 of 6</div>
+        </div>
+        <div class="page page-bg-02">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Sorting</span>
+            </div>
+            <div class="page-content">
+                <table>
+                    <tr>
+                        <th style="color:white" class="section-row" colspan="2">Cycle Sort</th>
+                    </tr>
+                    <tr>
+                        <th>If...</th>
+                        <th>Then...</th>
+                    </tr>
+                    <tr>
+                        <td>1st position isn't smallest?</td>
+                        <td>Swap 1st position with the position it will be on assuming it's sorted. <strong>Repeat Cycle Sort</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td>2nd position isn't 2nd smallest?</td>
+                        <td>Swap 2nd position with the position it will be on assuming it's sorted. <strong>Repeat Cycle Sort</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td>3rd position isn't 3rd smallest?</td>
+                        <td>Swap 3rd position with the position it will be on assuming it's sorted. <strong>Repeat Cycle Sort</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td colspan=2>Swap 4th position with the position it will be on assuming it's sorted.</td>
+                    </tr>
+                </table>
+				<p></p>
+				<table>
+                    <tr>
+                        <th style="color:white" class="section-row" colspan="3">Merge Sort</th>
+                    </tr>
+                    <tr>
+                        <th colspan="3">Swap them if...</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3">1st position's label is greater than 2nd position's label.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">4th position's label is greater than 5th position's label.</td>
+                    </tr>
+                    <tr>
+                        <th>If the first digit in the serial is odd?</th>
+                        <th>Otherwise...</th>
+                    </tr>
+                    <tr>
+                        <td>Swap 1st position with smallest</br>label from positions 1-3.</td>
+                        <td>Swap 5th position with greatest</br>label from positions 3-5.</td>
+                    </tr>
+                    <tr>
+                        <td>If 2nd position's label is greater</br>than 3rd position's label.</td>
+                        <td>If 3rd position's label is greater</br>than 4th position's label.</td>
+                    </tr>
+                    <tr>
+                        <th colspan="3">Refer to Selection Sort</th>
+                    </tr>
+                </table>
+				<p></p>
+                <table>
+                    <tr>
+                        <th style="color:white" class="section-row" colspan="2">Insertion Sort</th>
+                    </tr>
+                    <tr>
+                        <th>If...</th>
+                        <th>Then...</th>
+                    </tr>
+                    <tr>
+                        <td>1st position's label is greater than 2nd position's label.</td>
+                        <td>Swap them.</td>
+                    </tr>
+                    <tr>
+                        <td>2nd position's label is greater than 3rd position's label.</td>
+                        <td>Swap them and move up 1 instruction.</td>
+                    </tr>
+                    <tr>
+                        <td>3rd position's label is greater than 4th position's label.</td>
+                        <td>Swap them and move up 1 instruction.</td>
+                    </tr>
+                    <tr>
+                        <td>4th position's label is greater than 5th position's label.</td>
+                        <td>Swap them and move up 1 instruction.</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="page-footer relative-footer">Page 2 of 6</div>
+        </div>
+        <div class="page page-bg-03">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Sorting</span>
+            </div>
+            <div class="page-content">
+                <table>
+				    <tr>
+                        <th style="color:white" class="section-row" colspan="2">Heap Sort</th>
+                    </tr>
+                    <tr>
+                        <th style="color:white" class="section-row" colspan="2">Keep track of the amount of times Heap Sort has been repeated.</th>
+                    </tr>
+                    <tr>
+                        <th>If...</th>
+                        <th>Then swap them if...</th>
+                    </tr>
+                    <tr>
+                        <td>This is the first, or second time doing Heap Sort?</td>
+                        <td>2nd position's label is smaller than 4th position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>This is the first time doing Heap Sort?</td>
+                        <td>2nd position's label is smaller than 5th position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>This is the first, second, third, or fourth time doing Heap Sort?</td>
+                        <td>1st position's label is smaller than 2nd position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>This is the first, second, or third time doing Heap Sort?</td>
+                        <td>1st position's label is smaller than 3rd position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>This is the first, or second time doing Heap Sort?</td>
+                        <td>2nd position's label is smaller than 4th position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>This is the first time doing Heap Sort?</td>
+                        <td>2nd position's label is smaller than 5th position's label.</td>
+                    </tr>
+                    <tr>
+                        <td colspan=2>Swap 1st position with last unsorted position. <strong>Repeat Heap Sort.</strong></td>
+                    </tr>
+                </table>
+                <p></p>
+                <table>
+                    <tr>
+                        <th style="color:white" class="section-row">Radix Sort</th>
+                    </tr>
+                    <tr>
+                        <th style="color:white" class="section-row">If multiple numbers match a rule, positionally leftmost numbers are smaller.</th>
+                    </tr>
+                    <tr>
+                        <th>Swap...</th>
+                    </tr>
+                    <tr>
+                        <td>The smallest rightmost digit with 1st position.</td>
+                    </tr>
+                    <tr>
+                        <td>The 2nd smallest rightmost digit with 2nd position.</td>
+                    </tr>
+                    <tr>
+                        <td>The 3rd smallest rightmost digit with 3rd position.</td>
+                    </tr>
+                    <tr>
+                        <td>The 4th smallest rightmost digit with 4th position.</td>
+                    </tr>
+                    <tr>
+                        <td>The smallest leftmost digit with 1st position.</td>
+                    </tr>
+                    <tr>
+                        <td>The 2nd smallest leftmost digit with 2nd position.</td>
+                    </tr>
+                    <tr>
+                        <td>The 3rd smallest leftmost digit with 3rd position.</td>
+                    </tr>
+                    <tr>
+                        <td>The 4th smallest leftmost digit with 4th position.</td>
+                    </tr>
+                    <tr>
+                        <td>If you reach here, sort the remaining labels in any order.</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="page-footer relative-footer">Page 3 of 6</div>
+        </div>
+        <div class="page page-bg-04">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Sorting</span>
+            </div>
+            <div class="page-content">
+                <table>
+                    <tr>
+                        <th style="color:white" class="section-row">Comb Sort</th>
+                    </tr>
+                    <tr>
+                        <th style="color:white" class="section-row" colspan="2">When starting, distance starts at 3. Skip steps that have 6th/7th/... positions.</th>
+                    </tr>
+                    <tr>
+                        <th>Swap them if...</th>
+                    </tr>
+                    <tr>
+                        <td>1st position's label is greater than (1st + distance) position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>2nd position's label is greater than (2nd + distance) position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>3rd position's label is greater than (3rd + distance) position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>4th position's label is greater than (4th + distance) position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>Decrease distance by 1. <strong>Repeat Comb Sort.</strong></td>
+                    </tr>
+                </table>
+                <p></p>
+                <table>
+                    <tr>
+                        <th style="color:white" class="section-row" colspan="2">Quick Sort</th>
+                    </tr>
+                    <tr>
+                        <th style="color:white" class="section-row" colspan="2">When starting, pivot = 1 and current = 5.</th>
+                    </tr>
+                    <tr>
+                        <th>If...</th>
+                        <th>Then...</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Pivot</strong>'s and <strong>current</strong>'s positions are not sorted against each other?</td>
+                        <td>Swap <strong>pivot's</strong> and <strong>current's</strong> position, including their values.</td>
+                    </tr>
+                    <tr>
+                        <td>Both are the same value? Otherwise <strong>current</strong> is 1 closer to <strong>pivot</strong>.</td>
+                        <td><strong>Pivot</strong> = earliest unsorted position.</br><strong>Current</strong> = latest unsorted position.</td>
+                    </tr>
+                    <tr>
+                        <th class="center" colspan="3">Repeat Quick Sort.</th>
+                    </tr>
+                </table>
+				
+				<p></p>
+                <table>
+                    <tr>
+                        <th style="color:white" class="section-row">Shell Sort</th>
+                    </tr>
+                    <tr>
+                        <th>Swap them if...</th>
+                    </tr>
+                    <tr>
+                        <td>1st position's label is greater than 3rd position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>2nd position's label is greater than 4th position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>3rd position's label is greater than 5th position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>1st position's label is greater than 3rd position's label.</td>
+                    </tr>
+                    <tr>
+                        <th>Refer to Bubble Sort.</th>
+                    </tr>
+                </table>
+				<p></p>
+				<table>
+                    <tr>
+                        <th style="color:white" class="section-row" colspan="2">Selection Sort</th>
+                    </tr>
+                    <tr>
+                        <td>Swap lowest label and 1st position.</td>
+                    </tr>
+                    <tr>
+                        <td>Swap 2nd lowest label and 2nd position.</td>
+                    </tr>
+                    <tr>
+                        <td>Swap 3rd lowest label and 3rd position.</td>
+                    </tr>
+                    <tr>
+                        <td>Swap 4th and 5th position.</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="page-footer relative-footer">Page 4 of 6</div>
+        </div>
+        <div class="page page-bg-05">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Sorting</span>
+            </div>
+            <div class="page-content">
+				<table>
+                    <tr>
+                        <th style="color:white" class="section-row" colspan="2">Five Sort</th>
+                    </tr>
+                    <tr>
+                        <th style="color:white" class="section-row" colspan="2">Swap the 3rd largest number with 3rd position.</th>
+                    </tr>
+                    <tr>
+                        <th>If...</th>
+                        <th>Then...</th>
+                    </tr>
+                    <tr>
+                        <td>1st position's label greater</br>than 3rd largest number?</td>
+                        <td>Swap 1st position with the earliest after</br>3rd position that is smaller than both.</td>
+                    </tr>
+                    <tr>
+                        <td>2nd position's label greater</br>than 3rd largest number?</td>
+                        <td>Swap 2nd position with the earliest after</br>3rd position that is smaller than both.</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Swap them if...</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">1st position's label greater than 2nd position.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">4th position's label greater than 5th position.</td>
+                    </tr>
+                </table>
+				<p></p>
+                <table>
+                    <tr>
+                        <th style="color:white" class="section-row">Cocktail Shaker Sort</th>
+                    </tr>
+                    <tr>
+                        <th>Swap them if...</th>
+                    </tr>
+                    <tr>
+                        <th>Repeat the following instructions in forwards order.</th>
+                    </tr>
+                    <tr>
+                        <td>1st position's label is greater than 2nd position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>2nd position's label is greater than 3rd position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>3rd position's label is greater than 4th position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>4th position's label is greater than 5th position's label.</td>
+                    </tr>
+                    <tr>
+                        <th>Repeat the previous instructions in backwards order.</th>
+                    </tr>
+                </table>
+				<p></p>
+				<table>
+                    <tr>
+                        <th style="color:white" class="section-row" colspan="2">Odd-Even Transposition Sort</th>
+                    </tr>
+                    <tr>
+                        <th>Swap them if...</th>
+                    </tr>
+                    <tr>
+                        <td>1st position's label is greater than 2nd position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>3rd position's label is greater than 4th position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>2nd position's label is greater than 3rd position's label.</td>
+                    </tr>
+                    <tr>
+                        <td>4th position's label is greater than 5th position's label.</td>
+                    </tr>
+                    <tr>
+                        <th class="center" colspan="2">Repeat Odd-Even Transposition Sort.</th>
+                    </tr>
+                </table>
+				<p></p>
+                <table>
+                    <tr>
+                        <th style="color:white" class="invis-row" colspan="2">Bogo Sort</th>
+                    </tr>
+                    <tr>
+                        <td style="color:white" class="invis-row" colspan="2">You can perform any swap, but with a limit of 250 swaps before automatically striking. The defuser cannot see the labels, but the module is solvable.</br>You can return to the previous state by pushing any button repeatedly.</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="page-footer relative-footer">Page 5 of 6</div>
+        </div>
+		<div class="page page-bg-06">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Sorting</span>
+            </div>
+            <div class="page-content">
+                <table>
+                    <tr>
+                        <th style="color:white" class="section-row">Stooge Sort</th>
+                    </tr>
+                    <tr>
+                        <td>Second time reached here? <strong>N = 2</strong>. Otherwise, <strong>N = 1</strong>.</td>
+                    </tr>
+                    <tr>
+                        <th>Refer to Subarray with <strong>N</strong>.</th>
+                    </tr>
+                    <tr>
+                        <th>Refer to Subarray with <strong>N + 1</strong>.</th>
+                    </tr>
+                    <tr>
+                        <th>Refer to Subarray with <strong>N</strong>.</th>
+                    </tr>
+                    <tr>
+                        <th>Repeat Stooge Sort.</th>
+                    </tr>
+                    <tr>
+                        <th style="color:white" class="section-row">Subarray</th>
+                    </tr>
+                    <tr>
+                        <th>Swap them if...</th>
+                    </tr>
+                    <tr>
+                        <td><strong>N</strong>th position's label is greater than <strong>N+1</strong>th position's label.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>N+1</strong>th position's label is greater than <strong>N+2</strong>th position's label.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>N</strong>th position's label is greater than <strong>N+1</strong>th position's label.</td>
+                    </tr>
+                    <tr>
+                        <th>Continue with next entry in </strong>Stooge Sort</strong>.</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="page-footer relative-footer">Page 6 of 6</div>
+        </div>
+    </div>
+</body>
+</html>

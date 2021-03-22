@@ -1,0 +1,19 @@
+{
+  "Author": "Emik",
+  "Compatibility": "Untested",
+  "DefuserDifficulty": "VeryEasy",
+  "Description": "Sort five buttons using an algorithm. Tags: screen, swap, digit, number, label, blinking, 5-buttons, 2-digit, green",
+  "ExpertDifficulty": "Easy",
+  "ModuleID": "placeholderTalk",
+  "Name": "SORTING",
+  "Origin": "Mods",
+  "Published": "2020-03-05",
+  "SortKey": "SORTING",
+  "SourceUrl": "https://github.com/Emik03/sorting",
+  "SteamID": "2014027892",
+  "TwitchPlays": {
+    "Score": 4,
+    "ScorePerModule": 0
+  },
+  "Type": "Regular"
+}

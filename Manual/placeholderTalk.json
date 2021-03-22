@@ -1,0 +1,19 @@
+{
+  "Author": "Emik",
+  "Compatibility": "Untested",
+  "DefuserDifficulty": "Easy",
+  "Description": "Push one of four buttons based on two confusing phrases and arithmetic. Tags: screen, display, phrase, text, words, number, label, 4-buttons, orange",
+  "ExpertDifficulty": "Medium",
+  "ModuleID": "placeholderTalk",
+  "Name": "Placeholder Talk",
+  "Origin": "Mods",
+  "Published": "2020-03-05",
+  "SortKey": "PLACEHOLDERTALK",
+  "SourceUrl": "https://github.com/Emik03/placeholderTalk",
+  "SteamID": "2013982530",
+  "TwitchPlays": {
+    "Score": 5,
+    "ScorePerModule": 0
+  },
+  "Type": "Regular"
+}
