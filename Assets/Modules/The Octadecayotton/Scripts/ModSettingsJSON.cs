@@ -58,7 +58,7 @@ namespace TheOctadecayotton
             // Default values.
             dimension = 9;
             rotation = 3;
-            colorAssist = true;
+            colorAssist = false;
             isUsingBounce = false;
             stretchToFit = false;
 

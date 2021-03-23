@@ -5170,6 +5170,7 @@ MonoBehaviour:
   - {fileID: 114519760078467760}
   - {fileID: 114420762988768402}
   - {fileID: 114860127246428936}
+  EmikModuleList: {fileID: 4900000, guid: 13d37cc5d97d3dc4baf1748634af4470, type: 3}
 --- !u!114 &114446097511695936
 MonoBehaviour:
   m_ObjectHideFlags: 1

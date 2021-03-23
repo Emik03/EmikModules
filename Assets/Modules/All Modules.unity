@@ -964,7 +964,7 @@ Prefab:
     - target: {fileID: 114483548890468804, guid: ff9ca9050f0cb3c4e88109c0c3f0e8a3,
         type: 2}
       propertyPath: DimensionOverride
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff9ca9050f0cb3c4e88109c0c3f0e8a3, type: 2}

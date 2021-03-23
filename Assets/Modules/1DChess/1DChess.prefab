@@ -3215,6 +3215,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ModBundleName: EmikModules
+  Debugger:
+    IsEnabled: 0
+    Length: 0
+    Position: 
   Buttons:
   - {fileID: 114275605187310706}
   - {fileID: 114937300371709038}
@@ -3267,7 +3271,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: cd2314250c1945647b1a56b7448d44a5, type: 3}
   - {fileID: 2800000, guid: 30c10ded9c5b4834585414c198ac40d8, type: 3}
   - {fileID: 2800000, guid: 123f7eecd36859c438c5e78c5a149137, type: 3}
-  DebugPosition: 
 --- !u!114 &114770574916934308
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -187,7 +187,6 @@ public class Sorting : MonoBehaviour
         Screen.text = _currentAlgorithm;
 
         Debug.LogFormat("[Sorting #{0}] Algorithm recieved: {1}", _moduleId, Screen.text);
-        Debug.LogFormat("");
 
         //_initialButtons = new byte[5] { 1, 2, 3, 4, 5 };
     }
@@ -252,8 +251,7 @@ public class Sorting : MonoBehaviour
         //if lights are off, the buttons should do 
         if (!_lightsOn || isSolved || _buttonDelay || _piano)
         {
-            string playSound = "button" + (num + 1).ToString();
-            Audio.PlaySoundAtTransform(playSound, Module.transform);
+            Audio.PlaySoundAtTransform(Sounds.Srt.Button(num + 1), Module.transform);
 
             if (_piano)
                 btn[num].GetComponent<MeshRenderer>().material.color = btn[num].GetComponent<MeshRenderer>().material.color == _highlightColor
@@ -308,7 +306,6 @@ public class Sorting : MonoBehaviour
             {
                 Debug.LogFormat("[Sorting #{0}] BogoSort activated!", _moduleId);
                 Debug.LogFormat("[Sorting #{0}] All logs from this module are now disabled to prevent spam during BogoSort.", _moduleId);
-                Debug.LogFormat("");
 
                 _bogoSort = true;
 
@@ -337,7 +334,6 @@ public class Sorting : MonoBehaviour
             {
                 Debug.LogFormat("[Sorting #{0}] BogoSort deactivated!", _moduleId);
                 Debug.LogFormat("[Sorting #{0}] All logs from this module are now reenabled.", _moduleId);
-                Debug.LogFormat("");
 
                 _bogoSort = false;
 
@@ -485,7 +481,6 @@ public class Sorting : MonoBehaviour
             Audio.PlaySoundAtTransform(Sounds.Srt.Solve, Module.transform);
 
             Debug.LogFormat("[Sorting #{0}] All buttons sorted, module solved!", _moduleId);
-            Debug.LogFormat("");
             Module.HandlePass();
         }
     }

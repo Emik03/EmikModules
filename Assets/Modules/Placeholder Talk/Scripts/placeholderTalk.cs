@@ -194,7 +194,6 @@ public class placeholderTalk : MonoBehaviour
 
         firstString = firstPhrase[_questionOffsetId];
 
-        Debug.LogFormat("");
         Debug.LogFormat("[Placeholder Talk #{0}] First Phrase ({1}): \"THE ANSWER {2} {3}\"", _moduleId, _questionOffsetId, firstPhrase[_questionOffsetId], currentOrdinal);
         Debug.LogFormat("[Placeholder Talk #{0}] Second Phrase ({1}): \"{2}\"", _moduleId, _questionId, _secondPhrase[_questionId].Replace("\n\n", " "));
 
@@ -203,7 +202,6 @@ public class placeholderTalk : MonoBehaviour
 
         //generate an answer
         Debug.LogFormat("[Placeholder Talk #{0}] (First Phrase + Second Phrase) modulated by 4 = {1}. Push the button labeled {1}.", _moduleId, GetAnswer() + 1);
-        Debug.LogFormat("");
     }
 
     /// <summary>
@@ -535,8 +533,6 @@ public class placeholderTalk : MonoBehaviour
                 break; 
         }
 
-        Debug.LogFormat("");
-
         //calculate answerId (second section of manual, second variable)
         answerId = (byte)(_questionId % 4);
         Debug.LogFormat("[Placeholder Talk #{0}] Second Phrase: The phrase \"{1}\" is found under value {2}. Second Phrase: {2}.", _moduleId, _secondPhrase[_questionId].Replace("\n\n", " "), answerId + 1);
@@ -632,8 +628,6 @@ public class placeholderTalk : MonoBehaviour
                 Debug.LogFormat("[Placeholder Talk #{0}] Second Phrase: Does not contain the variable N, continue without changes. Second Phrase: {1}", _moduleId, answerId + 1);
                 break;
         }
-
-        Debug.LogFormat("");
 
         //combine answers
         _answerOffsetId += answerId;

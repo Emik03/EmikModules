@@ -55,7 +55,7 @@ public class TheOctadecayottonScript : MonoBehaviour
         else if (Regex.IsMatch(split[0], @"^\s*settings\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
         {
             yield return null;
-            yield return @"sendtochat NOTE, SETTINGS CANNOT BE CHANGED AFTER MODULE INITIATION! | !{1} set 3-12 (Sets dimension count, in Normal/Time mode you may not start with less than 9) | !{1} spin <#> (Sets rotation count, in Normal/Time mode you may not start with less than 3, sets the amount of rotations) | !{1} stretch (Toggle: Only affects dimensions not divisible by 3, stretches the X, Y, and Z planes to fit the module, however it causes some axes to become exaggerated) | !{1} springiness (Toggle: Uses InOutBounce ease, do not use on serious TP bombs)";
+            yield return @"sendtochat NOTE, SETTINGS CANNOT BE CHANGED AFTER MODULE INITIATION! | !{1} set 3-12 (Sets dimension count, in Normal/Time mode you may not start with less than 9) | !{1} spin <#> (Sets rotation count, in Normal/Time mode you may not start with less than 3, sets the amount of rotations) | !1 stay (Toggle: Keeps each sphere's colors as they rotate rather than updating based on position) | !{1} stretch (Toggle: Only affects dimensions not divisible by 3, stretches the X, Y, and Z planes to fit the module, however it causes some axes to become exaggerated) | !{1} springiness (Toggle: Uses InOutBounce ease, do not use on serious TP bombs)";
         }
 
         else if (Regex.IsMatch(split[0], @"^\s*spin\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
@@ -86,7 +86,7 @@ public class TheOctadecayottonScript : MonoBehaviour
             }
         }
 
-        else if (Regex.IsMatch(split[0], @"^\s*springiness\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+        else if (Regex.IsMatch(split[0], @"^\s*stretch\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
         {
             yield return null;
 
@@ -100,7 +100,21 @@ public class TheOctadecayottonScript : MonoBehaviour
             }
         }
 
-        else if (Regex.IsMatch(split[0], @"^\s*stretch\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+        else if (Regex.IsMatch(split[0], @"^\s*stay\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+        {
+            yield return null;
+
+            if (Interact.Dimension != 0)
+                yield return "sendtochaterror Since the module has been activated at least once, this value can no longer change.";
+
+            else
+            {
+                colorAssist = !colorAssist;
+                yield return "sendtochat The module will" + (colorAssist ? " " : " not ") + "maintain the colors of each sphere.";
+            }
+        }
+
+        else if (Regex.IsMatch(split[0], @"^\s*springiness\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
         {
             yield return null;
 
@@ -111,6 +125,7 @@ public class TheOctadecayottonScript : MonoBehaviour
             {
                 isUsingBounce = !isUsingBounce;
                 Interact.isUsingBounce = isUsingBounce;
+                yield return "sendtochat The module will" + (isUsingBounce ? " " : " not ") + "alter the sphere's movements.";
             }
         }
 

@@ -56,18 +56,24 @@ public partial class OneDimensionalChessScript : ModuleScript
 
     private void Start()
     {
-        // This will install the Rust library only once. It causes problems in the editor, so we need to check that too.
-        if (!IsEditor && !_isRustLoaded)
+        if (!IsEditor)
         {
-            _isRustLoaded = true;
-            try
+            // This disables the debugger if it isn't played in-game.
+            Debugger = new CustomValues { IsEnabled = false };
+
+            // This will install the Rust library only once. It causes problems in the editor, which is why it is in here.
+            if (!_isRustLoaded)
             {
-                PathManager.LoadLibrary("EmikModules", Engine.LibraryName);
-            }
-            catch (FileNotFoundException e)
-            {
-                Panic("The Rust library failed to load! Please provide a FULL log file to @Emik#0001 on Discord", e);
-                return;
+                _isRustLoaded = true;
+                try
+                {
+                    PathManager.LoadLibrary("EmikModules", Engine.LibraryName);
+                }
+                catch (FileNotFoundException e)
+                {
+                    Panic("The Rust library failed to load! Please provide a FULL log file to @Emik#0001 on Discord", e);
+                    return;
+                }
             }
         }
 

@@ -12,17 +12,21 @@ public class LyingIndicators : MonoBehaviour
     public KMBombModule Module;
     public MeshRenderer Component;
     public KMSelectable[] Buttons;
+    public TextAsset EmikModuleList;
 
     private bool _isSolved = false, _lightsOn = false, _hasStrike = false, _frkLying;
     private bool[] _buttonStates;
     static int _moduleIdCounter = 1;
     int _moduleId;
-    private readonly static string[] _emikModules = { "Placeholder Talk", "Role Reversal", "Sorting", "Forget The Colors", "Etterna", "Lose/Lose", "Win/Win", "e621.net", "Palindromes", "hexOS", "Reformed Role Reversal", "Forget Any Color", "Quaver", "Diophantine Equations", "Phosphorescence", "Linq", "The Octadecayotton", "hexOrbits", "Color Punch", "Naming Conventions", "Netherite", "1D Chess", "Coinage" };
+    private static string[] _emikModules;
     private readonly static Dictionary<char, string> _serToInd = new Dictionary<char, string>(11) { { '0', "BOB" }, { '1', "CAR" }, { '2', "CLR" }, { '3', "FRK" }, { '4', "FRQ" }, { '5', "IND" }, { '6', "MSA" }, { '7', "NSA" }, { '8', "SIG" }, { '9', "SND" }, { 'A', "TRN" } };
     
     private void Awake()
     {
         _moduleId = _moduleIdCounter++;
+
+        _emikModules = EmikModuleList.text.Split('\n');
+
         for (byte i = 0; i < Buttons.Length; i++)
         {
             byte j = i;
@@ -375,8 +379,8 @@ public class LyingIndicators : MonoBehaviour
         float s = 0;
         _isSolved = true;
         Module.HandlePass();
-        Audio.PlaySoundAtTransform("solve", Buttons[2].transform);
-        Audio.PlaySoundAtTransform("solve2", Buttons[2].transform);
+        Audio.PlaySoundAtTransform(Sounds.Lid.Solve, transform);
+        Audio.PlaySoundAtTransform(Sounds.Lid.SolveBass, transform);
         Component.GetComponent<Renderer>().material.color = new Color32(160, 160, 160, 255);
 
         while (s <= 1)

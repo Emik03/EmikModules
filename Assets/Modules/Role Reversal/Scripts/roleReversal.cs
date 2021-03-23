@@ -145,8 +145,6 @@ public class roleReversal : MonoBehaviour
     {
         _moduleCount++;
 
-        Debug.LogFormat("");
-
         //_seed!
         //generate seed
         _seed = Random.Range(0, 279936);
@@ -266,8 +264,6 @@ public class roleReversal : MonoBehaviour
             //make module strike
             Module.HandleStrike();
         }
-
-        Debug.LogFormat("");
     }
 
     /// <summary>
@@ -896,8 +892,6 @@ public class roleReversal : MonoBehaviour
         }
 
         Debug.LogFormat("[Role Reversal #{0}] Final Wires: {1}", _moduleId, _colorList);
-
-        Debug.LogFormat("");
     }
 
     /// <summary>

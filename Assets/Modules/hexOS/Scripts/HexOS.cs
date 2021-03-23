@@ -60,7 +60,7 @@ public class HexOS : MonoBehaviour
     private readonly byte[] _rhythms = new byte[2], _ciphers = new byte[6], _octRhythms = new byte[2], _octSymbols = new byte[18];
     private readonly List<byte> _octColors = new List<byte>(0);
     private static int _moduleIdCounter = 1, _y = 0, _rotationSpeed;
-    private int _moduleId = 0, _amountOfTimesPressed = 0;
+    private int _moduleId = 0;
     private static float _delayPerBeat, _hexOSStrikes;
     private static string _customSolveQuote;
     private string _user = "", _answer = "", _octAnswer = "", _submit = "", _tempScreen, _tempSum;
@@ -241,8 +241,6 @@ public class HexOS : MonoBehaviour
 
         Button.AddInteractionPunch(2.5f);
 
-        _amountOfTimesPressed++;
-
         // Lights off, solved then it should end it here.
         if (!_lightsOn || isSolved || _octAnimating)
             return;
@@ -283,8 +281,6 @@ public class HexOS : MonoBehaviour
             // If the sequence isn't already playing, play it.
             if (!_playSequence)
             {
-                _amountOfTimesPressed = 0;
-
                 // Increment presses so that the correct chords and sequences are played.
                 _press = (sbyte)((_press + 1) % 8);
 
@@ -299,7 +295,6 @@ public class HexOS : MonoBehaviour
         else
         {
             Audio.PlaySoundAtTransform(Sounds.Hex.Submit, Module.transform);
-            _amountOfTimesPressed = 0;
 
             // Reset holding.
             _held = 0;
@@ -1070,8 +1065,6 @@ public class HexOS : MonoBehaviour
 
         Background.material.SetColor("_Color", HexOSStrings.TransparentColors[0]);
         Foreground.material.SetColor("_Color", Color.red);
-
-        _amountOfTimesPressed = 0;
 
         // Generate random rhythm indexes, making sure that neither are the same.
         _octRhythms[0] = (byte)_rnd.Next(0, HexOSStrings.OctNotes.Length);

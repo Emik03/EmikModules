@@ -1173,7 +1173,7 @@ public class TestHarness : MonoBehaviour
             audioSource.PlayOneShot(clip);
         }
         else
-            Debug.Log("Audio clip not found: " + clipName);
+            Debug.LogError("Audio clip not found: " + clipName);
     }
 
     private KMAudio.KMAudioRef PlaySoundHandler(string clipName, Transform t, bool loop)

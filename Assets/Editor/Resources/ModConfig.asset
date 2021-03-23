@@ -14,64 +14,39 @@ MonoBehaviour:
   id: EmikModules
   title: Emik's Modules
   author: Emik
-  description: 'Thanks to Enitoni for making the coin, the blackboard, and the thumbnail.
-
-
-    An assortment of unique modules, all bundled up into one mod!
-
-
-    moduleIds:
-
-    - 1DChess
-
-    - Coinage
-
-    - Etterna
-
-    - ForgetAnyColor
-
-    - ForgetTheColors
-
-    - hexOS
-
-    - Linq
-
-    - lyingIndicators
-
-    - NamingConventions
-
-    - Netherite
-
-    - TheOctadecayotton
-
-    - palindromes
-
-    - Phosphorescence
-
-    - placeholderTalk
-
-    - Quaver
-
-    - ReformedRoleReversal
-
-    - roleReversal
-
-    - Scale
-
-    - Sorting
-
-    - Updog
-
-
-    Manuals can be found in:
-
-    https://ktane.timwi.de
-
-
-    Twitch plays is supported for all of them.
-
-
-    Is there a bug? Do you have a question? Discord: @Emik#0001'
-  version: 1
+  description: "[h1]On the Subject of [url=https://github.com/Emik03/EmikModules]Emik's
+    Modules[/url][/h1]\r\n[i]half of this mod's filesize are just PDFs[/i]\r\n[hr][/hr]\r\nThis
+    workshop item aims to combine all of my mods into one, making future maintainability
+    much easier in the event that someone needs to take over.\r\n[list]\r\n  [*] To
+    download the contents of this mod, simply click the subscribe button above. A
+    steam account is required.\r\n  [*] If you have the TwitchPlays mod, that's fine.
+    It'll work on all of them.\r\n  [*] From there, open the game, and let those modules
+    load!*\r\n[/list]\r\n[i]* In the unlikely event of a bug, please report them in
+    [url=https://discord.com/invite/ktane]#bug-reports[/url].[/i]\r\n\r\n[b]Refer
+    to this table to appreciate the hard work others put into this mod as well.[/b]\r\n\r\n[table]\r\n
+    \ [tr]\r\n    [th][url=https://steamcommunity.com/id/enitoni/]Enitoni[/url][/th]\r\n
+    \   [td]Thumbnail & modelling help in 1D Chess and Coinage.[/td]\r\n  [/tr]\r\n
+    \ [tr]\r\n    [th]Aero[/th]\r\n    [td]Base model for Phosphorescence.[/td]\r\n
+    \ [/tr]\r\n  [tr]\r\n    [th][url=https://steamcommunity.com/id/haleyhalcyon/]Halcyon[/url][/th]\r\n
+    \   [td]Sound effects for Sorting.[/td]\r\n  [/tr]\r\n  [tr]\r\n    [th][url=https://steamcommunity.com/id/Cooldoom5/]Cooldoom[/url][/th]\r\n
+    \   [td]The original Forget The Colors module.[/td]\r\n  [/tr]\r\n  [tr]\r\n    [th][url=https://steamcommunity.com/id/Finder009]Finder[/url],
+    Ash 'Cause Yes, and IUndercoverTroll[/th]\r\n    [td]Updog, I was only involved
+    in the coding process.[/td]\r\n  [/tr]\r\n[/table]\r\n\r\n[b]Here are all of the
+    moduleIds, and the subsequent repository links.[/b]\r\n[list]\r\n  [*] [url=https://ktane.timwi.de/HTML/1D%20Chess.html]1DChess[/url]\r\n
+    \ [*] [url=https://ktane.timwi.de/HTML/Coinage.html]Coinage[/url]\r\n  [*] [url=https://ktane.timwi.de/HTML/Etterna.html]Etterna[/url]\r\n
+    \ [*] [url=https://ktane.timwi.de/HTML/Forget%20Any%20Color.html]ForgetAnyColor[/url]\r\n
+    \ [*] [url=https://ktane.timwi.de/HTML/Forget%20The%20Colors.html]ForgetTheColors[/url]\r\n
+    \ [*] [url=https://ktane.timwi.de/HTML/hexOS.html]hexOS[/url]\r\n  [*] [url=https://ktane.timwi.de/HTML/Linq.html]Linq[/url]\r\n
+    \ [*] [url=https://ktane.timwi.de/HTML/Lying%20Indicators.html]lyingIndicators[/url]\r\n
+    \ [*] [url=https://ktane.timwi.de/HTML/Naming%20Conventions.html]NamingConventions[/url]\r\n
+    \ [*] [url=https://ktane.timwi.de/HTML/Netherite.html]Netherite[/url]\r\n  [*]
+    [url=https://ktane.timwi.de/HTML/The%20Octadecayotton.html]TheOctadecayotton[/url]\r\n
+    \ [*] [url=https://ktane.timwi.de/HTML/Palindromes.html]palindromes[/url]\r\n
+    \ [*] [url=https://ktane.timwi.de/HTML/Phosphorescence.html]Phosphorescence[/url]\r\n
+    \ [*] [url=https://ktane.timwi.de/HTML/Placeholder%20Talk.html]placeholderTalk[/url]\r\n
+    \ [*] [url=https://ktane.timwi.de/HTML/Quaver.html]Quaver[/url]\r\n  [*] [url=https://ktane.timwi.de/HTML/Reformed%20Role%20Reversal.html]ReformedRoleReversal[/url]\r\n
+    \ [*] [url=https://ktane.timwi.de/HTML/Role%20Reversal.html]roleReversal[/url]\r\n
+    \ [*] [url=https://ktane.timwi.de/HTML/Sorting.html]sorting[/url]\r\n  [*] [url=https://ktane.timwi.de/HTML/Updog.html]Updog[/url]\r\n[/list]"
+  version: 1.1
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 588042eeb44adae4cb0611f300e65f5e, type: 3}
