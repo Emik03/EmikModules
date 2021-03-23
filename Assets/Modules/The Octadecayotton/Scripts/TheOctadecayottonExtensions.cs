@@ -155,10 +155,10 @@ namespace TheOctadecayotton
         private static void AddRandomRotations(List<List<Rotation>>[] output, Stack<Axis> possibleAxies, RotationOptions options, ref int i, ref int j)
         {
             output[i].Add(new List<Rotation>());
+
             int rnd = Rnd.Range(options.MinLengthPerRotation,
                 Math.Min(Math.Min(possibleAxies.Count, options.MaxLengthPerRotation), possibleAxies.Count() - options.MinRotations + 1) + 1);
 
-            Debug.Log(rnd + "  " + possibleAxies.Join(", "));
             for (int k = 0; k < rnd; k++)
                 output[i][j].Add(new Rotation(Rnd.Range(0, 1f) > options.ChanceForNegativeRotation, possibleAxies.Pop()));
 
