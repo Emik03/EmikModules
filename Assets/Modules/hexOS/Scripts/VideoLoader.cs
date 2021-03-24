@@ -9,6 +9,7 @@ using UnityEngine.Video;
 public class VideoLoader : MonoBehaviour
 {
     public static VideoClip[] clips;
+    private static bool _loaded;
 
     public void Awake()
     {
@@ -22,6 +23,9 @@ public class VideoLoader : MonoBehaviour
 
     private IEnumerator LoadVideoClips()
     {
+        if (_loaded)
+            yield break;
+
         var paths = ReflectionHelper.FindType("ModManager")
             .GetValue<object>("Instance")
             .GetValue<IDictionary>("loadedMods")
@@ -47,6 +51,7 @@ public class VideoLoader : MonoBehaviour
             if (mainBundle != null)
             {
                 clips = mainBundle.LoadAllAssets<VideoClip>().OrderBy(clip => clip.name).ToArray();
+                _loaded = true;
             }
         }
     }
