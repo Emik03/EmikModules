@@ -23,7 +23,7 @@ namespace ReformedRoleReversalModule
         internal static string Version { get { return version; } }
 
         // When updating, change this string!
-        private static readonly string version = Application.isEditor ? "#.#.#" : EmikBaseModules.PathManager.ModInfoVersion("EmikModules.dll");
+        private static readonly string version = Application.isEditor ? "#.#.#" : EmikBaseModules.PathManager.GetModInfoVersion("EmikModules.dll");
 
         /// <summary>
         /// Indexable array of indicator edgework in alphabetical order.

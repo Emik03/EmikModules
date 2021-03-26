@@ -11,7 +11,6 @@ public class UpdogScript : ModuleScript
     public KMSelectable[] Arrows, Center;
     public Renderer CenterRenderer;
     public TextMesh Text;
-    public UpdogTPScript TP;
 
     internal bool IsOnBone { get { return _maze[_position.Item1][_position.Item2] == 'x'; } }
     internal bool[] ValidMoves { get { return _maze.GetValidMovements(ref _position); } }
@@ -32,7 +31,7 @@ public class UpdogScript : ModuleScript
         Arrows.Assign(onInteract: ArrowsInteract);
         Center.Assign(onInteract: CenterInteract);
 
-        Get<KMBombModule>().Assign(this, onActivate: () =>
+        Assign(onActivate: () =>
         {
             var colors = Colors.GetFinal;
             var word = Words.GetRandom;
@@ -89,7 +88,7 @@ public class UpdogScript : ModuleScript
             OnStrike("The wrong type of button has been pushed, causing the dog to trip and fall. Strike for being unable to walk correctly!");
         
         else if (!_maze.IsValidMove(this, ref _position, i % 4))
-            OnStrike("The dog bumped into a wall.");
+            OnStrike("The dog violently crashed into the wall, hurting him. Strike for animal cruelty!");
         
         else
             _interactCount++;

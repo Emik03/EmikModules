@@ -133,7 +133,7 @@ public class NamingConventionsScript : ModuleScript
 
         // Gets random DataType.
         Index = Rnd.Range(0, 10);
-        DataType = Helper.EnumAsArray<DataType>().PickRandom();
+        DataType = Helper.GetValues<DataType>().PickRandom();
 
         // Start rendering.
         UpdateIndexes();

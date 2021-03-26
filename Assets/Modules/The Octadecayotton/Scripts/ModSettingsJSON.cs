@@ -71,7 +71,7 @@ namespace TheOctadecayotton
                 if (settings != null)
                 {
                     dimension = Mathf.Clamp(settings.Dimension, Min, Max);
-                    rotation = Mathf.Clamp(settings.Rotation, 0, 100);
+                    rotation = Mathf.Clamp(settings.Rotation, 0, 255);
                     colorAssist = settings.ColorAssist;
                     isUsingBounce = settings.IsUsingBounce;
                     stretchToFit = settings.StretchToFit;

@@ -94,7 +94,7 @@ public partial class OneDimensionalChessScript : ModuleScript
             allowSimultaneousActive: true,
             maximumThreadsActive: 1);
 
-        Get<KMBombModule>().Assign(this, () =>
+        Assign(() =>
         {
             // This ensures that the same positions generate if a bomb seed is used.
             Position.random = new Srnd(Urnd.Range(0, int.MaxValue));

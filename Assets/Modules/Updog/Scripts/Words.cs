@@ -13,8 +13,8 @@ namespace Updog
         {
             get
             {
-                return Helper.EnumAsArray<Spelling>()
-                    .SelectMany(s => Helper.EnumAsArray<Casing>()
+                return Helper.GetValues<Spelling>()
+                    .SelectMany(s => Helper.GetValues<Casing>()
                     .Select(c => new WordTuple(s, c)))
                     .ToArray()
                     .ToDictionary(d => d.AssignCase());

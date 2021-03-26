@@ -182,7 +182,7 @@
             KMFramework extension methods that makes it easier to assign multiple events to a variable in one statement. Written by Emik.
             </summary>
         </member>
-        <member name="M:EmikBaseModules.EventHelper.Assign(KMSelectable[],System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32})">
+        <member name="M:EmikBaseModules.EventHelper.Assign(KMSelectable[],System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Nullable{System.Boolean})">
             <summary>
             Assigns events specified into <paramref name="kmSelectable"/>. The number passed into each method represents the index that came from the array.
             </summary>
@@ -192,8 +192,8 @@
             <exception cref="T:System.ArgumentNullException"></exception>
             <exception cref="T:System.ArgumentException"></exception>
             <param name="kmSelectable">The <see cref="T:KMSelectable"/> array to add events to.</param>
-            <param name="onCancel">Called when player backs out of this selectable. Return true will make it act as a module/submodule, and false as a button.</param>
-            <param name="onInteract">Called when player interacts with the selctable. Return true will make it act as a module/submodule, and false as a button.</param>
+            <param name="onCancel">Called when player backs out of this selectable.</param>
+            <param name="onInteract">Called when player interacts with the selctable.</param>
             <param name="onDefocus">Called when a different selectable becomes the focus, or the module has been backed out of.</param>
             <param name="onDeselect">Called when the selectable stops being the current selectable.</param>
             <param name="onFocus">Called when a module is focused, this is when it is interacted with from the bomb face level and its children can be selected.</param>
@@ -203,8 +203,9 @@
             <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
             <param name="onRight">Called when the right controller stick is pulled while selected.</param>
             <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
+            <param name="overrideBoolean">Return true will make it act as a module/submodule, and false as a button.</param>
         </member>
-        <member name="M:EmikBaseModules.EventHelper.Assign(KMSelectable,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+        <member name="M:EmikBaseModules.EventHelper.Assign(KMSelectable,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Nullable{System.Boolean})">
             <summary>
             Assigns events specified into <paramref name="kmSelectable"/>.
             </summary>
@@ -224,21 +225,7 @@
             <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
             <param name="onRight">Called when the right controller stick is pulled while selected.</param>
             <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
-        </member>
-        <member name="M:EmikBaseModules.EventHelper.Assign(KMNeedyModule,EmikBaseModules.ModuleScript,System.Action,System.Action,System.Action,System.Action)">
-            <summary>
-            Assigns events specified into <paramref name="kmNeedyModule"/>.
-            </summary>
-            <remarks>
-            An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions.
-            </remarks>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <param name="kmNeedyModule">The needy module to assign events to.</param>
-            <param name="moduleScript">An instance of <see cref="T:EmikBaseModules.ModuleScript"/>, which transmutates the <see cref="P:EmikBaseModules.ModuleScript.IsNeedyActive"/> property.</param>
-            <param name="onActivate">Called when the bomb has been activated and the timer has started.</param>
-            <param name="onNeedyActivation">Called when the needy timer activates.</param>
-            <param name="onNeedyDeactivation">Called when the needy gets solved or the bomb explodes.</param>
-            <param name="onTimerExpired">Called when the timer of the needy runs out.</param>
+            <param name="overrideBoolean">Return true will make it act as a module/submodule, and false as a button.</param>
         </member>
         <member name="M:EmikBaseModules.EventHelper.Assign(KMGameInfo,System.Action{System.Boolean},System.Action{System.Boolean})">
             <summary>
@@ -261,18 +248,6 @@
             <param name="kmBombInfo">The bomb info instance to assign events to.</param>
             <param name="onBombExploded">Called when the bomb explodes.</param>
             <param name="onBombSolved">Called when the bomb is defused.</param>
-        </member>
-        <member name="M:EmikBaseModules.EventHelper.Assign(KMBombModule,EmikBaseModules.ModuleScript,System.Action)">
-            <summary>
-            Assigns events specified into <paramref name="kmBombModule"/>.
-            </summary>
-            <remarks>
-            Each parameter must be set. This extension method simplifies all of the KMFramework events into Actions.
-            </remarks>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <param name="kmBombModule">The bomb module instance to assign events to.</param>
-            <param name="moduleScript">An instance of <see cref="T:EmikBaseModules.ModuleScript"/>, which transmutates the <see cref="P:EmikBaseModules.ModuleScript.IsActive"/> property.</param>
-            <param name="onActivate">Called when the bomb has been activated and the timer has started.</param>
         </member>
         <member name="T:EmikBaseModules.Helper">
             <summary>
@@ -304,6 +279,14 @@
             <param name="intensityModifier">The intensity of the bomb shaking.</param>
             <param name="sounds">The sounds, these can either be <see cref="T:System.String"/> or <see cref="T:KMSoundOverride.SoundEffect"/>. Any other type will throw an exception.</param>
         </member>
+        <member name="M:EmikBaseModules.Helper.Unwrap(System.Object,System.Boolean)">
+            <summary>
+            Unwraps any object, whether it be a class, list, tuple, or something else.
+            </summary>
+            <param name="item">The object to unwrap.</param>
+            <param name="getVariables">Whether it should search recursively inside the variable and yield return the elements inside <paramref name="item"/>.</param>
+            <returns>An IEnumerable of the <paramref name="item"/> unwrapped.</returns>
+        </member>
         <member name="M:EmikBaseModules.Helper.ToNumbers``1(``0[],System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             Parses each element of an array into a number. If it succeeds it returns the integer array, if it fails then it returns null.
@@ -315,6 +298,13 @@
             <param name="maxLength">The maximum acceptable length of the array. (inclusive)</param>
             <returns>The array as integers, or null if it fails.</returns>
         </member>
+        <member name="M:EmikBaseModules.Helper.NameOfVariable(System.Linq.Expressions.Expression{System.Func{System.Object}})">
+            <summary>
+            Returns the name of a variable.
+            </summary>
+            <param name="e"></param>
+            <returns>The name of the variable, or if it cannot find it, <see cref="F:EmikBaseModules.Helper.Unknown"/>.</returns>
+        </member>
         <member name="M:EmikBaseModules.Helper.Base(System.Int32,System.Char[])">
             <summary>
             Converts a base-10 number to any base.
@@ -322,6 +312,15 @@
             <param name="value">The value to convert.</param>
             <param name="baseChars">All of the base characters, use <see cref="P:EmikBaseModules.Helper.Alphanumeric"/> for Base-62. The length of the array is the base number.</param>
             <returns>The integer, but in the base specified.</returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.ElementAtWrap``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Returns the element of an array, pretending that the array wraps around or is circular.
+            </summary>
+            <typeparam name="T">The type of the array.</typeparam>
+            <param name="source">The array itself.</param>
+            <param name="i">The index, which will wrap around if it's larger than the array.</param>
+            <returns></returns>
         </member>
         <member name="M:EmikBaseModules.Helper.Append``1(``0[],``0)">
             <summary>
@@ -370,6 +369,24 @@
             <param name="array">The array to check for.</param>
             <returns>True if the array is equal to null, or empty.</returns>
         </member>
+        <member name="M:EmikBaseModules.Helper.IsInRange(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Determines whether the number is equal or in-between 2 values.
+            </summary>
+            <param name="comparison">The number to use as comparison.</param>
+            <param name="min">The minimum value required to return true.</param>
+            <param name="max">The maximum value required to return true.</param>
+            <returns>True if <paramref name="comparison"/> is more than or equal <paramref name="min"/> and less than or equal <paramref name="max"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.IsInRange(System.Single,System.Single,System.Single)">
+            <summary>
+            Determines whether the number is equal or in-between 2 values.
+            </summary>
+            <param name="comparison">The number to use as comparison.</param>
+            <param name="min">The minimum value required to return true.</param>
+            <param name="max">The maximum value required to return true.</param>
+            <returns>True if <paramref name="comparison"/> is more than or equal <paramref name="min"/> and less than or equal <paramref name="max"/>.</returns>
+        </member>
         <member name="M:EmikBaseModules.Helper.RandomBoolean(System.Single)">
             <summary>
             Generates a random boolean.
@@ -405,6 +422,30 @@
             <param name="source">The character to convert.</param>
             <returns><paramref name="source"/> as uppercase.</returns>
         </member>
+        <member name="M:EmikBaseModules.Helper.IndexOf``1(``0[],``0)">
+            <summary>
+            Finds and returns the index in which the <paramref name="item"/> is found in <paramref name="array"/>. If nothing is found, it returns -1.
+            </summary>
+            <typeparam name="T">The type of the <paramref name="array"/> and <paramref name="item"/>.</typeparam>
+            <param name="array">The array to scan through.</param>
+            <param name="item">The item to find in <paramref name="array"/>.</param>
+            <returns>The index of <paramref name="item"/> as found in <paramref name="array"/>, or -1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.MemberCount``1">
+            <summary>
+            Counts the number of members in an enum.
+            </summary>
+            <typeparam name="T">The enum to check the length for.</typeparam>
+            <returns>The number of members in <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.Modulo(System.Int32,System.Int32)">
+            <summary>
+            Calculates the rem-euclid modulo, which allows negative numbers to be properly calculated.
+            </summary>
+            <param name="number">The left-hand side operator</param>
+            <param name="modulo">The right-hand side operator.</param>
+            <returns><paramref name="number"/> mod <paramref name="modulo"/>.</returns>
+        </member>
         <member name="M:EmikBaseModules.Helper.LengthOrDefault(System.Array)">
             <summary>
             Returns the length of the array, or if null, the default value 0.
@@ -423,6 +464,14 @@
             <param name="max">The maximum value for each index. (exclusive)</param>
             <param name="length">The length of the array.</param>
             <returns>Random integer array of length <paramref name="length"/> between <paramref name="min"/> and <paramref name="max"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.Modulo(System.Single,System.Single)">
+            <summary>
+            Calculates the rem-euclid modulo, which allows negative numbers to be properly calculated.
+            </summary>
+            <param name="number">The left-hand side operator</param>
+            <param name="modulo">The right-hand side operator.</param>
+            <returns><paramref name="number"/> mod <paramref name="modulo"/>.</returns>
         </member>
         <member name="M:EmikBaseModules.Helper.Ranges(System.Single,System.Single,System.Int32)">
             <summary>
@@ -452,21 +501,28 @@
             <param name="args">All of the arguments to put into <paramref name="str"/>.</param>
             <returns></returns>
         </member>
+        <member name="M:EmikBaseModules.Helper.Unwrap(System.Object)">
+            <summary>
+            Unwraps any object, whether it be a class, list, tuple, or something else.
+            </summary>
+            <param name="item">The object to unwrap.</param>
+            <returns>An IEnumerable of the <paramref name="item"/> unwrapped.</returns>
+        </member>
         <member name="M:EmikBaseModules.Helper.Append``1(System.Collections.Generic.IEnumerable{``0},``0)">
             <summary>
-            Appends the element provided to the IEnumerable.
+            Appends the element provided to the <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
             </summary>
-            <typeparam name="T">The datatype of both the IEnumerable and element.</typeparam>
-            <param name="source">The IEnumerable to be modified.</param>
+            <typeparam name="T">The datatype of both the <see cref="T:System.Collections.Generic.IEnumerable`1"/> and element.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to be modified.</param>
             <param name="item">The element to append to the <paramref name="source"/>.</param>
             <returns><paramref name="source"/>, but with an added <paramref name="item"/> as the last index.</returns>
         </member>
         <member name="M:EmikBaseModules.Helper.Prepend``1(System.Collections.Generic.IEnumerable{``0},``0)">
             <summary>
-            Prepends the element provided to the IEnumerable.
+            Prepends the element provided to the <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
             </summary>
-            <typeparam name="T">The datatype of both the IEnumerable.</typeparam>
-            <param name="source">The IEnumerable to be modified.</param>
+            <typeparam name="T">The datatype of both the <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to be modified.</param>
             <param name="item">The element to append to the <paramref name="source"/>.</param>
             <returns><paramref name="source"/>, but with an added <paramref name="item"/> as the first index.</returns>
         </member>
@@ -474,8 +530,8 @@
             <summary>
             Removes the elements whose index does not match any of the indices.
             </summary>
-            <typeparam name="T">The datatype of both the IEnumerable.</typeparam>
-            <param name="source">The IEnumerable to be modified.</param>
+            <typeparam name="T">The datatype of both the <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to be modified.</param>
             <param name="indices">The indices to include in <paramref name="source"/>.</param>
             <returns><paramref name="source"/>, but without the element indexing <paramref name="indices"/>.</returns>
         </member>
@@ -483,10 +539,18 @@
             <summary>
             Removes the elements whose index matches any of the indices.
             </summary>
-            <typeparam name="T">The datatype of both the IEnumerable.</typeparam>
-            <param name="source">The IEnumerable to be modified.</param>
+            <typeparam name="T">The datatype of both the <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to be modified.</param>
             <param name="indices">The indices to exclude from <paramref name="source"/>.</param>
             <returns><paramref name="source"/>, but without the element indexing <paramref name="indices"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.Indistinct``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Filters an <see cref="T:System.Collections.Generic.IEnumerable`1"/>, only allowing duplicated items.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to filter through.</param>
+            <returns>A new instance of <paramref name="source"/> that only includes elements the elements repeated.</returns>
         </member>
         <member name="M:EmikBaseModules.Helper.CacheComponent``1(UnityEngine.MonoBehaviour,``0@)">
             <summary>
@@ -495,23 +559,22 @@
             <typeparam name="T">The component to find.</typeparam>
             <param name="monobehaviour"></param>
             <param name="t"></param>
-            <returns></returns>
+            <returns>The component to find.</returns>
         </member>
-        <member name="M:EmikBaseModules.Helper.ElementAtWrap``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
-            <summary>
-            Returns the element of an array, pretending that the array wraps around or is circular.
-            </summary>
-            <typeparam name="T">The type of the array.</typeparam>
-            <param name="source">The array itself.</param>
-            <param name="i">The index, which will wrap around if it's larger than the array.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EmikBaseModules.Helper.EnumAsArray``1">
+        <member name="M:EmikBaseModules.Helper.GetValues``1">
             <summary>
             Returns all elements of an enum as one array, in order.
             </summary>
             <typeparam name="T">The type of the enum.</typeparam>
             <returns>The enum as an array, ordered by smallest value to largest.</returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.Indistinct``1(``0[])">
+            <summary>
+            Filters an array into elements that exist multiple times in <paramref name="source"/>.
+            </summary>
+            <typeparam name="T">The type of <paramref name="source"/>.</typeparam>
+            <param name="source">The array to filter through.</param>
+            <returns>A new array containing only duplicated items of <paramref name="source"/>.</returns>
         </member>
         <member name="T:EmikBaseModules.ModuleScript">
             <summary>
@@ -596,9 +659,36 @@
             These values are set by the Twitch Plays mod using reflection.
             </value>
         </member>
-        <member name="M:EmikBaseModules.ModuleScript.Get``1(System.Boolean)">
+        <member name="M:EmikBaseModules.ModuleScript.Assign(System.Action,System.Action,System.Action,System.Action)">
             <summary>
-            Similar to GetComponent, however it caches the result in a dictionary, and will return the cached result if called again.
+            Assigns events specified into <see cref="T:KMBombModule"/> or <see cref="T:KMNeedyModule"/>.
+            </summary>
+            <remarks>
+            Each parameter must be set. This extension method simplifies all of the KMFramework events into Actions.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <param name="onActivate">Called when the bomb has been activated and the timer has started.</param>
+            <param name="onNeedyActivation">Called when the needy timer activates.</param>
+            <param name="onNeedyDeactivation">Called when the needy gets solved or the bomb explodes.</param>
+            <param name="onTimerExpired">Called when the timer of the needy runs out.</param>
+        </member>
+        <member name="M:EmikBaseModules.ModuleScript.Find``1(System.Func{UnityEngine.Component[]},System.Boolean)">
+            <summary>
+            Caches the result of a function call that returns a component array in a dictionary, and will return the cached result if called again. Use this to alleviate expensive function calls.
+            </summary>
+            <remarks>
+            <c>GetComponent()</c> and <c>GetComponents()</c> have their own implementations already, so use these functions instead for that purpose; 
+            <seealso cref="M:EmikBaseModules.ModuleScript.Get``1(System.Boolean)"/>, <seealso cref="M:EmikBaseModules.ModuleScript.GetAll``1(System.Boolean)"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="T">The type of component to search for.</typeparam>
+            <param name="func">The expensive function to call, only if it hasn't ever been called by this method on the current instance before.</param>
+            <param name="allowNull">Whether it should throw an exception if it sees null, if not it will return the default value. (Likely null)</param>
+            <returns>The component specified by <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ModuleScript.GetAll``1(System.Boolean)">
+            <summary>
+            Similar to <see cref="M:UnityEngine.Component.GetComponents``1"/>, however it caches the result in a dictionary, and will return the cached result if called again.
             </summary>
             <remarks>
             Use this in-place of public fields that refer to itself.
@@ -608,9 +698,9 @@
             <param name="allowNull">Whether it should throw an exception if it sees null, if not it will return the default value. (Likely null)</param>
             <returns>The component specified by <typeparamref name="T"/>.</returns>
         </member>
-        <member name="M:EmikBaseModules.ModuleScript.GetAll``1(System.Boolean)">
+        <member name="M:EmikBaseModules.ModuleScript.Get``1(System.Boolean)">
             <summary>
-            Similar to GetComponents, however it caches the result in a dictionary, and will return the cached result if called again.
+            Similar to <see cref="M:UnityEngine.Component.GetComponent``1"/>, however it caches the result in a dictionary, and will return the cached result if called again.
             </summary>
             <remarks>
             Use this in-place of public fields that refer to itself.
@@ -639,12 +729,31 @@
             <param name="message">The message to log.</param>
             <param name="logType">The type of logging. Different logging types have different icons within the editor.</param>
         </member>
+        <member name="M:EmikBaseModules.ModuleScript.Dump(System.Boolean)">
+            <summary>
+            Dumps all information that it can find of the module using reflection. This should only be used to debug.
+            </summary>
+            <param name="getVariables">Whether it should search recursively for the elements within the elements.</param>
+        </member>
         <member name="M:EmikBaseModules.ModuleScript.Log(System.Object,System.Object[])">
             <summary>
             Logs multiple entries, but formats it to be compliant with the Logfile Analyzer.
             </summary>
             <param name="message">The message to log.</param>
             <param name="args">All of the arguments to embed into <paramref name="message"/>.</param>
+        </member>
+        <member name="M:EmikBaseModules.ModuleScript.Dump(System.Boolean,System.Linq.Expressions.Expression{System.Func{System.Object}}[])">
+            <summary>
+            Dumps all information about the variables specified. Each element uses the syntax () => varName. This should only be used to debug.
+            </summary>
+            <param name="getVariables">Whether it should search recursively for the elements within the elements.</param>
+            <param name="logs">All of the variables to throughly log.</param>
+        </member>
+        <member name="M:EmikBaseModules.ModuleScript.Dump(System.Linq.Expressions.Expression{System.Func{System.Object}}[])">
+            <summary>
+            Dumps all information about the variables specified. Each element uses the syntax () => varName. This should only be used to debug.
+            </summary>
+            <param name="logs">All of the variables to throughly log.</param>
         </member>
         <member name="T:EmikBaseModules.PathManager">
             <summary>
@@ -658,10 +767,24 @@
             <param name="paths">The paths to combine with.</param>
             <returns>A single path consisting of the combined path of the array.</returns>
         </member>
-        <member name="M:EmikBaseModules.PathManager.ModInfoVersion(System.String)">
+        <member name="M:EmikBaseModules.PathManager.GetModInfoPath(System.String)">
+            <summary>
+            Retrieves the file path to the JSON file in the mod folder.
+            </summary>
+            <remarks>
+            It is very cruicial that we do not return ModInfo in any method, including private ones as the editor library does not have it, and therefore won't be able to run this library in the first place.
+            </remarks>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <param name="bundleFileName">The name of the bundle assembly.</param>
+            <returns>The version number of the mod.</returns>
+        </member>
+        <member name="M:EmikBaseModules.PathManager.GetModInfoVersion(System.String)">
             <summary>
             Retrieves the version number from the JSON file in the mod folder.
             </summary>
+            <remarks>
+            It is very cruicial that we do not return ModInfo in any method, including private ones as the editor library does not have it, and therefore won't be able to run this library in the first place.
+            </remarks>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
             <param name="bundleFileName">The name of the bundle assembly.</param>
             <returns>The version number of the mod.</returns>
@@ -1266,61 +1389,6 @@
             <value>
             All other properties in an array.
             </value>
-        </member>
-        <member name="T:EmikBaseModules.Unwrapper">
-            <summary>
-            A class for debugging. Provides many options that opt into reflection. This is not recommended to be used on runtime. Written by Emik.
-            </summary>
-        </member>
-        <member name="M:EmikBaseModules.Unwrapper.NameOfVariable(System.Linq.Expressions.Expression{System.Func{System.Object}})">
-            <summary>
-            Returns the name of a variable.
-            </summary>
-            <param name="e"></param>
-            <returns>The name of the variable, or if it cannot find it, <see cref="F:EmikBaseModules.Unwrapper.Unknown"/>.</returns>
-        </member>
-        <member name="M:EmikBaseModules.Unwrapper.Unwrap(System.Object,System.Boolean)">
-            <summary>
-            Unwraps any object, whether it be a class, list, tuple, or something else.
-            </summary>
-            <param name="item">The object to unwrap.</param>
-            <param name="getVariables">Whether it should search recursively inside the variable and yield return the elements inside <paramref name="item"/>.</param>
-            <returns>An IEnumerable of the <paramref name="item"/> unwrapped.</returns>
-        </member>
-        <member name="M:EmikBaseModules.Unwrapper.Dump(EmikBaseModules.ModuleScript,System.Boolean,System.Linq.Expressions.Expression{System.Func{System.Object}}[])">
-            <summary>
-            Dumps all information about the variables specified. Each element uses the syntax () => varName. This should only be used to debug.
-            </summary>
-            <param name="module">The instance of the module, so that it can log under its name.</param>
-            <param name="getVariables">Whether it should search recursively for the elements within the elements.</param>
-            <param name="logs">All of the variables to throughly log.</param>
-        </member>
-        <member name="M:EmikBaseModules.Unwrapper.Dump(EmikBaseModules.ModuleScript,System.Boolean)">
-            <summary>
-            Dumps all information that it can find of the module using reflection. This should only be used to debug.
-            </summary>
-            <param name="module">The instance of the module, so that it can log under its name.</param>
-            <param name="getVariables">Whether it should search recursively for the elements within the elements.</param>
-        </member>
-        <member name="M:EmikBaseModules.Unwrapper.Unwrap(System.Object)">
-            <summary>
-            Unwraps any object, whether it be a class, list, tuple, or something else.
-            </summary>
-            <param name="item">The object to unwrap.</param>
-            <returns>An IEnumerable of the <paramref name="item"/> unwrapped.</returns>
-        </member>
-        <member name="M:EmikBaseModules.Unwrapper.Dump(EmikBaseModules.ModuleScript,System.Linq.Expressions.Expression{System.Func{System.Object}}[])">
-            <summary>
-            Dumps all information about the variables specified. Each element uses the syntax () => varName. This should only be used to debug.
-            </summary>
-            <param name="module">The instance of the module, so that it can log under its name.</param>
-            <param name="logs">All of the variables to throughly log.</param>
-        </member>
-        <member name="M:EmikBaseModules.Unwrapper.Dump(EmikBaseModules.ModuleScript)">
-            <summary>
-            Dumps all information that it can find of the module using reflection. This should only be used to debug.
-            </summary>
-            <param name="module">The instance of the module, so that it can log under its name.</param>
         </member>
         <member name="T:EmikBaseModules.Work">
             <summary>

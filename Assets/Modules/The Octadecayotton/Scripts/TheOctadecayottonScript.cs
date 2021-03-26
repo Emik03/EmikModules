@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TheOctadecayotton;
@@ -16,6 +18,8 @@ public class TheOctadecayottonScript : MonoBehaviour
 
     [Range(3, 12)]
     public byte DimensionOverride;
+    [Range(0, 5)]
+    public byte RotationOverride;
     public string ForceRotation, ForceStartingSphere;
 
     internal bool isUsingBounce, stretchToFit, colorAssist;
@@ -62,19 +66,19 @@ public class TheOctadecayottonScript : MonoBehaviour
         {
             yield return null;
             split = split.Skip(1).ToArray();
-            int n;
+            byte n;
 
             if (Interact.Dimension != 0)
                 yield return "sendtochaterror Since the module has been activated at least once, this value can no longer change.";
 
             else if (split.Length != 1)
-                yield return "sendtochaterror " + (split.Length == 0 ? "No arguments are specified. Expected: 0-100." : "Too many arguments are specified. Expected: 0-100.");
+                yield return "sendtochaterror " + (split.Length == 0 ? "No arguments are specified. Expected: 0-5." : "Too many arguments are specified. Expected: 0-100.");
 
-            else if (!int.TryParse(split[0], out n))
+            else if (!byte.TryParse(split[0], out n))
                 yield return "sendtochaterror The argument must be a number.";
 
-            else if (n < 0 || n > 100)
-                yield return "sendtochaterror The number of rotations specified is not supported.";
+            else if (!ZenModeActive && n > 5)
+                yield return "sendtochaterror You cannot exceed 5 rotations in normal/time mode, what are you, a lunatic?";
 
             else if (!ZenModeActive && n < 3 && !Application.isEditor)
                 yield return "sendtochaterror You cannot change the module to be lower than 3 rotations on Normal/Time mode.";
@@ -161,7 +165,7 @@ public class TheOctadecayottonScript : MonoBehaviour
         {
             yield return null;
             split = split.Skip(1).ToArray();
-            int n;
+            int p;
 
             if (!Interact.isActive)
                 yield return "sendtochaterror The module isn't active. Use the \"succumb\" command.";
@@ -172,7 +176,7 @@ public class TheOctadecayottonScript : MonoBehaviour
             else if (split.Length == 0)
                 yield return "sendtochaterror Digits are expected to be provided as well. Expected: 0 to " + (Interact.Dimension - 1) + ".";
 
-            else if (split.Any(s => !int.TryParse(s, out n)))
+            else if (split.Any(s => !int.TryParse(s, out p)))
                 yield return "sendtochaterror At least one of the arguments are not digits. Expected: 0 to " + (Interact.Dimension - 1) + ".";
 
             else if (split.Any(s => int.Parse(s) >= Interact.Dimension))
@@ -181,9 +185,21 @@ public class TheOctadecayottonScript : MonoBehaviour
             else
             {
                 int[] times = split.Select(s => int.Parse(s)).ToArray();
+
+                if (times.Length == Interact.Dimension)
+                {
+                    if (Interact.startingSphere.Select((a, n) => a.Value != Interact.AnchorSphere.ElementAt(n).Value).All(b => !b))
+                    {
+                        yield return "solve";
+                        yield return "awardpointsonsolve " + AwardPoints();
+                    }    
+
+                    else
+                        yield return "strike";
+                }
                 for (int i = 0; i < times.Length; i++)
                 {
-                    while (Interact.GetLastDigitOfTimer != times[i])
+                    while (Interact.GetLastDigitOfTimer != times[i] || (Interact.Dimension == 10 && Interact.GetPreciseLastDigitOfTimer >= 9.75f))
                         yield return true;
                     SubModuleSelectable.OnInteract();
                 }
@@ -219,5 +235,11 @@ public class TheOctadecayottonScript : MonoBehaviour
 
         while (!IsSolved)
             yield return true;
+    }
+
+    private int AwardPoints()
+    {
+        var dimPoints = new Dictionary<int, int>() { { 3, 13 }, { 4, 22 }, { 5, 28 }, { 6, 35 }, { 7, 50 }, { 8, 65 }, { 9, 80 }, { 10, 110 }, { 11, 130 }, { 12, 150 } };
+        return (int)Math.Floor(dimPoints[Interact.Dimension] * ((1 / 4f) + (Interact.Rotations.Length / 4f))) - dimPoints[9];
     }
 }
