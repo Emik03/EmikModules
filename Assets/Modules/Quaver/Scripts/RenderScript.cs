@@ -33,7 +33,7 @@ public class RenderScript : MonoBehaviour
 
         SongProgress.localScale = new Vector3(SongProgress.localScale.x + (songProgress - SongProgress.localScale.x) / (float)Math.Pow(easeIntensity, 2), 1, 1);
         RatingProgress.localScale = new Vector3(RatingProgress.localScale.x + (Math.Min(ratingProgress, 1) - RatingProgress.localScale.x) / (float)Math.Pow(easeIntensity, 2), 1, 1);
-        
+
         destination = (-3.35f * Quaver.init.select.ui) + 2.5f;
         position = UISelect.localPosition.z + ((destination - UISelect.localPosition.z) / easeIntensity);
         UISelect.localPosition = new Vector3(-4.35f, 0.0002f, position + ((float)Math.Sin(uiSelectPositionOffset += 0.05f) / 20));

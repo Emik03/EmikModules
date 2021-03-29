@@ -116,7 +116,6 @@ namespace PalindromesModule
                     //Debug.Log("Second comment. l = " + l.Join(", ") + " i = " + i.ToString());
                 }
             }
-
             else if (i < 5)
             {
                 var m = char.GetNumericValue(d[i]) + 9;
@@ -156,7 +155,6 @@ namespace PalindromesModule
 
                         l[2] = Assign(l[2], i - 1, (int)char.GetNumericValue(l[2][i - 1]) + 1);
                     }
-
                     else
                     {
                         // Normal case: increment and adjust

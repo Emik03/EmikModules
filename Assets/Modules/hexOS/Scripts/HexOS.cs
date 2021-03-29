@@ -324,7 +324,6 @@ public class HexOS : MonoBehaviour
                     // This solves the module.
                     StartCoroutine(HexSolve());
                 }
-
                 else if (_user == _octAnswer && _octOS)
                 {
                     // This solves the module in hard mode.
@@ -349,14 +348,13 @@ public class HexOS : MonoBehaviour
                     {
                         Audio.PlaySoundAtTransform(Sounds.Hex.Strike, Module.transform);
                         Status.text = "Boot Manager\nError!";
-                        
+
                         // Caps at 1, 20+ are treated the same as exactly 20 strikes
                         _hasPlayedSequence = false;
                         _hexOSStrikes = Math.Min(++_hexOSStrikes, 20);
 
                         Module.HandleStrike();
                     }
-                    
                     else
                         StartCoroutine(OctStrike());
                 }
@@ -492,7 +490,7 @@ public class HexOS : MonoBehaviour
 
         VideoOct.transform.localPosition = new Vector3(0, 0.84f, 0);
         VideoRenderer.material.color = new Color32(255, 255, 255, 0);
-        
+
         // Long animation.
         if (!_fastStrike)
         {
@@ -632,7 +630,7 @@ public class HexOS : MonoBehaviour
         // Cache results for operations in use for later calculations.
         float delay = Math.Min(_delayPerBeat + (_hexOSStrikes / 20), 1);
         bool hihat = delay > 0.2f;
-        
+
         // Display the colors at the same time as the rhythms, which have different timings.
         StartCoroutine(HexDisplayColors(seqs));
 
@@ -736,7 +734,7 @@ public class HexOS : MonoBehaviour
 
         // Display the colors at the same time as the rhythms, which have different timings.
         StartCoroutine(OctDisplayColors(seqs));
-        
+
         for (byte i = 0; i < HexOSStrings.OctNotes[_octRhythms[_press % 2]].Length - 1; i += 0)
         {
             // Stop routine if octOS is currently playing a video.
@@ -773,7 +771,7 @@ public class HexOS : MonoBehaviour
         {
             Ciphers[j].material.color = new Color32(0, 0, 0, 255);
             Ciphers[j].transform.localPosition = new Vector3(Ciphers[j].transform.localPosition.x, -2.1f, Ciphers[j].transform.localPosition.z);
-        }   
+        }
 
         // (60 / 1140) * 12 (190bpm * 6beat * 12beat)
         //yield return new WaitForSecondsRealtime(0.63157894736f);
@@ -1238,13 +1236,15 @@ public class HexOS : MonoBehaviour
 
                 case '3': operand = (byte)(4 - Math.Max(bitSum[0], bitSum[1])); break; // NOR
 
-                case '4': operand = bitSum[0] <= 1 && bitSum[1] <= 1 ? (byte)Math.Max(bitSum[0], bitSum[1]) : // XAND
-                                    bitSum[0] >= 3 && bitSum[1] >= 3 ? (byte)Math.Min(bitSum[0], bitSum[1]) : (byte)2; break;
+                case '4':
+                    operand = bitSum[0] <= 1 && bitSum[1] <= 1 ? (byte)Math.Max(bitSum[0], bitSum[1]) : // XAND
+                              bitSum[0] >= 3 && bitSum[1] >= 3 ? (byte)Math.Min(bitSum[0], bitSum[1]) : (byte)2; break;
 
-                case '5': operand = bitSum[0] <= 1 && bitSum[1] <= 1 ? (byte)Math.Max(bitSum[0], bitSum[1]) : // XOR
-                                    bitSum[0] >= 3 && bitSum[1] >= 3 ? (byte)(4 - Math.Min(bitSum[0], bitSum[1])) :
-                                    bitSum[0] <= 1 && bitSum[1] >= 3 ? (byte)Math.Min(4 - bitSum[0], bitSum[1]) :
-                                    bitSum[0] >= 3 && bitSum[1] <= 1 ? (byte)Math.Min(bitSum[0], 4 - bitSum[1]) : (byte)2; break;
+                case '5':
+                    operand = bitSum[0] <= 1 && bitSum[1] <= 1 ? (byte)Math.Max(bitSum[0], bitSum[1]) : // XOR
+                              bitSum[0] >= 3 && bitSum[1] >= 3 ? (byte)(4 - Math.Min(bitSum[0], bitSum[1])) :
+                              bitSum[0] <= 1 && bitSum[1] >= 3 ? (byte)Math.Min(4 - bitSum[0], bitSum[1]) :
+                              bitSum[0] >= 3 && bitSum[1] <= 1 ? (byte)Math.Min(bitSum[0], 4 - bitSum[1]) : (byte)2; break;
 
                 case '6': operand = (byte)Mathf.Clamp(bitSum[0] - bitSum[1] + 2, 0, 4); break; // COMPARISON
 
@@ -1252,10 +1252,11 @@ public class HexOS : MonoBehaviour
 
                 case '8': operand = (bitSum[0] % 2 == 1 && bitSum[1] == 2) || (bitSum[0] % 4 == 0 && bitSum[1] % 4 != 0) ? (byte)bitSum[0] : (byte)bitSum[1]; break; // A=2 THEN B
 
-                case '9': operand = bitSum[0] % 4 == 0 && bitSum[1] % 4 == 0 && bitSum[0] == bitSum[1] ? (byte)4 : // NA THEN NB
-                                    (bitSum[0] == 1 && bitSum[1] <= 1) || (bitSum[0] == 3 && bitSum[1] >= 3) ? (byte)3 :
-                                    bitSum[0] == 2 ? (byte)2 :
-                                    (bitSum[0] == 1 && bitSum[1] >= 2) || (bitSum[0] == 3 && bitSum[1] <= 2) ? (byte)1 : (byte)0; break;
+                case '9':
+                    operand = bitSum[0] % 4 == 0 && bitSum[1] % 4 == 0 && bitSum[0] == bitSum[1] ? (byte)4 : // NA THEN NB
+                              (bitSum[0] == 1 && bitSum[1] <= 1) || (bitSum[0] == 3 && bitSum[1] >= 3) ? (byte)3 :
+                              bitSum[0] == 2 ? (byte)2 :
+                              (bitSum[0] == 1 && bitSum[1] >= 2) || (bitSum[0] == 3 && bitSum[1] <= 2) ? (byte)1 : (byte)0; break;
 
                 case '+': operand = (byte)((bitSum[0] + bitSum[1]) % 5); break; // SUM
 
@@ -1272,7 +1273,7 @@ public class HexOS : MonoBehaviour
                         if (bitSum[0] / 2 != bitSum[1] / 2)
                             operand -= 2;
                     }
-                    break; 
+                    break;
             }
 
             for (byte j = 0; j < bitSum.Length - 1; j++) // Shift left
@@ -1307,8 +1308,8 @@ public class HexOS : MonoBehaviour
                         }
             }
 
-            // If it has found a number to override the operand with, this is where it will end up going.
-            foundNumber:
+        // If it has found a number to override the operand with, this is where it will end up going.
+        foundNumber:
 
             bitSum[3] = (sbyte)operand;
 
@@ -1389,7 +1390,6 @@ public class HexOS : MonoBehaviour
             Debug.LogFormat("[hexOS #{0}]: Leftovers > {1}", _moduleId, leftover);
             Debug.LogFormat("[hexOS #{0}]: Modified sequence > {1}", _moduleId, newSeq);
         }
-
         else
         {
             Debug.LogFormat("[hexOS #{0}]: No leftovers. Continue as normal.", _moduleId);
@@ -1628,14 +1628,13 @@ public class HexOS : MonoBehaviour
                 // Add leading 0's.
                 while (user[1].Length < 3)
                     user[1] = "0" + user[1];
-                 
+
                 // Will quickly determine if the module is about to solve or strike.
                 if (_octOS && user[1] == _octAnswer)
                 {
                     yield return "awardpointsonsolve 36";
                     yield return "solve";
                 }
-
                 else if (!_octOS && user[1] == _answer)
                     yield return "solve";
 

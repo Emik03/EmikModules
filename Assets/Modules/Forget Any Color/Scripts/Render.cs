@@ -209,7 +209,6 @@ namespace ForgetAnyColor
                     ease = 0;
                 }
             }
-
             else
                 return !animating && init.currentStage < init.finalStage && init.currentStage / Init.modulesPerStage < init.fakeStage + (FAC.Info.GetSolvedModuleNames().Where(m => !Arrays.Ignore.Contains(m)).Count() / Init.modulesPerStage);
 

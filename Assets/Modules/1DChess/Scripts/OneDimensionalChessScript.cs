@@ -231,7 +231,6 @@ public partial class OneDimensionalChessScript : ModuleScript
                 ChangeText("Solved!", message);
             }
         }
-
         else
         {
             // This allows the player to make a move again.

@@ -18,7 +18,7 @@
   "HowToUse5": "Alter the delay between each beat played. Cannot exceed 1. (default: 0.07)",
 
   "hexOS -> CustomSolveQuote": "",
-  "HowToUse6": "Change the display on the module when it is solved. If left blank, it will pull its default quotes. (default: literally nothing)",
+  "HowToUse6": "Change the display on the module when it is solved. If left blank, it will pull its default quotes. (default: empty)",
 
 
 

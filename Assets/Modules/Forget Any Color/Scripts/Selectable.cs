@@ -57,7 +57,7 @@ namespace ForgetAnyColor
                             else
                             {
                                 Debug.LogFormat("[Forget Any Color #{0}]: {1} was incorrectly pushed during stage {2}.", init.moduleId, index == 1 ? "Right" : "Left", stagesCompleted + 1);
-                                
+
                                 FAC.Audio.PlaySoundAtTransform(Sounds.Fac.Strike, FAC.Selectables[index].transform);
                                 strike = true;
                                 FAC.Module.HandleStrike();
@@ -72,7 +72,6 @@ namespace ForgetAnyColor
                             FAC.StartCoroutine(render.SolveAnimation());
                             break;
                         }
-
                         else if (!render.turnKey)
                         {
                             if (!hasInteracted)

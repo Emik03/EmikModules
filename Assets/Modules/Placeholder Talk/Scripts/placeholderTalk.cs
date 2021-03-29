@@ -80,11 +80,11 @@ public class placeholderTalk : MonoBehaviour
             //adjust sine wave here
             float amplified = 0.002f;
             byte frequency = 4;
-            
+
             //sine wave
             if (_animate)
                 anchor[i].transform.localPosition = new Vector3(anchor[i].transform.localPosition.x, anchor[i].transform.localPosition.y, Mathf.Sin(frequency * Time.time + i * Mathf.PI / 2) * amplified - 0.062f);
-            
+
             //stores all positions
             float x = anchor[i].transform.position.x;
             float y = anchor[i].transform.position.y;
@@ -101,7 +101,6 @@ public class placeholderTalk : MonoBehaviour
                     txt[i].color = new Color32(0, 0, 0, (byte)(145 - _yAnchor));
                     screenText.color = new Color32(255, 216, 0, (byte)(145 - _yAnchor));
                 }
-
                 else
                 {
                     //sets all fonts to be invisible as the screen scales accordingly
@@ -127,7 +126,7 @@ public class placeholderTalk : MonoBehaviour
             btn[i].transform.position = new Vector3(x, y, z);
             screen.localScale = new Vector3(0.12f, 0.02f, _zScale);
         }
-        
+
         if (_isRandomising && !_debug)
         {
             //frame counter, a cycle is 3 frames
@@ -185,7 +184,6 @@ public class placeholderTalk : MonoBehaviour
             _questionOffsetId = (byte)Random.Range(0, firstPhrase.Length);
             _questionId = (byte)Random.Range(0, _secondPhrase.Length);
         }
-
         else
         {
             _questionOffsetId = 15;
@@ -226,7 +224,6 @@ public class placeholderTalk : MonoBehaviour
                 //render the text
                 RenderText();
             }
-
             else
             {
                 //empty all text
@@ -324,7 +321,6 @@ public class placeholderTalk : MonoBehaviour
                 renderedText[startPos] = '§';
                 startPos += searchRange;
             }
-
             else
                 startPos--;
         }
@@ -484,7 +480,7 @@ public class placeholderTalk : MonoBehaviour
                 break;
         }
 
-        switch(currentOrdinal)
+        switch (currentOrdinal)
         {
             case "":
                 _answerOffsetId--;
@@ -530,7 +526,7 @@ public class placeholderTalk : MonoBehaviour
             case "AN ANSWER":
                 _answerOffsetId -= 7;
                 Debug.LogFormat("[Placeholder Talk #{0}] First Phrase: {1} = {2} + (-7) = {3}", _moduleId, currentOrdinal, _answerOffsetId + 7, _answerOffsetId);
-                break; 
+                break;
         }
 
         //calculate answerId (second section of manual, second variable)
@@ -912,9 +908,9 @@ public class placeholderTalk : MonoBehaviour
             //160
             "WAIT, IS THIS A BACKSLASH",
             "WAIT COMMA IS THIS A BACK SLASH",
-			"hello guys welcome back to another minecraft video and in todays video we will be talking about my brand new enderman holding a bacon statue, its furious, its hot and its powerful guys. its the definition of engineering at its finest, now lets enter from the rear of the building.",
+            "hello guys welcome back to another minecraft video and in todays video we will be talking about my brand new enderman holding a bacon statue, its furious, its hot and its powerful guys. its the definition of engineering at its finest, now lets enter from the rear of the building.",
             "o m g guys we found a creeper in the downstairs bathroom lemme get my diamond hoe from the inventory and shit i just died. thank you so much for watching and have a great rest of your day, make sure to like, comment and subscribe and eat that bell icon like its enderman bacon\n\nFOOL"
-            
+
     };
 
     /// <summary>
@@ -957,7 +953,7 @@ public class placeholderTalk : MonoBehaviour
                 yield return "sendtochaterror Too many buttons pressed! Only one can be pressed at any time.";
 
             //if command has an invalid parameter
-            else if(!IsValid(buttonPressed.ElementAt(1)))
+            else if (!IsValid(buttonPressed.ElementAt(1)))
                 yield return "sendtochaterror Invalid number! Only buttons 1-4 can be pushed.";
 
             //if command is valid, push button accordingly

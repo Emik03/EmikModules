@@ -2,9 +2,9 @@
 {
     public enum PieceType
     {
-        Bishop, 
-        King, 
-        Knight, 
+        Bishop,
+        King,
+        Knight,
         Pawn,
         Queen,
         Rook

@@ -50,7 +50,6 @@ public class ForgetAnyColorTPScript : MonoBehaviour
             yield return null;
             render.Colorblind(render.colorblind = !render.colorblind);
         }
-
         else if (Regex.IsMatch(buttonPressed[0], @"^\s*key\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
         {
             yield return null;

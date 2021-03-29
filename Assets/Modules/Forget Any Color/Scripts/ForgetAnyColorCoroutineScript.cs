@@ -30,7 +30,7 @@ public class ForgetAnyColorCoroutineScript : MonoBehaviour
     private void FixedUpdate()
     {
         const int intensity = 5;
-        float x = Mathf.Sin(Time.time) * intensity, 
+        float x = Mathf.Sin(Time.time) * intensity,
               z = Mathf.Cos(Time.time) * intensity;
         FAC.Gear.localRotation = Quaternion.Euler(x, 0, z);
 
@@ -51,7 +51,6 @@ public class ForgetAnyColorCoroutineScript : MonoBehaviour
             init.stage++;
             StartNewStage();
         }
-
         else if (amountOfSolved != amountOfSolves)
         {
             amountOfSolved = amountOfSolves;
@@ -121,7 +120,6 @@ public class ForgetAnyColorCoroutineScript : MonoBehaviour
                 calculate.modifiedSequences.Count > 0 ? "The remaining sequence is " : "There is no sequence. Turn the key",
                 string.Join(", ", calculate.modifiedSequences.Select(x => x ? "Right" : "Left").ToArray()));
         }
-
         else
             calculate.Current();
 

@@ -49,8 +49,8 @@ public class Palindromes : MonoBehaviour
                     goto generated;
         }
 
-        //go here when the module has generated a valid number
-        generated:
+    //go here when the module has generated a valid number
+    generated:
         while (Text[0].text.Length < 9)
             Text[0].text = Text[0].text.Insert(0, "0");
 
@@ -119,7 +119,7 @@ public class Palindromes : MonoBehaviour
             default: x = "000000000"; y = "00000000"; z = "0000000"; break;
         }
 
-        render:
+    render:
         bool isSubmitting = true;
         for (byte i = 0; i < vs.Length; i++)
         {
@@ -131,7 +131,7 @@ public class Palindromes : MonoBehaviour
             }
 
             Text[1].text += "  =  " + vs[i];
-            
+
             if (isSubmitting && vs[i].Length < 9 - i)
             {
                 Text[1].text += Text[2].text;

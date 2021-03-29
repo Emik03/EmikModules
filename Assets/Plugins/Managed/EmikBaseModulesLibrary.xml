@@ -4,178 +4,1216 @@
         <name>EmikBaseModulesLibrary</name>
     </assembly>
     <members>
-        <member name="T:EmikBaseModules.ColorHelper">
+        <member name="T:EmikBaseModules.ArrayHelper">
             <summary>
-            Allows you to modify colors' individual RGBA components relatively and absolutely. Written by Emik.
+            Extension methods surrounding <see cref="T:System.Array"/> static methods to make code a bit shorter. Written by Emik.
             </summary>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.Replace(UnityEngine.Color32,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+        <member name="M:EmikBaseModules.ArrayHelper.AsReadOnly``1(``0[])">
             <summary>
-            Duplicates the color, and replaces the RGBA components only if they are specified.
+            Returns a read-only wrapper for the specified array.
             </summary>
-            <param name="color">The color to duplicate and modify.</param>
-            <param name="r">The red component.</param>
-            <param name="g">The blue component.</param>
-            <param name="b">The green component.</param>
-            <param name="a">The alpha component; opacity.</param>
-            <returns>A new instance of the color, with the arguments replacing the values.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.asreadonly?view=net-5.0"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based array to wrap in a read-only <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> wrapper.</param>
+            <returns>A read-only <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> wrapper for the specified array.</returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.Replace(UnityEngine.Color32,System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte})">
+        <member name="M:EmikBaseModules.ArrayHelper.BinarySearch(System.Array,System.Object)">
             <summary>
-            Duplicates the color, and replaces the RGBA components only if they are specified.
+            Searches an entire one-dimensional sorted array for a specific element, using the <see cref="T:System.IComparable"/> interface implemented by each element of the array and by the specified object.
             </summary>
-            <param name="color">The color to duplicate and modify.</param>
-            <param name="r">The red component.</param>
-            <param name="g">The blue component.</param>
-            <param name="b">The green component.</param>
-            <param name="a">The alpha component; opacity.</param>
-            <returns>A new instance of the color, with the arguments replacing the values.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.binarysearch?view=net-5.0#System_Array_BinarySearch_System_Array_System_Object_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="array">The sorted one-dimensional Array to search.</param>
+            <param name="value">The object to search for.</param>
+            <returns>The index of the specified <paramref name="value"/> in the specified <paramref name="array"/>, if <paramref name="value"/> is found; otherwise, a negative number. If <paramref name="value"/> is not found and <paramref name="value"/> is less than one or more elements in <paramref name="array"/>, the negative number returned is the bitwise complement of the index of the first element that is larger than <paramref name="value"/>. If <paramref name="value"/> is not found and <paramref name="value"/> is greater than all elements in <paramref name="array"/>, the negative number returned is the bitwise complement of (the index of the last element plus 1). If this method is called with a non-sorted <paramref name="array"/>, the return <paramref name="value"/> can be incorrect and a negative number could be returned, even if <paramref name="value"/> is present in <paramref name="array"/>.</returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.Replace(UnityEngine.Color,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+        <member name="M:EmikBaseModules.ArrayHelper.BinarySearch(System.Array,System.Object,System.Collections.IComparer)">
             <summary>
-            Duplicates the color, and replaces the RGBA components only if they are specified.
+            Searches an entire one-dimensional sorted array for a value using the specified <see cref="T:System.Collections.IComparer"/> interface.
             </summary>
-            <param name="color">The color to duplicate and modify.</param>
-            <param name="r">The red component.</param>
-            <param name="g">The blue component.</param>
-            <param name="b">The green component.</param>
-            <param name="a">The alpha component; opacity.</param>
-            <returns>A new instance of the color, with the arguments replacing the values.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.binarysearch?view=net-5.0#System_Array_BinarySearch_System_Array_System_Object_System_Collections_IComparer_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="array">The sorted one-dimensional <see cref="T:System.Array"/> to search.</param>
+            <param name="value">The object to search for.</param>
+            <param name="comparer">The <see cref="T:System.Collections.IComparer"/> implementation to use when comparing elements.</param>
+            <returns>The index of the specified <paramref name="value"/> in the specified <paramref name="array"/>, if <paramref name="value"/> is found; otherwise, a negative number. If <paramref name="value"/> is not found and <paramref name="value"/> is less than one or more elements in <paramref name="array"/>, the negative number returned is the bitwise complement of the index of the first element that is larger than <paramref name="value"/>. If <paramref name="value"/> is not found and <paramref name="value"/> is greater than all elements in <paramref name="array"/>, the negative number returned is the bitwise complement of (the index of the last element plus 1). If this method is called with a non-sorted <paramref name="array"/>, the return <paramref name="value"/> can be incorrect and a negative number could be returned, even if <paramref name="value"/> is present in <paramref name="array"/>.</returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.Replace(UnityEngine.Color,System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte})">
+        <member name="M:EmikBaseModules.ArrayHelper.BinarySearch(System.Array,System.Int32,System.Int32,System.Object)">
             <summary>
-            Duplicates the color, and replaces the RGBA components only if they are specified.
+            Searches a range of elements in a one-dimensional sorted array for a value, using the <see cref="T:System.IComparable"/> interface implemented by each element of the array and by the specified value.
             </summary>
-            <param name="color">The color to duplicate and modify.</param>
-            <param name="r">The red component.</param>
-            <param name="g">The blue component.</param>
-            <param name="b">The green component.</param>
-            <param name="a">The alpha component; opacity.</param>
-            <returns>A new instance of the color, with the arguments replacing the values.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.binarysearch?view=net-5.0#System_Array_BinarySearch_System_Array_System_Int32_System_Int32_System_Object_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="array">The sorted one-dimensional <see cref="T:System.Array"/> to search.</param>
+            <param name="index">The starting index of the range to search.</param>
+            <param name="length">The length of the range to search.</param>
+            <param name="value">The object to search for.</param>
+            <returns>The index of the specified <paramref name="value"/> in the specified <paramref name="array"/>, if <paramref name="value"/> is found; otherwise, a negative number. If <paramref name="value"/> is not found and <paramref name="value"/> is less than one or more elements in <paramref name="array"/>, the negative number returned is the bitwise complement of the index of the first element that is larger than <paramref name="value"/>. If <paramref name="value"/> is not found and <paramref name="value"/> is greater than all elements in <paramref name="array"/>, the negative number returned is the bitwise complement of (the index of the last element plus 1). If this method is called with a non-sorted <paramref name="array"/>, the return <paramref name="value"/> can be incorrect and a negative number could be returned, even if <paramref name="value"/> is present in <paramref name="array"/>.</returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.Add(UnityEngine.Color32,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:EmikBaseModules.ArrayHelper.BinarySearch(System.Array,System.Int32,System.Int32,System.Object,System.Collections.IComparer)">
             <summary>
-            Duplicates the color, and adds the RGBA components only if they are specified.
+            Searches a range of elements in a one-dimensional sorted array for a value, using the specified <see cref="T:System.Collections.IComparer"/> interface.
             </summary>
-            <remarks>
-            You can also use negative numbers to subtract. As this is <see cref="T:UnityEngine.Color32"/>, be careful of byte underflows/overflows.
-            </remarks>
-            <param name="color">The color to duplicate and modify.</param>
-            <param name="r">The red component.</param>
-            <param name="g">The blue component.</param>
-            <param name="b">The green component.</param>
-            <param name="a">The alpha component; opacity.</param>
-            <returns>A new instance of the color, with the arguments replacing the values.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.binarysearch?view=net-5.0#System_Array_BinarySearch_System_Array_System_Int32_System_Int32_System_Object_System_Collections_IComparer_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="array">The sorted one-dimensional <see cref="T:System.Array"/> to search.</param>
+            <param name="index">The starting index of the range to search.</param>
+            <param name="length">The length of the range to search.</param>
+            <param name="value">The object to search for.</param>
+            <param name="comparer">The <see cref="T:System.Collections.IComparer"/> implementation to use when comparing elements or <c>null</c> to use the <see cref="T:System.IComparable"/> implementation of each element..</param>
+            <returns>The index of the specified <paramref name="value"/> in the specified <paramref name="array"/>, if <paramref name="value"/> is found; otherwise, a negative number. If <paramref name="value"/> is not found and <paramref name="value"/> is less than one or more elements in <paramref name="array"/>, the negative number returned is the bitwise complement of the index of the first element that is larger than <paramref name="value"/>. If <paramref name="value"/> is not found and <paramref name="value"/> is greater than all elements in <paramref name="array"/>, the negative number returned is the bitwise complement of (the index of the last element plus 1). If this method is called with a non-sorted <paramref name="array"/>, the return <paramref name="value"/> can be incorrect and a negative number could be returned, even if <paramref name="value"/> is present in <paramref name="array"/>.</returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.Add(UnityEngine.Color32,System.Byte,System.Byte,System.Byte,System.Byte)">
+        <member name="M:EmikBaseModules.ArrayHelper.BinarySearch``1(``0[],``0)">
             <summary>
-            Duplicates the color, and adds the RGBA components only if they are specified.
+            Searches an entire one-dimensional sorted array for a specific element, using the <see cref="T:System.IComparable`1"/> generic interface implemented by each element of the <see cref="T:System.Array"/> and by the specified object.
             </summary>
-            <remarks>
-            You can also use negative numbers to subtract. As this is <see cref="T:UnityEngine.Color32"/>, be careful of byte underflows/overflows.
-            </remarks>
-            <param name="color">The color to duplicate and modify.</param>
-            <param name="r">The red component.</param>
-            <param name="g">The blue component.</param>
-            <param name="b">The green component.</param>
-            <param name="a">The alpha component; opacity.</param>
-            <returns>A new instance of the color, with the arguments replacing the values.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.binarysearch?view=net-5.0#System_Array_BinarySearch__1___0_____0_"/></remarks>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The sorted one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="value">The object to search for.</param>
+            <returns>The index of the specified <paramref name="value"/> in the specified <paramref name="array"/>, if <paramref name="value"/> is found; otherwise, a negative number. If <paramref name="value"/> is not found and <paramref name="value"/> is less than one or more elements in <paramref name="array"/>, the negative number returned is the bitwise complement of the index of the first element that is larger than <paramref name="value"/>. If <paramref name="value"/> is not found and <paramref name="value"/> is greater than all elements in <paramref name="array"/>, the negative number returned is the bitwise complement of (the index of the last element plus 1). If this method is called with a non-sorted <paramref name="array"/>, the return <paramref name="value"/> can be incorrect and a negative number could be returned, even if <paramref name="value"/> is present in <paramref name="array"/>.</returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.Add(UnityEngine.Color,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:EmikBaseModules.ArrayHelper.BinarySearch``1(``0[],``0,System.Collections.Generic.IComparer{``0})">
             <summary>
-            Duplicates the color, and adds the RGBA components only if they are specified.
+            Searches an entire one-dimensional sorted array for a value using the specified <see cref="T:System.Collections.Generic.IComparer`1"/> generic interface.
             </summary>
-            <remarks>
-            You can also use negative numbers to subtract.
-            </remarks>
-            <param name="color">The color to duplicate and modify.</param>
-            <param name="r">The red component.</param>
-            <param name="g">The blue component.</param>
-            <param name="b">The green component.</param>
-            <param name="a">The alpha component; opacity.</param>
-            <returns>A new instance of the color, with the arguments replacing the values.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.binarysearch?view=net-5.0#System_Array_BinarySearch__1___0_____0_System_Collections_Generic_IComparer___0__"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The sorted one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="value">The object to search for.</param>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IComparer`1"/> implementation to use when comparing elements or <c>null</c> to use the <see cref="T:System.IComparable`1"/> implementation of each element.</param>
+            <returns>The index of the specified <paramref name="value"/> in the specified <paramref name="array"/>, if <paramref name="value"/> is found; otherwise, a negative number. If <paramref name="value"/> is not found and <paramref name="value"/> is less than one or more elements in <paramref name="array"/>, the negative number returned is the bitwise complement of the index of the first element that is larger than <paramref name="value"/>. If <paramref name="value"/> is not found and <paramref name="value"/> is greater than all elements in <paramref name="array"/>, the negative number returned is the bitwise complement of (the index of the last element plus 1). If this method is called with a non-sorted <paramref name="array"/>, the return <paramref name="value"/> can be incorrect and a negative number could be returned, even if <paramref name="value"/> is present in <paramref name="array"/>.</returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.Add(UnityEngine.Color,System.Byte,System.Byte,System.Byte,System.Byte)">
+        <member name="M:EmikBaseModules.ArrayHelper.BinarySearch``1(``0[],System.Int32,System.Int32,``0)">
             <summary>
-            Duplicates the color, and adds the RGBA components only if they are specified.
+            Searches a range of elements in a one-dimensional sorted array for a value, using the <see cref="T:System.IComparable`1"/> generic interface implemented by each element of the <see cref="T:System.Array"/> and by the specified value.
             </summary>
-            <remarks>
-            You can also use negative numbers to subtract.
-            </remarks>
-            <param name="color">The color to duplicate and modify.</param>
-            <param name="r">The red component.</param>
-            <param name="g">The blue component.</param>
-            <param name="b">The green component.</param>
-            <param name="a">The alpha component; opacity.</param>
-            <returns>A new instance of the color, with the arguments replacing the values.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.binarysearch?view=net-5.0#System_Array_BinarySearch__1___0___System_Int32_System_Int32___0_"/></remarks>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The sorted one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="index">The starting index of the range to search.</param>
+            <param name="length">The length of the range to search.</param>
+            <param name="value">The object to search for.</param>
+            <returns>The index of the specified <paramref name="value"/> in the specified <paramref name="array"/>, if <paramref name="value"/> is found; otherwise, a negative number. If <paramref name="value"/> is not found and <paramref name="value"/> is less than one or more elements in <paramref name="array"/>, the negative number returned is the bitwise complement of the index of the first element that is larger than <paramref name="value"/>. If <paramref name="value"/> is not found and <paramref name="value"/> is greater than all elements in <paramref name="array"/>, the negative number returned is the bitwise complement of (the index of the last element plus 1). If this method is called with a non-sorted <paramref name="array"/>, the return <paramref name="value"/> can be incorrect and a negative number could be returned, even if <paramref name="value"/> is present in <paramref name="array"/>.</returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.IntertwineColor(UnityEngine.Renderer,UnityEngine.Color32,UnityEngine.Color32,System.Single)">
+        <member name="M:EmikBaseModules.ArrayHelper.BinarySearch``1(``0[],System.Int32,System.Int32,``0,System.Collections.Generic.IComparer{``0})">
             <summary>
-            Sets the renderer's material color to be a mix of 2 colors.
+            Searches a range of elements in a one-dimensional sorted array for a value, using the specified <see cref="T:System.Collections.Generic.IComparer`1"/> generic interface.
             </summary>
-            <param name="renderer">The renderer to change the color of.</param>
-            <param name="colorA">The first color, with 0 <paramref name="concentrationOfB"/> being biased towards this color.</param>
-            <param name="colorB">The second color, with 1 <paramref name="concentrationOfB"/> being biased towards this color.</param>
-            <param name="concentrationOfB">The bias towards either color, between 0-1. 0.5 blends both colors equally.</param>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.binarysearch?view=net-5.0#System_Array_BinarySearch__1___0___System_Int32_System_Int32___0_System_Collections_Generic_IComparer___0__"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The sorted one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="index">The starting index of the range to search.</param>
+            <param name="length">The length of the range to search.</param>
+            <param name="value">The object to search for.</param>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IComparer`1"/> implementation to use when comparing elements or <c>null</c> to use the <see cref="T:System.IComparable`1"/> implementation of each element.</param>
+            <returns>The index of the specified <paramref name="value"/> in the specified <paramref name="array"/>, if <paramref name="value"/> is found; otherwise, a negative number. If <paramref name="value"/> is not found and <paramref name="value"/> is less than one or more elements in <paramref name="array"/>, the negative number returned is the bitwise complement of the index of the first element that is larger than <paramref name="value"/>. If <paramref name="value"/> is not found and <paramref name="value"/> is greater than all elements in <paramref name="array"/>, the negative number returned is the bitwise complement of (the index of the last element plus 1). If this method is called with a non-sorted <paramref name="array"/>, the return <paramref name="value"/> can be incorrect and a negative number could be returned, even if <paramref name="value"/> is present in <paramref name="array"/>.</returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.IntertwineColor(UnityEngine.Renderer,UnityEngine.Color,UnityEngine.Color,System.Single)">
+        <member name="M:EmikBaseModules.ArrayHelper.Clear(System.Array,System.Int32,System.Int32)">
             <summary>
-            Sets the renderer's material color to be a mix of 2 colors.
+            Sets a range of elements in an array to the default value of each element type.
             </summary>
-            <param name="renderer">The renderer to change the color of.</param>
-            <param name="colorA">The first color, with 0 <paramref name="concentrationOfB"/> being biased towards this color.</param>
-            <param name="colorB">The second color, with 1 <paramref name="concentrationOfB"/> being biased towards this color.</param>
-            <param name="concentrationOfB">The bias towards either color, between 0-1. 0.5 blends both colors equally.</param>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.clear?view=net-5.0"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <param name="array">The array whose elements need to be cleared.</param>
+            <param name="index">The starting index of the range of elements to clear.</param>
+            <param name="length">The number of elements to clear.</param>
+            <returns><paramref name="array"/></returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.IntertwineColor(UnityEngine.Color32,UnityEngine.Color32,System.Single)">
+        <member name="M:EmikBaseModules.ArrayHelper.ConstrainedCopy(System.Array,System.Int32,System.Array,System.Int32,System.Int32)">
             <summary>
-            Creates an in-between color between 2 different colors.
+            Copies a range of elements from an <see cref="T:System.Array"/> starting at the specified source index and pastes them to another <see cref="T:System.Array"/> starting at the specified destination index. Guarantees that all changes are undone if the copy does not succeed completely.
             </summary>
-            <param name="colorA">The first color, with 0 <paramref name="concentrationOfB"/> being biased towards this color.</param>
-            <param name="colorB">The second color, with 1 <paramref name="concentrationOfB"/> being biased towards this color.</param>
-            <param name="concentrationOfB">The bias towards either color, between 0-1. 0.5 blends both colors equally.</param>
-            <returns>A blended color of the 2 provided.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.constrainedcopy?view=net-5.0"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArrayTypeMismatchException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <param name="sourceArray">The <see cref="T:System.Array"/> that contains the data to copy.</param>
+            <param name="sourceIndex">A 32-bit integer that represents the index in the <paramref name="sourceArray"/> at which copying begins.</param>
+            <param name="destinationArray">The <see cref="T:System.Array"/> that receives the data.</param>
+            <param name="destinationIndex">A 32-bit integer that represents the index in the <paramref name="destinationArray"/> at which storing begins.</param>
+            <param name="length">A 32-bit integer that represents the number of elements to copy.</param>
+            <returns><paramref name="destinationArray"/></returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.IntertwineColor(UnityEngine.Color,UnityEngine.Color,System.Single)">
+        <member name="M:EmikBaseModules.ArrayHelper.ConvertAll``2(``0[],System.Converter{``0,``1})">
             <summary>
-            Creates an in-between color between 2 different colors.
+            Converts an array of one type to an array of another type.
             </summary>
-            <param name="colorA">The first color, with 0 <paramref name="concentrationOfB"/> being biased towards this color.</param>
-            <param name="colorB">The second color, with 1 <paramref name="concentrationOfB"/> being biased towards this color.</param>
-            <param name="concentrationOfB">The bias towards either color, between 0-1. 0.5 blends both colors equally.</param>
-            <returns>A blended color of the 2 provided.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.convertall?view=net-5.0"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <typeparam name="TInput">The type of the elements of the source array.</typeparam>
+            <typeparam name="TOutput">The type of the elements of the target array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to convert to a target type.</param>
+            <param name="converter">A <see cref="T:System.Converter`2"/> that converts each element from one type to another type.</param>
+            <returns>An array of the target type containing the converted elements from the source array.</returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.IsEqual(UnityEngine.Color32,UnityEngine.Color32)">
+        <member name="M:EmikBaseModules.ArrayHelper.Copy(System.Array,System.Int64,System.Array,System.Int64,System.Int64)">
             <summary>
-            Checks if both colors have the same RGBA values.
+            Copies a range of elements from an <see cref="T:System.Array"/> starting at the specified source index and pastes them to another <see cref="T:System.Array"/> starting at the specified destination index. The length and the indexes are specified as 64-bit integers.
             </summary>
-            <param name="colorA">The first color.</param>
-            <param name="colorB">The second color.</param>
-            <returns>Boolean, true only if both colors have the same R, G, B, and A values.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.copy?view=net-5.0#System_Array_Copy_System_Array_System_Int64_System_Array_System_Int64_System_Int64_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArrayTypeMismatchException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <param name="sourceArray">The <see cref="T:System.Array"/> that contains the data to copy.</param>
+            <param name="sourceIndex">A 64-bit integer that represents the index in the <paramref name="sourceArray"/> at which copying begins.</param>
+            <param name="destinationArray">The <see cref="T:System.Array"/> that receives the data.</param>
+            <param name="destinationIndex">A 64-bit integer that represents the index in the <paramref name="destinationIndex"/> at which storing begins.</param>
+            <param name="length">A 64-bit integer that represents the number of elements to copy. The integer must be between zero and <see cref="F:System.Int32.MaxValue"/>, inclusive.</param>
+            <returns><paramref name="destinationArray"/></returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.IsEqual(UnityEngine.Color,UnityEngine.Color)">
+        <member name="M:EmikBaseModules.ArrayHelper.Copy(System.Array,System.Int32,System.Array,System.Int32,System.Int32)">
             <summary>
-            Checks if both colors have the same RGBA values.
+            Copies a range of elements from an <see cref="T:System.Array"/> starting at the specified source index and pastes them to another <see cref="T:System.Array"/> starting at the specified destination index. The length and the indexes are specified as 32-bit integers.
             </summary>
-            <param name="colorA">The first color.</param>
-            <param name="colorB">The second color.</param>
-            <returns>Boolean, true only if both colors have the same R, G, B, and A values.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.copy?view=net-5.0#System_Array_Copy_System_Array_System_Int32_System_Array_System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArrayTypeMismatchException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <param name="sourceArray">The <see cref="T:System.Array"/> that contains the data to copy.</param>
+            <param name="sourceIndex">A 32-bit integer that represents the index in the <paramref name="sourceArray"/> at which copying begins.</param>
+            <param name="destinationArray">The <see cref="T:System.Array"/> that receives the data.</param>
+            <param name="destinationIndex">A 32-bit integer that represents the index in the <paramref name="destinationIndex"/> at which storing begins.</param>
+            <param name="length">A 32-bit integer that represents the number of elements to copy.</param>
+            <returns><paramref name="destinationArray"/></returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.IsAnyEqual(UnityEngine.Color32[],UnityEngine.Color32)">
+        <member name="M:EmikBaseModules.ArrayHelper.Copy(System.Array,System.Array,System.Int64)">
             <summary>
-            Checks if any elements in the array <paramref name="colors"/> are equal to <paramref name="color"/>.
+            Copies a range of elements from an Array starting at the first element and pastes them into another Array starting at the first element. The length is specified as a 64-bit integer.
             </summary>
-            <param name="colors">The array of colors to compare to <paramref name="color"/>.</param>
-            <param name="color">The color to compare it to.</param>
-            <returns>Boolean, true only if any color in <paramref name="colors"/> is the exact same as <paramref name="color"/>'s R, G, B, and A values.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.copy?view=net-5.0#System_Array_Copy_System_Array_System_Array_System_Int64_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArrayTypeMismatchException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <param name="sourceArray">The <see cref="T:System.Array"/> that contains the data to copy.</param>
+            <param name="destinationArray">The <see cref="T:System.Array"/> that receives the data.</param>
+            <param name="length">A 64-bit integer that represents the number of elements to copy. The integer must be between zero and <see cref="F:System.Int32.MaxValue"/>, inclusive.</param>
+            <returns><paramref name="destinationArray"/></returns>
         </member>
-        <member name="M:EmikBaseModules.ColorHelper.IsAnyEqual(UnityEngine.Color[],UnityEngine.Color)">
+        <member name="M:EmikBaseModules.ArrayHelper.Copy(System.Array,System.Array,System.Int32)">
             <summary>
-            Checks if any elements in the array <paramref name="colors"/> are equal to <paramref name="color"/>.
+            Copies a range of elements from an <see cref="T:System.Array"/> starting at the first element and pastes them into another <see cref="T:System.Array"/> starting at the first element. The length is specified as a 32-bit integer.
             </summary>
-            <param name="colors">The array of colors to compare to <paramref name="color"/>.</param>
-            <param name="color">The color to compare it to.</param>
-            <returns>Boolean, true only if any color in <paramref name="colors"/> is the exact same as <paramref name="color"/>'s R, G, B, and A values.</returns>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.copy?view=net-5.0#System_Array_Copy_System_Array_System_Array_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArrayTypeMismatchException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <param name="sourceArray">The <see cref="T:System.Array"/> that contains the data to copy.</param>
+            <param name="destinationArray">The <see cref="T:System.Array"/> that receives the data.</param>
+            <param name="length">A 32-bit integer that represents the number of elements to copy.</param>
+            <returns><paramref name="destinationArray"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.CreateInstance(System.Type,System.Int32)">
+            <summary>
+            Creates a one-dimensional <see cref="T:System.Array"/> of the specified <see cref="T:System.Type"/> and length, with zero-based indexing.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.createinstance?view=net-5.0#System_Array_CreateInstance_System_Type_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="elementType">The <see cref="T:System.Type"/> of the <see cref="T:System.Array"/> to create.</param>
+            <param name="length">The size of the <see cref="T:System.Array"/> to create.</param>
+            <returns>A new one-dimensional <see cref="T:System.Array"/> of the specified <see cref="T:System.Type"/> with the specified length, using zero-based indexing.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.CreateInstance(System.Type,System.Int32[])">
+            <summary>
+            Creates a multidimensional <see cref="T:System.Array"/> of the specified <see cref="T:System.Type"/> and dimension lengths, with zero-based indexing. The dimension lengths are specified in an array of 32-bit integers.
+            </summary>
+            <param name="elementType">The <see cref="T:System.Type"/> of the <see cref="T:System.Array"/> to create.</param>
+            <param name="lengths">An array of 32-bit integers that represent the size of each dimension of the <see cref="T:System.Array"/> to create.</param>
+            <returns>A new multidimensional <see cref="T:System.Array"/> of the specified <see cref="T:System.Type"/> with the specified length for each dimension, using zero-based indexing.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.CreateInstance(System.Type,System.Int64[])">
+            <summary>
+            Creates a multidimensional <see cref="T:System.Array"/> of the specified <see cref="T:System.Type"/> and dimension lengths, with zero-based indexing. The dimension lengths are specified in an array of 64-bit integers.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.createinstance?view=net-5.0#System_Array_CreateInstance_System_Type_System_Int64___"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="elementType">The <see cref="T:System.Type"/> of the <see cref="T:System.Array"/> to create.</param>
+            <param name="lengths">An array of 64-bit integers that represent the size of each dimension of the <see cref="T:System.Array"/> to create. Each integer in the array must be between zero and <see cref="F:System.Int32.MaxValue"/>, inclusive.</param>
+            <returns>A new multidimensional <see cref="T:System.Array"/> of the specified <see cref="T:System.Type"/> with the specified length for each dimension, using zero-based indexing.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.CreateInstance(System.Type,System.Int32,System.Int32)">
+            <summary>
+            Creates a two-dimensional Array of the specified Type and dimension lengths, with zero-based indexing.
+            </summary>
+            <remarks><see href="https://docs.microsoft.com/en-us/dotnet/api/system.array.createinstance?view=net-5.0#System_Array_CreateInstance_System_Type_System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="elementType">The <see cref="T:System.Type"/> of the <see cref="T:System.Array"/> to create.</param>
+            <param name="length1">The size of the first dimension of the <see cref="T:System.Array"/> to create.</param>
+            <param name="length2">The size of the second dimension of the <see cref="T:System.Array"/> to create.</param>
+            <returns>A new two-dimensional <see cref="T:System.Array"/> of the specified <see cref="T:System.Type"/> with the specified length for each dimension, using zero-based indexing.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.CreateInstance(System.Type,System.Int32[],System.Int32[])">
+            <summary>
+            Creates a multidimensional <see cref="T:System.Array"/> of the specified <see cref="T:System.Type"/> and dimension lengths, with the specified lower bounds.
+            </summary>
+            <remarks><see href="https://docs.microsoft.com/en-us/dotnet/api/system.array.createinstance?view=net-5.0#System_Array_CreateInstance_System_Type_System_Int32___System_Int32___"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="elementType">The <see cref="T:System.Type"/> of the <see cref="T:System.Array"/> to create.</param>
+            <param name="lengths">A one-dimensional array that contains the size of each dimension of the <see cref="T:System.Array"/> to create.</param>
+            <param name="lowerBounds">A one-dimensional array that contains the lower bound (starting index) of each dimension of the <see cref="T:System.Array"/> to create.</param>
+            <returns>A new multidimensional <see cref="T:System.Array"/> of the specified <see cref="T:System.Type"/> with the specified length and lower bound for each dimension.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.CreateInstance(System.Type,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a three-dimensional <see cref="T:System.Array"/> of the specified <see cref="T:System.Type"/> and dimension lengths, with zero-based indexing.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.createinstance?view=net-5.0#System_Array_CreateInstance_System_Type_System_Int32_System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="elementType">The <see cref="T:System.Type"/> of the <see cref="T:System.Array"/> to create.</param>
+            <param name="length1">The size of the first dimension of the <see cref="T:System.Array"/> to create.</param>
+            <param name="length2">The size of the second dimension of the <see cref="T:System.Array"/> to create.</param>
+            <param name="length3">The size of the third dimension of the <see cref="T:System.Array"/> to create.</param>
+            <returns>A new three-dimensional <see cref="T:System.Array"/> of the specified <see cref="T:System.Type"/> with the specified length for each dimension, using zero-based indexing.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Exists``1(``0[],System.Predicate{``0})">
+            <summary>
+            Determines whether the specified array contains elements that match the conditions defined by the specified predicate.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.exists?view=net-5.0"/></remarks>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="match">The <see cref="T:System.Predicate`1"/> that defines the conditions of the elements to search for.</param>
+            <returns><c>true</c> if <paramref name="array"/> contains one or more elements that match the conditions defined by the specified predicate; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Find``1(``0[],System.Predicate{``0})">
+            <summary>
+            Searches for an element that matches the conditions defined by the specified predicate, and returns the first occurrence within the entire <see cref="T:System.Array"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.find?view=net-5.0"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based array to search.</param>
+            <param name="match">The predicate that defines the conditions of the element to search for.</param>
+            <returns>The first element that matches the conditions defined by the specified predicate, if found; otherwise, the default value for type <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.FindAll``1(``0[],System.Predicate{``0})">
+            <summary>
+            Retrieves all the elements that match the conditions defined by the specified predicate.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.findall?view=net-5.0"/></remarks>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="match">The <see cref="T:System.Predicate`1"/> that defines the conditions of the elements to search for.</param>
+            <returns>An <see cref="T:System.Array"/> containing all the elements that match the conditions defined by the specified predicate, if found; otherwise, an empty <see cref="T:System.Array"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.FindIndex``1(``0[],System.Predicate{``0})">
+            <summary>
+            Searches for an element that matches the conditions defined by the specified predicate, and returns the zero-based index of the first occurrence within the entire <see cref="T:System.Array"/>.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="match">The <see cref="T:System.Predicate`1"/> that defines the conditions of the element to search for.</param>
+            <returns>The zero-based index of the first occurrence of an element that matches the conditions defined by <paramref name="match"/>, if found; otherwise, -1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.FindIndex``1(``0[],System.Int32,System.Predicate{``0})">
+            <summary>
+            Searches for an element that matches the conditions defined by the specified predicate, and returns the zero-based index of the first occurrence within the range of elements in the <see cref="T:System.Array"/> that extends from the specified index to the last element.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.findindex?view=net-5.0#System_Array_FindIndex__1___0___System_Int32_System_Predicate___0__"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="startIndex">The zero-based starting index of the search.</param>
+            <param name="match">The <see cref="T:System.Predicate`1"/> that defines the conditions of the element to search for.</param>
+            <returns>The zero-based index of the first occurrence of an element that matches the conditions defined by <paramref name="match"/>, if found; otherwise, -1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.FindIndex``1(``0[],System.Int32,System.Int32,System.Predicate{``0})">
+            <summary>
+            Searches for an element that matches the conditions defined by the specified predicate, and returns the zero-based index of the first occurrence within the range of elements in the <see cref="T:System.Array"/> that starts at the specified index and contains the specified number of elements.
+            </summary>
+            <remarks>https://docs.microsoft.com/en-us/dotnet/api/system.array.findindex?view=net-5.0#System_Array_FindIndex__1___0___System_Int32_System_Int32_System_Predicate___0__</remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="startIndex">The zero-based starting index of the search.</param>
+            <param name="count">The number of elements in the section to search.</param>
+            <param name="match">The <see cref="T:System.Predicate`1"/> that defines the conditions of the element to search for.</param>
+            <returns>The zero-based index of the first occurrence of an element that matches the conditions defined by <see cref="T:System.Predicate`1"/>, if found; otherwise, -1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.FindLast``1(``0[],System.Predicate{``0})">
+            <summary>
+            Searches for an element that matches the conditions defined by the specified predicate, and returns the last occurrence within the entire <see cref="T:System.Array"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.findlast?view=net-5.0"/></remarks>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="match">The <see cref="T:System.Predicate`1"/> that defines the conditions of the element to search for.</param>
+            <returns>The last element that matches the conditions defined by the specified predicate, if found; otherwise, the default value for type <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.FindLastIndex``1(``0[],System.Predicate{``0})">
+            <summary>
+            Searches for an element that matches the conditions defined by the specified predicate, and returns the zero-based index of the last occurrence within the entire <see cref="T:System.Array"/>.
+            </summary>
+            <remarks><see href="https://docs.microsoft.com/en-us/dotnet/api/system.array.findlastindex?view=net-5.0#System_Array_FindLastIndex__1___0___System_Predicate___0__"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="match">The <see cref="T:System.Predicate`1"/> that defines the conditions of the element to search for.</param>
+            <returns>The zero-based index of the last occurrence of an element that matches the conditions defined by <paramref name="match"/>, if found; otherwise, -1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.FindLastIndex``1(``0[],System.Int32,System.Predicate{``0})">
+            <summary>
+            Searches for an element that matches the conditions defined by the specified predicate, and returns the zero-based index of the last occurrence within the range of elements in the <see cref="T:System.Array"/> that extends from the specified index to the last element.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.findlastindex?view=net-5.0#System_Array_FindLastIndex__1___0___System_Int32_System_Predicate___0__"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="startIndex">The zero-based starting index of the search.</param>
+            <param name="match">The <see cref="T:System.Predicate`1"/> that defines the conditions of the element to search for.</param>
+            <returns>The zero-based index of the last occurrence of an element that matches the conditions defined by <paramref name="match"/>, if found; otherwise, -1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.FindLastIndex``1(``0[],System.Int32,System.Int32,System.Predicate{``0})">
+            <summary>
+            Searches for an element that matches the conditions defined by the specified predicate, and returns the zero-based index of the last occurrence within the range of elements in the <see cref="T:System.Array"/> that starts at the specified index and contains the specified number of elements.
+            </summary>
+            <remarks>https://docs.microsoft.com/en-us/dotnet/api/system.array.findlastindex?view=net-5.0#System_Array_FindLastIndex__1___0___System_Int32_System_Int32_System_Predicate___0__</remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="startIndex">The zero-based starting index of the search.</param>
+            <param name="count">The number of elements in the section to search.</param>
+            <param name="match">The <see cref="T:System.Predicate`1"/> that defines the conditions of the element to search for.</param>
+            <returns>The zero-based index of the last occurrence of an element that matches the conditions defined by <see cref="T:System.Predicate`1"/>, if found; otherwise, -1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.ForEach``1(``0[],System.Action{``0})">
+            <summary>
+            Performs the specified action on each element of the specified array.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.foreach?view=net-5.0"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> on whose elements the action is to be performed.</param>
+            <param name="action">The <see cref="T:System.Action`1"/> to perform on each element of <paramref name="array"/>.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.IndexOf(System.Array,System.Object)">
+            <summary>
+            Searches for the specified object and returns the index of its first occurrence in a one-dimensional array.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.indexof?view=net-5.0#System_Array_IndexOf_System_Array_System_Object_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <param name="array">The one-dimensional array to search.</param>
+            <param name="value">The object to locate in <paramref name="array"/>.</param>
+            <returns>The index of the first occurrence of <paramref name="value"/> in <paramref name="array"/>, if found; otherwise, the lower bound of the array minus 1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.IndexOf(System.Array,System.Object,System.Int32)">
+            <summary>
+            Searches for the specified object in a range of elements of a one-dimensional array, and returns the index of its first occurrence. The range extends from a specified index to the end of the array.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.indexof?view=net-5.0#System_Array_IndexOf_System_Array_System_Object_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <param name="array">The one-dimensional array to search.</param>
+            <param name="value">The object to locate in <paramref name="array"/>.</param>
+            <param name="startIndex">The starting index of the search. 0 (zero) is valid in an empty array.</param>
+            <returns>The index of the first occurrence of <paramref name="value"/>, if it's found, within the range of elements in <paramref name="array"/> that extends from <paramref name="startIndex"/> to the last element; otherwise, the lower bound of the array minus 1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.IndexOf(System.Array,System.Object,System.Int32,System.Int32)">
+            <summary>
+            Searches for the specified object in a range of elements of a one-dimensional array, and returns the index of ifs first occurrence. The range extends from a specified index for a specified number of elements.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.indexof?view=net-5.0#System_Array_IndexOf_System_Array_System_Object_System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <param name="array">The one-dimensional array to search.</param>
+            <param name="value">The object to locate in <paramref name="array"/>.</param>
+            <param name="startIndex">The starting index of the search. 0 (zero) is valid in an empty array.</param>
+            <param name="count">The number of elements to search.</param>
+            <returns>The index of the first occurrence of <paramref name="value"/>, if it's found in the <paramref name="array"/> from index <paramref name="startIndex"/> to <paramref name="startIndex"/> + <paramref name="count"/> - 1; otherwise, the lower bound of the array minus 1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.IndexOf``1(``0[],``0,System.Int32,System.Int32)">
+            <summary>
+            Searches for the specified object in a range of elements of a one-dimensional array, and returns the index of its first occurrence. The range extends from a specified index for a specified number of elements.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.indexof?view=net-5.0#System_Array_IndexOf__1___0_____0_System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based array to search.</param>
+            <param name="value">The object to locate in <paramref name="array"/>.</param>
+            <param name="startIndex">The zero-based starting index of the search. 0 (zero) is valid in an empty array.</param>
+            <param name="count">The number of elements in the section to search.</param>
+            <returns>The zero-based index of the first occurrence of <paramref name="value"/> within the range of elements in <paramref name="array"/> that starts at <paramref name="startIndex"/> and contains the number of elements specified in <paramref name="count"/>, if found; otherwise, -1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.IndexOf``1(``0[],``0)">
+            <summary>
+            Searches for the specified object and returns the index of its first occurrence in a one-dimensional array.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.indexof?view=net-5.0#System_Array_IndexOf__1___0_____0_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based array to search.</param>
+            <param name="value">The object to locate in <paramref name="array"/>.</param>
+            <returns>The zero-based index of the first occurrence of <paramref name="value"/> in the entire <paramref name="array"/>, if found; otherwise, -1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.IndexOf``1(``0[],``0,System.Int32)">
+            <summary>
+            Searches for the specified object in a range of elements of a one dimensional array, and returns the index of its first occurrence. The range extends from a specified index to the end of the array.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.indexof?view=net-5.0#System_Array_IndexOf__1___0_____0_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based array to search.</param>
+            <param name="value">The object to locate in <paramref name="array"/>.</param>
+            <param name="startIndex">The zero-based starting index of the search. 0 (zero) is valid in an empty array.</param>
+            <returns>The zero-based index of the first occurrence of <paramref name="value"/> within the range of elements in <paramref name="array"/> that extends from <paramref name="startIndex"/> to the last element, if found; otherwise, -1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.LastIndexOf(System.Array,System.Object)">
+            <summary>
+            Searches for the specified object and returns the index of its last occurrence in a one-dimensional array.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.indexof?view=net-5.0#System_Array_IndexOf_System_Array_System_Object_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <param name="array">The one-dimensional array to search.</param>
+            <param name="value">The object to locate in <paramref name="array"/>.</param>
+            <returns>The index of the last occurrence of <paramref name="value"/> in <paramref name="array"/>, if found; otherwise, the lower bound of the array minus 1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.LastIndexOf(System.Array,System.Object,System.Int32)">
+            <summary>
+            Searches for the specified object in a range of elements of a one-dimensional array, and returns the index of its last occurrence. The range extends from a specified index to the end of the array.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.indexof?view=net-5.0#System_Array_IndexOf_System_Array_System_Object_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <param name="array">The one-dimensional array to search.</param>
+            <param name="value">The object to locate in <paramref name="array"/>.</param>
+            <param name="startIndex">The starting index of the search. 0 (zero) is valid in an empty array.</param>
+            <returns>The index of the last occurrence of <paramref name="value"/>, if it's found, within the range of elements in <paramref name="array"/> that extends from <paramref name="startIndex"/> to the last element; otherwise, the lower bound of the array minus 1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.LastIndexOf(System.Array,System.Object,System.Int32,System.Int32)">
+            <summary>
+            Searches for the specified object in a range of elements of a one-dimensional array, and returns the index of ifs last occurrence. The range extends from a specified index for a specified number of elements.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.indexof?view=net-5.0#System_Array_IndexOf_System_Array_System_Object_System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <param name="array">The one-dimensional array to search.</param>
+            <param name="value">The object to locate in <paramref name="array"/>.</param>
+            <param name="startIndex">The starting index of the search. 0 (zero) is valid in an empty array.</param>
+            <param name="count">The number of elements to search.</param>
+            <returns>The index of the last occurrence of <paramref name="value"/>, if it's found in the <paramref name="array"/> from index <paramref name="startIndex"/> to <paramref name="startIndex"/> + <paramref name="count"/> - 1; otherwise, the lower bound of the array minus 1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.LastIndexOf``1(``0[],``0,System.Int32,System.Int32)">
+            <summary>
+            Searches for the specified object in a range of elements of a one-dimensional array, and returns the index of its last occurrence. The range extends from a specified index for a specified number of elements.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.indexof?view=net-5.0#System_Array_IndexOf__1___0_____0_System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based array to search.</param>
+            <param name="value">The object to locate in <paramref name="array"/>.</param>
+            <param name="startIndex">The zero-based starting index of the search. 0 (zero) is valid in an empty array.</param>
+            <param name="count">The number of elements in the section to search.</param>
+            <returns>The zero-based index of the last occurrence of <paramref name="value"/> within the range of elements in <paramref name="array"/> that starts at <paramref name="startIndex"/> and contains the number of elements specified in <paramref name="count"/>, if found; otherwise, -1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.LastIndexOf``1(``0[],``0)">
+            <summary>
+            Searches for the specified object and returns the index of its last occurrence in a one-dimensional array.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.indexof?view=net-5.0#System_Array_IndexOf__1___0_____0_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based array to search.</param>
+            <param name="value">The object to locate in <paramref name="array"/>.</param>
+            <returns>The zero-based index of the last occurrence of <paramref name="value"/> in the entire <paramref name="array"/>, if found; otherwise, -1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.LastIndexOf``1(``0[],``0,System.Int32)">
+            <summary>
+            Searches for the specified object in a range of elements of a one dimensional array, and returns the index of its last occurrence. The range extends from a specified index to the end of the array.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.indexof?view=net-5.0#System_Array_IndexOf__1___0_____0_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based array to search.</param>
+            <param name="value">The object to locate in <paramref name="array"/>.</param>
+            <param name="startIndex">The zero-based starting index of the search. 0 (zero) is valid in an empty array.</param>
+            <returns>The zero-based index of the last occurrence of <paramref name="value"/> within the range of elements in <paramref name="array"/> that extends from <paramref name="startIndex"/> to the last element, if found; otherwise, -1.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Resize``1(``0[],System.Int32)">
+            <summary>
+            Changes the number of elements of a one-dimensional array to the specified new size.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.resize?view=net-5.0"/></remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based array to resize, or <c>null</c> to create a new array with the specified size.</param>
+            <param name="newSize">The size of the new array.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Reverse(System.Array,System.Int32,System.Int32)">
+            <summary>
+            Reverses the sequence of a subset of the elements in the one-dimensional <see cref="T:System.Array"/>.
+            </summary>
+            <remarks>https://docs.microsoft.com/en-us/dotnet/api/system.array.reverse?view=net-5.0#System_Array_Reverse_System_Array_System_Int32_System_Int32_</remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <param name="array">The one-dimensional <see cref="T:System.Array"/> to reverse.</param>
+            <param name="index">The starting index of the section to reverse.</param>
+            <param name="length">The number of elements in the section to reverse.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Reverse(System.Array)">
+            <summary>
+            Reverses the sequence of the elements in the entire one-dimensional <see cref="T:System.Array"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.reverse?view=net-5.0#System_Array_Reverse_System_Array_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <param name="array">The one-dimensional <see cref="T:System.Array"/> to reverse.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Reverse``1(``0[])">
+            <summary>
+            Reverses the sequence of the elements in the one-dimensional generic array.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.reverse?view=net-5.0#System_Array_Reverse__1___0___"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <typeparam name="T">The type of the elements in <paramref name="array"/>.</typeparam>
+            <param name="array">The one-dimensional array of elements to reverse.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Reverse``1(``0[],System.Int32,System.Int32)">
+            <summary>
+            Reverses the sequence of a subset of the elements in the one-dimensional generic array.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.reverse?view=net-5.0#System_Array_Reverse__1___0___System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <typeparam name="T">The type of the elements in <paramref name="array"/>.</typeparam>
+            <param name="array">The one-dimensional array of elements to reverse.</param>
+            <param name="index">The starting index of the section to reverse.</param>
+            <param name="length">The number of elements in the section to reverse.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort(System.Array,System.Int32,System.Int32,System.Collections.IComparer)">
+            <summary>
+            Sorts the elements in a range of elements in a one-dimensional <see cref="T:System.Array"/> using the specified <see cref="T:System.Collections.IComparer"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort_System_Array_System_Int32_System_Int32_System_Collections_IComparer_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="array">The one-dimensional <see cref="T:System.Array"/> to sort.</param>
+            <param name="index">The starting index of the range to sort.</param>
+            <param name="length">The number of elements in the range to sort</param>
+            <param name="comparer">The <see cref="T:System.Collections.IComparer"/> implementation to use when comparing elements.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort(System.Array,System.Array,System.Int32,System.Int32,System.Collections.IComparer)">
+            <summary>
+            Sorts a range of elements in a pair of one-dimensional <see cref="T:System.Array"/> objects (one contains the keys and the other contains the corresponding items) based on the keys in the first <see cref="T:System.Array"/> using the specified <see cref="T:System.Collections.IComparer"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort_System_Array_System_Array_System_Int32_System_Int32_System_Collections_IComparer_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="keys">The one-dimensional <see cref="T:System.Array"/> that contains the keys to sort.</param>
+            <param name="items">The one-dimensional <see cref="T:System.Array"/> that contains the items that correspond to each of the keys in the <paramref name="keys"/><see cref="T:System.Array"/> or <c>null</c> to sort only the <paramref name="keys"/><see cref="T:System.Array"/>.</param>
+            <param name="index">The starting index of the range to sort.</param>
+            <param name="length">The number of elements in the range to sort.</param>
+            <param name="comparer">The <see cref="T:System.Collections.IComparer"/> implementation to use when comparing elements or <c>null</c> to use the <see cref="T:System.IComparable"/> implementation of each element.</param>
+            <returns><paramref name="keys"/> and <paramref name="items"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort(System.Array,System.Int32,System.Int32)">
+            <summary>
+            Sorts the elements in a range of elements in a one-dimensional <see cref="T:System.Array"/> using the <see cref="T:System.IComparable"/> implementation of each element of the <see cref="T:System.Array"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort_System_Array_System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="array">The one-dimensional <see cref="T:System.Array"/> to sort.</param>
+            <param name="index">The starting index of the range to sort.</param>
+            <param name="length">The number of elements in the range to sort.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort(System.Array,System.Array,System.Int32,System.Int32)">
+            <summary>
+            Sorts a range of elements in a pair of one-dimensional <see cref="T:System.Array"/> objects (one contains the keys and the other contains the corresponding items) based on the keys in the first <see cref="T:System.Array"/> using the <see cref="T:System.IComparable"/> implementation of each key.
+            </summary>
+            <remarks><seealso href=""/>https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort_System_Array_System_Array_System_Int32_System_Int32_</remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="keys">The one-dimensional <see cref="T:System.Array"/> that contains the keys to sort.</param>
+            <param name="items">The one-dimensional <see cref="T:System.Array"/> that contains the items that correspond to each of the keys in the <paramref name="keys"/><see cref="T:System.Array"/> or <c>null</c> to sort only the <paramref name="keys"/><see cref="T:System.Array"/>.</param>
+            <param name="index">The starting index of the range to sort.</param>
+            <param name="length">The number of elements in the range to sort.</param>
+            <returns><paramref name="keys"/> and <paramref name="items"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort(System.Array,System.Collections.IComparer)">
+            <summary>
+            Sorts the elements in a one-dimensional <see cref="T:System.Array"/> using the specified <see cref="T:System.Collections.IComparer"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort_System_Array_System_Collections_IComparer_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="array">The one-dimensional array to sort.</param>
+            <param name="comparer">The implementation to use when comparing elements or <c>null</c> to use the <see cref="T:System.IComparable"/> implementation of each element.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort(System.Array,System.Array,System.Collections.IComparer)">
+            <summary>
+            Sorts a pair of one-dimensional <see cref="T:System.Array"/> objects (one contains the keys and the other contains the corresponding items) based on the keys in the first <see cref="T:System.Array"/> using the specified <see cref="T:System.Collections.IComparer"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort_System_Array_System_Array_System_Collections_IComparer_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="keys">The one-dimensional <see cref="T:System.Array"/> that contains the keys to sort.</param>
+            <param name="items">The one-dimensional <see cref="T:System.Array"/> that contains the items that correspond to each of the keys in the <paramref name="keys"/><see cref="T:System.Array"/> or <c>null</c> to sort only the <paramref name="keys"/><see cref="T:System.Array"/>.</param>
+            <param name="comparer">The implementation to use when comparing elements or <c>null</c> to use the <see cref="T:System.IComparable"/> implementation of each element.</param>
+            <returns><paramref name="keys"/> and <paramref name="items"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort(System.Array,System.Array)">
+            <summary>
+            Sorts a pair of one-dimensional <see cref="T:System.Array"/> objects (one contains the keys and the other contains the corresponding items) based on the keys in the first <see cref="T:System.Array"/> using the <see cref="T:System.IComparable"/> implementation of each key.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort_System_Array_System_Array_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="keys">The one-dimensional <see cref="T:System.Array"/> that contains the keys to sort.</param>
+            <param name="items">The one-dimensional <see cref="T:System.Array"/> that contains the items that correspond to each of the keys in the <paramref name="keys"/><see cref="T:System.Array"/> or <c>null</c> to sort only the <paramref name="keys"/><see cref="T:System.Array"/>.</param>
+            <returns><paramref name="keys"/> and <paramref name="items"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort(System.Array)">
+            <summary>
+            Sorts the elements in an entire one-dimensional <see cref="T:System.Array"/> using the <see cref="T:System.IComparable"/> implementation of each element of the <see cref="T:System.Array"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort_System_Array_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="array">The one-dimensional <see cref="T:System.Array"/> to sort.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort``1(``0[])">
+            <summary>
+            Sorts the elements in an entire <see cref="T:System.Array"/> using the <see cref="T:System.IComparable`1"/> generic interface implementation of each element of the <see cref="T:System.Array"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort_System_Array_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based Array to sort.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort``1(``0[],System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Sorts the elements in an <see cref="T:System.Array"/> using the specified <see cref="T:System.Collections.Generic.IComparer`1"/> generic interface.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort__1___0___System_Collections_Generic_IComparer___0__"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-base <see cref="T:System.Array"/> to sort.</param>
+            <param name="comparer">The <see cref="T:System.IComparable`1"/> generic interface implementation to use when comparing elements, or <c>null</c> to use the <see cref="T:System.IComparable`1"/> generic interface implementation of each element.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort``1(``0[],System.Comparison{``0})">
+            <summary>
+            Sorts the elements in an <see cref="T:System.Array"/> using the specified <see cref="T:System.Comparison`1"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort__1___0___System_Comparison___0__"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to sort.</param>
+            <param name="comparison">The <see cref="T:System.Comparison`1"/> to use when comparing elements.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort``1(``0[],System.Int32,System.Int32)">
+            <summary>
+            Sorts the elements in a range of elements in an <see cref="T:System.Array"/> using the <see cref="T:System.IComparable`1"/> generic interface implementation of each element of the <see cref="T:System.Array"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort__1___0___System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to sort.</param>
+            <param name="index">The starting index of the range to sort.</param>
+            <param name="length">The number of elements in the range to sort.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort``1(``0[],System.Int32,System.Int32,System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Sorts the elements in a range of elements in an <see cref="T:System.Array"/> using the specified <see cref="T:System.Collections.Generic.IComparer`1"/> generic interface.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort__1___0___System_Int32_System_Int32_System_Collections_Generic_IComparer___0__"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to sort.</param>
+            <param name="index">The starting index of the range to sort.</param>
+            <param name="length">The number of elements in the range to sort.</param>
+            <param name="comparer">The implementation to use when comparing elements or <c>null</c> to use the <see cref="T:System.IComparable"/> implementation of each element.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort``2(``0[],``1[])">
+            <summary>
+            Sorts a pair of <see cref="T:System.Array"/> objects (one contains the keys and the other contains the corresponding items) based on the keys in the first <see cref="T:System.Array"/> using the <see cref="T:System.IComparable`1"/> generic interface implementation of each key.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort__1___0___System_Collections_Generic_IComparer___0__"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <typeparam name="TKey">The type of the elements of the key array.</typeparam>
+            <typeparam name="TValue">The type of the elements of the items array.</typeparam>
+            <param name="keys">The one-dimensional, zero-based <see cref="T:System.Array"/> that contains the keys to sort.</param>
+            <param name="items">The one-dimensional, zero-based <see cref="T:System.Array"/> that contains the items that correspond to the keys in <paramref name="keys"/>, or <c>null</c> to sort only <paramref name="keys"/>.</param>
+            <returns><paramref name="keys"/> and <paramref name="items"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort``2(``0[],``1[],System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Sorts a pair of <see cref="T:System.Array"/> objects (one contains the keys and the other contains the corresponding items) based on the keys in the first <see cref="T:System.Array"/> using the specified <see cref="T:System.Collections.Generic.IComparer`1"/> generic interface.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort__2___0_____1___System_Collections_Generic_IComparer___0__"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <typeparam name="TKey">The type of the elements of the key array.</typeparam>
+            <typeparam name="TValue">The type of the elements of the items array.</typeparam>
+            <param name="keys">The one-dimensional, zero-based <see cref="T:System.Array"/> that contains the keys to sort.</param>
+            <param name="items">The one-dimensional, zero-based <see cref="T:System.Array"/> that contains the items that correspond to the keys in <paramref name="keys"/>, or <c>null</c> to sort only <paramref name="keys"/>.</param>
+            <param name="comparer">The <see cref="T:System.IComparable`1"/> generic interface implementation to use when comparing elements, or <c>null</c> to use the <see cref="T:System.IComparable`1"/> generic interface implementation of each element.</param>
+            <returns><paramref name="keys"/> and <paramref name="items"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort``2(``0[],``1[],System.Int32,System.Int32)">
+            <summary>
+            Sorts a range of elements in a pair of <see cref="T:System.Array"/> objects (one contains the keys and the other contains the corresponding items) based on the keys in the first <see cref="T:System.Array"/> using the <see cref="T:System.IComparable`1"/> generic interface implementation of each key.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort__2___0_____1___System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <typeparam name="TKey">The type of the elements of the key array.</typeparam>
+            <typeparam name="TValue">The type of the elements of the items array.</typeparam>
+            <param name="keys">The one-dimensional, zero-based <see cref="T:System.Array"/> that contains the keys to sort.</param>
+            <param name="items">The one-dimensional, zero-based <see cref="T:System.Array"/> that contains the items that correspond to the keys in <paramref name="keys"/>, or <c>null</c> to sort only <paramref name="keys"/>.</param>
+            <param name="index">The starting index of the range to sort.</param>
+            <param name="length">The number of elements in the range to sort.</param>
+            <returns><paramref name="keys"/> and <paramref name="items"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Sort``2(``0[],``1[],System.Int32,System.Int32,System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Sorts a range of elements in a pair of <see cref="T:System.Array"/> objects (one contains the keys and the other contains the corresponding items) based on the keys in the first <see cref="T:System.Array"/> using the specified <see cref="T:System.Collections.Generic.IComparer`1"/> generic interface.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-5.0#System_Array_Sort__2___0_____1___System_Int32_System_Int32_System_Collections_Generic_IComparer___0__"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.RankException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <typeparam name="TKey">The type of the elements of the key array.</typeparam>
+            <typeparam name="TValue">The type of the elements of the items array.</typeparam>
+            <param name="keys">The one-dimensional, zero-based <see cref="T:System.Array"/> that contains the keys to sort.</param>
+            <param name="items">The one-dimensional, zero-based <see cref="T:System.Array"/> that contains the items that correspond to the keys in <paramref name="keys"/>, or <c>null</c> to sort only <paramref name="keys"/>.</param>
+            <param name="index">The starting index of the range to sort.</param>
+            <param name="length">The number of elements in the range to sort.</param>
+            <param name="comparer">The implementation to use when comparing elements or <c>null</c> to use the <see cref="T:System.IComparable"/> implementation of each element.</param>
+            <returns><paramref name="keys"/> and <paramref name="items"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.TrueForAll``1(``0[],System.Predicate{``0})">
+            <summary>
+            Determines whether every element in the array matches the conditions defined by the specified predicate.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.trueforall?view=net-5.0"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to check against the conditions.</param>
+            <param name="match">The predicate that defines the conditions to check against the elements.</param>
+            <returns><c>true</c> if every element in <paramref name="array"/> matches the conditions defined by the specified predicate; otherwise, <c>false</c>. If there are no elements in the array, the return value is <c>true</c>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Clone(System.Array)">
+            <summary>
+            Creates a shallow copy of the <see cref="T:System.Array"/>
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.clone?view=net-5.0"/></remarks>
+            <param name="this"><c>this</c></param>
+            <returns>A shallow copy of the <paramref name="this"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.CopyTo(System.Array,System.Array,System.Int32)">
+            <summary>
+            Copies all the elements of the current one-dimensional array to the specified one-dimensional array starting at the specified destination array index. The index is specified as a 64-bit integer.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.copyto?view=net-5.0#System_Array_CopyTo_System_Array_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="array">The one-dimensional array that is the destination of the elements copied from the current array.</param>
+            <param name="index">A 32-bit integer that represents the index in <paramref name="array"/> at which copying begins.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.CopyTo(System.Array,System.Array,System.Int64)">
+            <summary>
+            Copies all the elements of the current one-dimensional array to the specified one-dimensional array starting at the specified destination array index. The index is specified as a 64-bit integer.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.copyto?view=net-5.0#System_Array_CopyTo_System_Array_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="array">The one-dimensional array that is the destination of the elements copied from the current array.</param>
+            <param name="index">A 64-bit integer that represents the index in <paramref name="array"/> at which copying begins.</param>
+            <returns><paramref name="array"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.GetEnumerator(System.Array)">
+            <summary>
+            Returns an <see cref="T:System.Collections.IEnumerator"/> for the <see cref="T:System.Array"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.getenumerator?view=net-5.0"/></remarks>
+            <param name="this"><c>this</c></param>
+            <returns>An <see cref="T:System.Collections.IEnumerator"/> for the Array.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.GetLength(System.Array,System.Int32)">
+            <summary>
+            Gets a 32-bit integer that represents the number of elements in the specified dimension of the <see cref="T:System.Array"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.getlength?view=net-5.0"/></remarks>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="dimension">A zero-based dimension of the <see cref="T:System.Array"/> whose length needs to be determined.</param>
+            <returns>A 32-bit integer that represents the number of elements in the specified dimension.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.GetLongLength(System.Array,System.Int32)">
+            <summary>
+            Gets a 64-bit integer that represents the number of elements in the specified dimension of the <see cref="T:System.Array"/>.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.getlonglength?view=net-5.0"/></remarks>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="dimension">A zero-based dimension of the <see cref="T:System.Array"/> whose length needs to be determined.</param>
+            <returns>A 64-bit integer that represents the number of elements in the specified dimension.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.GetLowerBound(System.Array,System.Int32)">
+            <summary>
+            Gets the index of the first element of the specified dimension in the array.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.getlowerbound?view=net-5.0"/></remarks>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="dimension">A zero-based dimension of the array whose starting index needs to be determined.</param>
+            <returns>The index of the first element of the specified dimension in the array.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.GetUpperBound(System.Array,System.Int32)">
+            <summary>
+            Gets the index of the last element of the specified dimension in the array.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.getupperbound?view=net-5.0"/></remarks>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="dimension">A zero-based dimension of the array whose starting index needs to be determined.</param>
+            <returns>The index of the first element of the specified dimension in the array.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Get(System.Array,System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Gets the value at the specified position in the three-dimensional <see cref="T:System.Array"/>. The indexes are specified as 64-bit integers.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.getvalue?view=net-5.0#System_Array_GetValue_System_Int64_System_Int64_System_Int64_"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="index1">A 64-bit integer that represents the first-dimension index of the <see cref="T:System.Array"/> element to get.</param>
+            <param name="index2">A 64-bit integer that represents the second-dimension index of the <see cref="T:System.Array"/> element to get.</param>
+            <param name="index3">A 64-bit integer that represents the third-dimension index of the <see cref="T:System.Array"/> element to get.</param>
+            <returns>The value at the specified position in the three-dimensional <see cref="T:System.Array"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Get(System.Array,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gets the value at the specified position in the three-dimensional <see cref="T:System.Array"/>. The indexes are specified as 32-bit integers.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.getvalue?view=net-5.0#System_Array_GetValue_System_Int32_System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="index1">A 32-bit integer that represents the first-dimension index of the <see cref="T:System.Array"/> element to get.</param>
+            <param name="index2">A 32-bit integer that represents the second-dimension index of the <see cref="T:System.Array"/> element to get.</param>
+            <param name="index3">A 32-bit integer that represents the third-dimension index of the <see cref="T:System.Array"/> element to get.</param>
+            <returns>The value at the specified position in the three-dimensional <see cref="T:System.Array"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.GetValue(System.Array,System.Int64,System.Int64)">
+            <summary>
+            Gets the value at the specified position in the two-dimensional <see cref="T:System.Array"/>. The indexes are specified as 64-bit integers.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.getvalue?view=net-5.0#System_Array_GetValue_System_Int64_System_Int64_"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="index1">A 64-bit integer that represents the first-dimension index of the <see cref="T:System.Array"/> element to get.</param>
+            <param name="index2">A 64-bit integer that represents the second-dimension index of the <see cref="T:System.Array"/> element to get.</param>
+            <returns>The value at the specified position in the two-dimensional <see cref="T:System.Array"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Get(System.Array,System.Int32,System.Int32)">
+            <summary>
+            Gets the value at the specified position in the two-dimensional <see cref="T:System.Array"/>. The indexes are specified as 32-bit integers.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.getvalue?view=net-5.0#System_Array_GetValue_System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="index1">A 32-bit integer that represents the first-dimension index of the <see cref="T:System.Array"/> element to get.</param>
+            <param name="index2">A 32-bit integer that represents the second-dimension index of the <see cref="T:System.Array"/> element to get.</param>
+            <returns>The value at the specified position in the two-dimensional <see cref="T:System.Array"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Get(System.Array,System.Int32)">
+            <summary>
+            Gets the value at the specified position in the one-dimensional <see cref="T:System.Array"/>. The indexes are specified as 32-bit integers.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.getvalue?view=net-5.0#System_Array_GetValue_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="index">A 32-bit integer that represents the first-dimension index of the <see cref="T:System.Array"/> element to get.</param>
+            <returns>The value at the specified position in the one-dimensional <see cref="T:System.Array"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Get(System.Array,System.Int64)">
+            <summary>
+            Gets the value at the specified position in the one-dimensional <see cref="T:System.Array"/>. The indexes are specified as 64-bit integers.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.getvalue?view=net-5.0#System_Array_GetValue_System_Int64_"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="index">A 64-bit integer that represents the first-dimension index of the <see cref="T:System.Array"/> element to get.</param>
+            <returns>The value at the specified position in the one-dimensional <see cref="T:System.Array"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Get(System.Array,System.Int32[])">
+            <summary>
+            Gets the value at the specified position in the multidimensional <see cref="T:System.Array"/>. The indexes are specified as an array of 32-bit integers.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.getvalue?view=net-5.0#System_Array_GetValue_System_Int32___"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="indices">A one-dimensional array of 32-bit integers that represent the indexes specifying the position of the Array element to get.</param>
+            <returns>The value at the specified position in the multidimensional <see cref="T:System.Array"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Get(System.Array,System.Int64[])">
+            <summary>
+            Gets the value at the specified position in the multidimensional <see cref="T:System.Array"/>. The indexes are specified as an array of 64-bit integers.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.getvalue?view=net-5.0#System_Array_GetValue_System_Int64___"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="indices">A one-dimensional array of 64-bit integers that represent the indexes specifying the position of the Array element to get.</param>
+            <returns>The value at the specified position in the multidimensional <see cref="T:System.Array"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Initialize(System.Array)">
+            <summary>
+            Initializes every element of the value-type <see cref="T:System.Array"/> by calling the parameterless constructor of the value type.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.initialize?view=net-5.0"/></remarks>
+            <param name="this"><c>this</c></param>
+            <returns><paramref name="this"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Set(System.Array,System.Object,System.Int32)">
+            <summary>
+            Sets a value to the element at the specified position in the one-dimensional Array. The index is specified as a 32-bit integer.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.setvalue?view=net-5.0#System_Array_SetValue_System_Object_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="value">The new value for the specified element.</param>
+            <param name="index">A 32-bit integer that represents the position of the <see cref="T:System.Array"/> element to set.</param>
+            <returns><paramref name="this"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Set(System.Array,System.Object,System.Int32[])">
+            <summary>
+            Sets a value to the element at the specified position in the multi-dimensional Array. The index is specified as a 32-bit integer.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.setvalue?view=net-5.0#System_Array_SetValue_System_Object_System_Int32___"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="value">The new value for the specified element.</param>
+            <param name="indices">A one-dimensional array of 32-bit integers that represent the indexes specifying the position of the element to set.</param>
+            <returns><paramref name="this"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Set(System.Array,System.Object,System.Int64)">
+            <summary>
+            Sets a value to the element at the specified position in the one-dimensional Array. The index is specified as a 64-bit integer.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.setvalue?view=net-5.0#System_Array_SetValue_System_Object_System_Int64_"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="value">The new value for the specified element.</param>
+            <param name="index">A 64-bit integer that represents the position of the <see cref="T:System.Array"/> element to set.</param>
+            <returns><paramref name="this"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Set(System.Array,System.Object,System.Int64[])">
+            <summary>
+            Sets a value to the element at the specified position in the multi-dimensional Array. The index is specified as a 64-bit integer.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.setvalue?view=net-5.0#System_Array_SetValue_System_Object_System_Int64___"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="value">The new value for the specified element.</param>
+            <param name="indices">A one-dimensional array of 64-bit integers that represent the indexes specifying the position of the element to set.</param>
+            <returns><paramref name="this"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Set(System.Array,System.Object,System.Int32,System.Int32)">
+            <summary>
+            Sets a value to the element at the specified position in the two-dimensional Array. The index is specified as a 32-bit integer.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.setvalue?view=net-5.0#System_Array_SetValue_System_Object_System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="value">The new value for the specified element.</param>
+            <param name="index1">A 32-bit integer that represents the first-dimension index of the <see cref="T:System.Array"/> element to set.</param>
+            <param name="index2">A 32-bit integer that represents the second-dimension index of the <see cref="T:System.Array"/> element to set.</param>
+            <returns><paramref name="this"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Set(System.Array,System.Object,System.Int64,System.Int64)">
+            <summary>
+            Sets a value to the element at the specified position in the two-dimensional Array. The index is specified as a 64-bit integer.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.setvalue?view=net-5.0#System_Array_SetValue_System_Object_System_Int64_System_Int64_"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="value">The new value for the specified element.</param>
+            <param name="index1">A 64-bit integer that represents the first-dimension index of the <see cref="T:System.Array"/> element to set.</param>
+            <param name="index2">A 64-bit integer that represents the second-dimension index of the <see cref="T:System.Array"/> element to set.</param>
+            <returns><paramref name="this"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Set(System.Array,System.Object,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets a value to the element at the specified position in the three-dimensional Array. The index is specified as a 32-bit integer.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.setvalue?view=net-5.0#System_Array_SetValue_System_Object_System_Int32_System_Int32_System_Int32_"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="value">The new value for the specified element.</param>
+            <param name="index1">A 32-bit integer that represents the first-dimension index of the <see cref="T:System.Array"/> element to set.</param>
+            <param name="index2">A 32-bit integer that represents the second-dimension index of the <see cref="T:System.Array"/> element to set.</param>
+            <param name="index3">A 32-bit integer that represents the third-dimension index of the <see cref="T:System.Array"/> element to set.</param>
+            <returns><paramref name="this"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.ArrayHelper.Set(System.Array,System.Object,System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Sets a value to the element at the specified position in the three-dimensional Array. The index is specified as a 64-bit integer.
+            </summary>
+            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.setvalue?view=net-5.0#System_Array_SetValue_System_Object_System_Int64_System_Int64_System_Int64_"/></remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <param name="this"><c>this</c></param>
+            <param name="value">The new value for the specified element.</param>
+            <param name="index1">A 64-bit integer that represents the first-dimension index of the <see cref="T:System.Array"/> element to set.</param>
+            <param name="index2">A 64-bit integer that represents the second-dimension index of the <see cref="T:System.Array"/> element to set.</param>
+            <param name="index3">A 64-bit integer that represents the third-dimension index of the <see cref="T:System.Array"/> element to set.</param>
+            <returns><paramref name="this"/></returns>
         </member>
         <member name="T:EmikBaseModules.EventHelper">
             <summary>
@@ -281,7 +1319,7 @@
         </member>
         <member name="M:EmikBaseModules.Helper.Unwrap(System.Object,System.Boolean)">
             <summary>
-            Unwraps any object, whether it be a class, list, tuple, or something else.
+            Unwraps any object, whether it be a class, list, tuple, or any other data.
             </summary>
             <param name="item">The object to unwrap.</param>
             <param name="getVariables">Whether it should search recursively inside the variable and yield return the elements inside <paramref name="item"/>.</param>
@@ -313,6 +1351,22 @@
             <param name="baseChars">All of the base characters, use <see cref="P:EmikBaseModules.Helper.Alphanumeric"/> for Base-62. The length of the array is the base number.</param>
             <returns>The integer, but in the base specified.</returns>
         </member>
+        <member name="M:EmikBaseModules.Helper.ToOrdinal(System.Int32)">
+            <summary>
+            Converts a number to the ordinal as string.
+            </summary>
+            <param name="i">The number to convert to an ordinal.</param>
+            <returns><paramref name="i"/> as an ordinal. (string)</returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.Call``1(``0,System.Action{``0})">
+            <summary>
+            Invokes a method of <typeparamref name="T"/> and then returns the argument provided.
+            </summary>
+            <typeparam name="T">The type of <paramref name="item"/> and <paramref name="action"/>.</typeparam>
+            <param name="item">The item to use as reference and modify.</param>
+            <param name="action">The action to apply it to.</param>
+            <returns>The item <paramref name="item"/>.</returns>
+        </member>
         <member name="M:EmikBaseModules.Helper.ElementAtWrap``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
             <summary>
             Returns the element of an array, pretending that the array wraps around or is circular.
@@ -322,23 +1376,23 @@
             <param name="i">The index, which will wrap around if it's larger than the array.</param>
             <returns></returns>
         </member>
-        <member name="M:EmikBaseModules.Helper.Append``1(``0[],``0)">
+        <member name="M:EmikBaseModules.Helper.For``1(``0[],System.Func{``0,System.Int32,``0})">
             <summary>
-            Appends the element provided to the array.
+            Iterates over a generic array and applies a function to each index, returning the new modified array. This will not modify the original array.
             </summary>
-            <typeparam name="T">The datatype of both the array and element.</typeparam>
-            <param name="array">The array to be appended with.</param>
-            <param name="item">The element to append to the <paramref name="array"/>.</param>
-            <returns><paramref name="array"/>, but with an added <paramref name="item"/> as the last index.</returns>
+            <typeparam name="T">The type of both the source and the function.</typeparam>
+            <param name="source">The original array.</param>
+            <param name="func">The function to modify <paramref name="source"/>.</param>
+            <returns>A new array containing <paramref name="source"/> after applying <paramref name="func"/> to each index.</returns>
         </member>
-        <member name="M:EmikBaseModules.Helper.Prepend``1(``0[],``0)">
+        <member name="M:EmikBaseModules.Helper.For``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Int32,``0})">
             <summary>
-            Prepends the element provided to the array.
+            Iterates over an <see cref="T:System.Collections.Generic.IEnumerable`1"/> and applies a function to each index, returning the new modified <see cref="T:System.Collections.Generic.IEnumerable`1"/>. This will not modify the original <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
             </summary>
-            <typeparam name="T">The datatype of both the array and element.</typeparam>
-            <param name="array">The array to be appended with.</param>
-            <param name="item">The element to append to the <paramref name="array"/>.</param>
-            <returns><paramref name="array"/>, but with an added <paramref name="item"/> as the first index.</returns>
+            <typeparam name="T">The type of both the source and the function.</typeparam>
+            <param name="source">The original <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</param>
+            <param name="func">The function to modify <paramref name="source"/>.</param>
+            <returns>A new <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing <paramref name="source"/> after applying <paramref name="func"/> to each index.</returns>
         </member>
         <member name="M:EmikBaseModules.Helper.IsParent(KMSelectable)">
             <summary>
@@ -422,15 +1476,6 @@
             <param name="source">The character to convert.</param>
             <returns><paramref name="source"/> as uppercase.</returns>
         </member>
-        <member name="M:EmikBaseModules.Helper.IndexOf``1(``0[],``0)">
-            <summary>
-            Finds and returns the index in which the <paramref name="item"/> is found in <paramref name="array"/>. If nothing is found, it returns -1.
-            </summary>
-            <typeparam name="T">The type of the <paramref name="array"/> and <paramref name="item"/>.</typeparam>
-            <param name="array">The array to scan through.</param>
-            <param name="item">The item to find in <paramref name="array"/>.</param>
-            <returns>The index of <paramref name="item"/> as found in <paramref name="array"/>, or -1.</returns>
-        </member>
         <member name="M:EmikBaseModules.Helper.MemberCount``1">
             <summary>
             Counts the number of members in an enum.
@@ -452,6 +1497,13 @@
             </summary>
             <param name="array">The array to check its length.</param>
             <returns><paramref name="array"/>'s length, or 0.</returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.GetUpperBound(System.String)">
+            <summary>
+            Returns the last index of the string.
+            </summary>
+            <param name="str">The string to check length for.</param>
+            <returns><see cref="P:System.String.Length"/> - 1</returns>
         </member>
         <member name="M:EmikBaseModules.Helper.Ranges(System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -503,7 +1555,7 @@
         </member>
         <member name="M:EmikBaseModules.Helper.Unwrap(System.Object)">
             <summary>
-            Unwraps any object, whether it be a class, list, tuple, or something else.
+            Unwraps any object, whether it be a class, list, tuple, or any other data.
             </summary>
             <param name="item">The object to unwrap.</param>
             <returns>An IEnumerable of the <paramref name="item"/> unwrapped.</returns>
@@ -550,7 +1602,7 @@
             </summary>
             <typeparam name="T">The type of the <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</typeparam>
             <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to filter through.</param>
-            <returns>A new instance of <paramref name="source"/> that only includes elements the elements repeated.</returns>
+            <returns>A new instance of <paramref name="source"/> that only includes elements which are repeated in the array.</returns>
         </member>
         <member name="M:EmikBaseModules.Helper.CacheComponent``1(UnityEngine.MonoBehaviour,``0@)">
             <summary>
@@ -568,6 +1620,24 @@
             <typeparam name="T">The type of the enum.</typeparam>
             <returns>The enum as an array, ordered by smallest value to largest.</returns>
         </member>
+        <member name="M:EmikBaseModules.Helper.Append``1(``0[],``0)">
+            <summary>
+            Appends the element provided to the array.
+            </summary>
+            <typeparam name="T">The datatype of both the array and element.</typeparam>
+            <param name="array">The array to be appended with.</param>
+            <param name="item">The element to append to the <paramref name="array"/>.</param>
+            <returns><paramref name="array"/>, but with an added <paramref name="item"/> as the last index.</returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.Prepend``1(``0[],``0)">
+            <summary>
+            Prepends the element provided to the array.
+            </summary>
+            <typeparam name="T">The datatype of both the array and element.</typeparam>
+            <param name="array">The array to be appended with.</param>
+            <param name="item">The element to append to the <paramref name="array"/>.</param>
+            <returns><paramref name="array"/>, but with an added <paramref name="item"/> as the first index.</returns>
+        </member>
         <member name="M:EmikBaseModules.Helper.Indistinct``1(``0[])">
             <summary>
             Filters an array into elements that exist multiple times in <paramref name="source"/>.
@@ -575,6 +1645,50 @@
             <typeparam name="T">The type of <paramref name="source"/>.</typeparam>
             <param name="source">The array to filter through.</param>
             <returns>A new array containing only duplicated items of <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.ToTuple``1(``0)">
+            <summary>
+            Converts arguments to a new tuple.
+            </summary>
+            <typeparam name="T">The type of tuple.</typeparam>
+            <param name="item1">The argument to pass into the tuple.</param>
+            <returns>A new <see cref="T:EmikBaseModules.Tuple`1"/> containing <paramref name="item1"/>.</returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.ToTuple``2(``0,``1)">
+            <summary>
+            Converts arguments to a new tuple.
+            </summary>
+            <typeparam name="T1">The first type of the tuple.</typeparam>
+            <typeparam name="T2">The second type of the tuple.</typeparam>
+            <param name="item1">The first argument to pass into the tuple.</param>
+            <param name="item2">The second argument to pass into the tuple.</param>
+            <returns>A new <seealso cref="T:EmikBaseModules.Tuple`2"/> containing <paramref name="item1"/> and <paramref name="item2"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.ToTuple``3(``0,``1,``2)">
+            <summary>
+            Converts arguments to a new tuple.
+            </summary>
+            <typeparam name="T1">The first type of the tuple.</typeparam>
+            <typeparam name="T2">The second type of the tuple.</typeparam>
+            <typeparam name="T3">The third type of the tuple.</typeparam>
+            <param name="item1">The first argument to pass into the tuple.</param>
+            <param name="item2">The second argument to pass into the tuple.</param>
+            <param name="item3">The third argument to pass into the tuple.</param>
+            <returns>A new <seealso cref="T:EmikBaseModules.Tuple`3"/> containing <paramref name="item1"/>, <paramref name="item2"/>, and <paramref name="item3"/></returns>
+        </member>
+        <member name="M:EmikBaseModules.Helper.ToTuple``4(``0,``1,``2,``3)">
+            <summary>
+            Converts arguments to a new tuple.
+            </summary>
+            <typeparam name="T1">The first type of the tuple.</typeparam>
+            <typeparam name="T2">The second type of the tuple.</typeparam>
+            <typeparam name="T3">The third type of the tuple.</typeparam>
+            <typeparam name="T4">The fourth type of the tuple.</typeparam>
+            <param name="item1">The first argument to pass into the tuple.</param>
+            <param name="item2">The second argument to pass into the tuple.</param>
+            <param name="item3">The third argument to pass into the tuple.</param>
+            <param name="item4">The fourth argument to pass into the tuple.</param>
+            <returns>A new <seealso cref="T:EmikBaseModules.Tuple`4"/> containing <paramref name="item1"/>, <paramref name="item2"/>, paramref name="item3"/>, and <paramref name="item4"/></returns>
         </member>
         <member name="T:EmikBaseModules.ModuleScript">
             <summary>
@@ -672,7 +1786,7 @@
             <param name="onNeedyDeactivation">Called when the needy gets solved or the bomb explodes.</param>
             <param name="onTimerExpired">Called when the timer of the needy runs out.</param>
         </member>
-        <member name="M:EmikBaseModules.ModuleScript.Find``1(System.Func{UnityEngine.Component[]},System.Boolean)">
+        <member name="M:EmikBaseModules.ModuleScript.Cache``1(System.Func{UnityEngine.Component[]},System.Boolean)">
             <summary>
             Caches the result of a function call that returns a component array in a dictionary, and will return the cached result if called again. Use this to alleviate expensive function calls.
             </summary>
@@ -684,7 +1798,7 @@
             <typeparam name="T">The type of component to search for.</typeparam>
             <param name="func">The expensive function to call, only if it hasn't ever been called by this method on the current instance before.</param>
             <param name="allowNull">Whether it should throw an exception if it sees null, if not it will return the default value. (Likely null)</param>
-            <returns>The component specified by <typeparamref name="T"/>.</returns>
+            <returns>The components specified by <typeparamref name="T"/>.</returns>
         </member>
         <member name="M:EmikBaseModules.ModuleScript.GetAll``1(System.Boolean)">
             <summary>
@@ -1023,6 +2137,239 @@
             The MonoBehaviour that is being used to start the coroutines.
             </value>
         </member>
+        <member name="T:EmikBaseModules.StructHelper">
+            <summary>
+            Allows you to modify colors' individual RGBA components relatively and absolutely. Written by Emik.
+            </summary>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Replace(UnityEngine.Vector2,System.Nullable{System.Single},System.Nullable{System.Single})">
+            <summary>
+            Duplicates the vector, and replaces the x and y components only if they are specified.
+            </summary>
+            <param name="vector">The <see cref="T:UnityEngine.Vector2"/> to duplicate and modify.</param>
+            <param name="x">The x value.</param>
+            <param name="y">The y value.</param>
+            <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Replace(UnityEngine.Vector3,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+            <summary>
+            Duplicates the vector, and replaces the x, y, and z components only if they are specified.
+            </summary>
+            <param name="vector">The <see cref="T:UnityEngine.Vector3"/> to duplicate and modify.</param>
+            <param name="x">The x value.</param>
+            <param name="y">The y value.</param>
+            <param name="z">The z value.</param>
+            <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Replace(UnityEngine.Vector4,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+            <summary>
+            Duplicates the vector, and replaces the x, y, z, and w components only if they are specified.
+            </summary>
+            <param name="vector">The <see cref="T:UnityEngine.Vector3"/> to duplicate and modify.</param>
+            <param name="x">The x value.</param>
+            <param name="y">The y value.</param>
+            <param name="z">The z value.</param>
+            <param name="w">The w value.</param>
+            <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Replace(UnityEngine.Color32,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+            <summary>
+            Duplicates the color, and replaces the RGBA components only if they are specified.
+            </summary>
+            <param name="color">The <see cref="T:UnityEngine.Color32"/> to duplicate and modify.</param>
+            <param name="r">The red component.</param>
+            <param name="g">The blue component.</param>
+            <param name="b">The green component.</param>
+            <param name="a">The alpha component; opacity.</param>
+            <returns>A new instance of the <paramref name="color"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Replace(UnityEngine.Color32,System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte})">
+            <summary>
+            Duplicates the color, and replaces the RGBA components only if they are specified.
+            </summary>
+            <param name="color">The <see cref="T:UnityEngine.Color32"/> to duplicate and modify.</param>
+            <param name="r">The red component.</param>
+            <param name="g">The blue component.</param>
+            <param name="b">The green component.</param>
+            <param name="a">The alpha component; opacity.</param>
+            <returns>A new instance of the <paramref name="color"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Replace(UnityEngine.Color,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+            <summary>
+            Duplicates the color, and replaces the RGBA components only if they are specified.
+            </summary>
+            <param name="color">The <see cref="T:UnityEngine.Color"/> to duplicate and modify.</param>
+            <param name="r">The red component.</param>
+            <param name="g">The blue component.</param>
+            <param name="b">The green component.</param>
+            <param name="a">The alpha component; opacity.</param>
+            <returns>A new instance of the <paramref name="color"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Replace(UnityEngine.Color,System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte},System.Nullable{System.Byte})">
+            <summary>
+            Duplicates the color, and replaces the RGBA components only if they are specified.
+            </summary>
+            <param name="color">The <see cref="T:UnityEngine.Color"/> to duplicate and modify.</param>
+            <param name="r">The red component.</param>
+            <param name="g">The blue component.</param>
+            <param name="b">The green component.</param>
+            <param name="a">The alpha component; opacity.</param>
+            <returns>A new instance of the <paramref name="color"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Add(UnityEngine.Vector2,System.Single,System.Single)">
+            <summary>
+            Duplicates the vector, and replaces the x and y components only if they are specified.
+            </summary>
+            <param name="vector">The <see cref="T:UnityEngine.Vector2"/> to duplicate and modify.</param>
+            <param name="x">The x value.</param>
+            <param name="y">The y value.</param>
+            <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Add(UnityEngine.Vector3,System.Single,System.Single,System.Single)">
+            <summary>
+            Duplicates the vector, and replaces the x, y, and z components only if they are specified.
+            </summary>
+            <param name="vector">The <see cref="T:UnityEngine.Vector3"/> to duplicate and modify.</param>
+            <param name="x">The x value.</param>
+            <param name="y">The y value.</param>
+            <param name="z">The z value.</param>
+            <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Add(UnityEngine.Vector4,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Duplicates the vector, and replaces the x, y, z, and w components only if they are specified.
+            </summary>
+            <param name="vector">The <see cref="T:UnityEngine.Vector3"/> to duplicate and modify.</param>
+            <param name="x">The x value.</param>
+            <param name="y">The y value.</param>
+            <param name="z">The z value.</param>
+            <param name="w">The w value.</param>
+            <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Add(UnityEngine.Color32,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Duplicates the color, and adds the RGBA components only if they are specified.
+            </summary>
+            <remarks>
+            You can also use negative numbers to subtract. As this is <see cref="T:UnityEngine.Color32"/>, be careful of byte underflows/overflows.
+            </remarks>
+            <param name="color">The <see cref="T:UnityEngine.Color32"/> to duplicate and modify.</param>
+            <param name="r">The red component.</param>
+            <param name="g">The blue component.</param>
+            <param name="b">The green component.</param>
+            <param name="a">The alpha component; opacity.</param>
+            <returns>A new instance of the <paramref name="color"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Add(UnityEngine.Color32,System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Duplicates the color, and adds the RGBA components only if they are specified.
+            </summary>
+            <remarks>
+            You can also use negative numbers to subtract. As this is <see cref="T:UnityEngine.Color32"/>, be careful of byte underflows/overflows.
+            </remarks>
+            <param name="color">The <see cref="T:UnityEngine.Color32"/> to duplicate and modify.</param>
+            <param name="r">The red component.</param>
+            <param name="g">The blue component.</param>
+            <param name="b">The green component.</param>
+            <param name="a">The alpha component; opacity.</param>
+            <returns>A new instance of the <paramref name="color"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Add(UnityEngine.Color,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Duplicates the color, and adds the RGBA components only if they are specified.
+            </summary>
+            <remarks>
+            You can also use negative numbers to subtract.
+            </remarks>
+            <param name="color">The color to duplicate and modify.</param>
+            <param name="r">The red component.</param>
+            <param name="g">The blue component.</param>
+            <param name="b">The green component.</param>
+            <param name="a">The alpha component; opacity.</param>
+            <returns>A new instance of the <paramref name="color"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.Add(UnityEngine.Color,System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Duplicates the color, and adds the RGBA components only if they are specified.
+            </summary>
+            <remarks>
+            You can also use negative numbers to subtract.
+            </remarks>
+            <param name="color">The <see cref="T:UnityEngine.Color"/> to duplicate and modify.</param>
+            <param name="r">The red component.</param>
+            <param name="g">The blue component.</param>
+            <param name="b">The green component.</param>
+            <param name="a">The alpha component; opacity.</param>
+            <returns>A new instance of the <paramref name="color"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.IntertwineColor(UnityEngine.Renderer,UnityEngine.Color32,UnityEngine.Color32,System.Single)">
+            <summary>
+            Sets the <see cref="P:UnityEngine.Renderer.material"/>'s color to be a mix of 2 colors.
+            </summary>
+            <param name="renderer">The renderer to change the color of.</param>
+            <param name="colorA">The first color, with 0 <paramref name="concentrationOfB"/> being biased towards this color.</param>
+            <param name="colorB">The second color, with 1 <paramref name="concentrationOfB"/> being biased towards this color.</param>
+            <param name="concentrationOfB">The bias towards either color, between 0-1. 0.5 blends both colors equally.</param>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.IntertwineColor(UnityEngine.Renderer,UnityEngine.Color,UnityEngine.Color,System.Single)">
+            <summary>
+            Sets the <see cref="P:UnityEngine.Renderer.material"/>'s color to be a mix of 2 colors.
+            </summary>
+            <param name="renderer">The renderer to change the color of.</param>
+            <param name="colorA">The first color, with 0 <paramref name="concentrationOfB"/> being biased towards this color.</param>
+            <param name="colorB">The second color, with 1 <paramref name="concentrationOfB"/> being biased towards this color.</param>
+            <param name="concentrationOfB">The bias towards either color, between 0-1. 0.5 blends both colors equally.</param>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.IntertwineColor(UnityEngine.Color32,UnityEngine.Color32,System.Single)">
+            <summary>
+            Creates an in-between color between 2 different colors.
+            </summary>
+            <param name="colorA">The first color, with 0 <paramref name="concentrationOfB"/> being biased towards this color.</param>
+            <param name="colorB">The second color, with 1 <paramref name="concentrationOfB"/> being biased towards this color.</param>
+            <param name="concentrationOfB">The bias towards either color, between 0-1. 0.5 blends both colors equally.</param>
+            <returns>A blended color of the 2 provided.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.IntertwineColor(UnityEngine.Color,UnityEngine.Color,System.Single)">
+            <summary>
+            Creates an in-between color between 2 different colors.
+            </summary>
+            <param name="colorA">The first color, with 0 <paramref name="concentrationOfB"/> being biased towards this color.</param>
+            <param name="colorB">The second color, with 1 <paramref name="concentrationOfB"/> being biased towards this color.</param>
+            <param name="concentrationOfB">The bias towards either color, between 0-1. 0.5 blends both colors equally.</param>
+            <returns>A blended color of the 2 provided.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.IsEqual(UnityEngine.Color32,UnityEngine.Color32)">
+            <summary>
+            Checks if both colors have the same RGBA values.
+            </summary>
+            <param name="colorA">The first color.</param>
+            <param name="colorB">The second color.</param>
+            <returns>Boolean, true only if both colors have the same R, G, B, and A values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.IsEqual(UnityEngine.Color,UnityEngine.Color)">
+            <summary>
+            Checks if both colors have the same RGBA values.
+            </summary>
+            <param name="colorA">The first color.</param>
+            <param name="colorB">The second color.</param>
+            <returns>Boolean, true only if both colors have the same R, G, B, and A values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.IsAnyEqual(UnityEngine.Color32[],UnityEngine.Color32)">
+            <summary>
+            Checks if any elements in the array <paramref name="colors"/> are equal to <paramref name="color"/>.
+            </summary>
+            <param name="colors">The array of colors to compare to <paramref name="color"/>.</param>
+            <param name="color">The color to compare it to.</param>
+            <returns>Boolean, true only if any color in <paramref name="colors"/> is the exact same as <paramref name="color"/>'s R, G, B, and A values.</returns>
+        </member>
+        <member name="M:EmikBaseModules.StructHelper.IsAnyEqual(UnityEngine.Color[],UnityEngine.Color)">
+            <summary>
+            Checks if any elements in the array <paramref name="colors"/> are equal to <paramref name="color"/>.
+            </summary>
+            <param name="colors">The array of colors to compare to <paramref name="color"/>.</param>
+            <param name="color">The color to compare it to.</param>
+            <returns>Boolean, true only if any color in <paramref name="colors"/> is the exact same as <paramref name="color"/>'s R, G, B, and A values.</returns>
+        </member>
         <member name="T:EmikBaseModules.TPScript">
             <summary>
             Base class for TwitchPlays support for regular and needy modded modules in Keep Talking and Nobody Explodes. Written by Emik.
@@ -1260,16 +2607,6 @@
             <param name="points">The amount of points to award. Negatives supported.</param>
             <returns>A formatted string for Twitch Plays.</returns>
         </member>
-        <member name="T:EmikBaseModules.Tuple">
-            <summary>
-            An abstract class that introduces traits that each tuple class has in common. Written by Emik.
-            </summary>
-        </member>
-        <member name="P:EmikBaseModules.Tuple.ToArray">
-            <value>
-            All other properties in an array.
-            </value>
-        </member>
         <member name="T:EmikBaseModules.Tuple`1">
             <summary>
             A basic tuple datatype for C# 4. Written by Emik.
@@ -1288,7 +2625,7 @@
         </member>
         <member name="P:EmikBaseModules.Tuple`1.ToArray">
             <value>
-            All other properties in an array.
+            All of the tuple's items as an array, ordered by item number.
             </value>
         </member>
         <member name="T:EmikBaseModules.Tuple`2">
@@ -1315,7 +2652,7 @@
         </member>
         <member name="P:EmikBaseModules.Tuple`2.ToArray">
             <value>
-            All other properties in an array.
+            All of the tuple's items as an array, ordered by item number.
             </value>
         </member>
         <member name="T:EmikBaseModules.Tuple`3">
@@ -1348,7 +2685,7 @@
         </member>
         <member name="P:EmikBaseModules.Tuple`3.ToArray">
             <value>
-            All other properties in an array.
+            All of the tuple's items as an array, ordered by item number.
             </value>
         </member>
         <member name="T:EmikBaseModules.Tuple`4">
@@ -1387,7 +2724,7 @@
         </member>
         <member name="P:EmikBaseModules.Tuple`4.ToArray">
             <value>
-            All other properties in an array.
+            All of the tuple's items as an array, ordered by item number.
             </value>
         </member>
         <member name="T:EmikBaseModules.Work">

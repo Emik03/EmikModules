@@ -15,7 +15,7 @@ namespace ForgetAnyColor
 
             for (int i = 0; i < cylinderValues.Length; i++)
             {
-                cylinderValues[i] = Init.rules.GetLength(0) != 0 ? Init.rules[0][(i * 8) + Functions.GetColorIndex(i, FAC)].Number 
+                cylinderValues[i] = Init.rules.GetLength(0) != 0 ? Init.rules[0][(i * 8) + Functions.GetColorIndex(i, FAC)].Number
                                                                  : Arrays.ColorTable[i, Functions.GetColorIndex(i, FAC)];
 
                 for (int j = 0; j < cylinders[i].Length; j++)

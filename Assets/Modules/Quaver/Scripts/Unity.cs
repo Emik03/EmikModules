@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Unity : MonoBehaviour 
+public class Unity : MonoBehaviour
 {
     public Unity Instance;
 

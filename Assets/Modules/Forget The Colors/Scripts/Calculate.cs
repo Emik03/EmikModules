@@ -72,7 +72,6 @@ namespace ForgetTheColors
                     Debug.LogFormat("[Forget The Colors #{0}]: Applying the {1}-colored cylinder on the first table, the nixies are now {2} and {3}.", moduleId, Strings.ColorLog[colorValues[i]], nixie1, nixie2);
                 }
             }
-
             else
             {
                 for (byte i = 0; i < colorValues.Length - 1; i++)
@@ -134,7 +133,6 @@ namespace ForgetTheColors
                     case 9: lsd -= BombInfo.GetOffIndicators().Count(); break;
                 }
             }
-
             else
             {
                 string[] ports = new string[BombInfo.GetPorts().Count()];

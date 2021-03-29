@@ -3,7 +3,7 @@
 /// <summary>
 /// Contains all sounds for every module.
 /// </summary>
-internal static class Sounds
+internal static class Sounds 
 {
     /// <summary>
     /// 1D Chess

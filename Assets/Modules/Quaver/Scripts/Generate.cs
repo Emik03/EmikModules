@@ -54,7 +54,6 @@ namespace QuaverModule
                 RewardCalculatedRating();
                 Debug.LogFormat("[Quaver #{0}]: The submission was correct, the bar is now {1}% filled.", quaver.init.moduleId, Math.Floor(quaver.Render.ratingProgress * 100));
             }
-
             else
             {
                 List<string> inputs = new List<string>();

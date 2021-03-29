@@ -20,7 +20,7 @@ public class LyingIndicators : MonoBehaviour
     int _moduleId;
     private static string[] _emikModules;
     private readonly static Dictionary<char, string> _serToInd = new Dictionary<char, string>(11) { { '0', "BOB" }, { '1', "CAR" }, { '2', "CLR" }, { '3', "FRK" }, { '4', "FRQ" }, { '5', "IND" }, { '6', "MSA" }, { '7', "NSA" }, { '8', "SIG" }, { '9', "SND" }, { 'A', "TRN" } };
-    
+
     private void Awake()
     {
         _moduleId = _moduleIdCounter++;
@@ -363,7 +363,7 @@ public class LyingIndicators : MonoBehaviour
                         string temp;
                         if (_serToInd.TryGetValue(System.Convert.ToChar(k + 48), out temp))
                             if (lyingInd.ContainsKey(temp) && lyingInd[temp] != 0)
-                                    lyingInd[temp]--;
+                                lyingInd[temp]--;
 
                         string[] indArray = new string[11] { "BOB", "CAR", "CLR", "FRK", "FRQ", "IND", "MSA", "NSA", "SIG", "SND", "TRN" };
                         for (int i = 0; i < indArray.Length; i++)
@@ -473,7 +473,6 @@ public class LyingIndicators : MonoBehaviour
                 yield return new WaitForSeconds(0.01f);
             }
         }
-
         else
         {
             _buttonStates[btn] = true;
@@ -576,7 +575,7 @@ public class LyingIndicators : MonoBehaviour
                     byte x = System.Convert.ToByte(c[0].ToString().ToUpper().ToCharArray()[0] - 64), y;
                     byte.TryParse(c[1].ToString(), out y);
                     y = (byte)(y - 1);
-                    
+
                     Buttons[(6 * y) + (x - 1)].OnInteract();
                     yield return new WaitForSeconds(0.35f);
                 }

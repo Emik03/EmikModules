@@ -64,7 +64,7 @@ public class Etterna : MonoBehaviour
         {
             //increase the cycle every time this is run, and display the message
             _cycle++;
-            
+
             //finished cycle
             if (_cycle == 33)
             {
@@ -165,7 +165,7 @@ public class Etterna : MonoBehaviour
             return;
 
         //clear the input array and start the sequence
-        if (!_started) 
+        if (!_started)
         {
             StartCoroutine(UpdateDisplay());
             _input.Clear();
@@ -218,7 +218,7 @@ public class Etterna : MonoBehaviour
         isSolved = true;
 
         for (byte i = 0; i < Arrow.Length; i++)
-        Arrow[i].gameObject.transform.localScale = new Vector3(0, 0, 0);
+            Arrow[i].gameObject.transform.localScale = new Vector3(0, 0, 0);
 
         yield return new WaitForSecondsRealtime(0.02f);
         Module.HandlePass();
@@ -235,7 +235,6 @@ public class Etterna : MonoBehaviour
             _builder.Remove(_builder.Length - 2, 2);
             Debug.LogFormat("[Etterna #{0}] Detected input during beats {1}.", _moduleId, _builder);
         }
-
         else
             Debug.LogFormat("[Etterna #{0}] Detected no inputs at any beat.", _moduleId);
 
@@ -401,7 +400,6 @@ public class Etterna : MonoBehaviour
                         yield return "strike";
                         break;
                     }
-
                     else if (i == 3)
                         yield return "solve";
                 }

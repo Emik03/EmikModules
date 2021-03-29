@@ -85,7 +85,6 @@ public class FTCScript : MonoBehaviour
             _currentAngle += _angleIncreasePerSolve;
             _ease = 0;
         }
-
         else if (stage == maxStage && _solution == -1)
             calculate.FinalStage(ref _moduleId, ref maxStage, ref _calculatedValues, ref _sum, ref NixieTexts, out _canSolve, out _solution);
     }
@@ -155,7 +154,6 @@ public class FTCScript : MonoBehaviour
                 Selectables[2].OnInteract();
             }
         }
-
         else if (Regex.IsMatch(buttonPressed[0], @"^\s*preview\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
         {
             ushort n;

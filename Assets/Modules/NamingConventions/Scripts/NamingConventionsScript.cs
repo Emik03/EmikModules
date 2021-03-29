@@ -139,9 +139,9 @@ public class NamingConventionsScript : ModuleScript
         UpdateIndexes();
         StartCoroutine(JiggleText());
 
-        Log("The solution for {0} in rule seed {1} is {2}.", 
+        Log("The solution for {0} in rule seed {1} is {2}.",
             DataType,
-            Get<KMRuleSeedable>().GetRNG().Seed, 
+            Get<KMRuleSeedable>().GetRNG().Seed,
             Enumerable.Range(0, 6).Select(i => SetTextIndexes(i + 1, Solutions[DataType][i]).Trim()).Join(", "));
     }
 
@@ -197,7 +197,6 @@ public class NamingConventionsScript : ModuleScript
             Get<KMAudio>().Play(transform, Sounds.Nc.Solve);
             Solve("The submission was correct, solved!");
         }
-
         else
         {
             Get<KMAudio>().Play(transform, Sounds.Nc.Strike);
@@ -253,7 +252,7 @@ public class NamingConventionsScript : ModuleScript
     {
         for (int i = 0; i < Length; i++)
             _textIndexes[i] = SetTextIndexes(i, textStates[i])
-                .Select(c => Array.IndexOf(new[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y' }, c.ToLower()))
+                .Select(c => new[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y' }.IndexOf(c.ToLower()))
                 .ToArray();
 
         UpdateTexts();

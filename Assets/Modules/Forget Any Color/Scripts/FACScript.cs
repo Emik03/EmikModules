@@ -27,5 +27,5 @@ public class FACScript : MonoBehaviour
     private void Awake()
     {
         Module.OnActivate += (init = new Init(Coroutine, this, TP)).Start;
-	}
+    }
 }

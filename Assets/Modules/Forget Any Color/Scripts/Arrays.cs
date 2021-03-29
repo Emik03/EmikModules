@@ -13,7 +13,7 @@ namespace ForgetAnyColor
         public const float TPAwardPerStage = 2;
         public const string Version = "v1.2.3";
 
-        public static readonly int[,] ColorTable = 
+        public static readonly int[,] ColorTable =
         {
             { 1, 6, 8, 5, 2, 7, 3, 4 },
             { 7, 2, 5, 4, 6, 3, 1, 8 },

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class QuaverTPScript : MonoBehaviour 
+public class QuaverTPScript : MonoBehaviour
 {
-	public QuaverScript Quaver;
+    public QuaverScript Quaver;
 
 #pragma warning disable 414
     private const string TwitchHelpMessage = @"!{0} set <speed> <difficulty> <per column> | !{0} start <#> (Number not required, adjusts scroll speed) | !{0} submit <#> <#> <#> <#>";
@@ -61,11 +61,10 @@ public class QuaverTPScript : MonoBehaviour
             else
                 yield return Input(split);
         }
-
         else if (Regex.IsMatch(split[0], @"^\s*start\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
         {
             yield return null;
-            
+
             int scrollSpeed = 0;
 
             if (Quaver.init.gameplay)
@@ -92,7 +91,6 @@ public class QuaverTPScript : MonoBehaviour
                 }
             }
         }
-
         else if (Regex.IsMatch(split[0], @"^\s*set\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
         {
             yield return null;

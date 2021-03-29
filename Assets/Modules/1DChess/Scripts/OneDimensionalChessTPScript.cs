@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using UnityEngine;
 
-public class OneDimensionalChessTPScript : TPScript 
+public class OneDimensionalChessTPScript : TPScript
 {
     public OneDimensionalChessScript Module;
 

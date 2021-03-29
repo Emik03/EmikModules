@@ -74,7 +74,6 @@ namespace ForgetTheColors
                         Gear.localRotation = Quaternion.Euler(0, angleIncreasePerSolve + currentAngle, 0);
                 }
             }
-
             else
                 return true;
 
@@ -102,7 +101,6 @@ namespace ForgetTheColors
                 //set gear
                 GearText.text = GearText.text.Last().ToString();
             }
-
             else
             {
                 //sets leading 0's

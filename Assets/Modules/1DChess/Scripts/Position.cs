@@ -39,7 +39,7 @@ namespace OneDimensionalChess
                 // Place a random white chess piece on an unoccupied square in the left half of the string.
                 do temp = random.Next(0, str.Length / 2);
                 while (used.Contains(temp));
-                
+
                 used.Add(temp);
                 str[temp] = pieceChars[random.Next(0, pieceChars.Length)].ToUpper();
 

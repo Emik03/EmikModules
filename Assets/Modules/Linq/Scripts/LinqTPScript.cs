@@ -28,7 +28,6 @@ public class LinqTPScript : TPScript
             while (_isRunningTwitchCommand)
                 yield return true;
         }
-
         else if (split.Any(s => !(s.ToLowerInvariant() == "submit" || s.All(c => "123456".Contains(c.ToString())))))
             yield return "sendtochaterror Invalid command!";
 

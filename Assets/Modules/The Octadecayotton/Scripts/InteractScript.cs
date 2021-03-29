@@ -62,7 +62,7 @@ public class InteractScript : MonoBehaviour
             octadecayotton.ModuleSelectable.AddInteractionPunch(Dimension > 9 ? 64 : 32);
 
             Rotations = !Application.isEditor || octadecayotton.ForceRotation.IsNullOrEmpty()
-                      ? TheOctadecayottonExtensions.GetRandomRotations(new RotationOptions(dimension: Dimension, rotationCount: octadecayotton.RotationOverride == default(byte) ? octadecayotton.RotationOverride : octadecayotton.rotation))
+                      ? TheOctadecayottonExtensions.GetRandomRotations(new RotationOptions(dimension: Dimension, rotationCount: octadecayotton.RotationOverride != default(byte) ? octadecayotton.RotationOverride : octadecayotton.rotation))
                       : octadecayotton.ForceRotation.ToRotations();
 
             Debug.LogFormat("[The Octadecayotton #{0}]: Initializing with {1} dimensions and {2} rotation{3}.",

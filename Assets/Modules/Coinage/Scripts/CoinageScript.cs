@@ -63,11 +63,11 @@ public class CoinageScript : ModuleScript
         for (int i = 0; i < CoinCount; i++)
             ApplyRotation(i, 0, 0.6f);
 
-        Log("The hamming code is {0}.", 
+        Log("The hamming code is {0}.",
             hammingCodes.Select(b => b ? "1" : "0").Join(""));
 
-        Log("The coins are arranged as {0}, making the answer {1}. (chess-coordinates)", 
-            CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join(""), 
+        Log("The coins are arranged as {0}, making the answer {1}. (chess-coordinates)",
+            CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join(""),
             ToCoordinate(GetExampleAnswer()));
     }
 
@@ -145,13 +145,12 @@ public class CoinageScript : ModuleScript
                 int[] coinFlips = Enumerable.Range(0, 64).Where(j => (j % 8) + (j / 8) == i).ToArray();
 
                 foreach (var flip in coinFlips)
-                { 
+                {
                     StartCoroutine(RotateCoin(flip, false));
                     yield return new WaitForSecondsRealtime(1 / 32f);
                 }
             }
         }
-
         else
         {
             Get<KMAudio>().Play(Coins[arg].transform, Sounds.Coin.Strike);

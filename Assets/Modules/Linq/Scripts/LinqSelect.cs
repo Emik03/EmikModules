@@ -22,7 +22,6 @@ namespace Linq
                 isInverted = _linq.ModuleId / allFunctions.Count() % 2 == 1;
                 functions = Enumerable.Repeat(allFunctions[_linq.ModuleId % allFunctions.Count()], MaxStage).ToArray();
             }
-
             else
             {
                 isInverted = Rnd.Range(0, 1f) > 0.5f;
@@ -34,7 +33,7 @@ namespace Linq
 
         internal bool isAnimating, isInverted;
         internal bool[] buttonStates = new bool[6], initialButtonStates = new bool[6];
-        internal const int MaxStage = 3; 
+        internal const int MaxStage = 3;
         internal int currentStage;
         internal object parameter;
         internal readonly LinqFunctions[] functions;
@@ -84,7 +83,6 @@ namespace Linq
                 else
                     Generate();
             }
-
             else
             {
                 Array.Copy(initialButtonStates, buttonStates, 6);
@@ -105,11 +103,11 @@ namespace Linq
         {
             do initialButtonStates = Function.RandomBools(6);
             while (initialButtonStates.Distinct().Count() == 1);
-            
+
             Array.Copy(initialButtonStates, buttonStates, 6);
-            
+
             UpdateButtons();
-            
+
             parameter = null;
 
             switch (functions[currentStage])
@@ -135,10 +133,10 @@ namespace Linq
 
             bool[] answer = LinqValidate.Run(_linq.Get<KMBombInfo>().GetSerialNumber(), initialButtonStates, functions[currentStage], parameter);
 
-            _linq.Log("{0}Calling function {1} on {2} returns {3}.", 
+            _linq.Log("{0}Calling function {1} on {2} returns {3}.",
                 MaxStage > 1 ? "Entering stage " + (currentStage + 1) + ". " : "",
-                functions[currentStage] + "(" + parameter + ")", 
-                initialButtonStates.Select(b => b ? "O" : "-").Join(""), 
+                functions[currentStage] + "(" + parameter + ")",
+                initialButtonStates.Select(b => b ? "O" : "-").Join(""),
                 answer.Select(b => b ? "O" : "-").Join(""));
         }
 
@@ -158,9 +156,9 @@ namespace Linq
                     for (int i = inverted ? _linq.Buttons.Length - 1 : 0; inverted ? i >= 0 : i < _linq.Buttons.Length; i += inverted ? -1 : 1)
                     {
                         _linq.Get<KMAudio>().Play(_linq.Buttons[i].transform, Sounds.Linq.Id(i + 1));
-                        
+
                         Function.InvertBoolean(ref buttonStates[i]);
-                        
+
                         UpdateButtons();
 
                         yield return new WaitForSecondsRealtime(0.1f);
@@ -181,9 +179,9 @@ namespace Linq
             }
 
             int[] melody = { 6, 5, 3, 4, 2, 1 };
-            
+
             buttonStates = !isInverted ? new[] { false, true, true, false, false, true } : new[] { false, true, false, true, false, true };
-            
+
             for (int i = 0; i < _linq.Buttons.Length; i++)
             {
                 _linq.Get<KMAudio>().Play(_linq.Buttons[melody[i] - 1].transform, Sounds.Linq.Id(melody[i]));
@@ -198,7 +196,7 @@ namespace Linq
             }
 
             buttonStates = new bool[6];
-            
+
             UpdateButtons();
 
             isAnimating = false;

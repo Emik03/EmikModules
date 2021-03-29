@@ -218,7 +218,6 @@ namespace ReformedRoleReversalModule
                     sb[index] = '\n';
                     index += jump;
                 }
-
                 else
                     index--;
             }
