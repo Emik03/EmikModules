@@ -1,19 +1,19 @@
 ﻿using OneDimensionalChess;
-using EmikBaseModules;
+using KeepCodingAndNobodyExplodes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using UnityEngine;
-using Srnd = System.Random;
-using Urnd = UnityEngine.Random;
+using SRandom = System.Random;
+using URandom = UnityEngine.Random;
 using System.IO;
 
 /// <summary>
 /// On the Subject of 1D Chess - A modded "Keep Talking and Nobody Explodes" module created by Emik.
 /// </summary>
-public partial class OneDimensionalChessScript : ModuleScript
+public class OneDimensionalChessScript : ModuleScript
 {
     public CustomValues Debugger;
     public KMSelectable[] Buttons;
@@ -37,7 +37,7 @@ public partial class OneDimensionalChessScript : ModuleScript
     internal int? last;
     internal string position;
     internal PieceColor color;
-    internal List<string> souvenirPositions;
+    internal List<string> souvenirPositions; 
 
     private string RandomPosition { get { return Debugger.IsEnabled ? Debugger.Position.IsNullOrEmpty() ? Position.Generate(Debugger.Length, 2) : Debugger.Position : Position.Generate(_boardLength, 2); } }
 
@@ -61,10 +61,9 @@ public partial class OneDimensionalChessScript : ModuleScript
             // This disables the debugger if it isn't played in-game.
             Debugger = new CustomValues { IsEnabled = false };
 
-            // This will install the Rust library only once. It causes problems in the editor, which is why it is in here.
+            // This will load the Rust library. It causes problems in the editor, which is why it is in here.
             if (!_isRustLoaded)
             {
-                _isRustLoaded = true;
                 try
                 {
                     PathManager.LoadLibrary("EmikModules", Engine.LibraryName);
@@ -89,26 +88,29 @@ public partial class OneDimensionalChessScript : ModuleScript
             return;
         }
 
+        // Once we get here, we know that the library works, and therefore don't need to attempt to load it again.
+        _isRustLoaded = true;
+
         _bestMove = new Work<string, int, bool, CGameResult>(
             work: Engine.Calculate,
             allowSimultaneousActive: true,
             maximumThreadsActive: 1);
+    }
 
-        Assign(() =>
-        {
-            // This ensures that the same positions generate if a bomb seed is used.
-            Position.random = new Srnd(Urnd.Range(0, int.MaxValue));
+    protected override void OnActivate()
+    {
+        // This ensures that the same positions generate if a bomb seed is used.
+        Position.random = new SRandom(URandom.Range(0, int.MaxValue));
 
-            _boardLength = Position.random.Next(8, 10);
+        _boardLength = Position.random.Next(8, 10);
 
-            _isUsingThreads = false;
+        _isUsingThreads = false;
 
-            Buttons.Assign(onInteract: OnInteract);
+        Buttons.Assign(onInteract: OnInteract);
 
-            StartCoroutine(GetGoodPosition());
+        StartCoroutine(GetGoodPosition());
 
-            BoardTiling();
-        });
+        BoardTiling();
     }
 
     private void OnInteract(int arg)
@@ -126,7 +128,7 @@ public partial class OneDimensionalChessScript : ModuleScript
             return;
 
         // Gives button feedback.
-        Buttons[arg].Push(Get<KMAudio>(), 1, Sounds._1dch.Click);
+        ButtonEffect(Buttons[arg], 1, Sounds._1dch.Click);
 
         // Highlight the selected square.
         BoardRenderers[arg].material.color = _colorScheme[2];
@@ -150,7 +152,7 @@ public partial class OneDimensionalChessScript : ModuleScript
                         Destination = (sbyte)arg
                     };
 
-                    position = move.Move(position, Get<KMAudio>());
+                    position = move.Move(position, this);
 
                     Log("You play {0}, the position is now {1}.", ToLog(move), position);
 
@@ -160,7 +162,7 @@ public partial class OneDimensionalChessScript : ModuleScript
                     StartCoroutine(GetEngineMove());
                 }
 
-                Get<KMAudio>().Play(transform, isLegalMove ? Sounds._1dch.Self : Sounds._1dch.Illegal);
+                PlaySound(isLegalMove ? Sounds._1dch.Self : Sounds._1dch.Illegal);
             }
 
             RenderPosition(position);
@@ -204,14 +206,14 @@ public partial class OneDimensionalChessScript : ModuleScript
 
         ChangeText("Mate in", "", MovesLeft.ToString());
 
-        Get<KMAudio>().Play(transform, Sounds._1dch.Opponent);
+        PlaySound(Sounds._1dch.Opponent);
 
         // This indicates if the game has ended.
         if (_bestMove.Result.IsEqual(Position.finishedGame))
         {
             isReady = false;
 
-            Get<KMAudio>().Play(transform, Sounds._1dch.Check);
+            PlaySound(Sounds._1dch.Check);
 
             // Stalemate.
             if (_bestMove.Result.Evaluation == 0)
@@ -224,7 +226,7 @@ public partial class OneDimensionalChessScript : ModuleScript
             // Checkmate for the player.
             else
             {
-                Get<KMAudio>().Play(transform, Sounds._1dch.GameEnd, Sounds._1dch.Solve);
+                PlaySound(Sounds._1dch.GameEnd, Sounds._1dch.Solve);
 
                 string message = new[] { "Good game!", "Well played!" }.PickRandom();
                 Solve(message);
@@ -238,7 +240,7 @@ public partial class OneDimensionalChessScript : ModuleScript
 
             position = _bestMove
                 .Result
-                .Move(position, Get<KMAudio>());
+                .Move(position, this);
 
             Log("Rustmate plays {0}, the position is now {1}.", ToLog(_bestMove.Result), position);
 
@@ -267,7 +269,7 @@ public partial class OneDimensionalChessScript : ModuleScript
         ChangeText("Waiting for", "other modules...");
 
         // This waits for an arbitrary amount of time, to let other copies of this module through at different rates.
-        yield return new WaitForSecondsRealtime((ModuleIdCounter - ModuleId) / Mathf.PI);
+        yield return new WaitForSecondsRealtime(URandom.Range(0, 2));
 
         // This waits until another module that uses threads in this exact method is finished.
         yield return new WaitWhile(() => _isUsingThreads);
@@ -331,7 +333,7 @@ public partial class OneDimensionalChessScript : ModuleScript
                 }
 
                 // Ensures that what it logs is indeed a checkmate. This reverifies that the puzzle is possible.
-                if (isGameCorrectlyOver && moves.Count == (128 - Math.Abs(game.Evaluation) - (color == PieceColor.White ? 1 : 0)))
+                if (isGameCorrectlyOver && moves.Count == 128 - Math.Abs(game.Evaluation) - (color == PieceColor.White ? 1 : 0))
                 {
                     Log("The position is {0}; {1} to play, mate in {2}. To beat Rustmate, the best sequence of moves are {3}.", position, color, (128 - Math.Abs(game.Evaluation)) / 2, ToLog(moves));
                     break;
@@ -353,22 +355,21 @@ public partial class OneDimensionalChessScript : ModuleScript
 
             RenderPosition(position);
 
-            Get<KMAudio>().Play(transform, new[] { Sounds._1dch.Capture, Sounds._1dch.Check, Sounds._1dch.Opponent, Sounds._1dch.Self }.PickRandom());
+            PlaySound(new[] { Sounds._1dch.Capture, Sounds._1dch.Check, Sounds._1dch.Opponent, Sounds._1dch.Self }.PickRandom());
         }
 
         MovesLeft = (128 - Math.Abs(game.Evaluation)) / 2;
 
         _isUsingThreads = false;
 
-        Get<KMAudio>().Play(transform, Sounds._1dch.GameStart);
+        PlaySound(Sounds._1dch.GameStart);
 
         ChangeText("Mate in", "", MovesLeft.ToString());
     }
 
     private IEnumerator HandleStrike(string title, string subtitle)
     {
-        Get<KMAudio>().Play(transform, Sounds._1dch.GameEnd);
-        Get<KMAudio>().Play(transform, Sounds._1dch.Strike);
+        PlaySound(Sounds._1dch.GameEnd, Sounds._1dch.Strike);
 
         ChangeText(title, subtitle);
 

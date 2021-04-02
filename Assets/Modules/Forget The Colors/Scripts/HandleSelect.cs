@@ -24,7 +24,7 @@ namespace ForgetTheColors
             }
 
             //if solved, buttons and key should do nothing
-            if (solved || (!canSolve && !Application.isEditor))
+            if (solved || (!canSolve && !FTCScript.isEditor))
                 return;
 
             //strike mode
@@ -43,7 +43,7 @@ namespace ForgetTheColors
             else if (btn != 2)
             {
                 //increments respective nixie by 1
-                if (!Application.isEditor)
+                if (!FTCScript.isEditor)
                     NixieTexts[btn].text = Ease.Modulo(int.Parse(NixieTexts[btn].text) + 1, 10).ToString();
 
                 //complete debugging
@@ -95,7 +95,7 @@ namespace ForgetTheColors
             else
             {
                 //debugging
-                if (Application.isEditor)
+                if (FTCScript.isEditor)
                 {
                     //souvenir
                     gear[stage] = byte.Parse(GearText.text[Convert.ToByte(colorblind)].ToString());

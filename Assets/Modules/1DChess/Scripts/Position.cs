@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using EmikBaseModules;
-using System.Text;
-using System.Collections.Generic;
+﻿using KeepCodingAndNobodyExplodes;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace OneDimensionalChess
 {
@@ -54,13 +54,13 @@ namespace OneDimensionalChess
             return str.ToString();
         }
 
-        internal static string Move(this CGameResult move, string current, KMAudio audio = null)
+        internal static string Move(this CGameResult move, string current, ModuleScript moduleScript = null)
         {
             var str = new StringBuilder(current);
 
             // If the destination is occupied, this implies a capture.
-            if (str[move.Destination] != '_' && audio != null)
-                audio.Play(audio.transform, Sounds._1dch.Capture);
+            if (str[move.Destination] != '_' && moduleScript != null)
+                moduleScript.PlaySound(Sounds._1dch.Capture);
 
             // Moves origin to destination, leaving origin empty.
             str[move.Destination] = str[move.Origin];

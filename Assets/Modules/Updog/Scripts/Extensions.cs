@@ -1,9 +1,9 @@
-﻿using EmikBaseModules;
+﻿using KeepCodingAndNobodyExplodes;
 using System;
 using System.Linq;
 using UnityEngine;
-using IntTuple = Updog.Tuple<int, int>;
-using MazeTuple = Updog.Tuple<System.Text.StringBuilder[], string[]>;
+using IntTuple = KeepCodingAndNobodyExplodes.Tuple<int, int>;
+using MazeTuple = KeepCodingAndNobodyExplodes.Tuple<System.Text.StringBuilder[], string[]>;
 using String = System.Text.StringBuilder;
 
 namespace Updog

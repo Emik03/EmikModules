@@ -1724,7 +1724,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ea93041c392b547b77ab5d807a937c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Linq: {fileID: 114235208149614748}
+  TwitchHelpMessage: '!{0} 6 [Presses the 6th position] | !{0} submit [Presses the
+    text, case-insensitive] | !{0} 6 54 sUbMiT [Presses the 6th, 5th, and 4th position,
+    then the text.]'
 --- !u!114 &114583874117481182
 MonoBehaviour:
   m_ObjectHideFlags: 1

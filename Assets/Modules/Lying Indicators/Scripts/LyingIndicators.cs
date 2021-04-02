@@ -14,7 +14,7 @@ public class LyingIndicators : MonoBehaviour
     public KMSelectable[] Buttons;
     public TextAsset EmikModuleList;
 
-    private bool _isSolved = false, _lightsOn = false, _hasStrike = false, _frkLying;
+    private bool _isSolved = false, _hasStrike = false, _frkLying;
     private bool[] _buttonStates;
     static int _moduleIdCounter = 1;
     int _moduleId;
@@ -438,7 +438,7 @@ public class LyingIndicators : MonoBehaviour
 
     private IEnumerator HandlePress(byte btn)
     {
-        if (_isSolved || _lightsOn || Buttons[btn].GetComponent<Renderer>().material.color.b == 0.6f)
+        if (_isSolved || Buttons[btn].GetComponent<Renderer>().material.color.b == 0.6f)
             yield break;
 
         for (int i = 0; i < _buttonStates.Length; i++)

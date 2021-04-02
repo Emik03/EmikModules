@@ -560,6 +560,8 @@ MonoBehaviour:
   ModuleSelectable: {fileID: 114717984972801046}
   SubModuleSelectable: {fileID: 114058525015168996}
   SelectableRenderer: {fileID: 23148952995706464}
+  DimensionOverride: 0
+  RotationOverride: 0
   ForceRotation: 
   ForceStartingSphere: 
 --- !u!114 &114626008949226780

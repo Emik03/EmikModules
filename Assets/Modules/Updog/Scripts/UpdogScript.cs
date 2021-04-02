@@ -1,8 +1,8 @@
-﻿using EmikBaseModules;
+﻿using KeepCodingAndNobodyExplodes;
 using System.Collections;
 using UnityEngine;
 using Updog;
-using IntTuple = Updog.Tuple<int, int>;
+using IntTuple = KeepCodingAndNobodyExplodes.Tuple<int, int>;
 using Sound = KMSoundOverride.SoundEffect;
 using String = System.Text.StringBuilder;
 
@@ -24,31 +24,28 @@ public class UpdogScript : ModuleScript
     private bool[] _order;
     private int _interactCount;
 
-    private void Start()
+    protected override void OnActivate()
     {
         isColorblind = Get<KMColorblindMode>().ColorblindModeActive;
 
         Arrows.Assign(onInteract: ArrowsInteract);
         Center.Assign(onInteract: CenterInteract);
 
-        Assign(onActivate: () =>
-        {
-            var colors = Colors.GetFinal;
-            var word = Words.GetRandom;
-            var maze = Mazes.Get(word.Value, colors[2], colors[4]);
-            
-            StartCoroutine(Flash(colors, word.Key));
+        var colors = Colors.GetFinal;
+        var word = Words.GetRandom;
+        var maze = Mazes.Get(word.Value, colors[2], colors[4]);
 
-            _position = _initialPosition = maze.Find(colors[0]);
-            _order = Words.GetOrder(colors[6], word.Value.Item2);
-            _initialMaze = maze.InsertBones();
+        StartCoroutine(Flash(colors, word.Key));
 
-            _maze = new String[_initialMaze.Length];
-            _initialMaze.Copy(_maze);
+        _position = _initialPosition = maze.Find(colors[0]);
+        _order = Words.GetOrder(colors[6], word.Value.Item2);
+        _initialMaze = maze.InsertBones();
 
-            _order.ToLog(this);
-            _maze.ToLog(this, _position);
-        });
+        _maze = new String[_initialMaze.Length];
+        _initialMaze.Copy(_maze);
+
+        _order.ToLog(this);
+        _maze.ToLog(this, _position);
     }
 
     private void CenterInteract(int i)
@@ -56,7 +53,7 @@ public class UpdogScript : ModuleScript
         if (IsSolved)
             return;
 
-        Center[0].Push(Get<KMAudio>(), 2, Sound.BigButtonPress);
+        ButtonEffect(Center[0], 2, Sound.BigButtonPress);
 
         if (!IsOnBone)
         {
@@ -72,7 +69,7 @@ public class UpdogScript : ModuleScript
 
         if (_maze.IsSolved())
         {
-            Get<KMAudio>().Play(transform, Sounds.Ud.Solve);
+            PlaySound(Sounds.Ud.Solve);
             Solve("Solved! :)");
         }
     }
@@ -82,7 +79,7 @@ public class UpdogScript : ModuleScript
         if (IsSolved)
             return;
 
-        Arrows[i].Push(Get<KMAudio>(), 1, Sound.ButtonPress);
+        ButtonEffect(Arrows[i], 1, Sound.ButtonPress);
 
         if (_order[_interactCount % 4] ^ i >= 4)
             OnStrike("The wrong type of button has been pushed, causing the dog to trip and fall. Strike for being unable to walk correctly!");
@@ -99,11 +96,13 @@ public class UpdogScript : ModuleScript
         const float Time = 0.375f;
 
         string[] colorblind = colors.AsString(text);
+        int i = 0;
 
-        for (int i = 0; !IsSolved; i = i + 1 < colors.Length ? i + 1 : 0)
+        while (!IsSolved)
         {
-            UpdateCenter(isColorblind ? colorblind[i] : text, colors[i]);
+            UpdateCenter(isColorblind ? colorblind.ElementAtWrap(i) : text, colors.ElementAtWrap(i));
             yield return new WaitForSecondsRealtime(Time);
+            i++;
         }
 
         UpdateCenter(Colors.White, Colors.white);

@@ -959,7 +959,7 @@ public class placeholderTalk : MonoBehaviour
             //if command is valid, push button accordingly
             else
             {
-                int s = 0;
+                int s;
                 int.TryParse(buttonPressed[1], out s);
                 btn[s - 1].OnInteract();
             }

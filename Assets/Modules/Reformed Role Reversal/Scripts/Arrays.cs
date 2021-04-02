@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using PathManager = KeepCodingAndNobodyExplodes.PathManager;
 
 /// <summary>
 /// Contains mostly static unchanging information and indexable edgework.
@@ -23,7 +24,7 @@ namespace ReformedRoleReversalModule
         internal static string Version { get { return version; } }
 
         // When updating, change this string!
-        private static readonly string version = Application.isEditor ? "#.#.#" : EmikBaseModules.PathManager.GetModInfoVersion("EmikModules.dll");
+        private static readonly string version = Application.isEditor ? "#.#.#" : PathManager.GetModInfoVersion("EmikModules.dll");
 
         /// <summary>
         /// Indexable array of indicator edgework in alphabetical order.

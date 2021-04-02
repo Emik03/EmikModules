@@ -1,9 +1,9 @@
-﻿using System;
+﻿using KeepCodingAndNobodyExplodes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using WordTuple = Updog.Tuple<Updog.Spelling, Updog.Casing>;
-using EmikBaseModules;
+using WordTuple = KeepCodingAndNobodyExplodes.Tuple<Updog.Spelling, Updog.Casing>;
 
 namespace Updog
 {

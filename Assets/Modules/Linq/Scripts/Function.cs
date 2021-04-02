@@ -1,15 +1,9 @@
-﻿using UnityEngine;
-using Rnd = UnityEngine.Random;
+﻿using Rnd = UnityEngine.Random;
 
 namespace Linq
 {
     internal static class Function
     {
-        public static bool HasComponent<T>(this GameObject obj)
-        {
-            return (obj.GetComponent<T>() as Component) != null;
-        }
-
         /// <summary>
         /// Inverts a boolean.
         /// </summary>

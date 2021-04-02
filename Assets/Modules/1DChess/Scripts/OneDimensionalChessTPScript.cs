@@ -1,18 +1,11 @@
-﻿using EmikBaseModules;
+﻿using KeepCodingAndNobodyExplodes;
 using OneDimensionalChess;
 using System.Collections;
 using System.Linq;
 using System.Threading;
-using UnityEngine;
 
-public class OneDimensionalChessTPScript : TPScript
+public class OneDimensionalChessTPScript : TPScript<OneDimensionalChessScript>
 {
-    public OneDimensionalChessScript Module;
-
-#pragma warning disable 414
-    new private string TwitchHelpMessage = @"!{0} <##> (# is a-h) | Moves piece in first character to second character. | Example: !{0} ab";
-#pragma warning restore 414
-
     protected override IEnumerator ProcessTwitchCommand(string command)
     {
         yield return null;
@@ -72,7 +65,7 @@ public class OneDimensionalChessTPScript : TPScript
             if (indices.Any(i => i == -1))
                 Module.Solve("The autosolver seemed to trip up a bit there. Force-solving now.");
             else
-                yield return OnInteractSequence(Module.Buttons, indices, 1 / 64f, Module);
+                yield return OnInteractSequence(Module.Buttons, 1 / 64f, indices);
         }
     }
 }

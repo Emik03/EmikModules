@@ -1,18 +1,10 @@
-﻿using EmikBaseModules;
+﻿using KeepCodingAndNobodyExplodes;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-public class NamingConventionsTPScript : TPScript
+public class NamingConventionsTPScript : TPScript<NamingConventionsScript>
 {
-    public NamingConventionsScript Module;
-
-#pragma warning disable 414
-#pragma warning disable IDE0051 // Remove unused private members
-    new private const string TwitchHelpMessage = @"!{0} <###...> | Flips each button on <#>, then presses the first button to submit | Example: !{0} 123";
-#pragma warning restore IDE0051 // Remove unused private members
-#pragma warning restore 414
-
     protected override IEnumerator ProcessTwitchCommand(string command)
     {
         yield return null;

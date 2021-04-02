@@ -1,4 +1,4 @@
-﻿using EmikBaseModules;
+﻿using KeepCodingAndNobodyExplodes;
 using KModkit;
 using System.Collections;
 using System.Linq;
@@ -48,10 +48,7 @@ public class CoinageScript : ModuleScript
     {
         _rotateCoin = new Routine<int, bool>(RotateCoin, this);
 
-        Coins.Assign(onInteract: i =>
-        {
-            _rotateCoin.Start(i, true, allowSimultaneousRuns: false);
-        });
+        Coins.Assign(onInteract: i => _rotateCoin.Start(i, true, allowSimultaneousRuns: false));
 
         coinStates = Helper.RandomBooleans(CoinCount);
 
@@ -73,7 +70,7 @@ public class CoinageScript : ModuleScript
 
     private int CountCoins(int i)
     {
-        return coinStates.Where((b, n) => b && (n % i) >= i / 2).Count();
+        return coinStates.Where((b, n) => b && n % i >= i / 2).Count();
     }
 
     private void ApplyRotation(int i, float angle, float distance)
@@ -102,7 +99,7 @@ public class CoinageScript : ModuleScript
     private IEnumerator RotateCoin(int arg, bool playSound)
     {
         if (playSound)
-            Get<KMAudio>().Play(Coins[arg].transform, Sounds.Coin.Flip);
+            PlaySound(Coins[arg].transform, Sounds.Coin.Flip);
 
         float f = 0;
 
@@ -132,7 +129,7 @@ public class CoinageScript : ModuleScript
 
         if (IsCorrect)
         {
-            Get<KMAudio>().Play(Coins[arg].transform, Sounds.Coin.Solve);
+            PlaySound(Coins[arg].transform, Sounds.Coin.Solve);
 
             Solve("The correct coin was flipped. Module solved!");
 
@@ -144,7 +141,7 @@ public class CoinageScript : ModuleScript
             {
                 int[] coinFlips = Enumerable.Range(0, 64).Where(j => (j % 8) + (j / 8) == i).ToArray();
 
-                foreach (var flip in coinFlips)
+                foreach (int flip in coinFlips)
                 {
                     StartCoroutine(RotateCoin(flip, false));
                     yield return new WaitForSecondsRealtime(1 / 32f);
@@ -153,7 +150,7 @@ public class CoinageScript : ModuleScript
         }
         else
         {
-            Get<KMAudio>().Play(Coins[arg].transform, Sounds.Coin.Strike);
+            PlaySound(Coins[arg].transform, Sounds.Coin.Strike);
 
             Strike("Coin {0} was flipped, making the arrangement {1}, strike!".Form(ToCoordinate(arg), CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join("")),
                 "One of the answers is now {1}. (chess-coordinates)".Form(CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join(""), ToCoordinate(GetExampleAnswer())));

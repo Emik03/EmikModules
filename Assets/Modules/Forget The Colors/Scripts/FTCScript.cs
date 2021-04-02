@@ -25,6 +25,9 @@ public class FTCScript : MonoBehaviour
     public TextMesh[] DisplayTexts, NixieTexts;
     public Texture[] ColorTextures;
 
+    // I actually really don't like the debugger
+    internal const bool isEditor = false;
+
     //large souvenir dump
     bool solved;
     int stage, maxStage = ForgetAnyColor.Arrays.EditorMaxStage;
@@ -196,7 +199,7 @@ public class FTCScript : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
 
         //because playing in the editor forces debug mode, the module can't be solved normally
-        if (Application.isEditor)
+        if (isEditor)
         {
             Module.HandlePass();
             yield break;

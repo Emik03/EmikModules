@@ -1,7 +1,7 @@
-﻿using KModkit;
+﻿using KeepCodingAndNobodyExplodes;
+using KModkit;
 using System;
 using System.Collections;
-using EmikBaseModules;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -43,7 +43,7 @@ namespace Linq
 
         internal void ButtonPress(int i)
         {
-            _linq.Buttons[i].Push(_linq.Get<KMAudio>(), 1, KMSoundOverride.SoundEffect.ButtonPress, Sounds.Linq.Id(!isInverted ? i + 1 : _invertedIndexes[i] + 1));
+            _linq.ButtonEffect(_linq.Buttons[i], 1, KMSoundOverride.SoundEffect.ButtonPress, Sounds.Linq.Id(!isInverted ? i + 1 : _invertedIndexes[i] + 1));
 
             if (isAnimating)
                 return;
@@ -71,7 +71,7 @@ namespace Linq
 
             bool[] answer = LinqValidate.Run(_linq.Get<KMBombInfo>().GetSerialNumber(), initialButtonStates, functions[currentStage], parameter);
 
-            _linq.TextSelectable.Push(_linq.Get<KMAudio>(), 0.5f, KMSoundOverride.SoundEffect.TypewriterKey, Sounds.Linq.Id(answer.SequenceEqual(buttonStates) ? 8 : 7));
+            _linq.ButtonEffect(_linq.TextSelectable, 0.5f, KMSoundOverride.SoundEffect.TypewriterKey, Sounds.Linq.Id(answer.SequenceEqual(buttonStates) ? 8 : 7));
 
             if (answer.SequenceEqual(buttonStates))
             {
@@ -155,7 +155,7 @@ namespace Linq
                 {
                     for (int i = inverted ? _linq.Buttons.Length - 1 : 0; inverted ? i >= 0 : i < _linq.Buttons.Length; i += inverted ? -1 : 1)
                     {
-                        _linq.Get<KMAudio>().Play(_linq.Buttons[i].transform, Sounds.Linq.Id(i + 1));
+                        _linq.PlaySound(_linq.Buttons[i].transform, Sounds.Linq.Id(i + 1));
 
                         Function.InvertBoolean(ref buttonStates[i]);
 
@@ -164,7 +164,7 @@ namespace Linq
                         yield return new WaitForSecondsRealtime(0.1f);
                     }
 
-                    _linq.Get<KMAudio>().Play(_linq.TextSelectable.transform, Sounds.Linq.Id(8));
+                    _linq.PlaySound(_linq.TextSelectable.transform, Sounds.Linq.Id(8));
 
                     Function.InvertBooleanArray(buttonStates);
                     UpdateButtons();
@@ -184,7 +184,7 @@ namespace Linq
 
             for (int i = 0; i < _linq.Buttons.Length; i++)
             {
-                _linq.Get<KMAudio>().Play(_linq.Buttons[melody[i] - 1].transform, Sounds.Linq.Id(melody[i]));
+                _linq.PlaySound(_linq.Buttons[melody[i] - 1].transform, Sounds.Linq.Id(melody[i]));
 
                 Function.InvertBooleanArray(buttonStates);
 

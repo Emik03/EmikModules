@@ -17,7 +17,7 @@ namespace ForgetTheColors
             Debug.LogFormat("[Forget The Colors #{0}]: <-------=-------> FINALE ~ ARCCOSINE <-------=------->", moduleId);
 
             //prevents out of array exceptions in editor
-            if (Application.isEditor)
+            if (FTCScript.isEditor)
                 maxStage = calculatedValues.Count;
 
             //adds all of the values
@@ -147,7 +147,7 @@ namespace ForgetTheColors
                 Rule rule = rules[1][(int)Ease.Modulo(colorValues[3] - nixie1 + nixie2, 10)];
 
                 //the smaller display is used as a debug displayer in the editor, which cannot be parsed
-                int[] edgework = new int[22] { BombInfo.GetBatteryCount(), BombInfo.GetBatteryCount(Battery.AA) + BombInfo.GetBatteryCount(Battery.AAx3) + BombInfo.GetBatteryCount(Battery.AAx4), BombInfo.GetBatteryCount(Battery.D), BombInfo.GetBatteryHolderCount(), BombInfo.GetIndicators().Count(), BombInfo.GetOnIndicators().Count(), BombInfo.GetOffIndicators().Count(), BombInfo.GetPortPlateCount(), BombInfo.GetPorts().Distinct().Count(), BombInfo.GetPorts().Count() - BombInfo.GetPorts().Distinct().Count(), BombInfo.GetPortCount(), BombInfo.GetSerialNumberNumbers().First(), BombInfo.GetSerialNumberNumbers().Last(), BombInfo.GetSerialNumberNumbers().Count(), BombInfo.GetSerialNumberLetters().Count(), BombInfo.GetSolvedModuleNames().Count(), maxStage, BombInfo.GetModuleNames().Count(), BombInfo.GetSolvableModuleNames().Count() - BombInfo.GetSolvedModuleNames().Count(), ignoredCount, Application.isEditor ? 0 : int.Parse(DisplayTexts[1].text), int.Parse(DisplayTexts[0].text) };
+                int[] edgework = new int[22] { BombInfo.GetBatteryCount(), BombInfo.GetBatteryCount(Battery.AA) + BombInfo.GetBatteryCount(Battery.AAx3) + BombInfo.GetBatteryCount(Battery.AAx4), BombInfo.GetBatteryCount(Battery.D), BombInfo.GetBatteryHolderCount(), BombInfo.GetIndicators().Count(), BombInfo.GetOnIndicators().Count(), BombInfo.GetOffIndicators().Count(), BombInfo.GetPortPlateCount(), BombInfo.GetPorts().Distinct().Count(), BombInfo.GetPorts().Count() - BombInfo.GetPorts().Distinct().Count(), BombInfo.GetPortCount(), BombInfo.GetSerialNumberNumbers().First(), BombInfo.GetSerialNumberNumbers().Last(), BombInfo.GetSerialNumberNumbers().Count(), BombInfo.GetSerialNumberLetters().Count(), BombInfo.GetSolvedModuleNames().Count(), maxStage, BombInfo.GetModuleNames().Count(), BombInfo.GetSolvableModuleNames().Count() - BombInfo.GetSolvedModuleNames().Count(), ignoredCount, FTCScript.isEditor ? 0 : int.Parse(DisplayTexts[1].text), int.Parse(DisplayTexts[0].text) };
 
                 switch (rule.Operator)
                 {

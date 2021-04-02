@@ -1,4 +1,4 @@
-﻿using EmikBaseModules;
+﻿using KeepCodingAndNobodyExplodes;
 using NamingConventions;
 using System;
 using System.Collections;
@@ -109,8 +109,8 @@ public class NamingConventionsScript : ModuleScript
     /// <summary>
     /// Contains the current DataType.
     /// </summary>
-    internal DataType DataType { get { return _DataType; } set { if (_DataType == default(DataType)) _DataType = value; } }
-    private DataType _DataType;
+    internal DataType DataType { get { return _dataType; } set { if (_dataType == default(DataType)) _dataType = value; } }
+    private DataType _dataType;
 
     private bool[][] RuleSeededSolutions
     {
@@ -145,7 +145,7 @@ public class NamingConventionsScript : ModuleScript
             Enumerable.Range(0, 6).Select(i => SetTextIndexes(i + 1, Solutions[DataType][i]).Trim()).Join(", "));
     }
 
-    public override void OnTimerTick()
+    protected override void OnTimerTick()
     {
         if (IsSolved)
             return;
@@ -154,7 +154,7 @@ public class NamingConventionsScript : ModuleScript
             textStates[i] = !textStates[i];
 
         if (_isSelected)
-            Get<KMAudio>().Play(transform, Sounds.Nc.Tick);
+            PlaySound(Sounds.Nc.Tick);
 
         UpdateIndexes();
     }
@@ -174,7 +174,7 @@ public class NamingConventionsScript : ModuleScript
 
     private void HandlePresses(int i)
     {
-        Buttons[i].Push(Get<KMAudio>(), 0, Sounds.Nc.Touch, KMSoundOverride.SoundEffect.ButtonPress);
+        ButtonEffect(Buttons[i], 0, Sounds.Nc.Touch, KMSoundOverride.SoundEffect.ButtonPress);
 
         if (IsSolved)
             return;
@@ -194,14 +194,14 @@ public class NamingConventionsScript : ModuleScript
     {
         if (IsCorrect())
         {
-            Get<KMAudio>().Play(transform, Sounds.Nc.Solve);
+            PlaySound(Sounds.Nc.Solve);
             Solve("The submission was correct, solved!");
         }
         else
         {
-            Get<KMAudio>().Play(transform, Sounds.Nc.Strike);
+            PlaySound(Sounds.Nc.Strike);
             Strike("The incorrect option was submitted for button(s) {0}, that's 1 strike please!"
-                .Form(Enumerable.Range(2, 6).Where(i => textStates[i - 1] != Solutions[_DataType][i - 2]).Join(", ")));
+                .Form(Enumerable.Range(2, 6).Where(i => textStates[i - 1] != Solutions[_dataType][i - 2]).Join(", ")));
         }
     }
 

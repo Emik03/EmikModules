@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using PathManager = KeepCodingAndNobodyExplodes.PathManager;
 
 namespace HexOSModule
 {
     internal class HexOSStrings
     {
-        internal static readonly string Version = Application.isEditor ? "#.#.#" : EmikBaseModules.PathManager.GetModInfoVersion("EmikModules.dll");
+        internal static readonly string Version = Application.isEditor ? "#.#.#" : PathManager.GetModInfoVersion("EmikModules.dll");
 
         #region Color32
         public static readonly Color32[] PerfectColors = new Color32[3]

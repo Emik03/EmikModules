@@ -1,17 +1,9 @@
-﻿using EmikBaseModules;
+﻿using KeepCodingAndNobodyExplodes;
 using System.Collections;
 using System.Linq;
 
-public class NetheriteTPScript : TPScript
+public class NetheriteTPScript : TPScript<NetheriteScript>
 {
-    public NetheriteScript Module;
-
-#pragma warning disable 414
-#pragma warning disable IDE0051 // Remove unused private members
-    new private const string TwitchHelpMessage = @"!{0} ########### | Each # is a digit 1-9, presses in reading order regardless of rules | Example: !{0} 12345678901";
-#pragma warning restore IDE0051 // Remove unused private members
-#pragma warning restore 414
-
     private const float Wait = 0.2f;
 
     protected override IEnumerator ProcessTwitchCommand(string command)
@@ -27,12 +19,12 @@ public class NetheriteTPScript : TPScript
         if (stop.Any(b => b))
             yield break;
 
-        yield return OnInteractSequence(Module.Buttons, inputs.Select(i => i - 1).ToArray(), Wait, Module);
+        yield return OnInteractSequence(Module.Buttons, Wait, inputs.Select(i => i - 1).ToArray());
     }
 
     protected override IEnumerator TwitchHandleForcedSolve()
     {
         int[] answer = Module.Sequence.Select(i => i = Module.ApplyRules(i - 1) - 1).Skip(Module.Stage).ToArray();
-        yield return OnInteractSequence(Module.Buttons, answer, Wait, Module);
+        yield return OnInteractSequence(Module.Buttons, Wait, answer);
     }
 }
