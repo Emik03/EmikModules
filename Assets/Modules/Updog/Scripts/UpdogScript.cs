@@ -123,6 +123,7 @@ public class UpdogScript : ModuleScript
         _position = _initialPosition;
 
         _initialMaze.Copy(_maze);
+        isStrike = true;
 
         Strike(message);
     }

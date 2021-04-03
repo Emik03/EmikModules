@@ -1233,6 +1233,13 @@
             Creates a big integer with the default value. (0)
             </summary>
         </member>
+        <member name="P:KeepCodingAndNobodyExplodes.BigInteger.Item(System.Int32)">
+            <summary>
+            Indexable number. Allows you to treat the value as an array.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
         <member name="P:KeepCodingAndNobodyExplodes.BigInteger.IsNegative">
             <value>
             Whether or not the number is negative.
@@ -1243,10 +1250,20 @@
             The amount of digits of the value.
             </value>
         </member>
-        <member name="P:KeepCodingAndNobodyExplodes.BigInteger.Value">
+        <member name="P:KeepCodingAndNobodyExplodes.BigInteger.GetLowerBound">
             <value>
-            The number itself.
+            The first digit's index.
             </value>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.BigInteger.GetUpperBound">
+            <value>
+            The last digit's index.
+            </value>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.BigInteger.Value">
+            <summary>
+            The number itself. The instance is duplicated so that the original BigInteger's value may not be modified directly.
+            </summary>
         </member>
         <member name="P:KeepCodingAndNobodyExplodes.BigInteger.Zero">
             <value>
@@ -1575,9 +1592,19 @@
             KMFramework extension methods that makes it easier to assign multiple events to a variable in one statement. Written by Emik.
             </summary>
         </member>
+        <member name="M:KeepCodingAndNobodyExplodes.EventHelper.AddTo``1(System.Delegate,``0@)">
+            <summary>
+            Adds a <see cref="T:System.Delegate"/> onto the referenced variable.
+            </summary>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <typeparam name="T">The type of the <paramref name="mutator"/> and <see cref="T:System.Delegate"/> casting.</typeparam>
+            <param name="dele">The <see cref="T:System.Delegate"/> to add.</param>
+            <param name="mutator">The variable that transmutates and adds <paramref name="dele"/> onto itself.</param>
+        </member>
         <member name="M:KeepCodingAndNobodyExplodes.EventHelper.Assign(KMSelectable[],System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Nullable{System.Boolean})">
             <summary>
-            Assigns events specified into <paramref name="kmSelectable"/>. The number passed into each method represents the index that came from the array.
+            Assigns events specified into <paramref name="kmSelectable"/>. Reassigning them will replace their values. The number passed into each method represents the index that came from the array.
             </summary>
             <remarks>
             An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions.
@@ -1587,12 +1614,12 @@
             <exception cref="T:UnityEngine.UnassignedReferenceException"></exception>
             <param name="kmSelectable">The <see cref="T:KMSelectable"/> array to add events to.</param>
             <param name="onCancel">Called when player backs out of this selectable.</param>
-            <param name="onInteract">Called when player interacts with the selctable.</param>
             <param name="onDefocus">Called when a different selectable becomes the focus, or the module has been backed out of.</param>
             <param name="onDeselect">Called when the selectable stops being the current selectable.</param>
             <param name="onFocus">Called when a module is focused, this is when it is interacted with from the bomb face level and its children can be selected.</param>
             <param name="onHighlight">Called when the highlight is turned on. This will not work correctly in Virtual Reality.</param>
             <param name="onHighlightEnded">Called when the highlight is turned off. This will not work correctly in Virtual Reality.</param>
+            <param name="onInteract">Called when player interacts with the selctable.</param>
             <param name="onInteractEnded">Called when a player interacting with the selectable releases the mouse or controller button.</param>
             <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
             <param name="onRight">Called when the right controller stick is pulled while selected.</param>
@@ -1601,7 +1628,7 @@
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.EventHelper.Assign(KMSelectable,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Nullable{System.Boolean})">
             <summary>
-            Assigns events specified into <paramref name="kmSelectable"/>.
+            Assigns events specified into <paramref name="kmSelectable"/>. Reassigning them will replace their values.
             </summary>
             <remarks>
             An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions.
@@ -1609,12 +1636,12 @@
             <exception cref="T:UnityEngine.UnassignedReferenceException"></exception>
             <param name="kmSelectable">The KMSelectable array to add events to.</param>
             <param name="onCancel">Called when player backs out of this selectable. Return true will make it act as a module/submodule, and false as a button.</param>
-            <param name="onInteract">Called when player interacts with the selctable. Return true will make it act as a module/submodule, and false as a button.</param>
             <param name="onDefocus">Called when a different selectable becomes the focus, or the module has been backed out of.</param>
             <param name="onDeselect">Called when the selectable stops being the current selectable.</param>
             <param name="onFocus">Called when a module is focused, this is when it is interacted with from the bomb face level and its children can be selected.</param>
             <param name="onHighlight">Called when the highlight is turned on. This will not work correctly in Virtual Reality.</param>
             <param name="onHighlightEnded">Called when the highlight is turned off. This will not work correctly in Virtual Reality.</param>
+            <param name="onInteract">Called when player interacts with the selctable. Return true will make it act as a module/submodule, and false as a button.</param>
             <param name="onInteractEnded">Called when a player interacting with the selectable releases the mouse or controller button.</param>
             <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
             <param name="onRight">Called when the right controller stick is pulled while selected.</param>
@@ -1623,7 +1650,7 @@
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.EventHelper.Assign(KMGameInfo,System.Action{System.Boolean},System.Action{System.Boolean})">
             <summary>
-            Assigns events specified into <paramref name="kmGameInfo"/>.
+            Assigns events specified into <paramref name="kmGameInfo"/>. Reassigning them will replace their values.
             </summary>
             <remarks>
             An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions.
@@ -1634,7 +1661,7 @@
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.EventHelper.Assign(KMBombInfo,System.Action,System.Action)">
             <summary>
-            Assigns events specified into <paramref name="kmBombInfo"/>.
+            Assigns events specified into <paramref name="kmBombInfo"/>. Reassigning them will replace their values.
             </summary>
             <remarks>
             An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions or Functions.
@@ -1642,6 +1669,19 @@
             <param name="kmBombInfo">The bomb info instance to assign events to.</param>
             <param name="onBombExploded">Called when the bomb explodes.</param>
             <param name="onBombSolved">Called when the bomb is defused.</param>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.EventHelper.Cast``1(System.Delegate)">
+            <summary>
+            Casts a <see cref="T:System.Delegate"/> onto the type <typeparamref name="T"/>.
+            </summary>
+            <remarks>
+            Both types must have the same parameter and return types, and the <paramref name="dele"/> argument cannot have its <see cref="P:System.Delegate.Target"/> or <see cref="P:System.Delegate.Method"/> be null.
+            </remarks>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <typeparam name="T">The type to cast the delegate into.</typeparam>
+            <param name="dele">The delegate to cast.</param>
+            <returns><paramref name="dele"/> as <typeparamref name="T"/>.</returns>
         </member>
         <member name="T:KeepCodingAndNobodyExplodes.ConstructorArgumentException">
             <summary>
@@ -1909,6 +1949,18 @@
             <param name="action">The action to apply it to.</param>
             <returns>The item <paramref name="item"/>.</returns>
         </member>
+        <member name="M:KeepCodingAndNobodyExplodes.Helper.Call``1(``0[],System.Action{``0,System.Int32})">
+            <summary>
+            Invokes a method of <typeparamref name="T"/> and then returns the argument provided.
+            </summary>
+            <remarks>
+            This can be used to intercept current variables or calculations by for example, printing the value as it is being passed as an argument.
+            </remarks>
+            <typeparam name="T">The type of <paramref name="item"/> and <paramref name="action"/>.</typeparam>
+            <param name="item">The item to use as reference and modify.</param>
+            <param name="action">The action to apply it to.</param>
+            <returns>The item <paramref name="item"/>.</returns>
+        </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.ElementAtWrap``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
             <summary>
             Returns the element of an array, pretending that the array wraps around or is circular.
@@ -2130,6 +2182,17 @@
             <param name="modulo">The right-hand side operator.</param>
             <returns><paramref name="number"/> mod <paramref name="modulo"/>.</returns>
         </member>
+        <member name="M:KeepCodingAndNobodyExplodes.Helper.ToNumbers``1(``0[],System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Parses each element of an array into a number. If it succeeds it returns the integer array, if it fails then it returns null.
+            </summary>
+            <param name="ts">The array to convert to an integer.</param>
+            <param name="min">The minimum acceptable value of any given index. (inclusive)</param>
+            <param name="max">The maximum acceptable value of any given index. (inclusive)</param>
+            <param name="minLength">The minimum acceptable length of the array. (inclusive)</param>
+            <param name="maxLength">The maximum acceptable length of the array. (inclusive)</param>
+            <returns>The array as integers, or null if it fails.</returns>
+        </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.Ranges(System.Int32,System.Int32,System.Int32)">
             <summary>
             Generates a random set of integers.
@@ -2141,17 +2204,6 @@
             <param name="max">The maximum value for each index. (exclusive)</param>
             <param name="length">The length of the array.</param>
             <returns>Random integer array of length <paramref name="length"/> between <paramref name="min"/> and <paramref name="max"/>.</returns>
-        </member>
-        <member name="M:KeepCodingAndNobodyExplodes.Helper.ToNumbers``1(``0[],System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
-            <summary>
-            Parses each element of an array into a number. If it succeeds it returns the integer array, if it fails then it returns null.
-            </summary>
-            <param name="ts">The array to convert to an integer.</param>
-            <param name="min">The minimum acceptable value of any given index. (inclusive)</param>
-            <param name="max">The maximum acceptable value of any given index. (inclusive)</param>
-            <param name="minLength">The minimum acceptable length of the array. (inclusive)</param>
-            <param name="maxLength">The maximum acceptable length of the array. (inclusive)</param>
-            <returns>The array as integers, or null if it fails.</returns>
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.Ranges(System.Single,System.Single,System.Int32)">
             <summary>
@@ -2201,7 +2253,7 @@
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.Form(System.String,System.Object[])">
             <summary>
-            Formats the string. Shorthand for <see cref="M:System.String.Format(System.IFormatProvider,System.String,System.Object[])"/>.
+            Formats the string. Shorthand for <see cref="M:System.String.Format(System.String,System.Object[])"/>.
             </summary>
             <param name="str">The string to format. Typically with placeholders involving {0}, {1}, {2}...</param>
             <param name="args">All of the arguments to put into <paramref name="str"/>.</param>
@@ -2352,6 +2404,78 @@
             <param name="item4">The fourth argument to pass into the tuple.</param>
             <returns>A new <seealso cref="T:KeepCodingAndNobodyExplodes.Tuple`4"/> containing <paramref name="item1"/>, <paramref name="item2"/>, <paramref name="item3"/>, and <paramref name="item4"/></returns>
         </member>
+        <member name="T:KeepCodingAndNobodyExplodes.ModuleContainer">
+            <summary>
+            Container for both regular and needy modules.
+            </summary>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.ModuleContainer.#ctor(KMBombModule,KMNeedyModule)">
+            <summary>
+            Encapsulates either a regular or needy module.
+            </summary>
+            <exception cref="T:KeepCodingAndNobodyExplodes.ConstructorArgumentException"></exception>
+            <param name="bombModule">The instance of a normal module.</param>
+            <param name="needyModule">The instance of a needy module.</param>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModuleContainer.RequiresTimerVisibility">
+            <value>
+            Set to true to only allow this module to be placed on the same face as the timer. Useful when the rules involve the timer in some way (like the Big Button), but should be used sparingly as it limits generation possibilities.
+            </value>
+            <exception cref="T:KeepCodingAndNobodyExplodes.UnrecognizedTypeException"></exception>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModuleContainer.ModuleDisplayName">
+            <value>
+            The nice display name shown to players. e.g. "The Button"
+            </value>
+            <exception cref="T:KeepCodingAndNobodyExplodes.UnrecognizedTypeException"></exception>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModuleContainer.ModuleType">
+            <value>
+            The identifier for the module as referenced in missions. e.g. "BigButton" Also known as a "Module ID".
+            </value>
+            <exception cref="T:KeepCodingAndNobodyExplodes.UnrecognizedTypeException"></exception>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModuleContainer.HandlePass">
+            <value>
+            Call this when the entire module has been solved.
+            </value>
+            <exception cref="T:KeepCodingAndNobodyExplodes.UnrecognizedTypeException"></exception>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModuleContainer.HandleStrike">
+            <value>
+            Call this on any mistake that you want to cause a bomb strike.
+            </value>
+            <exception cref="T:KeepCodingAndNobodyExplodes.UnrecognizedTypeException"></exception>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModuleContainer.GetRuleGenerationSeed">
+            <value>
+            Returns the random seed used to generate the rules for this game. Not currently used.
+            </value>
+            <exception cref="T:KeepCodingAndNobodyExplodes.UnrecognizedTypeException"></exception>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModuleContainer.Regular">
+            <value>
+            Returns <see cref="T:KMBombModule"/>, or if null, throws a <see cref="T:System.NullReferenceException"/>.
+            </value>
+            <exception cref="T:System.NullReferenceException"></exception>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModuleContainer.Needy">
+            <value>
+            Returns <see cref="T:KMNeedyModule"/>, or if null, throws a <see cref="T:System.NullReferenceException"/>.
+            </value>
+            <exception cref="T:System.NullReferenceException"></exception>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModuleContainer.Module">
+            <value>
+            Returns <see cref="T:KMBombModule"/>, or if null, <see cref="T:KMNeedyModule"/>.
+            </value>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.ModuleContainer.OnActivate(System.Action)">
+            <summary>
+            Appends the action to OnActivate.
+            </summary>
+            <param name="action">The delegate to append.</param>
+        </member>
         <member name="T:KeepCodingAndNobodyExplodes.ModuleScript">
             <summary>
             Base class for regular and needy modded modules in Keep Talking and Nobody Explodes. Written by Emik.
@@ -2407,24 +2531,17 @@
             The name of the bundle. This is required for the version number.
             </summary>
         </member>
-        <member name="P:KeepCodingAndNobodyExplodes.ModuleScript.ModuleName">
-            <value>
-            The module's name, by first checking for a <see cref="T:KMBombModule"/> component, then a <see cref="T:KMNeedyModule"/> component.
-            </value>
-            <exception cref="T:KeepCodingAndNobodyExplodes.UnityComponentNotFoundException"></exception>
-        </member>
-        <member name="P:KeepCodingAndNobodyExplodes.ModuleScript.ModuleType">
-            <value>
-            The module's name id, by first checking for a <see cref="T:KMBombModule"/> component, then a <see cref="T:KMNeedyModule"/> component.
-            </value>
-            <exception cref="T:KeepCodingAndNobodyExplodes.UnityComponentNotFoundException"></exception>
-        </member>
         <member name="P:KeepCodingAndNobodyExplodes.ModuleScript.Version">
             <value>
             The version number of the entire mod. Requires instance of <see cref="F:KeepCodingAndNobodyExplodes.ModuleScript.ModBundleName"/>.
             </value>
             <exception cref="T:System.OperationCanceledException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModuleScript.Module">
+            <summary>
+            Contains either <see cref="T:KMBombModule"/> or <see cref="T:KMNeedyModule"/>, and allows for running commands through context.
+            </summary>
         </member>
         <member name="F:KeepCodingAndNobodyExplodes.ModuleScript.TimeModeActive">
             <summary>
@@ -2451,12 +2568,17 @@
             These values are set by the Twitch Plays mod using reflection.
             </summary>
         </member>
+        <member name="M:KeepCodingAndNobodyExplodes.ModuleScript.Awake">
+            <summary>
+            This initalizes the module. If you have an Awake method, be sure to call <c>base.Awake()</c> as the first statement.
+            </summary>
+        </member>
         <member name="M:KeepCodingAndNobodyExplodes.ModuleScript.Assign(System.Action,System.Action,System.Action,System.Action)">
             <summary>
-            Assigns events specified into <see cref="T:KMBombModule"/> or <see cref="T:KMNeedyModule"/>.
+            Assigns events specified into <see cref="T:KMBombModule"/> or <see cref="T:KMNeedyModule"/>. Reassigning them will replace their values.
             </summary>
             <remarks>
-            This extension method simplifies all of the KMFramework events into Actions.
+            An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions or Functions.
             </remarks>
             <exception cref="T:KeepCodingAndNobodyExplodes.UnityComponentNotFoundException"></exception>
             <param name="onActivate">Called when the bomb has been activated and the timer has started.</param>
@@ -2505,7 +2627,7 @@
             Caches the result of a function call that returns a component array in a dictionary, and will return the cached result if called again. Use this to alleviate expensive function calls.
             </summary>
             <remarks>
-            <c>GetComponent()</c> and <c>GetComponents()</c> have their own implementations already, so use these functions instead for that purpose; 
+            <see cref="M:UnityEngine.GameObject.GetComponent``1"/> and <see cref="M:UnityEngine.GameObject.GetComponents``1"/> have their own implementations already, so use these functions instead for that purpose; 
             <seealso cref="M:KeepCodingAndNobodyExplodes.ModuleScript.Get``1(System.Boolean)"/>, <seealso cref="M:KeepCodingAndNobodyExplodes.ModuleScript.GetAll``1(System.Boolean)"/>
             </remarks>
             <exception cref="T:KeepCodingAndNobodyExplodes.UnityComponentNotFoundException"></exception>
