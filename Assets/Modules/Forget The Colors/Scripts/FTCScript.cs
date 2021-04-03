@@ -201,7 +201,9 @@ public class FTCScript : MonoBehaviour
         //because playing in the editor forces debug mode, the module can't be solved normally
         if (isEditor)
         {
+#pragma warning disable CS0162 // Unreachable code detected
             Module.HandlePass();
+#pragma warning restore CS0162 // Unreachable code detected
             yield break;
         }
 

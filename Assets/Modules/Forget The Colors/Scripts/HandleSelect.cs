@@ -49,6 +49,7 @@ namespace ForgetTheColors
                 //complete debugging
                 else
                 {
+#pragma warning disable CS0162 // Unreachable code detected
                     //right nixie changes value selected by one
                     if (btn == 1)
                         switch (debugPointer)
@@ -88,6 +89,7 @@ namespace ForgetTheColors
                     DisplayTexts[1].text = Strings.DebugText[debugPointer];
 
                     moduleRender.Update(ref canSolve, ref DisplayTexts, ref GearText, ref ColoredObjects, ref ColorTextures, ref CylinderDisks, ref colorValues, ref colorblind, ref maxStage, ref stage);
+#pragma warning restore CS0162 // Unreachable code detected
                 }
             }
 
@@ -97,6 +99,7 @@ namespace ForgetTheColors
                 //debugging
                 if (FTCScript.isEditor)
                 {
+#pragma warning disable CS0162 // Unreachable code detected
                     //souvenir
                     gear[stage] = byte.Parse(GearText.text[Convert.ToByte(colorblind)].ToString());
                     gearColor[stage] = Strings.ColorLog[colorValues[3]];
@@ -115,6 +118,7 @@ namespace ForgetTheColors
                         currentAngle += angleIncreasePerSolve;
                         ease = 0;
                     }
+#pragma warning restore CS0162 // Unreachable code detected
                 }
 
                 //if both correct

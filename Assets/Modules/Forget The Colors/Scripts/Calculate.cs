@@ -18,9 +18,11 @@ namespace ForgetTheColors
 
             //prevents out of array exceptions in editor
             if (FTCScript.isEditor)
+#pragma warning disable CS0162 // Unreachable code detected
                 maxStage = calculatedValues.Count;
+#pragma warning restore CS0162 // Unreachable code detected
 
-            //adds all of the values
+                //adds all of the values
             for (byte i = 0; i < calculatedValues.Count; i++)
             {
                 sum += calculatedValues[i];

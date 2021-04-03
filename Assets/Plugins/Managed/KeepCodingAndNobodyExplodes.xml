@@ -1937,6 +1937,13 @@
             <param name="getVariables">Whether it should search inside the variable and yield return the elements inside <paramref name="item"/>.</param>
             <returns>An <see cref="T:System.Object"/> <see cref="T:System.Array"/> of all elements within <paramref name="item"/>.</returns>
         </member>
+        <member name="M:KeepCodingAndNobodyExplodes.Helper.GetAllValues(System.Object)">
+            <summary>
+            Gets all fields and properties of the item using reflection.
+            </summary>
+            <param name="item">The item to get all fields and properties.</param>
+            <returns>All fields and properties of <paramref name="item"/>.</returns>
+        </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.Call``1(``0,System.Action{``0})">
             <summary>
             Invokes a method of <typeparamref name="T"/> and then returns the argument provided.
@@ -1989,13 +1996,6 @@
             <typeparam name="T">The type of the list.</typeparam>
             <param name="source">The list to reverse.</param>
             <returns><paramref name="source"/> with the elements reversed.</returns>
-        </member>
-        <member name="M:KeepCodingAndNobodyExplodes.Helper.GetAllValues(System.Object)">
-            <summary>
-            Gets all fields and properties of the item using reflection.
-            </summary>
-            <param name="item">The item to get all fields and properties.</param>
-            <returns>All fields and properties of <paramref name="item"/>.</returns>
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.Replace``1(System.Collections.Generic.IEnumerable{``0},System.Int32,``0)">
             <summary>
