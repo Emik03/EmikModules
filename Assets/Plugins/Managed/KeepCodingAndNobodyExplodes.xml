@@ -1237,8 +1237,8 @@
             <summary>
             Indexable number. Allows you to treat the value as an array.
             </summary>
-            <param name="i"></param>
-            <returns></returns>
+            <param name="i">The <paramref name="i"/>th digit to look from. (left-to-right)</param>
+            <returns>The current value's <paramref name="i"/>th digit. (left-to-right)</returns>
         </member>
         <member name="P:KeepCodingAndNobodyExplodes.BigInteger.IsNegative">
             <value>
@@ -1539,6 +1539,70 @@
             <param name="bigInteger">The right-hand side operator</param>
             <returns>The modulo of both sides.</returns>
         </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.op_Explicit(KeepCodingAndNobodyExplodes.BigInteger)~System.Int32">
+            <summary>
+            Converts the <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/> to a <see cref="T:System.Int32"/>.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <param name="bigInteger">The instance of <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/> to convert.</param>
+            <returns>Itself as <see cref="T:System.Int32"/>.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.op_Implicit(System.Int32)~KeepCodingAndNobodyExplodes.BigInteger">
+            <summary>
+            Converts the <see cref="T:System.Int32"/> to a <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/>.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <param name="value">The value to convert into <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/>.</param>
+            <returns><see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/> with value <paramref name="value"/>.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.op_Explicit(KeepCodingAndNobodyExplodes.BigInteger)~System.Int64">
+            <summary>
+            Converts the <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/> to a <see cref="T:System.Int64"/>.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <param name="bigInteger">The instance of <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/> to convert.</param>
+            <returns>Itself as <see cref="T:System.Int64"/>.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.op_Implicit(System.Int64)~KeepCodingAndNobodyExplodes.BigInteger">
+            <summary>
+            Converts the <see cref="T:System.Int64"/> to a <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/>.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <param name="value">The value to convert into <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/>.</param>
+            <returns><see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/> with value <paramref name="value"/>.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.op_Explicit(KeepCodingAndNobodyExplodes.BigInteger)~System.UInt32">
+            <summary>
+            Converts the <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/> to a <see cref="T:System.UInt32"/>.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <param name="bigInteger">The instance of <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/> to convert.</param>
+            <returns>Itself as <see cref="T:System.UInt32"/>.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.op_Implicit(System.UInt32)~KeepCodingAndNobodyExplodes.BigInteger">
+            <summary>
+            Converts the <see cref="T:System.UInt32"/> to a <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/>.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <param name="value">The value to convert into <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/>.</param>
+            <returns><see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/> with value <paramref name="value"/>.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.op_Explicit(KeepCodingAndNobodyExplodes.BigInteger)~System.UInt64">
+            <summary>
+            Converts the <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/> to a <see cref="T:System.UInt64"/>.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <param name="bigInteger">The instance of <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/> to convert.</param>
+            <returns>Itself as <see cref="T:System.UInt64"/>.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.op_Implicit(System.UInt64)~KeepCodingAndNobodyExplodes.BigInteger">
+            <summary>
+            Converts the <see cref="T:System.UInt64"/> to a <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/>.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <param name="value">The value to convert into <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/>.</param>
+            <returns><see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/> with value <paramref name="value"/>.</returns>
+        </member>
         <member name="M:KeepCodingAndNobodyExplodes.BigInteger.GetHashCode">
             <summary>
             Gets the hash code of the current values.
@@ -1564,6 +1628,50 @@
             </summary>
             <param name="other">The comparison.</param>
             <returns>True if both values are equal.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.IsInRange(KeepCodingAndNobodyExplodes.BigInteger,KeepCodingAndNobodyExplodes.BigInteger)">
+            <summary>
+            Determines if it is between 2 other <see cref="T:KeepCodingAndNobodyExplodes.BigInteger"/> variables. Equality will count as true.
+            </summary>
+            <param name="min">The minimum value accepted.</param>
+            <param name="max">The maximum value accepted.</param>
+            <returns>True if <paramref name="min"/> is smaller or equal itself and <paramref name="max"/> is greater or equal itself.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.IsInRange(System.Object,System.Object)">
+            <summary>
+            Determines if it is between 2 other variables. Equality will count as true.
+            </summary>
+            <param name="min">The minimum value accepted.</param>
+            <param name="max">The maximum value accepted.</param>
+            <returns>True if <paramref name="min"/> is smaller or equal itself and <paramref name="max"/> is greater or equal itself.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.ToInt">
+            <summary>
+            Converts the BigInteger to a <see cref="T:System.Int32"/>.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <returns>Itself as <see cref="T:System.Int32"/>.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.ToLong">
+            <summary>
+            Converts the BigInteger to a <see cref="T:System.Int64"/>.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <returns>Itself as <see cref="T:System.Int64"/>.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.ToUInt">
+            <summary>
+            Converts the BigInteger to a <see cref="T:System.UInt32"/>.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <returns>Itself as <see cref="T:System.UInt32"/>.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.BigInteger.ToULong">
+            <summary>
+            Converts the BigInteger to a <see cref="T:System.UInt64"/>.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <returns>Itself as <see cref="T:System.UInt64"/>.</returns>
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.BigInteger.Clone">
             <summary>
@@ -1591,16 +1699,6 @@
             <summary>
             KMFramework extension methods that makes it easier to assign multiple events to a variable in one statement. Written by Emik.
             </summary>
-        </member>
-        <member name="M:KeepCodingAndNobodyExplodes.EventHelper.AddTo``1(System.Delegate,``0@)">
-            <summary>
-            Adds a <see cref="T:System.Delegate"/> onto the referenced variable.
-            </summary>
-            <exception cref="T:System.ArgumentException"></exception>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <typeparam name="T">The type of the <paramref name="mutator"/> and <see cref="T:System.Delegate"/> casting.</typeparam>
-            <param name="dele">The <see cref="T:System.Delegate"/> to add.</param>
-            <param name="mutator">The variable that transmutates and adds <paramref name="dele"/> onto itself.</param>
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.EventHelper.Assign(KMSelectable[],System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Nullable{System.Boolean})">
             <summary>
@@ -1682,6 +1780,16 @@
             <typeparam name="T">The type to cast the delegate into.</typeparam>
             <param name="dele">The delegate to cast.</param>
             <returns><paramref name="dele"/> as <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.EventHelper.Set``1(System.Delegate,``0@)">
+            <summary>
+            Adds a <see cref="T:System.Delegate"/> onto the referenced variable.
+            </summary>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <typeparam name="T">The type of the <paramref name="mutator"/> and <see cref="T:System.Delegate"/> casting.</typeparam>
+            <param name="dele">The <see cref="T:System.Delegate"/> to add.</param>
+            <param name="mutator">The variable that transmutates and adds <paramref name="dele"/> onto itself.</param>
         </member>
         <member name="T:KeepCodingAndNobodyExplodes.ConstructorArgumentException">
             <summary>
@@ -1910,6 +2018,7 @@
             <summary>
             Converts any base number to base-10.
             </summary>
+            <exception cref="T:System.FormatException">asaasasasasass</exception>
             <param name="value">The value to convert.</param>
             <param name="baseChars">All of the base characters for the conversion from the base number, use <see cref="F:KeepCodingAndNobodyExplodes.Helper.Alphanumeric"/> for Base-62, use <see cref="F:KeepCodingAndNobodyExplodes.Helper.Decimal"/> for Base-10, use <see cref="F:KeepCodingAndNobodyExplodes.Helper.Binary"/> for Base-2. The length of the array is the base number.</param>
             <returns><paramref name="value"/>, but in the base specified.</returns>
@@ -2080,13 +2189,6 @@
             </summary>
             <param name="str">The string to check for.</param>
             <returns>True if string is equal to null, or empty.</returns>
-        </member>
-        <member name="M:KeepCodingAndNobodyExplodes.Helper.IsOverride(System.Reflection.MethodInfo)">
-            <summary>
-            Determines if the virtual method is overriden.
-            </summary>
-            <param name="methodInfo">The virtual method to check for.</param>
-            <returns>True if <paramref name="methodInfo"/> is overridden.</returns>
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.IsParent(KMSelectable)">
             <summary>

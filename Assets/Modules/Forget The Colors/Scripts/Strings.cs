@@ -7,7 +7,7 @@ namespace ForgetTheColors
     /// </summary>
     sealed class Strings
     {
-        public const string Version = Arrays.Version;
+        public static readonly string Version = Arrays.Version;
 
         public static readonly string[] ColorLog =
         {

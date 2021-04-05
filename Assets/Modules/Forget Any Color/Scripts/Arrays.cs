@@ -1,6 +1,8 @@
-﻿using KModkit;
+﻿using KeepCodingAndNobodyExplodes;
+using KModkit;
 using System;
 using System.Linq;
+using UnityEngine;
 
 namespace ForgetAnyColor
 {
@@ -11,7 +13,7 @@ namespace ForgetAnyColor
     {
         public const int EditorMaxStage = 10;
         public const float TPAwardPerStage = 2;
-        public const string Version = "v1.2.3";
+        public static readonly string Version = Application.isEditor ? "#.#.#" : PathManager.GetModInfoVersion("EmikModules");
 
         public static readonly int[,] ColorTable =
         {
