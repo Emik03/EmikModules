@@ -15,7 +15,7 @@ namespace Updog
             {
                 return Helper.GetValues<Spelling>()
                     .SelectMany(s => Helper.GetValues<Casing>()
-                    .Select(c => new WordTuple(s, c)))
+                    .Select(c => s.ToTuple(c)))
                     .ToArray()
                     .ToDictionary(d => d.AssignCase());
             }
