@@ -228,7 +228,7 @@ public class TheOctadecayottonScript : MonoBehaviour
             for (int j = 0; j < answer[i].Length; j++)
             {
                 while (Interact.GetLastDigitOfTimer != answer[i][j])
-                    yield return true;
+                    yield return null;
                 SubModuleSelectable.OnInteract();
             }
         }

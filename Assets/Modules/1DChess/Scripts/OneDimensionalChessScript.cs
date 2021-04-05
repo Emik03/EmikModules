@@ -66,7 +66,7 @@ public class OneDimensionalChessScript : ModuleScript
             {
                 try
                 {
-                    PathManager.LoadLibrary("EmikModules", Engine.LibraryName);
+                    PathManager.LoadLibrary(ModBundleName, Engine.LibraryName);
                 }
                 catch (FileNotFoundException e)
                 {

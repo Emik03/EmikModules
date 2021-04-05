@@ -2724,7 +2724,7 @@
             </summary>
             <param name="logs">All of the entries to log.</param>
         </member>
-        <member name="M:KeepCodingAndNobodyExplodes.ModuleScript.Cache``1(System.Func{UnityEngine.Component[]},System.Boolean)">
+        <member name="M:KeepCodingAndNobodyExplodes.ModuleScript.Cache``1(System.Func{``0[]},System.Boolean)">
             <summary>
             Caches the result of a function call that returns a component array in a dictionary, and will return the cached result if called again. Use this to alleviate expensive function calls.
             </summary>
@@ -3503,17 +3503,6 @@
             <param name="lenient">Whether it should add the default <c>^\s* PATTERN \s*$</c> embeded into most regex usages for Twitch Plays.</param>
             <param name="options">Any additional options for regular expressions.</param>
             <returns>True if <paramref name="lenient"/> passes the test of the <paramref name="pattern"/>.</returns>
-        </member>
-        <member name="M:KeepCodingAndNobodyExplodes.TPScript`1.Evaluate(System.Boolean,System.Object)">
-            <summary>
-            Returns <paramref name="output"/> if <paramref name="condition"/> is true, otherwise null.
-            </summary>
-            <remarks>
-            You can yield return this to send error messages or interactions by first checking for the condition.
-            </remarks>
-            <param name="condition">The boolean to check.</param>
-            <param name="output">The output to return if <paramref name="condition"/> is true.</param>
-            <returns><paramref name="output"/> or null, depending on <paramref name="condition"/>.</returns>
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.TPScript`1.Evaluate(System.Boolean,System.Object,System.Object)">
             <summary>

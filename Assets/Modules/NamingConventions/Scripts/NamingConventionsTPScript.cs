@@ -31,7 +31,8 @@ public class NamingConventionsTPScript : TPScript<NamingConventionsScript>
 
         while (!Module.IsSolved)
         {
-            yield return true;
+            yield return null;
+
             if (Module.textStates[1] == Module.Solutions[Module.DataType][0])
             {
                 Module.Buttons[0].OnInteract();
