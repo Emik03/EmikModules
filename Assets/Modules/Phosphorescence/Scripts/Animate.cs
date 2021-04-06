@@ -60,9 +60,9 @@ namespace PhosphorescenceModule
                 goto restart;
 
             // Log the current answer.
-            Debug.LogFormat("[Phosphorescence #{0}]: The buttons available are {1}.", _init.moduleId, _select.buttons.Join(", "));
-            Debug.LogFormat("[Phosphorescence #{0}]: The expected submission is {1}, deriving from the starting offset {2}.", _init.moduleId, _init.solution, _init.index);
-            Debug.LogFormat("[Phosphorescence #{0}]: All possible answers ({1}) are: {2}.", _init.moduleId, answers.Length, answers.Join(", "));
+            Debug.LogFormat("[Phosphorescence #{0}]: The buttons available are {1}.", _pho.moduleId, _select.buttons.Join(", "));
+            Debug.LogFormat("[Phosphorescence #{0}]: The expected submission is {1}, deriving from the starting offset {2}.", _pho.moduleId, _init.solution, _init.index);
+            Debug.LogFormat("[Phosphorescence #{0}]: All possible answers ({1}) are: {2}.", _pho.moduleId, answers.Length, answers.Join(", "));
 
             _pho.StartCoroutine(_render.Countdown());
 

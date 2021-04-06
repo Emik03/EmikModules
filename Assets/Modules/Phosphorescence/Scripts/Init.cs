@@ -33,7 +33,7 @@ namespace PhosphorescenceModule
         internal static bool vrMode, isFirstToGenerate = true;
         internal bool isSolved, isCountingDown, isInSubmission, isSelected, isAnimated, isStriking;
         internal static int moduleIdCounter, streamDelay;
-        internal int moduleId, index;
+        internal int index;
         internal string solution, submission;
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace PhosphorescenceModule
         internal void Activate()
         {
             // Sets module ID.
-            moduleId = ++moduleIdCounter;
+            pho.moduleId = ++moduleIdCounter;
 
             // Sets accessibility.
             ModSettingsJSON.Get(pho, out render.cruelMode, out vrMode, out streamDelay);
@@ -52,8 +52,8 @@ namespace PhosphorescenceModule
             pho.TP.Activate(this);
 
             // Plays voice lines only if it is the last one initiated. Not checking this causes multiple sounds to stack up.
-            pho.Info.OnBombSolved += () => { if (moduleId == moduleIdCounter) pho.PlaySound(Sounds.Pho.Voice.BombDisarmed); };
-            pho.Info.OnBombExploded += () => { if (moduleId == moduleIdCounter) pho.PlaySound(Sounds.Pho.Voice.GameOver); };
+            pho.Info.OnBombSolved += () => { if (pho.moduleId == moduleIdCounter) pho.PlaySound(Sounds.Pho.Voice.BombDisarmed); };
+            pho.Info.OnBombExploded += () => { if (pho.moduleId == moduleIdCounter) pho.PlaySound(Sounds.Pho.Voice.GameOver); };
 
             pho.Number.OnInteract += select.NumberPress();
             pho.Color.OnInteract += select.ColorPress();
@@ -112,7 +112,7 @@ namespace PhosphorescenceModule
             isStriking = true;
             isAnimated = true;
 
-            Debug.LogFormat("[Phosphorescence #{0}]: Submission \"{1}\" did not match the expected \"{2}\"!", moduleId, submission, solution);
+            Debug.LogFormat("[Phosphorescence #{0}]: Submission \"{1}\" did not match the expected \"{2}\"!", pho.moduleId, submission, solution);
             solution = string.Empty;
 
             pho.PlaySound(Sounds.Pho.Strike);
@@ -151,7 +151,7 @@ namespace PhosphorescenceModule
         internal IEnumerator Solve()
         {
             isSolved = true;
-            Debug.LogFormat("[Phosphorescence #{0}]: The submisssion was correct, that is all.", moduleId);
+            Debug.LogFormat("[Phosphorescence #{0}]: The submisssion was correct, that is all.", pho.moduleId);
             pho.PlaySound(Sounds.Pho.Success);
 
             // Removes the texture, since it doesn't matter at this stage.

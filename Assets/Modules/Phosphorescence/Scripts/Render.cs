@@ -135,7 +135,7 @@ namespace PhosphorescenceModule
             while (letters.Length < Words.SequenceLength)
                 letters = letters.Insert(Rnd.Range(0, letters.Length), impostor.ToString());
 
-            Debug.LogFormat("[Phosphorescence #{0}]: Reshuffled! The sequence shown is {1}.", _init.moduleId, letters);
+            Debug.LogFormat("[Phosphorescence #{0}]: Reshuffled! The sequence shown is {1}.", _pho.moduleId, letters);
         }
 
         /// <summary>

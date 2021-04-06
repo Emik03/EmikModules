@@ -57,7 +57,7 @@ namespace PhosphorescenceModule
             catch (JsonReaderException e)
             {
                 // In the case of catastrophic failure and devastation.
-                Debug.LogFormat("[Phosphorescence #{0}]: JSON error: \"{1}\", resorting to default values.", pho.init.moduleId, e.Message);
+                Debug.LogFormat("[Phosphorescence #{0}]: JSON error: \"{1}\", resorting to default values.", pho.moduleId, e.Message);
             }
         }
     }
