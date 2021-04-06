@@ -56,6 +56,8 @@ public class OneDimensionalChessScript : ModuleScript
 
     private void Start()
     {
+        StartCoroutine(new Work(() => Log("test"), true, 1).Start());
+
         if (!IsEditor)
         {
             // This disables the debugger if it isn't played in-game.
@@ -283,6 +285,7 @@ public class OneDimensionalChessScript : ModuleScript
         ChangeText("Preparing...", "Please wait.");
 
         var game = new CGameResult { };
+        var moves = new List<CGameResult>();
 
         new Thread(() =>
         {
@@ -303,8 +306,10 @@ public class OneDimensionalChessScript : ModuleScript
                 // Set the player side to always whichever one is winning.
                 color = (PieceColor)Convert.ToInt32(game.Evaluation < 0);
 
+                // Reset the move list.
+                moves = new List<CGameResult>();
+
                 var colorMut = color;
-                var moves = new List<CGameResult>();
                 string positionMut = position;
                 bool isGameCorrectlyOver = false;
 
@@ -334,10 +339,7 @@ public class OneDimensionalChessScript : ModuleScript
 
                 // Ensures that what it logs is indeed a checkmate. This reverifies that the puzzle is possible.
                 if (isGameCorrectlyOver && moves.Count == 128 - Math.Abs(game.Evaluation) - (color == PieceColor.White ? 1 : 0))
-                {
-                    Log("The position is {0}; {1} to play, mate in {2}. To beat Rustmate, the best sequence of moves are {3}.", position, color, (128 - Math.Abs(game.Evaluation)) / 2, ToLog(moves));
                     break;
-                }
             }
 
             this.position = position;
@@ -346,6 +348,8 @@ public class OneDimensionalChessScript : ModuleScript
 
             isReady = true;
         }).Start();
+
+        Log("The position is {0}; {1} to play, mate in {2}. To beat Rustmate, the best sequence of moves are {3}.", position, color, (128 - Math.Abs(game.Evaluation)) / 2, ToLog(moves));
 
         // As long as the thread is running, it should generate and render random positions to distract the player.
         while (!isReady)

@@ -91561,7 +91561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f754222546699a4dbfaceb087e96108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModBundleName: 
+  ModBundleName: EmikModules
   Text: {fileID: 102369119967797542}
 --- !u!114 &114693690301367526
 MonoBehaviour:

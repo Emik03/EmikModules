@@ -22,6 +22,7 @@ public class PhosphorescenceScript : MonoBehaviour
     public Transform Panel, Screen;
 
     internal Init init;
+    internal int moduleId;
 
     private void Awake()
     {

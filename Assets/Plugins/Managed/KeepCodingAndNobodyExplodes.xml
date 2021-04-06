@@ -2000,17 +2000,21 @@
             The entire binary series, also known as base-2. From 0-1.
             </summary>
         </member>
-        <member name="M:KeepCodingAndNobodyExplodes.Helper.ThrowIfNullOrEmpty(System.Array,System.String)">
+        <member name="M:KeepCodingAndNobodyExplodes.Helper.AssertNotNullOrEmpty(System.Array,System.String)">
             <summary>
             Throws an exception if the <see cref="T:System.Array"/> is null or empty.
             </summary>
+            <exception cref="T:KeepCodingAndNobodyExplodes.NullIteratorException"></exception>
+            <exception cref="T:KeepCodingAndNobodyExplodes.EmptyIteratorException"></exception>
             <param name="array">The <see cref="T:System.Array"/> to check for null and empty.</param>
             <param name="message">The optional message to throw if null or empty. Leaving it default will throw a default message.</param>
         </member>
-        <member name="M:KeepCodingAndNobodyExplodes.Helper.ThrowIfNullOrEmpty(System.String,System.String)">
+        <member name="M:KeepCodingAndNobodyExplodes.Helper.AssertNotNullOrEmpty(System.String,System.String)">
             <summary>
             Throws an exception if the <see cref="T:System.String"/> is null or empty.
             </summary>
+            <exception cref="T:KeepCodingAndNobodyExplodes.NullIteratorException"></exception>
+            <exception cref="T:KeepCodingAndNobodyExplodes.EmptyIteratorException"></exception>
             <param name="str">The string to check for null and empty.</param>
             <param name="message">The optional message to throw if null or empty. Leaving it default will throw a default message.</param>
         </member>
@@ -2018,7 +2022,7 @@
             <summary>
             Converts any base number to base-10.
             </summary>
-            <exception cref="T:System.FormatException">asaasasasasass</exception>
+            <exception cref="T:System.FormatException"></exception>
             <param name="value">The value to convert.</param>
             <param name="baseChars">All of the base characters for the conversion from the base number, use <see cref="F:KeepCodingAndNobodyExplodes.Helper.Alphanumeric"/> for Base-62, use <see cref="F:KeepCodingAndNobodyExplodes.Helper.Decimal"/> for Base-10, use <see cref="F:KeepCodingAndNobodyExplodes.Helper.Binary"/> for Base-2. The length of the array is the base number.</param>
             <returns><paramref name="value"/>, but in the base specified.</returns>
@@ -2035,7 +2039,7 @@
             <summary>
             Returns the name of a variable.
             </summary>
-            <param name="e"></param>
+            <param name="e">The <see cref="T:System.Linq.Expressions.Expression"/> which returns the object you want the name of.</param>
             <returns>The name of the variable, or if it cannot find it, <see cref="F:KeepCodingAndNobodyExplodes.Helper.Unknown"/>.</returns>
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.Unwrap(System.Object,System.Boolean)">
@@ -2052,6 +2056,17 @@
             </summary>
             <param name="item">The item to get all fields and properties.</param>
             <returns>All fields and properties of <paramref name="item"/>.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.Helper.SetOrReplace``1(System.Collections.Generic.IDictionary{``0,System.Int32},``0,System.Func{System.Int32,System.Int32})">
+            <summary>
+            Sets or replaces the value of a dictionary with a given function.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <typeparam name="T">Type of the key of the dictionary.</typeparam>
+            <param name="source">Dictionary to operate on.</param>
+            <param name="key">Key at which the list is located in the dictionary.</param>
+            <param name="func">The function that returns the new value.</param>
+            <returns>The new value at the specified key.</returns>
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.Call``1(``0,System.Action{``0})">
             <summary>
@@ -2072,10 +2087,28 @@
             <remarks>
             This can be used to intercept current variables or calculations by for example, printing the value as it is being passed as an argument.
             </remarks>
-            <typeparam name="T">The type of <paramref name="item"/> and <paramref name="action"/>.</typeparam>
-            <param name="item">The item to use as reference and modify.</param>
+            <typeparam name="T">The type of <paramref name="items"/> and <paramref name="action"/>.</typeparam>
+            <param name="items">The item to use as reference and modify.</param>
             <param name="action">The action to apply it to.</param>
-            <returns>The item <paramref name="item"/>.</returns>
+            <returns>The item <paramref name="items"/>.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.Helper.FirstValue``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0})">
+            <summary>
+            Returns the first element which doesn't return null, or null if all of them return null.
+            </summary>
+            <typeparam name="T">The type of array, and method.</typeparam>
+            <param name="source">The array to iterate on.</param>
+            <param name="func">The method which returns</param>
+            <returns>The first value from <paramref name="source"/> where <paramref name="func"/> doesn't return null, or null.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.Helper.LastValue``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0})">
+            <summary>
+            Returns the last element which doesn't return null, or null if all of them return null.
+            </summary>
+            <typeparam name="T">The type of array, and method.</typeparam>
+            <param name="source">The array to iterate on.</param>
+            <param name="func">The method which returns</param>
+            <returns>The last value from <paramref name="source"/> where <paramref name="func"/> doesn't return null, or null.</returns>
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.ElementAtWrap``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
             <summary>
@@ -2088,20 +2121,11 @@
             <param name="i">The index, which will wrap around if it's larger than the array.</param>
             <returns>The element in <paramref name="source"/> using <paramref name="i"/> with rem-euclid modulo.</returns>
         </member>
-        <member name="M:KeepCodingAndNobodyExplodes.Helper.SetOrReplace``1(System.Collections.Generic.IDictionary{``0,System.Int32},``0,System.Func{System.Int32,System.Int32})">
-            <summary>
-            Sets or replaces the value of a dictionary with a given function.
-            </summary>
-            <typeparam name="T">Type of the key of the dictionary.</typeparam>
-            <param name="source">Dictionary to operate on.</param>
-            <param name="key">Key at which the list is located in the dictionary.</param>
-            <param name="func">The function that returns the new value.</param>
-            <returns>The new value at the specified key.</returns>
-        </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.Backwards``1(System.Collections.Generic.List{``0})">
             <summary>
             Reverses a list and returns the new list.
             </summary>
+            <exception cref="T:KeepCodingAndNobodyExplodes.NullIteratorException"></exception>
             <typeparam name="T">The type of the list.</typeparam>
             <param name="source">The list to reverse.</param>
             <returns><paramref name="source"/> with the elements reversed.</returns>
@@ -2178,17 +2202,24 @@
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.IsNullOrEmpty(System.Array)">
             <summary>
-            Determines if the array is null or empty.
+            Determines if the <see cref="T:System.Array"/> is null or empty.
             </summary>
-            <param name="array">The array to check for.</param>
-            <returns>True if the array is equal to null, or empty.</returns>
+            <param name="array">The <see cref="T:System.Array"/> to check for.</param>
+            <returns>True if the <paramref name="array"/> is equal to null, or empty.</returns>
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.IsNullOrEmpty(System.String)">
             <summary>
             Determines if the string is null or empty.
             </summary>
             <param name="str">The string to check for.</param>
-            <returns>True if string is equal to null, or empty.</returns>
+            <returns>True if <paramref name="str"/> is equal to null, or empty.</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.Helper.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Determines if the <see cref="T:System.Collections.Generic.IEnumerable`1"/> is null or empty.
+            </summary>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to check for.</param>
+            <returns>True if <paramref name="source"/> is equal to null, or empty.</returns>
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.IsParent(KMSelectable)">
             <summary>
@@ -2253,6 +2284,13 @@
             </summary>
             <param name="str">The string to check length for.</param>
             <returns><see cref="P:System.String.Length"/> - 1</returns>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.Helper.GetUpperBound``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns the last index of the <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to check length for.</param>
+            <returns><paramref name="source"/>.Count() - 1</returns>
         </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.LengthOrDefault(System.Array)">
             <summary>
@@ -2505,6 +2543,57 @@
             <param name="item3">The third argument to pass into the tuple.</param>
             <param name="item4">The fourth argument to pass into the tuple.</param>
             <returns>A new <seealso cref="T:KeepCodingAndNobodyExplodes.Tuple`4"/> containing <paramref name="item1"/>, <paramref name="item2"/>, <paramref name="item3"/>, and <paramref name="item4"/></returns>
+        </member>
+        <member name="T:KeepCodingAndNobodyExplodes.ModInfo">
+            <summary>
+            Contains information about the mod's info, this class can be used to deserialize every mod's "modInfo.json".
+            </summary>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModInfo.Id">
+            <value>
+            Contains the ID of the mod, not to be mistaken with <see cref="P:KeepCodingAndNobodyExplodes.ModuleScript.ModuleId"/>.
+            </value>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModInfo.Title">
+            <value>
+            Contains the title of the mod.
+            </value>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModInfo.Author">
+            <value>
+            Contains the author of the mod.
+            </value>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModInfo.Description">
+            <value>
+            Contains the description of the mod.
+            </value>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModInfo.Version">
+            <value>
+            Contains the current version of the mod.
+            </value>
+        </member>
+        <member name="P:KeepCodingAndNobodyExplodes.ModInfo.UnityVersion">
+            <summary>
+            Contains the current unity version of the mod.
+            </summary>
+        </member>
+        <member name="M:KeepCodingAndNobodyExplodes.ModInfo.Deserialize(System.String)">
+            <summary>
+            Deserializes a modInfo.json file.
+            </summary>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.IO.PathTooLongException"></exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException"></exception>
+            <exception cref="T:System.IO.IOException"></exception>
+            <exception cref="T:System.UnauthorizedAccessException"></exception>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:System.Security.SecurityException"></exception>
+            <param name="path">The path of the file to deserialize.</param>
+            <returns><paramref name="path"/> deserialized as <see cref="T:KeepCodingAndNobodyExplodes.ModInfo"/>.</returns>
         </member>
         <member name="T:KeepCodingAndNobodyExplodes.ModuleContainer">
             <summary>
@@ -2810,24 +2899,10 @@
             <param name="paths">The paths to combine with.</param>
             <returns>A single path consisting of the combined path of the array.</returns>
         </member>
-        <member name="M:KeepCodingAndNobodyExplodes.PathManager.GetModInfoPath(System.String)">
+        <member name="M:KeepCodingAndNobodyExplodes.PathManager.GetModInfo(System.String)">
             <summary>
-            Retrieves the file path to the JSON file in the mod folder.
+            Gets the path and deserializes the modInfo.json located at every mod's root folder.
             </summary>
-            <remarks>
-            It is very cruicial that we do not return ModInfo in any method, including private ones as the editor library does not have it, and therefore won't be able to run this library in the first place.
-            </remarks>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <param name="bundleFileName">The name of the bundle assembly.</param>
-            <returns>The version number of the mod.</returns>
-        </member>
-        <member name="M:KeepCodingAndNobodyExplodes.PathManager.GetModInfoVersion(System.String)">
-            <summary>
-            Retrieves the version number from the JSON file in the mod folder.
-            </summary>
-            <remarks>
-            It is very cruicial that we do not return ModInfo in any method, including private ones as the editor library does not have it, and therefore won't be able to run this library in the first place.
-            </remarks>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
             <param name="bundleFileName">The name of the bundle assembly.</param>
             <returns>The version number of the mod.</returns>
