@@ -126,7 +126,9 @@ internal static class Sounds
     /// </summary>
     internal static class Log
     {
-        internal const string Solve = "Logging";
+        internal const string 
+            Select = "LoggingSelect",
+            Solve = "LoggingSolve";
     }
 
     /// <summary>
