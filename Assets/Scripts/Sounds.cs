@@ -122,6 +122,14 @@ internal static class Sounds
     }
 
     /// <summary>
+    /// Logging
+    /// </summary>
+    internal static class Log
+    {
+        internal const string Solve = "Logging";
+    }
+
+    /// <summary>
     /// Lying Indicators
     /// </summary>
     internal static class Lid

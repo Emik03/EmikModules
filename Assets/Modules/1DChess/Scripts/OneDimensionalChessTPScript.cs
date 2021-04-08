@@ -32,6 +32,12 @@ public class OneDimensionalChessTPScript : TPScript<OneDimensionalChessScript>
             Module.Buttons[Module.Alphabet.IndexOf(command[0])],
             Module.Buttons[Module.Alphabet.IndexOf(command[1])]
         };
+
+        while (!Module.isReady)
+            yield return true;
+
+        if (!Module.isWinning)
+            yield return Strike;
     }
 
     protected override IEnumerator TwitchHandleForcedSolve()

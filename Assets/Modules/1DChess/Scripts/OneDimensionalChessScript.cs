@@ -33,7 +33,7 @@ public class OneDimensionalChessScript : ModuleScript
 
     internal string Alphabet { get { return "abcdefghijklmnopqrstuvwxyz".Substring(0, Debugger.IsEnabled ? Debugger.Length : _boardLength); } }
 
-    internal bool isReady;
+    internal bool isReady, isWinning;
     internal int? last;
     internal string position;
     internal PieceColor color;
@@ -48,7 +48,6 @@ public class OneDimensionalChessScript : ModuleScript
         new Color32(111, 133, 200, 255)
     };
 
-    private bool _isWinning;
     private static bool _isUsingThreads, _isRustLoaded;
     private int _boardLength, _movesLeft;
 
@@ -56,8 +55,6 @@ public class OneDimensionalChessScript : ModuleScript
 
     private void Start()
     {
-        StartCoroutine(new Work(() => Log("test"), true, 1).Start());
-
         if (!IsEditor)
         {
             // This disables the debugger if it isn't played in-game.
@@ -198,11 +195,11 @@ public class OneDimensionalChessScript : ModuleScript
         yield return _bestMove.Start(position, (MovesLeft * 2) + 1, color == PieceColor.Black);
 
         // This looks convoluted, but it's only asking if the player has made a blunder, to the point of an unwinnable position.
-        if (_isWinning &&
+        if (isWinning &&
            ((color == PieceColor.White && _bestMove.Result.Evaluation != sbyte.MaxValue - (MovesLeft * 2)) ||
             (color == PieceColor.Black && _bestMove.Result.Evaluation != (MovesLeft * 2) + sbyte.MinValue)))
         {
-            _isWinning = false;
+            isWinning = false;
             Log("Rustmate has evaluated that this position is now unwinnable for you. Congratulations.");
         }
 
@@ -265,7 +262,7 @@ public class OneDimensionalChessScript : ModuleScript
 
     private IEnumerator GetGoodPosition()
     {
-        _isWinning = true;
+        isWinning = true;
         isReady = false;
 
         ChangeText("Waiting for", "other modules...");
@@ -349,8 +346,6 @@ public class OneDimensionalChessScript : ModuleScript
             isReady = true;
         }).Start();
 
-        Log("The position is {0}; {1} to play, mate in {2}. To beat Rustmate, the best sequence of moves are {3}.", position, color, (128 - Math.Abs(game.Evaluation)) / 2, ToLog(moves));
-
         // As long as the thread is running, it should generate and render random positions to distract the player.
         while (!isReady)
         {
@@ -361,6 +356,8 @@ public class OneDimensionalChessScript : ModuleScript
 
             PlaySound(new[] { Sounds._1dch.Capture, Sounds._1dch.Check, Sounds._1dch.Opponent, Sounds._1dch.Self }.PickRandom());
         }
+
+        Log("The position is {0}; {1} to play, mate in {2}. To beat Rustmate, the best sequence of moves are {3}.", position, color, (128 - Math.Abs(game.Evaluation)) / 2, ToLog(moves));
 
         MovesLeft = (128 - Math.Abs(game.Evaluation)) / 2;
 

@@ -2155,6 +2155,16 @@
             <param name="enumerator">The <see cref="T:System.Collections.IEnumerator"/> to convert.</param>
             <returns><paramref name="enumerator"/> as an <see cref="T:System.Collections.IEnumerable"/>.</returns>
         </member>
+        <member name="M:KeepCodingAndNobodyExplodes.Helper.Slice``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+            <summary>
+            Returns a slice of an <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <typeparam name="T">The type of the <paramref name="source"/> and return type.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to take a slice of.</param>
+            <param name="start">The starting index of the slice.</param>
+            <param name="count">The amount of items to take.</param>
+            <returns>A slice of <paramref name="source"/> based on <paramref name="start"/> and <paramref name="count"/>.</returns>
+        </member>
         <member name="M:KeepCodingAndNobodyExplodes.Helper.GetMethodInfo``1(System.Linq.Expressions.Expression{System.Action{``0}})">
             <summary>
             Gets the method info from an expression.
