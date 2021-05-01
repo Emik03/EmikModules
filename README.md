@@ -57,7 +57,7 @@ This repository item aims to combine all of my mods into one, making future main
   - [palindromes](https://ktane.timwi.de/HTML/Palindromes.html)
   - [Phosphorescence](https://ktane.timwi.de/HTML/Phosphorescence.html)
   - [placeholderTalk](https://ktane.timwi.de/HTML/Placeholder%20Talk.html)
-  - [PointlessMachines](https://ktane.timwi.de/HTML/Pointless Machines.html)
+  - [PointlessMachines](https://ktane.timwi.de/HTML/Pointless%20Machines.html)
   - [Quaver](https://ktane.timwi.de/HTML/Quaver.html)
   - [ReformedRoleReversal](https://ktane.timwi.de/HTML/Reformed%20Role%20Reversal.html)
   - [roleReversal](https://ktane.timwi.de/HTML/Role%20Reversal.html)
