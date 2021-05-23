@@ -1,4 +1,4 @@
-﻿using KeepCodingAndNobodyExplodes;
+﻿using KeepCoding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +60,7 @@ namespace OneDimensionalChess
 
             // If the destination is occupied, this implies a capture.
             if (str[move.Destination] != '_' && moduleScript != null)
-                moduleScript.PlaySound(Sounds._1dch.Capture);
+                moduleScript.PlaySound(SFX._1dch.Capture);
 
             // Moves origin to destination, leaving origin empty.
             str[move.Destination] = str[move.Origin];

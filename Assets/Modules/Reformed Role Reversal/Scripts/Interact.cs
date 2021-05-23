@@ -46,14 +46,14 @@ namespace ReformedRoleReversalModule
             {
                 // Subtract 1 from the current selected wire.
                 case 0:
-                    reversal.Audio.PlaySoundAtTransform(Sounds.Rrr.Button(4), reversal.Buttons[num].transform);
+                    reversal.Audio.PlaySoundAtTransform(SFX.Rrr.Button(4), reversal.Buttons[num].transform);
                     WireSelected = ((WireSelected + 7) % 9) + 1;
                     selectWire = true;
                     break;
 
                 // Read previous instruction.
                 case 1:
-                    reversal.Audio.PlaySoundAtTransform(Sounds.Rrr.Button(2), reversal.Buttons[num].transform);
+                    reversal.Audio.PlaySoundAtTransform(SFX.Rrr.Button(2), reversal.Buttons[num].transform);
                     if (selectWire)
                         return;
                     Instruction = (--Instruction + length) % length;
@@ -61,7 +61,7 @@ namespace ReformedRoleReversalModule
 
                 // Read next instruction.
                 case 2:
-                    reversal.Audio.PlaySoundAtTransform(Sounds.Rrr.Button(1), reversal.Buttons[num].transform);
+                    reversal.Audio.PlaySoundAtTransform(SFX.Rrr.Button(1), reversal.Buttons[num].transform);
                     if (selectWire)
                         return;
                     Instruction = ++Instruction % length;
@@ -69,7 +69,7 @@ namespace ReformedRoleReversalModule
 
                 // Add 1 to the current selected wire.
                 case 3:
-                    reversal.Audio.PlaySoundAtTransform(Sounds.Rrr.Button(3), reversal.Buttons[num].transform);
+                    reversal.Audio.PlaySoundAtTransform(SFX.Rrr.Button(3), reversal.Buttons[num].transform);
                     WireSelected = (WireSelected % 9) + 1;
                     selectWire = true;
                     break;
@@ -91,7 +91,7 @@ namespace ReformedRoleReversalModule
             if (!init.Ready || init.Solved)
                 return;
 
-            reversal.Audio.PlaySoundAtTransform(Sounds.Rrr.Button(5), reversal.Screen.transform);
+            reversal.Audio.PlaySoundAtTransform(SFX.Rrr.Button(5), reversal.Screen.transform);
 
             // Jump to next section in manual mode.
             if (!selectWire)
@@ -107,7 +107,7 @@ namespace ReformedRoleReversalModule
             if (CorrectAnswer == null || CorrectAnswer == WireSelected)
             {
                 Debug.LogFormat("[Reformed Role Reversal #{0}]: The correct wire was cut. Module solved!", init.ModuleId);
-                reversal.Audio.PlaySoundAtTransform(Sounds.Rrr.Solve, reversal.Screen.transform);
+                reversal.Audio.PlaySoundAtTransform(SFX.Rrr.Solve, reversal.Screen.transform);
                 init.Solved = true;
 
                 reversal.Module.HandlePass();
@@ -118,7 +118,7 @@ namespace ReformedRoleReversalModule
 
             // The answer being incorrect is done here.
             Debug.LogFormat("[Reformed Role Reversal #{0}]: Wire {1} was cut which was incorrect. Module strike!", init.ModuleId, WireSelected);
-            reversal.Audio.PlaySoundAtTransform(Sounds.Rrr.Strike, reversal.Screen.transform);
+            reversal.Audio.PlaySoundAtTransform(SFX.Rrr.Strike, reversal.Screen.transform);
             selectWire = false;
             Instruction = 0;
 

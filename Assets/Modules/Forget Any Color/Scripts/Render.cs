@@ -97,8 +97,8 @@ namespace ForgetAnyColor
         {
             Debug.LogFormat("[Forget Any Color #{0}]: Thanks for playing!", init.moduleId);
 
-            FAC.Audio.PlaySoundAtTransform(Sounds.Ftc.KeySuccess, FAC.Module.transform);
-            FAC.Audio.PlaySoundAtTransform(Sounds.Ftc.Solve, FAC.Module.transform);
+            FAC.Audio.PlaySoundAtTransform(SFX.Ftc.KeySuccess, FAC.Module.transform);
+            FAC.Audio.PlaySoundAtTransform(SFX.Ftc.Solve, FAC.Module.transform);
 
             init.solved = true;
             FAC.Module.HandlePass();

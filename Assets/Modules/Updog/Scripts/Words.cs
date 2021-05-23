@@ -1,9 +1,9 @@
-﻿using KeepCodingAndNobodyExplodes;
+﻿using KeepCoding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using WordTuple = KeepCodingAndNobodyExplodes.Tuple<Updog.Spelling, Updog.Casing>;
+using WordTuple = KeepCoding.Tuple<Updog.Spelling, Updog.Casing>;
 
 namespace Updog
 {
@@ -13,8 +13,8 @@ namespace Updog
         {
             get
             {
-                return Helper.GetValues<Spelling>()
-                    .SelectMany(s => Helper.GetValues<Casing>()
+                return default(Spelling).GetValues()
+                    .SelectMany(s => default(Casing).GetValues()
                     .Select(c => s.ToTuple(c)))
                     .ToArray()
                     .ToDictionary(d => d.AssignCase());

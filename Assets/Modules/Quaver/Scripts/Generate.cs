@@ -65,7 +65,7 @@ namespace QuaverModule
                     inputs.Add(quaver.ReceptorTotalText.text);
 
                 Debug.LogFormat("[Quaver #{0}]: The submission was off by [{1}], strike!", quaver.init.moduleId, inputs.Join(", "));
-                quaver.Audio.PlaySoundAtTransform(Sounds.Q.Strike, quaver.transform);
+                quaver.Audio.PlaySoundAtTransform(SFX.Q.Strike, quaver.transform);
                 quaver.Module.HandleStrike();
             }
 
@@ -80,7 +80,7 @@ namespace QuaverModule
 
         private void RewardCalculatedRating()
         {
-            quaver.Audio.PlaySoundAtTransform(Sounds.Q.Note("4"), quaver.transform);
+            quaver.Audio.PlaySoundAtTransform(SFX.Q.Note("4"), quaver.transform);
 
             quaver.init.correctValues.Add(quaver.init.select.perColumn ? ArrowScript.arrowsPerColumn : new[] { ArrowScript.arrowsPerColumn.Sum() });
             float[] difficultyValues = { 0.1f, 0.2f, 0.4f, 0 };
@@ -95,7 +95,7 @@ namespace QuaverModule
 
             if (quaver.Render.ratingProgress >= 1)
             {
-                quaver.Audio.PlaySoundAtTransform(Sounds.Q.Solve, quaver.transform);
+                quaver.Audio.PlaySoundAtTransform(SFX.Q.Solve, quaver.transform);
                 quaver.Module.HandlePass();
                 quaver.init.solved = true;
             }
@@ -104,7 +104,7 @@ namespace QuaverModule
         internal IEnumerator Play(RenderScript render)
         {
             Debug.LogFormat("[Quaver #{0}]: Difficulty settings are [{1}, {2}, {3}].", quaver.init.moduleId, quaver.init.select.speed > 9 ? "2.0" : "1." + quaver.init.select.speed, new[] { "Normal", "Hard", "Insane", "Expert" }[quaver.init.select.difficulty], quaver.init.select.perColumn);
-            quaver.Audio.PlaySoundAtTransform(Sounds.Q.Start, quaver.transform);
+            quaver.Audio.PlaySoundAtTransform(SFX.Q.Start, quaver.transform);
 
             int difficulty = quaver.init.select.difficulty;
             int speed = quaver.init.select.speed;

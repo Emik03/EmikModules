@@ -1,4 +1,5 @@
-﻿using PhosphorescenceModule;
+﻿using KeepCoding;
+using PhosphorescenceModule;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -222,7 +223,7 @@ public class PhosphorescenceTPScript : MonoBehaviour
 
     private void ColorOnRelease()
     {
-        if (Init.vrMode)
+        if (ModuleScript.IsVR)
             Pho.Color.OnInteractEnded();
         else
             Pho.Color.OnDefocus();

@@ -1,4 +1,5 @@
 ﻿using HexOSModule;
+using PathManager = KeepCoding.PathManager;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -68,23 +69,14 @@ public class HexOS : MonoBehaviour
 
     #region Initalization
     /// <summary>
-    /// Waits until the module has gathered the video clips before proceeding with generation.
-    /// </summary>
-    /// <returns>Waits until clips are gathered and the lights are on.</returns>
-    private IEnumerator WaitForVideoClips()
-    {
-        if (!Application.isEditor)
-            yield return new WaitUntil(() => VideoLoader.clips != null);
-        Activate();
-    }
-
-    /// <summary>
     /// ModuleID and JSON Initialisation.
     /// </summary>
     private void Start()
     {
         // Give each module of hexOS a different number.
         _moduleId = _moduleIdCounter++;
+
+        SFX.LogVersionNumber(Module, _moduleId);
 
         // Set the variables in case if they don't get set by ModSettings.
         _canBeOctOS = true;
@@ -138,7 +130,15 @@ public class HexOS : MonoBehaviour
         Debug.LogFormat("[hexOS #{0}] Entering dimension no. {1}x{2}!", _moduleId, HexOSStrings.Version, seed);
 
         // Start module.
-        StartCoroutine(WaitForVideoClips());
+        if (!Application.isEditor)
+        {
+            var enumerator = PathManager.LoadVideoClips("EmikModules", "hex");
+
+            while (enumerator.MoveNext())
+                if (enumerator.Current.GetType() == typeof(VideoClip[]))
+                    Clips = (VideoClip[])enumerator.Current;
+        }
+        Activate();
     }
 
     /// <summary>
@@ -190,14 +190,14 @@ public class HexOS : MonoBehaviour
 
         if (_held == 25)
         {
-            Audio.PlaySoundAtTransform(Sounds.Hex.Ready, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Hex.Ready, Module.transform);
             Status.text = "Boot Manager\nStoring " + _submit + "...";
         }
 
         // Autoreset
         else if (_held == 125)
         {
-            Audio.PlaySoundAtTransform(Sounds.Hex.Cancel, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Hex.Cancel, Module.transform);
             Status.text = "Boot Manager\nCancelling...";
             _isHolding = false;
             _held = -1;
@@ -210,7 +210,7 @@ public class HexOS : MonoBehaviour
     private void Activate()
     {
         // Plays the foreground video as decoration.
-        VideoGrid.clip = Application.isEditor ? Clips[0] : VideoLoader.clips[0];
+        VideoGrid.clip = Clips[0];
         VideoGrid.Prepare();
         VideoGrid.Play();
 
@@ -236,7 +236,7 @@ public class HexOS : MonoBehaviour
     private void HandlePress()
     {
         // Sounds and punch effect.
-        Audio.PlaySoundAtTransform(Sounds.Hex.Click, Module.transform);
+        Audio.PlaySoundAtTransform(SFX.Hex.Click, Module.transform);
         Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, Module.transform);
 
         Button.AddInteractionPunch(2.5f);
@@ -294,7 +294,7 @@ public class HexOS : MonoBehaviour
         // Otherwise, submit the answer that displayed when the button was pushed.
         else
         {
-            Audio.PlaySoundAtTransform(Sounds.Hex.Submit, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Hex.Submit, Module.transform);
 
             // Reset holding.
             _held = 0;
@@ -346,7 +346,7 @@ public class HexOS : MonoBehaviour
 
                     if (!_octOS)
                     {
-                        Audio.PlaySoundAtTransform(Sounds.Hex.Strike, Module.transform);
+                        Audio.PlaySoundAtTransform(SFX.Hex.Strike, Module.transform);
                         Status.text = "Boot Manager\nError!";
 
                         // Caps at 1, 20+ are treated the same as exactly 20 strikes
@@ -386,14 +386,14 @@ public class HexOS : MonoBehaviour
         // If forceAltSolve is enabled, pick a joke message.
         if (_forceAltSolve)
         {
-            Audio.PlaySoundAtTransform(Sounds.Hex.SolveAlt, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Hex.SolveAlt, Module.transform);
             Quote.text = HexOSStrings.AltSolvePhrases[Rnd.Range(0, HexOSStrings.AltSolvePhrases.Length)];
         }
 
         // Otherwise pick a regular message.
         else
         {
-            Audio.PlaySoundAtTransform(Sounds.Hex.Solve, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Hex.Solve, Module.transform);
             Quote.text = HexOSStrings.SolvePhrases[Rnd.Range(0, HexOSStrings.SolvePhrases.Length)];
         }
 
@@ -445,11 +445,11 @@ public class HexOS : MonoBehaviour
         // Plays the solve animation.
         VideoOct.transform.localPosition = new Vector3(0, 0.84f, 0);
         VideoRenderer.material.color = new Color32(255, 255, 255, 255);
-        VideoOct.clip = Application.isEditor ? Clips[1] : VideoLoader.clips[1];
+        VideoOct.clip = Clips[1];
         VideoOct.Prepare();
         VideoOct.Play();
 
-        Audio.PlaySoundAtTransform(Sounds.Hex.OctSolve, Module.transform);
+        Audio.PlaySoundAtTransform(SFX.Hex.OctSolve, Module.transform);
 
         // The exact amount of seconds for the audio clip to go quiet is 10.122 seconds.
         yield return new WaitForSecondsRealtime(10.122f);
@@ -494,10 +494,10 @@ public class HexOS : MonoBehaviour
         // Long animation.
         if (!_fastStrike)
         {
-            VideoOct.clip = Application.isEditor ? Clips[2] : VideoLoader.clips[2];
+            VideoOct.clip = Clips[2];
             VideoOct.Prepare();
             VideoOct.Play();
-            Audio.PlaySoundAtTransform(Sounds.Hex.OctStrike, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Hex.OctStrike, Module.transform);
 
             byte c = 248;
             VideoRenderer.material.color = new Color32(255, 255, 255, c);
@@ -522,10 +522,10 @@ public class HexOS : MonoBehaviour
         // Short animation.
         else
         {
-            VideoOct.clip = Application.isEditor ? Clips[3] : VideoLoader.clips[3];
+            VideoOct.clip = Clips[3];
             VideoOct.Prepare();
             VideoOct.Play();
-            Audio.PlaySoundAtTransform(Sounds.Hex.OctStrikeFast, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Hex.OctStrikeFast, Module.transform);
             // For reference, the audio clip is 11.85 seconds.
             byte c = 0;
             while (c != 255)
@@ -640,12 +640,12 @@ public class HexOS : MonoBehaviour
             for (byte i = 0; i < HexOSStrings.Notes[_press].Length; i++)
             {
                 // At least 2 strikes, start playing hi-hat.
-                Audio.PlaySoundAtTransform(Sounds.Hex.HiHat, Module.transform);
+                Audio.PlaySoundAtTransform(SFX.Hex.HiHat, Module.transform);
 
                 // Look through the sequence of rhythms, if a note should be playing, play note.
                 if (HexOSStrings.Notes[_rhythms[_press % 2]][i] == 'X')
                 {
-                    Audio.PlaySoundAtTransform(Sounds.Hex.Chord(_press + 1), Module.transform);
+                    Audio.PlaySoundAtTransform(SFX.Hex.Chord(_press + 1), Module.transform);
                     if (_experimentalShake)
                         Button.AddInteractionPunch(0.5f);
                 }
@@ -659,7 +659,7 @@ public class HexOS : MonoBehaviour
             for (byte i = 0; i < HexOSStrings.Notes[_rhythms[_press % 2]].Length - 1; i += 0)
             {
                 // Play note.
-                Audio.PlaySoundAtTransform(Sounds.Hex.Chord(_press + 1), Module.transform);
+                Audio.PlaySoundAtTransform(SFX.Hex.Chord(_press + 1), Module.transform);
                 if (_experimentalShake)
                     Button.AddInteractionPunch(0.5f);
 
@@ -675,8 +675,8 @@ public class HexOS : MonoBehaviour
             }
 
         // Play one last note, with emphasis on percussion.
-        Audio.PlaySoundAtTransform(Sounds.Hex.Chord(_press + 1), Module.transform);
-        Audio.PlaySoundAtTransform(Sounds.Hex.Clap, Module.transform);
+        Audio.PlaySoundAtTransform(SFX.Hex.Chord(_press + 1), Module.transform);
+        Audio.PlaySoundAtTransform(SFX.Hex.Clap, Module.transform);
         if (_experimentalShake)
             Button.AddInteractionPunch(5);
 
@@ -741,7 +741,7 @@ public class HexOS : MonoBehaviour
             if (_octAnimating)
                 yield break;
 
-            Audio.PlaySoundAtTransform(Sounds.Hex.Chord(_press + 9), Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Hex.Chord(_press + 9), Module.transform);
             if (_experimentalShake)
                 Button.AddInteractionPunch(.5f);
 
@@ -758,8 +758,8 @@ public class HexOS : MonoBehaviour
         }
 
         // Play one last note, with emphasis on percussion.
-        Audio.PlaySoundAtTransform(Sounds.Hex.Chord(_press + 9), Module.transform);
-        Audio.PlaySoundAtTransform(Sounds.Hex.Clap, Module.transform);
+        Audio.PlaySoundAtTransform(SFX.Hex.Chord(_press + 9), Module.transform);
+        Audio.PlaySoundAtTransform(SFX.Hex.Clap, Module.transform);
         if (_experimentalShake)
             Button.AddInteractionPunch(5);
 
@@ -1056,7 +1056,7 @@ public class HexOS : MonoBehaviour
         ModelName.color = new Color32(222, 222, 222, 255);
 
         Status.text = "Boot Manager\n...?";
-        Audio.PlaySoundAtTransform(Sounds.Hex.OctActivate, Module.transform);
+        Audio.PlaySoundAtTransform(SFX.Hex.OctActivate, Module.transform);
 
         _octOS = true;
         _user = "";
@@ -1513,12 +1513,12 @@ public class HexOS : MonoBehaviour
     /// </summary>
     /// <typeparam name="T">The element type of the array.</typeparam>
     /// <param name="array">The nested array to shuffle.</param>
-    private static void Shuffle<T>(T[,] array)
+    private void Shuffle<T>(T[,] array)
     {
         for (byte i = 0; i < array.GetLength(0); i++)
             for (byte j = 0; j < array.GetLength(1); j++)
             {
-                byte value = (byte)Rnd.Range(0, array.GetLength(1));
+                byte value = (byte)_rnd.Next(0, array.GetLength(1));
 
                 T temp = array[i, j];
                 array[i, j] = array[i, value];

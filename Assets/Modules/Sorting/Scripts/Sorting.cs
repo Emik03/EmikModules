@@ -122,6 +122,8 @@ public class Sorting : MonoBehaviour
     {
         Module.OnActivate += Activate;
         _moduleId = _moduleIdCounter++;
+
+        SFX.LogVersionNumber(Module, _moduleId);
     }
 
     /// <summary>
@@ -156,7 +158,7 @@ public class Sorting : MonoBehaviour
     {
         if (_playSound)
         {
-            Audio.PlaySoundAtTransform(Sounds.Srt.Bogosort, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Srt.Bogosort, Module.transform);
             _playSound = false;
         }
 
@@ -246,12 +248,12 @@ public class Sorting : MonoBehaviour
         //plays button sound effect
         Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, btn[num].transform);
         btn[num].AddInteractionPunch();
-        Audio.PlaySoundAtTransform(Sounds.Srt.Tick, Module.transform);
+        Audio.PlaySoundAtTransform(SFX.Srt.Tick, Module.transform);
 
         //if lights are off, the buttons should do 
         if (!_lightsOn || isSolved || _buttonDelay || _piano)
         {
-            Audio.PlaySoundAtTransform(Sounds.Srt.Button(num + 1), Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Srt.Button(num + 1), Module.transform);
 
             if (_piano)
                 btn[num].GetComponent<MeshRenderer>().material.color = btn[num].GetComponent<MeshRenderer>().material.color == _highlightColor
@@ -263,7 +265,7 @@ public class Sorting : MonoBehaviour
         //selecting a button
         if (!_selected.Contains((byte)num))
         {
-            Audio.PlaySoundAtTransform(Sounds.Srt.Select, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Srt.Select, Module.transform);
             _selected.Add((byte)num);
             btn[num].GetComponent<MeshRenderer>().material.color = _highlightColor;
             _pushTimes++;
@@ -272,7 +274,7 @@ public class Sorting : MonoBehaviour
         //unselecting a button
         else
         {
-            Audio.PlaySoundAtTransform(Sounds.Srt.Deselect, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Srt.Deselect, Module.transform);
             _selected.Remove((byte)num);
             btn[num].GetComponent<MeshRenderer>().material.color = _buttonColor;
         }
@@ -283,14 +285,14 @@ public class Sorting : MonoBehaviour
             //block inputs from user temporarily
             _buttonDelay = true;
 
-            Audio.PlaySoundAtTransform(Sounds.Srt.Swap, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Srt.Swap, Module.transform);
             CheckSwap();
         }
 
         //bogosort easter egg activation
         if (_pushTimes == 55)
         {
-            Audio.PlaySoundAtTransform(Sounds.Srt.Bogosort, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Srt.Bogosort, Module.transform);
             _pushTimes = 0;
 
             //regenerates the numbers to prevent memorization
@@ -376,7 +378,7 @@ public class Sorting : MonoBehaviour
         else
         {
             Debug.LogFormat("[Sorting #{0}] Swap was invalid! Strike! The buttons have been reorganized back into their original state.", _moduleId);
-            Audio.PlaySoundAtTransform(Sounds.Srt.Strike, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Srt.Strike, Module.transform);
             Module.HandleStrike();
             _doAction = false;
 
@@ -397,7 +399,7 @@ public class Sorting : MonoBehaviour
     private void DoSwap()
     {
         if (!_bogoSort)
-            Audio.PlaySoundAtTransform(Sounds.Srt.SuccessfulSwap, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Srt.SuccessfulSwap, Module.transform);
 
         _buttonDelay = true;
         swapIndex++;
@@ -478,7 +480,7 @@ public class Sorting : MonoBehaviour
         {
             Screen.text = "SORTED!";
             isSolved = true;
-            Audio.PlaySoundAtTransform(Sounds.Srt.Solve, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Srt.Solve, Module.transform);
 
             Debug.LogFormat("[Sorting #{0}] All buttons sorted, module solved!", _moduleId);
             Module.HandlePass();

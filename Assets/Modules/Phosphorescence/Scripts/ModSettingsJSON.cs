@@ -18,12 +18,6 @@ namespace PhosphorescenceModule
         public bool CruelMode { get; set; }
 
         /// <summary>
-        /// Uses the appropriate event triggers for what this is set on.
-        /// </summary>
-        [JsonProperty("Phosphorescence -> VRMode")]
-        public bool VRMode { get; set; }
-
-        /// <summary>
         /// How much additional time needs to be given due to stream delay?
         /// </summary>
         [JsonProperty("Phosphorescence -> StreamDelay")]
@@ -34,11 +28,10 @@ namespace PhosphorescenceModule
         /// </summary>
         /// <param name="vrMode">Used for initalization only.</param>
         /// <param name="streamDelay">Determines the timer.</param>
-        public static void Get(PhosphorescenceScript pho, out bool cruelMode, out bool vrMode, out int streamDelay)
+        public static void Get(PhosphorescenceScript pho, out bool cruelMode, out int streamDelay)
         {
             // Default values.
             cruelMode = false;
-            vrMode = false;
             streamDelay = 0;
 
             try
@@ -50,7 +43,6 @@ namespace PhosphorescenceModule
                 if (settings != null)
                 {
                     cruelMode = settings.CruelMode;
-                    vrMode = settings.VRMode;
                     streamDelay = 15 * settings.StreamDelay;
                 }
             }

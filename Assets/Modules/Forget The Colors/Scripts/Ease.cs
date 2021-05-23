@@ -39,12 +39,12 @@ namespace ForgetTheColors
 
         public static float BackIn(float k)
         {
-            return k * k * ((1.70158f + 1f) * k - 1.70158f);
+            return k * k * (((1.70158f + 1f) * k) - 1.70158f);
         }
 
         public static float BackOut(float k)
         {
-            return (k -= 1f) * k * ((1.70158f + 1f) * k + 1.70158f) + 1f;
+            return ((k -= 1f) * k * (((1.70158f + 1f) * k) + 1.70158f)) + 1f;
         }
 
         public static float CubicOut(float k)

@@ -13,6 +13,8 @@ namespace ForgetAnyColor
         {
             moduleId = ++moduleIdCounter;
 
+            SFX.LogVersionNumber(FAC.Module, moduleId);
+
             this.coroutine = coroutine;
             this.FAC = FAC;
             this.TP = TP;
@@ -89,7 +91,7 @@ namespace ForgetAnyColor
 
         private static Rule[][] GenerateRules(MonoRandom rnd, ref FACScript FAC)
         {
-            FAC.Audio.PlaySoundAtTransform(Sounds.Ftc.Start, FAC.Module.transform);
+            FAC.Audio.PlaySoundAtTransform(SFX.Ftc.Start, FAC.Module.transform);
 
             if (rnd.Seed == 1)
                 return new Rule[0][];

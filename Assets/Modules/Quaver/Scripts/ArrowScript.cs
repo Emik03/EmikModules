@@ -17,14 +17,14 @@ public class ArrowScript : MonoBehaviour
 
     private static readonly Vector3[] spawnPositions =
     {
-        new Vector3(-1.87f, 0.0004f, 2.82f),
-        new Vector3(-0.62f, 0.0004f, 2.82f),
-        new Vector3(0.62f, 0.0004f, 2.82f),
-        new Vector3(1.87f, 0.0004f, 2.82f)
+        new Vector3(-1.87f, 0.0004f, 3.46f),
+        new Vector3(-0.62f, 0.0004f, 3.46f),
+        new Vector3(0.62f, 0.0004f, 3.46f),
+        new Vector3(1.87f, 0.0004f, 3.46f)
     };
 
     private bool isClone;
-    private byte alpha;
+    private short alpha;
     private int position;
     private static bool playSound;
     private const float speedZ = 0.15f, deleteZ = -2.1f;
@@ -59,10 +59,10 @@ public class ArrowScript : MonoBehaviour
             return;
         }
 
-        if (alpha != 255)
-            alpha += 85;
+        if (alpha < 255)
+            alpha += 128;
 
-        ArrowRenderer.material.color = new Color32(255, 255, 255, alpha);
+        ArrowRenderer.material.color = new Color32(255, 255, 255, (byte)Mathf.Min(alpha, 255));
 
         var pos = Arrow.transform.localPosition;
         Arrow.transform.localPosition = new Vector3(pos.x, pos.y, pos.z - (speedZ * scrollSpeed / 10));
@@ -71,7 +71,7 @@ public class ArrowScript : MonoBehaviour
         {
             if (playSound)
             {
-                Audio.PlaySoundAtTransform(Sounds.Q.Note(ArrowRenderer.name.First().ToString()), transform);
+                Audio.PlaySoundAtTransform(SFX.Q.Note(ArrowRenderer.name.First().ToString()), transform);
                 playSound = false;
             }
 

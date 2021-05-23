@@ -1,8 +1,8 @@
-﻿using KeepCodingAndNobodyExplodes;
+﻿using KeepCoding;
 using System.Collections;
 using UnityEngine;
 using Updog;
-using IntTuple = KeepCodingAndNobodyExplodes.Tuple<int, int>;
+using IntTuple = KeepCoding.Tuple<int, int>;
 using Sound = KMSoundOverride.SoundEffect;
 using String = System.Text.StringBuilder;
 
@@ -24,7 +24,7 @@ public class UpdogScript : ModuleScript
     private bool[] _order;
     private int _interactCount;
 
-    protected override void OnActivate()
+    public override void OnActivate()
     {
         isColorblind = Get<KMColorblindMode>().ColorblindModeActive;
 
@@ -69,7 +69,7 @@ public class UpdogScript : ModuleScript
 
         if (_maze.IsSolved())
         {
-            PlaySound(Sounds.Ud.Solve);
+            PlaySound(SFX.Ud.Solve);
             Solve("Solved! :)");
         }
     }

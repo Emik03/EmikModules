@@ -25,9 +25,6 @@
   "Phosphorescence -> CruelMode": false,
   "HowToUse7": "Cruel mode forces the user to recognise the colors of the buttons without being told from the label. (default: false)",
 
-  "Phosphorescence -> VRMode": false,
-  "HowToUse8": "Mainly for VR, set this to true to prevent problems with the colored screen's KMSelectable. With it disabled, the screen must be held, and markers are disabled. (default: false)",
-
   "Phosphorescence -> StreamDelay": 0,
   "HowToUse9": "Mainly for TwitchPlays, set this to the amount of seconds of the stream delay. 1 second of stream delay equates to +15 additional seconds on the timer. (default: 0)",
 
@@ -45,6 +42,9 @@
   "TheOctadecayotton -> InOutBounce": false,
   "HowToUse13": "Makes rotations use the InOutBounce ease, not suitable for serious play. (default: false)",
 
+  "TheOctadecayotton -> InOutElastic": false,
+  "HowToUse14": "Makes rotations use the InOutElastic ease, not suitable for serious play. (default: false)",
+
   "TheOctadecayotton -> StretchToFit": false,
-  "HowToUse14": "Stretches the individual X, Y, and Z axes on the tesseract to always take up the entire module. This does cause proportions to be skewed. (default: false)"
+  "HowToUse15": "Stretches the individual X, Y, and Z axes on the tesseract to always take up the entire module. This does cause proportions to be skewed. (default: false)"
 }

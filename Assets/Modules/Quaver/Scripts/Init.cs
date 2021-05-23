@@ -34,6 +34,8 @@ namespace QuaverModule
             render.UpdateSelection();
             moduleId = ++moduleIdCounter;
 
+            SFX.LogVersionNumber(quaver.Module, moduleId);
+
             for (int i = 0; i < quaver.Buttons.Length; i++)
             {
                 int j = i;

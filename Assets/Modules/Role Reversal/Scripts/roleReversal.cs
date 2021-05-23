@@ -47,6 +47,9 @@ public class roleReversal : MonoBehaviour
     {
         _moduleCount = 0;
         _moduleId = _moduleIdCounter++;
+
+        SFX.LogVersionNumber(Module, _moduleId);
+
         Module.OnActivate += Activate;
         UpdateColor();
     }
@@ -248,7 +251,7 @@ public class roleReversal : MonoBehaviour
         {
             Debug.LogFormat("[Role Reversal #{0}] Wire {1} was cut, correct wire was cut! Module solved!", _moduleId, _wireSelected + 1);
 
-            Audio.PlaySoundAtTransform(Sounds.Rv.Solve, submit.transform);
+            Audio.PlaySoundAtTransform(SFX.Rv.Solve, submit.transform);
 
             //make module solved
             Module.HandlePass();
@@ -259,7 +262,7 @@ public class roleReversal : MonoBehaviour
         {
             Debug.LogFormat("[Role Reversal #{0}] Wire {1} was cut, incorrect wire was cut! Strike!", _moduleId, _wireSelected + 1);
 
-            Audio.PlaySoundAtTransform(Sounds.Rv.Strike, submit.transform);
+            Audio.PlaySoundAtTransform(SFX.Rv.Strike, submit.transform);
 
             //make module strike
             Module.HandleStrike();
@@ -281,7 +284,7 @@ public class roleReversal : MonoBehaviour
             //2 wires!
             case 2:
                 //if first is secondary and both triadic
-                if (_convertedSeed[0] % 2 == 1 && Mathf.Abs((float)(char.GetNumericValue(_convertedSeed[0]) - char.GetNumericValue(_convertedSeed[1]))) == 2 || Mathf.Abs((float)(char.GetNumericValue(_convertedSeed[0]) - char.GetNumericValue(_convertedSeed[1]))) == 4)
+                if (_convertedSeed[0] % 2 == 0 && Mathf.Abs((float)(char.GetNumericValue(_convertedSeed[0]) - char.GetNumericValue(_convertedSeed[1]))) == 2 || Mathf.Abs((float)(char.GetNumericValue(_convertedSeed[0]) - char.GetNumericValue(_convertedSeed[1]))) == 4)
                 {
                     if (_convertedSeed[0] < _convertedSeed[1])
                         _correctWire = 1;

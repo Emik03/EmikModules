@@ -136,7 +136,7 @@ namespace TheOctadecayotton
         internal static Rotation[][][] GetRandomRotations(RotationOptions options)
         {
             var output = new List<List<Rotation>>[options.RotationCount];
-            var allAxies = InteractScript.allAxies.Take(options.Dimension);
+            var allAxies = InteractScript.allAxes.Take(options.Dimension);
             
             for (int i = 0; i < options.RotationCount; i++)
             {

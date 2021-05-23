@@ -25,7 +25,9 @@ public class LyingIndicators : MonoBehaviour
     {
         _moduleId = _moduleIdCounter++;
 
-        _emikModules = EmikModuleList.text.Split('\n');
+        SFX.LogVersionNumber(Module, _moduleId);
+
+        _emikModules = EmikModuleList.text.Split('\n').Select(c => c.Trim()).ToArray();
 
         for (byte i = 0; i < Buttons.Length; i++)
         {
@@ -312,7 +314,7 @@ public class LyingIndicators : MonoBehaviour
 
             case "NSA":
                 for (int k = 0; k < _emikModules.Length; k++)
-                    if (Info.GetSolvableModuleNames().Contains(_emikModules[k]))
+                    if (Info.GetModuleNames().Contains(_emikModules[k]))
                     {
                         lyingInd[str]++;
                         break;
@@ -379,8 +381,8 @@ public class LyingIndicators : MonoBehaviour
         float s = 0;
         _isSolved = true;
         Module.HandlePass();
-        Audio.PlaySoundAtTransform(Sounds.Lid.Solve, transform);
-        Audio.PlaySoundAtTransform(Sounds.Lid.SolveBass, transform);
+        Audio.PlaySoundAtTransform(SFX.Lid.Solve, transform);
+        Audio.PlaySoundAtTransform(SFX.Lid.SolveBass, transform);
         Component.GetComponent<Renderer>().material.color = new Color32(160, 160, 160, 255);
 
         while (s <= 1)
@@ -458,7 +460,7 @@ public class LyingIndicators : MonoBehaviour
         Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, Buttons[btn].transform);
         Buttons[btn].AddInteractionPunch();
 
-        Audio.PlaySoundAtTransform(Sounds.Lid.Press, Buttons[btn].transform);
+        Audio.PlaySoundAtTransform(SFX.Lid.Press, Buttons[btn].transform);
 
         if (_buttonStates[btn])
         {

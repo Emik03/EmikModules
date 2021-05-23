@@ -1,4 +1,4 @@
-﻿using KeepCodingAndNobodyExplodes;
+﻿using KeepCoding;
 using OneDimensionalChess;
 using System.Collections;
 using System.Linq;
@@ -6,13 +6,13 @@ using System.Threading;
 
 public class OneDimensionalChessTPScript : TPScript<OneDimensionalChessScript>
 {
-    protected override IEnumerator ProcessTwitchCommand(string command)
+    public override IEnumerator ProcessTwitchCommand(string command)
     {
         yield return null;
 
         // This cancels any selected square prior.
-        if (Module.last != null)
-            Module.Buttons[(int)Module.last].OnInteract();
+        if (Module.last.HasValue)
+            Module.Buttons[Module.last.Value].OnInteract();
 
         command = command.ToLowerInvariant();
 
@@ -40,11 +40,11 @@ public class OneDimensionalChessTPScript : TPScript<OneDimensionalChessScript>
             yield return Strike;
     }
 
-    protected override IEnumerator TwitchHandleForcedSolve()
+    public override IEnumerator TwitchHandleForcedSolve()
     {
         // This cancels any selected square prior.
-        if (Module.last != null)
-            Module.Buttons[(int)Module.last].OnInteract();
+        if (Module.last.HasValue)
+            Module.Buttons[Module.last.Value].OnInteract();
 
         while (!Module.IsSolved)
         {

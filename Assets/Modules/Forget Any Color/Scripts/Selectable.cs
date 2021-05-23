@@ -50,7 +50,7 @@ namespace ForgetAnyColor
                         if (seq.Count > 0)
                             if (seq[0] == Convert.ToBoolean(index))
                             {
-                                FAC.Audio.PlaySoundAtTransform(Sounds.Fac.Stage(stagesCompleted % 4), FAC.Selectables[index].transform);
+                                FAC.Audio.PlaySoundAtTransform(SFX.Fac.Stage(stagesCompleted % 4), FAC.Selectables[index].transform);
                                 stagesCompleted++;
                                 seq.RemoveAt(0);
                             }
@@ -58,7 +58,7 @@ namespace ForgetAnyColor
                             {
                                 Debug.LogFormat("[Forget Any Color #{0}]: {1} was incorrectly pushed during stage {2}.", init.moduleId, index == 1 ? "Right" : "Left", stagesCompleted + 1);
 
-                                FAC.Audio.PlaySoundAtTransform(Sounds.Fac.Strike, FAC.Selectables[index].transform);
+                                FAC.Audio.PlaySoundAtTransform(SFX.Fac.Strike, FAC.Selectables[index].transform);
                                 strike = true;
                                 FAC.Module.HandleStrike();
                             }
@@ -80,7 +80,7 @@ namespace ForgetAnyColor
                                 FAC.StartCoroutine(render.SetDisplayAsStages());
                             }
 
-                            FAC.Audio.PlaySoundAtTransform(Sounds.Ftc.Key, FAC.Module.transform);
+                            FAC.Audio.PlaySoundAtTransform(SFX.Ftc.Key, FAC.Module.transform);
                             render.turnKey = true;
                         }
                         break;

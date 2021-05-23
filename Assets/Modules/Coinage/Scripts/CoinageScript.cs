@@ -1,4 +1,4 @@
-﻿using KeepCodingAndNobodyExplodes;
+﻿using KeepCoding;
 using KModkit;
 using System.Collections;
 using System.Linq;
@@ -46,11 +46,10 @@ public class CoinageScript : ModuleScript
 
     private void Start()
     {
-        _rotateCoin = new Routine<int, bool>(RotateCoin, this);
+        _rotateCoin = this.ToRoutine<int, bool>(RotateCoin);
+        Coins.Assign(onInteract: i => _rotateCoin.Start(i, true, allowMultiple: false));
 
-        Coins.Assign(onInteract: i => _rotateCoin.Start(i, true, allowSimultaneousRuns: false));
-
-        coinStates = Helper.RandomBooleans(CoinCount);
+        coinStates = CoinCount.RandomBooleans();
 
         hammingCodes = Get<KMBombInfo>().GetSerialNumber()
             .Select(c => Chars.Contains(c))
@@ -99,7 +98,7 @@ public class CoinageScript : ModuleScript
     private IEnumerator RotateCoin(int arg, bool playSound)
     {
         if (playSound)
-            PlaySound(Coins[arg].transform, Sounds.Coin.Flip);
+            PlaySound(Coins[arg].transform, SFX.Coin.Flip);
 
         float f = 0;
 
@@ -129,7 +128,7 @@ public class CoinageScript : ModuleScript
 
         if (IsCorrect)
         {
-            PlaySound(Coins[arg].transform, Sounds.Coin.Solve);
+            PlaySound(Coins[arg].transform, SFX.Coin.Solve);
 
             Solve("The correct coin was flipped. Module solved!");
 
@@ -150,7 +149,7 @@ public class CoinageScript : ModuleScript
         }
         else
         {
-            PlaySound(Coins[arg].transform, Sounds.Coin.Strike);
+            PlaySound(Coins[arg].transform, SFX.Coin.Strike);
 
             Strike("Coin {0} was flipped, making the arrangement {1}, strike!".Form(ToCoordinate(arg), CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join("")),
                 "One of the answers is now {1}. (chess-coordinates)".Form(CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join(""), ToCoordinate(GetExampleAnswer())));

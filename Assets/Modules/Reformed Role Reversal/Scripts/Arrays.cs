@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using PathManager = KeepCodingAndNobodyExplodes.PathManager;
+using PathManager = KeepCoding.PathManager;
 
 /// <summary>
 /// Contains mostly static unchanging information and indexable edgework.

@@ -39,6 +39,8 @@ public class placeholderTalk : MonoBehaviour
     {
         Module.OnActivate += Activate;
         _moduleId = _moduleIdCounter++;
+
+        SFX.LogVersionNumber(Module, _moduleId);
     }
 
     /// <summary>
@@ -136,7 +138,7 @@ public class placeholderTalk : MonoBehaviour
             //play sound effect once
             if (_randomised == 0 && _playSound)
             {
-                Audio.PlaySoundAtTransform(Sounds.Pht.Shuffle, Module.transform);
+                Audio.PlaySoundAtTransform(SFX.Pht.Shuffle, Module.transform);
                 _playSound = false;
             }
 
@@ -385,7 +387,7 @@ public class placeholderTalk : MonoBehaviour
         if (num == _answerOffsetId)
         {
             Module.HandlePass();
-            Audio.PlaySoundAtTransform(Sounds.Pht.Solve, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Pht.Solve, Module.transform);
             isSolved = true;
 
             Debug.LogFormat("[Placeholder Talk #{0}] Module Passed! The amount of times you solved this module is now {1}.", _moduleId, Info.GetSolvedModuleNames().Count(s => s == "Placeholder Talk"));
@@ -402,8 +404,8 @@ public class placeholderTalk : MonoBehaviour
         else
         {
             Debug.LogFormat("[Placeholder Talk #{0}] Answer incorrect! Strike and reset! Your answer: {1}, The correct answer: {2}", _moduleId, num + 1, _answerOffsetId + 1);
-            Audio.PlaySoundAtTransform(Sounds.Pht.Strike, Module.transform);
-            Audio.PlaySoundAtTransform(Sounds.Pht.Shuffle, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Pht.Strike, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Pht.Shuffle, Module.transform);
             Module.HandleStrike();
 
             //generate new phrases & answers

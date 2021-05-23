@@ -75,7 +75,7 @@ namespace PhosphorescenceModule
         /// </summary>
         internal IEnumerator Startup()
         {
-            _pho.PlaySound(Sounds.Pho.Start);
+            _pho.PlaySound(SFX.Pho.Start);
 
             // This makes the display darker, since it always returns 0 in binary.
             _init.index = 0;
@@ -142,7 +142,7 @@ namespace PhosphorescenceModule
             _init.buttonPresses = new ButtonType[0];
 
             _select.ShuffleButtons();
-            _pho.PlaySound(Sounds.Pho.ShuffleButtons);
+            _pho.PlaySound(SFX.Pho.ShuffleButtons);
             _render.time -= _render.time / 4;
 
             // ElasticÍn ease of all buttons being pushed down.
@@ -233,7 +233,7 @@ namespace PhosphorescenceModule
             _init.isAnimated = true;
             _init.isCountingDown = false;
 
-            _pho.PlaySound(Sounds.Pho.EndSubmit);
+            _pho.PlaySound(SFX.Pho.EndSubmit);
 
             // ElasticOut ease of buttons going down.
             float k = 0;

@@ -83,7 +83,7 @@ namespace TheOctadecayotton
 
             if (_interact.isSubmitting)
             {
-                _octadecayotton.PlaySound(Sounds.Oct.StartingSphere);
+                _octadecayotton.PlaySound(SFX.Oct.StartingSphere);
                 for (int i = 0; i < _interact.Spheres.Count; i++)
                     _interact.Spheres[i].StartCoroutine(_interact.Spheres[i].UpdateValue());
             }
@@ -114,7 +114,7 @@ namespace TheOctadecayotton
             yield return new WaitForSecondsRealtime(1);
 
             Debug.LogFormat("[The Octadecayotton #{0}]: Module disarmed.", _octadecayotton.moduleId);
-            _octadecayotton.PlaySound(_interact.Dimension > 9 ? Sounds.Oct.SolveHard : Sounds.Oct.Solve);
+            _octadecayotton.PlaySound(_interact.Dimension > 9 ? SFX.Oct.SolveHard : SFX.Oct.Solve);
 
             foreach (var sphere in _interact.Spheres)
                 sphere.SphereRenderer.material.color = Color.white;
@@ -190,7 +190,7 @@ namespace TheOctadecayotton
             _interact.isSubmitting = false;
             _interact.isRotating = false;
 
-            _octadecayotton.PlaySound(Sounds.Oct.Strike);
+            _octadecayotton.PlaySound(SFX.Oct.Strike);
             Debug.LogFormat("[The Octadecayotton #{0}]: Incorrect submission, strike and reset!", _octadecayotton.moduleId);
 
             _interact.ModuleRenderer.material.mainTexture = null;

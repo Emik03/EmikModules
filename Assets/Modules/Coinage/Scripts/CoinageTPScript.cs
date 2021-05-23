@@ -1,9 +1,9 @@
-﻿using KeepCodingAndNobodyExplodes;
+﻿using KeepCoding;
 using System.Collections;
 
 public class CoinageTPScript : TPScript<CoinageScript>
 {
-    protected override IEnumerator ProcessTwitchCommand(string command)
+    public override IEnumerator ProcessTwitchCommand(string command)
     {
         yield return null;
 
@@ -23,9 +23,11 @@ public class CoinageTPScript : TPScript<CoinageScript>
             yield return new[] { Module.Coins[FirstChars.IndexOf(command[0].ToLower()) + (SecondChars.IndexOf(command[1].ToLower()) * 8)] };
     }
 
-    protected override IEnumerator TwitchHandleForcedSolve()
+    public override IEnumerator TwitchHandleForcedSolve()
     {
-        yield return null;
         Module.Coins[Module.GetExampleAnswer()].OnInteract();
+
+        while (!Module.IsSolved)
+            yield return true;
     }
 }

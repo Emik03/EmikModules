@@ -1,4 +1,4 @@
-﻿using PhosphorescenceModule;
+﻿using KeepCoding;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -30,7 +30,7 @@ namespace PhosphorescenceModule
         /// </summary>
         internal ButtonType[] buttonPresses;
 
-        internal static bool vrMode, isFirstToGenerate = true;
+        internal static bool isFirstToGenerate = true;
         internal bool isSolved, isCountingDown, isInSubmission, isSelected, isAnimated, isStriking;
         internal static int moduleIdCounter, streamDelay;
         internal int index;
@@ -44,23 +44,25 @@ namespace PhosphorescenceModule
             // Sets module ID.
             pho.moduleId = ++moduleIdCounter;
 
+            SFX.LogVersionNumber(pho.Module, pho.moduleId);
+
             // Sets accessibility.
-            ModSettingsJSON.Get(pho, out render.cruelMode, out vrMode, out streamDelay);
+            ModSettingsJSON.Get(pho, out render.cruelMode, out streamDelay);
             UpdateCruel();
 
             // This allows TP to read this class.
             pho.TP.Activate(this);
 
             // Plays voice lines only if it is the last one initiated. Not checking this causes multiple sounds to stack up.
-            pho.Info.OnBombSolved += () => { if (pho.moduleId == moduleIdCounter) pho.PlaySound(Sounds.Pho.Voice.BombDisarmed); };
-            pho.Info.OnBombExploded += () => { if (pho.moduleId == moduleIdCounter) pho.PlaySound(Sounds.Pho.Voice.GameOver); };
+            pho.Info.OnBombSolved += () => { if (pho.moduleId == moduleIdCounter) pho.PlaySound(SFX.Pho.Voice.BombDisarmed); };
+            pho.Info.OnBombExploded += () => { if (pho.moduleId == moduleIdCounter) pho.PlaySound(SFX.Pho.Voice.GameOver); };
 
             pho.Number.OnInteract += select.NumberPress();
             pho.Color.OnInteract += select.ColorPress();
             pho.Buttons.OnInteractArray(select.ButtonPress);
 
             // Initalize markers, and use OnDefocus.
-            if (!vrMode)
+            if (!ModuleScript.IsVR)
             {
                 pho.Color.OnDefocus += select.ColorRelease();
                 pho.Markers.OnInteractArray(select.MarkerPress);
@@ -115,7 +117,7 @@ namespace PhosphorescenceModule
             Debug.LogFormat("[Phosphorescence #{0}]: Submission \"{1}\" did not match the expected \"{2}\"!", pho.moduleId, submission, solution);
             solution = string.Empty;
 
-            pho.PlaySound(Sounds.Pho.Strike);
+            pho.PlaySound(SFX.Pho.Strike);
 
             // Disable screen.
             render.UpdateDisplay(0);
@@ -152,7 +154,7 @@ namespace PhosphorescenceModule
         {
             isSolved = true;
             Debug.LogFormat("[Phosphorescence #{0}]: The submisssion was correct, that is all.", pho.moduleId);
-            pho.PlaySound(Sounds.Pho.Success);
+            pho.PlaySound(SFX.Pho.Success);
 
             // Removes the texture, since it doesn't matter at this stage.
             foreach (var tile in pho.Tiles)
@@ -176,7 +178,7 @@ namespace PhosphorescenceModule
             }
 
             // Solves the module.
-            pho.PlaySound(Sounds.Pho.Voice.ChallengeComplete);
+            pho.PlaySound(SFX.Pho.Voice.ChallengeComplete);
             pho.Module.HandlePass();
             yield return select.animate.PostSolve(pho, displayStates);
         }

@@ -1,14 +1,14 @@
 ﻿using OneDimensionalChess;
-using KeepCodingAndNobodyExplodes;
+using KeepCoding;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using UnityEngine;
 using SRandom = System.Random;
 using URandom = UnityEngine.Random;
-using System.IO;
 
 /// <summary>
 /// On the Subject of 1D Chess - A modded "Keep Talking and Nobody Explodes" module created by Emik.
@@ -65,7 +65,7 @@ public class OneDimensionalChessScript : ModuleScript
             {
                 try
                 {
-                    PathManager.LoadLibrary(ModBundleName, Engine.LibraryName);
+                    PathManager.LoadLibrary(Get<ModBundle>().Name, Engine.LibraryName);
                 }
                 catch (FileNotFoundException e)
                 {
@@ -96,7 +96,7 @@ public class OneDimensionalChessScript : ModuleScript
             maximumThreadsActive: 1);
     }
 
-    protected override void OnActivate()
+    public override void OnActivate()
     {
         // This ensures that the same positions generate if a bomb seed is used.
         Position.random = new SRandom(URandom.Range(0, int.MaxValue));
@@ -119,21 +119,21 @@ public class OneDimensionalChessScript : ModuleScript
             return;
 
         // This prevents you from selecting an empty space as the origin.
-        if (position[arg] == Position.PieceChars[0] && last == null)
+        if (position[arg] == Position.PieceChars[0] && !last.HasValue)
             return;
 
         // This prevents you from selecting a piece that isn't yours as the origin.
-        if (position[arg].GetPieceColor() != color && last == null)
+        if (position[arg].GetPieceColor() != color && !last.HasValue)
             return;
 
         // Gives button feedback.
-        ButtonEffect(Buttons[arg], 1, Sounds._1dch.Click);
+        ButtonEffect(Buttons[arg], 1, SFX._1dch.Click);
 
         // Highlight the selected square.
         BoardRenderers[arg].material.color = _colorScheme[2];
 
         // The destination is selected.
-        if (last != null)
+        if (last.HasValue)
         {
             // The user did not deselect.
             if (last != arg)
@@ -146,7 +146,7 @@ public class OneDimensionalChessScript : ModuleScript
                     // Creates the desired move.
                     var move = new CGameResult
                     {
-                        Piece = position[(int)last].Piece(),
+                        Piece = position[last.Value].Piece(),
                         Origin = (sbyte)last,
                         Destination = (sbyte)arg
                     };
@@ -161,14 +161,14 @@ public class OneDimensionalChessScript : ModuleScript
                     StartCoroutine(GetEngineMove());
                 }
 
-                PlaySound(isLegalMove ? Sounds._1dch.Self : Sounds._1dch.Illegal);
+                PlaySound(isLegalMove ? SFX._1dch.Self : SFX._1dch.Illegal);
             }
 
             RenderPosition(position);
         }
 
         // Toggle _lastSelect between null and the argument passed in to the method.
-        last = last == null ? (int?)arg : null;
+        last = last.HasValue ? null : (int?)arg;
     }
 
     private IEnumerator GetEngineMove()
@@ -205,14 +205,14 @@ public class OneDimensionalChessScript : ModuleScript
 
         ChangeText("Mate in", "", MovesLeft.ToString());
 
-        PlaySound(Sounds._1dch.Opponent);
+        PlaySound(SFX._1dch.Opponent);
 
         // This indicates if the game has ended.
         if (_bestMove.Result.IsEqual(Position.finishedGame))
         {
             isReady = false;
 
-            PlaySound(Sounds._1dch.Check);
+            PlaySound(SFX._1dch.Check);
 
             // Stalemate.
             if (_bestMove.Result.Evaluation == 0)
@@ -225,7 +225,7 @@ public class OneDimensionalChessScript : ModuleScript
             // Checkmate for the player.
             else
             {
-                PlaySound(Sounds._1dch.GameEnd, Sounds._1dch.Solve);
+                PlaySound(SFX._1dch.GameEnd, SFX._1dch.Solve);
 
                 string message = new[] { "Good game!", "Well played!" }.PickRandom();
                 Solve(message);
@@ -354,7 +354,7 @@ public class OneDimensionalChessScript : ModuleScript
 
             RenderPosition(position);
 
-            PlaySound(new[] { Sounds._1dch.Capture, Sounds._1dch.Check, Sounds._1dch.Opponent, Sounds._1dch.Self }.PickRandom());
+            PlaySound(new[] { SFX._1dch.Capture, SFX._1dch.Check, SFX._1dch.Opponent, SFX._1dch.Self }.PickRandom());
         }
 
         Log("The position is {0}; {1} to play, mate in {2}. To beat Rustmate, the best sequence of moves are {3}.", position, color, (128 - Math.Abs(game.Evaluation)) / 2, ToLog(moves));
@@ -363,14 +363,14 @@ public class OneDimensionalChessScript : ModuleScript
 
         _isUsingThreads = false;
 
-        PlaySound(Sounds._1dch.GameStart);
+        PlaySound(SFX._1dch.GameStart);
 
         ChangeText("Mate in", "", MovesLeft.ToString());
     }
 
     private IEnumerator HandleStrike(string title, string subtitle)
     {
-        PlaySound(Sounds._1dch.GameEnd, Sounds._1dch.Strike);
+        PlaySound(SFX._1dch.GameEnd, SFX._1dch.Strike);
 
         ChangeText(title, subtitle);
 

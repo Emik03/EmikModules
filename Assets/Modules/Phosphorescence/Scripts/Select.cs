@@ -1,4 +1,5 @@
-﻿using PhosphorescenceModule;
+﻿using KeepCoding;
+using PhosphorescenceModule;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -41,7 +42,7 @@ namespace PhosphorescenceModule
 
                 if (_init.isSolved || _init.isAnimated)
                 {
-                    _pho.PlaySound(Sounds.Pho.InvalidButton);
+                    _pho.PlaySound(SFX.Pho.InvalidButton);
                     return false;
                 }
 
@@ -70,7 +71,7 @@ namespace PhosphorescenceModule
 
                 if (_init.isSolved || !_init.isCountingDown || !_init.isInSubmission || _init.isAnimated)
                 {
-                    _pho.PlaySound(Sounds.Pho.InvalidButton);
+                    _pho.PlaySound(SFX.Pho.InvalidButton);
                     return false;
                 }
 
@@ -89,7 +90,7 @@ namespace PhosphorescenceModule
                     Array.Resize(ref _init.buttonPresses, oldLength + 1);
                     _init.buttonPresses[oldLength] = buttons[btn];
 
-                    _pho.PlaySound(Sounds.Pho.Submit(_init.submission.Length));
+                    _pho.PlaySound(SFX.Pho.Submit(_init.submission.Length));
                     _pho.StartCoroutine(animate.PressButton(_pho.ButtonRenderers[btn].transform));
                     return false;
                 }
@@ -113,7 +114,7 @@ namespace PhosphorescenceModule
 
                 if (_init.isAnimated || _init.isInSubmission)
                 {
-                    _pho.PlaySound(Sounds.Pho.InvalidButton);
+                    _pho.PlaySound(SFX.Pho.InvalidButton);
                     return false;
                 }
 
@@ -122,7 +123,7 @@ namespace PhosphorescenceModule
                 // Inverts their scale, toggling whether they are visible or not.
                 _pho.MarkerRenderers[btn].transform.localScale = isNowInvisible ? new Vector3(0, 0, 0) : new Vector3(0.5f, 1, 0.5f);
 
-                _pho.PlaySound(isNowInvisible ? Sounds.Pho.MarkerOff : Sounds.Pho.MarkerOn);
+                _pho.PlaySound(isNowInvisible ? SFX.Pho.MarkerOff : SFX.Pho.MarkerOn);
                 return false;
             };
         }
@@ -140,14 +141,14 @@ namespace PhosphorescenceModule
 
                 if (_init.isSolved || _init.isAnimated || _init.isInSubmission)
                 {
-                    _pho.PlaySound(Sounds.Pho.InvalidButton);
-                    return !Init.vrMode;
+                    _pho.PlaySound(SFX.Pho.InvalidButton);
+                    return !ModuleScript.IsVR;
                 }
 
                 ResetMarkers();
-                _pho.PlaySound(Sounds.Pho.ScreenPress);
+                _pho.PlaySound(SFX.Pho.ScreenPress);
                 _pho.StartCoroutine(_render.UpdateCubes());
-                return !Init.vrMode;
+                return !ModuleScript.IsVR;
             };
         }
 
@@ -162,11 +163,11 @@ namespace PhosphorescenceModule
 
                 if (_init.isSolved || _init.isAnimated || _init.isInSubmission)
                 {
-                    _pho.PlaySound(Sounds.Pho.InvalidButton);
+                    _pho.PlaySound(SFX.Pho.InvalidButton);
                     return;
                 }
 
-                _pho.PlaySound(Sounds.Pho.ScreenRelease);
+                _pho.PlaySound(SFX.Pho.ScreenRelease);
                 _init.isSelected = false;
 
                 // Sets the entire 7x7 grid to be completely black.
@@ -203,7 +204,7 @@ namespace PhosphorescenceModule
 
             _pho.ButtonGroupRenderer.localScale = new Vector3(0.038f, 0.01f, 0.038f);
 
-            _pho.PlaySound(Sounds.Pho.StartSubmit);
+            _pho.PlaySound(SFX.Pho.StartSubmit);
             ResetMarkers();
             ShuffleButtons();
 

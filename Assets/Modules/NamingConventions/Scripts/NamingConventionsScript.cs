@@ -1,4 +1,4 @@
-﻿using KeepCodingAndNobodyExplodes;
+﻿using KeepCoding;
 using NamingConventions;
 using System;
 using System.Collections;
@@ -121,19 +121,24 @@ public class NamingConventionsScript : ModuleScript
         }
     }
 
+    private new void Awake()
+    {
+        // Initializes the arrays.
+        textStates = Length.RandomBooleans();
+        _textIndexes = new int[Length][];
+
+        base.Awake();
+    }
+
     private void Start()
     {
         // Assigns the KMSelectables.
         Buttons.Assign(onInteract: HandlePresses);
         Get<KMSelectable>().Assign(onInteract: () => _isSelected = true, onDefocus: () => _isSelected = false);
 
-        // Initializes the arrays.
-        textStates = Helper.RandomBooleans(Length);
-        _textIndexes = new int[Length][];
-
         // Gets random DataType.
         Index = Rnd.Range(0, 10);
-        DataType = Helper.GetValues<DataType>().PickRandom();
+        DataType = default(DataType).GetValues().PickRandom();
 
         // Start rendering.
         UpdateIndexes();
@@ -145,7 +150,7 @@ public class NamingConventionsScript : ModuleScript
             Enumerable.Range(0, 6).Select(i => SetTextIndexes(i + 1, Solutions[DataType][i]).Trim()).Join(", "));
     }
 
-    protected override void OnTimerTick()
+    public override void OnTimerTick()
     {
         if (IsSolved)
             return;
@@ -154,7 +159,7 @@ public class NamingConventionsScript : ModuleScript
             textStates[i] = !textStates[i];
 
         if (_isSelected)
-            PlaySound(Sounds.Nc.Tick);
+            PlaySound(SFX.Nc.Tick);
 
         UpdateIndexes();
     }
@@ -174,7 +179,7 @@ public class NamingConventionsScript : ModuleScript
 
     private void HandlePresses(int i)
     {
-        ButtonEffect(Buttons[i], 0, Sounds.Nc.Touch, KMSoundOverride.SoundEffect.ButtonPress);
+        ButtonEffect(Buttons[i], 0, SFX.Nc.Touch, KMSoundOverride.SoundEffect.ButtonPress);
 
         if (IsSolved)
             return;
@@ -194,12 +199,12 @@ public class NamingConventionsScript : ModuleScript
     {
         if (IsCorrect())
         {
-            PlaySound(Sounds.Nc.Solve);
+            PlaySound(SFX.Nc.Solve);
             Solve("The submission was correct, solved!");
         }
         else
         {
-            PlaySound(Sounds.Nc.Strike);
+            PlaySound(SFX.Nc.Strike);
             Strike("The incorrect option was submitted for button(s) {0}, that's 1 strike please!"
                 .Form(Enumerable.Range(2, 6).Where(i => textStates[i - 1] != Solutions[_dataType][i - 2]).Join(", ")));
         }

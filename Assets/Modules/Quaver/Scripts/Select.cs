@@ -52,9 +52,9 @@ namespace QuaverModule
         {
             switch (btn)
             {
-                case 1: ArrowScript.scrollSpeed = Math.Max(--ArrowScript.scrollSpeed, 10); quaver.Audio.PlaySoundAtTransform(Sounds.Q.Lower, quaver.transform); break;
-                case 2: ArrowScript.scrollSpeed = Math.Min(++ArrowScript.scrollSpeed, 30); quaver.Audio.PlaySoundAtTransform(Sounds.Q.Higher, quaver.transform); break;
-                case 4: ArrowScript.scrollSpeed = 10; quaver.Audio.PlaySoundAtTransform(Sounds.Q.Submit(true), quaver.transform); break;
+                case 1: ArrowScript.scrollSpeed = Math.Max(--ArrowScript.scrollSpeed, 10); quaver.Audio.PlaySoundAtTransform(SFX.Q.Lower, quaver.transform); break;
+                case 2: ArrowScript.scrollSpeed = Math.Min(++ArrowScript.scrollSpeed, 30); quaver.Audio.PlaySoundAtTransform(SFX.Q.Higher, quaver.transform); break;
+                case 4: ArrowScript.scrollSpeed = 10; quaver.Audio.PlaySoundAtTransform(SFX.Q.Submit(true), quaver.transform); break;
             }
 
             quaver.Render.GameplayScroll.text = "Scroll Speed: " + ArrowScript.scrollSpeed;
@@ -71,12 +71,12 @@ namespace QuaverModule
                         case 1: difficulty = (--difficulty + 4) % 4; break;
                         case 2: perColumn = !perColumn; break;
                     }
-                    quaver.Audio.PlaySoundAtTransform(Sounds.Q.Lower, quaver.transform);
+                    quaver.Audio.PlaySoundAtTransform(SFX.Q.Lower, quaver.transform);
                     break;
 
-                case 1: ui = ++ui % 3; quaver.Audio.PlaySoundAtTransform(Sounds.Q.Select, quaver.transform); break;
+                case 1: ui = ++ui % 3; quaver.Audio.PlaySoundAtTransform(SFX.Q.Select, quaver.transform); break;
 
-                case 2: ui = (--ui + 3) % 3; quaver.Audio.PlaySoundAtTransform(Sounds.Q.Select, quaver.transform); break;
+                case 2: ui = (--ui + 3) % 3; quaver.Audio.PlaySoundAtTransform(SFX.Q.Select, quaver.transform); break;
 
                 case 3:
                     switch (ui)
@@ -85,7 +85,7 @@ namespace QuaverModule
                         case 1: difficulty = ++difficulty % 4; break;
                         case 2: perColumn = !perColumn; break;
                     }
-                    quaver.Audio.PlaySoundAtTransform(Sounds.Q.Higher, quaver.transform);
+                    quaver.Audio.PlaySoundAtTransform(SFX.Q.Higher, quaver.transform);
                     break;
 
                 case 4:

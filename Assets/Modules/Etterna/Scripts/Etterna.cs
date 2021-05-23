@@ -45,10 +45,10 @@ public class Etterna : MonoBehaviour
         {
             //play metronome
             if (_cycle == 0)
-                Audio.PlaySoundAtTransform(Sounds.Ett.High, Module.transform);
+                Audio.PlaySoundAtTransform(SFX.Ett.High, Module.transform);
 
             else
-                Audio.PlaySoundAtTransform(Sounds.Ett.Low, Module.transform);
+                Audio.PlaySoundAtTransform(SFX.Ett.Low, Module.transform);
 
             //increase the cycle every time this is run, and display the message
             _cycle += 8;
@@ -58,7 +58,7 @@ public class Etterna : MonoBehaviour
         }
 
         _cycle = 0;
-        Audio.PlaySoundAtTransform(Sounds.Ett.Music, Module.transform);
+        Audio.PlaySoundAtTransform(SFX.Ett.Music, Module.transform);
 
         while (true)
         {
@@ -85,6 +85,8 @@ public class Etterna : MonoBehaviour
     {
         Module.OnActivate += Activate;
         _moduleId = _moduleIdCounter++;
+
+        SFX.LogVersionNumber(Module, _moduleId);
 
         //before the module activates, all arrows should be invisible
         for (byte i = 0; i < Arrow.Length; i++)
@@ -157,7 +159,7 @@ public class Etterna : MonoBehaviour
     {
         //sounds and punch effect
         Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, Module.transform);
-        Audio.PlaySoundAtTransform(Sounds.Ett.Start, Module.transform);
+        Audio.PlaySoundAtTransform(SFX.Ett.Start, Module.transform);
         Button.AddInteractionPunch();
 
         //lights off or is solved should end it here
@@ -176,7 +178,7 @@ public class Etterna : MonoBehaviour
 
         //add a clap sound and input log to '_input'
         _builder.Append(_cycle + ", ");
-        Audio.PlaySoundAtTransform(Sounds.Ett.Clap, Module.transform);
+        Audio.PlaySoundAtTransform(SFX.Ett.Clap, Module.transform);
         _input.Add((byte)_cycle);
     }
 
@@ -213,7 +215,7 @@ public class Etterna : MonoBehaviour
     {
         //solved!
         Playfield.material.mainTexture = PlayfieldTexture[Mathf.Clamp(Info.GetStrikes(), 0, PlayfieldTexture.Length - 1)];
-        Audio.PlaySoundAtTransform(Sounds.Ett.Solve, Module.transform);
+        Audio.PlaySoundAtTransform(SFX.Ett.Solve, Module.transform);
         _cycle = 33;
         isSolved = true;
 
@@ -243,7 +245,7 @@ public class Etterna : MonoBehaviour
         {
             Text.text = "Calibration failed! (Expected 4 inputs, recieved " + _input.Count + ".)";
             Debug.LogFormat("[Etterna #{0}] Strike! Incorrect number of inputs, expected 4, recieved {1}.", _moduleId, _input.Count);
-            Audio.PlaySoundAtTransform(Sounds.Ett.Strike, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Ett.Strike, Module.transform);
             _cycle = 0;
 
             Module.HandleStrike();
@@ -256,7 +258,7 @@ public class Etterna : MonoBehaviour
             {
                 Text.text = "Calibration failed! (Button press #" + (i + 1) + " was incorrect.)";
                 Debug.LogFormat("[Etterna #{0}] Strike! Button press #{1} was incorrect, expected {2}, recieved {3}.", _moduleId, i + 1, correct[i], _input[i]);
-                Audio.PlaySoundAtTransform(Sounds.Ett.Strike, Module.transform);
+                Audio.PlaySoundAtTransform(SFX.Ett.Strike, Module.transform);
                 _cycle = 0;
 
                 Module.HandleStrike();

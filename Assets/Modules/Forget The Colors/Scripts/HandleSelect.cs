@@ -127,8 +127,8 @@ namespace ForgetTheColors
                     solved = true;
                     ease = 0;
 
-                    Audio.PlaySoundAtTransform(Sounds.Ftc.KeySuccess, Selectables[2].transform);
-                    Audio.PlaySoundAtTransform(Sounds.Ftc.Solve, Module.transform);
+                    Audio.PlaySoundAtTransform(SFX.Ftc.KeySuccess, Selectables[2].transform);
+                    Audio.PlaySoundAtTransform(SFX.Ftc.Solve, Module.transform);
 
                     Debug.LogFormat("[Forget The Colors #{0}]: {1}; module solved!", moduleId, Strings.WinPhrases[Rnd.Range(0, Strings.WinPhrases.Length)]);
                     Module.HandlePass();
@@ -141,7 +141,7 @@ namespace ForgetTheColors
                     isRotatingKey = true;
                     ease = 0;
 
-                    Audio.PlaySoundAtTransform(Sounds.Ftc.Key, Selectables[2].transform);
+                    Audio.PlaySoundAtTransform(SFX.Ftc.Key, Selectables[2].transform);
 
                     //if submitting a possible answer
                     if (int.Parse(string.Concat(NixieTexts[0].text, NixieTexts[1].text)) <= 90)
@@ -150,7 +150,7 @@ namespace ForgetTheColors
                     //if submitting an impossible answer
                     else
                     {
-                        Audio.PlaySoundAtTransform(Sounds.Fac.Strike, Selectables[2].transform);
+                        Audio.PlaySoundAtTransform(SFX.Fac.Strike, Selectables[2].transform);
                         Debug.LogFormat("[Forget The Colors #{0}]: Wh- why would you submit {1}? Why would you submit {1}?! Do you even know how I work?! That answer isn't even possible... You submitted {1} when I expected {2}.", moduleId, NixieTexts[0].text + NixieTexts[1].text, solution);
                     }
 

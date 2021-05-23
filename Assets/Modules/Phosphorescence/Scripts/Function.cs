@@ -267,25 +267,25 @@ namespace PhosphorescenceModule
             if (exception)
                 return;
 
-            pho.PlaySound(Sounds.Pho.TimerTick);
+            pho.PlaySound(SFX.Pho.TimerTick);
 
             switch (time)
             {
-                case 1: pho.PlaySound(Sounds.Pho.Voice.One); break;
-                case 2: pho.PlaySound(Sounds.Pho.Voice.Two); break;
-                case 3: pho.PlaySound(Sounds.Pho.Voice.Three); break;
-                case 4: pho.PlaySound(Sounds.Pho.Voice.Four); break;
-                case 5: pho.PlaySound(Sounds.Pho.Voice.Five); break;
-                case 6: pho.PlaySound(Sounds.Pho.Voice.Six); break;
-                case 7: pho.PlaySound(Sounds.Pho.Voice.Seven); break;
-                case 8: pho.PlaySound(Sounds.Pho.Voice.Eight); break;
-                case 9: pho.PlaySound(Sounds.Pho.Voice.Nine); break;
-                case 30: pho.PlaySound(Sounds.Pho.Voice.Thirty); break;
-                case 60: pho.PlaySound(Sounds.Pho.Voice.OneMinute); break;
-                case 120: pho.PlaySound(Sounds.Pho.Voice.TwoMinutes); break;
-                case 180: pho.PlaySound(Sounds.Pho.Voice.ThreeMinutes); break;
-                case 240: pho.PlaySound(Sounds.Pho.Voice.FourMinutes); break;
-                default: if (time % 60 == 0) pho.PlaySound(Sounds.Pho.NotableTimeLeft); break;
+                case 1: pho.PlaySound(SFX.Pho.Voice.One); break;
+                case 2: pho.PlaySound(SFX.Pho.Voice.Two); break;
+                case 3: pho.PlaySound(SFX.Pho.Voice.Three); break;
+                case 4: pho.PlaySound(SFX.Pho.Voice.Four); break;
+                case 5: pho.PlaySound(SFX.Pho.Voice.Five); break;
+                case 6: pho.PlaySound(SFX.Pho.Voice.Six); break;
+                case 7: pho.PlaySound(SFX.Pho.Voice.Seven); break;
+                case 8: pho.PlaySound(SFX.Pho.Voice.Eight); break;
+                case 9: pho.PlaySound(SFX.Pho.Voice.Nine); break;
+                case 30: pho.PlaySound(SFX.Pho.Voice.Thirty); break;
+                case 60: pho.PlaySound(SFX.Pho.Voice.OneMinute); break;
+                case 120: pho.PlaySound(SFX.Pho.Voice.TwoMinutes); break;
+                case 180: pho.PlaySound(SFX.Pho.Voice.ThreeMinutes); break;
+                case 240: pho.PlaySound(SFX.Pho.Voice.FourMinutes); break;
+                default: if (time % 60 == 0) pho.PlaySound(SFX.Pho.NotableTimeLeft); break;
             }
         }
 

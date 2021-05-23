@@ -25,6 +25,8 @@ public class Palindromes : MonoBehaviour
     {
         _moduleId = _moduleIdCounter++;
 
+        SFX.LogVersionNumber(Module, _moduleId);
+
         //puts in correct index when you push one of the three buttons
         for (byte i = 0; i < Buttons.Length; i++)
         {
@@ -74,13 +76,13 @@ public class Palindromes : MonoBehaviour
         {
             //cycle number
             case 0:
-                Audio.PlaySoundAtTransform(Sounds.Pld.Cycle, Buttons[btn].transform);
+                Audio.PlaySoundAtTransform(SFX.Pld.Cycle, Buttons[btn].transform);
                 Text[2].text = ((byte.Parse(Text[2].text) + 1) % 10).ToString();
                 break;
 
             //submit number
             case 1:
-                Audio.PlaySoundAtTransform(Sounds.Pld.Submit, Buttons[btn].transform);
+                Audio.PlaySoundAtTransform(SFX.Pld.Submit, Buttons[btn].transform);
                 for (byte i = 0; i < vs.Length; i++)
                 {
                     //if current variable hasn't been filled yet
@@ -103,7 +105,7 @@ public class Palindromes : MonoBehaviour
 
             //delete number
             case 2:
-                Audio.PlaySoundAtTransform(Sounds.Pld.Delete, Buttons[btn].transform);
+                Audio.PlaySoundAtTransform(SFX.Pld.Delete, Buttons[btn].transform);
                 for (sbyte i = (sbyte)(vs.Length - 1); i >= 0; i--)
                 {
                     if (vs[i].Length != 0)
@@ -152,7 +154,7 @@ public class Palindromes : MonoBehaviour
     {
         _isAnimating = true;
 
-        Audio.PlaySoundAtTransform(Sounds.Pld.Calculate, Buttons[1].transform);
+        Audio.PlaySoundAtTransform(SFX.Pld.Calculate, Buttons[1].transform);
         Debug.LogFormat("[Palindromes #{0}]: Submitting > {1}.", _moduleId, new string[3] { x, y, z }.Join(" & "));
 
         n = Text[0].text;
@@ -170,7 +172,7 @@ public class Palindromes : MonoBehaviour
         //strike
         if (strike)
         {
-            Audio.PlaySoundAtTransform(Sounds.Pld.Answer, Buttons[1].transform);
+            Audio.PlaySoundAtTransform(SFX.Pld.Answer, Buttons[1].transform);
             Debug.LogFormat("[Palindromes #{0}]: Strike! > {1}", _moduleId, temp - total);
             Module.HandleStrike();
 
@@ -212,7 +214,7 @@ public class Palindromes : MonoBehaviour
         //solve
         else
         {
-            Audio.PlaySoundAtTransform(Sounds.Pld.Answer, Buttons[1].transform);
+            Audio.PlaySoundAtTransform(SFX.Pld.Answer, Buttons[1].transform);
             Text[0].text = "0";
             Text[1].text = "YOU  FOUND  IT!";
             Debug.LogFormat("[Palindromes #{0}]: Solved! > 0", _moduleId);

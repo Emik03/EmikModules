@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using ColorDictionary = System.Collections.Generic.Dictionary<KeepCodingAndNobodyExplodes.Tuple<UnityEngine.Color, UnityEngine.Color>, string[]>;
-using ColorCombination = KeepCodingAndNobodyExplodes.Tuple<UnityEngine.Color, UnityEngine.Color>;
-using IntTuple = KeepCodingAndNobodyExplodes.Tuple<int, int>;
-using MazeTuple = KeepCodingAndNobodyExplodes.Tuple<System.Text.StringBuilder[], string[]>;
+using ColorDictionary = System.Collections.Generic.Dictionary<KeepCoding.Tuple<UnityEngine.Color, UnityEngine.Color>, string[]>;
+using ColorCombination = KeepCoding.Tuple<UnityEngine.Color, UnityEngine.Color>;
+using IntTuple = KeepCoding.Tuple<int, int>;
+using MazeTuple = KeepCoding.Tuple<System.Text.StringBuilder[], string[]>;
 using String = System.Text.StringBuilder;
-using WordTuple = KeepCodingAndNobodyExplodes.Tuple<Updog.Spelling, Updog.Casing>;
+using WordTuple = KeepCoding.Tuple<Updog.Spelling, Updog.Casing>;
 
 namespace Updog
 {

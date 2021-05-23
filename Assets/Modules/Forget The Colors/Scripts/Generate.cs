@@ -22,7 +22,7 @@ namespace ForgetTheColors
 
             //plays sound
             if (currentStage != 0)
-                Audio.PlaySoundAtTransform(Sounds.Ftc.NextStage, Module.transform);
+                Audio.PlaySoundAtTransform(SFX.Ftc.NextStage, Module.transform);
 
             //if this is the submission/final stage
             if (currentStage == maxStage)

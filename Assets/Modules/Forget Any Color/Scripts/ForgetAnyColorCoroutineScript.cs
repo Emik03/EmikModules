@@ -96,11 +96,11 @@ public class ForgetAnyColorCoroutineScript : MonoBehaviour
 
         if (init.moduleId == Init.moduleIdCounter)
         {
-            FAC.Audio.PlaySoundAtTransform(Sounds.Fac.Next(init.currentStage / Init.modulesPerStage % 4), FAC.Module.transform);
+            FAC.Audio.PlaySoundAtTransform(SFX.Fac.Next(init.currentStage / Init.modulesPerStage % 4), FAC.Module.transform);
             if (init.currentStage != 0)
-                FAC.Audio.PlaySoundAtTransform(Sounds.Ftc.NextStage, FAC.Module.transform);
+                FAC.Audio.PlaySoundAtTransform(SFX.Ftc.NextStage, FAC.Module.transform);
             if (init.currentStage / Init.modulesPerStage == init.finalStage / Init.modulesPerStage)
-                FAC.Audio.PlaySoundAtTransform(Sounds.Fac.FinalStage, FAC.Module.transform);
+                FAC.Audio.PlaySoundAtTransform(SFX.Fac.FinalStage, FAC.Module.transform);
         }
 
         for (int i = 0; i < (isSpecialStage ? specialStage : nextStage); i++)

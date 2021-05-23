@@ -105,7 +105,7 @@ public class RenderScript : MonoBehaviour
         if (!b)
         {
             bool isCorrect = Quaver.init.generate.Validate();
-            Quaver.Audio.PlaySoundAtTransform(Sounds.Q.Submit(isCorrect), transform);
+            Quaver.Audio.PlaySoundAtTransform(SFX.Q.Submit(isCorrect), transform);
 
             if (!isCorrect)
             {

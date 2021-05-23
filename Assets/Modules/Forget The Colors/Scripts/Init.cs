@@ -71,7 +71,7 @@ namespace ForgetTheColors
             //begin module
             NixieTexts[0].text = "0";
             NixieTexts[1].text = "0";
-            Audio.PlaySoundAtTransform(Sounds.Ftc.Start, Module.transform);
+            Audio.PlaySoundAtTransform(SFX.Ftc.Start, Module.transform);
         }
     }
 }

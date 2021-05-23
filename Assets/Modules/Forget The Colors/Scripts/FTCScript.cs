@@ -64,6 +64,8 @@ public class FTCScript : MonoBehaviour
     {
         _moduleId = _moduleIdCounter++;
 
+        SFX.LogVersionNumber(Module, _moduleId);
+
         //establish buttons
         for (byte i = 0; i < Selectables.Length; i++)
         {

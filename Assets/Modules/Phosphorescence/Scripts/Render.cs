@@ -38,7 +38,7 @@ namespace PhosphorescenceModule
         internal IEnumerator Countdown()
         {
             _init.isCountingDown = true;
-            _pho.PlaySound(Sounds.Pho.Voice.Go);
+            _pho.PlaySound(SFX.Pho.Voice.Go);
 
             for (time = currentTime; time >= 1; time--)
             {
@@ -113,7 +113,7 @@ namespace PhosphorescenceModule
         /// </summary>
         private void NewSequence()
         {
-            _pho.PlaySound(Sounds.Pho.Reshuffle);
+            _pho.PlaySound(SFX.Pho.Reshuffle);
 
             // Setting this to negative 1 means that the next button press will display 0, or the first element.
             currentIndex = -1;

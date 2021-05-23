@@ -37,7 +37,7 @@ namespace TheOctadecayotton
                 Debug.LogFormat("[The Octadecayotton #{0}]: The constraint rule has been broken {1}/{2} times.", moduleId, breakCount, dimension == 4 ? 6 : 5);
             }
 
-            Debug.LogFormat("[The Octadecayotton #{0}]: The starting sphere is now located in {1}. (XYZWVURST-ordered)", moduleId, startingSphere.Select(a => a.Value ? "+" : "-").Join(""));
+            Debug.LogFormat("[The Octadecayotton #{0}]: The starting sphere is now located in {1}. ({2}-ordered)", moduleId, startingSphere.Select(a => a.Value ? "+" : "-").Join(""), InteractScript.allCharAxes.Substring(0, dimension));
             return breakCount < (dimension == 4 ? 6 : 5);
         }
 

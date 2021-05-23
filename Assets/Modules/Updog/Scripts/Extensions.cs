@@ -1,9 +1,9 @@
-﻿using KeepCodingAndNobodyExplodes;
+﻿using KeepCoding;
 using System;
 using System.Linq;
 using UnityEngine;
-using IntTuple = KeepCodingAndNobodyExplodes.Tuple<int, int>;
-using MazeTuple = KeepCodingAndNobodyExplodes.Tuple<System.Text.StringBuilder[], string[]>;
+using IntTuple = KeepCoding.Tuple<int, int>;
+using MazeTuple = KeepCoding.Tuple<System.Text.StringBuilder[], string[]>;
 using String = System.Text.StringBuilder;
 
 namespace Updog

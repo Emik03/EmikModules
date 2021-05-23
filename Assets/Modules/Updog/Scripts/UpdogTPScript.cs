@@ -1,13 +1,13 @@
-﻿using KeepCodingAndNobodyExplodes;
+﻿using KeepCoding;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
 
 public class UpdogTPScript : TPScript<UpdogScript>
 {
-    private bool _isWait;
+    //private bool _isWait;
 
-    protected override IEnumerator ProcessTwitchCommand(string command)
+    public override IEnumerator ProcessTwitchCommand(string command)
     {
         string[] split = command.Split();
 
@@ -36,14 +36,29 @@ public class UpdogTPScript : TPScript<UpdogScript>
         }
     }
 
-    protected override IEnumerator TwitchHandleForcedSolve()
+    public override IEnumerator TwitchHandleForcedSolve()
     {
-        while (!Module.isStrike && Module.IsSolved)
+        while (!Module.IsSolved && !Module.HasStruck)
         {
-            _isWait = true;
-            StartCoroutine(AutoSolver());
-            while (_isWait)
+            bool[] validMoves = Module.ValidMoves;
+
+            int[] randomArray = Enumerable.Range(0, validMoves.Length)
+                .ToArray()
+                .Shuffle();
+
+            for (int i = 0; i < validMoves.Length; i++)
+                if (validMoves[randomArray[i]])
+                {
+                    Module.Arrows[randomArray[i] + Module.OrderOffset].OnInteract();
+                    yield return null;
+                    break;
+                }
+
+            if (Module.IsOnBone)
+            {
+                Module.Center[0].OnInteract();
                 yield return null;
+            }
         }
     }
 
@@ -70,32 +85,5 @@ public class UpdogTPScript : TPScript<UpdogScript>
         }
 
         Module.isStrike = false;
-    }
-
-    private IEnumerator AutoSolver()
-    {
-        bool[] validMoves = Module.ValidMoves;
-
-        int[] randomArray = Enumerable.Range(0, validMoves.Length)
-            .ToArray()
-            .Shuffle();
-
-        for (int i = 0; i < validMoves.Length; i++)
-            if (validMoves[randomArray[i]])
-            {
-                _isWait = true;
-                Module.Arrows[randomArray[i] + Module.OrderOffset].OnInteract();
-                yield return new WaitForSecondsRealtime(0.05f);
-                break;
-            }
-
-        if (Module.IsOnBone)
-        {
-            _isWait = true;
-            Module.Center[0].OnInteract();
-            yield return new WaitForSecondsRealtime(0.05f);
-        }
-
-        _isWait = false;
     }
 }

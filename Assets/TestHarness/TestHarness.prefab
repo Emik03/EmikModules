@@ -20344,13 +20344,47 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2fa996756434e9e469da319887ff65d2, type: 3}
   - {fileID: 8300000, guid: 6a3863bbeda266b41bc71a131ae2ea97, type: 3}
   - {fileID: 8300000, guid: 1f9186c70900460438d5839ef92c9a96, type: 3}
+  - {fileID: 8300000, guid: 502adf5435e6d1a48a4786de1f51b572, type: 3}
+  - {fileID: 8300000, guid: 12acf6ca25138a74cb9bd50f8bebd129, type: 3}
+  - {fileID: 8300000, guid: be260bafedd428d449d5051067f5f80a, type: 3}
+  - {fileID: 8300000, guid: ad92e8d4748bfbd46b64298c9c28fccc, type: 3}
+  - {fileID: 8300000, guid: 239a610ed645f7343b509c3135346e76, type: 3}
+  - {fileID: 8300000, guid: cbd472c404fa920408ff6388d7e01729, type: 3}
+  - {fileID: 8300000, guid: 2aed54700720f8249a7270867f2888fb, type: 3}
+  - {fileID: 8300000, guid: 0664cbd1a9e7dc649a77ebf029ee929b, type: 3}
+  - {fileID: 8300000, guid: 25d339d78c9c4ea4c99c0f91a4060623, type: 3}
+  - {fileID: 8300000, guid: 937648332881b7943b6c6ee8b19ca760, type: 3}
+  - {fileID: 8300000, guid: 3cbac57cac976394495a83785e0f7735, type: 3}
+  - {fileID: 8300000, guid: de4675b8bfbd78c4fb4338a0e1097e81, type: 3}
+  - {fileID: 8300000, guid: 3d27ff18c3dd63240be4941d974d2131, type: 3}
+  - {fileID: 8300000, guid: f37d44acd7f5d684eae34b26332b7351, type: 3}
+  - {fileID: 8300000, guid: 336d7b66b95c8654380cdebcc1a2f23d, type: 3}
+  - {fileID: 8300000, guid: 26b177d39a9ef9742b8353717b77d605, type: 3}
+  - {fileID: 8300000, guid: e735f74e670ecde40a1da472a54341f0, type: 3}
+  - {fileID: 8300000, guid: 29a2ddd1eef71ee4992b4a8fc1617176, type: 3}
+  - {fileID: 8300000, guid: 7fec18d1cba52b047a7bee60c1c6bc8c, type: 3}
+  - {fileID: 8300000, guid: 8d84ed8c505af2d4f9985f57bb952869, type: 3}
+  - {fileID: 8300000, guid: 5bf6061948700d143917ebf71328d883, type: 3}
+  - {fileID: 8300000, guid: 672f50d85da720142b6587401e247c3c, type: 3}
+  - {fileID: 8300000, guid: 46f6bcab10e3cd244990244979852ba2, type: 3}
+  - {fileID: 8300000, guid: 1b454bd58eeed544184816f2f841769a, type: 3}
+  - {fileID: 8300000, guid: 708ca7469ad3e444e9c9797068bbf1f7, type: 3}
+  - {fileID: 8300000, guid: 2e7dda317a421a24387cc85d8e28fc78, type: 3}
+  - {fileID: 8300000, guid: 04ed0550f3566c745b047b543284b5cd, type: 3}
+  - {fileID: 8300000, guid: 03800dd3669e4fd489159e9bd5cefe3a, type: 3}
+  - {fileID: 8300000, guid: ebd7cdf35aabc3041bae8b6fb879a884, type: 3}
+  - {fileID: 8300000, guid: cc840934c27a7aa43b7c66180462ca74, type: 3}
+  - {fileID: 8300000, guid: 50622c6d58ccf2a41a775159fff8ff1b, type: 3}
+  - {fileID: 8300000, guid: c50943ee122e4004aa54afd29e822ca9, type: 3}
+  - {fileID: 8300000, guid: b8a396708666cf148a69eef7fa073032, type: 3}
+  - {fileID: 8300000, guid: fb66bd3533b17a349bb56e9313283564, type: 3}
   StrikeCount: 3
   TimeLimit: 600
   BombSize: 1
   FrontFaceOnly: 1
   EdgeworkConfiguration: {fileID: 0}
   TwitchPlaysActive: 1
-  TwitchPlaysMode: 0
+  TwitchPlaysMode: 2
   turnSpeed: 128
   panSpeed: 4
   zoomSpeed: 16

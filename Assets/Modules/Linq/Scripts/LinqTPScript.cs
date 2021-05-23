@@ -1,4 +1,4 @@
-﻿using KeepCodingAndNobodyExplodes;
+﻿using KeepCoding;
 using KModkit;
 using Linq;
 using System.Collections;
@@ -10,7 +10,7 @@ public class LinqTPScript : TPScript<LinqScript>
 {
     private bool _isRunningTwitchCommand;
 
-    protected override IEnumerator ProcessTwitchCommand(string command)
+    public override IEnumerator ProcessTwitchCommand(string command)
     {
         string[] split = command.Split();
 
@@ -40,7 +40,7 @@ public class LinqTPScript : TPScript<LinqScript>
 
     }
 
-    protected override IEnumerator TwitchHandleForcedSolve()
+    public override IEnumerator TwitchHandleForcedSolve()
     {
         yield return null;
 

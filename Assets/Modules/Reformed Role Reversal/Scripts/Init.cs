@@ -35,6 +35,8 @@ namespace ReformedRoleReversalModule
         {
             ModuleId = ++ModuleIdCounter;
 
+            SFX.LogVersionNumber(Reversal.Module, ModuleId);
+
             Manual.Generate();
 
             Reversal.Screen.OnInteract += delegate ()

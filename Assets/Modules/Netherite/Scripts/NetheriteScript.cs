@@ -1,4 +1,4 @@
-﻿using KeepCodingAndNobodyExplodes;
+﻿using KeepCoding;
 using KModkit;
 using Netherite;
 using Newtonsoft.Json;
@@ -74,11 +74,11 @@ public class NetheriteScript : ModuleScript
             return;
 
         // Plays a random dig sound.
-        ButtonEffect(Buttons[i], 1, Sounds.N.Dig, KMSoundOverride.SoundEffect.ButtonPress);
+        ButtonEffect(Buttons[i], 1, SFX.N.Dig, KMSoundOverride.SoundEffect.ButtonPress);
 
         // Ping if this is the first time the module is being cracked.
         if (Stage == 0)
-            PlaySound(Sounds.N.Ping);
+            PlaySound(SFX.N.Ping);
 
         // Plays the break block effect.
         Get<ParticleSystem>().Play();
@@ -90,7 +90,7 @@ public class NetheriteScript : ModuleScript
         // This strikes the module if either the condition is wrong or multiple of them are being solved.
         if (Sequence[Stage] != ApplyRules(i) || CurrentlySolvingId != ModuleId)
         {
-            PlaySound(Sounds.N.Hit);
+            PlaySound(SFX.N.Hit);
             Strike("While trying to mine for the {0} time, the value {1} was submitted, when {2} was expected! Strike!".Form(
                 (Stage + 1).ToOrdinal(),
                 ApplyRules(i),
@@ -119,7 +119,7 @@ public class NetheriteScript : ModuleScript
 
             Get<ParticleSystem>().Play();
 
-            PlaySound(Sounds.N.Solve);
+            PlaySound(SFX.N.Solve);
 
             Solve("The Netherite block has been mined. Module solved!");
         }
