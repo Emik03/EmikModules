@@ -17,7 +17,7 @@ public class NetheriteScript : ModuleScript
 
     private static int CurrentlySolvingId { get; set; }
     private static int NetheriteId { get; set; }
-    private int NetheriteCount { get { return IsEditor ? 3 : Get<KMBombInfo>().GetSolvableModuleNames().Where(m => m == Module.ModuleDisplayName).Count(); } }
+    private int NetheriteCount { get { return IsEditor ? 3 : Get<KMBombInfo>().GetSolvableModuleNames().Where(m => m == Module.Name).Count(); } }
     internal int Stage { get; set; }
 
     private float? Voltage

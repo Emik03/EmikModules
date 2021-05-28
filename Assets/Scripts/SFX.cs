@@ -376,7 +376,7 @@ internal static class SFX
     /// <param name="moduleId">The module's id.</param>
     internal static void LogVersionNumber(ModuleContainer module, int moduleId)
     {
-        Debug.LogFormat("[{0} #{1}]: Version: [{2}]", module.ModuleDisplayName, moduleId, _version);
+        Debug.LogFormat("[{0} #{1}]: Version: [{2}]", module.Name, moduleId, _version);
     }
 
     private static string Add(this string s, object i)

@@ -123,11 +123,11 @@ public class NamingConventionsScript : ModuleScript
 
     private new void Awake()
     {
+        base.Awake();
+
         // Initializes the arrays.
         textStates = Length.RandomBooleans();
         _textIndexes = new int[Length][];
-
-        base.Awake();
     }
 
     private void Start()

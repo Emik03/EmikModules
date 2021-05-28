@@ -125,7 +125,7 @@
         </member>
         <member name="M:KeepCoding.TPScriptEditor.OnInspectorGUI">
             <summary>
-            Creates the force solve button.
+            Creates the force solve buttons.
             </summary>
         </member>
         <member name="T:KeepCoding.ConstructorArgumentException">
@@ -1529,6 +1529,30 @@
             <param name="onRight">Called when the right controller stick is pulled while selected.</param>
             <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
         </member>
+        <member name="M:KeepCoding.EventHelper.Assign(KMSelectable[],System.Nullable{System.Boolean},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable})">
+            <summary>
+            Assigns events specified into <paramref name="kmSelectable"/>. Reassigning them will replace their values. The number passed into each method represents the index that came from the array.
+            </summary>
+            <remarks>
+            An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions.
+            </remarks>
+            <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
+            <exception cref="T:UnityEngine.UnassignedReferenceException"></exception>
+            <param name="kmSelectable">The <see cref="T:KMSelectable"/> array to add events to.</param>
+            <param name="overrideReturn">True will make it act as a module/submodule, and false as a button. Null (default) will set it to true or false based on <see cref="M:KeepCoding.Helper.IsParent(KMSelectable)"/>. Note that in VR, <see cref="F:KMSelectable.OnHighlight"/> and <see cref="F:KMSelectable.OnHighlightEnded"/> are skipped out on.</param>
+            <param name="onCancel">Called when player backs out of this selectable.</param>
+            <param name="onDefocus">Called when a different selectable becomes the focus, or the module has been backed out of.</param>
+            <param name="onDeselect">Called when the selectable stops being the current selectable.</param>
+            <param name="onFocus">Called when a module is focused, this is when it is interacted with from the bomb face level and its children can be selected.</param>
+            <param name="onHighlight">Called when the highlight is turned on.</param>
+            <param name="onHighlightEnded">Called when the highlight is turned off.</param>
+            <param name="onInteract">Called when player interacts with the selctable.</param>
+            <param name="onInteractEnded">Called when a player interacting with the selectable releases the mouse or controller button.</param>
+            <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
+            <param name="onRight">Called when the right controller stick is pulled while selected.</param>
+            <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
+        </member>
         <member name="M:KeepCoding.EventHelper.Assign(KMSelectable,System.Nullable{System.Boolean},System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
             <summary>
             Assigns events specified into <paramref name="kmSelectable"/>. Reassigning them will replace their values.
@@ -1644,7 +1668,7 @@
             The entire binary series, also known as base-2. From 0-1.
             </summary>
         </member>
-        <member name="M:KeepCoding.Helper.HasComponent``1(UnityEngine.GameObject)">
+        <member name="M:KeepCoding.Helper.HasComponent``1(UnityEngine.GameObject,``0@)">
             <summary>
             Determines if the current game object has a component of a specific type.
             </summary>
@@ -1653,6 +1677,7 @@
             </remarks>
             <typeparam name="T">The type of component to find.</typeparam>
             <param name="obj">The game object to search with.</param>
+            <param name="component">The variable to store the component in.</param>
             <returns>True if a component has been found of type <typeparamref name="T"/> from <paramref name="obj"/>.</returns>
         </member>
         <member name="M:KeepCoding.Helper.IsBetween(System.Int32,System.Int32,System.Int32)">
@@ -1970,6 +1995,13 @@
             <param name="isRecursive">Whether it should search inside the variable and yield return the elements inside <paramref name="source"/>.</param>
             <returns>An <see cref="T:System.Object"/> <see cref="T:System.Array"/> of all elements within <paramref name="source"/>.</returns>
         </member>
+        <member name="M:KeepCoding.Helper.Logger(UnityEngine.LogType)">
+            <summary>
+            Gets the appropriate log method depending on the type of <see cref="T:UnityEngine.LogType"/>.
+            </summary>
+            <param name="logType">The type of method to get.</param>
+            <returns>The log method representing the enum <paramref name="logType"/>.</returns>
+        </member>
         <member name="M:KeepCoding.Helper.Modulo(System.Object,KeepCoding.BigInteger)">
             <summary>
             Calculates the rem-euclid modulo, which allows negative numbers to be properly calculated.
@@ -2020,7 +2052,7 @@
             <param name="indices">The indices to exclude from <paramref name="source"/>.</param>
             <returns><paramref name="source"/>, but without the element indexing <paramref name="indices"/>.</returns>
         </member>
-        <member name="M:KeepCoding.Helper.GetAllValues``1(``0)">
+        <member name="M:KeepCoding.Helper.ReflectAll``1(``0)">
             <summary>
             Gets all fields and properties of the item using reflection.
             </summary>
@@ -2155,6 +2187,15 @@
             <typeparam name="T">The type of <paramref name="item"/> and <paramref name="action"/>.</typeparam>
             <param name="item">The item to use as reference and modify.</param>
             <param name="action">The action to apply <paramref name="item"/> to.</param>
+            <returns>The item <paramref name="item"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.Helper.Call``1(``0,UnityEngine.LogType)">
+            <summary>
+            Invokes a logging method and then returns the argument provided.
+            </summary>
+            <typeparam name="T">The type of logging.</typeparam>
+            <param name="item">The item to log</param>
+            <param name="logType">The type of logging.</param>
             <returns>The item <paramref name="item"/>.</returns>
         </member>
         <member name="M:KeepCoding.Helper.ElementAtWrap``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
@@ -2704,7 +2745,7 @@
         </member>
         <member name="T:KeepCoding.BigInteger">
             <summary>
-            Stores numbers far larger than long or ulong by using arrays to store the values. Written by Emik.
+            Stores an arbitrarily large number. Written by Emik.
             </summary>
         </member>
         <member name="M:KeepCoding.BigInteger.#ctor(System.Object)">
@@ -3431,6 +3472,16 @@
             </value>
             <remarks><seealso href="https://ktane.timwi.de/HTML/Knob.html"/></remarks>
         </member>
+        <member name="F:KeepCoding.ComponentPool.ComponentTypeEnum.Mod">
+            <value>
+            Any solvable modded module.
+            </value>
+        </member>
+        <member name="F:KeepCoding.ComponentPool.ComponentTypeEnum.NeedyMod">
+            <value>
+            Any needy modded module.
+            </value>
+        </member>
         <member name="P:KeepCoding.ComponentPool.Count">
             <value>
             How many components from this pool should be selected.
@@ -3602,31 +3653,31 @@
             </value>
             <exception cref="T:KeepCoding.UnrecognizedTypeException"></exception>
         </member>
-        <member name="P:KeepCoding.ModuleContainer.ModuleDisplayName">
+        <member name="P:KeepCoding.ModuleContainer.Name">
             <value>
             The nice display name shown to players. e.g. "The Button"
             </value>
             <exception cref="T:KeepCoding.UnrecognizedTypeException"></exception>
         </member>
-        <member name="P:KeepCoding.ModuleContainer.ModuleType">
+        <member name="P:KeepCoding.ModuleContainer.Id">
             <value>
             The identifier for the module as referenced in missions. e.g. "BigButton" Also known as a "Module ID".
             </value>
             <exception cref="T:KeepCoding.UnrecognizedTypeException"></exception>
         </member>
-        <member name="P:KeepCoding.ModuleContainer.HandlePass">
+        <member name="P:KeepCoding.ModuleContainer.Solve">
             <value>
             Call this when the entire module has been solved.
             </value>
             <exception cref="T:KeepCoding.UnrecognizedTypeException"></exception>
         </member>
-        <member name="P:KeepCoding.ModuleContainer.HandleStrike">
+        <member name="P:KeepCoding.ModuleContainer.Strike">
             <value>
             Call this on any mistake that you want to cause a bomb strike.
             </value>
             <exception cref="T:KeepCoding.UnrecognizedTypeException"></exception>
         </member>
-        <member name="P:KeepCoding.ModuleContainer.GetRuleGenerationSeed">
+        <member name="P:KeepCoding.ModuleContainer.RuleGeneration">
             <value>
             Returns the random seed used to generate the rules for this game. Not currently used.
             </value>
@@ -3722,6 +3773,13 @@
             <param name="allowMultiple">Determines whether it should be allowed to create another instance of the coroutine even if it's running another one.</param>
             <param name="oneByOne">If called multiple times, waits until the others are finished.</param>
         </member>
+        <member name="M:KeepCoding.Routine.StartOrRestart(System.Boolean,System.Boolean)">
+            <summary>
+            Starts a coroutine if no coroutines are running, otherwise restarts.
+            </summary>
+            <param name="allowMultiple">Determines whether it should be allowed to create another instance of the coroutine even if it's running another one.</param>
+            <param name="oneByOne">If called multiple times, waits until the others are finished.</param>
+        </member>
         <member name="M:KeepCoding.Routine.Restart(System.Boolean)">
             <summary>
             Stops and restarts the first coroutine that was run.
@@ -3751,6 +3809,14 @@
         <member name="M:KeepCoding.Routine`1.Start(`0,System.Boolean,System.Boolean)">
             <summary>
             Starts the coroutine. Unless specified by <paramref name="allowMultiple"/>, it will not be called if this class is in the middle of running the coroutine.
+            </summary>
+            <param name="t">The first argument to pass into the coroutine.</param>
+            <param name="allowMultiple">Determines whether it should be allowed to create another instance of the coroutine even if it's running another one.</param>
+            <param name="oneByOne">If called multiple times, waits until the others are finished.</param>
+        </member>
+        <member name="M:KeepCoding.Routine`1.StartOrRestart(`0,System.Boolean,System.Boolean)">
+            <summary>
+            Starts a coroutine if no coroutines are running, otherwise restarts.
             </summary>
             <param name="t">The first argument to pass into the coroutine.</param>
             <param name="allowMultiple">Determines whether it should be allowed to create another instance of the coroutine even if it's running another one.</param>
@@ -3787,6 +3853,15 @@
         <member name="M:KeepCoding.Routine`2.Start(`0,`1,System.Boolean,System.Boolean)">
             <summary>
             Starts the coroutine. Unless specified by <paramref name="allowMultiple"/>, it will not be called if this class is in the middle of running the coroutine.
+            </summary>
+            <param name="t1">The first argument to pass into the coroutine.</param>
+            <param name="t2">The second argument to pass into the coroutine.</param>
+            <param name="allowMultiple">Determines whether it should be allowed to create another instance of the coroutine even if it's running another one.</param>
+            <param name="oneByOne">If called multiple times, waits until the others are finished.</param>
+        </member>
+        <member name="M:KeepCoding.Routine`2.StartOrRestart(`0,`1,System.Boolean,System.Boolean)">
+            <summary>
+            Starts a coroutine if no coroutines are running, otherwise restarts.
             </summary>
             <param name="t1">The first argument to pass into the coroutine.</param>
             <param name="t2">The second argument to pass into the coroutine.</param>
@@ -3833,6 +3908,16 @@
             <param name="allowMultiple">Determines whether it should be allowed to create another instance of the coroutine even if it's running another one.</param>
             <param name="oneByOne">If called multiple times, waits until the others are finished.</param>
         </member>
+        <member name="M:KeepCoding.Routine`3.StartOrRestart(`0,`1,`2,System.Boolean,System.Boolean)">
+            <summary>
+            Starts a coroutine if no coroutines are running, otherwise restarts.
+            </summary>
+            <param name="t1">The first argument to pass into the coroutine.</param>
+            <param name="t2">The second argument to pass into the coroutine.</param>
+            <param name="t3">The third argument to pass into the coroutine.</param>
+            <param name="allowMultiple">Determines whether it should be allowed to create another instance of the coroutine even if it's running another one.</param>
+            <param name="oneByOne">If called multiple times, waits until the others are finished.</param>
+        </member>
         <member name="M:KeepCoding.Routine`3.Restart(`0,`1,`2,System.Boolean)">
             <summary>
             Stops and restarts the first coroutine that was run.
@@ -3868,6 +3953,17 @@
         <member name="M:KeepCoding.Routine`4.Start(`0,`1,`2,`3,System.Boolean,System.Boolean)">
             <summary>
             Starts the coroutine. Unless specified by <paramref name="allowMultiple"/>, it will not be called if this class is in the middle of running the coroutine.
+            </summary>
+            <param name="t1">The first argument to pass into the coroutine.</param>
+            <param name="t2">The second argument to pass into the coroutine.</param>
+            <param name="t3">The third argument to pass into the coroutine.</param>
+            <param name="t4">The fourth argument to pass into the coroutine.</param>
+            <param name="allowMultiple">Determines whether it should be allowed to create another instance of the coroutine even if it's running another one.</param>
+            <param name="oneByOne">If called multiple times, waits until the others are finished.</param>
+        </member>
+        <member name="M:KeepCoding.Routine`4.StartOrRestart(`0,`1,`2,`3,System.Boolean,System.Boolean)">
+            <summary>
+            Starts a coroutine if no coroutines are running, otherwise restarts.
             </summary>
             <param name="t1">The first argument to pass into the coroutine.</param>
             <param name="t2">The second argument to pass into the coroutine.</param>
@@ -4604,34 +4700,44 @@
             Advanced audio handler. Written by Emik.
             </summary>
         </member>
-        <member name="F:KeepCoding.DynamicAudio.IsMusicLayer">
+        <member name="F:KeepCoding.DynamicAudio._isMusic">
             <summary>
             Setting this value to true will make the volume relative to <see cref="P:KeepCoding.Game.PlayerSettings.MusicVolume"/>, and <see cref="P:KeepCoding.Game.PlayerSettings.SFXVolume"/> otherwise.
             </summary>
+        </member>
+        <member name="P:KeepCoding.DynamicAudio.IsPlaying">
+            <value>
+            Determines if the audio source is currently playing.
+            </value>
         </member>
         <member name="P:KeepCoding.DynamicAudio.GameVolume">
             <value>
             The current volume of the game. Ranges 0 to 100. In the Editor this value will always return 100.
             </value>
         </member>
-        <member name="F:KeepCoding.DynamicAudio.Volume">
+        <member name="F:KeepCoding.DynamicAudio._volume">
             <summary>
             The volume it plays relative to the game sound. Works the same as <see cref="P:UnityEngine.AudioSource.volume"/>, meaning 0 to 1 is the main range.
             </summary>
         </member>
-        <member name="F:KeepCoding.DynamicAudio.AudioClips">
+        <member name="F:KeepCoding.DynamicAudio._audioClips">
             <summary>
             The <see cref="T:System.Array"/> of clips it can play from.
             </summary>
         </member>
         <member name="P:KeepCoding.DynamicAudio.AudioSource">
+            <value>
+            The audio source property. If the field it is referencing is <see langword="null"/> then it adds a component.
+            </value>
+        </member>
+        <member name="F:KeepCoding.DynamicAudio._audioSource">
             <summary>
-            The audio source.
+            The audio source field.
             </summary>
         </member>
         <member name="M:KeepCoding.DynamicAudio.op_Explicit(KeepCoding.DynamicAudio)~UnityEngine.AudioSource">
             <summary>
-            Returns <see cref="P:KeepCoding.DynamicAudio.AudioSource"/>.
+            Returns the <see cref="P:KeepCoding.DynamicAudio.AudioSource"/>.
             </summary>
             <param name="dynamicAudio">The instance of <see cref="T:KeepCoding.DynamicAudio"/> to retrieve <see cref="P:KeepCoding.DynamicAudio.AudioSource"/> from.</param>
         </member>
@@ -4683,17 +4789,7 @@
         </member>
         <member name="M:KeepCoding.DynamicAudio.Unpause">
             <summary>
-            Unpauses the paused playback of this <see cref="T:UnityEngine.AudioSource"/>.
-            </summary>
-        </member>
-        <member name="T:KeepCoding.ModBundle">
-            <summary>
-            Mod bundle component. This is used to get information about the module at runtime, as this cannot be determined elsewhere. Written by Emik.
-            </summary>
-        </member>
-        <member name="F:KeepCoding.ModBundle.Name">
-            <summary>
-            The name of the bundle. This is required for the version number.
+            Unpauses the paused playback of this <see cref="P:KeepCoding.DynamicAudio.AudioSource"/>.
             </summary>
         </member>
         <member name="T:KeepCoding.ModuleScript">
@@ -4748,7 +4844,7 @@
         </member>
         <member name="P:KeepCoding.ModuleScript.Version">
             <value>
-            The version number of the entire mod. Requires <see cref="F:KeepCoding.ModBundle.Name"/> to be set.
+            The version number of the entire mod.
             </value>
             <exception cref="T:System.OperationCanceledException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
@@ -4777,6 +4873,11 @@
             </summary>
             <exception cref="T:System.FormatException"></exception>
             <exception cref="T:KeepCoding.NullIteratorException"></exception>
+        </member>
+        <member name="M:KeepCoding.ModuleScript.OnDestroy">
+            <summary>
+            This removed the exception catcher. If you have an OnDestroy method, be sure to call <c>base.OnDestroy()</c> as the first statement.
+            </summary>
         </member>
         <member name="M:KeepCoding.ModuleScript.Assign(System.Action,System.Action,System.Action,System.Action)">
             <summary>
@@ -4883,9 +4984,9 @@
             <remarks>
             To ensure that this method works correctly, make sure that both modules have the same version of KeepCoding.
             </remarks>
-            <typeparam name="T"></typeparam>
-            <param name="key"></param>
-            <param name="value"></param>
+            <typeparam name="T">The type of the expected input.</typeparam>
+            <param name="key">The key of the variable, a lot like a variable name.</param>
+            <param name="value">The value to store in the key.</param>
         </member>
         <member name="M:KeepCoding.ModuleScript.PlaySound(UnityEngine.Transform,System.Boolean,KeepCoding.Sound[])">
             <summary>
@@ -4953,7 +5054,7 @@
         </member>
         <member name="M:KeepCoding.ModuleScript.GetAll``1(System.Boolean)">
             <summary>
-            Similar to <see cref="M:UnityEngine.Component.GetComponents``1"/>, however it caches the result in a dictionary, and will return the cached result if called again.
+            Similar to <see cref="M:UnityEngine.GameObject.GetComponents``1"/>, however it caches the result in a dictionary, and will return the cached result if called again.
             </summary>
             <remarks>
             Use this in-place of public fields that refer to itself.
@@ -5467,12 +5568,29 @@
             The current language code.
             </value>
         </member>
+        <member name="P:KeepCoding.Game.Bomb">
+            <value>
+            Gets the game's internal bomb component, not to be mistaken with <see cref="T:KMBomb"/>.
+            </value>
+            <remarks>
+            To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to Bomb or <see cref="T:UnityEngine.MonoBehaviour"/> type to restore its functionality.
+            </remarks>
+        </member>
         <member name="T:KeepCoding.PathManager">
             <summary>
             Allows loading external information stored on the module. Do not use this code on the Editor. Written by Emik.
             </summary>
         </member>
-        <member name="M:KeepCoding.PathManager.PrintFullHierarchy(System.UInt16)">
+        <member name="P:KeepCoding.PathManager.Version">
+            <summary>
+            Gets the current library's version number. Currently used by <see cref="T:KeepCoding.ModuleScript"/> to log the version number of this library.
+            </summary>
+            <remarks>
+            If you want the version number of your modules, refer to <see cref="P:KeepCoding.ModuleScript.Version"/> instead, or <see cref="M:KeepCoding.PathManager.GetModInfo``1(``0)"/>.
+            </remarks>
+            <returns>The version of this library.</returns>
+        </member>
+        <member name="M:KeepCoding.PathManager.PrintHierarchy(System.UInt16)">
             <summary>
             Prints a hierarchy of all game objects.
             </summary>
@@ -5485,6 +5603,20 @@
             <param name="obj">The game object to search the hierarchy.</param>
             <param name="indentation">The amount of spaces used for indenting children of game objects.</param>
             <param name="depth">The level of depth which determines level of indentation. Leave this variable as 0.</param>
+        </member>
+        <member name="M:KeepCoding.PathManager.NameOfAssembly``1">
+            <summary>
+            Gets the assembly's directory where the type <typeparamref name="T"/> exists.
+            </summary>
+            <typeparam name="T">The type to get the assembly directory of.</typeparam>
+            <returns>The path to the directory of the assembly where the type <typeparamref name="T"/> comes from.</returns>
+        </member>
+        <member name="M:KeepCoding.PathManager.NameOfAssembly(System.Type)">
+            <summary>
+            Gets the assembly's directory where the type <paramref name="type"/> exists.
+            </summary>
+            <param name="type">The type to get the assembly directory of.</param>
+            <returns>The path to the directory of the assembly where the type <paramref name="type"/> comes from.</returns>
         </member>
         <member name="M:KeepCoding.PathManager.CombineMultiple(System.String[])">
             <summary>
@@ -5501,7 +5633,27 @@
             <exception cref="T:KeepCoding.NullIteratorException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
             <param name="bundleFileName">The name of the bundle assembly.</param>
-            <returns>The version number of the mod.</returns>
+            <returns>A <see cref="T:KeepCoding.ModInfo"/> of the mod info json file located in the mod.</returns>
+        </member>
+        <member name="M:KeepCoding.PathManager.GetModInfo(System.Type)">
+            <summary>
+            Gets the path and deserializes the modInfo.json located at every mod's root folder.
+            </summary>
+            <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
+            <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <param name="type">Any data from the assembly, which is used to get the name.</param>
+            <returns>A <see cref="T:KeepCoding.ModInfo"/> of the mod info json file located in the mod.</returns>
+        </member>
+        <member name="M:KeepCoding.PathManager.GetModInfo``1(``0)">
+            <summary>
+            Gets the path and deserializes the modInfo.json located at every mod's root folder.
+            </summary>
+            <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
+            <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <param name="_">Any data from the assembly, which is used to get the name.</param>
+            <returns>A <see cref="T:KeepCoding.ModInfo"/> of the mod info json file located in the mod.</returns>
         </member>
         <member name="M:KeepCoding.PathManager.GetPath(System.String)">
             <summary>
@@ -5526,6 +5678,32 @@
             <param name="bundleFileName">The name of the bundle file.</param>
             <param name="libraryFileName">The library's name, excluding the extension.</param>
         </member>
+        <member name="M:KeepCoding.PathManager.LoadLibrary(System.Type,System.String)">
+            <summary>
+            Loads a library by searching for the bundle. Do not run this on the Editor.
+            </summary>
+            <remarks>
+            If the library has already been loaded, then this method will prematurely halt.
+            </remarks>
+            <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <param name="type">Any data from the assembly, which is used to get the name.</param>
+            <param name="libraryFileName">The library's name, excluding the extension.</param>
+        </member>
+        <member name="M:KeepCoding.PathManager.LoadLibrary``1(``0,System.String)">
+            <summary>
+            Loads a library by searching for the bundle. Do not run this on the Editor.
+            </summary>
+            <remarks>
+            If the library has already been loaded, then this method will prematurely halt.
+            </remarks>
+            <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <param name="_">Any data from the assembly, which is used to get the name.</param>
+            <param name="libraryFileName">The library's name, excluding the extension.</param>
+        </member>
         <member name="M:KeepCoding.PathManager.LoadVideoClips(System.String,System.String)">
             <summary>
             Gets the video clips, the last yield return contains all of the videos.
@@ -5534,6 +5712,28 @@
             <exception cref="T:System.IO.FileNotFoundException"></exception>
             <exception cref="T:KeepCoding.NullIteratorException"></exception>
             <param name="bundleFileName">The name of the bundle file.</param>
+            <param name="bundleVideoFileName">The name of the bundle that contains videos.</param>
+            <returns>The <see cref="T:UnityEngine.AssetBundleCreateRequest"/> needed to load the files, followed by the <see cref="T:UnityEngine.Video.VideoClip"/> <see cref="T:System.Array"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.PathManager.LoadVideoClips(System.Type,System.String)">
+            <summary>
+            Gets the video clips, the last yield return contains all of the videos.
+            </summary>
+            <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <param name="type">Any data from the assembly, which is used to get the name.</param>
+            <param name="bundleVideoFileName">The name of the bundle that contains videos.</param>
+            <returns>The <see cref="T:UnityEngine.AssetBundleCreateRequest"/> needed to load the files, followed by the <see cref="T:UnityEngine.Video.VideoClip"/> <see cref="T:System.Array"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.PathManager.LoadVideoClips``1(``0,System.String)">
+            <summary>
+            Gets the video clips, the last yield return contains all of the videos.
+            </summary>
+            <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:KeepCoding.NullIteratorException"></exception>
+            <param name="_">Any data from the assembly, which is used to get the name.</param>
             <param name="bundleVideoFileName">The name of the bundle that contains videos.</param>
             <returns>The <see cref="T:UnityEngine.AssetBundleCreateRequest"/> needed to load the files, followed by the <see cref="T:UnityEngine.Video.VideoClip"/> <see cref="T:System.Array"/>.</returns>
         </member>

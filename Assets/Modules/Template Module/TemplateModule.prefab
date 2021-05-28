@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 114050330686213098}
   - component: {fileID: 114071754247810658}
   - component: {fileID: 114710077770692622}
-  - component: {fileID: 114406209065446630}
   m_Layer: 0
   m_Name: TemplateModule
   m_TagString: Untagged
@@ -274,18 +273,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Mobile/DiffuseTint
---- !u!114 &114406209065446630
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1404121747094840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1264711295, guid: 33d8450092037b241b456efd8d5f5ac0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: EmikModules
 --- !u!114 &114710077770692622
 MonoBehaviour:
   m_ObjectHideFlags: 1

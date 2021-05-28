@@ -65,7 +65,7 @@ public class OneDimensionalChessScript : ModuleScript
             {
                 try
                 {
-                    PathManager.LoadLibrary(Get<ModBundle>().Name, Engine.LibraryName);
+                    PathManager.LoadLibrary(this, Engine.LibraryName);
                 }
                 catch (FileNotFoundException e)
                 {
