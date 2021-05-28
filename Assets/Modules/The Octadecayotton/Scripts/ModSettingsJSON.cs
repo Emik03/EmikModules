@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.Analytics;
 
 /// <summary>
 /// Supplies an enumerator ButtonType, and ModSettings.
@@ -26,6 +25,12 @@ namespace TheOctadecayotton
         /// </summary>
         [JsonProperty("TheOctadecayotton -> Rotations")]
         public int Rotation { get; set; }
+
+        /// <summary>
+        /// The speed of the spheres, by default, 9.
+        /// </summary>
+        [JsonProperty("TheOctadecayotton -> Slowness")]
+        public int Slowness { get; set; }
 
         /// <summary>
         /// Whether each sphere should preserve their color.
@@ -63,11 +68,12 @@ namespace TheOctadecayotton
         /// <param name="octadecayotton">The instance of the module.</param>
         /// <param name="dimension">The amount of dimensions.</param>
         /// <param name="rotation">The amount of rotations.</param>
-        public static void Get(TheOctadecayottonScript octadecayotton, out int dimension, out int rotation, out bool colorAssist, out bool isUsingBounce, out bool isUsingElastic, out bool stretchToFit)
+        public static void Get(TheOctadecayottonScript octadecayotton, out int dimension, out int rotation, out int slowness, out bool colorAssist, out bool isUsingBounce, out bool isUsingElastic, out bool stretchToFit)
         {
             // Default values.
             dimension = 9;
             rotation = 3;
+            slowness = 9;
             colorAssist = false;
             isUsingBounce = false;
             isUsingElastic = false;
@@ -83,15 +89,17 @@ namespace TheOctadecayotton
                 {
                     dimension = Mathf.Clamp(settings.Dimension, Min, Max);
                     rotation = Mathf.Clamp(settings.Rotation, 0, 255);
+                    slowness = Mathf.Clamp(settings.Slowness, 1, 149);
                     colorAssist = settings.ColorAssist;
                     isUsingBounce = settings.IsUsingBounce;
                     isUsingElastic = settings.IsUsingElastic;
                     stretchToFit = settings.StretchToFit;
 
-                    Debug.LogFormat("[The Octadecayotton #{0}]: JSON loaded successfully, values are: (Dimensions = {1}), (Rotations = {2}), (ColorAssist: {3}), (InOutBounce: {4}), (InOutElastic: {5}), and (StretchToFit: {6}).",
+                    Debug.LogFormat("[The Octadecayotton #{0}]: JSON loaded successfully, values are: (Dimensions = {1}), (Rotations = {2}), (Slowness: {3}), (ColorAssist: {4}), (InOutBounce: {5}), (InOutElastic: {6}), and (StretchToFit: {7}).",
                         octadecayotton.moduleId,
                         dimension,
                         rotation,
+                        slowness,
                         colorAssist,
                         isUsingBounce,
                         isUsingElastic,
@@ -108,11 +116,11 @@ namespace TheOctadecayotton
             }
         }
 
-        public static bool LoadMission(TheOctadecayottonScript octadecayotton, ref int dimension, ref int rotation, ref bool colorAssist, ref bool isUsingBounce, ref bool isUsingElastic, ref bool stretchToFit)
+        public static bool LoadMission(TheOctadecayottonScript octadecayotton, ref int dimension, ref int rotation, ref int slowness, ref bool colorAssist, ref bool isUsingBounce, ref bool isUsingElastic, ref bool stretchToFit)
         {
             string description = Application.isEditor ? "" : Game.Mission.Description;
 
-            Regex regex = new Regex(@"\[The Octadecayotton\] (\d+,){5}\d+");
+            Regex regex = new Regex(@"\[The Octadecayotton\] (\d+,){6}\d+");
 
             var match = regex.Match(description);
 
@@ -124,23 +132,25 @@ namespace TheOctadecayotton
             if (values == null || values.Length != 6)
                 return true;
 
-            if (!values[0].IsBetween(Min, Max) || !values[1].IsBetween(0, 255))
+            if (!values[0].IsBetween(Min, Max) || !values[1].IsBetween(0, 255) || !values[2].IsBetween(1, 149))
                 return true;
 
-            if (values.Skip(2).Any(i => !i.IsBetween(0, 1)))
+            if (values.Skip(3).Any(i => !i.IsBetween(0, 1)))
                 return true;
 
             dimension = values[0];
             rotation = values[1];
-            colorAssist = values[2] == 1;
-            isUsingBounce = values[3] == 1;
-            isUsingElastic = values[4] == 1;
-            stretchToFit = values[5] == 1;
+            slowness = values[2];
+            colorAssist = values[3] == 1;
+            isUsingBounce = values[4] == 1;
+            isUsingElastic = values[5] == 1;
+            stretchToFit = values[6] == 1;
 
-            Debug.LogFormat("[The Octadecayotton #{0}]: Mission contains data specific to this module, values are: (Dimensions = {1}), (Rotations = {2}), (ColorAssist: {3}), (InOutBounce: {4}), (InOutElastic: {5}), and (StretchToFit: {6}).",
+            Debug.LogFormat("[The Octadecayotton #{0}]: Mission contains data specific to this module, values are: (Dimensions = {1}), (Rotations = {2}), (Slowness = {3}) (ColorAssist: {4}), (InOutBounce: {5}), (InOutElastic: {6}), and (StretchToFit: {7}).",
                         octadecayotton.moduleId,
                         dimension,
                         rotation,
+                        slowness,
                         colorAssist,
                         isUsingBounce,
                         isUsingElastic,

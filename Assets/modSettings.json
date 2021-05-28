@@ -31,20 +31,23 @@
 
 
   "TheOctadecayotton -> Dimensions": 9,
-  "HowToUse10": "Amount of dimensions, for accessibility/practice. By default 9, range 3-12. WARNING: Higher dimension may cause lag. (default: 9)",
+  "HowToUse10": "Amount of dimensions, for accessibility/practice. Ranges 3-12. WARNING: Higher dimension may cause lag. (default: 9)",
 
   "TheOctadecayotton -> Rotations": 3,
-  "HowToUse11": "Amount of rotations, for accessibility/practice. By default 3, range 0-100. (default: 3)",
+  "HowToUse11": "Amount of rotations, for accessibility/practice. Ranges 0-255. (default: 3)",
+
+  "TheOctadecayotton -> Slowness": 9,
+  "HowToUse12": "Determines the slowness of the sphere's movements, for accessibility/practice. Ranges 1-149. (default: 9)",
 
   "TheOctadecayotton -> ColorAssist": false,
-  "HowToUse12": "Maintains the color that was initially assigned to the sphere while moving around, making reads much easier. (default: false)",
+  "HowToUse13": "Maintains the color that was initially assigned to the sphere while moving around, making reads much easier. (default: false)",
 
   "TheOctadecayotton -> InOutBounce": false,
-  "HowToUse13": "Makes rotations use the InOutBounce ease, not suitable for serious play. (default: false)",
+  "HowToUse14": "Makes rotations use the InOutBounce ease, not suitable for serious play. (default: false)",
 
   "TheOctadecayotton -> InOutElastic": false,
-  "HowToUse14": "Makes rotations use the InOutElastic ease, not suitable for serious play. (default: false)",
+  "HowToUse15": "Makes rotations use the InOutElastic ease, not suitable for serious play. (default: false)",
 
   "TheOctadecayotton -> StretchToFit": false,
-  "HowToUse15": "Stretches the individual X, Y, and Z axes on the tesseract to always take up the entire module. This does cause proportions to be skewed. (default: false)"
+  "HowToUse16": "Stretches the individual X, Y, and Z axes on the tesseract to always take up the entire module. This does cause proportions to be skewed. (default: false)"
 }

@@ -27,6 +27,7 @@ public class InteractScript : MonoBehaviour
     internal static IEnumerable<Axis> allAxes = Enum.GetValues(typeof(Axis)).Cast<Axis>();
 
     private int _moduleId, _breakCount, _dimension;
+    private float _speed;
     private Axis[] _order;
     private List<Axis> _inputs;
     private Dictionary<Axis, int> _axesUsed = new Dictionary<Axis, int>();
@@ -48,6 +49,11 @@ public class InteractScript : MonoBehaviour
             _moduleId = octadecayotton.moduleId;
             isUsingBounce = octadecayotton.isUsingBounce;
             isUsingElastic = octadecayotton.isUsingElastic;
+
+            _speed = 1 / Mathf.Pow(2, -octadecayotton.slowness);
+
+            if (octadecayotton.SlownessOverride != default(byte))
+                _speed = 1 / Mathf.Pow(2, -octadecayotton.SlownessOverride);
 
             if (octadecayotton.DimensionOverride != default(byte))
                 octadecayotton.dimensionOverride = octadecayotton.DimensionOverride;
@@ -182,7 +188,7 @@ public class InteractScript : MonoBehaviour
             foreach (var sphere in Spheres)
                 sphere.gameObject.transform.localPosition = sphere.pos.MergeDimensions(isUsingBounce ? (rotationProgress % 1).InOutBounce() : isUsingElastic ? (rotationProgress % 1).ElasticInOut() : Easing.InOutCubic(rotationProgress % 1, 0, 1, 1));
 
-        rotationProgress += 1f / 256;
+        rotationProgress += _speed;
     }
 
     private void CreateStartingSphere()

@@ -20,12 +20,14 @@ public class TheOctadecayottonScript : MonoBehaviour
     public byte DimensionOverride;
     [Range(0, 5)]
     public byte RotationOverride;
+    [Range(0, 149)]
+    public byte SlownessOverride;
     public string ForceRotation, ForceStartingSphere;
 
     internal bool isUsingBounce, isUsingElastic, stretchToFit, colorAssist;
     internal static int ModuleIdCounter { get; private set; }
     internal static int Activated { get; set; }
-    internal int moduleId, dimensionOverride, dimension, rotation, stepRequired;
+    internal int moduleId, dimensionOverride, dimension, rotation, slowness;
     internal bool IsSolved { get; set; }
     internal bool ZenModeActive, TwitchPlaysActive;
     internal string souvenirSphere, souvenirRotations;
@@ -37,8 +39,8 @@ public class TheOctadecayottonScript : MonoBehaviour
 
         SFX.LogVersionNumber(Module, moduleId);
 
-        if (ModSettingsJSON.LoadMission(this, ref dimension, ref rotation, ref colorAssist, ref isUsingBounce, ref isUsingElastic, ref stretchToFit))
-            ModSettingsJSON.Get(this, out dimension, out rotation, out colorAssist, out isUsingBounce, out isUsingElastic, out stretchToFit);
+        if (ModSettingsJSON.LoadMission(this, ref dimension, ref rotation, ref slowness, ref colorAssist, ref isUsingBounce, ref isUsingElastic, ref stretchToFit))
+            ModSettingsJSON.Get(this, out dimension, out rotation, out slowness, out colorAssist, out isUsingBounce, out isUsingElastic, out stretchToFit);
 
         ModuleSelectable.OnInteract += Interact.Init(this, true, dimension - Info.GetSolvableModuleNames().Where(i => i == "The Octadecayotton").Count());
         SubModuleSelectable.OnInteract += Interact.OnInteract(this, false, dimension - Info.GetSolvableModuleNames().Where(i => i == "The Octadecayotton").Count());
@@ -63,7 +65,7 @@ public class TheOctadecayottonScript : MonoBehaviour
         else if (Regex.IsMatch(split[0], @"^\s*settings\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
         {
             yield return null;
-            yield return @"sendtochat NOTE, SETTINGS CANNOT BE CHANGED AFTER MODULE INITIATION! | !{1} set 3-12 (Sets dimension count, in Normal/Time mode you may not start with less than 9) | !{1} spin <#> (Sets rotation count, in Normal/Time mode you may not start with less than 3, sets the amount of rotations) | !1 stay (Toggle: Keeps each sphere's colors as they rotate rather than updating based on position) | !{1} stretch (Toggle: Only affects dimensions not divisible by 3, stretches the X, Y, and Z planes to fit the module, however it causes some axes to become exaggerated) | !{1} springiness (Toggle: Uses InOutBounce ease, do not use on serious TP bombs) | !{1} supple (Toggle: Uses InOutElastic ease, do not use on serious TP bombs)";
+            yield return @"sendtochat NOTE, SETTINGS CANNOT BE CHANGED AFTER MODULE INITIATION! | !{1} set 3-12 (Sets dimension count, in Normal/Time mode you may not start with less than 9) | !{1} spin <#> (Sets rotation count, in Normal/Time mode you may not start with less than 3, sets the amount of rotations) | !1 slowness <#> (Determines how slow the spheres move where lower = faster movement, in Normal/Time mode you may not set this to more than 9) | !1 stay (Toggle: Keeps each sphere's colors as they rotate rather than updating based on position) | !{1} stretch (Toggle: Only affects dimensions not divisible by 3, stretches the X, Y, and Z planes to fit the module, however it causes some axes to become exaggerated) | !{1} springiness (Toggle: Uses InOutBounce ease, do not use on serious TP bombs) | !{1} supple (Toggle: Uses InOutElastic ease, do not use on serious TP bombs)";
         }
 
         else if (Regex.IsMatch(split[0], @"^\s*spin\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
@@ -76,12 +78,12 @@ public class TheOctadecayottonScript : MonoBehaviour
                 yield return "sendtochaterror Since the module has been activated at least once, this value can no longer change.";
 
             else if (split.Length != 1)
-                yield return "sendtochaterror " + (split.Length == 0 ? "No arguments are specified. Expected: 0-5." : "Too many arguments are specified. Expected: 0-100.");
+                yield return "sendtochaterror " + (split.Length == 0 ? "No arguments are specified. Expected: 0-255." : "Too many arguments are specified. Expected: 0-255.");
 
             else if (!byte.TryParse(split[0], out n))
                 yield return "sendtochaterror The argument must be a number.";
 
-            else if (!ZenModeActive && n > 5)
+            else if (!ZenModeActive && n > 5 && !Application.isEditor)
                 yield return "sendtochaterror You cannot exceed 5 rotations in normal/time mode, what are you, a lunatic?";
 
             else if (!ZenModeActive && n < 3 && !Application.isEditor)
@@ -91,6 +93,34 @@ public class TheOctadecayottonScript : MonoBehaviour
             {
                 rotation = n;
                 yield return "sendtochat This module now activates with " + n + (n == 1 ? " rotation." : " rotations.");
+            }
+        }
+
+        else if (Regex.IsMatch(split[0], @"^\s*slowness\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+        {
+            yield return null;
+            split = split.Skip(1).ToArray();
+            byte n;
+
+            if (Interact.Dimension != 0)
+                yield return "sendtochaterror Since the module has been activated at least once, this value can no longer change.";
+
+            else if (split.Length != 1)
+                yield return "sendtochaterror " + (split.Length == 0 ? "No arguments are specified. Expected: 1-149." : "Too many arguments are specified. Expected: 1-149.");
+
+            else if (!byte.TryParse(split[0], out n))
+                yield return "sendtochaterror The argument must be a number.";
+
+            else if (!ZenModeActive && n > 9 && !Application.isEditor)
+                yield return "sendtochaterror You cannot exceed slowness value 9 in normal/time mode.";
+
+            else if (n == 0)
+                yield return "sendtochaterror You cannot set this number to zero. This makes rotations invisible.";
+
+            else
+            {
+                slowness = n;
+                yield return "sendtochat This module now activates with the value " + n + " for slowness.";
             }
         }
 
