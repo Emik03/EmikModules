@@ -562,6 +562,7 @@ MonoBehaviour:
   SelectableRenderer: {fileID: 23148952995706464}
   DimensionOverride: 0
   RotationOverride: 0
+  SlownessOverride: 0
   ForceRotation: 
   ForceStartingSphere: 
 --- !u!114 &114626008949226780
@@ -575,40 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: -289456416, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Settings: '{   "hexOS -> DisableOctOS": false,   "HowToUse0": "Enable/disable the
-    ability to go into hard mode by submitting a number without playing the sequence.
-    (default: false)",    "hexOS -> FastStrike": false,   "HowToUse1": "Exclusive
-    to OctOS, shortens the strike animation to be 15 seconds instead of 57.5 seconds.
-    (default: false)",    "hexOS -> ExperimentalShake": false,   "HowToUse2": "Have
-    the module shake upon every played beat, don''t use this on serious bombs. :)
-    (default: false)",    "hexOS -> ForceAltSolve": false,   "HowToUse3": "Force the
-    module to play the alternative solve sequence regardless of Forget The Colors''
-    existence. (default: false)",    "hexOS -> FlashOtherColors": 5,   "HowToUse4":
-    "Alter the amount of times other colors flash. Cannot exceed 6. (default: 5)",    "hexOS
-    -> DelayPerBeat": 0.07,   "HowToUse5": "Alter the delay between each beat played.
-    Cannot exceed 1. (default: 0.07)",    "hexOS -> CustomSolveQuote": "",   "HowToUse6":
-    "Change the display on the module when it is solved. If left blank, it will pull
-    its default quotes. (default: empty)",      "Phosphorescence -> CruelMode": false,   "HowToUse7":
-    "Cruel mode forces the user to recognise the colors of the buttons without being
-    told from the label. (default: false)",    "Phosphorescence -> VRMode": false,   "HowToUse8":
-    "Mainly for VR, set this to true to prevent problems with the colored screen''s
-    KMSelectable. With it disabled, the screen must be held, and markers are disabled.
-    (default: false)",    "Phosphorescence -> StreamDelay": 0,   "HowToUse9": "Mainly
-    for TwitchPlays, set this to the amount of seconds of the stream delay. 1 second
-    of stream delay equates to +15 additional seconds on the timer. (default: 0)",      "TheOctadecayotton
-    -> Dimensions": 9,   "HowToUse10": "Amount of dimensions, for accessibility/practice.
-    By default 9, range 3-12. WARNING: Higher dimension may cause lag. (default: 9)",    "TheOctadecayotton
-    -> Rotations": 3,   "HowToUse11": "Amount of rotations, for accessibility/practice.
-    By default 3, range 0-100. (default: 3)",    "TheOctadecayotton -> ColorAssist":
-    false,   "HowToUse12": "Maintains the color that was initially assigned to the
-    sphere while moving around, making reads much easier. (default: false)",    "TheOctadecayotton
-    -> InOutBounce": false,   "HowToUse13": "Makes rotations use the InOutBounce ease,
-    not suitable for serious play. (default: false)",    "TheOctadecayotton -> InOutElastic":
-    false,   "HowToUse14": "Makes rotations use the InOutElastic ease, not suitable
-    for serious play. (default: false)",    "TheOctadecayotton -> StretchToFit": false,   "HowToUse15":
-    "Stretches the individual X, Y, and Z axes on the tesseract to always take up
-    the entire module. This does cause proportions to be skewed. (default: false)"
-    }'
+  Settings: 
   SettingsPath: 
 --- !u!114 &114676204725116032
 MonoBehaviour:

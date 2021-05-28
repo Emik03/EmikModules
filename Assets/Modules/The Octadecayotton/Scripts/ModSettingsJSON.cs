@@ -27,25 +27,25 @@ namespace TheOctadecayotton
         public int Rotation { get; set; }
 
         /// <summary>
-        /// The speed of the spheres, by default, 9.
+        /// The speed of the spheres, by default, 8.
         /// </summary>
         [JsonProperty("TheOctadecayotton -> Slowness")]
         public int Slowness { get; set; }
 
         /// <summary>
-        /// Whether each sphere should preserve their color.
+        /// Preserves the color of the spheres.
         /// </summary>
         [JsonProperty("TheOctadecayotton -> ColorAssist")]
         public bool ColorAssist { get; set; }
 
         /// <summary>
-        /// The amount of steps needed for update, by default, 1.
+        /// Moves the spheres using InOutBounce ease.
         /// </summary>
         [JsonProperty("TheOctadecayotton -> InOutBounce")]
         public bool IsUsingBounce { get; set; }
 
         /// <summary>
-        /// The amount of steps needed for update, by default, 1.
+        /// Moves the spheres using InOutElastic ease.
         /// </summary>
         [JsonProperty("TheOctadecayotton -> InOutElastic")]
         public bool IsUsingElastic { get; set; }
@@ -73,7 +73,7 @@ namespace TheOctadecayotton
             // Default values.
             dimension = 9;
             rotation = 3;
-            slowness = 9;
+            slowness = 8;
             colorAssist = false;
             isUsingBounce = false;
             isUsingElastic = false;
@@ -89,7 +89,7 @@ namespace TheOctadecayotton
                 {
                     dimension = Mathf.Clamp(settings.Dimension, Min, Max);
                     rotation = Mathf.Clamp(settings.Rotation, 0, 255);
-                    slowness = Mathf.Clamp(settings.Slowness, 1, 149);
+                    slowness = Mathf.Clamp(settings.Slowness, 1, 12);
                     colorAssist = settings.ColorAssist;
                     isUsingBounce = settings.IsUsingBounce;
                     isUsingElastic = settings.IsUsingElastic;
@@ -120,6 +120,9 @@ namespace TheOctadecayotton
         {
             string description = Application.isEditor ? "" : Game.Mission.Description;
 
+            if (description == null)
+                return true;
+
             Regex regex = new Regex(@"\[The Octadecayotton\] (\d+,){6}\d+");
 
             var match = regex.Match(description);
@@ -129,10 +132,10 @@ namespace TheOctadecayotton
 
             int[] values = match.Value.Replace("[The Octadecayotton] ", "").Split(',').ToNumbers();
 
-            if (values == null || values.Length != 6)
+            if (values == null || values.Length != 7)
                 return true;
 
-            if (!values[0].IsBetween(Min, Max) || !values[1].IsBetween(0, 255) || !values[2].IsBetween(1, 149))
+            if (!values[0].IsBetween(Min, Max) || !values[1].IsBetween(0, 255) || !values[2].IsBetween(1, 12))
                 return true;
 
             if (values.Skip(3).Any(i => !i.IsBetween(0, 1)))

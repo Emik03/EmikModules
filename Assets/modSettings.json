@@ -36,8 +36,8 @@
   "TheOctadecayotton -> Rotations": 3,
   "HowToUse11": "Amount of rotations, for accessibility/practice. Ranges 0-255. (default: 3)",
 
-  "TheOctadecayotton -> Slowness": 9,
-  "HowToUse12": "Determines the slowness of the sphere's movements, for accessibility/practice. Ranges 1-149. (default: 9)",
+  "TheOctadecayotton -> Slowness": 8,
+  "HowToUse12": "Determines the slowness of the sphere's movements, for accessibility/practice. Ranges 1-12. (default: 8)",
 
   "TheOctadecayotton -> ColorAssist": false,
   "HowToUse13": "Maintains the color that was initially assigned to the sphere while moving around, making reads much easier. (default: false)",

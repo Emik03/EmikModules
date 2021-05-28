@@ -34,7 +34,7 @@ public class InteractScript : MonoBehaviour
     private Animate _animate;
     private TheOctadecayottonScript _octadecayotton;
 
-    internal KMSelectable.OnInteractHandler Init(TheOctadecayottonScript octadecayotton, bool checkForTP, int dimension)
+    internal KMSelectable.OnInteractHandler Init(TheOctadecayottonScript octadecayotton, bool checkForTP, int dimension, int slowness)
     {
         return () =>
         {
@@ -50,10 +50,10 @@ public class InteractScript : MonoBehaviour
             isUsingBounce = octadecayotton.isUsingBounce;
             isUsingElastic = octadecayotton.isUsingElastic;
 
-            _speed = 1 / Mathf.Pow(2, -octadecayotton.slowness);
+            _speed = Mathf.Pow(2, -slowness);
 
             if (octadecayotton.SlownessOverride != default(byte))
-                _speed = 1 / Mathf.Pow(2, -octadecayotton.SlownessOverride);
+                _speed = Mathf.Pow(2, -octadecayotton.SlownessOverride);
 
             if (octadecayotton.DimensionOverride != default(byte))
                 octadecayotton.dimensionOverride = octadecayotton.DimensionOverride;
@@ -105,9 +105,9 @@ public class InteractScript : MonoBehaviour
         };
     }
 
-    internal KMSelectable.OnInteractHandler OnInteract(TheOctadecayottonScript octadecayotton, bool checkForTP, int dimension)
+    internal KMSelectable.OnInteractHandler OnInteract(TheOctadecayottonScript octadecayotton, bool checkForTP, int dimension, int slowness)
     {
-        return Init(octadecayotton, checkForTP, dimension) + (() =>
+        return Init(octadecayotton, checkForTP, dimension, slowness) + (() =>
         {
             _octadecayotton.ModuleSelectable.AddInteractionPunch();
             _octadecayotton.PlaySound(SFX.Oct.InteractInterrupt);
@@ -128,7 +128,7 @@ public class InteractScript : MonoBehaviour
 
     private void Update()
     {
-        // This is 
+        // This updates the shader such that the spheres are colored based on localPosition.
         Shader.SetGlobalMatrix("_W2L", transform.worldToLocalMatrix);
     }
 

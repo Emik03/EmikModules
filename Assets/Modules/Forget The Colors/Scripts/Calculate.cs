@@ -162,7 +162,7 @@ namespace ForgetTheColors
             }
 
             ruleColor[currentStage] = Strings.ColorLog[(int)Ease.Modulo(colorValues[3] - nixie1 + nixie2, 10)];
-            Debug.LogFormat("[Forget The Colors #{0}]: Apply the color rule {1} to the sum of the first nixie ({2}) + the second nixie ({3}) + the gear number ({4}). This gives us {5}. Modulo 10, its value is {6}.", moduleId, Strings.ColorLog[(int)Ease.Modulo(colorValues[3] - nixie1 + nixie2, 10)], nixie1, nixie2, GearText.text, nixie1 + nixie2 + int.Parse(GearText.text.Last().ToString()), Ease.Modulo(lsd, 10));
+            Debug.LogFormat("[Forget The Colors #{0}]: Apply the color rule {1} to the sum of the first nixie ({2}) + the second nixie ({3}) + the gear number ({4}). This gives us {5}. Modulo 10, its value is {6}.", moduleId, Strings.ColorLog[(int)Ease.Modulo(colorValues[3] - nixie1 + nixie2, 10)], nixie1, nixie2, GearText.text, lsd, Ease.Modulo(lsd, 10));
 
             //modulo
             lsd = (int)Ease.Modulo(lsd, 10);
