@@ -15,11 +15,12 @@ public class NetheriteScript : ModuleScript
     public Renderer ModuleRenderer;
     public Texture[] ModuleTextures;
 
-    private static int CurrentlySolvingId { get; set; }
-    private static int NetheriteId { get; set; }
-    private int NetheriteCount { get { return IsEditor ? 3 : Get<KMBombInfo>().GetSolvableModuleNames().Where(m => m == Module.Name).Count(); } }
     internal int Stage { get; set; }
 
+    private int CurrentlySolvingId { get; set; }
+    private int NetheriteId { get; set; }
+    private int NetheriteCount { get { return IsEditor ? 3 : Get<KMBombInfo>().GetSolvableModuleNames().Count(m => m == Module.Name); } }
+    
     private float? Voltage
     {
         get
@@ -45,6 +46,8 @@ public class NetheriteScript : ModuleScript
 
     private IEnumerable<int> Serial { get { return Get<KMBombInfo>().GetSerialNumberNumbers(); } }
     private IEnumerable<int> SerialWithSolves { get { return Serial.Prepend(NetheriteId); } }
+
+    private NetheriteScript[] AllNetherites { get { return GetComponentInParent<KMBomb>().GetComponentsInChildren<NetheriteScript>(); } }
 
     private void Start()
     {
@@ -103,8 +106,11 @@ public class NetheriteScript : ModuleScript
         // This solves the module.
         if (Stage >= Sequence.Length)
         {
-            NetheriteId++;
-            CurrentlySolvingId = default(int);
+            AllNetherites.ForEach(n =>
+            {
+                n.NetheriteId++;
+                n.CurrentlySolvingId = 0;
+            });
 
             // Makes the module disappear.
             ModuleRenderer.transform.localScale = Vector3.zero;
