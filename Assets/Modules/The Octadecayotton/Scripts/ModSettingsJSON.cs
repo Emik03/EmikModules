@@ -130,9 +130,9 @@ namespace TheOctadecayotton
             if (!match.Success)
                 return true;
 
-            int[] values = match.Value.Replace("[The Octadecayotton] ", "").Split(',').ToNumbers();
+            int[] values = match.Value.Replace("[The Octadecayotton] ", "").Split(',').ToNumbers(min: 0, max: 255, minLength: 7, maxLength: 7);
 
-            if (values == null || values.Length != 7)
+            if (values == null)
                 return true;
 
             if (!values[0].IsBetween(Min, Max) || !values[1].IsBetween(0, 255) || !values[2].IsBetween(1, 12))

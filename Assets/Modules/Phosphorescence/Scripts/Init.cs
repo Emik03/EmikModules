@@ -47,7 +47,9 @@ namespace PhosphorescenceModule
             SFX.LogVersionNumber(pho.Module, pho.moduleId);
 
             // Sets accessibility.
-            ModSettingsJSON.Get(pho, out render.cruelMode, out streamDelay);
+            if (ModSettingsJSON.LoadMission(pho, ref render.cruelMode, ref streamDelay))
+                ModSettingsJSON.Get(pho, out render.cruelMode, out streamDelay);
+
             UpdateCruel();
 
             // This allows TP to read this class.

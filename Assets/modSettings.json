@@ -2,28 +2,31 @@
   "hexOS -> DisableOctOS": false,
   "HowToUse0": "Enable/disable the ability to go into hard mode by submitting a number without playing the sequence. (default: false)",
 
+  "hexOS -> ForceOctOS": false,
+  "HowToUse1": "Forces the module to start out in octOS. (default: false)",
+
   "hexOS -> FastStrike": false,
-  "HowToUse1": "Exclusive to OctOS, shortens the strike animation to be 15 seconds instead of 57.5 seconds. (default: false)",
+  "HowToUse2": "Exclusive to OctOS, shortens the strike animation to be 15 seconds instead of 57.5 seconds. (default: false)",
 
   "hexOS -> ExperimentalShake": false,
-  "HowToUse2": "Have the module shake upon every played beat, don't use this on serious bombs. :) (default: false)",
+  "HowToUse3": "Have the module shake upon every played beat, don't use this on serious bombs. :) (default: false)",
 
   "hexOS -> ForceAltSolve": false,
-  "HowToUse3": "Force the module to play the alternative solve sequence regardless of Forget The Colors' existence. (default: false)",
+  "HowToUse4": "Force the module to play the alternative solve sequence regardless of Forget The Colors' existence. (default: false)",
 
   "hexOS -> FlashOtherColors": 5,
-  "HowToUse4": "Alter the amount of times other colors flash. Cannot exceed 6. (default: 5)",
+  "HowToUse5": "Alter the amount of times other colors flash. Cannot exceed 6. (default: 5)",
 
   "hexOS -> DelayPerBeat": 0.07,
-  "HowToUse5": "Alter the delay between each beat played. Cannot exceed 1. (default: 0.07)",
+  "HowToUse6": "Alter the delay between each beat played. Cannot exceed 1. (default: 0.07)",
 
   "hexOS -> CustomSolveQuote": "",
-  "HowToUse6": "Change the display on the module when it is solved. If left blank, it will pull its default quotes. (default: empty)",
+  "HowToUse7": "Change the display on the module when it is solved. If left blank, it will pull its default quotes. (default: empty)",
 
 
 
   "Phosphorescence -> CruelMode": false,
-  "HowToUse7": "Cruel mode forces the user to recognise the colors of the buttons without being told from the label. (default: false)",
+  "HowToUse8": "Cruel mode forces the user to recognise the colors of the buttons without being told from the label. (default: false)",
 
   "Phosphorescence -> StreamDelay": 0,
   "HowToUse9": "Mainly for TwitchPlays, set this to the amount of seconds of the stream delay. 1 second of stream delay equates to +15 additional seconds on the timer. (default: 0)",

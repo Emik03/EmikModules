@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Video;
 using Rnd = UnityEngine.Random;
+using KeepCoding;
 
 public class HexOS : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class HexOS : MonoBehaviour
     {
         [JsonProperty("hexOS -> DisableOctOS")]
         public bool DisableOctOS { get; set; }
+        [JsonProperty("hexOS -> ForceOctOS")]
+        public bool ForceOctOS { get; set; }
         [JsonProperty("hexOS -> FastStrike")]
         public bool FastStrike { get; set; }
         [JsonProperty("hexOS -> ExperimentalShake")]
@@ -88,31 +91,9 @@ public class HexOS : MonoBehaviour
         _customSolveQuote = "";
         _hexOSStrikes = 0;
 
-        // Get JSON settings.
-        try
-        {
-            // Get settings.
-            ModSettingsJSON settings = JsonConvert.DeserializeObject<ModSettingsJSON>(ModSettings.Settings);
-
-            // If it contains information.
-            if (settings != null)
-            {
-                // Get variables from mod settings.
-                _canBeOctOS = !settings.DisableOctOS;
-                _fastStrike = settings.FastStrike;
-                _experimentalShake = settings.ExperimentalShake;
-                _forceAltSolve = settings.ForceAltSolve;
-                _flashOtherColors = Math.Min(settings.FlashOtherColors, (byte)6);
-                _delayPerBeat = Math.Min(Math.Abs(settings.DelayPerBeat), 1);
-                _customSolveQuote = settings.CustomSolveQuote;
-            }
-        }
-        catch (JsonReaderException e)
-        {
-            // In the case of catastrophic failure and devastation.
-            Debug.LogFormat("[hexOS #{0}] JSON reading failed with error: \"{1}\", resorting to default values.", _moduleId, e.Message);
-        }
-
+        if (LoadMission())
+            GetModSetting();
+        
         // Hides ciphers
         for (byte i = 0; i < Ciphers.Length; i++)
             Ciphers[i].transform.localPosition = new Vector3(Ciphers[i].transform.localPosition.x, -2.1f, Ciphers[i].transform.localPosition.z);
@@ -132,13 +113,16 @@ public class HexOS : MonoBehaviour
         // Start module.
         if (!Application.isEditor)
         {
-            var enumerator = PathManager.LoadVideoClips("EmikModules", "hex");
+            var enumerator = PathManager.LoadVideoClips(GetType(), "hex");
 
             while (enumerator.MoveNext())
                 if (enumerator.Current.GetType() == typeof(VideoClip[]))
                     Clips = (VideoClip[])enumerator.Current;
         }
         Activate();
+
+        if (_octOS)
+            OctGenerate();
     }
 
     /// <summary>
@@ -202,6 +186,75 @@ public class HexOS : MonoBehaviour
             _isHolding = false;
             _held = -1;
         }
+    }
+
+    private void GetModSetting()
+    {
+        // Get JSON settings.
+        try
+        {
+            // Get settings.
+            ModSettingsJSON settings = JsonConvert.DeserializeObject<ModSettingsJSON>(ModSettings.Settings);
+
+            // If it contains information.
+            if (settings != null)
+            {
+                // Get variables from mod settings.
+                _canBeOctOS = !settings.DisableOctOS;
+                _octOS = settings.ForceOctOS;
+                _fastStrike = settings.FastStrike;
+                _experimentalShake = settings.ExperimentalShake;
+                _forceAltSolve = settings.ForceAltSolve;
+                _flashOtherColors = Math.Min(settings.FlashOtherColors, (byte)6);
+                _delayPerBeat = Math.Min(Math.Abs(settings.DelayPerBeat), 1);
+                _customSolveQuote = settings.CustomSolveQuote;
+            }
+        }
+        catch (JsonReaderException e)
+        {
+            // In the case of catastrophic failure and devastation.
+            Debug.LogFormat("[hexOS #{0}] JSON reading failed with error: \"{1}\", resorting to default values.", _moduleId, e.Message);
+        }
+    }
+
+    private bool LoadMission()
+    {
+        string description = Application.isEditor ? "" : Game.Mission.Description;
+
+        if (description == null)
+            return true;
+
+        Regex regex = new Regex(@"\[hexOS\] (\d+,){1}\d+");
+
+        var match = regex.Match(description);
+
+        if (!match.Success)
+            return true;
+
+        string[] vs = match.Value.Replace("[hexOS] ", "").Split(',');
+
+        if (vs.Length != 8)
+            return true;
+
+        int[] values = vs.Skip(2).Take(6).ToArray().ToNumbers(minLength: 6, maxLength: 6);
+
+        if (values == null)
+            return true;
+
+        if (values.Take(5).Any(i => !i.InRange(0, 1)))
+            return true;
+
+        if (!float.TryParse(vs[1], out _delayPerBeat))
+            return true;
+
+        _customSolveQuote = vs.First();
+        _canBeOctOS = values[0] == 0;
+        _octOS = values[1] == 1;
+        _fastStrike = values[2] == 1;
+        _experimentalShake = values[3] == 1;
+        _forceAltSolve = values[4] == 1;
+        _flashOtherColors = Math.Min((byte)values[5], (byte)6);
+        return false;
     }
 
     /// <summary>

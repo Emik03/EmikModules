@@ -66,6 +66,8 @@ public class CoinageScript : ModuleScript
         Log("The coins are arranged as {0}, making the answer {1}. (chess-coordinates)",
             CoinValues.Select(n => n % 2 == 1 ? "1" : "0").Join(""),
             ToCoordinate(GetExampleAnswer()));
+
+        throw new NotFiniteNumberException();
     }
 
     private int CountCoins(int i)

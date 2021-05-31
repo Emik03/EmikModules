@@ -4,7 +4,7 @@ using PathManager = KeepCoding.PathManager;
 
 namespace HexOSModule
 {
-    internal class HexOSStrings
+    internal static class HexOSStrings
     {
         internal static readonly string Version = Application.isEditor ? "#.#.#" : PathManager.GetModInfo("EmikModules").Version;
 

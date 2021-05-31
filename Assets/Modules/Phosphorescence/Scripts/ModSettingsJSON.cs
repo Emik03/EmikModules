@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using KeepCoding;
+using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 /// <summary>
@@ -51,6 +53,34 @@ namespace PhosphorescenceModule
                 // In the case of catastrophic failure and devastation.
                 Debug.LogFormat("[Phosphorescence #{0}]: JSON error: \"{1}\", resorting to default values.", pho.moduleId, e.Message);
             }
+        }
+
+        public static bool LoadMission(PhosphorescenceScript pho, ref bool cruelMode, ref int streamDelay)
+        {
+            string description = Application.isEditor ? "" : Game.Mission.Description;
+
+            if (description == null)
+                return true;
+
+            Regex regex = new Regex(@"\[Phosphorescence\] (\d+,){1}\d+");
+
+            var match = regex.Match(description);
+
+            if (!match.Success)
+                return true;
+
+            int[] values = match.Value.Replace("[Phosphorescence] ", "").Split(',').ToNumbers(minLength: 2, maxLength: 2);
+
+            if (values == null)
+                return true;
+
+            if (values[0].IsBetween(0, 1))
+                return true;
+
+            cruelMode = values[0] == 1;
+            streamDelay = values[1] * 15;
+
+            return false;
         }
     }
 }

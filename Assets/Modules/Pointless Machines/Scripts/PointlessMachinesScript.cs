@@ -30,7 +30,7 @@ public class PointlessMachinesScript : ModuleScript
 
     private void Start()
     {
-        Get<DynamicAudio>().Play(SFX.Pm.Loop, loop: true, volume: 0);
+        Get<AudioScript>().Play(SFX.Pm.Loop, loop: true, volume: 0);
 
         Get<KMSelectable>().Assign(overrideReturn: !IsVR, onInteract: () =>
         {
@@ -43,11 +43,11 @@ public class PointlessMachinesScript : ModuleScript
             if (_isSelected)
             {
                 PlaySound(SFX.Pm.Reset);
-                Get<DynamicAudio>().Fade(volume: 0.25f, time: 3);
+                Get<AudioScript>().Fade(volume: 0.25f, time: 3);
                 return;
             }
 
-            Get<DynamicAudio>().Fade(volume: 0, time: 3);
+            Get<AudioScript>().Fade(volume: 0, time: 3);
         });
 
         var flashes = GetFlashes();
@@ -249,15 +249,15 @@ public class PointlessMachinesScript : ModuleScript
 
         Enumerable.Range(1, 8).ToArray().ForEach(i => Instantiate(Light, LightParent, false).GetComponent<LightScript>().enabled = true);
 
-        Get<DynamicAudio>().Fade(volume: 0, time: 0.3f);
+        Get<AudioScript>().Fade(volume: 0, time: 0.3f);
 
         yield return new WaitForSeconds(0.3f);
 
-        Get<DynamicAudio>().Stop();
+        Get<AudioScript>().Stop();
 
         yield return new WaitForSeconds(3);
 
-        Status.localPosition = Vector3.zero.Replace(y: 0.0133f);
+        Status.localPosition = Vector3.zero.Set(y: 0.0133f);
 
         StartCoroutine(MachineStatic(0, 0.06f, true));
 
