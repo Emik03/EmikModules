@@ -19,8 +19,8 @@ namespace Linq
 
             if (Application.isEditor)
             {
-                isInverted = _linq.ModuleId / allFunctions.Count() % 2 == 1;
-                functions = Enumerable.Repeat(allFunctions[_linq.ModuleId % allFunctions.Count()], MaxStage).ToArray();
+                isInverted = _linq.Id / allFunctions.Count() % 2 == 1;
+                functions = Enumerable.Repeat(allFunctions[_linq.Id % allFunctions.Count()], MaxStage).ToArray();
             }
             else
             {

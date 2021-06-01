@@ -88,10 +88,10 @@ public class NetheriteScript : ModuleScript
 
         // This ensures that only one of them can be solved at a time, which is part of the rules.
         if (CurrentlySolvingId == default(int))
-            CurrentlySolvingId = ModuleId;
+            CurrentlySolvingId = Id;
 
         // This strikes the module if either the condition is wrong or multiple of them are being solved.
-        if (Sequence[Stage] != ApplyRules(i) || CurrentlySolvingId != ModuleId)
+        if (Sequence[Stage] != ApplyRules(i) || CurrentlySolvingId != Id)
         {
             PlaySound(SFX.N.Hit);
             Strike("While trying to mine for the {0} time, the value {1} was submitted, when {2} was expected! Strike!".Form(
