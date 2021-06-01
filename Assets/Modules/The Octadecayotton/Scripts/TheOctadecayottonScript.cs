@@ -42,8 +42,8 @@ public class TheOctadecayottonScript : MonoBehaviour
         if (ModSettingsJSON.LoadMission(this, ref dimension, ref rotation, ref slowness, ref colorAssist, ref isUsingBounce, ref isUsingElastic, ref stretchToFit))
             ModSettingsJSON.Get(this, out dimension, out rotation, out slowness, out colorAssist, out isUsingBounce, out isUsingElastic, out stretchToFit);
 
-        ModuleSelectable.OnInteract += Interact.Init(this, true, dimension - Info.GetSolvableModuleNames().Where(i => i == "The Octadecayotton").Count(), slowness);
-        SubModuleSelectable.OnInteract += Interact.OnInteract(this, false, dimension - Info.GetSolvableModuleNames().Where(i => i == "The Octadecayotton").Count(), slowness);
+        ModuleSelectable.OnInteract += Interact.Init(this, true, dimension - Info.GetSolvableModuleNames().Where(i => i == "The Octadecayotton").Count());
+        SubModuleSelectable.OnInteract += Interact.OnInteract(this, false, dimension - Info.GetSolvableModuleNames().Where(i => i == "The Octadecayotton").Count());
         SubModuleSelectable.OnHighlight += () => SelectableRenderer.enabled = true;
         SubModuleSelectable.OnHighlightEnded += () => SelectableRenderer.enabled = false;
     }

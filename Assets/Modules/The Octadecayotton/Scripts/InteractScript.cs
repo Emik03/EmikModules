@@ -34,7 +34,7 @@ public class InteractScript : MonoBehaviour
     private Animate _animate;
     private TheOctadecayottonScript _octadecayotton;
 
-    internal KMSelectable.OnInteractHandler Init(TheOctadecayottonScript octadecayotton, bool checkForTP, int dimension, int slowness)
+    internal KMSelectable.OnInteractHandler Init(TheOctadecayottonScript octadecayotton, bool checkForTP, int dimension)
     {
         return () =>
         {
@@ -50,7 +50,7 @@ public class InteractScript : MonoBehaviour
             isUsingBounce = octadecayotton.isUsingBounce;
             isUsingElastic = octadecayotton.isUsingElastic;
 
-            _speed = Mathf.Pow(2, -slowness);
+            _speed = Mathf.Pow(2, -octadecayotton.slowness);
 
             if (octadecayotton.SlownessOverride != default(byte))
                 _speed = Mathf.Pow(2, -octadecayotton.SlownessOverride);
@@ -105,9 +105,9 @@ public class InteractScript : MonoBehaviour
         };
     }
 
-    internal KMSelectable.OnInteractHandler OnInteract(TheOctadecayottonScript octadecayotton, bool checkForTP, int dimension, int slowness)
+    internal KMSelectable.OnInteractHandler OnInteract(TheOctadecayottonScript octadecayotton, bool checkForTP, int dimension)
     {
-        return Init(octadecayotton, checkForTP, dimension, slowness) + (() =>
+        return Init(octadecayotton, checkForTP, dimension) + (() =>
         {
             _octadecayotton.ModuleSelectable.AddInteractionPunch();
             _octadecayotton.PlaySound(SFX.Oct.InteractInterrupt);
@@ -160,9 +160,7 @@ public class InteractScript : MonoBehaviour
             return;
 
         if (rotationProgress >= Rotations.Length + 0.25f || (Rotations.Length == 1 && rotationProgress > 1))
-        {
             rotationProgress = 0;
-        }
 
         if (rotationProgress % 1 == 0)
         {
