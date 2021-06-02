@@ -2,7 +2,7 @@ Phosphorescence scans through the description of the mission.
 
 It will scan for the following pattern, which can exist anywhere in the description: 
 
-[Phosphorescence] #,#,#,#,#,#,#,#
+[Phosphorescence] #,#
 where # is a number.
 
 Each # represents a specific mod setting.

@@ -2,8 +2,9 @@ hexOS scans through the description of the mission.
 
 It will scan for the following pattern, which can exist anywhere in the description: 
 
-[hexOS] #,#,#,#,#,#,#,#
-where # is a number.
+[hexOS] @,#,#,#,#,#,#,#
+where # is a number and
+where @ is a string.
 
 Each # represents a specific mod setting.
 
