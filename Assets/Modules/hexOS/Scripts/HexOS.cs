@@ -224,7 +224,7 @@ public class HexOS : MonoBehaviour
         if (description == null)
             return true;
 
-        Regex regex = new Regex(@"\[hexOS\] (\d+,){1}\d+");
+        Regex regex = new Regex(@"\[hexOS\] (.+,){2}(\d+,){5}(\d+)");
 
         var match = regex.Match(description);
 
@@ -238,10 +238,7 @@ public class HexOS : MonoBehaviour
 
         int[] values = vs.Skip(2).Take(6).ToArray().ToNumbers(minLength: 6, maxLength: 6);
 
-        if (values == null)
-            return true;
-
-        if (values.Take(5).Any(i => !i.InRange(0, 1)))
+        if (values == null || values.Take(4).Skip(1).Any(i => !i.InRange(0, 1)))
             return true;
 
         if (!float.TryParse(vs[1], out _delayPerBeat))
@@ -254,6 +251,9 @@ public class HexOS : MonoBehaviour
         _experimentalShake = values[3] == 1;
         _forceAltSolve = values[4] == 1;
         _flashOtherColors = Math.Min((byte)values[5], (byte)6);
+
+        Debug.LogFormat("[hexOS #{0}]: Mission-specific data found.", _moduleId);
+
         return false;
     }
 

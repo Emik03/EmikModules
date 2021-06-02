@@ -17,21 +17,21 @@ Each # represents a specific mod setting.
 The higher, the slower.
 Each +/-1 will multiply or divide the speed by 2, respectively.
 
-4th #: Color Assist (0-1, default: 0)
+4th #: Color Assist (0-1, default 0)
 If 0, the colors will always update based on local position.
 If 1, the colors will be maintained for each sphere.
 
-5th #: InOutBounce (0-1, default: 0)
+5th #: InOutBounce (0-1, default 0)
 If 0, nothing happens.
 If 1, the spheres will move using the InOutBounce ease. https://easings.net/#easeInOutBounce
 By default InOutCubic is used. https://easings.net/#easeInOutCubic
 
-6th #: InOutElastic (0-1, default: 0)
+6th #: InOutElastic (0-1, default 0)
 If 0, nothing happens.
 If 1, the spheres will move using the InOutElastic ease. https://easings.net/#easeInOutElastic
 By default InOutCubic is used. https://easings.net/#easeInOutCubic
 
-7th #: Stretch to Fit (0-1, default: 0)
+7th #: Stretch to Fit (0-1, default 0)
 If 0, nothing happens.
 If 1, on dimension counts that aren't divisible by 3, the cube is distorted such that the entire shape will cover the module's entire surface area.
 This will make some axes exaggurated.

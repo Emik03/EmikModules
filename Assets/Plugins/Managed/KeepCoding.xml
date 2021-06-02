@@ -2296,12 +2296,12 @@
         </member>
         <member name="M:KeepCoding.Helper.Assert``1(``0,System.String)">
             <summary>
-            Throws a <see cref="T:UnityEngine.MissingComponentException"/> if the component given is <see langword="null"/>, then returning the component <paramref name="component"/>.
+            Throws a <see cref="T:UnityEngine.MissingComponentException"/> if the <see cref="T:UnityEngine.Object"/> given is <see langword="null"/>, then returning the <see cref="T:UnityEngine.Object"/> <paramref name="obj"/>.
             </summary>
-            <typeparam name="T">The type of component.</typeparam>
-            <param name="component">The component to do a null check on.</param>
+            <typeparam name="T">The type of <see cref="T:UnityEngine.Object"/>.</typeparam>
+            <param name="obj">The <see cref="T:UnityEngine.Object"/> to do a null check on.</param>
             <param name="message">The message of the exception.</param>
-            <returns>The component <paramref name="component"/>.</returns>
+            <returns>The component <paramref name="obj"/>.</returns>
         </member>
         <member name="M:KeepCoding.Helper.Call``1(``0,System.Action{``0})">
             <summary>
@@ -3805,7 +3805,7 @@
             <param name="message">The message to log.</param>
             <param name="args">All of the arguments to embed into <paramref name="message"/>.</param>
         </member>
-        <member name="M:KeepCoding.Logger.LogMultiple(System.String[]@)">
+        <member name="M:KeepCoding.Logger.LogMultiple(System.String[])">
             <summary>
             Logs multiple entries to the console.
             </summary>
@@ -4879,7 +4879,7 @@
             <param name="message">The message to log.</param>
             <param name="args">All of the arguments to embed into <paramref name="message"/>.</param>
         </member>
-        <member name="M:KeepCoding.ILog.LogMultiple(System.String[]@)">
+        <member name="M:KeepCoding.ILog.LogMultiple(System.String[])">
             <summary>
             Logs multiple entries to the console.
             </summary>
@@ -5281,7 +5281,7 @@
             <param name="message">The message to log.</param>
             <param name="args">All of the arguments to embed into <paramref name="message"/>.</param>
         </member>
-        <member name="M:KeepCoding.ModuleScript.LogMultiple(System.String[]@)">
+        <member name="M:KeepCoding.ModuleScript.LogMultiple(System.String[])">
             <summary>
             Logs multiple entries to the console.
             </summary>

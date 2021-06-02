@@ -1,0 +1,29 @@
+Phosphorescence scans through the description of the mission.
+
+It will scan for the following pattern, which can exist anywhere in the description: 
+
+[Phosphorescence] #,#,#,#,#,#,#,#
+where # is a number.
+
+Each # represents a specific mod setting.
+
+
+
+1st #: Cruel Mode (0-1, default 0)
+Makes colored buttons not have labels.
+
+2nd #: Stream delay (any integer, default 0)
+Increases or decreases time, by increments of 15. Fixed constant.
+
+
+
+Example:
+
+This is your typical mod description.
+More flavor text.
+Lorem ipsum.
+[Phosphorescence] 1,-4
+
+To test if your formatting is correct, use this website: https://regexr.com/
+Set expression to \[Phosphorescence\] \d+,-*\d+
+Set the text to be your mission description.

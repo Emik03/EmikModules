@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Rnd = UnityEngine.Random;
+using Logger = KeepCoding.Logger;
 
 namespace Linq
 {

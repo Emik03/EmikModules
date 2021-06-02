@@ -1,0 +1,46 @@
+hexOS scans through the description of the mission.
+
+It will scan for the following pattern, which can exist anywhere in the description: 
+
+[hexOS] #,#,#,#,#,#,#,#
+where # is a number.
+
+Each # represents a specific mod setting.
+
+
+
+1st #: Custom Solve Quote (string, default " ")
+
+2nd #: Amount of delay in seconds between each beta (0-1 including decimals, default 0.07)
+This number gets increased by 0.05 every strike.
+
+3rd #: Can be octOS (0-1, default 1)
+
+4th #: Must be octOS (0-1, default 0)
+
+5th #: Fast Strike (0-1, default 0)
+When enabled, octOS will use a shorter strike animation.
+
+6th #: Experimental Shake (0-1, default 0)
+Accessibility feature for deaf people where the module shakes subtly on every beat.
+Possibly distracting for other people.
+
+7th #: Force Alt Solve (0-1, default 0)
+Forces the toilet to show up, as well as a different theme for solving the module in hexOS.
+
+8th #: Flash Other Colors (0-6, default 5)
+The amount of times other colors flash. The higher, the harder.
+This number gets decreased by 1 every strike.
+
+
+
+Example:
+
+This is your typical mod description.
+More flavor text.
+Lorem ipsum.
+[hexOS] Woah!! You did it!!,0.19,1,0,1,1,0,2
+
+To test if your formatting is correct, use this website: https://regexr.com/
+Set expression to \[hexOS\] (.+,)(.+,)(\d+,){5}(\d+)
+Set the text to be your mission description.

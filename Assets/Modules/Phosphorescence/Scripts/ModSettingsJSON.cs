@@ -62,7 +62,7 @@ namespace PhosphorescenceModule
             if (description == null)
                 return true;
 
-            Regex regex = new Regex(@"\[Phosphorescence\] (\d+,){1}\d+");
+            Regex regex = new Regex(@"\[Phosphorescence\] \d+,-*\d+");
 
             var match = regex.Match(description);
 
@@ -71,14 +71,13 @@ namespace PhosphorescenceModule
 
             int[] values = match.Value.Replace("[Phosphorescence] ", "").Split(',').ToNumbers(minLength: 2, maxLength: 2);
 
-            if (values == null)
-                return true;
-
-            if (values[0].IsBetween(0, 1))
+            if (values == null || !values[0].IsBetween(0, 1))
                 return true;
 
             cruelMode = values[0] == 1;
             streamDelay = values[1] * 15;
+
+            Debug.LogFormat("[Phosphorescence #{0}]: Mission-specific data found.", pho.moduleId);
 
             return false;
         }
