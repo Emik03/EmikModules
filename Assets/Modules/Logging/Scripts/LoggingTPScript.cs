@@ -15,7 +15,7 @@ public class LoggingTPScript : TPScript<LoggingScript>
 
             command = Module.logs.Keys.FirstOrDefault(s => s.ToLowerInvariant().Contains(split.Skip(1).Join().ToLowerInvariant()));
 
-            bool[] errors = new[] { !IsZenMode, split.Length == 1, command == null };
+            bool[] errors = new[] { !IsZen, split.Length == 1, command == null };
             string[] reasons = new[] { "You can only run this command on Zen/Training mode!", "You must specify the name of a module!", "The module specified doesn't exist. If the module starts with \"The\", exclude that word from your query." };
 
             foreach (var item in errors.Select((b, n) => Evaluate(b, reasons[n])))

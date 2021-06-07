@@ -53,8 +53,6 @@ public class NetheriteScript : ModuleScript
     {
         Buttons.Assign(onInteract: OnInteract);
 
-        // Static values have to be reset.
-        CurrentlySolvingId = default(int);
         NetheriteId = 1;
 
         Log("The 3x3 board will submit the following values:");
@@ -87,7 +85,7 @@ public class NetheriteScript : ModuleScript
         Get<ParticleSystem>().Play();
 
         // This ensures that only one of them can be solved at a time, which is part of the rules.
-        if (CurrentlySolvingId == default(int))
+        if (CurrentlySolvingId == 0)
             CurrentlySolvingId = Id;
 
         // This strikes the module if either the condition is wrong or multiple of them are being solved.

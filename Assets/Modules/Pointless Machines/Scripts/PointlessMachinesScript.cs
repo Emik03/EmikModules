@@ -24,12 +24,15 @@ public class PointlessMachinesScript : ModuleScript
 
     private readonly Dictionary<Flash, View> _conversion = new Dictionary<Flash, View>();
 
-    private Vector3 _neutral = Vector3.zero;
+    private Vector3 _neutral;
 
     private KMBomb _bomb;
 
     private void Start()
     {
+        if (TP.IsTP)
+            Status.transform.localPosition += new Vector3(0, 0.01f, 0);
+
         Get<AudioScript>().Play(SFX.Pm.Loop, loop: true, volume: 0);
 
         Get<KMSelectable>().Assign(overrideReturn: !IsVR, onInteract: () =>

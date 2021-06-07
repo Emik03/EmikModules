@@ -1,5 +1,4 @@
 ﻿using HexOSModule;
-using PathManager = KeepCoding.PathManager;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -8,8 +7,10 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Video;
+using Game = KeepCoding.Game;
+using Helper = KeepCoding.Helper;
+using PathManager = KeepCoding.PathManager;
 using Rnd = UnityEngine.Random;
-using KeepCoding;
 
 public class HexOS : MonoBehaviour
 {
@@ -56,6 +57,7 @@ public class HexOS : MonoBehaviour
 
     private Color32 _hexBezel = new Color32(127, 100, 92, 255), _octBezel = new Color32(42, 33, 30, 255);
     private System.Random _rnd;
+    private static VideoClip[] _videoClips;
     private static bool _forceAltSolve, _experimentalShake, _canBeOctOS;
     private bool _lightsOn, _octOS, _isHolding, _playSequence, _hasPlayedSequence, _octAnimating, _fastStrike;
     private static byte _flashOtherColors = 5;
@@ -113,12 +115,12 @@ public class HexOS : MonoBehaviour
         // Start module.
         if (!Application.isEditor)
         {
-            var enumerator = PathManager.LoadVideoClips(GetType(), "hex");
+            if (_videoClips == null)
+                _videoClips = PathManager.GetAssets<VideoClip>(typeof(HexOS), "hex");
 
-            while (enumerator.MoveNext())
-                if (enumerator.Current.GetType() == typeof(VideoClip[]))
-                    Clips = (VideoClip[])enumerator.Current;
+            Clips = _videoClips;
         }
+
         Activate();
 
         if (_octOS)
@@ -236,7 +238,7 @@ public class HexOS : MonoBehaviour
         if (vs.Length != 8)
             return true;
 
-        int[] values = vs.Skip(2).Take(6).ToArray().ToNumbers(minLength: 6, maxLength: 6);
+        int[] values = Helper.ToNumbers(vs.Skip(2).Take(6).ToArray(), minLength: 6, maxLength: 6);
 
         if (values == null || values.Take(4).Skip(1).Any(i => !i.InRange(0, 1)))
             return true;
