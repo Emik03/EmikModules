@@ -89,7 +89,7 @@ namespace TheOctadecayotton
                 {
                     dimension = Mathf.Clamp(settings.Dimension, Min, Max);
                     rotation = Mathf.Clamp(settings.Rotation, 0, 255);
-                    slowness = Mathf.Clamp(settings.Slowness, 1, 12);
+                    slowness = settings.Slowness == 0 ? 8 : Mathf.Clamp(settings.Slowness, 1, 12);
                     colorAssist = settings.ColorAssist;
                     isUsingBounce = settings.IsUsingBounce;
                     isUsingElastic = settings.IsUsingElastic;
@@ -118,7 +118,7 @@ namespace TheOctadecayotton
 
         public static bool LoadMission(TheOctadecayottonScript octadecayotton, ref int dimension, ref int rotation, ref int slowness, ref bool colorAssist, ref bool isUsingBounce, ref bool isUsingElastic, ref bool stretchToFit)
         {
-            string description = Application.isEditor ? "" : Game.Mission.Description;
+            string description = Game.Mission.Description;
 
             if (description == null)
                 return true;

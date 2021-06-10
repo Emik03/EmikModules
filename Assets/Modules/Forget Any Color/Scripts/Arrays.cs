@@ -13,7 +13,7 @@ namespace ForgetAnyColor
     {
         public const int EditorMaxStage = 10;
         public const float TPAwardPerStage = 2;
-        public static readonly string Version = Application.isEditor ? "#.#.#" : PathManager.GetModInfo("EmikModules").Version;
+        public static readonly string Version = PathManager.GetModInfo("EmikModules").Version;
 
         public static readonly int[,] ColorTable =
         {

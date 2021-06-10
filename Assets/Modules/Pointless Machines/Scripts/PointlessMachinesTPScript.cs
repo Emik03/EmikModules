@@ -1,4 +1,5 @@
 ﻿using KeepCoding;
+using PointlessMachines;
 using System.Collections;
 using UnityEngine;
 
@@ -15,7 +16,9 @@ public class PointlessMachinesTPScript : TPScript<PointlessMachinesScript>
         foreach (var view in Module.answer)
         {
             Module.HandleView(view);
-            yield return new WaitForSecondsRealtime(0.4f);
+            yield return new WaitForSecondsRealtime(0.2f);
+            Module.HandleView(View.None);
+            yield return new WaitForSecondsRealtime(0.2f);
         }
 
         while (!Module.IsSolved)

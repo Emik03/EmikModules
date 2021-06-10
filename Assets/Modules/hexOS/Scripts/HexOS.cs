@@ -221,7 +221,7 @@ public class HexOS : MonoBehaviour
 
     private bool LoadMission()
     {
-        string description = Application.isEditor ? "" : Game.Mission.Description;
+        string description = Game.Mission.Description;
 
         if (description == null)
             return true;

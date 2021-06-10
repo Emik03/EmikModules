@@ -367,7 +367,7 @@ internal static class SFX
         internal const string Solve = "Updog";
     }
 
-    private static readonly string _version = Application.isEditor ? "Can't get Version Number in Editor" : PathManager.GetModInfo("EmikModules").Version;
+    private static readonly string _version = PathManager.GetModInfo("EmikModules").Version;
 
     /// <summary>
     /// Logs the version number. Meant for modules that don't depend on <see cref="KeepCoding"/>.

@@ -59,19 +59,19 @@ public class OneDimensionalChessScript : ModuleScript
         {
             // This disables the debugger if it isn't played in-game.
             Debugger = new CustomValues { IsEnabled = false };
+        }
 
-            // This will load the Rust library. It causes problems in the editor, which is why it is in here.
-            if (!_isRustLoaded)
+        // This will load the Rust library. It causes problems in the editor, which is why it is in here.
+        if (!_isRustLoaded)
+        {
+            try
             {
-                try
-                {
-                    PathManager.LoadLibrary(this, Engine.LibraryName);
-                }
-                catch (FileNotFoundException e)
-                {
-                    Panic("The Rust library failed to load! Please provide a FULL log file to @Emik#0001 on Discord", e);
-                    return;
-                }
+                PathManager.LoadLibrary(this, Engine.LibraryName);
+            }
+            catch (FileNotFoundException e)
+            {
+                Panic("The Rust library failed to load! Please provide a FULL log file to @Emik#0001 on Discord", e);
+                return;
             }
         }
 

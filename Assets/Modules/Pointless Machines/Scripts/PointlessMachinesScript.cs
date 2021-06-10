@@ -26,8 +26,6 @@ public class PointlessMachinesScript : ModuleScript
 
     private Vector3 _neutral;
 
-    private KMBomb _bomb;
-
     private void Start()
     {
         if (TP.IsTP)
@@ -41,7 +39,7 @@ public class PointlessMachinesScript : ModuleScript
                 return;
 
             _isSelected = !_isSelected;
-            _neutral = _bomb.transform.localEulerAngles;
+            _neutral = Bomb.transform.localEulerAngles;
 
             if (_isSelected)
             {
@@ -192,15 +190,12 @@ public class PointlessMachinesScript : ModuleScript
 
     private IEnumerator KMBombListen()
     {
-        do
-        {
-            _bomb = GetComponentInParent<KMBomb>();
+        while (Bomb == null)
             yield return new WaitForSecondsRealtime(0.1f);
-        } while (_bomb == null);
 
         while (!IsSolved)
         {
-            var vector = WrappedVector(_bomb.transform.localEulerAngles - _neutral);
+            var vector = WrappedVector(Bomb.transform.localEulerAngles - _neutral);
 
             if (vector.y >= 180)
                 vector = WrappedVector(new Vector3((vector.x * -1) - 30, vector.y - 180, vector.z + 180));

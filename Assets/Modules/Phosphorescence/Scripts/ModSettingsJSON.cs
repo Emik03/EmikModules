@@ -57,7 +57,7 @@ namespace PhosphorescenceModule
 
         public static bool LoadMission(PhosphorescenceScript pho, ref bool cruelMode, ref int streamDelay)
         {
-            string description = Application.isEditor ? "" : Game.Mission.Description;
+            string description = Game.Mission.Description;
 
             if (description == null)
                 return true;
