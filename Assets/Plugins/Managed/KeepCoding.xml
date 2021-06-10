@@ -2113,6 +2113,14 @@
             <param name="source">The string to check for null and empty.</param>
             <param name="message">The optional message to throw if null or empty. Leaving it default will throw a default message.</param>
         </member>
+        <member name="M:KeepCoding.Helper.Split(System.String,System.String)">
+            <summary>
+            Splits the <see cref="T:System.String"/> based on the separator.
+            </summary>
+            <param name="source">The <see cref="T:System.String"/> of characters to split by.</param>
+            <param name="separator">The separator to split <paramref name="source"/> by.</param>
+            <returns>An <see cref="T:System.Array"/> where each index is where <paramref name="separator"/> was found in <paramref name="source"/>.</returns>
+        </member>
         <member name="M:KeepCoding.Helper.ToOrdinal(System.Int32)">
             <summary>
             Converts a number to the ordinal as <see cref="T:System.String"/>.
@@ -6300,7 +6308,7 @@
         </member>
         <member name="M:KeepCoding.PathManager.GetAssets``1(System.Type,System.String)">
             <summary>
-            Gets the video clips, the last yield return contains all of the videos.
+            Retrieves assets of a specific type from a different bundle file.
             </summary>
             <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
@@ -6311,7 +6319,7 @@
         </member>
         <member name="M:KeepCoding.PathManager.GetAssets``2(``0,System.String)">
             <summary>
-            Gets the video clips, the last yield return contains all of the videos.
+            Retrieves assets of a specific type from a different bundle file.
             </summary>
             <exception cref="T:KeepCoding.EmptyIteratorException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>

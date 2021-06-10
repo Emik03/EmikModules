@@ -9,6 +9,7 @@ using UnityEngine;
 public class PointlessMachinesScript : ModuleScript
 {
     public Color32[] Static, Purple, Yellow, White, Red, Blue;
+    public HingeScript[] Hinges;
     public Light Light;
     public Renderer[] Display;
     public TextMesh Text;
@@ -191,14 +192,14 @@ public class PointlessMachinesScript : ModuleScript
     private IEnumerator KMBombListen()
     {
         while (Bomb == null)
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return null;
 
         while (!IsSolved)
         {
             var vector = WrappedVector(Bomb.transform.localEulerAngles - _neutral);
 
             if (vector.y >= 180)
-                vector = WrappedVector(new Vector3((vector.x * -1) - 30, vector.y - 180, vector.z + 180));
+                vector = WrappedVector(new Vector3(vector.x * -1 - 30, vector.y - 180, vector.z + 180));
 
             var view = ViewFromVector(vector);
 
@@ -208,7 +209,7 @@ public class PointlessMachinesScript : ModuleScript
             HandleView(view);
 
             yield return new WaitUntil(() => _isSelected);
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return null;
         }
     }
 
@@ -222,6 +223,15 @@ public class PointlessMachinesScript : ModuleScript
 
         if (!_isSubmit || _views.LastOrDefault() == view)
             return;
+
+        var submit = view.ToString().Split(", ").Select(s => s.First()).Call();
+
+        Hinges.ForEach(h => 
+        {
+            if (submit.Count() == 1 && submit.ElementAt(0) == h.name[0] 
+            || submit.Count() == 2 && submit.All(c => h.name.Contains(c)))
+                h.Flash();
+        });
 
         _views = _views.Append(view);
 
