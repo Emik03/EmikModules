@@ -2145,6 +2145,13 @@
             <param name="isRecursive">Whether it should search inside the variable and yield return the elements inside <paramref name="source"/>.</param>
             <returns>An <see cref="T:System.Object"/> <see cref="T:System.Array"/> of all elements within <paramref name="source"/>.</returns>
         </member>
+        <member name="M:KeepCoding.Helper.Suppress(System.Action,System.Type[])">
+            <summary>
+            Suppresses exceptions specified from the method.
+            </summary>
+            <param name="action">The method to try.</param>
+            <param name="exceptionTypes">The exceptions to catch and suppress.</param>
+        </member>
         <member name="M:KeepCoding.Helper.Method(UnityEngine.LogType)">
             <summary>
             Gets the appropriate log method depending on the type of <see cref="T:UnityEngine.LogType"/>.
@@ -2174,6 +2181,15 @@
             </summary>
             <param name="item">The item to check the type for.</param>
             <returns><see cref="T:KeepCoding.NullIteratorException"/> if <paramref name="item"/> is an iterator, evaluated with <see cref="M:KeepCoding.Helper.IsIterator``1(``0)"/>, otherwise <see cref="T:System.NullReferenceException"/></returns>
+        </member>
+        <member name="M:KeepCoding.Helper.Suppress``1(System.Func{``0},System.Type[])">
+            <summary>
+            Suppresses exceptions specified from the method.
+            </summary>
+            <typeparam name="T">The return type of the method.</typeparam>
+            <param name="func">The method to try.</param>
+            <param name="exceptionTypes">The exceptions to catch and suppress.</param>
+            <returns>The return of the method, or <see langword="default"/> if an exception is caught from the list of exceptions.</returns>
         </member>
         <member name="M:KeepCoding.Helper.AsEnumerable(System.Collections.IEnumerator)">
             <summary>
@@ -2321,6 +2337,15 @@
             <typeparam name="T">The type of the action.</typeparam>
             <param name="expression">The expression that retrieves the method.</param>
             <returns>The method info of the function.</returns>
+        </member>
+        <member name="M:KeepCoding.Helper.SplitBy``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Splits an <see cref="T:System.Collections.IEnumerable"/> in two based on a method provided.
+            </summary>
+            <typeparam name="T">The type of the collection.</typeparam>
+            <param name="source">The collection to split.</param>
+            <param name="func">The method that decides where the item ends up.</param>
+            <returns>A <see cref="T:KeepCoding.Tuple`2"/> consisting of items from <paramref name="source"/> where <see cref="P:KeepCoding.Tuple`1.Item1"/> contains items that returned true in <paramref name="func"/>, and <see cref="P:KeepCoding.Tuple`2.Item2"/> otherwise.</returns>
         </member>
         <member name="M:KeepCoding.Helper.Assert``1(``0,System.String)">
             <summary>
@@ -2865,6 +2890,13 @@
             <param name="z">The z value.</param>
             <param name="w">The w value.</param>
             <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:KeepCoding.TypeHelper.ToVersion(System.String)">
+            <summary>
+            Converts argument to a new <see cref="T:System.Version"/>. Major-only versions are compatible.
+            </summary>
+            <param name="s">The string to convert to a version.</param>
+            <returns>A new <see cref="T:System.Version"/> representing the input <paramref name="s"/>.</returns>
         </member>
         <member name="M:KeepCoding.TypeHelper.ToWork(System.UInt32,System.Action,System.Boolean)">
             <summary>
@@ -4446,6 +4478,13 @@
             </summary>
             <returns><see cref="P:KeepCoding.Sound.Game"/>, or if null, <see cref="P:KeepCoding.Sound.Custom"/>.</returns>
         </member>
+        <member name="M:KeepCoding.Sound.Method(KMAudio)">
+            <summary>
+            Gets the corresponding sound method matching the arguments of this instance of <see cref="T:KeepCoding.Sound"/>.
+            </summary>
+            <param name="audio">The instance of <see cref="T:KMAudio"/> to play from.</param>
+            <returns>A method that when called, will play the sound and return the <see cref="T:KMAudio.KMAudioRef"/> instance.</returns>
+        </member>
         <member name="T:KeepCoding.Tuple`1">
             <summary>
             A basic tuple data type for C# 4. Written by Emik.
@@ -5322,7 +5361,7 @@
         </member>
         <member name="P:KeepCoding.ModuleScript.Modules">
             <summary>
-            Contains every module in <see cref="P:KeepCoding.ModuleScript.Bomb"/>, separated by type.
+            Contains every modded module in <see cref="P:KeepCoding.ModuleScript.Bomb"/>, separated by type.
             </summary>
         </member>
         <member name="M:KeepCoding.ModuleScript.Awake">
@@ -5417,19 +5456,28 @@
             <summary>
             Called when any module on the current bomb has issued a strike.
             </summary>
-            <param name="moduleId">The sender's module id, which caused a strike.</param>
+            <remarks>
+            Vanilla modules are an exception, they will not invoke this method.
+            </remarks>
+            <param name="moduleName">The sender's module name, which caused a strike.</param>
         </member>
         <member name="M:KeepCoding.ModuleScript.OnNeedySolved(System.String)">
             <summary>
             Called when any <see cref="T:KMNeedyModule"/> on the current bomb has been solved.
             </summary>
-            <param name="moduleId">The sender's module id, which was solved.</param>
+            <remarks>
+            Vanilla modules are an exception, they will not invoke this method.
+            </remarks>
+            <param name="moduleName">The sender's module name, which was solved.</param>
         </member>
         <member name="M:KeepCoding.ModuleScript.OnSolvableSolved(System.String)">
             <summary>
             Called when any <see cref="T:KMBombModule"/> on the current bomb has been solved.
             </summary>
-            <param name="moduleId">The sender's module id, which was solved.</param>
+            <remarks>
+            Vanilla modules are an exception, they will not invoke this method.
+            </remarks>
+            <param name="moduleName">The sender's module name, which was solved.</param>
         </member>
         <member name="M:KeepCoding.ModuleScript.OnTimerTick">
             <summary>
@@ -5859,35 +5907,6 @@
             The mod is stored within the workshop folder.
             </value>
         </member>
-        <member name="T:KeepCoding.Game.IRCConnection">
-            <summary>
-            Allows access into Twitch Plays messaging system.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Game.IRCConnection.SendMessage">
-            <value>
-            Sends a message to the chat. Arguments: <c>message</c>.
-            </value>
-            <remarks>
-            Default: Internal Logger method call.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.IRCConnection.SendMessageFormat">
-            <value>
-            Sends a message to the chat. Arguments: <c>message</c> and <c>args</c>.
-            </value>
-            <remarks>
-            Default: Internal Logger method call.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.IRCConnection.SendWhisper">
-            <value>
-            Whispers a message to a person. Arguments: <c>userNickName</c>, <c>message</c>, and <c>args</c>.
-            </value>
-            <remarks>
-            Default: Internal Logger method call.
-            </remarks>
-        </member>
         <member name="T:KeepCoding.Game.KTInputManager">
             <summary>
             Allows access relating to how the game is being interacted with.
@@ -6143,6 +6162,14 @@
             </value>
             <remarks>
             Default: <see langword="null"/>.
+            </remarks>
+        </member>
+        <member name="P:KeepCoding.Game.Vanillas">
+            <value>
+            Gets all of the vanilla modules from the bomb supplied, including needies. To prevent a reference to the game, the type is boxed in an <see cref="T:System.Object"/> <see cref="T:System.Array"/>. You can cast it to BombComponent type to restore its functionality.
+            </value>
+            <remarks>
+            Default: An empty <see cref="T:System.Object"/> <see cref="T:System.Array"/>.
             </remarks>
         </member>
         <member name="T:KeepCoding.PathManager">

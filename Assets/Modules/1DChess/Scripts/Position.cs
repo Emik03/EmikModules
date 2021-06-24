@@ -37,14 +37,16 @@ namespace OneDimensionalChess
             for (int i = 0; i < pieceCount; i++)
             {
                 // Place a random white chess piece on an unoccupied square in the left half of the string.
-                do temp = random.Next(0, str.Length / 2);
+                do 
+                    temp = random.Next(0, str.Length / 2);
                 while (used.Contains(temp));
 
                 used.Add(temp);
                 str[temp] = pieceChars[random.Next(0, pieceChars.Length)].ToUpper();
 
                 // Place a random black chess piece on an unoccupied square in the right half of the string.
-                do temp = random.Next(str.Length / 2, str.Length - 1);
+                do 
+                    temp = random.Next(str.Length / 2, str.Length - 1);
                 while (used.Contains(temp));
 
                 used.Add(temp);

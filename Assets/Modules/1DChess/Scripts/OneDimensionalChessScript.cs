@@ -192,12 +192,12 @@ public class OneDimensionalChessScript : ModuleScript
             yield break;
         }
 
-        yield return _bestMove.Start(position, (MovesLeft * 2) + 1, color == PieceColor.Black);
+        yield return _bestMove.Start(position, MovesLeft * 2 + 1, color == PieceColor.Black);
 
         // This looks convoluted, but it's only asking if the player has made a blunder, to the point of an unwinnable position.
         if (isWinning &&
-           ((color == PieceColor.White && _bestMove.Result.Evaluation != sbyte.MaxValue - (MovesLeft * 2)) ||
-            (color == PieceColor.Black && _bestMove.Result.Evaluation != (MovesLeft * 2) + sbyte.MinValue)))
+           (color == PieceColor.White && _bestMove.Result.Evaluation != sbyte.MaxValue - MovesLeft * 2 ||
+            color == PieceColor.Black && _bestMove.Result.Evaluation != MovesLeft * 2 + sbyte.MinValue))
         {
             isWinning = false;
             Log("Rustmate has evaluated that this position is now unwinnable for you. Congratulations.");
@@ -205,14 +205,14 @@ public class OneDimensionalChessScript : ModuleScript
 
         ChangeText("Mate in", "", MovesLeft.ToString());
 
-        PlaySound(SFX._1dch.Opponent);
+        yield return PlaySound(SFX._1dch.Opponent);
 
         // This indicates if the game has ended.
         if (_bestMove.Result.IsEqual(Position.finishedGame))
         {
             isReady = false;
 
-            PlaySound(SFX._1dch.Check);
+            yield return PlaySound(SFX._1dch.Check);
 
             // Stalemate.
             if (_bestMove.Result.Evaluation == 0)
@@ -268,7 +268,7 @@ public class OneDimensionalChessScript : ModuleScript
         ChangeText("Waiting for", "other modules...");
 
         // This waits for an arbitrary amount of time, to let other copies of this module through at different rates.
-        yield return new WaitForSecondsRealtime(URandom.Range(0, 2));
+        yield return new WaitForSecondsRealtime(URandom.Range(0, 3f));
 
         // This waits until another module that uses threads in this exact method is finished.
         yield return new WaitWhile(() => _isUsingThreads);
@@ -315,8 +315,8 @@ public class OneDimensionalChessScript : ModuleScript
                 {
                     var gameMut = Engine.Calculate(positionMut, depth, colorMut == PieceColor.White);
 
-                    if ((gameMut.Evaluation == sbyte.MaxValue && color == PieceColor.White) ||
-                        (gameMut.Evaluation == sbyte.MinValue && color == PieceColor.Black))
+                    if (gameMut.Evaluation == sbyte.MaxValue && color == PieceColor.White ||
+                        gameMut.Evaluation == sbyte.MinValue && color == PieceColor.Black)
                         isGameCorrectlyOver = true;
 
                     try
@@ -354,7 +354,7 @@ public class OneDimensionalChessScript : ModuleScript
 
             RenderPosition(position);
 
-            PlaySound(new[] { SFX._1dch.Capture, SFX._1dch.Check, SFX._1dch.Opponent, SFX._1dch.Self }.PickRandom());
+            yield return PlaySound(new[] { SFX._1dch.Capture, SFX._1dch.Check, SFX._1dch.Opponent, SFX._1dch.Self }.PickRandom());
         }
 
         Log("The position is {0}; {1} to play, mate in {2}. To beat Rustmate, the best sequence of moves are {3}.", position, color, (128 - Math.Abs(game.Evaluation)) / 2, ToLog(moves));
@@ -363,14 +363,14 @@ public class OneDimensionalChessScript : ModuleScript
 
         _isUsingThreads = false;
 
-        PlaySound(SFX._1dch.GameStart);
+        yield return PlaySound(SFX._1dch.GameStart);
 
         ChangeText("Mate in", "", MovesLeft.ToString());
     }
 
     private IEnumerator HandleStrike(string title, string subtitle)
     {
-        PlaySound(SFX._1dch.GameEnd, SFX._1dch.Strike);
+        yield return PlaySound(SFX._1dch.GameEnd, SFX._1dch.Strike);
 
         ChangeText(title, subtitle);
 

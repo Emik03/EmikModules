@@ -224,7 +224,7 @@ public class PointlessMachinesScript : ModuleScript
         if (!_isSubmit || _views.LastOrDefault() == view)
             return;
 
-        var submit = view.ToString().Split(", ").Select(s => s.First()).Call();
+        var submit = view.ToString().Split(", ").Select(s => s.First());
 
         Hinges.ForEach(h => 
         {
