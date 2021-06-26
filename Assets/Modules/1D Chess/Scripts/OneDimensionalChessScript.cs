@@ -205,14 +205,14 @@ public class OneDimensionalChessScript : ModuleScript
 
         ChangeText("Mate in", "", MovesLeft.ToString());
 
-        yield return PlaySound(SFX._1dch.Opponent);
+        PlaySound(SFX._1dch.Opponent);
 
         // This indicates if the game has ended.
         if (_bestMove.Result.IsEqual(Position.finishedGame))
         {
             isReady = false;
 
-            yield return PlaySound(SFX._1dch.Check);
+            PlaySound(SFX._1dch.Check);
 
             // Stalemate.
             if (_bestMove.Result.Evaluation == 0)
@@ -354,7 +354,7 @@ public class OneDimensionalChessScript : ModuleScript
 
             RenderPosition(position);
 
-            yield return PlaySound(new[] { SFX._1dch.Capture, SFX._1dch.Check, SFX._1dch.Opponent, SFX._1dch.Self }.PickRandom());
+            PlaySound(new[] { SFX._1dch.Capture, SFX._1dch.Check, SFX._1dch.Opponent, SFX._1dch.Self }.PickRandom());
         }
 
         Log("The position is {0}; {1} to play, mate in {2}. To beat Rustmate, the best sequence of moves are {3}.", position, color, (128 - Math.Abs(game.Evaluation)) / 2, ToLog(moves));
@@ -363,14 +363,16 @@ public class OneDimensionalChessScript : ModuleScript
 
         _isUsingThreads = false;
 
-        yield return PlaySound(SFX._1dch.GameStart);
+        RenderPosition(position);
+
+        PlaySound(SFX._1dch.GameStart);
 
         ChangeText("Mate in", "", MovesLeft.ToString());
     }
 
     private IEnumerator HandleStrike(string title, string subtitle)
     {
-        yield return PlaySound(SFX._1dch.GameEnd, SFX._1dch.Strike);
+        PlaySound(SFX._1dch.GameEnd, SFX._1dch.Strike);
 
         ChangeText(title, subtitle);
 
@@ -430,7 +432,8 @@ public class OneDimensionalChessScript : ModuleScript
         for (int i = 0; i < BoardRenderers.Length; i++)
         {
             // This prevents a tile from looking the same as its 2 previous neighbours.
-            do texture = BoardTextures.PickRandom();
+            do 
+                texture = BoardTextures.PickRandom();
             while (i >= 2 && (
                 BoardRenderers[i - 1].material.mainTexture == texture ||
                 BoardRenderers[i - 2].material.mainTexture == texture));
