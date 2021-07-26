@@ -6,7 +6,7 @@ public class NetheriteTPScript : TPScript<NetheriteScript>
 {
     private const float Wait = 0.2f;
 
-    public override IEnumerator ProcessTwitchCommand(string command)
+    public override IEnumerator Process(string command)
     {
         yield return null;
 
@@ -22,7 +22,7 @@ public class NetheriteTPScript : TPScript<NetheriteScript>
         yield return OnInteractSequence(Module.Buttons, Wait, inputs.Select(i => i - 1).ToArray());
     }
 
-    public override IEnumerator TwitchHandleForcedSolve()
+    public override IEnumerator ForceSolve()
     {
         int[] answer = Module.Sequence.Select(i => i = Module.ApplyRules(i - 1) - 1).Skip(Module.Stage).ToArray();
         yield return OnInteractSequence(Module.Buttons, Wait, answer);

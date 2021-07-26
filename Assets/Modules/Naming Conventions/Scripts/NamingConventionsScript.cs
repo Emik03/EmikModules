@@ -121,10 +121,8 @@ public class NamingConventionsScript : ModuleScript
         }
     }
 
-    private new void Awake()
+    public override void OnAwake()
     {
-        base.Awake();
-
         // Initializes the arrays.
         textStates = Length.RandomBooleans();
         _textIndexes = new int[Length][];

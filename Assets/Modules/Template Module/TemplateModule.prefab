@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 114050330686213098}
   - component: {fileID: 114071754247810658}
   - component: {fileID: 114710077770692622}
+  - component: {fileID: 114202805638549970}
+  - component: {fileID: 114207259791303944}
   m_Layer: 0
   m_Name: TemplateModule
   m_TagString: Untagged
@@ -260,6 +262,29 @@ MonoBehaviour:
   m_Script: {fileID: -381104716, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114202805638549970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1404121747094840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2d4152f7f51394e8c40b9e0513bb3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114207259791303944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1404121747094840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5386604974c1745a3a9210c423c095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TwitchHelpMessage: 
 --- !u!114 &114214198255064756
 MonoBehaviour:
   m_ObjectHideFlags: 1

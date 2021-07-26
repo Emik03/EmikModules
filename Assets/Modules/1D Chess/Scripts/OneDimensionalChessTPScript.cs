@@ -6,7 +6,7 @@ using System.Threading;
 
 public class OneDimensionalChessTPScript : TPScript<OneDimensionalChessScript>
 {
-    public override IEnumerator ProcessTwitchCommand(string command)
+    public override IEnumerator Process(string command)
     {
         yield return null;
 
@@ -40,7 +40,7 @@ public class OneDimensionalChessTPScript : TPScript<OneDimensionalChessScript>
             yield return Strike;
     }
 
-    public override IEnumerator TwitchHandleForcedSolve()
+    public override IEnumerator ForceSolve()
     {
         // This cancels any selected square prior.
         if (Module.last.HasValue)

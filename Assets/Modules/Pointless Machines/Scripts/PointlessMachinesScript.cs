@@ -1,4 +1,5 @@
 ﻿using KeepCoding;
+using PhosphorescenceModule;
 using PointlessMachines;
 using System;
 using System.Collections;
@@ -29,9 +30,6 @@ public class PointlessMachinesScript : ModuleScript
 
     private void Start()
     {
-        if (TP.IsTP)
-            Status.transform.localPosition += new Vector3(0, 0.01f, 0);
-
         Get<AudioScript>().Play(SFX.Pm.Loop, loop: true, volume: 0);
 
         Get<KMSelectable>().Assign(overrideReturn: !IsVR, onInteract: () =>
@@ -64,6 +62,12 @@ public class PointlessMachinesScript : ModuleScript
 
         StartCoroutine(KMBombListen());
         StartCoroutine(MachineHandler(flashes));
+    }
+
+    public override void OnActivate()
+    {
+        if (TP.IsTP)
+            Status.transform.localPosition += new Vector3(0, 0.01f, 0);
     }
 
     private Flash[] GetFlashes()

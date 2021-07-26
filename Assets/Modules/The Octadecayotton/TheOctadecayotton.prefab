@@ -560,7 +560,7 @@ MonoBehaviour:
   ModuleSelectable: {fileID: 114717984972801046}
   SubModuleSelectable: {fileID: 114058525015168996}
   SelectableRenderer: {fileID: 23148952995706464}
-  DimensionOverride: 0
+  DimensionOverride: 3
   RotationOverride: 0
   SlownessOverride: 0
   ForceRotation: 

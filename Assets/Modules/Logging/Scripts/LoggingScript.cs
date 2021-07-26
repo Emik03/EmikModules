@@ -15,10 +15,8 @@ public class LoggingScript : ModuleScript
 
     private const float Black = 1 / 15f;
 
-    private new void Awake()
+    public override void OnAwake()
     {
-        base.Awake();
-
         logs = new Logs();
 
         Application.logMessageReceived += (c, s, l) => Push(c);
@@ -26,10 +24,8 @@ public class LoggingScript : ModuleScript
         StartCoroutine(WaitOneFrame());
     }
 
-    private new void OnDestroy()
+    public override void OnDestruct()
     {
-        base.OnDestroy();
-
         Application.logMessageReceived -= (c, s, l) => Push(c);
     }
 

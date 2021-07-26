@@ -5,7 +5,7 @@ using KeepCoding;
 
 public class LoggingTPScript : TPScript<LoggingScript>
 {
-    public override IEnumerator ProcessTwitchCommand(string command)
+    public override IEnumerator Process(string command)
     {
         string[] split = command.Split();
 
@@ -44,7 +44,7 @@ public class LoggingTPScript : TPScript<LoggingScript>
         }
     }
 
-    public override IEnumerator TwitchHandleForcedSolve()
+    public override IEnumerator ForceSolve()
     {
         yield return null;
 

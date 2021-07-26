@@ -7,20 +7,14 @@ public class UpdogTPScript : TPScript<UpdogScript>
 {
     //private bool _isWait;
 
-    public override IEnumerator ProcessTwitchCommand(string command)
+    public override IEnumerator Process(string command)
     {
         string[] split = command.Split();
 
         const string validFirst = "ndb",
             validSecond = "ldurb";
 
-        if (command == "colorblind")
-        {
-            yield return null;
-            Module.isColorblind = !Module.isColorblind;
-        }
-
-        else if (split.Any(s => s.Length != 2))
+        if (split.Any(s => s.Length != 2))
             yield return SendToChatError("All arguments must be of length 2!");
 
         else if (split.Any(s => !validFirst.Contains(s[0].ToLower())))
@@ -36,7 +30,7 @@ public class UpdogTPScript : TPScript<UpdogScript>
         }
     }
 
-    public override IEnumerator TwitchHandleForcedSolve()
+    public override IEnumerator ForceSolve()
     {
         while (!Module.IsSolved && !Module.HasStruck)
         {

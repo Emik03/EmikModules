@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NamingConventionsTPScript : TPScript<NamingConventionsScript>
 {
-    public override IEnumerator ProcessTwitchCommand(string command)
+    public override IEnumerator Process(string command)
     {
         yield return null;
         int[] numbers = command.ToCharArray().ToNumbers(min: 1, max: 6, minLength: 1);
@@ -15,7 +15,7 @@ public class NamingConventionsTPScript : TPScript<NamingConventionsScript>
             FlipCommand(numbers));
     }
 
-    public override IEnumerator TwitchHandleForcedSolve()
+    public override IEnumerator ForceSolve()
     {
         int[] answer = Enumerable.Range(1, 6).Where(i => Module.textStates[i] != Module.Solutions[Module.DataType][i - 1]).ToArray();
         yield return FlipCommand(answer);

@@ -326,7 +326,7 @@ public class TwitchPlaysID : MonoBehaviour
 		Component[] allComponents = Module.gameObject.GetComponentsInChildren<Component>(true);
 		foreach (Component component in allComponents)
 		{
-			System.Type type = component.GetType();
+			System.Type type = component.GetType().BaseType;
 			MethodInfo method = type.GetMethod("ProcessTwitchCommand", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 			MethodInfo forceSolveMethod = type.GetMethod("TwitchHandleForcedSolve", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 			if (method == null && forceSolveMethod == null) continue;

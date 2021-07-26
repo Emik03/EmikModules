@@ -16,7 +16,7 @@ public class UpdogScript : ModuleScript
     internal bool[] ValidMoves { get { return _maze.GetValidMovements(ref _position); } }
     internal int OrderOffset { get { return _order[_interactCount % 4] ? 4 : 0; } }
 
-    internal bool isColorblind, isStrike;
+    internal bool isStrike;
 
     private IntTuple _position, _initialPosition;
     private String[] _maze, _initialMaze;
@@ -26,8 +26,6 @@ public class UpdogScript : ModuleScript
 
     public override void OnActivate()
     {
-        isColorblind = Get<KMColorblindMode>().ColorblindModeActive;
-
         Arrows.Assign(onInteract: ArrowsInteract);
         Center.Assign(onInteract: CenterInteract);
 
@@ -74,6 +72,8 @@ public class UpdogScript : ModuleScript
         }
     }
 
+    public override void OnColorblindChanged(bool isEnabled) { }
+
     private void ArrowsInteract(int i)
     {
         if (IsSolved)
@@ -100,7 +100,7 @@ public class UpdogScript : ModuleScript
 
         while (!IsSolved)
         {
-            UpdateCenter(isColorblind ? colorblind.ElementAtWrap(i) : text, colors.ElementAtWrap(i));
+            UpdateCenter(IsColorblind ? colorblind.ElementAtWrap(i) : text, colors.ElementAtWrap(i));
             yield return new WaitForSecondsRealtime(Time);
             i++;
         }

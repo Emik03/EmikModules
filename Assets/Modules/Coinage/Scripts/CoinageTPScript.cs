@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CoinageTPScript : TPScript<CoinageScript>
 {
-    public override IEnumerator ProcessTwitchCommand(string command)
+    public override IEnumerator Process(string command)
     {
         yield return null;
 
@@ -23,7 +23,7 @@ public class CoinageTPScript : TPScript<CoinageScript>
             yield return new[] { Module.Coins[FirstChars.IndexOf(command[0].ToLower()) + (SecondChars.IndexOf(command[1].ToLower()) * 8)] };
     }
 
-    public override IEnumerator TwitchHandleForcedSolve()
+    public override IEnumerator ForceSolve()
     {
         Module.Coins[Module.GetExampleAnswer()].OnInteract();
 

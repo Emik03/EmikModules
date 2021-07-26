@@ -10,7 +10,7 @@ public class LinqTPScript : TPScript<LinqScript>
 {
     private bool _isRunningTwitchCommand;
 
-    public override IEnumerator ProcessTwitchCommand(string command)
+    public override IEnumerator Process(string command)
     {
         string[] split = command.Split();
 
@@ -40,7 +40,7 @@ public class LinqTPScript : TPScript<LinqScript>
 
     }
 
-    public override IEnumerator TwitchHandleForcedSolve()
+    public override IEnumerator ForceSolve()
     {
         yield return null;
 
