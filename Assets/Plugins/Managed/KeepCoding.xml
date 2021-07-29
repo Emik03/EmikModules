@@ -746,7 +746,7 @@
              Joins <see cref="P:KeepCoding.Internal.TupleBase.ToArray"/> to a string, with a space as a delimiter.
              </summary>
              <remarks>
-             Each element of <see cref="P:KeepCoding.Internal.TupleBase.ToArray"/> is passed into <see cref="M:KeepCoding.Helper.UnwrapToString``1(``0,System.Boolean,System.String)"/> to unpack iterators and allow each element to be seen. For more details about stringification, refer to <see cref="M:System.Object.ToString"/>.
+             Each element of <see cref="P:KeepCoding.Internal.TupleBase.ToArray"/> is passed into <see cref="M:KeepCoding.Helper.Stringify``1(``0)"/> to unpack iterators and allow each element to be seen. For more details about stringification, refer to <see cref="M:System.Object.ToString"/>.
              </remarks>
              <example>
              The following example illustrates how a tuple gets converted to a <see cref="T:System.String"/>.
@@ -767,8 +767,8 @@
              </code>
              </example>
              <seealso cref="P:KeepCoding.Internal.TupleBase.ToArray"/>
-             <seealso cref="M:KeepCoding.Helper.UnwrapToString``1(``0,System.Boolean,System.String)"/>
-             <returns><see cref="P:KeepCoding.Internal.TupleBase.ToArray"/> from <see cref="M:KeepCoding.Helper.UnwrapToString``1(``0,System.Boolean,System.String)"/>.</returns>
+             <seealso cref="M:KeepCoding.Helper.Stringify``1(``0)"/>
+             <returns><see cref="P:KeepCoding.Internal.TupleBase.ToArray"/> from <see cref="M:KeepCoding.Helper.Stringify``1(``0)"/>.</returns>
         </member>
         <member name="M:KeepCoding.Internal.TupleBase.GetEnumerator">
              <summary>
@@ -2483,11 +2483,10 @@
             <summary>
             Determines if a <see langword="class"/> implements a given method.
             </summary>
-            <typeparam name="T">The <see cref="T:System.Type"/> to check all <see cref="T:System.Reflection.MethodInfo"/>s.</typeparam>
-            <param name="type">The type to check.</param>
+            <param name="type">The type to check all <see cref="T:System.Reflection.MethodInfo"/>s.</param>
             <param name="method">The method to get.</param>
             <param name="flags">The <see cref="T:System.Reflection.BindingFlags"/> to use in <see cref="M:System.Type.GetMethod(System.String,System.Reflection.BindingFlags)"/>.</param>
-            <returns><see langword="true"/> if <typeparamref name="T"/> has <paramref name="method"/>.</returns>
+            <returns><see langword="true"/> if <paramref name="type"/> has <paramref name="method"/>.</returns>
         </member>
         <member name="M:KeepCoding.Helper.IsBetween(System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -2766,6 +2765,15 @@
             <param name="toBaseNumber">Which base to convert it to.</param>
             <returns>The integer, but in the base specified.</returns>
         </member>
+        <member name="M:KeepCoding.Helper.Combine``1(``0,System.String)">
+            <summary>
+            Conbines the iterator into one long <see cref="T:System.String"/>.
+            </summary>
+            <typeparam name="T">The type of the <paramref name="source"/>.</typeparam>
+            <param name="source">The iterator.</param>
+            <param name="delimiter">The separator between each element.</param>
+            <returns>A <see cref="T:System.String"/> representing all elements in <paramref name="source"/> with the separator <paramref name="delimiter"/>.</returns>
+        </member>
         <member name="M:KeepCoding.Helper.Find(System.Collections.Generic.List{System.String},System.String)">
             <summary>
             Finds a file name within a list of directories, or <see langword="null"/> if none is found.
@@ -2835,29 +2843,23 @@
             <param name="separator">The separator to split <paramref name="source"/> by.</param>
             <returns>An <see cref="T:System.Array"/> where each index is where <paramref name="separator"/> was found in <paramref name="source"/>.</returns>
         </member>
+        <member name="M:KeepCoding.Helper.Stringify``1(``0)">
+            <summary>
+            Converts <paramref name="source"/> into a <see cref="T:System.String"/> representation of <paramref name="source"/>.
+            </summary>
+            <remarks>
+            Unlike <see cref="M:System.Object.ToString"/>, the individual items inside <paramref name="source"/> if it is an iterator is deconstructed.
+            </remarks>
+            <typeparam name="T">The format of the string.</typeparam>
+            <param name="source">The item to represent as a <see cref="T:System.String"/></param>
+            <returns><paramref name="source"/> as a <see cref="T:System.String"/>.</returns>
+        </member>
         <member name="M:KeepCoding.Helper.ToOrdinal(System.Int32)">
             <summary>
             Converts a number to the ordinal as <see cref="T:System.String"/>.
             </summary>
             <param name="i">The number to convert to an ordinal.</param>
             <returns><paramref name="i"/> as an ordinal. (<see cref="T:System.String"/>)</returns>
-        </member>
-        <member name="M:KeepCoding.Helper.UnwrapToString``1(``0,System.Boolean,System.String)">
-            <summary>
-            Unwraps any object, whether it be a class, list, tuple, or any other data and concatenates it into a string.
-            </summary>
-            <param name="item">The object to unwrap.</param>
-            <param name="getVariables">Whether it should search recursively inside the variable and yield return the elements inside <paramref name="item"/>.</param>
-            <param name="delimiter">The characters in-between each element.</param>
-            <returns>A string consisting of all values from <paramref name="item"/>.</returns>
-        </member>
-        <member name="M:KeepCoding.Helper.Unwrap``1(``0,System.Boolean)">
-            <summary>
-            Unwraps any object, whether it be a class, list, tuple, or any other data.
-            </summary>
-            <param name="source">The object to unwrap.</param>
-            <param name="isRecursive">Whether it should search inside the variable and yield return the elements inside <paramref name="source"/>.</param>
-            <returns>An <see cref="T:System.Object"/> <see cref="T:System.Array"/> of all elements within <paramref name="source"/>.</returns>
         </member>
         <member name="M:KeepCoding.Helper.Method(UnityEngine.LogType)">
             <summary>
@@ -3034,20 +3036,12 @@
             <param name="source">The string to check for null and empty.</param>
             <param name="message">The optional message to throw if null or empty. Leaving it default will throw a default message.</param>
         </member>
-        <member name="M:KeepCoding.Helper.Unwrap(System.Collections.IEnumerable,System.Boolean)">
-            <summary>
-            Unwraps any <see cref="T:System.Collections.IEnumerable"/> of type <see cref="T:System.Object"/>, which ends up flattening it as a <see cref="T:System.Array"/> of type <see cref="T:System.Object"/>.
-            </summary>
-            <param name="source">The object to unwrap.</param>
-            <param name="isRecursive">Whether it should search inside the variable and yield return the elements inside <paramref name="source"/>.</param>
-            <returns>An <see cref="T:System.Object"/> <see cref="T:System.Array"/> of all elements within <paramref name="source"/>.</returns>
-        </member>
         <member name="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Object})">
             <summary>
             Flattens an <see cref="T:System.Collections.IEnumerator"/> such that nested <see cref="T:System.Collections.IEnumerator"/> calls get replaced with the output of those calls.
             </summary>
             <param name="source">The <see cref="T:System.Collections.IEnumerator"/> to flatten.</param>
-            <param name="unwrap">Determines if it should call <see cref="M:KeepCoding.Helper.Unwrap``1(``0,System.Boolean)"/> for the item.</param>
+            <param name="unwrap">Determines if it should call <see cref="M:KeepCoding.Helper.Stringify``1(``0)"/> for the item.</param>
             <returns><paramref name="source"/> where <see langword="yield"/> <see langword="return"/> <see cref="T:System.Collections.IEnumerator"/>s gets replaced with the output of those calls.</returns>
         </member>
         <member name="M:KeepCoding.Helper.GetUnsolvedModuleIDs(KMBombInfo)">
@@ -4814,7 +4808,7 @@
             <summary>
             Converts the object to a string.
             </summary>
-            <returns><see cref="P:KeepCoding.ColorblindInfo.Modules"/> unwrapped with <see cref="M:KeepCoding.Helper.UnwrapToString``1(``0,System.Boolean,System.String)"/>.</returns>
+            <returns><see cref="P:KeepCoding.ColorblindInfo.Modules"/> unwrapped with <see cref="M:KeepCoding.Helper.Stringify``1(``0)"/>.</returns>
         </member>
         <member name="M:KeepCoding.ColorblindInfo.Deserialize(System.String,Newtonsoft.Json.JsonSerializerSettings)">
             <summary>
@@ -5224,7 +5218,7 @@
             <summary>
             Converts the object to a string.
             </summary>
-            <returns><see cref="P:KeepCoding.ModInfo.Values"/> unwrapped with <see cref="M:KeepCoding.Helper.UnwrapToString``1(``0,System.Boolean,System.String)"/>.</returns>
+            <returns><see cref="P:KeepCoding.ModInfo.Values"/> unwrapped with <see cref="M:KeepCoding.Helper.Stringify``1(``0)"/>.</returns>
         </member>
         <member name="M:KeepCoding.ModInfo.Deserialize(System.String,Newtonsoft.Json.JsonSerializerSettings)">
             <summary>
@@ -7467,6 +7461,11 @@
             <exception cref="T:System.OperationCanceledException"></exception>
             <exception cref="T:System.IO.FileNotFoundException"></exception>
         </member>
+        <member name="F:KeepCoding.ModuleScript.Colorblind">
+            <summary>
+            Contains colorblind information.
+            </summary>
+        </member>
         <member name="P:KeepCoding.ModuleScript.TP">
             <summary>
             Gets the Twitch Plays <see cref="T:UnityEngine.Component"/> attached to this <see cref="T:UnityEngine.GameObject"/>.
@@ -7485,14 +7484,14 @@
             Contains either <see cref="T:KMBombModule"/> or <see cref="T:KMNeedyModule"/>, and allows for running commands through context.
             </summary>
         </member>
-        <member name="P:KeepCoding.ModuleScript.Sounds">
-            <summary>
-            Contains an instance for every <see cref="T:KeepCoding.Sound"/> played by this module using <see cref="M:KeepCoding.ModuleScript.PlaySound(UnityEngine.Transform,System.Boolean,KeepCoding.Sound[])"/> or any of its overloads.
-            </summary>
-        </member>
         <member name="P:KeepCoding.ModuleScript.Modules">
             <summary>
             Contains every modded module in <see cref="P:KeepCoding.ModuleScript.Bomb"/>, separated by type.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.ModuleScript.Sounds">
+            <summary>
+            Contains an instance for every <see cref="T:KeepCoding.Sound"/> played by this module using <see cref="M:KeepCoding.ModuleScript.PlaySound(UnityEngine.Transform,System.Boolean,KeepCoding.Sound[])"/> or any of its overloads.
             </summary>
         </member>
         <member name="M:KeepCoding.ModuleScript.Assign(System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
@@ -8452,7 +8451,7 @@
         </member>
         <member name="M:KeepCoding.PathManager.LoadLibrary(System.String,System.String)">
             <summary>
-            Loads a library by searching for the bundle. Do not run this on the Editor.
+            Loads a library by searching for the bundle.
             </summary>
             <remarks>
             If the library has already been loaded, then this method will prematurely halt.
@@ -8465,7 +8464,7 @@
         </member>
         <member name="M:KeepCoding.PathManager.LoadLibrary(System.Type,System.String)">
             <summary>
-            Loads a library by searching for the bundle. Do not run this on the Editor.
+            Loads a library by searching for the bundle.
             </summary>
             <remarks>
             If the library has already been loaded, then this method will prematurely halt.
@@ -8478,7 +8477,7 @@
         </member>
         <member name="M:KeepCoding.PathManager.LoadLibrary``1(``0,System.String)">
             <summary>
-            Loads a library by searching for the bundle. Do not run this on the Editor.
+            Loads a library by searching for the bundle.
             </summary>
             <remarks>
             If the library has already been loaded, then this method will prematurely halt.

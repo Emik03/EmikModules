@@ -58,7 +58,7 @@ public class PointlessMachinesScript : ModuleScript
 
         answer = flashes.Select(f => _conversion[f]).ToArray();
 
-        Log("The answer is {0}.".Form(answer.UnwrapToString(delimiter: ", then ")));
+        Log("The answer is {0}.".Form(answer.Combine(delimiter: ", then ")));
 
         StartCoroutine(KMBombListen());
         StartCoroutine(MachineHandler(flashes));
@@ -77,12 +77,12 @@ public class PointlessMachinesScript : ModuleScript
         if (IsEditor)
         {
             if (Flashes.Length != 6 || Flashes.Distinct().Count() != 5)
-                throw new ArgumentException("Flashes must be length 6 and have all colors: " + Flashes.UnwrapToString());
+                throw new ArgumentException("Flashes must be length 6 and have all colors: " + Flashes.Combine());
 
             comp = Flashes.Select((f, i) => f.ToTuple(i)).Where(t => t.Item1 == Flashes.Indistinct().First()).Select(t => t.Item2).ToArray();
 
             if (Math.Abs(comp[0] - comp[1]) == 1)
-                throw new ArgumentException("Flashes cannot have any of the same members be neighbours: " + Flashes.UnwrapToString());
+                throw new ArgumentException("Flashes cannot have any of the same members be neighbours: " + Flashes.Combine());
 
             return Flashes;
         }
@@ -94,7 +94,7 @@ public class PointlessMachinesScript : ModuleScript
             flashes = default(Flash).GetValues().Append(default(Flash).GetValues().PickRandom()).Shuffle();
             comp = flashes.Select((f, i) => f.ToTuple(i)).Where(t => t.Item1 == flashes.Indistinct().First()).Select(t => t.Item2).ToArray();
         }
-        while (Math.Abs(comp[0] - comp[1]) == 1);
+        while (Math.Abs(comp[0] - comp[1]) == 1); 
 
         return flashes;
     }
@@ -168,7 +168,7 @@ public class PointlessMachinesScript : ModuleScript
         if (current == flashes.Indistinct().First())
             return AddEntry(current.Call(c => Log("The 2nd condition is used because {0} shows up twice.".Form(c))), Calculate(flashes, indicesUsed, index - 1, iter - 1).Call(c => Log("The {0} variable in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))), GetConstantView(flashes.ElementAtWrap(flashes.Select((f, n) => f.ToTuple(n)).Where(t => t.Item1 == current && t.Item2 != index).Select(t => t.Item2).First() + 1).Call(c => Log("The {0} constant in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))))).Call(c => Log("{0} is equal to {1}.".Form(current, c)));
 
-        if (flashes.Reverse().Select((f, n) => f.ToTuple(n)).Where(t => t.Item1 == flashes.Indistinct().First()).Any(t => t.Item2 == index))
+        if (flashes.ToArray().Reverse().Select((f, n) => f.ToTuple(n)).Where(t => t.Item1 == flashes.Indistinct().First()).Any(t => t.Item2 == index))
             return AddEntry(current.Call(c => Log("The 3rd condition is used because {0} is opposite of a non-unique color.".Form(c))), Calculate(flashes, indicesUsed, index + 3, iter - 1).Call(c => Log("The {0} variable in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))), GetConstantView(flashes.ElementAtWrap(2 - index).Call(c => Log("The {0} constant in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))))).Call(c => Log("{0} is equal to {1}.".Form(current, c)));
 
         if (index >= flashes.Length / 2)
