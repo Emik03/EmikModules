@@ -46,7 +46,6 @@ namespace PhosphorescenceModule
                     return false;
                 }
 
-
                 if (!_init.isCountingDown) // Is it inactive? Make it active.
                     _pho.StartCoroutine(animate.Run());
                 else if (!_init.isAnimated) // Is it not animating? Continue.
