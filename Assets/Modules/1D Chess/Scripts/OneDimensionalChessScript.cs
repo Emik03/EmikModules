@@ -31,7 +31,7 @@ public class OneDimensionalChessScript : ModuleScript
         }
     }
 
-    internal string Alphabet { get { return "abcdefghijklmnopqrstuvwxyz".Substring(0, Debugger.IsEnabled ? Debugger.Length : _boardLength); } }
+    internal string Alphabet { get { return Helper.Alphabet.ToLowerInvariant().Substring(0, Debugger.IsEnabled ? Debugger.Length : _boardLength); } }
 
     internal bool isReady, isWinning;
     internal int? last;
@@ -66,7 +66,7 @@ public class OneDimensionalChessScript : ModuleScript
         {
             try
             {
-                PathManager.LoadLibrary(this, Engine.LibraryName);
+                PathManager.LoadLibrary(Engine.LibraryName);
             }
             catch (FileNotFoundException e)
             {

@@ -116,7 +116,7 @@ public class HexOS : MonoBehaviour
         if (!Application.isEditor)
         {
             if (_videoClips == null)
-                _videoClips = PathManager.GetAssets<VideoClip>(typeof(HexOS), "hex");
+                _videoClips = PathManager.GetAssets<VideoClip>("hex");
 
             Clips = _videoClips;
         }
