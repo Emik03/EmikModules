@@ -7867,8 +7867,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e883b24b5c1b8a42a7750d8e501379b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TwitchHelpMessage: '!{0} <###...> | Range: 1-6, flips bottom 6 buttons, then presses
-    the first button to submit | Example: !{0} 123'
+  TwitchHelpMessage: '!{0} <###...> | Range: 1-6, flips bottom 6 buttons | Example:
+    !{0} 123 | !{0} submit <odd/even> | Presses the top button when the last digit
+    of the timer is odd/even.'
+  TwitchManualCode: 
+  TwitchAbandonModule: []
 --- !u!114 &114916480317687756
 MonoBehaviour:
   m_ObjectHideFlags: 1
