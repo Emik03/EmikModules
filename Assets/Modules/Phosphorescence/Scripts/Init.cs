@@ -180,7 +180,9 @@ namespace PhosphorescenceModule
             }
 
             // Solves the module.
-            pho.PlaySound(SFX.Pho.Voice.ChallengeComplete);
+            if (pho.Info.GetUnsolvedModuleNames().Count > 1)
+                pho.PlaySound(SFX.Pho.Voice.ChallengeComplete);
+
             pho.Module.HandlePass();
             yield return select.animate.PostSolve(pho, displayStates);
         }

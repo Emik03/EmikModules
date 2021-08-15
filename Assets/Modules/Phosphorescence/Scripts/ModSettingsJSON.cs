@@ -28,7 +28,7 @@ namespace PhosphorescenceModule
         /// <summary>
         /// Gets the values from ModSettings.
         /// </summary>
-        /// <param name="vrMode">Used for initalization only.</param>
+        /// <param name="cruelMode">Used for initalization only.</param>
         /// <param name="streamDelay">Determines the timer.</param>
         public static void Get(PhosphorescenceScript pho, out bool cruelMode, out int streamDelay)
         {
