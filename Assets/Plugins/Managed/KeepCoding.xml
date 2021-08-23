@@ -2815,6 +2815,7 @@
             <summary>
             Calculates the rem-euclid modulo, which allows negative numbers to be properly calculated.
             </summary>
+            <exception cref="T:System.DivideByZeroException"></exception>
             <param name="number">The left-hand side operator</param>
             <param name="modulo">The right-hand side operator.</param>
             <returns><paramref name="number"/> mod <paramref name="modulo"/>.</returns>
@@ -2887,6 +2888,7 @@
             <summary>
             Calculates the rem-euclid modulo, which allows negative numbers to be properly calculated.
             </summary>
+            <exception cref="T:System.DivideByZeroException"></exception>
             <param name="number">The left-hand side operator</param>
             <param name="modulo">The right-hand side operator.</param>
             <returns><paramref name="number"/> mod <paramref name="modulo"/>.</returns>
@@ -2987,10 +2989,10 @@
         </member>
         <member name="M:KeepCoding.Helper.NameOfAssembly(System.Type)">
             <summary>
-            Gets the assembly's directory where the type <paramref name="type"/> exists.
+            Gets the assembly name where a <see cref="T:System.Type"/> comes from.
             </summary>
-            <param name="type">The type to get the assembly directory of.</param>
-            <returns>The path to the directory of the assembly where the type <paramref name="type"/> comes from.</returns>
+            <param name="type">The type to get the assembly name from.</param>
+            <returns>The <see cref="T:System.Reflection.Assembly"/> name from <paramref name="type"/>.</returns>
         </member>
         <member name="M:KeepCoding.Helper.NullOrEmptyCheck(System.String,System.String)">
             <summary>
@@ -3536,9 +3538,9 @@
             <exception cref="T:System.NullReferenceException"></exception>
             <typeparam name="T">The type to catch.</typeparam>
             <typeparam name="TResult">The return type.</typeparam>
-            <param name="action">The action to try.</param>
+            <param name="func">The action to try.</param>
             <param name="caught">The action to run when an exception is caught.</param>
-            <returns><paramref name="action"/> with <paramref name="caught"/> if <typeparamref name="T"/> is caught.</returns>
+            <returns><paramref name="func"/> with <paramref name="caught"/> if <typeparamref name="T"/> is caught.</returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Catch``3(System.Func{``2},System.Func{System.Exception,``2})">
             <summary>
@@ -3551,9 +3553,9 @@
             <typeparam name="T1">The first type to catch.</typeparam>
             <typeparam name="T2">The second type to catch.</typeparam>
             <typeparam name="TResult">The return type.</typeparam>
-            <param name="action">The action to try.</param>
+            <param name="func">The action to try.</param>
             <param name="caught">The action to run when an exception is caught.</param>
-            <returns><paramref name="action"/> with <paramref name="caught"/> if the specified <see cref="T:System.Exception"/>s are caught.</returns>
+            <returns><paramref name="func"/> with <paramref name="caught"/> if the specified <see cref="T:System.Exception"/>s are caught.</returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Catch``4(System.Func{``3},System.Func{System.Exception,``3})">
             <summary>
@@ -3567,9 +3569,9 @@
             <typeparam name="T2">The second type to catch.</typeparam>
             <typeparam name="T3">The third type to catch.</typeparam>
             <typeparam name="TResult">The return type.</typeparam>
-            <param name="action">The action to try.</param>
+            <param name="func">The action to try.</param>
             <param name="caught">The action to run when an exception is caught.</param>
-            <returns><paramref name="action"/> with <paramref name="caught"/> if the specified <see cref="T:System.Exception"/>s are caught.</returns>
+            <returns><paramref name="func"/> with <paramref name="caught"/> if the specified <see cref="T:System.Exception"/>s are caught.</returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Catch``5(System.Func{``4},System.Func{System.Exception,``4})">
             <summary>
@@ -3584,9 +3586,9 @@
             <typeparam name="T3">The third type to catch.</typeparam>
             <typeparam name="T4">The fourth type to catch.</typeparam>
             <typeparam name="TResult">The return type.</typeparam>
-            <param name="action">The action to try.</param>
+            <param name="func">The action to try.</param>
             <param name="caught">The action to run when an exception is caught.</param>
-            <returns><paramref name="action"/> with <paramref name="caught"/> if the specified <see cref="T:System.Exception"/>s are caught.</returns>
+            <returns><paramref name="func"/> with <paramref name="caught"/> if the specified <see cref="T:System.Exception"/>s are caught.</returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Checked(System.Action)">
             <summary>
@@ -6266,19 +6268,10 @@
         </member>
         <member name="M:KeepCoding.ColorblindInfo.Deserialize(System.String,Newtonsoft.Json.JsonSerializerSettings)">
             <summary>
-            Deserializes a ColorblindMode.json file.
+            Deserializes a ColorblindMode.json file. An <see cref="T:System.IO.IOException"/> will make it return a new <see cref="T:KeepCoding.ColorblindInfo"/> instance with no arguments.
             </summary>
-            <exception cref="T:System.ArgumentException"></exception>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:System.IO.DirectoryNotFoundException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <exception cref="T:System.IO.IOException"></exception>
-            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:Newtonsoft.Json.JsonException"></exception>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
-            <exception cref="T:System.NullReferenceException"></exception>
-            <exception cref="T:System.IO.PathTooLongException"></exception>
-            <exception cref="T:System.Security.SecurityException"></exception>
-            <exception cref="T:System.UnauthorizedAccessException"></exception>
             <param name="path">The path of the file to deserialize.</param>
             <param name="settings">The settings for the serialization.</param>
             <returns><paramref name="path"/> deserialized as <see cref="T:KeepCoding.ColorblindInfo"/>.</returns>
@@ -6838,19 +6831,10 @@
         </member>
         <member name="M:KeepCoding.ModInfo.Deserialize(System.String,Newtonsoft.Json.JsonSerializerSettings)">
             <summary>
-            Deserializes a modInfo.json file.
+            Deserializes a modInfo.json file. An <see cref="T:System.IO.IOException"/> will make it return a new <see cref="T:KeepCoding.ColorblindInfo"/> instance with no arguments.
             </summary>
-            <exception cref="T:System.ArgumentException"></exception>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:System.IO.DirectoryNotFoundException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <exception cref="T:System.IO.IOException"></exception>
-            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:Newtonsoft.Json.JsonException"></exception>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
-            <exception cref="T:System.NullReferenceException"></exception>
-            <exception cref="T:System.IO.PathTooLongException"></exception>
-            <exception cref="T:System.Security.SecurityException"></exception>
-            <exception cref="T:System.UnauthorizedAccessException"></exception>
             <param name="path">The path of the file to deserialize.</param>
             <param name="settings">The settings for the serialization.</param>
             <returns><paramref name="path"/> deserialized as <see cref="T:KeepCoding.ModInfo"/>.</returns>
@@ -8469,8 +8453,9 @@
             <summary>
             The version number of the entire mod.
             </summary>
-            <exception cref="T:System.OperationCanceledException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
+            <exception cref="T:Newtonsoft.Json.JsonException"></exception>
+            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
         </member>
         <member name="F:KeepCoding.ModuleScript.Colorblind">
             <summary>
@@ -8712,7 +8697,7 @@
         </member>
         <member name="T:KeepCoding.TPScript`1">
             <summary>
-            Base class for TwitchPlays support for solvable and needy modded modules in Keep Talking and Nobody Explodes. 
+            Base class for TwitchPlays support for solvable and needy modded modules in Keep Talking and Nobody Explodes.
             </summary>
         </member>
         <member name="P:KeepCoding.TPScript`1.IsCancelCommand">
@@ -9013,6 +8998,311 @@
             On the Editor, these properties will return default values. Check the XML documentation to see the value it returns.
             </remarks>
         </member>
+        <member name="T:KeepCoding.Game.KTInputManager">
+            <summary>
+            Allows access relating to how the game is being interacted with.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Game.KTInputManager.IsCurrentControlTypeVR">
+            <summary>
+            Determines if the current way the game is being controlled is VR-related.
+            </summary>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.KTInputManager.CurrentControlType">
+            <summary>
+            The current way the game is being controlled.
+            </summary>
+            <remarks>
+            Default: <see cref="F:KeepCoding.Game.ControlType.Mouse"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="T:KeepCoding.Game.MasterAudio">
+            <summary>
+            Allows access relating to the game's main master channel for audio.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Game.MasterAudio.IsGroupInfo">
+            <summary>
+            Determines whether a given string has a group info.
+            </summary>
+            <remarks>
+            Default: <see langword="true"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.MasterAudio.GroupInfo">
+            <summary>
+            Gets the group info of a given string. To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to AudioGroupInfo type to restore its functionality.
+            </summary>
+            <remarks>
+            Default: Returns the <see cref="T:System.String"/> argument given boxed as <see cref="T:System.Object"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="T:KeepCoding.Game.Mission">
+            <summary>
+            Allows access relating to the current mission.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Game.Mission.IsPacingEvents">
+            <summary>
+            Determines whether or not all pacing events are enabled. Default: <see langword="false"/>.
+            </summary>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.Mission.Description">
+            <summary>
+            The description as it appears in the bomb binder.
+            </summary>
+            <remarks>
+            Default: "Everybody has to start somewhere. Let's just hope it doesn't end here too.\n\nMake sure your experts have the manual and are ready to help.".
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.Mission.DisplayName">
+            <summary>
+            The mission name as it appears in the bomb binder.
+            </summary>
+            <remarks>
+            Default: "The First Bomb"
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.Mission.ID">
+            <summary>
+            The ID of the mission.
+            </summary>
+            <remarks>
+            Default: "firsttime"
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.Mission.GeneratorSetting">
+            <summary>
+            Gets the generator setting of the mission.
+            </summary>
+            <remarks>
+            New instance of <see cref="P:KeepCoding.Game.Mission.GeneratorSetting"/>, default constructor.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="T:KeepCoding.Game.ModManager">
+            <summary>
+            Allows access to methods relating mod paths.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Game.ModManager.GetDisabledModPaths">
+            <summary>
+            Gets all of the disabled mod paths.
+            </summary>
+            <remarks>
+            Default: New instance of <see cref="T:System.Collections.Generic.List`1"/>, with no elements.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.ModManager.GetAllModPathsFromSource">
+            <summary>
+            Gets all of the mod paths within the <see cref="T:KeepCoding.Game.ModSourceEnum"/> constraint.
+            </summary>
+            <remarks>
+            Default: New instance of <see cref="T:System.Collections.Generic.List`1"/>, with no elements.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.ModManager.GetEnabledModPaths">
+            <summary>
+            Gets all of the enabled mod paths within the <see cref="T:KeepCoding.Game.ModSourceEnum"/> constraint.
+            </summary>
+            <remarks>
+            Default: New instance of <see cref="T:System.Collections.Generic.List`1"/>, with no elements.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="T:KeepCoding.Game.PlayerSettings">
+            <summary>
+            Allows access into the player settings from the game. Do not use this class in the unity editor. 
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.InvertTiltControls">
+            <summary>
+            Determines if vertical tilting is flipped or not.
+            </summary>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.LockMouseToWindow">
+            <summary>
+            Determines if the option to lock the mouse to the window is enabled.
+            </summary>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.ShowLeaderBoards">
+            <summary>
+            Determines if the option to show the leaderboards from the pamphlet.
+            </summary>
+            <remarks>
+            Default: <see langword="true"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.ShowRotationUI">
+            <summary>
+            Determines if the option to show the rotation of the User Interface is enabled.
+            </summary>
+            <remarks>
+            Default: <see langword="true"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.ShowScanline">
+            <summary>
+            Determines if the option to show scanlines is enabled.
+            </summary>
+            <remarks>
+            Default: <see langword="true"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.SkipTitleScreen">
+            <summary>
+            Determines if the option to skip the title screen is enabled.
+            </summary>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.RumbleEnabled">
+            <summary>
+            Determines if the VR or regular controllers vibrate.
+            </summary>
+            <remarks>
+            Default: <see langword="true"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.TouchpadInvert">
+            <summary>
+            Determines if the touchpad controls are inverted.
+            </summary>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.UseModsAlways">
+            <summary>
+            Determines if the option to always use mods is enabled.
+            </summary>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.UseParallelModLoading">
+            <summary>
+            Determines if the option to use parallel/simultaneous mod loading is enabled.
+            </summary>
+            <remarks>
+            Default: <see langword="false"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.VRModeRequested">
+            <summary>
+            Determines if VR mode is requested.
+            </summary>
+            <remarks>
+            Default: <see langword="true"/>.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.AntiAliasing">
+            <summary>
+            The intensity of anti-aliasing currently on the game. Ranges 0 to 8.
+            </summary>
+            <remarks>
+            Default: 8.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.MusicVolume">
+            <summary>
+            The current music volume from the dossier menu. Ranges 0 to 100.
+            </summary>
+            <remarks>
+            Default: 100.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.SFXVolume">
+            <summary>
+            The current sound effects volume from the dosssier menu. Ranges 0 to 100.
+            </summary>
+            <remarks>
+            Default: 100.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.VSync">
+            <summary>
+            Determines if VSync is on or off.
+            </summary>
+            <remarks>
+            Default: 1.
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.PlayerSettings.LanguageCode">
+            <summary>
+            The current language code.
+            </summary>
+            <remarks>
+            Default: "en".
+            </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
         <member name="T:KeepCoding.Game.ControlType">
             <summary>
             Determines how the game is controlled.
@@ -9068,250 +9358,27 @@
             The mod is stored within the workshop folder.
             </summary>
         </member>
-        <member name="T:KeepCoding.Game.KTInputManager">
+        <member name="T:KeepCoding.Game.References">
             <summary>
-            Allows access relating to how the game is being interacted with.
+            Determines what references are used within this class.
             </summary>
         </member>
-        <member name="P:KeepCoding.Game.KTInputManager.IsCurrentControlTypeVR">
+        <member name="F:KeepCoding.Game.References.None">
             <summary>
-            Determines if the current way the game is being controlled is VR-related.
+            Implies that no reference should be used, and default values are returned.
+            </summary>
+        </member>
+        <member name="F:KeepCoding.Game.References.Ktane">
+            <summary>
+            Implies that the Assembly-CSharp.dll from Keep Talking and Nobody Explodes be used, and its values are returned.
+            </summary>
+        </member>
+        <member name="F:KeepCoding.Game.References.KtaneRewritten">
+            <summary>
+            Implies that the library from TheDarkSid3r's Keep Talking and Nobody Explodes Rewritten be used, and its values are returned.
             </summary>
             <remarks>
-            Default: <see langword="false"/>.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.KTInputManager.CurrentControlType">
-            <summary>
-            The current way the game is being controlled.
-            </summary>
-            <remarks>
-            Default: <see cref="F:KeepCoding.Game.ControlType.Mouse"/>.
-            </remarks>
-        </member>
-        <member name="T:KeepCoding.Game.MasterAudio">
-            <summary>
-            Allows access relating to the game's main master channel for audio.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Game.MasterAudio.IsGroupInfo">
-            <summary>
-            Determines whether a given string has a group info.
-            </summary>
-            <remarks>
-            Default: <see langword="true"/>.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.MasterAudio.GroupInfo">
-            <summary>
-            Gets the group info of a given string. To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to AudioGroupInfo type to restore its functionality.
-            </summary>
-            <remarks>
-            Default: <see langword="null"/>.
-            </remarks>
-        </member>
-        <member name="T:KeepCoding.Game.Mission">
-            <summary>
-            Allows access relating to the current mission.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Game.Mission.IsPacingEvents">
-            <summary>
-            Determines whether or not all pacing events are enabled. Default: <see langword="false"/>.
-            </summary>
-            <remarks>
-            Default: <see langword="false"/>.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.Mission.Description">
-            <summary>
-            The description as it appears in the bomb binder.
-            </summary>
-            <remarks>
-            Default: "Everybody has to start somewhere. Let's just hope it doesn't end here too.\n\nMake sure your experts have the manual and are ready to help.".
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.Mission.DisplayName">
-            <summary>
-            The mission name as it appears in the bomb binder.
-            </summary>
-            <remarks>
-            Default: "The First Bomb"
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.Mission.ID">
-            <summary>
-            The ID of the mission.
-            </summary>
-            <remarks>
-            Default: "firsttime"
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.Mission.GeneratorSetting">
-            <summary>
-            Gets the generator setting of the mission.
-            </summary>
-            <remarks>
-            New instance of <see cref="P:KeepCoding.Game.Mission.GeneratorSetting"/>, default constructor.
-            </remarks>
-        </member>
-        <member name="T:KeepCoding.Game.ModManager">
-            <summary>
-            Allows access to methods relating mod paths.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Game.ModManager.GetDisabledModPaths">
-            <summary>
-            Gets all of the disabled mod paths.
-            </summary>
-            <remarks>
-            New instance of <see cref="T:System.Collections.Generic.List`1"/>, with no elements.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.ModManager.GetAllModPathsFromSource">
-            <summary>
-            Gets all of the mod paths within the <see cref="T:KeepCoding.Game.ModSourceEnum"/> constraint.
-            </summary>
-            <remarks>
-            New instance of <see cref="T:System.Collections.Generic.List`1"/>, with no elements.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.ModManager.GetEnabledModPaths">
-            <summary>
-            Gets all of the enabled mod paths within the <see cref="T:KeepCoding.Game.ModSourceEnum"/> constraint.
-            </summary>
-            <remarks>
-            New instance of <see cref="T:System.Collections.Generic.List`1"/>, with no elements.
-            </remarks>
-        </member>
-        <member name="T:KeepCoding.Game.PlayerSettings">
-            <summary>
-            Allows access into the player settings from the game. Do not use this class in the unity editor. 
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.InvertTiltControls">
-            <summary>
-            Determines if vertical tilting is flipped or not.
-            </summary>
-            <remarks>
-            Default: <see langword="false"/>.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.LockMouseToWindow">
-            <summary>
-            Determines if the option to lock the mouse to the window is enabled.
-            </summary>
-            <remarks>
-            Default: <see langword="false"/>.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.ShowLeaderBoards">
-            <summary>
-            Determines if the option to show the leaderboards from the pamphlet.
-            </summary>
-            <remarks>
-            Default: <see langword="true"/>.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.ShowRotationUI">
-            <summary>
-            Determines if the option to show the rotation of the User Interface is enabled.
-            </summary>
-            <remarks>
-            Default: <see langword="true"/>.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.ShowScanline">
-            <summary>
-            Determines if the option to show scanlines is enabled.
-            </summary>
-            <remarks>
-            Default: <see langword="true"/>.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.SkipTitleScreen">
-            <summary>
-            Determines if the option to skip the title screen is enabled.
-            </summary>
-            <remarks>
-            Default: <see langword="false"/>.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.RumbleEnabled">
-            <summary>
-            Determines if the VR or regular controllers vibrate.
-            </summary>
-            <remarks>
-            Default: <see langword="true"/>.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.TouchpadInvert">
-            <summary>
-            Determines if the touchpad controls are inverted.
-            </summary>
-            <remarks>
-            Default: <see langword="false"/>.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.UseModsAlways">
-            <summary>
-            Determines if the option to always use mods is enabled.
-            </summary>
-            <remarks>
-            Default: <see langword="false"/>.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.UseParallelModLoading">
-            <summary>
-            Determines if the option to use parallel/simultaneous mod loading is enabled.
-            </summary>
-            <remarks>
-            Default: <see langword="false"/>.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.VRModeRequested">
-            <summary>
-            Determines if VR mode is requested.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.AntiAliasing">
-            <summary>
-            The intensity of anti-aliasing currently on the game. Ranges 0 to 8.
-            </summary>
-            <remarks>
-            Default: 8.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.MusicVolume">
-            <summary>
-            The current music volume from the dossier menu. Ranges 0 to 100.
-            </summary>
-            <remarks>
-            Default: 100.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.SFXVolume">
-            <summary>
-            The current sound effects volume from the dosssier menu. Ranges 0 to 100.
-            </summary>
-            <remarks>
-            Default: 100.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.VSync">
-            <summary>
-            Determines if VSync is on or off.
-            </summary>
-            <remarks>
-            Default: 1.
-            </remarks>
-        </member>
-        <member name="P:KeepCoding.Game.PlayerSettings.LanguageCode">
-            <summary>
-            The current language code.
-            </summary>
-            <remarks>
-            Default: "en".
+            As of right now, this value is unused as the library is yet to be finished. This value will become usable at a later date.
             </remarks>
         </member>
         <member name="P:KeepCoding.Game.AddStrikes">
@@ -9321,6 +9388,8 @@
             <remarks>
             Default: Internal Logger method call.
             </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
         </member>
         <member name="P:KeepCoding.Game.SetStrikes">
             <summary>
@@ -9329,34 +9398,49 @@
             <remarks>
             Default: Internal Logger method call.
             </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
         </member>
         <member name="P:KeepCoding.Game.Bomb">
             <summary>
             Gets the game's internal bomb component, not to be mistaken with <see cref="T:KMBomb"/>. To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to Bomb or <see cref="T:UnityEngine.MonoBehaviour"/> type to restore its functionality.
             </summary>
             <remarks>
-            Default: <see langword="null"/>.
+            Default: An encapsulated method that takes a <see cref="T:UnityEngine.GameObject"/> and always returns <see langword="null"/>.
             </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
         </member>
         <member name="P:KeepCoding.Game.Timer">
             <summary>
             Gets the game's internal timer component. To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to TimerComponent or <see cref="T:UnityEngine.MonoBehaviour"/> type to restore its functionality.
             </summary>
             <remarks>
-            Default: <see langword="null"/>.
+            Default: An encapsulated method that takes a <see cref="T:UnityEngine.GameObject"/> and always returns <see langword="null"/>.
             </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
         </member>
         <member name="P:KeepCoding.Game.Vanillas">
             <summary>
             Gets all of the vanilla modules from the bomb supplied, including needies. To prevent a reference to the game, the type is boxed in an <see cref="T:System.Object"/> <see cref="T:System.Array"/>. You can cast it to BombComponent type to restore its functionality.
             </summary>
             <remarks>
-            Default: An empty <see cref="T:System.Object"/> <see cref="T:System.Array"/>.
+            Default: An encapsulated method that takes a <see cref="T:UnityEngine.GameObject"/> and always returns an empty <see cref="T:System.Object"/> <see cref="T:System.Array"/>.
             </remarks>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+        </member>
+        <member name="P:KeepCoding.Game.Reference">
+            <summary>
+            Determines what reference this library should use for the current class. This value can only be modified by the libraries featured in <see cref="T:KeepCoding.Game.References"/>, a <see cref="T:System.Security.SecurityException"/> is thrown when this is attempted regardless.
+            </summary>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.Security.SecurityException"></exception>
         </member>
         <member name="T:KeepCoding.PathManager">
             <summary>
-            Allows loading external information stored on the module. 
+            Allows loading external information stored on the module. Default values are returned either when run on the editor or when an <see cref="T:System.IO.IOException"/> and similar occur. The default values are specified in the remarks of each method.
             </summary>
         </member>
         <member name="P:KeepCoding.PathManager.AssemblyName">
@@ -9377,8 +9461,6 @@
             Loads a library from the directory of the mod caller.
             </summary>
             <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <exception cref="T:System.Collections.Generic.KeyNotFoundException"></exception>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
             <param name="name">The library's name, excluding the extension.</param>
         </member>
@@ -9387,8 +9469,6 @@
             Loads a library from the directory of the specified mod's assembly name.
             </summary>
             <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <exception cref="T:System.Collections.Generic.KeyNotFoundException"></exception>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
             <param name="name">The library's name, excluding the extension.</param>
             <param name="assembly">The mod's assembly name.</param>
@@ -9403,6 +9483,7 @@
             <summary>
             Prints the hierarchy from the game object specified.
             </summary>
+            <exception cref="T:UnityEngine.MissingComponentException"></exception>
             <param name="obj">The game object to search the hierarchy.</param>
             <param name="indent">The amount of spaces used for indenting children of game objects.</param>
             <param name="depth">The level of depth which determines level of indentation. Leave this variable as 0.</param>
@@ -9418,9 +9499,10 @@
             <summary>
             Finds the directory of the mod caller.
             </summary>
+            <remarks>
+            Default: An empty <see cref="T:System.String"/>.
+            </remarks>
             <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <exception cref="T:System.Collections.Generic.KeyNotFoundException"></exception>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
             <returns>The directory to the mod caller.</returns>
         </member>
@@ -9428,34 +9510,34 @@
             <summary>
             Finds the directory of the specified mod's assembly name.
             </summary>
+            <remarks>
+            Default: An empty <see cref="T:System.String"/>.
+            </remarks>
             <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <exception cref="T:System.Collections.Generic.KeyNotFoundException"></exception>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
             <param name="assembly">The mod assembly's name.</param>
             <returns>The directory to <paramref name="assembly"/>.</returns>
         </member>
         <member name="M:KeepCoding.PathManager.GetPath(System.String)">
             <summary>
-            Finds the path of a given file within the mod caller.
+            Finds the path of a given file within the mod caller. You need to specify the extensions of the file too, otherwise the file cannot be found.
             </summary>
             <remarks>
-            You need to specify the extensions of the file too, otherwise the file cannot be found.
+            Default: An empty <see cref="T:System.String"/>.
             </remarks>
             <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <exception cref="T:System.Collections.Generic.KeyNotFoundException"></exception>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
             <param name="file">The file to search for. Make sure to include extensions!</param>
             <returns>The path to <paramref name="file"/> within the mod caller directory.</returns>
         </member>
         <member name="M:KeepCoding.PathManager.GetPath(System.String,System.String)">
             <summary>
-            Finds the path of a given file within a specified mod's assembly name.
+            Finds the path of a given file within a specified mod's assembly name. You need to specify the extensions of the file too, otherwise the file cannot be found.
             </summary>
+            <remarks>
+            Default: An empty <see cref="T:System.String"/>.
+            </remarks>
             <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <exception cref="T:System.Collections.Generic.KeyNotFoundException"></exception>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
             <param name="file">The file to search for. Make sure to include extensions!</param>
             <param name="assembly">The mod assembly's name.</param>
@@ -9465,9 +9547,11 @@
             <summary>
             Deserializes the modInfo.json of the mod caller.
             </summary>
+            <remarks>
+            Default: A new instance of <see cref="T:KeepCoding.ModInfo"/> with <see keyword="default"/> values.
+            </remarks>
             <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <exception cref="T:System.Collections.Generic.KeyNotFoundException"></exception>
+            <exception cref="T:Newtonsoft.Json.JsonException"></exception>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
             <returns>A <see cref="T:KeepCoding.ModInfo"/> from the mod caller's modInfo.json file.</returns>
         </member>
@@ -9475,9 +9559,11 @@
             <summary>
             Deserializes the modInfo.json of a specified mod's assembly name.
             </summary>
+            <remarks>
+            Default: A new instance of <see cref="T:KeepCoding.ModInfo"/> with <see keyword="default"/> values.
+            </remarks>
             <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <exception cref="T:System.Collections.Generic.KeyNotFoundException"></exception>
+            <exception cref="T:Newtonsoft.Json.JsonException"></exception>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
             <param name="assembly">The mod assembly's name.</param>
             <returns>A <see cref="T:KeepCoding.ModInfo"/> from <paramref name="assembly"/>.</returns>
@@ -9504,9 +9590,8 @@
             Retrieves assets of a specific type from a bundle file within the mod caller.
             </summary>
             <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <exception cref="T:System.Collections.Generic.KeyNotFoundException"></exception>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
+            <exception cref="T:System.NullReferenceException"></exception>
             <typeparam name="T">The type of asset to retrieve.</typeparam>
             <param name="file">The name of the bundle file to grab the assets from.</param>
             <returns>The assets retrieved from the mod caller.</returns>
@@ -9516,9 +9601,8 @@
             Retrieves assets of a specific type from a bundle file within a specified mod's assembly name.
             </summary>
             <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
-            <exception cref="T:System.IO.FileNotFoundException"></exception>
-            <exception cref="T:System.Collections.Generic.KeyNotFoundException"></exception>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
+            <exception cref="T:System.NullReferenceException"></exception>
             <typeparam name="T">The type of asset to retrieve.</typeparam>
             <param name="file">The name of the bundle file to grab the assets from.</param>
             <param name="assembly">The mod assembly's name.</param>
