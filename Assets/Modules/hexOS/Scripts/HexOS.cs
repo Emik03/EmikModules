@@ -1687,7 +1687,7 @@ public class HexOS : MonoBehaviour
                 // Will quickly determine if the module is about to solve or strike.
                 if (_octOS && user[1] == _octAnswer)
                 {
-                    yield return "awardpointsonsolve 36";
+                    yield return "awardpointsonsolve 41";
                     yield return "solve";
                 }
                 else if (!_octOS && user[1] == _answer)
