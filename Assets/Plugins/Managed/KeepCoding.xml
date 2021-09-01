@@ -4183,6 +4183,18 @@
             <param name="func">The function to ignore overflow-checking.</param>
             <returns><c><see langword="unchecked"/>(<paramref name="func"/>())</c></returns>
         </member>
+        <member name="M:KeepCoding.KeyHelper.Using``1(System.Action{``0})">
+            <summary>
+            Provides a convenient syntax that ensures the correct use of <see cref="T:System.IDisposable"/> objects.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/using-statement"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="T">The type of <see cref="T:System.IDisposable"/>.</typeparam>
+            <param name="action">The action to use a new instance of <typeparamref name="T"/> on.</param>
+            <returns><c><see langword="using"/> <see langword="var"/> item = <see langword="new"/> <typeparamref name="T"/>(); <paramref name="action"/>(item)</c></returns>
+        </member>
         <member name="M:KeepCoding.KeyHelper.Using``1(``0,System.Action{``0})">
             <summary>
             Provides a convenient syntax that ensures the correct use of <see cref="T:System.IDisposable"/> objects.
@@ -4195,6 +4207,18 @@
             <param name="item">The item to use.</param>
             <param name="action">The action to use <paramref name="item"/> on.</param>
             <returns><c><see langword="using"/> (<paramref name="item"/>) <paramref name="action"/>(<paramref name="item"/>)</c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.Using``1(System.Func{``0,``0})">
+            <summary>
+            Provides a convenient syntax that ensures the correct use of <see cref="T:System.IDisposable"/> objects.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/using-statement"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="T">The type of <see cref="T:System.IDisposable"/>.</typeparam>
+            <param name="func">The function to use a new instance of <typeparamref name="T"/> on.</param>
+            <returns><c><see langword="using"/> <see langword="var"/> item = <see langword="new"/> <typeparamref name="T"/>(); <see langword="return"/> <paramref name="func"/>(item)</c></returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Using``1(``0,System.Func{``0,``0})">
             <summary>
@@ -6547,6 +6571,339 @@
             <returns>
                 The filtered collection of attributes..</returns>
         </member>
+        <member name="T:KeepCoding.ModConfig`1">
+            <summary>
+            Meant for information that needs to be deserialized within the mod settings folder, by samfundev.
+            </summary>
+            <remarks>
+            <see href="https://github.com/Qkrisi/ktanemodkit/blob/master/Assets/Scripts/ModConfig.cs"/>
+            </remarks>
+            <typeparam name="TSerialize">The type to serialize and deserialize the file.</typeparam>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.#ctor(System.String,Newtonsoft.Json.Linq.JsonMergeSettings)">
+            <summary>
+            Creates a new <see cref="T:KeepCoding.ModConfig`1"/> with the target file name and an optional event of when the file is read.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.ConstructorArgumentException"></exception>
+            <param name="fileName">The file name to get.</param>
+            <param name="settings">The way that the default value and the file merge.</param>
+        </member>
+        <member name="P:KeepCoding.ModConfig`1.HasReadSucceeded">
+            <summary>
+            Whether or not there has been a successful read of the settings file.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.Log``1(``0,UnityEngine.LogType)">
+            <summary>
+            Logs message, but formats it to be compliant with the Logfile Analyzer.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="message">The message to log.</param>
+            <param name="logType">The type of logging. Different logging types have different icons within the editor.</param>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.Log``1(``0,System.Object[])">
+            <summary>
+            Logs multiple entries, but formats it to be compliant with the Logfile Analyzer.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="message">The message to log.</param>
+            <param name="args">All of the arguments to embed into <paramref name="message"/>.</param>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.LogMultiple(System.String[])">
+            <summary>
+            Logs multiple entries to the console.
+            </summary>
+            <param name="logs">The array of logs to individual output into the console.</param>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.SerializeSettings(`0)">
+            <summary>
+            Serializes settings the same way it's written to the file. Supports settings that use enums.
+            </summary>
+            <exception cref="T:System.NullReferenceException"></exception>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.Merge(`0,Newtonsoft.Json.Linq.JsonMergeSettings)">
+            <summary>
+            Reads, merges, and writes the settings to the settings file. To protect the user settings, this does nothing if the read isn't successful.
+            </summary>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <param name="value">The value to merge the file with.</param>
+            <param name="settings">The way that <paramref name="value"/> and the file merge.</param>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.Read(Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Reads the settings from the settings file. If the settings couldn't be read, the default settings will be returned.
+            </summary>
+            <param name="settings">The settings for serializing the json file.</param>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.Write(`0)">
+            <summary>
+            Writes the settings to the settings file. To protect the user settings, this does nothing if the last read wasn't successful.
+            </summary>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <param name="value">The value to overwrite the settings file with.</param>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.Write(System.String)">
+            <summary>
+            Writes the string to the settings file. To protect the user settings, this does nothing if the last read wasn't successful.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
+            <param name="value"></param>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.ToString">
+            <summary>
+            Deserializes, then reserializes the file according to <see cref="M:KeepCoding.ModConfig`1.SerializeSettings(`0)"/>.
+            </summary>
+            <returns>A string representation of the value from <see cref="M:KeepCoding.ModConfig`1.Read(Newtonsoft.Json.JsonSerializerSettings)"/>.</returns>
+        </member>
+        <member name="T:KeepCoding.MonoRandom">
+            <summary>
+            A pseudo-random number generator that is primarily used to get multiple platforms to share the same random number generator.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:KeepCoding.MonoRandom"/> class, using a time-dependent default seed value.
+            </summary>
+            <exception cref="T:System.OverflowException"></exception>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Random"/> class, using the specified seed value.
+            </summary>
+            <exception cref="T:System.OverflowException"></exception>
+            <param name="seed">A number used to calculate a starting value for the pseudo-random number sequence. If a negative number is specified, the absolute value of the number is used.</param>
+        </member>
+        <member name="P:KeepCoding.MonoRandom.Seed">
+            <summary>
+            The seed used for the randomization.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.NextBytes(System.Byte[])">
+            <summary>
+            Fills the elements of a specified array of bytes with random numbers.
+            </summary>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <param name="buffer">An array of bytes to contain random numbers.</param>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.Next">
+            <summary>
+            Returns a nonnegative random number.
+            </summary>
+            <returns>A 32-bit signed integer greater than or equal to zero and less than <see cref="F:System.Int32.MaxValue"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.Next(System.Int32)">
+            <summary>
+            Returns a nonnegative random number less than the specified maximum.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="maxValue">The exclusive upper bound of the random number to be generated. <paramref name="maxValue" /> must be greater than or equal to zero.</param>
+            <returns>A 32-bit signed integer greater than or equal to zero, and less than <paramref name="maxValue" />; that is, the range of return values ordinarily includes zero but not <paramref name="maxValue" />. However, if <paramref name="maxValue" /> equals zero, <paramref name="maxValue" /> is returned.</returns>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.Next(System.Int32,System.Int32)">
+            <summary>
+            Returns a random number within a specified range.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="minValue">The inclusive lower bound of the random number returned.</param>
+            <param name="maxValue">The exclusive upper bound of the random number returned. <paramref name="maxValue" /> must be greater than or equal to <paramref name="minValue" />.</param>
+            <returns>A 32-bit signed integer greater than or equal to <paramref name="minValue" /> and less than <paramref name="maxValue" />; that is, the range of return values includes <paramref name="minValue" /> but not <paramref name="maxValue" />. If <paramref name="minValue" /> equals <paramref name="maxValue" />, <paramref name="minValue" /> is returned.</returns>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.NextDouble">
+            <summary>
+            Returns a random number between 0.0 and 1.0.
+            </summary>
+            <returns>A double-precision floating point number greater than or equal to 0.0, and less than 1.0.</returns>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.Sample">
+            <summary>
+            Returns a random number between 0.0 and 1.0.
+            </summary>
+            <returns>A double-precision floating point number greater than or equal to 0.0, and less than 1.0.</returns>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.Shuffle``1(``0)">
+            <summary>
+            Shuffles a list using an in-place algorithm; the original list is modified.
+            </summary>
+            <typeparam name="T">The type of list to shuffle.</typeparam>
+            <param name="list">The list to shuffle.</param>
+            <returns><paramref name="list"/> shuffled using Fisher-Yates shuffle.</returns>
+        </member>
+        <member name="T:KeepCoding.Tuple`1">
+            <summary>
+            A basic tuple data type for C# 4.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`1.#ctor(`0)">
+            <summary>
+            Creates a singleton tuple.
+            </summary>
+            <param name="item1">The item to pass into the first property.</param>
+        </member>
+        <member name="M:KeepCoding.Tuple`1.#ctor">
+            <summary>
+            Creates a singleton tuple of default values.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`1.Item(System.Byte)">
+            <summary>
+            Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <param name="i">The index to use.</param>
+            <returns>The item indexed into.</returns>
+        </member>
+        <member name="P:KeepCoding.Tuple`1.Items">
+            <summary>
+            All of the tuple's items as an array, ordered by item number.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`1.Item1">
+            <summary>
+            The first item of the tuple.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`1.Destruct(`0@)">
+            <summary>
+            Destructs the tuple.
+            </summary>
+            <param name="item">The variable to assign the first element of the tuple.</param>
+        </member>
+        <member name="T:KeepCoding.Tuple`2">
+            <summary>
+            A basic tuple data type for C# 4. 
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`2.#ctor(`0,`1)">
+            <summary>
+            Creates a tuple of size 2.
+            </summary>
+            <param name="item1">The item to pass into the first property.</param>
+            <param name="item2">The item to pass into the second property.</param>
+        </member>
+        <member name="M:KeepCoding.Tuple`2.#ctor">
+            <summary>
+            Creates a singleton tuple of default values.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`2.Item(System.Byte)">
+            <summary>
+            Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <param name="i">The index to use.</param>
+            <returns>The item indexed into.</returns>
+        </member>
+        <member name="P:KeepCoding.Tuple`2.Items">
+            <summary>
+            All of the tuple's items as an array, ordered by item number.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`2.Item2">
+            <summary>
+            The second item of the tuple.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`2.Destruct(`0@,`1@)">
+            <summary>
+            Destructs the tuple.
+            </summary>
+            <param name="item1">The variable to assign the first element of the tuple.</param>
+            <param name="item2">The variable to assign the second element of the tuple.</param>
+        </member>
+        <member name="T:KeepCoding.Tuple`3">
+            <summary>
+            A basic tuple data type for C# 4. 
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`3.#ctor(`0,`1,`2)">
+            <summary>
+            Creates a tuple of size 3.
+            </summary>
+            <param name="item1">The item to pass into the first property.</param>
+            <param name="item2">The item to pass into the second property.</param>
+            <param name="item3">The item to pass into the third property.</param>
+        </member>
+        <member name="M:KeepCoding.Tuple`3.#ctor">
+            <summary>
+            Creates a singleton tuple of default values.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`3.Item(System.Byte)">
+            <summary>
+            Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <param name="i">The index to use.</param>
+            <returns>The item indexed into.</returns>
+        </member>
+        <member name="P:KeepCoding.Tuple`3.Items">
+            <summary>
+            All of the tuple's items as an array, ordered by item number.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`3.Item3">
+            <summary>
+            The third item of the tuple.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`3.Destruct(`0@,`1@,`2@)">
+            <summary>
+            Destructs the tuple.
+            </summary>
+            <param name="item1">The variable to assign the first element of the tuple.</param>
+            <param name="item2">The variable to assign the second element of the tuple.</param>
+            <param name="item3">The variable to assign the third element of the tuple.</param>
+        </member>
+        <member name="T:KeepCoding.Tuple`4">
+            <summary>
+            A basic tuple data type for C# 4. 
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`4.#ctor(`0,`1,`2,`3)">
+            <summary>
+            Creates a tuple of size 4.
+            </summary>
+            <param name="item1">The item to pass into the first property.</param>
+            <param name="item2">The item to pass into the second property.</param>
+            <param name="item3">The item to pass into the third property.</param>
+            <param name="item4">The item to pass into the fourth property.</param>
+        </member>
+        <member name="M:KeepCoding.Tuple`4.#ctor">
+            <summary>
+            Creates a singleton tuple of default values.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`4.Item(System.Byte)">
+            <summary>
+            Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <param name="i">The index to use.</param>
+            <returns>The item indexed into.</returns>
+        </member>
+        <member name="P:KeepCoding.Tuple`4.Items">
+            <summary>
+            All of the tuple's items as an array, ordered by item number.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`4.Item4">
+            <summary>
+            The fourth item of the tuple.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`4.Destruct(`0@,`1@,`2@,`3@)">
+            <summary>
+            Destructs the tuple.
+            </summary>
+            <param name="item1">The variable to assign the first element of the tuple.</param>
+            <param name="item2">The variable to assign the second element of the tuple.</param>
+            <param name="item3">The variable to assign the third element of the tuple.</param>
+            <param name="item4">The variable to assign the fourth element of the tuple.</param>
+        </member>
         <member name="T:KeepCoding.ColorblindInfo">
             <summary>
             Contains information about the colorblind mod's info, this class can be used to deserialize "ColorblindMode.json".
@@ -7091,71 +7448,6 @@
             </summary>
             <returns>The hash code.</returns>
         </member>
-        <member name="T:KeepCoding.ModConfig`1">
-            <summary>
-            Meant for information that needs to be deserialized within the mod settings folder by samfundev.
-            </summary>
-            <remarks>
-            <see href="https://github.com/Qkrisi/ktanemodkit/blob/master/Assets/Scripts/ModConfig.cs"/>
-            </remarks>
-            <typeparam name="TDeserialize">The type to deserialize the file.</typeparam>
-        </member>
-        <member name="M:KeepCoding.ModConfig`1.#ctor(System.String)">
-            <summary>
-            Creates a new <see cref="T:KeepCoding.ModConfig`1"/> with the target file name and an optional event of when the file is read.
-            </summary>
-            <param name="fileName">The file name to get.</param>
-        </member>
-        <member name="P:KeepCoding.ModConfig`1.HasReadSucceeded">
-            <summary>
-            Whether or not there has been a successful read of the settings file.
-            </summary>
-        </member>
-        <member name="M:KeepCoding.ModConfig`1.Log``1(``0,UnityEngine.LogType)">
-            <summary>
-            Logs message, but formats it to be compliant with the Logfile Analyzer.
-            </summary>
-            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
-            <param name="message">The message to log.</param>
-            <param name="logType">The type of logging. Different logging types have different icons within the editor.</param>
-        </member>
-        <member name="M:KeepCoding.ModConfig`1.Log``1(``0,System.Object[])">
-            <summary>
-            Logs multiple entries, but formats it to be compliant with the Logfile Analyzer.
-            </summary>
-            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
-            <param name="message">The message to log.</param>
-            <param name="args">All of the arguments to embed into <paramref name="message"/>.</param>
-        </member>
-        <member name="M:KeepCoding.ModConfig`1.LogMultiple(System.String[])">
-            <summary>
-            Logs multiple entries to the console.
-            </summary>
-            <param name="logs">The array of logs to individual output into the console.</param>
-        </member>
-        <member name="M:KeepCoding.ModConfig`1.SerializeSettings(`0)">
-            <summary>
-            Serializes settings the same way it's written to the file. Supports settings that use enums.
-            </summary>
-        </member>
-        <member name="M:KeepCoding.ModConfig`1.Read(Newtonsoft.Json.JsonSerializerSettings)">
-            <summary>
-            Reads the settings from the settings file.
-            If the settings couldn't be read, the default settings will be returned.
-            </summary>
-        </member>
-        <member name="M:KeepCoding.ModConfig`1.Write(`0)">
-            <summary>
-            Writes the settings to the settings file.
-            To protect the user settings, this does nothing if the last read wasn't successful.
-            </summary>
-        </member>
-        <member name="M:KeepCoding.ModConfig`1.ToString">
-            <summary>
-            Deserializes, then reserializes the file according to <see cref="M:KeepCoding.ModConfig`1.SerializeSettings(`0)"/>.
-            </summary>
-            <returns>A string representation of the value from <see cref="M:KeepCoding.ModConfig`1.Read(Newtonsoft.Json.JsonSerializerSettings)"/>.</returns>
-        </member>
         <member name="T:KeepCoding.ModInfo">
             <summary>
             Contains information about the mod's info, this class can be used to deserialize every mod's "modInfo.json".
@@ -7384,79 +7676,6 @@
             Gets the <see cref="P:KeepCoding.ModuleContainer.Name"/> and <see cref="P:KeepCoding.ModuleContainer.Id"/> of the module.
             </summary>
             <returns><see cref="P:KeepCoding.ModuleContainer.Name"/> and <see cref="P:KeepCoding.ModuleContainer.Id"/></returns>
-        </member>
-        <member name="T:KeepCoding.MonoRandom">
-            <summary>
-            A pseudo-random number generator that is primarily used to get multiple platforms to share the same random number generator.
-            </summary>
-        </member>
-        <member name="M:KeepCoding.MonoRandom.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:KeepCoding.MonoRandom"/> class, using a time-dependent default seed value.
-            </summary>
-            <exception cref="T:System.OverflowException"></exception>
-        </member>
-        <member name="M:KeepCoding.MonoRandom.#ctor(System.Int32)">
-            <summary>
-            Initializes a new instance of the <see cref="T:System.Random"/> class, using the specified seed value.
-            </summary>
-            <exception cref="T:System.OverflowException"></exception>
-            <param name="seed">A number used to calculate a starting value for the pseudo-random number sequence. If a negative number is specified, the absolute value of the number is used.</param>
-        </member>
-        <member name="P:KeepCoding.MonoRandom.Seed">
-            <summary>
-            The seed used for the randomization.
-            </summary>
-        </member>
-        <member name="M:KeepCoding.MonoRandom.NextBytes(System.Byte[])">
-            <summary>
-            Fills the elements of a specified array of bytes with random numbers.
-            </summary>
-            <exception cref="T:System.NullReferenceException"></exception>
-            <param name="buffer">An array of bytes to contain random numbers.</param>
-        </member>
-        <member name="M:KeepCoding.MonoRandom.Next">
-            <summary>
-            Returns a nonnegative random number.
-            </summary>
-            <returns>A 32-bit signed integer greater than or equal to zero and less than <see cref="F:System.Int32.MaxValue"/>.</returns>
-        </member>
-        <member name="M:KeepCoding.MonoRandom.Next(System.Int32)">
-            <summary>
-            Returns a nonnegative random number less than the specified maximum.
-            </summary>
-            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
-            <param name="maxValue">The exclusive upper bound of the random number to be generated. <paramref name="maxValue" /> must be greater than or equal to zero.</param>
-            <returns>A 32-bit signed integer greater than or equal to zero, and less than <paramref name="maxValue" />; that is, the range of return values ordinarily includes zero but not <paramref name="maxValue" />. However, if <paramref name="maxValue" /> equals zero, <paramref name="maxValue" /> is returned.</returns>
-        </member>
-        <member name="M:KeepCoding.MonoRandom.Next(System.Int32,System.Int32)">
-            <summary>
-            Returns a random number within a specified range.
-            </summary>
-            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
-            <param name="minValue">The inclusive lower bound of the random number returned.</param>
-            <param name="maxValue">The exclusive upper bound of the random number returned. <paramref name="maxValue" /> must be greater than or equal to <paramref name="minValue" />.</param>
-            <returns>A 32-bit signed integer greater than or equal to <paramref name="minValue" /> and less than <paramref name="maxValue" />; that is, the range of return values includes <paramref name="minValue" /> but not <paramref name="maxValue" />. If <paramref name="minValue" /> equals <paramref name="maxValue" />, <paramref name="minValue" /> is returned.</returns>
-        </member>
-        <member name="M:KeepCoding.MonoRandom.NextDouble">
-            <summary>
-            Returns a random number between 0.0 and 1.0.
-            </summary>
-            <returns>A double-precision floating point number greater than or equal to 0.0, and less than 1.0.</returns>
-        </member>
-        <member name="M:KeepCoding.MonoRandom.Sample">
-            <summary>
-            Returns a random number between 0.0 and 1.0.
-            </summary>
-            <returns>A double-precision floating point number greater than or equal to 0.0, and less than 1.0.</returns>
-        </member>
-        <member name="M:KeepCoding.MonoRandom.Shuffle``1(``0)">
-            <summary>
-            Shuffles a list using an in-place algorithm; the original list is modified.
-            </summary>
-            <typeparam name="T">The type of list to shuffle.</typeparam>
-            <param name="list">The list to shuffle.</param>
-            <returns><paramref name="list"/> shuffled using Fisher-Yates shuffle.</returns>
         </member>
         <member name="T:KeepCoding.Profiler">
             <summary>
@@ -8149,182 +8368,6 @@
             <summary>
             Indicates how <see cref="T:System.Single"/>, <see cref="T:System.Double"/>, and <see cref="T:System.Decimal"/> should be formatted.
             </summary>
-        </member>
-        <member name="T:KeepCoding.Tuple`1">
-            <summary>
-            A basic tuple data type for C# 4.
-            </summary>
-        </member>
-        <member name="M:KeepCoding.Tuple`1.#ctor(`0)">
-            <summary>
-            Creates a singleton tuple.
-            </summary>
-            <param name="item1">The item to pass into the first property.</param>
-        </member>
-        <member name="M:KeepCoding.Tuple`1.#ctor">
-            <summary>
-            Creates a singleton tuple of default values.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Tuple`1.Item(System.Byte)">
-            <summary>
-            Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
-            </summary>
-            <exception cref="T:System.IndexOutOfRangeException"></exception>
-            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
-            <param name="i">The index to use.</param>
-            <returns>The item indexed into.</returns>
-        </member>
-        <member name="P:KeepCoding.Tuple`1.Items">
-            <summary>
-            All of the tuple's items as an array, ordered by item number.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Tuple`1.Item1">
-            <summary>
-            The first item of the tuple.
-            </summary>
-        </member>
-        <member name="M:KeepCoding.Tuple`1.Destruct(`0@)">
-            <summary>
-            Destructs the tuple.
-            </summary>
-            <param name="item">The variable to assign the first element of the tuple.</param>
-        </member>
-        <member name="T:KeepCoding.Tuple`2">
-            <summary>
-            A basic tuple data type for C# 4. 
-            </summary>
-        </member>
-        <member name="M:KeepCoding.Tuple`2.#ctor(`0,`1)">
-            <summary>
-            Creates a tuple of size 2.
-            </summary>
-            <param name="item1">The item to pass into the first property.</param>
-            <param name="item2">The item to pass into the second property.</param>
-        </member>
-        <member name="M:KeepCoding.Tuple`2.#ctor">
-            <summary>
-            Creates a singleton tuple of default values.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Tuple`2.Item(System.Byte)">
-            <summary>
-            Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
-            </summary>
-            <exception cref="T:System.IndexOutOfRangeException"></exception>
-            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
-            <param name="i">The index to use.</param>
-            <returns>The item indexed into.</returns>
-        </member>
-        <member name="P:KeepCoding.Tuple`2.Items">
-            <summary>
-            All of the tuple's items as an array, ordered by item number.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Tuple`2.Item2">
-            <summary>
-            The second item of the tuple.
-            </summary>
-        </member>
-        <member name="M:KeepCoding.Tuple`2.Destruct(`0@,`1@)">
-            <summary>
-            Destructs the tuple.
-            </summary>
-            <param name="item1">The variable to assign the first element of the tuple.</param>
-            <param name="item2">The variable to assign the second element of the tuple.</param>
-        </member>
-        <member name="T:KeepCoding.Tuple`3">
-            <summary>
-            A basic tuple data type for C# 4. 
-            </summary>
-        </member>
-        <member name="M:KeepCoding.Tuple`3.#ctor(`0,`1,`2)">
-            <summary>
-            Creates a tuple of size 3.
-            </summary>
-            <param name="item1">The item to pass into the first property.</param>
-            <param name="item2">The item to pass into the second property.</param>
-            <param name="item3">The item to pass into the third property.</param>
-        </member>
-        <member name="M:KeepCoding.Tuple`3.#ctor">
-            <summary>
-            Creates a singleton tuple of default values.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Tuple`3.Item(System.Byte)">
-            <summary>
-            Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
-            </summary>
-            <exception cref="T:System.IndexOutOfRangeException"></exception>
-            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
-            <param name="i">The index to use.</param>
-            <returns>The item indexed into.</returns>
-        </member>
-        <member name="P:KeepCoding.Tuple`3.Items">
-            <summary>
-            All of the tuple's items as an array, ordered by item number.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Tuple`3.Item3">
-            <summary>
-            The third item of the tuple.
-            </summary>
-        </member>
-        <member name="M:KeepCoding.Tuple`3.Destruct(`0@,`1@,`2@)">
-            <summary>
-            Destructs the tuple.
-            </summary>
-            <param name="item1">The variable to assign the first element of the tuple.</param>
-            <param name="item2">The variable to assign the second element of the tuple.</param>
-            <param name="item3">The variable to assign the third element of the tuple.</param>
-        </member>
-        <member name="T:KeepCoding.Tuple`4">
-            <summary>
-            A basic tuple data type for C# 4. 
-            </summary>
-        </member>
-        <member name="M:KeepCoding.Tuple`4.#ctor(`0,`1,`2,`3)">
-            <summary>
-            Creates a tuple of size 4.
-            </summary>
-            <param name="item1">The item to pass into the first property.</param>
-            <param name="item2">The item to pass into the second property.</param>
-            <param name="item3">The item to pass into the third property.</param>
-            <param name="item4">The item to pass into the fourth property.</param>
-        </member>
-        <member name="M:KeepCoding.Tuple`4.#ctor">
-            <summary>
-            Creates a singleton tuple of default values.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Tuple`4.Item(System.Byte)">
-            <summary>
-            Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
-            </summary>
-            <exception cref="T:System.IndexOutOfRangeException"></exception>
-            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
-            <param name="i">The index to use.</param>
-            <returns>The item indexed into.</returns>
-        </member>
-        <member name="P:KeepCoding.Tuple`4.Items">
-            <summary>
-            All of the tuple's items as an array, ordered by item number.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.Tuple`4.Item4">
-            <summary>
-            The fourth item of the tuple.
-            </summary>
-        </member>
-        <member name="M:KeepCoding.Tuple`4.Destruct(`0@,`1@,`2@,`3@)">
-            <summary>
-            Destructs the tuple.
-            </summary>
-            <param name="item1">The variable to assign the first element of the tuple.</param>
-            <param name="item2">The variable to assign the second element of the tuple.</param>
-            <param name="item3">The variable to assign the third element of the tuple.</param>
-            <param name="item4">The variable to assign the fourth element of the tuple.</param>
         </member>
         <member name="T:KeepCoding.Work">
             <summary>
