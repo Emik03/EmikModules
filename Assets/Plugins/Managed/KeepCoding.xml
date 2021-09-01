@@ -912,6 +912,29 @@
             <param name="message">The message of the exception.</param>
             <param name="innerException">An <see cref="T:System.Exception"/> within this exception.</param>
         </member>
+        <member name="T:KeepCoding.Internal.KeepCodingException">
+            <summary>
+            An exception that is declared from the Keep Coding library.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Internal.KeepCodingException.#ctor">
+            <summary>
+            An exception that is declared from the Keep Coding library.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Internal.KeepCodingException.#ctor(System.String)">
+            <summary>
+            An exception that is declared from the Keep Coding library.
+            </summary>
+            <param name="message">The message of the exception.</param>
+        </member>
+        <member name="M:KeepCoding.Internal.KeepCodingException.#ctor(System.String,System.Exception)">
+            <summary>
+            An exception that is declared from the Keep Coding library.
+            </summary>
+            <param name="message">The message of the exception.</param>
+            <param name="innerException">An <see cref="T:System.Exception"/> within this exception.</param>
+        </member>
         <member name="T:KeepCoding.Internal.NegativeNumberException">
             <summary>
             An exception thrown when the number is unexpectedly negative.
@@ -2323,9 +2346,9 @@
             <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
             <param name="onUpdateChildren">Called when the selectable updates its children.</param>
         </member>
-        <member name="M:KeepCoding.EventHelper.Assign(KMSelectable[],System.Nullable{System.Boolean},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32,System.Single},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32,KMSelectable})">
+        <member name="M:KeepCoding.EventHelper.Assign``1(``0,System.Nullable{System.Boolean},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32,System.Single},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32,KMSelectable})">
             <summary>
-            Assigns events specified into <paramref name="selectable"/>. Reassigning them will replace their values. The number passed into each method represents the index that came from the array.
+            Assigns events specified into <paramref name="selectables"/>. Reassigning them will replace their values. The number passed into each method represents the index that came from the array.
             </summary>
             <remarks>
             An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions.
@@ -2333,7 +2356,7 @@
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
             <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
             <exception cref="T:UnityEngine.UnassignedReferenceException"></exception>
-            <param name="selectable">The <see cref="T:KMSelectable"/> array to add events to.</param>
+            <param name="selectables">The <see cref="T:KMSelectable"/> array to add events to.</param>
             <param name="overrideReturn">True will make it act as a module/submodule, and false as a button. Null (default) will set it to true or false based on <see cref="M:KeepCoding.Helper.IsParent(KMSelectable)"/>. Note that in VR, <see cref="F:KMSelectable.OnHighlight"/> and <see cref="F:KMSelectable.OnHighlightEnded"/> are skipped out on.</param>
             <param name="onCancel">Called when player backs out of this selectable.</param>
             <param name="onDefocus">Called when a different selectable becomes the focus, or the module has been backed out of.</param>
@@ -2349,9 +2372,9 @@
             <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
             <param name="onUpdateChildren">Called when the selectable updates its children.</param>
         </member>
-        <member name="M:KeepCoding.EventHelper.Assign(KMSelectable[],System.Nullable{System.Boolean},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable,System.Single},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable,KMSelectable})">
+        <member name="M:KeepCoding.EventHelper.Assign``1(``0,System.Nullable{System.Boolean},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable,System.Single},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable},System.Action{KMSelectable,KMSelectable})">
             <summary>
-            Assigns events specified into <paramref name="selectable"/>. Reassigning them will replace their values. The number passed into each method represents the index that came from the array.
+            Assigns events specified into <paramref name="selectables"/>. Reassigning them will replace their values. The number passed into each method represents the index that came from the array.
             </summary>
             <remarks>
             An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions.
@@ -2359,7 +2382,7 @@
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
             <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
             <exception cref="T:UnityEngine.UnassignedReferenceException"></exception>
-            <param name="selectable">The <see cref="T:KMSelectable"/> array to add events to.</param>
+            <param name="selectables">The <see cref="T:KMSelectable"/> array to add events to.</param>
             <param name="overrideReturn">True will make it act as a module/submodule, and false as a button. Null (default) will set it to true or false based on <see cref="M:KeepCoding.Helper.IsParent(KMSelectable)"/>. Note that in VR, <see cref="F:KMSelectable.OnHighlight"/> and <see cref="F:KMSelectable.OnHighlightEnded"/> are skipped out on.</param>
             <param name="onCancel">Called when player backs out of this selectable.</param>
             <param name="onDefocus">Called when a different selectable becomes the focus, or the module has been backed out of.</param>
@@ -2702,7 +2725,7 @@
             Determines if the item is an iterator type.
             </summary>
             <param name="item">The item to check the type for.</param>
-            <returns><paramref name="item"/> is either <see cref="T:System.String"/>, <see cref="T:System.Collections.IEnumerable"/>, or <see cref="T:System.Collections.IEnumerator"/>.</returns>
+            <returns><paramref name="item"/> is either <see cref="T:System.Collections.IEnumerable"/>, or <see cref="T:System.Collections.IEnumerator"/>.</returns>
         </member>
         <member name="M:KeepCoding.Helper.IsNullOrEmpty(System.String)">
             <summary>
@@ -2959,13 +2982,15 @@
             <param name="args">All of the arguments to put into <paramref name="str"/>.</param>
             <returns>The formatted <see cref="T:System.String"/>.</returns>
         </member>
-        <member name="M:KeepCoding.Helper.InsertNewlines(System.String,System.UInt16)">
+        <member name="M:KeepCoding.Helper.InsertNewlines(System.String,System.Int32)">
             <summary>
             Replaces whitespace characters with line breaks based on the line length.
             </summary>
             <remarks>
             This can be useful to prevent a <see cref="T:UnityEngine.TextMesh"/> from going outside its boundaries. A monospaced font is recommended in this case.
             </remarks>
+            <exception cref="T:System.FormatException"></exception>
+            <exception cref="T:KeepCoding.Internal.NegativeNumberException"></exception>
             <param name="condition">The string to insert line breaks with.</param>
             <param name="maxLineLength">The maximum number of characters in one line.</param>
             <returns><paramref name="condition"/> with a line break every <paramref name="maxLineLength"/> or less characters.</returns>
@@ -3068,6 +3093,20 @@
             <param name="source">The <see cref="T:System.Collections.IEnumerator"/> to convert.</param>
             <returns><paramref name="source"/> as an <see cref="T:System.Collections.IEnumerable"/>.</returns>
         </member>
+        <member name="M:KeepCoding.Helper.Range(System.Int32)">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.IEnumerable`1"/> spanning from 0 to the number specified - 1.
+            </summary>
+            <param name="count">The length of the <see cref="T:System.Collections.IEnumerable"/>.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> from 0 to <paramref name="count"/> - 1.</returns>
+        </member>
+        <member name="M:KeepCoding.Helper.ReflectAll``1(``0)">
+            <summary>
+            Gets all fields and properties of the item using reflection.
+            </summary>
+            <param name="source">The item to get all fields and properties.</param>
+            <returns>All fields and properties of <paramref name="source"/>.</returns>
+        </member>
         <member name="M:KeepCoding.Helper.AsEnumerable``1(System.Collections.Generic.IEnumerator{``0})">
             <summary>
             Converts an <see cref="T:System.Collections.IEnumerator"/> to an <see cref="T:System.Collections.IEnumerable"/>.
@@ -3095,13 +3134,6 @@
             <param name="indices">The indices to exclude from <paramref name="source"/>.</param>
             <returns><paramref name="source"/>, but without the element indexing <paramref name="indices"/>.</returns>
         </member>
-        <member name="M:KeepCoding.Helper.ReflectAll``1(``0)">
-            <summary>
-            Gets all fields and properties of the item using reflection.
-            </summary>
-            <param name="source">The item to get all fields and properties.</param>
-            <returns>All fields and properties of <paramref name="source"/>.</returns>
-        </member>
         <member name="M:KeepCoding.Helper.Include``1(System.Collections.Generic.IEnumerable{``0},System.Int32[])">
             <summary>
             Removes the elements whose index does not match any of the indices.
@@ -3118,15 +3150,6 @@
             <typeparam name="T">The type of the <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</typeparam>
             <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> to filter through.</param>
             <returns>A new instance of <paramref name="source"/> that only includes elements which are repeated in the array.</returns>
-        </member>
-        <member name="M:KeepCoding.Helper.NullOrEmptyCheck``1(System.Collections.Generic.IEnumerable{``0},System.String)">
-            <summary>
-            Throws an exception if the <see cref="T:System.Collections.Generic.IEnumerable`1"/> is null or empty.
-            </summary>
-            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
-            <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
-            <param name="source">The <see cref="T:System.Array"/> to check for null and empty.</param>
-            <param name="message">The optional message to throw if null or empty. Leaving it default will throw a default message.</param>
         </member>
         <member name="M:KeepCoding.Helper.Prepend``1(System.Collections.Generic.IEnumerable{``0},``0)">
             <summary>
@@ -3163,6 +3186,28 @@
             <param name="randomizer">The method to take the current and maximum indices, and return a new number to swap the current with.</param>
             <returns><paramref name="source"/> in a random order.</returns>
         </member>
+        <member name="M:KeepCoding.Helper.Repeat``1(System.Int32,System.Func{``0})">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.IEnumerable`1"/> where each element is the return of a <see cref="T:System.Func`1"/>.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.NegativeNumberException"></exception>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="T">The type of the <see cref="T:System.Func`1"/> as well as the return.</typeparam>
+            <param name="times">The amount of times to run the method.</param>
+            <param name="func">The encapsulated method to return for each value.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of length <paramref name="times"/> where each element is the return of <paramref name="func"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.Helper.Repeat``1(System.Int32,System.Func{System.Int32,``0})">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.IEnumerable`1"/> where each element gets passed in an <see cref="T:System.Int32"/> in <see cref="T:System.Func`2"/> and returns <typeparamref name="T"/>.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.NegativeNumberException"></exception>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="T">The type of the <see cref="T:System.Func`1"/> as well as the return.</typeparam>
+            <param name="times">The amount of times to run the method.</param>
+            <param name="func">The encapsulated method to return for each value, passing in the index of the for-loop.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of length <paramref name="times"/> where each element is the return of <paramref name="func"/> after the index is passed in.</returns>
+        </member>
         <member name="M:KeepCoding.Helper.Replace``1(System.Collections.Generic.IEnumerable{``0},System.Int32,``0)">
             <summary>
             Replaces an index in the <see cref="T:System.Collections.Generic.IEnumerable`1"/> and returns the new one.
@@ -3196,6 +3241,29 @@
             <param name="length">The length of each <see cref="T:System.Collections.Generic.IEnumerable`1"/> within the containing <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</param>
             <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:System.Collections.Generic.IEnumerable`1"/>s, where each <see cref="T:System.Collections.Generic.IEnumerable`1"/> is as long as <paramref name="length"/>.</returns>
         </member>
+        <member name="M:KeepCoding.Helper.Zip``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1})">
+            <summary>
+            Produces a sequence of tuples with elements from the two specified sequences.
+            </summary>
+            <typeparam name="T1">The type of the elements of the first input sequence.</typeparam>
+            <typeparam name="T2">The type of the elements of the second input sequence.</typeparam>
+            <param name="first">The first sequence to merge.</param>
+            <param name="second">The second sequence to merge.</param>
+            <returns>A sequence of tuples with elements taken from the first and second sequences, in that order.</returns>
+        </member>
+        <member name="M:KeepCoding.Helper.Zip``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``1,``2})">
+            <summary>
+            Applies a specified function to the corresponding elements of two sequences, producing a sequence of the results.
+            </summary>
+            <typeparam name="T1">The type of the elements of the first input sequence.</typeparam>
+            <typeparam name="T2">The type of the elements of the second input sequence.</typeparam>
+            <typeparam name="TResult">The type of the elements of the result sequence.</typeparam>
+            <param name="first">The first sequence to merge.</param>
+            <param name="second">The second sequence to merge.</param>
+            <param name="selector">A function that specifies how to merge the elements from the two sequences.</param>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> that contains merged elements of two input sequences.</returns>
+        </member>
         <member name="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Collections.IEnumerator})">
             <summary>
             Flattens an <see cref="T:System.Collections.IEnumerator"/> such that nested <see cref="T:System.Collections.IEnumerator"/> calls get replaced with the output of those calls.
@@ -3203,15 +3271,6 @@
             <param name="source">The <see cref="T:System.Collections.IEnumerator"/> to flatten.</param>
             <param name="except">If <see langword="true"/>, <see cref="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Collections.IEnumerator})"/> gets called recursively and each item from that output gets returned individually, otherwise the item is simply returned.</param>
             <returns><paramref name="source"/> where <see langword="yield"/> <see langword="return"/> <see cref="T:System.Collections.IEnumerator"/>s gets replaced with the output of those calls.</returns>
-        </member>
-        <member name="M:KeepCoding.Helper.NullOrEmptyCheck``1(System.Collections.Generic.IEnumerator{``0},System.String)">
-            <summary>
-            Throws an exception if the <see cref="T:System.Collections.Generic.IEnumerator`1"/> is null or empty.
-            </summary>
-            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
-            <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
-            <param name="source">The string to check for null and empty.</param>
-            <param name="message">The optional message to throw if null or empty. Leaving it default will throw a default message.</param>
         </member>
         <member name="M:KeepCoding.Helper.GetUnsolvedModuleIDs(KMBombInfo)">
             <summary>
@@ -3235,6 +3294,17 @@
             <typeparam name="T">The type of the list.</typeparam>
             <param name="source">The list to reverse.</param>
             <returns><paramref name="source"/> with the elements reversed.</returns>
+        </member>
+        <member name="M:KeepCoding.Helper.Rev``1(System.Collections.Generic.List{``0},System.Int32,System.Int32)">
+            <summary>
+            Reverses part of the list and returns the new list.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
+            <typeparam name="T">The type of the list.</typeparam>
+            <param name="source">The list to reverse.</param>
+            <param name="index">The index to start from.</param>
+            <param name="count">The amount of elements to reverse.</param>
+            <returns><paramref name="source"/> with the elements reversed specified by <paramref name="index"/> and <paramref name="count"/>.</returns>
         </member>
         <member name="M:KeepCoding.Helper.GetMethodInfo``1(System.Linq.Expressions.Expression{System.Action{``0}})">
             <summary>
@@ -3355,6 +3425,35 @@
             <param name="message">The optional message to throw if null.</param>
             <returns><paramref name="item"/></returns>
         </member>
+        <member name="M:KeepCoding.Helper.NullCheck``1(System.Nullable{``0},System.String)">
+            <summary>
+            Throws a <see cref="T:System.NullReferenceException"/> or <see cref="T:KeepCoding.Internal.NullIteratorException"/> if the parameter provided is null.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="T">The type of the value.</typeparam>
+            <param name="item">The parameter to check null for.</param>
+            <param name="message">The optional message to throw if null.</param>
+            <returns><paramref name="item"/></returns>
+        </member>
+        <member name="M:KeepCoding.Helper.NullOrEmptyCheck``1(``0,System.String)">
+            <summary>
+            Throws an exception if the <see cref="T:System.Collections.Generic.IEnumerable`1"/> is null or empty.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
+            <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
+            <param name="source">The <see cref="T:System.Array"/> to check for null and empty.</param>
+            <param name="message">The optional message to throw if null or empty. Leaving it default will throw a default message.</param>
+        </member>
+        <member name="M:KeepCoding.Helper.NullOrEmptyCheck``1(System.Nullable{``0},System.String)">
+            <summary>
+            Throws an exception if the <see cref="T:System.Collections.Generic.IEnumerable`1"/> is null or empty.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
+            <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
+            <param name="source">The <see cref="T:System.Array"/> to check for null and empty.</param>
+            <param name="message">The optional message to throw if null or empty. Leaving it default will throw a default message.</param>
+        </member>
         <member name="M:KeepCoding.Helper.Apply``2(``0,System.Func{``0,``1})">
             <summary>
             Invokes a method of <typeparamref name="T"/> to <typeparamref name="TResult"/> and then returns the argument provided.
@@ -3427,29 +3526,6 @@
             <param name="func">The function to apply <paramref name="items"/> to.</param>
             <returns>The item <paramref name="items"/> after <paramref name="func"/>.</returns>
         </member>
-        <member name="M:KeepCoding.Helper.Zip``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1})">
-            <summary>
-            Produces a sequence of tuples with elements from the two specified sequences.
-            </summary>
-            <typeparam name="T1">The type of the elements of the first input sequence.</typeparam>
-            <typeparam name="T2">The type of the elements of the second input sequence.</typeparam>
-            <param name="first">The first sequence to merge.</param>
-            <param name="second">The second sequence to merge.</param>
-            <returns>A sequence of tuples with elements taken from the first and second sequences, in that order.</returns>
-        </member>
-        <member name="M:KeepCoding.Helper.Zip``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``1,``2})">
-            <summary>
-            Applies a specified function to the corresponding elements of two sequences, producing a sequence of the results.
-            </summary>
-            <typeparam name="T1">The type of the elements of the first input sequence.</typeparam>
-            <typeparam name="T2">The type of the elements of the second input sequence.</typeparam>
-            <typeparam name="TResult">The type of the elements of the result sequence.</typeparam>
-            <param name="first">The first sequence to merge.</param>
-            <param name="second">The second sequence to merge.</param>
-            <param name="selector">A function that specifies how to merge the elements from the two sequences.</param>
-            <exception cref="T:System.NullReferenceException"></exception>
-            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> that contains merged elements of two input sequences.</returns>
-        </member>
         <member name="T:KeepCoding.KeyHelper">
             <summary>
             Inline methods for when typically key words are used.
@@ -3464,7 +3540,45 @@
             </remarks>
             <typeparam name="T">The type to cast the object into.</typeparam>
             <param name="obj">The object to cast into.</param>
-            <returns><paramref name="obj"/> <see langword="as"/> <typeparamref name="T"/></returns>
+            <returns><c><paramref name="obj"/> <see langword="as"/> <typeparamref name="T"/></c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.AsValue``1(System.Object)">
+            <summary>
+            The <see langword="as"/> operator explicitly converts the result of an expression to a given reference or nullable value type. If the conversion is not possible, the <see langword="as"/> operator returns <see langword="null"/>. Unlike a cast expression, the <see langword="as"/> operator never throws an exception.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/type-testing-and-cast#as-operator"/>
+            </remarks>
+            <typeparam name="T">The type to cast the object into.</typeparam>
+            <param name="obj">The object to cast into.</param>
+            <returns><c><paramref name="obj"/> <see langword="as"/> <typeparamref name="T"/></c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.Cast``2(``0)">
+            <summary>
+            A cast expression of the form <c>(<typeparamref name="T"/>)<typeparamref name="E"/></c> performs an explicit conversion of the result of expression <c><typeparamref name="E"/></c> to type <c><typeparamref name="T"/></c>. If no explicit conversion exists from the type of <c><typeparamref name="E"/></c> to type <c><typeparamref name="T"/></c>, a compile-time error occurs. At run time, an explicit conversion might not succeed and a cast expression might throw an exception.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/type-testing-and-cast#cast-expression"/>
+            </remarks>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <typeparam name="E">The initial type.</typeparam>
+            <typeparam name="T">The type to convert to.</typeparam>
+            <param name="item">The item to cast.</param>
+            <returns><c>(<typeparamref name="T"/>)<paramref name="item"/></c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.Catch(System.Action,System.Predicate{System.Exception},System.Action{System.Exception},System.Action)">
+            <summary>
+            The try-catch statement consists of a <see langword="try"/> block followed by one or more <see langword="catch"/> clauses, which specify handlers for different exceptions.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/try-catch"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <param name="action">The action to try.</param>
+            <param name="when">The condition for catching the exception.</param>
+            <param name="caught">The action to run when an exception is caught.</param>
+            <param name="final">The action to run on either clause.</param>
+            <returns><paramref name="action"/> with <paramref name="caught"/> if an <see cref="T:System.Exception"/> caught passed in <paramref name="when"/> returns <see langword="true"/>.</returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Catch``1(System.Action,System.Action{``0},System.Action)">
             <summary>
@@ -3527,6 +3641,20 @@
             <param name="caught">The action to run when an exception is caught.</param>
             <param name="final">The action to run on either clause.</param>
             <returns><paramref name="action"/> with <paramref name="caught"/> if the specified <see cref="T:System.Exception"/>s are caught.</returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.Catch``1(System.Func{``0},System.Predicate{System.Exception},System.Func{System.Exception,``0})">
+            <summary>
+            The try-catch statement consists of a <see langword="try"/> block followed by one or more <see langword="catch"/> clauses, which specify handlers for different exceptions.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/try-catch"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="T">The return type.</typeparam>
+            <param name="func">The action to try.</param>
+            <param name="when">The condition for catching the exception.</param>
+            <param name="caught">The action to run when an exception is caught.</param>
+            <returns><paramref name="func"/> with <paramref name="caught"/> if an <see cref="T:System.Exception"/> caught passed in <paramref name="when"/> returns <see langword="true"/>.</returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Catch``2(System.Func{``1},System.Func{``0,``1})">
             <summary>
@@ -3609,7 +3737,44 @@
             </remarks>
             <exception cref="T:System.NullReferenceException"></exception>
             <param name="func">The function to run inside a <see langword="checked"/> block.</param>
-            <returns>The output of <paramref name="func"/>.</returns>
+            <returns><c><see langword="checked"/>(<paramref name="func"/>())</c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.Conditional``2(``0,System.Func{``0,``1})">
+            <summary>
+            A null-conditional operator applies a member access, <c>?.</c>, or element access, <c>?[]</c>, operation to its operand only if that operand evaluates to non-null; otherwise, it returns <see langword="null"/>. That is, if <c>a</c> evaluates to <see langword="null"/>, the result of <c>a?.x</c> or <c>a?[x]</c> is <see langword="null"/>, If <c>a</c> evaluates to non-null, the result of <c>a?.x</c> or <c>a?[x]</c> is the same as the result of <c>a.x</c> or <c>a[x]</c>, respectively.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/member-access-operators#null-conditional-operators--and-"/>
+            </remarks>
+            <typeparam name="T">The type of the item that may be <see langword="null"/></typeparam>
+            <typeparam name="TResult">The result of the evaluation.</typeparam>
+            <param name="item">The item that may be <see langword="null"/>.</param>
+            <param name="func">The return if <paramref name="item"/> isn't <see langword="null"/>.</param>
+            <returns><c><paramref name="item"/>?.<paramref name="func"/></c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.Conditional``2(System.Nullable{``0},System.Func{``0,``1})">
+            <summary>
+            A null-conditional operator applies a member access, <c>?.</c>, or element access, <c>?[]</c>, operation to its operand only if that operand evaluates to non-null; otherwise, it returns <see langword="null"/>. That is, if <c>a</c> evaluates to <see langword="null"/>, the result of <c>a?.x</c> or <c>a?[x]</c> is <see langword="null"/>, If <c>a</c> evaluates to non-null, the result of <c>a?.x</c> or <c>a?[x]</c> is the same as the result of <c>a.x</c> or <c>a[x]</c>, respectively.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/member-access-operators#null-conditional-operators--and-"/>
+            </remarks>
+            <typeparam name="T">The type of the item that may be <see langword="null"/></typeparam>
+            <typeparam name="TResult">The result of the evaluation.</typeparam>
+            <param name="item">The item that may be <see langword="null"/>.</param>
+            <param name="func">The return if <paramref name="item"/> isn't <see langword="null"/>.</param>
+            <returns><c><paramref name="item"/>?.<paramref name="func"/></c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.Default``1(``0)">
+            <summary>
+            A default value expression produces the default value of a type.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/default"/>
+            </remarks>
+            <typeparam name="T">The type to return a default value.</typeparam>
+            <param name="_">The discard.</param>
+            <returns><c><see langword="default"/>(<typeparamref name="T"/>)</c></returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.DoWhile(System.Action,System.Func{System.Boolean})">
             <summary>
@@ -3634,6 +3799,18 @@
             <param name="condition">The condition to determine whether the loop should keep going.</param>
             <returns>All instances that <paramref name="func"/> used in an <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</returns>
         </member>
+        <member name="M:KeepCoding.KeyHelper.For(System.Int32,System.Action)">
+            <summary>
+            The <see langword="for"/> statement executes a statement or a block of statements while a specified Boolean expression evaluates to <see langword="true"/>.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-for-statement"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <param name="length">The length to reach to in the for loop.</param>
+            <param name="action">The action for each loop.</param>
+            <returns><paramref name="length"/></returns>
+        </member>
         <member name="M:KeepCoding.KeyHelper.For(System.Int32,System.Action{System.Int32})">
             <summary>
             The <see langword="for"/> statement executes a statement or a block of statements while a specified Boolean expression evaluates to <see langword="true"/>.
@@ -3646,7 +3823,7 @@
             <param name="action">The action for each loop.</param>
             <returns><paramref name="length"/></returns>
         </member>
-        <member name="M:KeepCoding.KeyHelper.For``1(``0,System.Action{``0},System.Predicate{``0},System.Func{``0,``0})">
+        <member name="M:KeepCoding.KeyHelper.For``1(System.Int32,System.Func{``0})">
             <summary>
             The <see langword="for"/> statement executes a statement or a block of statements while a specified Boolean expression evaluates to <see langword="true"/>.
             </summary>
@@ -3654,12 +3831,9 @@
             <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-for-statement"/>
             </remarks>
             <exception cref="T:System.NullReferenceException"></exception>
-            <typeparam name="T">The type of the declaring variable.</typeparam>
-            <param name="item">The item to read and write on.</param>
-            <param name="action">The action for each loop.</param>
-            <param name="condition">The condition for whether the loop should continue.</param>
-            <param name="loop">The action to run after <paramref name="action"/>.</param>
-            <returns><paramref name="item"/></returns>
+            <param name="length">The length to reach to in the for loop.</param>
+            <param name="func">The function for each loop.</param>
+            <returns>All instances that <paramref name="func"/> used in an <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.For``1(System.Int32,System.Func{System.Int32,``0})">
             <summary>
@@ -3672,33 +3846,6 @@
             <param name="length">The length to reach to in the for loop.</param>
             <param name="func">The function for each loop.</param>
             <returns>All instances that <paramref name="func"/> used in an <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</returns>
-        </member>
-        <member name="M:KeepCoding.KeyHelper.For``1(``0,System.Func{``0,``0},System.Predicate{``0},System.Func{``0,``0})">
-            <summary>
-            The <see langword="for"/> statement executes a statement or a block of statements while a specified Boolean expression evaluates to <see langword="true"/>.
-            </summary>
-            <remarks>
-            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-for-statement"/>
-            </remarks>
-            <exception cref="T:System.NullReferenceException"></exception>
-            <typeparam name="T">The type of the declaring variable.</typeparam>
-            <param name="item">The item to read and write on.</param>
-            <param name="func">The function for each loop.</param>
-            <param name="condition">The condition for whether the loop should continue.</param>
-            <param name="loop">The action to run after <paramref name="func"/>.</param>
-            <returns>All instances that <paramref name="func"/> used in an <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</returns>
-        </member>
-        <member name="M:KeepCoding.KeyHelper.ForEach(System.Collections.IEnumerable,System.Action{System.Object})">
-            <summary>
-            The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
-            </summary>
-            <remarks>
-            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-foreach-statement"/>
-            </remarks>
-            <exception cref="T:System.NullReferenceException"></exception>
-            <param name="iterator">The collection of items to go through one-by-one.</param>
-            <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
-            <returns><paramref name="iterator"/></returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
             <summary>
@@ -3713,7 +3860,7 @@
             <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
             <returns><paramref name="iterator"/></returns>
         </member>
-        <member name="M:KeepCoding.KeyHelper.ForEach(System.Collections.IEnumerator,System.Action{System.Object})">
+        <member name="M:KeepCoding.KeyHelper.ForEach``1(``0,System.Action{System.Object})">
             <summary>
             The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
             </summary>
@@ -3721,11 +3868,26 @@
             <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-foreach-statement"/>
             </remarks>
             <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="TEnumerable">The type of iterator.</typeparam>
             <param name="iterator">The collection of items to go through one-by-one.</param>
             <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
             <returns><paramref name="iterator"/></returns>
         </member>
-        <member name="M:KeepCoding.KeyHelper.ForEach``1(System.Collections.Generic.IEnumerator{``0},System.Action{``0})">
+        <member name="M:KeepCoding.KeyHelper.ForEach``2(``0,System.Action{``1})">
+            <summary>
+            The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-foreach-statement"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="TEnumerable">The type of iterator.</typeparam>
+            <typeparam name="TCurrent">The type of each item in the iterator.</typeparam>
+            <param name="iterator">The collection of items to go through one-by-one.</param>
+            <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
+            <returns><paramref name="iterator"/></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Int32})">
             <summary>
             The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
             </summary>
@@ -3734,6 +3896,33 @@
             </remarks>
             <exception cref="T:System.NullReferenceException"></exception>
             <typeparam name="T">The type of iterator.</typeparam>
+            <param name="iterator">The collection of items to go through one-by-one.</param>
+            <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
+            <returns><paramref name="iterator"/></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.ForEach``1(``0,System.Action{System.Object,System.Int32})">
+            <summary>
+            The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-foreach-statement"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="TEnumerator">The type of iterator.</typeparam>
+            <param name="iterator">The collection of items to go through one-by-one.</param>
+            <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
+            <returns><paramref name="iterator"/></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.ForEach``2(``0,System.Action{``1,System.Int32})">
+            <summary>
+            The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-foreach-statement"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="TEnumerable">The type of iterator.</typeparam>
+            <typeparam name="TCurrent">The type of each item in the iterator.</typeparam>
             <param name="iterator">The collection of items to go through one-by-one.</param>
             <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
             <returns><paramref name="iterator"/></returns>
@@ -3747,7 +3936,7 @@
             </remarks>
             <exception cref="T:System.NullReferenceException"></exception>
             <param name="condition">The condition to check.</param>
-            <param name="action">The action to run when <paramref name="condition"/> is <see langword="true"/>.</param>
+            <param name="consequent">The action to run when <paramref name="condition"/> is <see langword="true"/>.</param>
             <param name="otherwise">The action to run when <paramref name="condition"/> is <see langword="false"/>.</param>
             <returns><paramref name="condition"/></returns>
         </member>
@@ -3760,8 +3949,51 @@
             </remarks>
             <exception cref="T:System.NullReferenceException"></exception>
             <param name="condition">The condition to check.</param>
-            <param name="action">The action to run when <paramref name="condition"/> is <see langword="true"/>.</param>
-            <param name="otherwise">The action to run when <paramref name="condition"/> is <see langword="false"/>.</param>
+            <param name="consequent">The action to run when <paramref name="condition"/> is <see langword="true"/>.</param>
+            <param name="alternative">The action to run when <paramref name="condition"/> is <see langword="false"/>.</param>
+            <returns><c><paramref name="condition"/> ? <paramref name="consequent"/>() : <paramref name="alternative"/>()</c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.If``1(System.Boolean,``0,``0)">
+            <summary>
+            The conditional operator <c>?:</c>, also known as the ternary conditional operator, evaluates a Boolean expression and returns the result of one of the two expressions, depending on whether the Boolean expression evaluates to <see langword="true"/> or <see langword="false"/>.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/if-else"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <param name="condition">The condition to check.</param>
+            <param name="consequent">The action to run when <paramref name="condition"/> is <see langword="true"/>.</param>
+            <param name="alternative">The action to run when <paramref name="condition"/> is <see langword="false"/>.</param>
+            <returns><c><paramref name="condition"/> ? <paramref name="consequent"/> : <paramref name="alternative"/></c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.If``2(System.Boolean,``0,``1)">
+            <summary>
+            The conditional operator <c>?:</c>, also known as the ternary conditional operator, evaluates a Boolean expression and returns the result of one of the two expressions, depending on whether the Boolean expression evaluates to <see langword="true"/> or <see langword="false"/>.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator"/>
+            </remarks>
+            <typeparam name="T1">The type for the return if <paramref name="condition"/> is <see langword="true"/>.</typeparam>
+            <typeparam name="T2">The type for the return if <paramref name="condition"/> is <see langword="false"/>.</typeparam>
+            <param name="condition">The <see cref="T:System.Boolean"/> to either return <paramref name="consequent"/> or <paramref name="alternative"/>.</param>
+            <param name="consequent">The item to return if <paramref name="condition"/> is <see langword="true"/>.</param>
+            <param name="alternative">The item to return if <paramref name="condition"/> is <see langword="false"/>.</param>
+            <returns><c><paramref name="condition"/> ? <paramref name="consequent"/> : <paramref name="alternative"/></c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.If``3(System.Boolean,``0,``1)">
+            <summary>
+            The conditional operator <c>?:</c>, also known as the ternary conditional operator, evaluates a Boolean expression and returns the result of one of the two expressions, depending on whether the Boolean expression evaluates to <see langword="true"/> or <see langword="false"/>.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator"/>
+            </remarks>
+            <typeparam name="T1">The type for the return if <paramref name="condition"/> is <see langword="true"/>.</typeparam>
+            <typeparam name="T2">The type for the return if <paramref name="condition"/> is <see langword="false"/>.</typeparam>
+            <typeparam name="TResult">The return type that is shared for both <typeparamref name="T1"/> and <typeparamref name="T2"/>.</typeparam>
+            <param name="condition">The <see cref="T:System.Boolean"/> to either return <paramref name="consequent"/> or <paramref name="alternative"/>.</param>
+            <param name="consequent">The item to return if <paramref name="condition"/> is <see langword="true"/>.</param>
+            <param name="alternative">The item to return if <paramref name="condition"/> is <see langword="false"/>.</param>
+            <returns><c><paramref name="condition"/> ? <paramref name="consequent"/> : <paramref name="alternative"/></c></returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Is``1(System.Object)">
             <summary>
@@ -3772,7 +4004,7 @@
             </remarks>
             <typeparam name="T">The type to cast into.</typeparam>
             <param name="obj">The object to cast.</param>
-            <returns><paramref name="obj"/> <see langword="is"/> <typeparamref name="T"/></returns>
+            <returns><c><paramref name="obj"/> <see langword="is"/> <typeparamref name="T"/></c></returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Is``1(System.Object,``0@)">
             <summary>
@@ -3784,7 +4016,31 @@
             <typeparam name="T">The type to cast into.</typeparam>
             <param name="obj">The object to cast.</param>
             <param name="item">The object casted into the type.</param>
-            <returns><paramref name="obj"/> <see langword="is"/> <typeparamref name="T"/> <paramref name="item"/></returns>
+            <returns><c><paramref name="obj"/> <see langword="is"/> <typeparamref name="T"/> <paramref name="item"/></c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.Is``1(System.Object,System.Nullable{``0}@)">
+            <summary>
+            The <see langword="is"/> operator checks if the result of an expression is compatible with a given type.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/is"/>
+            </remarks>
+            <typeparam name="T">The type to cast into.</typeparam>
+            <param name="obj">The object to cast.</param>
+            <param name="item">The object casted into the type.</param>
+            <returns><c><paramref name="obj"/> <see langword="is"/> <typeparamref name="T"/> <paramref name="item"/></c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.Is``1(System.Object,System.Action{``0})">
+            <summary>
+            The <see langword="is"/> operator checks if the result of an expression is compatible with a given type.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/is"/>
+            </remarks>
+            <typeparam name="T">The type to cast into.</typeparam>
+            <param name="obj">The object to cast.</param>
+            <param name="func">The object casted into the type.</param>
+            <returns><c><paramref name="obj"/> <see langword="is"/> <typeparamref name="T"/> <paramref name="func"/></c></returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Is``1(System.Object,System.Action{``0},System.Action)">
             <summary>
@@ -3797,7 +4053,7 @@
             <param name="obj">The object to cast.</param>
             <param name="action">The action to run when <paramref name="obj"/> is <typeparamref name="T"/>.</param>
             <param name="otherwise">The action to run when <paramref name="obj"/> is not <typeparamref name="T"/>.</param>
-            <returns><paramref name="obj"/> <see langword="is"/> <typeparamref name="T"/> item</returns>
+            <returns><c><paramref name="obj"/> <see langword="is"/> <typeparamref name="T"/> item</c></returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Lock``1(``0,System.Action{``0})">
             <summary>
@@ -3810,6 +4066,7 @@
             <typeparam name="T">The type of item to lock.</typeparam>
             <param name="item">The item to lock.</param>
             <param name="action">The action to run while the item is locked.</param>
+            <returns><c><see langword="lock"/> (<paramref name="item"/>) <paramref name="action"/>(<paramref name="item"/>) <see langword="return"/> <paramref name="item"/></c></returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Lock``1(``0,System.Func{``0,``0})">
             <summary>
@@ -3822,7 +4079,7 @@
             <typeparam name="T">The type of item to lock.</typeparam>
             <param name="item">The item to lock.</param>
             <param name="func">The function to run while the item is locked.</param>
-            <returns>The output of <paramref name="func"/>.</returns>
+            <returns><c><see langword="lock"/> (<paramref name="item"/>) <see langword="return"/> <paramref name="func"/>(<paramref name="item"/>)</c></returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.NameOf``1(System.Linq.Expressions.Expression{System.Func{``0}})">
             <summary>
@@ -3833,7 +4090,77 @@
             </remarks>
             <typeparam name="T">The type of item.</typeparam>
             <param name="expression">The expression to get the name from.</param>
-            <returns>The name of the expression.</returns>
+            <returns>The name of the variable inside <paramref name="expression"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.New``1(``0)">
+            <summary>
+            The <see langword="new"/> operator creates a new instance of a type.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/new-operator"/>
+            </remarks>
+            <typeparam name="T">The type of the return.</typeparam>
+            <param name="_">The discard to get the constructor of.</param>
+            <returns><c><see langword="new"/> <typeparamref name="T"/>()</c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.Or``1(``0,``0)">
+            <summary>
+            The null-coalescing operator <c>??</c> returns the value of its left-hand operand if it isn't <see langword="null"/>; otherwise, it evaluates the right-hand operand and returns its result.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator"/>
+            </remarks>
+            <typeparam name="T">The type of the item and return.</typeparam>
+            <param name="item">The item to check <see langword="null"/> for.</param>
+            <param name="alternative">The variable to <see langword="return"/> if <paramref name="item"/> is <see langword="null"/>.</param>
+            <returns><c><paramref name="item"/> ?? <paramref name="alternative"/></c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.Or``1(``0,``0@)">
+            <summary>
+            The null-coalescing operator <c>??=</c> returns the value of its right-hand operand if it isn't <see langword="null"/>; otherwise, it evaluates the left-hand operand, sets it to the right-hand operand, and returns its result.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator"/>
+            </remarks>
+            <typeparam name="T">The type of the item and return.</typeparam>
+            <param name="alternative">The variable to set and <see langword="return"/> if <paramref name="alternative"/> is <see langword="null"/>.</param>
+            <param name="item">The item to check <see langword="null"/> for.</param>
+            <returns><c><paramref name="alternative"/> ??= <paramref name="item"/></c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.Or``1(``0,System.Func{``0})">
+            <summary>
+            The null-coalescing operator <c>??</c> returns the value of its left-hand operand if it isn't <see langword="null"/>; otherwise, it evaluates the right-hand operand and returns its result. The <c>??</c> operator doesn't evaluate its right-hand operand if the left-hand operand evaluates to non-null.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator"/>
+            </remarks>
+            <typeparam name="T">The type of the item and return.</typeparam>
+            <param name="item">The item to check <see langword="null"/> for.</param>
+            <param name="alternative">The variable to <see langword="return"/> if <paramref name="item"/> is <see langword="null"/>.</param>
+            <returns><c><paramref name="item"/> ?? <paramref name="alternative"/></c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.Or``1(System.Func{``0},``0@)">
+            <summary>
+            The null-coalescing operator <c>??=</c> returns the value of its right-hand operand if it isn't <see langword="null"/>; otherwise, it evaluates the left-hand operand, sets it to the right-hand operand, and returns its result. The <c>??=</c> operator doesn't evaluate its right-hand operand if the left-hand operand evaluates to non-null.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator"/>
+            </remarks>
+            <typeparam name="T">The type of the item and return.</typeparam>
+            <param name="alternative">The variable to set and <see langword="return"/> if <paramref name="alternative"/> is <see langword="null"/>.</param>
+            <param name="item">The item to check <see langword="null"/> for.</param>
+            <returns><c><paramref name="alternative"/> ??= <paramref name="alternative"/></c></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.TypeOf``1(``0)">
+            <summary>
+            The <see langword="typeof"/> operator obtains the <see cref="T:System.Type"/> instance for a type.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/type-testing-and-cast#typeof-operator"/>
+            </remarks>
+            <typeparam name="T">The type of the item.</typeparam>
+            <param name="_">The discard to get the <see cref="T:System.Type"/> of.</param>
+            <returns><c><see langword="typeof"/>(<typeparamref name="T"/>)</c></returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Unchecked(System.Action)">
             <summary>
@@ -3854,7 +4181,7 @@
             </remarks>
             <exception cref="T:System.NullReferenceException"></exception>
             <param name="func">The function to ignore overflow-checking.</param>
-            <returns>The output of <paramref name="func"/>.</returns>
+            <returns><c><see langword="unchecked"/>(<paramref name="func"/>())</c></returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Using``1(``0,System.Action{``0})">
             <summary>
@@ -3867,7 +4194,7 @@
             <typeparam name="T">The type of <see cref="T:System.IDisposable"/>.</typeparam>
             <param name="item">The item to use.</param>
             <param name="action">The action to use <paramref name="item"/> on.</param>
-            <returns><paramref name="item"/></returns>
+            <returns><c><see langword="using"/> (<paramref name="item"/>) <paramref name="action"/>(<paramref name="item"/>)</c></returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.Using``1(``0,System.Func{``0,``0})">
             <summary>
@@ -3880,7 +4207,7 @@
             <typeparam name="T">The type of <see cref="T:System.IDisposable"/>.</typeparam>
             <param name="item">The item to use.</param>
             <param name="func">The function to use <paramref name="item"/> on.</param>
-            <returns>The output of <paramref name="func"/>.</returns>
+            <returns><c><see langword="using"/> (<paramref name="item"/>) <see langword="return"/> <paramref name="func"/>(<paramref name="item"/>)</c></returns>
         </member>
         <member name="M:KeepCoding.KeyHelper.While(System.Action,System.Func{System.Boolean})">
             <summary>
@@ -3909,9 +4236,12 @@
             <summary>
             Wraps this object instance into an <see cref="T:System.Collections.Generic.IEnumerable`1"/> consisting of a single item.
             </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/yield"/>
+            </remarks>
             <typeparam name="T">Type of the object.</typeparam>
             <param name="item">The instance that will be wrapped.</param>
-            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> consisting of a single item.</returns>
+            <returns><c><see langword="yield"/> <see langword="return"/> <paramref name="item"/></c></returns>
         </member>
         <member name="T:KeepCoding.TypeHelper">
             <summary>
@@ -4097,7 +4427,7 @@
             <param name="a">The alpha component; opacity.</param>
             <returns>A new instance of the <paramref name="color"/>, with the arguments replacing the values.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.ToLogger``1(``0,System.String,System.Boolean)">
+        <member name="M:KeepCoding.TypeHelper.ToLogger``1(``0,System.String,System.Boolean,System.Boolean)">
             <summary>
             Converts arguments to a new <see cref="T:KeepCoding.Logger"/>.
             </summary>
@@ -4105,6 +4435,7 @@
             <param name="_">The discard which is only needed for the type.</param>
             <param name="name">The name of the value.</param>
             <param name="showId">Determines whether to show the unique identifier when logging.</param>
+            <param name="showInLfa">Determines whether the formatting should be compliant with the Logfile Analyzer.</param>
             <returns>A new <see cref="T:KeepCoding.Logger"/> containing the arguments specified.</returns>
         </member>
         <member name="M:KeepCoding.TypeHelper.ToRoutine(UnityEngine.MonoBehaviour,System.Func{System.Collections.IEnumerator})">
@@ -4401,7 +4732,7 @@
             <param name="action">The action to run when the thread is active.</param>
             <returns>A new <see cref="T:KeepCoding.Work"/> consisting of the arguments provided.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.ToWork(System.UInt32,System.Action,System.Boolean)">
+        <member name="M:KeepCoding.TypeHelper.ToWork(System.Int32,System.Action,System.Boolean)">
             <summary>
             Converts argument to a new <see cref="T:KeepCoding.Work"/>
             </summary>
@@ -4417,7 +4748,7 @@
             <param name="func">The action to run when the thread is active.</param>
             <returns>A new <see cref="T:KeepCoding.Work"/> consisting of the arguments provided.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.ToWork``1(System.UInt32,System.Func{``0},System.Boolean)">
+        <member name="M:KeepCoding.TypeHelper.ToWork``1(System.Int32,System.Func{``0},System.Boolean)">
             <summary>
             Converts argument to a new <see cref="T:KeepCoding.Work`1"/>
             </summary>
@@ -4433,7 +4764,7 @@
             <param name="func">The action to run when the thread is active.</param>
             <returns>A new <see cref="T:KeepCoding.Work"/> consisting of the arguments provided.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.ToWork``2(System.UInt32,System.Func{``0,``1},System.Boolean)">
+        <member name="M:KeepCoding.TypeHelper.ToWork``2(System.Int32,System.Func{``0,``1},System.Boolean)">
             <summary>
             Converts argument to a new <see cref="T:KeepCoding.Work`2"/>
             </summary>
@@ -4449,7 +4780,7 @@
             <param name="func">The action to run when the thread is active.</param>
             <returns>A new <see cref="T:KeepCoding.Work"/> consisting of the arguments provided.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.ToWork``3(System.UInt32,System.Func{``0,``1,``2},System.Boolean)">
+        <member name="M:KeepCoding.TypeHelper.ToWork``3(System.Int32,System.Func{``0,``1,``2},System.Boolean)">
             <summary>
             Converts argument to a new <see cref="T:KeepCoding.Work`3"/>
             </summary>
@@ -4465,7 +4796,7 @@
             <param name="func">The action to run when the thread is active.</param>
             <returns>A new <see cref="T:KeepCoding.Work"/> consisting of the arguments provided.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.ToWork``4(System.UInt32,System.Func{``0,``1,``2,``3},System.Boolean)">
+        <member name="M:KeepCoding.TypeHelper.ToWork``4(System.Int32,System.Func{``0,``1,``2,``3},System.Boolean)">
             <summary>
             Converts argument to a new <see cref="T:KeepCoding.Work`4"/>
             </summary>
@@ -4481,7 +4812,7 @@
             <param name="func">The action to run when the thread is active.</param>
             <returns>A new <see cref="T:KeepCoding.Work"/> consisting of the arguments provided.</returns>
         </member>
-        <member name="M:KeepCoding.TypeHelper.ToWork``5(System.UInt32,System.Func{``0,``1,``2,``3,``4},System.Boolean)">
+        <member name="M:KeepCoding.TypeHelper.ToWork``5(System.Int32,System.Func{``0,``1,``2,``3,``4},System.Boolean)">
             <summary>
             Converts argument to a new <see cref="T:KeepCoding.Work`5"/>
             </summary>
@@ -6221,6 +6552,11 @@
             Contains information about the colorblind mod's info, this class can be used to deserialize "ColorblindMode.json".
             </summary>
         </member>
+        <member name="M:KeepCoding.ColorblindInfo.#ctor">
+            <summary>
+            Creates a <see cref="T:KeepCoding.ColorblindInfo"/> without read/writing the file.
+            </summary>
+        </member>
         <member name="M:KeepCoding.ColorblindInfo.#ctor(System.String)">
             <summary>
             Creates a <see cref="T:KeepCoding.ColorblindInfo"/> while read/writing the file.
@@ -6235,11 +6571,6 @@
         <member name="P:KeepCoding.ColorblindInfo.IsModuleEnabled">
             <summary>
             Determines whether colorblind mode for the module is on.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.ColorblindInfo.File">
-            <summary>
-            The directory of the mod settings file.
             </summary>
         </member>
         <member name="P:KeepCoding.ColorblindInfo.Modules">
@@ -6265,16 +6596,6 @@
             Converts the object to a string.
             </summary>
             <returns><see cref="P:KeepCoding.ColorblindInfo.Modules"/> unwrapped with <see cref="M:KeepCoding.Helper.Stringify``1(``0,KeepCoding.StringifyFormat)"/>.</returns>
-        </member>
-        <member name="M:KeepCoding.ColorblindInfo.Deserialize(System.String,Newtonsoft.Json.JsonSerializerSettings)">
-            <summary>
-            Deserializes a ColorblindMode.json file. An <see cref="T:System.IO.IOException"/> will make it return a new <see cref="T:KeepCoding.ColorblindInfo"/> instance with no arguments.
-            </summary>
-            <exception cref="T:Newtonsoft.Json.JsonException"></exception>
-            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
-            <param name="path">The path of the file to deserialize.</param>
-            <param name="settings">The settings for the serialization.</param>
-            <returns><paramref name="path"/> deserialized as <see cref="T:KeepCoding.ColorblindInfo"/>.</returns>
         </member>
         <member name="T:KeepCoding.ComponentPool">
             <summary>
@@ -6770,6 +7091,71 @@
             </summary>
             <returns>The hash code.</returns>
         </member>
+        <member name="T:KeepCoding.ModConfig`1">
+            <summary>
+            Meant for information that needs to be deserialized within the mod settings folder by samfundev.
+            </summary>
+            <remarks>
+            <see href="https://github.com/Qkrisi/ktanemodkit/blob/master/Assets/Scripts/ModConfig.cs"/>
+            </remarks>
+            <typeparam name="TDeserialize">The type to deserialize the file.</typeparam>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.#ctor(System.String)">
+            <summary>
+            Creates a new <see cref="T:KeepCoding.ModConfig`1"/> with the target file name and an optional event of when the file is read.
+            </summary>
+            <param name="fileName">The file name to get.</param>
+        </member>
+        <member name="P:KeepCoding.ModConfig`1.HasReadSucceeded">
+            <summary>
+            Whether or not there has been a successful read of the settings file.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.Log``1(``0,UnityEngine.LogType)">
+            <summary>
+            Logs message, but formats it to be compliant with the Logfile Analyzer.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="message">The message to log.</param>
+            <param name="logType">The type of logging. Different logging types have different icons within the editor.</param>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.Log``1(``0,System.Object[])">
+            <summary>
+            Logs multiple entries, but formats it to be compliant with the Logfile Analyzer.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="message">The message to log.</param>
+            <param name="args">All of the arguments to embed into <paramref name="message"/>.</param>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.LogMultiple(System.String[])">
+            <summary>
+            Logs multiple entries to the console.
+            </summary>
+            <param name="logs">The array of logs to individual output into the console.</param>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.SerializeSettings(`0)">
+            <summary>
+            Serializes settings the same way it's written to the file. Supports settings that use enums.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.Read(Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Reads the settings from the settings file.
+            If the settings couldn't be read, the default settings will be returned.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.Write(`0)">
+            <summary>
+            Writes the settings to the settings file.
+            To protect the user settings, this does nothing if the last read wasn't successful.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.ToString">
+            <summary>
+            Deserializes, then reserializes the file according to <see cref="M:KeepCoding.ModConfig`1.SerializeSettings(`0)"/>.
+            </summary>
+            <returns>A string representation of the value from <see cref="M:KeepCoding.ModConfig`1.Read(Newtonsoft.Json.JsonSerializerSettings)"/>.</returns>
+        </member>
         <member name="T:KeepCoding.ModInfo">
             <summary>
             Contains information about the mod's info, this class can be used to deserialize every mod's "modInfo.json".
@@ -6999,6 +7385,79 @@
             </summary>
             <returns><see cref="P:KeepCoding.ModuleContainer.Name"/> and <see cref="P:KeepCoding.ModuleContainer.Id"/></returns>
         </member>
+        <member name="T:KeepCoding.MonoRandom">
+            <summary>
+            A pseudo-random number generator that is primarily used to get multiple platforms to share the same random number generator.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:KeepCoding.MonoRandom"/> class, using a time-dependent default seed value.
+            </summary>
+            <exception cref="T:System.OverflowException"></exception>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Random"/> class, using the specified seed value.
+            </summary>
+            <exception cref="T:System.OverflowException"></exception>
+            <param name="seed">A number used to calculate a starting value for the pseudo-random number sequence. If a negative number is specified, the absolute value of the number is used.</param>
+        </member>
+        <member name="P:KeepCoding.MonoRandom.Seed">
+            <summary>
+            The seed used for the randomization.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.NextBytes(System.Byte[])">
+            <summary>
+            Fills the elements of a specified array of bytes with random numbers.
+            </summary>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <param name="buffer">An array of bytes to contain random numbers.</param>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.Next">
+            <summary>
+            Returns a nonnegative random number.
+            </summary>
+            <returns>A 32-bit signed integer greater than or equal to zero and less than <see cref="F:System.Int32.MaxValue"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.Next(System.Int32)">
+            <summary>
+            Returns a nonnegative random number less than the specified maximum.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="maxValue">The exclusive upper bound of the random number to be generated. <paramref name="maxValue" /> must be greater than or equal to zero.</param>
+            <returns>A 32-bit signed integer greater than or equal to zero, and less than <paramref name="maxValue" />; that is, the range of return values ordinarily includes zero but not <paramref name="maxValue" />. However, if <paramref name="maxValue" /> equals zero, <paramref name="maxValue" /> is returned.</returns>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.Next(System.Int32,System.Int32)">
+            <summary>
+            Returns a random number within a specified range.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <param name="minValue">The inclusive lower bound of the random number returned.</param>
+            <param name="maxValue">The exclusive upper bound of the random number returned. <paramref name="maxValue" /> must be greater than or equal to <paramref name="minValue" />.</param>
+            <returns>A 32-bit signed integer greater than or equal to <paramref name="minValue" /> and less than <paramref name="maxValue" />; that is, the range of return values includes <paramref name="minValue" /> but not <paramref name="maxValue" />. If <paramref name="minValue" /> equals <paramref name="maxValue" />, <paramref name="minValue" /> is returned.</returns>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.NextDouble">
+            <summary>
+            Returns a random number between 0.0 and 1.0.
+            </summary>
+            <returns>A double-precision floating point number greater than or equal to 0.0, and less than 1.0.</returns>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.Sample">
+            <summary>
+            Returns a random number between 0.0 and 1.0.
+            </summary>
+            <returns>A double-precision floating point number greater than or equal to 0.0, and less than 1.0.</returns>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.Shuffle``1(``0)">
+            <summary>
+            Shuffles a list using an in-place algorithm; the original list is modified.
+            </summary>
+            <typeparam name="T">The type of list to shuffle.</typeparam>
+            <param name="list">The list to shuffle.</param>
+            <returns><paramref name="list"/> shuffled using Fisher-Yates shuffle.</returns>
+        </member>
         <member name="T:KeepCoding.Profiler">
             <summary>
             Times your code and runs a method after <see cref="M:KeepCoding.Profiler.Dispose"/> runs.
@@ -7061,6 +7520,11 @@
             Stops the timer and returns the time elapsed.
             </summary>
             <returns>A <see cref="T:System.TimeSpan"/> representing how long the <see cref="T:KeepCoding.Profiler"/> ran for before this method was called.</returns>
+        </member>
+        <member name="M:KeepCoding.Profiler.Finalize">
+            <summary>
+            Stops the timer and runs the action.
+            </summary>
         </member>
         <member name="T:KeepCoding.Routine">
             <summary>
@@ -7873,7 +8337,7 @@
             </summary>
             <param name="work">The method to call when thread starts.</param>
         </member>
-        <member name="M:KeepCoding.Work.#ctor(System.Action,System.Boolean,System.UInt32)">
+        <member name="M:KeepCoding.Work.#ctor(System.Action,System.Boolean,System.Int32)">
             <summary>
             Stores the method so that it can later be called when a new thread starts.
             </summary>
@@ -7898,7 +8362,7 @@
             </summary>
             <param name="work">The method to call when thread starts.</param>
         </member>
-        <member name="M:KeepCoding.Work`1.#ctor(System.Func{`0},System.Boolean,System.UInt32)">
+        <member name="M:KeepCoding.Work`1.#ctor(System.Func{`0},System.Boolean,System.Int32)">
             <summary>
             Stores the method so that it can later be called when a new thread starts.
             </summary>
@@ -7928,7 +8392,7 @@
             </summary>
             <param name="work">The method to call when thread starts.</param>
         </member>
-        <member name="M:KeepCoding.Work`2.#ctor(System.Func{`0,`1},System.Boolean,System.UInt32)">
+        <member name="M:KeepCoding.Work`2.#ctor(System.Func{`0,`1},System.Boolean,System.Int32)">
             <summary>
             Stores the method so that it can later be called when a new thread starts.
             </summary>
@@ -7958,7 +8422,7 @@
             </summary>
             <param name="work">The method to call when thread starts.</param>
         </member>
-        <member name="M:KeepCoding.Work`3.#ctor(System.Func{`0,`1,`2},System.Boolean,System.UInt32)">
+        <member name="M:KeepCoding.Work`3.#ctor(System.Func{`0,`1,`2},System.Boolean,System.Int32)">
             <summary>
             Stores the method so that it can later be called when a new thread starts.
             </summary>
@@ -7988,7 +8452,7 @@
             </summary>
             <param name="work">The method to call when thread starts.</param>
         </member>
-        <member name="M:KeepCoding.Work`4.#ctor(System.Func{`0,`1,`2,`3},System.Boolean,System.UInt32)">
+        <member name="M:KeepCoding.Work`4.#ctor(System.Func{`0,`1,`2,`3},System.Boolean,System.Int32)">
             <summary>
             Stores the method so that it can later be called when a new thread starts.
             </summary>
@@ -8018,7 +8482,7 @@
             </summary>
             <param name="work">The method to call when thread starts.</param>
         </member>
-        <member name="M:KeepCoding.Work`5.#ctor(System.Func{`0,`1,`2,`3,`4},System.Boolean,System.UInt32)">
+        <member name="M:KeepCoding.Work`5.#ctor(System.Func{`0,`1,`2,`3,`4},System.Boolean,System.Int32)">
             <summary>
             Stores the method so that it can later be called when a new thread starts.
             </summary>
@@ -8170,6 +8634,158 @@
             </remarks>
             <param name="command">The user's command.</param>
             <returns>A series of instructions for the Twitch Plays mod to handle as requested by the user.</returns>
+        </member>
+        <member name="T:KeepCoding.AudioScript">
+            <summary>
+            Encapsulates an <see cref="P:KeepCoding.AudioScript.AudioSource"/> and scales it with the game's volume using <see cref="P:KeepCoding.Game.PlayerSettings.SFXVolume"/> and <see cref="P:KeepCoding.Game.PlayerSettings.MusicVolume"/>.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.AudioScript.IsMuted">
+            <summary>
+            Determines if the <see cref="P:KeepCoding.AudioScript.AudioSource"/> is muted.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.AudioScript.IsPlaying">
+            <summary>
+            Determines if the audio source is currently playing.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.AudioScript.Game">
+            <summary>
+            The current volume of the game. Ranges 0 to 100. In the Editor this value will always return 100.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.AudioScript.Relative">
+            <summary>
+            The volume the <see cref="P:KeepCoding.AudioScript.AudioSource"/> is playing at, determined by <see cref="P:KeepCoding.AudioScript.Volume"/> and <see cref="P:KeepCoding.AudioScript.Game"/>.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.AudioScript.Volume">
+            <summary>
+            The volume of the sound relative to the game.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.AudioScript.AudioClips">
+            <summary>
+            The audio clips used by the <see cref="T:UnityEngine.AudioSource"/>s.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.AudioScript.AudioSource">
+            <summary>
+            The main <see cref="T:UnityEngine.AudioSource"/> property. If the field it is referencing is <see langword="null"/> then it adds a component.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.AudioScript.op_Explicit(KeepCoding.AudioScript)~UnityEngine.AudioSource">
+            <summary>
+            Returns the <see cref="P:KeepCoding.AudioScript.AudioSource"/>.
+            </summary>
+            <param name="dynamicAudio">The instance of <see cref="T:KeepCoding.AudioScript"/> to retrieve <see cref="P:KeepCoding.AudioScript.AudioSource"/> from.</param>
+        </member>
+        <member name="M:KeepCoding.AudioScript.Fade(System.Single,System.Single)">
+            <summary>
+            Fades the audio source to a specific volume from a specified duration of time linearly.
+            </summary>
+            <param name="volume">The volume to get to.</param>
+            <param name="time">The amount of time it takes to get to <paramref name="volume"/>.</param>
+        </member>
+        <member name="M:KeepCoding.AudioScript.OnAwake">
+            <summary>
+            Called when the module instantiates, well before the lights turn on.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.AudioScript.OnUpdate">
+            <summary>
+            Called on every frame. Frame-rate might vary depending on setup, so make sure to use <see cref="P:UnityEngine.Time.deltaTime"/> or similar for time-sensitive applications.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.AudioScript.Pause">
+            <summary>
+            Pauses playing the clip.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.AudioScript.Play(UnityEngine.AudioClip,System.Boolean,System.Byte,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Plays a sound, with optional parameters.
+            </summary>
+            <remarks>
+            The sound can be cancelled with this method, but multiple sounds cannot play simultaneously.
+            </remarks>
+            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
+            <param name="clip">The sound clip to play.</param>
+            <param name="volume">The volume of the sound clip relative to the game sound.</param>
+            <param name="loop">If the sound should be looped.</param>
+            <param name="priority">The priority of the sound.</param>
+            <param name="delay">The amount of delay before the sound starts.</param>
+            <param name="time">The time in the audio it should start playing at.</param>
+            <param name="pitch">The pitch of the sound.</param>
+        </member>
+        <member name="M:KeepCoding.AudioScript.Play(System.String,System.Boolean,System.Byte,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Plays a sound, with optional parameters.
+            </summary>
+            <remarks>
+            The sound can be cancelled with this method, but multiple sounds cannot play simultaneously.
+            </remarks>
+            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
+            <exception cref="T:UnityEngine.MissingComponentException"></exception>
+            <param name="name">The name of the sound clip to play.</param>
+            <param name="volume">The volume of the sound clip relative to the game sound.</param>
+            <param name="loop">If the sound should be looped.</param>
+            <param name="priority">The priority of the sound.</param>
+            <param name="delay">The amount of delay before the sound starts.</param>
+            <param name="time">The time in the audio it should start playing at.</param>
+            <param name="pitch">The pitch of the sound.</param>
+        </member>
+        <member name="M:KeepCoding.AudioScript.PlayStackable(UnityEngine.AudioClip,System.Boolean,System.Byte,System.Single,System.Single,System.Single)">
+            <summary>
+            Plays a sound, with optional parameters.
+            </summary>
+            <remarks>
+            Multiple sounds can be played simultaneously with this method, however they cannot be cancelled.
+            </remarks>
+            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
+            <param name="clip">The sound clip to play.</param>
+            <param name="volume">The volume of the sound clip relative to the game sound.</param>
+            <param name="loop">If the sound should be looped.</param>
+            <param name="priority">The priority of the sound.</param>
+            <param name="time">The time in the audio it should start playing at.</param>
+            <param name="pitch">The pitch of the sound.</param>
+        </member>
+        <member name="M:KeepCoding.AudioScript.PlayStackable(System.String,System.Boolean,System.Byte,System.Single,System.Single,System.Single)">
+            <summary>
+            Plays a sound, with optional parameters.
+            </summary>
+            <remarks>
+            Multiple sounds can be played simultaneously with this method, however they cannot be cancelled.
+            </remarks>
+            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
+            <exception cref="T:UnityEngine.MissingComponentException"></exception>
+            <param name="name">The name of the sound clip to play.</param>
+            <param name="volume">The volume of the sound clip relative to the game sound.</param>
+            <param name="loop">If the sound should be looped.</param>
+            <param name="priority">The priority of the sound.</param>
+            <param name="time">The time in the audio it should start playing at.</param>
+            <param name="pitch">The pitch of the sound.</param>
+        </member>
+        <member name="M:KeepCoding.AudioScript.Stop">
+            <summary>
+            Stops playing the clip.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.AudioScript.Unpause">
+            <summary>
+            Unpauses the paused playback of this <see cref="P:KeepCoding.AudioScript.AudioSource"/>.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.AudioScript.Awake">
+            <summary>
+            Sets up base functionality for the audio. If you declare this method yourself, make sure to call <c>base.Awake()</c> to ensure that this component initializes correctly, or use <see cref="M:KeepCoding.AudioScript.OnAwake"/> instead.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.AudioScript.Update">
+            <summary>
+            Updates the volume of <see cref="P:KeepCoding.AudioScript.AudioSource"/>. If you declare this method yourself, make sure to call <c>base.Update()</c> to ensure that this component retains functionality, or use <see cref="M:KeepCoding.AudioScript.OnUpdate"/> instead.
+            </summary>
         </member>
         <member name="T:KeepCoding.CacheableBehaviour">
             <summary>
@@ -8431,7 +9047,7 @@
         </member>
         <member name="P:KeepCoding.ModuleScript.IsVR">
             <summary>
-            Determines whether the game is being played in Virtual Reality. In the Editor, it always returns false.
+            Determines whether the game is being played with motion virtual reality. In the Editor, it always returns false.
             </summary>
         </member>
         <member name="P:KeepCoding.ModuleScript.Id">
@@ -8457,9 +9073,14 @@
             <exception cref="T:Newtonsoft.Json.JsonException"></exception>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
         </member>
-        <member name="F:KeepCoding.ModuleScript.Colorblind">
+        <member name="P:KeepCoding.ModuleScript.IgnoredModules">
             <summary>
-            Contains colorblind information.
+            The ignored modules of this module from the Boss Module Manager.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.ModuleScript.Colorblind">
+            <summary>
+            Contains colorblind information. This property will return <see langword="null"/> in the event that <see cref="M:KeepCoding.ModuleScript.OnColorblindChanged(System.Boolean)"/> isn't implemented.
             </summary>
         </member>
         <member name="P:KeepCoding.ModuleScript.TP">
@@ -8486,6 +9107,11 @@
         <member name="P:KeepCoding.ModuleScript.Modules">
             <summary>
             Contains every modded module in <see cref="P:KeepCoding.ModuleScript.Bomb"/>, separated by type.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.ModuleScript.RuleSeed">
+            <summary>
+            The pseudo-random number generator whose number generations are based on the current Rule Seed.
             </summary>
         </member>
         <member name="P:KeepCoding.ModuleScript.Sounds">
@@ -8629,6 +9255,19 @@
             <typeparam name="T">The type of the expected input.</typeparam>
             <param name="key">The key of the variable, a lot like a variable name.</param>
             <param name="value">The value to store in the key.</param>
+        </member>
+        <member name="M:KeepCoding.ModuleScript.GetRuleSeedId">
+            <summary>
+            Gets the rule seed number.
+            </summary>
+            <returns>The rule seed number, by default 1.</returns>
+        </member>
+        <member name="M:KeepCoding.ModuleScript.GetIgnoredModules(System.String)">
+            <summary>
+            Retrieves the ignore list from the Boss Module Manager mod used primarily by boss modules.
+            </summary>
+            <param name="moduleName">The name of the module to retrieve from.</param>
+            <returns>If successful, the boss module's ignore list, otherwise a new empty string array.</returns>
         </member>
         <member name="M:KeepCoding.ModuleScript.PlaySound(UnityEngine.Transform,System.Boolean,KeepCoding.Sound[])">
             <summary>
@@ -9406,7 +10045,7 @@
             Gets the game's internal bomb component, not to be mistaken with <see cref="T:KMBomb"/>. To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to Bomb or <see cref="T:UnityEngine.MonoBehaviour"/> type to restore its functionality.
             </summary>
             <remarks>
-            Default: An encapsulated method that takes a <see cref="T:UnityEngine.GameObject"/> and always returns <see langword="null"/>.
+            Default: An encapsulated method that takes a <see cref="T:UnityEngine.GameObject"/> and always returns the argument passed in.
             </remarks>
             <exception cref="T:System.NotSupportedException"></exception>
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
@@ -9416,7 +10055,7 @@
             Gets the game's internal timer component. To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to TimerComponent or <see cref="T:UnityEngine.MonoBehaviour"/> type to restore its functionality.
             </summary>
             <remarks>
-            Default: An encapsulated method that takes a <see cref="T:UnityEngine.GameObject"/> and always returns <see langword="null"/>.
+            Default: An encapsulated method that takes a <see cref="T:UnityEngine.GameObject"/> and always returns the argument passed in.
             </remarks>
             <exception cref="T:System.NotSupportedException"></exception>
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
@@ -9473,13 +10112,13 @@
             <param name="name">The library's name, excluding the extension.</param>
             <param name="assembly">The mod's assembly name.</param>
         </member>
-        <member name="M:KeepCoding.PathManager.PrintHierarchy(System.UInt16)">
+        <member name="M:KeepCoding.PathManager.PrintHierarchy(System.Int32)">
             <summary>
             Prints a hierarchy of all game objects.
             </summary>
             <param name="indent">The amount of spaces used for indenting children of game objects.</param>
         </member>
-        <member name="M:KeepCoding.PathManager.PrintHierarchy(UnityEngine.GameObject,System.UInt16,System.UInt16)">
+        <member name="M:KeepCoding.PathManager.PrintHierarchy(UnityEngine.GameObject,System.Int32,System.UInt16)">
             <summary>
             Prints the hierarchy from the game object specified.
             </summary>
@@ -9884,7 +10523,7 @@
         </member>
         <member name="T:KeepCoding.Number">
             <summary>
-            Class meant to encapsulate a primitive numeric value.
+            Encapsulates a primitive numeric value.
             </summary>
         </member>
         <member name="M:KeepCoding.Number.#ctor(System.SByte)">
@@ -10570,8 +11209,8 @@
             <summary>
             Calculates the rem-euclid modulo, which allows negative numbers to be properly calculated.
             </summary>
-            <param name="other">The right-hand side operator.</param>
-            <returns>Itself mod <paramref name="other"/>.</returns>
+            <param name="modulo">The right-hand side operator.</param>
+            <returns>Itself mod <paramref name="modulo"/>.</returns>
         </member>
         <member name="M:KeepCoding.Number.New``1(``0)">
             <summary>
@@ -10660,153 +11299,6 @@
         <member name="M:KeepCoding.QuotientRemainder.Deconstruct(KeepCoding.BigInt@,KeepCoding.BigInt@)">
             <summary>
             Deconstructor.
-            </summary>
-        </member>
-        <member name="T:AudioScript">
-            <summary>
-            Encapsulates an <see cref="P:AudioScript.AudioSource"/> and scales it with the game's volume using <see cref="P:KeepCoding.Game.PlayerSettings.SFXVolume"/> and <see cref="P:KeepCoding.Game.PlayerSettings.MusicVolume"/>.
-            </summary>
-        </member>
-        <member name="F:AudioScript._isSFX">
-            <summary>
-            Setting this value to true will make the volume relative to <see cref="P:KeepCoding.Game.PlayerSettings.MusicVolume"/>, and <see cref="P:KeepCoding.Game.PlayerSettings.SFXVolume"/> otherwise.
-            </summary>
-        </member>
-        <member name="F:AudioScript._audioClips">
-            <summary>
-            The <see cref="T:System.Array"/> of clips it can play from.
-            </summary>
-        </member>
-        <member name="F:AudioScript._audioSource">
-            <summary>
-            The audio source field.
-            </summary>
-        </member>
-        <member name="P:AudioScript.IsMuted">
-            <summary>
-            Determines if the <see cref="P:AudioScript.AudioSource"/> is muted.
-            </summary>
-        </member>
-        <member name="P:AudioScript.IsPlaying">
-            <summary>
-            Determines if the audio source is currently playing.
-            </summary>
-        </member>
-        <member name="P:AudioScript.Game">
-            <summary>
-            The current volume of the game. Ranges 0 to 100. In the Editor this value will always return 100.
-            </summary>
-        </member>
-        <member name="P:AudioScript.Relative">
-            <summary>
-            The volume the <see cref="P:AudioScript.AudioSource"/> is playing at, determined by <see cref="P:AudioScript.Volume"/> and <see cref="P:AudioScript.Game"/>.
-            </summary>
-        </member>
-        <member name="P:AudioScript.Volume">
-            <summary>
-            The volume of the sound relative to the game.
-            </summary>
-        </member>
-        <member name="P:AudioScript.AudioClips">
-            <summary>
-            The audio clips used by the <see cref="T:UnityEngine.AudioSource"/>s.
-            </summary>
-        </member>
-        <member name="P:AudioScript.AudioSource">
-            <summary>
-            The main <see cref="T:UnityEngine.AudioSource"/> property. If the field it is referencing is <see langword="null"/> then it adds a component.
-            </summary>
-        </member>
-        <member name="M:AudioScript.op_Explicit(AudioScript)~UnityEngine.AudioSource">
-            <summary>
-            Returns the <see cref="P:AudioScript.AudioSource"/>.
-            </summary>
-            <param name="dynamicAudio">The instance of <see cref="T:AudioScript"/> to retrieve <see cref="P:AudioScript.AudioSource"/> from.</param>
-        </member>
-        <member name="M:AudioScript.Fade(System.Single,System.Single)">
-            <summary>
-            Fades the audio source to a specific volume from a specified duration of time linearly.
-            </summary>
-            <param name="volume">The volume to get to.</param>
-            <param name="time">The amount of time it takes to get to <paramref name="volume"/>.</param>
-        </member>
-        <member name="M:AudioScript.Pause">
-            <summary>
-            Pauses playing the clip.
-            </summary>
-        </member>
-        <member name="M:AudioScript.Play(UnityEngine.AudioClip,System.Boolean,System.Byte,System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-            Plays a sound, with optional parameters.
-            </summary>
-            <remarks>
-            The sound can be cancelled with this method, but multiple sounds cannot play simultaneously.
-            </remarks>
-            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
-            <param name="clip">The sound clip to play.</param>
-            <param name="volume">The volume of the sound clip relative to the game sound.</param>
-            <param name="loop">If the sound should be looped.</param>
-            <param name="priority">The priority of the sound.</param>
-            <param name="delay">The amount of delay before the sound starts.</param>
-            <param name="time">The time in the audio it should start playing at.</param>
-            <param name="pitch">The pitch of the sound.</param>
-        </member>
-        <member name="M:AudioScript.Play(System.String,System.Boolean,System.Byte,System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-            Plays a sound, with optional parameters.
-            </summary>
-            <remarks>
-            The sound can be cancelled with this method, but multiple sounds cannot play simultaneously.
-            </remarks>
-            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
-            <exception cref="T:UnityEngine.MissingComponentException"></exception>
-            <param name="name">The name of the sound clip to play.</param>
-            <param name="volume">The volume of the sound clip relative to the game sound.</param>
-            <param name="loop">If the sound should be looped.</param>
-            <param name="priority">The priority of the sound.</param>
-            <param name="delay">The amount of delay before the sound starts.</param>
-            <param name="time">The time in the audio it should start playing at.</param>
-            <param name="pitch">The pitch of the sound.</param>
-        </member>
-        <member name="M:AudioScript.PlayStackable(UnityEngine.AudioClip,System.Boolean,System.Byte,System.Single,System.Single,System.Single)">
-            <summary>
-            Plays a sound, with optional parameters.
-            </summary>
-            <remarks>
-            Multiple sounds can be played simultaneously with this method, however they cannot be cancelled.
-            </remarks>
-            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
-            <param name="clip">The sound clip to play.</param>
-            <param name="volume">The volume of the sound clip relative to the game sound.</param>
-            <param name="loop">If the sound should be looped.</param>
-            <param name="priority">The priority of the sound.</param>
-            <param name="time">The time in the audio it should start playing at.</param>
-            <param name="pitch">The pitch of the sound.</param>
-        </member>
-        <member name="M:AudioScript.PlayStackable(System.String,System.Boolean,System.Byte,System.Single,System.Single,System.Single)">
-            <summary>
-            Plays a sound, with optional parameters.
-            </summary>
-            <remarks>
-            Multiple sounds can be played simultaneously with this method, however they cannot be cancelled.
-            </remarks>
-            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
-            <exception cref="T:UnityEngine.MissingComponentException"></exception>
-            <param name="name">The name of the sound clip to play.</param>
-            <param name="volume">The volume of the sound clip relative to the game sound.</param>
-            <param name="loop">If the sound should be looped.</param>
-            <param name="priority">The priority of the sound.</param>
-            <param name="time">The time in the audio it should start playing at.</param>
-            <param name="pitch">The pitch of the sound.</param>
-        </member>
-        <member name="M:AudioScript.Stop">
-            <summary>
-            Stops playing the clip.
-            </summary>
-        </member>
-        <member name="M:AudioScript.Unpause">
-            <summary>
-            Unpauses the paused playback of this <see cref="P:AudioScript.AudioSource"/>.
             </summary>
         </member>
     </members>

@@ -16,7 +16,7 @@ public class TheOctadecayottonScript : MonoBehaviour
     public KMSelectable ModuleSelectable, SubModuleSelectable;
     public MeshRenderer SelectableRenderer;
 
-    [Range(3, 12)]
+    [Range(ModSettingsJSON.Min, ModSettingsJSON.Max)]
     public byte DimensionOverride;
     [Range(0, 5)]
     public byte RotationOverride;
