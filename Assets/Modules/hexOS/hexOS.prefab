@@ -565,7 +565,6 @@ GameObject:
   - component: {fileID: 114119735116855352}
   - component: {fileID: 114689504493991274}
   - component: {fileID: 114818924820529568}
-  - component: {fileID: 114644997712016008}
   - component: {fileID: 114683542544962602}
   m_Layer: 0
   m_Name: hexOS
@@ -4158,19 +4157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Mobile/Diffuse
---- !u!114 &114644997712016008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1551774311257762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -289456416, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Settings: 
-  SettingsPath: 
 --- !u!114 &114658604063397198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4198,7 +4184,7 @@ MonoBehaviour:
   Audio: {fileID: 114436256031109544}
   Info: {fileID: 114119735116855352}
   Module: {fileID: 114689504493991274}
-  ModSettings: {fileID: 114644997712016008}
+  ModSettings: {fileID: 0}
   Button: {fileID: 114538943586089446}
   Bezel: {fileID: 23757370132951406}
   Ciphers:

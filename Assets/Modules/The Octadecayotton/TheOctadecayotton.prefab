@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 114037161847687636}
   - component: {fileID: 114676204725116032}
   - component: {fileID: 114466871040107044}
-  - component: {fileID: 114626008949226780}
   - component: {fileID: 114717984972801046}
   - component: {fileID: 114483548890468804}
   m_Layer: 0
@@ -556,28 +555,15 @@ MonoBehaviour:
   Audio: {fileID: 114037161847687636}
   Info: {fileID: 114676204725116032}
   Module: {fileID: 114466871040107044}
-  ModSettings: {fileID: 114626008949226780}
+  ModSettings: {fileID: 0}
   ModuleSelectable: {fileID: 114717984972801046}
   SubModuleSelectable: {fileID: 114058525015168996}
   SelectableRenderer: {fileID: 23148952995706464}
-  DimensionOverride: 3
-  RotationOverride: 0
-  SlownessOverride: 0
+  DimensionOverride: 15
+  RotationOverride: 3
+  SlownessOverride: 8
   ForceRotation: 
   ForceStartingSphere: 
---- !u!114 &114626008949226780
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1724327009805274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -289456416, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Settings: 
-  SettingsPath: 
 --- !u!114 &114676204725116032
 MonoBehaviour:
   m_ObjectHideFlags: 1

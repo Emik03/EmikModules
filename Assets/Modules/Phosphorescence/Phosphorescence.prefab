@@ -3057,7 +3057,6 @@ GameObject:
   - component: {fileID: 114465247912348238}
   - component: {fileID: 114551598920356426}
   - component: {fileID: 114478444889141272}
-  - component: {fileID: 114334833246984144}
   - component: {fileID: 114606009294128424}
   - component: {fileID: 114020545872597784}
   - component: {fileID: 114222855196817352}
@@ -14865,7 +14864,7 @@ MonoBehaviour:
   - {fileID: 114431970108084382}
   - {fileID: 114649841337910784}
   - {fileID: 114781272994339758}
-  ModSettings: {fileID: 114334833246984144}
+  ModSettings: {fileID: 0}
   Color: {fileID: 114025560821192474}
   Number: {fileID: 114990801538396592}
   Buttons:
@@ -16658,25 +16657,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Outline
---- !u!114 &114334833246984144
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1724042484231278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -289456416, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Settings: '{   "CruelMode": false,   "HowToUse0": "Cruel mode forces the user to
-    recognise the colors of the buttons without being told from the label.",    "VRMode":
-    false,   "HowToUse1": "Mainly for VR, set this to true to prevent problems with
-    the colored screen''s KMSelectable. With it disabled, the screen must be held,
-    and markers are disabled.",    "StreamDelay": 5,   "HowToUse2": "Mainly for TwitchPlays,
-    set this to the amount of seconds of the stream delay. 1 second of stream delay
-    equates to +15 additional seconds on the timer." }'
-  SettingsPath: 
 --- !u!114 &114337403040246966
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -12,8 +12,15 @@ namespace TheOctadecayotton
     /// <summary>
     /// The mod settings that can be adjusted by a user, usually from the ModSelector.
     /// </summary>
-    public class ModSettingsJSON
-    {
+    public class ModSettingsJSON {
+
+        public ModSettingsJSON()
+        {
+            Dimension = 9;
+            Rotation = 3;
+            Slowness = 8;
+        }
+
         /// <summary>
         /// The amount of dimensions, by default, 9.
         /// </summary>
@@ -70,50 +77,15 @@ namespace TheOctadecayotton
         /// <param name="rotation">The amount of rotations.</param>
         public static void Get(TheOctadecayottonScript octadecayotton, out int dimension, out int rotation, out int slowness, out bool colorAssist, out bool isUsingBounce, out bool isUsingElastic, out bool stretchToFit)
         {
-            // Default values.
-            dimension = 9;
-            rotation = 3;
-            slowness = 8;
-            colorAssist = false;
-            isUsingBounce = false;
-            isUsingElastic = false;
-            stretchToFit = false;
+            var settings = KeepCoding.ModConfig<ModSettingsJSON>().Read();
 
-            try
-            {
-                // Try loading settings.
-                var settings = JsonConvert.DeserializeObject<ModSettingsJSON>(octadecayotton.ModSettings.Settings);
-
-                // Do settings exist?
-                if (settings != null)
-                {
-                    dimension = Mathf.Clamp(settings.Dimension, Min, Max);
-                    rotation = Mathf.Clamp(settings.Rotation, 0, 255);
-                    slowness = settings.Slowness == 0 ? 8 : Mathf.Clamp(settings.Slowness, 1, 12);
-                    colorAssist = settings.ColorAssist;
-                    isUsingBounce = settings.IsUsingBounce;
-                    isUsingElastic = settings.IsUsingElastic;
-                    stretchToFit = settings.StretchToFit;
-
-                    Debug.LogFormat("[The Octadecayotton #{0}]: JSON loaded successfully, values are: (Dimensions = {1}), (Rotations = {2}), (Slowness: {3}), (ColorAssist: {4}), (InOutBounce: {5}), (InOutElastic: {6}), and (StretchToFit: {7}).",
-                        octadecayotton.moduleId,
-                        dimension,
-                        rotation,
-                        slowness,
-                        colorAssist,
-                        isUsingBounce,
-                        isUsingElastic,
-                        stretchToFit);
-                }
-
-                else
-                    Debug.LogFormat("[The Octadecayotton #{0}]: JSON is null, resorting to default values.", octadecayotton.moduleId);
-            }
-            catch (JsonReaderException e)
-            {
-                // In the case of catastrophic failure and devastation.
-                Debug.LogFormat("[The Octadecayotton #{0}]: JSON error: \"{1}\", resorting to default values.", octadecayotton.moduleId, e.Message);
-            }
+            dimension = Mathf.Clamp(settings.Dimension, Min, Max);
+            rotation = Mathf.Clamp(settings.Rotation, 0, 255);
+            slowness = settings.Slowness == 0 ? 8 : Mathf.Clamp(settings.Slowness, 1, 12);
+            colorAssist = settings.ColorAssist;
+            isUsingBounce = settings.IsUsingBounce;
+            isUsingElastic = settings.IsUsingElastic;
+            stretchToFit = settings.StretchToFit;
         }
 
         public static bool LoadMission(TheOctadecayottonScript octadecayotton, ref int dimension, ref int rotation, ref int slowness, ref bool colorAssist, ref bool isUsingBounce, ref bool isUsingElastic, ref bool stretchToFit)

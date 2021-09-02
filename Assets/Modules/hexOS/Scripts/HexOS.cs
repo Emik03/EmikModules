@@ -17,6 +17,13 @@ public class HexOS : MonoBehaviour
     #region Fields
     public class ModSettingsJSON
     {
+        public ModSettingsJSON()
+        {
+            FlashOtherColors = 5;
+            DelayPerBeat = 0.07f;
+            CustomSolveQuote = "";
+        }
+
         [JsonProperty("hexOS -> DisableOctOS")]
         public bool DisableOctOS { get; set; }
         [JsonProperty("hexOS -> ForceOctOS")]
@@ -192,31 +199,18 @@ public class HexOS : MonoBehaviour
 
     private void GetModSetting()
     {
-        // Get JSON settings.
-        try
-        {
-            // Get settings.
-            ModSettingsJSON settings = JsonConvert.DeserializeObject<ModSettingsJSON>(ModSettings.Settings);
+        // Get settings.
+        ModSettingsJSON settings = new KeepCoding.ModConfig<ModSettingsJSON>().Read();
 
-            // If it contains information.
-            if (settings != null)
-            {
-                // Get variables from mod settings.
-                _canBeOctOS = !settings.DisableOctOS;
-                _octOS = settings.ForceOctOS;
-                _fastStrike = settings.FastStrike;
-                _experimentalShake = settings.ExperimentalShake;
-                _forceAltSolve = settings.ForceAltSolve;
-                _flashOtherColors = Math.Min(settings.FlashOtherColors, (byte)6);
-                _delayPerBeat = Math.Min(Math.Abs(settings.DelayPerBeat), 1);
-                _customSolveQuote = settings.CustomSolveQuote;
-            }
-        }
-        catch (JsonReaderException e)
-        {
-            // In the case of catastrophic failure and devastation.
-            Debug.LogFormat("[hexOS #{0}] JSON reading failed with error: \"{1}\", resorting to default values.", _moduleId, e.Message);
-        }
+        // Get variables from mod settings.
+        _canBeOctOS = !settings.DisableOctOS;
+        _octOS = settings.ForceOctOS;
+        _fastStrike = settings.FastStrike;
+        _experimentalShake = settings.ExperimentalShake;
+        _forceAltSolve = settings.ForceAltSolve;
+        _flashOtherColors = Math.Min(settings.FlashOtherColors, (byte)6);
+        _delayPerBeat = Math.Min(Math.Abs(settings.DelayPerBeat), 1);
+        _customSolveQuote = settings.CustomSolveQuote;
     }
 
     private bool LoadMission()
