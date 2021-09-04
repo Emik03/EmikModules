@@ -846,6 +846,11 @@
             </summary>
             <returns><see cref="T:UnityEngine.WaitWhile"/> until <see cref="P:KeepCoding.Internal.WorkBase.IsRunning"/> is no longer true.</returns>
         </member>
+        <member name="M:KeepCoding.Internal.WorkBase.Finalize">
+            <summary>
+            This aborts the thread. It's to prevent the Editor from freezing from unloading the thread while it is in use, and potentially prevent issues in-game from similar actions.
+            </summary>
+        </member>
         <member name="T:KeepCoding.Internal.ModuleScriptEditor">
             <summary>
             Custom inspector for <see cref="T:KeepCoding.ModuleScript"/>. 
@@ -3269,7 +3274,7 @@
             Flattens an <see cref="T:System.Collections.IEnumerator"/> such that nested <see cref="T:System.Collections.IEnumerator"/> calls get replaced with the output of those calls.
             </summary>
             <param name="source">The <see cref="T:System.Collections.IEnumerator"/> to flatten.</param>
-            <param name="except">If <see langword="true"/>, <see cref="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Collections.IEnumerator})"/> gets called recursively and each item from that output gets returned individually, otherwise the item is simply returned.</param>
+            <param name="except">If <see langword="false"/>, <see cref="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Collections.IEnumerator})"/> gets called recursively and each item from that output gets returned individually, otherwise the item is simply returned.</param>
             <returns><paramref name="source"/> where <see langword="yield"/> <see langword="return"/> <see cref="T:System.Collections.IEnumerator"/>s gets replaced with the output of those calls.</returns>
         </member>
         <member name="M:KeepCoding.Helper.GetUnsolvedModuleIDs(KMBombInfo)">
@@ -3887,6 +3892,21 @@
             <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
             <returns><paramref name="iterator"/></returns>
         </member>
+        <member name="M:KeepCoding.KeyHelper.ForEach``3(``0,System.Action{``1,``2})">
+            <summary>
+            The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-foreach-statement"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="TDictionary">The type of iterator.</typeparam>
+            <typeparam name="TKey">The type of each key in the iterator.</typeparam>
+            <typeparam name="TValue">The type of each value in the iterator.</typeparam>
+            <param name="iterator">The collection of items to go through one-by-one.</param>
+            <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
+            <returns><paramref name="iterator"/></returns>
+        </member>
         <member name="M:KeepCoding.KeyHelper.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Int32})">
             <summary>
             The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
@@ -3923,6 +3943,21 @@
             <exception cref="T:System.NullReferenceException"></exception>
             <typeparam name="TEnumerable">The type of iterator.</typeparam>
             <typeparam name="TCurrent">The type of each item in the iterator.</typeparam>
+            <param name="iterator">The collection of items to go through one-by-one.</param>
+            <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
+            <returns><paramref name="iterator"/></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.ForEach``3(``0,System.Action{``1,``2,System.Int32})">
+            <summary>
+            The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-foreach-statement"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="TDictionary">The type of iterator.</typeparam>
+            <typeparam name="TKey">The type of each key in the iterator.</typeparam>
+            <typeparam name="TValue">The type of each value in the iterator.</typeparam>
             <param name="iterator">The collection of items to go through one-by-one.</param>
             <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
             <returns><paramref name="iterator"/></returns>
@@ -6580,13 +6615,18 @@
             </remarks>
             <typeparam name="TSerialize">The type to serialize and deserialize the file.</typeparam>
         </member>
-        <member name="M:KeepCoding.ModConfig`1.#ctor(System.String,Newtonsoft.Json.Linq.JsonMergeSettings)">
+        <member name="M:KeepCoding.ModConfig`1.#ctor">
+            <summary>
+            Creates a new <see cref="T:KeepCoding.ModConfig`1"/> with the target file name and an optional event of when the file is read.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.ConstructorArgumentException"></exception>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.#ctor(System.String)">
             <summary>
             Creates a new <see cref="T:KeepCoding.ModConfig`1"/> with the target file name and an optional event of when the file is read.
             </summary>
             <exception cref="T:KeepCoding.Internal.ConstructorArgumentException"></exception>
             <param name="fileName">The file name to get.</param>
-            <param name="settings">The way that the default value and the file merge.</param>
         </member>
         <member name="P:KeepCoding.ModConfig`1.HasReadSucceeded">
             <summary>
@@ -6615,25 +6655,13 @@
             </summary>
             <param name="logs">The array of logs to individual output into the console.</param>
         </member>
-        <member name="M:KeepCoding.ModConfig`1.SerializeSettings(`0)">
-            <summary>
-            Serializes settings the same way it's written to the file. Supports settings that use enums.
-            </summary>
-            <exception cref="T:System.NullReferenceException"></exception>
-        </member>
-        <member name="M:KeepCoding.ModConfig`1.Merge(`0,Newtonsoft.Json.Linq.JsonMergeSettings)">
+        <member name="M:KeepCoding.ModConfig`1.Merge(`0,System.Boolean)">
             <summary>
             Reads, merges, and writes the settings to the settings file. To protect the user settings, this does nothing if the read isn't successful.
             </summary>
             <exception cref="T:System.NullReferenceException"></exception>
             <param name="value">The value to merge the file with.</param>
-            <param name="settings">The way that <paramref name="value"/> and the file merge.</param>
-        </member>
-        <member name="M:KeepCoding.ModConfig`1.Read(Newtonsoft.Json.JsonSerializerSettings)">
-            <summary>
-            Reads the settings from the settings file. If the settings couldn't be read, the default settings will be returned.
-            </summary>
-            <param name="settings">The settings for serializing the json file.</param>
+            <param name="isDiscarding">Determines whether it should remove values from the original file that isn't contained within the type, or has the incorrect type.</param>
         </member>
         <member name="M:KeepCoding.ModConfig`1.Write(`0)">
             <summary>
@@ -6647,13 +6675,24 @@
             Writes the string to the settings file. To protect the user settings, this does nothing if the last read wasn't successful.
             </summary>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
-            <param name="value"></param>
+            <param name="value">The contents to write.</param>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.SerializeSettings(`0)">
+            <summary>
+            Serializes settings the same way it's written to the file. Supports settings that use enums.
+            </summary>
+            <exception cref="T:System.NullReferenceException"></exception>
         </member>
         <member name="M:KeepCoding.ModConfig`1.ToString">
             <summary>
             Deserializes, then reserializes the file according to <see cref="M:KeepCoding.ModConfig`1.SerializeSettings(`0)"/>.
             </summary>
-            <returns>A string representation of the value from <see cref="M:KeepCoding.ModConfig`1.Read(Newtonsoft.Json.JsonSerializerSettings)"/>.</returns>
+            <returns>A string representation of the value from <see cref="M:KeepCoding.ModConfig`1.Read"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.ModConfig`1.Read">
+            <summary>
+            Reads the settings from the settings file. If the settings couldn't be read, the default settings will be returned.
+            </summary>
         </member>
         <member name="T:KeepCoding.MonoRandom">
             <summary>

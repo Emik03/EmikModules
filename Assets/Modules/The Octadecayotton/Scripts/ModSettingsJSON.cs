@@ -77,7 +77,7 @@ namespace TheOctadecayotton
         /// <param name="rotation">The amount of rotations.</param>
         public static void Get(TheOctadecayottonScript octadecayotton, out int dimension, out int rotation, out int slowness, out bool colorAssist, out bool isUsingBounce, out bool isUsingElastic, out bool stretchToFit)
         {
-            var settings = KeepCoding.ModConfig<ModSettingsJSON>().Read();
+            var settings = new ModConfig<ModSettingsJSON>().Read();
 
             dimension = Mathf.Clamp(settings.Dimension, Min, Max);
             rotation = Mathf.Clamp(settings.Rotation, 0, 255);

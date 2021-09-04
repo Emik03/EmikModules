@@ -23,7 +23,7 @@ public class NamingConventionsScript : ModuleScript
     {
         get
         {
-            bool rnd = Get<KMRuleSeedable>().GetRNG().Seed != 1;
+            bool rnd = RuleSeed.Seed != 1;
             return new Dictionary<DataType, bool[]>
             {
                 {
@@ -116,7 +116,7 @@ public class NamingConventionsScript : ModuleScript
     {
         get
         {
-            var rule = Get<KMRuleSeedable>().GetRNG();
+            var rule = new MonoRandom(RuleSeed.Seed);
             return Enumerable.Range(0, 10).Select(i => Enumerable.Range(0, 6).Select(j => rule.Next(2) == 0).ToArray()).ToArray();
         }
     }
@@ -144,7 +144,7 @@ public class NamingConventionsScript : ModuleScript
 
         Log("The solution for {0} in rule seed {1} is {2}.",
             DataType,
-            Get<KMRuleSeedable>().GetRNG().Seed,
+            RuleSeed.Seed,
             Enumerable.Range(0, 6).Select(i => SetTextIndexes(i + 1, Solutions[DataType][i]).Trim()).Join(", "));
     }
 

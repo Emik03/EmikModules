@@ -7,8 +7,8 @@ namespace PointlessMachines
     {
         None = 0,
         Left = 1,
-        Down = 2,
-        Up = 4,
-        Right = 8
+        Down = 1 << 1,
+        Up = 1 << 2,
+        Right = 1 << 3
     }
 }

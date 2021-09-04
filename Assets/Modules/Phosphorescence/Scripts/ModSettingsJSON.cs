@@ -32,7 +32,7 @@ namespace PhosphorescenceModule
         /// <param name="streamDelay">Determines the timer.</param>
         public static void Get(PhosphorescenceScript pho, out bool cruelMode, out int streamDelay)
         {
-            var settings = KeepCoding.ModConfig<ModSettingsJSON>().Read();
+            var settings = new ModConfig<ModSettingsJSON>().Read();
 
             cruelMode = settings.CruelMode;
             streamDelay = settings.StreamDelay;
