@@ -37,9 +37,11 @@ public class OneDimensionalChessScript : ModuleScript
     internal int? last;
     internal string position;
     internal PieceColor color;
-    internal List<string> souvenirPositions; 
+    internal List<string> souvenirPositions;
 
-    private string RandomPosition { get { return Debugger.IsEnabled ? Debugger.Position.IsNullOrEmpty() ? Position.Generate(Debugger.Length, 2) : Debugger.Position : Position.Generate(_boardLength, 2); } }
+    private const int MaxThreadUsages = 3;
+
+    private string RandomPosition { get { return Debugger.IsEnabled ? Position.IsValidPosition(Debugger.Position) ? Debugger.Position : Position.Generate(Debugger.Length, Debugger.WhitePieces, Debugger.BlackPieces) : Position.Generate(_boardLength, _counter.Black, _counter.White); } }
 
     private static readonly Color32[] _colorScheme =
     {
@@ -48,8 +50,10 @@ public class OneDimensionalChessScript : ModuleScript
         new Color32(111, 133, 200, 255)
     };
 
-    private static bool _isUsingThreads, _isRustLoaded;
+    private static bool _isRustLoaded;
+    private static int _threadUsages;
     private int _boardLength, _movesLeft;
+    private PieceCounter _counter;
 
     private Work<string, int, bool, CGameResult> _bestMove;
 
@@ -101,9 +105,11 @@ public class OneDimensionalChessScript : ModuleScript
         // This ensures that the same positions generate if a bomb seed is used.
         Position.random = new SRandom(URandom.Range(0, int.MaxValue));
 
-        _boardLength = Position.random.Next(8, 10);
+        _boardLength = Position.random.Next(CustomValues.Min, CustomValues.Max + 1);
 
-        _isUsingThreads = false;
+        _threadUsages = 0;
+
+        _counter = new PieceCounter(Position.random, _boardLength);
 
         Buttons.Assign(onInteract: OnInteract);
 
@@ -268,12 +274,12 @@ public class OneDimensionalChessScript : ModuleScript
         ChangeText("Waiting for", "other modules...");
 
         // This waits for an arbitrary amount of time, to let other copies of this module through at different rates.
-        yield return new WaitForSecondsRealtime(URandom.Range(0, 3f));
+        yield return new WaitForSecondsRealtime(URandom.Range(0, 1f));
 
         // This waits until another module that uses threads in this exact method is finished.
-        yield return new WaitWhile(() => _isUsingThreads);
+        yield return new WaitWhile(() => _threadUsages >= MaxThreadUsages);
 
-        _isUsingThreads = true;
+        _threadUsages++;
 
         bool isEvaluating = false;
 
@@ -286,14 +292,14 @@ public class OneDimensionalChessScript : ModuleScript
 
         new Thread(() =>
         {
-            // Find a game that takes 6-8 moves to complete in ideal play, using the Rust library.
+            // Find a game that takes 6-7 moves to complete in ideal play, using the Rust library.
             while (true)
             {
                 position = RandomPosition;
                 isEvaluating = true;
                 game = Engine.Calculate(position, Position.Depth, true);
 
-                if (!Mathf.Abs(game.Evaluation).InRange(112, 116))
+                if (!Mathf.Abs(game.Evaluation).InRange(114, 116))
                     continue;
 
                 // Sometimes the evaluation is in favor of black, we need to advance the game by one move so that it is black to move.
@@ -361,7 +367,7 @@ public class OneDimensionalChessScript : ModuleScript
 
         MovesLeft = (128 - Math.Abs(game.Evaluation)) / 2;
 
-        _isUsingThreads = false;
+        _threadUsages--;
 
         RenderPosition(position);
 

@@ -514,7 +514,7 @@ Prefab:
     - target: {fileID: 114483548890468804, guid: ff9ca9050f0cb3c4e88109c0c3f0e8a3,
         type: 2}
       propertyPath: DimensionOverride
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114483548890468804, guid: ff9ca9050f0cb3c4e88109c0c3f0e8a3,
         type: 2}
@@ -1293,6 +1293,11 @@ Prefab:
     - target: {fileID: 4052449820907928, guid: ec9db7541e8e4644782be14f7b70620c, type: 2}
       propertyPath: m_RootOrder
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 114323316815797644, guid: ec9db7541e8e4644782be14f7b70620c,
+        type: 2}
+      propertyPath: _ruleSeedId
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec9db7541e8e4644782be14f7b70620c, type: 2}

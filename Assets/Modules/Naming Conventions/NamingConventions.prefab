@@ -1561,7 +1561,6 @@ GameObject:
   - component: {fileID: 114916480317687756}
   - component: {fileID: 114362839356583638}
   - component: {fileID: 114824187896700802}
-  - component: {fileID: 114185057834900178}
   - component: {fileID: 114828432081042886}
   - component: {fileID: 114914526078472532}
   m_Layer: 0
@@ -6743,18 +6742,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Transparent/Mobile Diffuse Underlay200
---- !u!114 &114185057834900178
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1870063977896854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adf69c2de51bd3c43bbd9bc22578ee08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _seed: 2
 --- !u!114 &114186464342547380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7635,6 +7622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359c2a6e27def3c41b831bd09ad45845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ruleSeedId: 0
   Buttons:
   - {fileID: 114118859235215968}
   - {fileID: 114295251544570206}

@@ -1,6 +1,7 @@
 ﻿using KeepCoding;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -10,12 +11,18 @@ namespace OneDimensionalChess
     {
         internal static readonly CGameResult finishedGame = new CGameResult { Piece = new Piece { Type = PieceType.King, Color = PieceColor.White }, Origin = -1, Destination = -1 };
 
-        internal const int Depth = 16;
+        internal const int Depth = 15;
         internal const string PieceChars = "_bknpqrBKNPQR";
         internal static Random random = new Random();
 
-        internal static string Generate(int length, int pieceCount)
+        private const string pieceChars = "bnpqr";
+
+        internal static string Generate(int length, int whitePieces, int blackPieces)
         {
+            // Clips the values.
+            whitePieces = whitePieces.ClipMax(length / 2 - 1);
+            blackPieces = blackPieces.ClipMax(length / 2 - 1);
+
             // Creates as many underscores as the specified length.
             var str = new StringBuilder(Enumerable.Repeat('_', length).Join(""));
 
@@ -32,9 +39,8 @@ namespace OneDimensionalChess
             str[temp] = 'k';
             used.Add(temp);
 
-            const string pieceChars = "bnpqr";
 
-            for (int i = 0; i < pieceCount; i++)
+            for (int i = 0; i < whitePieces; i++)
             {
                 // Place a random white chess piece on an unoccupied square in the left half of the string.
                 do 
@@ -43,9 +49,12 @@ namespace OneDimensionalChess
 
                 used.Add(temp);
                 str[temp] = pieceChars[random.Next(0, pieceChars.Length)].ToUpper();
+            }
 
+            for (int i = 0; i < blackPieces; i++)
+            {
                 // Place a random black chess piece on an unoccupied square in the right half of the string.
-                do 
+                do
                     temp = random.Next(str.Length / 2, str.Length - 1);
                 while (used.Contains(temp));
 
@@ -54,6 +63,13 @@ namespace OneDimensionalChess
             }
 
             return str.ToString();
+        }
+
+        internal static bool IsValidPosition(string position)
+        {
+            return !position.IsNullOrEmpty() &&
+                position.Length.IsBetween(CustomValues.Min, CustomValues.Max) &&
+                position.All(c => pieceChars.Contains(c.ToLower()));
         }
 
         internal static string Move(this CGameResult move, string current, ModuleScript moduleScript = null)

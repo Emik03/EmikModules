@@ -8732,6 +8732,11 @@
             Determines if the audio source is currently playing.
             </summary>
         </member>
+        <member name="P:KeepCoding.AudioScript.IsSFX">
+            <summary>
+            Determines if <see cref="P:UnityEngine.AudioSource.volume"/> in <see cref="P:KeepCoding.AudioScript.AudioSource"/> is scaled using <see cref="P:KeepCoding.Game.PlayerSettings.SFXVolume"/> when <see langword="true"/> and <see cref="P:KeepCoding.Game.PlayerSettings.MusicVolume"/> when <see langword="false"/>.
+            </summary>
+        </member>
         <member name="P:KeepCoding.AudioScript.Game">
             <summary>
             The current volume of the game. Ranges 0 to 100. In the Editor this value will always return 100.
