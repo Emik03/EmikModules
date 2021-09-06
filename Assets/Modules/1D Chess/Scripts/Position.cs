@@ -15,8 +15,6 @@ namespace OneDimensionalChess
         internal const string PieceChars = "_bknpqrBKNPQR";
         internal static Random random = new Random();
 
-        private const string pieceChars = "bnpqr";
-
         internal static string Generate(int length, int whitePieces, int blackPieces)
         {
             // Clips the values.
@@ -39,6 +37,7 @@ namespace OneDimensionalChess
             str[temp] = 'k';
             used.Add(temp);
 
+            const string pieceChars = "bnpqr";
 
             for (int i = 0; i < whitePieces; i++)
             {
@@ -68,8 +67,7 @@ namespace OneDimensionalChess
         internal static bool IsValidPosition(string position)
         {
             return !position.IsNullOrEmpty() &&
-                position.Length.IsBetween(CustomValues.Min, CustomValues.Max) &&
-                position.All(c => pieceChars.Contains(c.ToLower()));
+                position.All(c => PieceChars.Contains(c));
         }
 
         internal static string Move(this CGameResult move, string current, ModuleScript moduleScript = null)
