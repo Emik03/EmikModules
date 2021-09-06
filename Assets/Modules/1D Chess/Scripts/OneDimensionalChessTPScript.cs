@@ -19,7 +19,7 @@ public class OneDimensionalChessTPScript : TPScript<OneDimensionalChessScript>
         bool[] stop = { command.Length != 2, command.Any(c => !Module.Alphabet.Contains(c)) };
 
         yield return Evaluate(stop[0], SendToChatError("Expected only 2 characters."));
-        yield return Evaluate(stop[1], SendToChatError("Expected both characters to be a, b, c, d, e, f, g, h, or i."));
+        yield return Evaluate(stop[1], SendToChatError("Expected both characters to be within the range of the board."));
 
         if (stop.Any(b => b))
             yield break;
