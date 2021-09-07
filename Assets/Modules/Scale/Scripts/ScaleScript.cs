@@ -23,7 +23,7 @@ public class ScaleScript : ModuleScript
     {
         get
         {
-            return CurrentAxes.SequenceEqual(ScaleMath.Axes[Mathf.FloorToInt(_answer.Call())]) ||
+            return CurrentAxes.SequenceEqual(ScaleMath.Axes[Mathf.FloorToInt(_answer)]) ||
                 CurrentAxes.SequenceEqual(ScaleMath.Axes[Mathf.CeilToInt(_answer)]);
         }
     }
@@ -74,7 +74,9 @@ public class ScaleScript : ModuleScript
         Get<KMGameInfo>().OnLightsChange -= HandleLightsChange;
     }
 
+#pragma warning disable IDE0051 // Remove unused private members
     private void OnValidate()
+#pragma warning restore IDE0051 // Remove unused private members
     {
         _alpha = Mathf.Abs(_alpha);
         _speed = Mathf.Abs(_speed);

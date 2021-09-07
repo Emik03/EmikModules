@@ -6,7 +6,9 @@ public class FloatingScript : MonoBehaviour
 {
     [Range(1 / 32f, 32f)]
     [SerializeField]
+#pragma warning disable IDE0044 // Add readonly modifier
     private float _duration = 1, _movementIntensity = 1, _rotationIntensity = 1;
+#pragma warning restore IDE0044 // Add readonly modifier
 
     private Vector3 _startPosition;
 
@@ -15,11 +17,6 @@ public class FloatingScript : MonoBehaviour
         _startPosition = transform.localPosition;
 
         StartCoroutine(ChangeTarget());
-    }
-
-    private static float Next(ref float f)
-    {
-        return Random.Range(-f, f);
     }
 
     private IEnumerator ChangeTarget()
@@ -48,8 +45,13 @@ public class FloatingScript : MonoBehaviour
         }
     }
 
-    private Vector3 NextTarget(float f)
+    private static float Next(float f)
     {
-        return new Vector3(Next(ref f), Next(ref f), Next(ref f));
+        return Random.Range(-f, f);
+    }
+
+    private static Vector3 NextTarget(float f)
+    {
+        return new Vector3(Next(f), Next(f), Next(f));
     }
 }
