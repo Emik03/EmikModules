@@ -131,14 +131,16 @@ public class QuaverTPScript : MonoBehaviour
 
     private IEnumerator TwitchHandleForcedSolve()
     {
-        yield return null;
-
-        Quaver.init.select.speed = 10;
-        Quaver.init.select.difficulty = 3;
-        Quaver.init.select.perColumn = true;
+    Retry:
+        yield return new WaitForSecondsRealtime(1);
 
         if (!Quaver.init.gameplay)
+        {
+            Quaver.init.select.speed = 10;
+            Quaver.init.select.difficulty = 3;
+            Quaver.init.select.perColumn = true;
             Quaver.Buttons[4].OnInteract();
+        }
 
         while (!Quaver.init.ready)
             yield return true;
@@ -150,8 +152,11 @@ public class QuaverTPScript : MonoBehaviour
 
         yield return Input(correct);
 
-        while (!Quaver.init.solved)
+        while (Quaver.init.gameplay)
             yield return true;
+
+        if (!Quaver.init.solved)
+            goto Retry;
     }
 
     private IEnumerator Input(string[] array)
