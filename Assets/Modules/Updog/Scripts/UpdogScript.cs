@@ -29,6 +29,8 @@ public class UpdogScript : ModuleScript
         Arrows.Assign(onInteract: ArrowsInteract);
         Center.Assign(onInteract: CenterInteract);
 
+        GetChild<Light>().range = 0.05f * transform.lossyScale.x;
+
         var colors = Colors.GetFinal;
         var word = Words.GetRandom;
         var maze = Mazes.Get(word.Value, colors[2], colors[4]);

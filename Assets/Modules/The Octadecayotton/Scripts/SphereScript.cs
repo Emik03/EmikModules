@@ -25,7 +25,7 @@ public class SphereScript : MonoBehaviour
         _isUpdatingValue = false;
         yield return new WaitForSecondsRealtime(0.05f);
         _isUpdatingValue = true;
-        Light.range = 1 / Mathf.Pow(Octadecayotton.Interact.Dimension, 2);
+        Light.range = 1 / Mathf.Pow(Octadecayotton.Interact.Dimension, 2) * transform.lossyScale.x;
 
         if (pos.InitialPosition.Where((n, i) => n != Octadecayotton.Interact.startingSphere[(Axis)i]).Count() == 0)
         {
