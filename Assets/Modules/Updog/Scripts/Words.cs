@@ -13,7 +13,8 @@ namespace Updog
         {
             get
             {
-                return default(Spelling).GetValues()
+                return default(Spelling)
+                    .GetValues()
                     .SelectMany(s => default(Casing).GetValues()
                     .Select(c => s.ToTuple(c)))
                     .ToArray()
