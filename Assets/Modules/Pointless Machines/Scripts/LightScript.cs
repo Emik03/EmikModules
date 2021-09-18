@@ -2,33 +2,32 @@
 using System.Collections;
 using UnityEngine;
 
-public class LightScript : MonoBehaviour 
+public class LightScript : CacheableBehaviour 
 {
 	private static int _instantiation;
 
-	private void Start() 
+	private IEnumerator Start() 
 	{
-		GetComponent<Light>().enabled = true;
-		StartCoroutine(Animation(++_instantiation));
-	}
+		Get<Light>().enabled = true;
+        Get<Light>().range *= transform.lossyScale.x;
 
-    private IEnumerator Animation(int pos)
-    {
-		float f = 0;
+        _instantiation++;
 
-		while (f <= 3.3f)
+        float f = 0;
+
+        while (f <= 3.3f)
         {
-			f += Time.deltaTime;
+            f += Time.deltaTime;
 
-            float frequency = (Mathf.Pow(f, 4) + (Mathf.PI * pos)) / 4;
+            float frequency = (Mathf.Pow(f, 4) + (Mathf.PI * _instantiation)) / 4;
             float distance = f < 2.8f ? (Easing.OutQuart(f, 2.8f, 0, 2.8f) * 200) + 20 : BackOut((3.3f - f) * 2) * 20;
 
-			transform.localPosition = new Vector3(Mathf.Sin(frequency) * distance, distance / 2, Mathf.Cos(frequency) * distance);
+            transform.localPosition = new Vector3(Mathf.Sin(frequency) * distance, distance / 2, Mathf.Cos(frequency) * distance);
 
-			yield return null;
+            yield return null;
         }
 
-		Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     public static float ElasticIn(float k)
