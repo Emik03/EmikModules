@@ -13,6 +13,8 @@ public class LoggingScript : ModuleScript
     internal int? look;
     internal Logs logs;
 
+    private int _solves;
+
     private const float Black = 1 / 15f;
 
     public override void OnAwake()
@@ -21,18 +23,29 @@ public class LoggingScript : ModuleScript
 
         Application.logMessageReceived += (c, s, l) => Push(c);
 
+        Log("The logs are now being read.");
+
         StartCoroutine(WaitOneFrame());
     }
 
     public override void OnDestruct()
     {
         Application.logMessageReceived -= (c, s, l) => Push(c);
+
+        Log("The logs are no longer being read.");
     }
 
     private IEnumerator WaitOneFrame()
     {
-        yield return null;
-        Log("The logs are now being read.");
+        yield return new WaitWhile(() => Modules == null);
+
+        var solvable = Modules
+            .Where(m => m.IsSolvable)
+            .ToArray();
+
+        solvable.ForEach(m => m.Solve.Add(() => Log("Solve ({0}/{1}): {2}.", ++_solves, solvable.Length, m.Name)));
+
+        Modules.ForEach(m => m.Strike.Add(() => Log("Strike: {0}.", m.Name)));
 
         Texts.Select(t => t.GetComponentInChildren<KMSelectable>()).Take(7).ToArray().Assign(
             onInteract: InteractHandler,

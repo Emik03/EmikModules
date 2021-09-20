@@ -1,5 +1,4 @@
 ﻿using KeepCoding;
-using PhosphorescenceModule;
 using PointlessMachines;
 using System;
 using System.Collections;
@@ -67,7 +66,7 @@ public class PointlessMachinesScript : ModuleScript
     public override void OnActivate()
     {
         if (TP.IsTP)
-            Status.transform.localPosition += new Vector3(0, 0.01f, 0);
+            Status.transform.localPosition = new Vector3(0, 0.01f, 0);
     }
 
     private Flash[] GetFlashes()

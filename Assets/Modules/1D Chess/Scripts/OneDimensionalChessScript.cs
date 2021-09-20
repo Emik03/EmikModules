@@ -103,7 +103,7 @@ public class OneDimensionalChessScript : ModuleScript
     public override void OnActivate()
     {
         // This ensures that the same positions generate if a bomb seed is used.
-        Position.random = new SRandom(URandom.Range(0, int.MaxValue));
+        Position.random = new SRandom(URandom.Range(int.MinValue, int.MaxValue));
 
         _boardLength = Position.random.Next(CustomValues.Min, CustomValues.Max + 1);
 

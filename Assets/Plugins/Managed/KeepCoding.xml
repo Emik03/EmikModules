@@ -4,6 +4,162 @@
         <name>KeepCoding</name>
     </assembly>
     <members>
+        <member name="T:KeepCoding.Record`2">
+            <summary>
+            Defines a reference type that provides built-in functionality for encapsulating data.
+            </summary>
+            <remarks>
+            This class has been mostly taken from mcintyre321's ValueOf type. <see href="https://github.com/mcintyre321/ValueOf"/>
+            </remarks>
+            <typeparam name="T">The type of data to encapsulate.</typeparam>
+            <typeparam name="TThis">The type that is encapsulating <typeparamref name="T"/>.</typeparam>
+        </member>
+        <member name="P:KeepCoding.Record`2.Value">
+            <summary>
+            The value to store.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Record`2.op_Equality(KeepCoding.Record{`0,`1},KeepCoding.Record{`0,`1})">
+            <summary>
+            Determines whether two records contain the same <see cref="P:KeepCoding.Record`2.Value"/>.
+            </summary>
+            <param name="a">The left-hand side record to compare.</param>
+            <param name="b">The right-hand side record to compare.</param>
+            <returns><see langword="true"/> if <paramref name="a"/> and <paramref name="b"/> are both <see langword="null"/>, or <see cref="M:KeepCoding.Record`2.Equals(KeepCoding.Record{`0,`1})"/> returns <see langword="true"/>. Otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.Record`2.op_Inequality(KeepCoding.Record{`0,`1},KeepCoding.Record{`0,`1})">
+            <summary>
+            Determines whether two records don't contain the same <see cref="P:KeepCoding.Record`2.Value"/>.
+            </summary>
+            <param name="a">The left-hand side record to compare.</param>
+            <param name="b">The right-hand side record to compare.</param>
+            <returns><see langword="false"/> if <paramref name="a"/> and <paramref name="b"/> are both <see langword="null"/>, or <see cref="M:KeepCoding.Record`2.Equals(KeepCoding.Record{`0,`1})"/> returns <see langword="true"/>. Otherwise, <see langword="true"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.Record`2.op_Implicit(`0)~KeepCoding.Record{`0,`1}">
+            <summary>
+            Encapsulates <paramref name="a"/> into a <see langword="new"/> instance of <see cref="T:KeepCoding.Record`2"/>.
+            </summary>
+            <param name="a">The <typeparamref name="T"/> to pass into the <see cref="T:KeepCoding.Record`2"/>.</param>
+        </member>
+        <member name="M:KeepCoding.Record`2.op_Implicit(KeepCoding.Record{`0,`1})~`0">
+            <summary>
+            Takes <paramref name="a"/>'s inner <see cref="P:KeepCoding.Record`2.Value"/>.
+            </summary>
+            <param name="a">The <see cref="T:KeepCoding.Record`2"/> to take <see cref="P:KeepCoding.Record`2.Value"/> from.</param>
+        </member>
+        <member name="M:KeepCoding.Record`2.Equals(System.Object)">
+            <summary>
+            Determines whether two records don't contain the same <see cref="P:KeepCoding.Record`2.Value"/>.
+            </summary>
+            <param name="obj">The other instance to compare.</param>
+            <returns><see langword="false"/> if itself and <paramref name="obj"/> are both <see langword="null"/>, or <see cref="M:KeepCoding.Record`2.Equals(KeepCoding.Record{`0,`1})"/> returns <see langword="true"/>. Otherwise, <see langword="true"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.Record`2.GetHashCode">
+            <summary>
+            Gets the hash code.
+            </summary>
+            <returns>The hash code.</returns>
+        </member>
+        <member name="M:KeepCoding.Record`2.ToString">
+            <summary>
+            Uses <see cref="M:KeepCoding.Helper.Stringify``1(``0,KeepCoding.StringifyFormat)"/> for the inner <see cref="P:KeepCoding.Record`2.Value"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KeepCoding.Record`2.From(`0)">
+            <summary>
+            Creates a <see langword="new"/> instance of <see cref="T:KeepCoding.Record`2"/> from the specified <typeparamref name="TThis"/>.
+            </summary>
+            <param name="item">The item to make a <see langword="new"/> instance of <see cref="T:KeepCoding.Record`2"/> from.</param>
+            <returns>A new instance of <see cref="T:KeepCoding.Record`2"/> with the inner <see cref="P:KeepCoding.Record`2.Value"/> set to <paramref name="item"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.Record`2.Validate">
+            <summary>
+            Called whenever <see cref="M:KeepCoding.Record`2.From(`0)"/> is used. This method can be used to <see langword="throw"/> invalid values.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Record`2.Equals(KeepCoding.Record{`0,`1})">
+            <summary>
+            Determines whether two records don't contain the same <see cref="P:KeepCoding.Record`2.Value"/>.
+            </summary>
+            <param name="other">The other instance to compare.</param>
+            <returns><see langword="false"/> if itself and <paramref name="other"/> are both <see langword="null"/>, or <see cref="M:KeepCoding.Record`2.Equals(KeepCoding.Record{`0,`1})"/> returns <see langword="true"/>. Otherwise, <see langword="true"/>.</returns>
+        </member>
+        <member name="T:KeepCoding.StrictRecord`2">
+            <summary>
+            Defines a reference type that provides built-in functionality for encapsulating data.
+            </summary>
+            <remarks>
+            This class has been mostly taken from mcintyre321's ValueOf type. <see href="https://github.com/mcintyre321/ValueOf"/>
+            </remarks>
+            <typeparam name="T">The type of data to encapsulate.</typeparam>
+            <typeparam name="TThis">The type that is encapsulating <typeparamref name="T"/>.</typeparam>
+        </member>
+        <member name="P:KeepCoding.StrictRecord`2.Value">
+            <summary>
+            The value to store.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.StrictRecord`2.op_Equality(KeepCoding.StrictRecord{`0,`1},KeepCoding.StrictRecord{`0,`1})">
+            <summary>
+            Determines whether two records contain the same <see cref="P:KeepCoding.StrictRecord`2.Value"/>.
+            </summary>
+            <param name="a">The left-hand side record to compare.</param>
+            <param name="b">The right-hand side record to compare.</param>
+            <returns><see langword="true"/> if <paramref name="a"/> and <paramref name="b"/> are both <see langword="null"/>, or <see cref="M:KeepCoding.StrictRecord`2.Equals(KeepCoding.StrictRecord{`0,`1})"/> returns <see langword="true"/>. Otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.StrictRecord`2.op_Inequality(KeepCoding.StrictRecord{`0,`1},KeepCoding.StrictRecord{`0,`1})">
+            <summary>
+            Determines whether two records don't contain the same <see cref="P:KeepCoding.StrictRecord`2.Value"/>.
+            </summary>
+            <param name="a">The left-hand side record to compare.</param>
+            <param name="b">The right-hand side record to compare.</param>
+            <returns><see langword="false"/> if <paramref name="a"/> and <paramref name="b"/> are both <see langword="null"/>, or <see cref="M:KeepCoding.StrictRecord`2.Equals(KeepCoding.StrictRecord{`0,`1})"/> returns <see langword="true"/>. Otherwise, <see langword="true"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.StrictRecord`2.op_Implicit(`0)~KeepCoding.StrictRecord{`0,`1}">
+            <summary>
+            Encapsulates <paramref name="a"/> into a <see langword="new"/> instance of <see cref="T:KeepCoding.StrictRecord`2"/>.
+            </summary>
+            <param name="a">The <typeparamref name="T"/> to pass into the <see cref="T:KeepCoding.StrictRecord`2"/>.</param>
+        </member>
+        <member name="M:KeepCoding.StrictRecord`2.Equals(System.Object)">
+            <summary>
+            Determines whether two records don't contain the same <see cref="P:KeepCoding.StrictRecord`2.Value"/>.
+            </summary>
+            <param name="obj">The other instance to compare.</param>
+            <returns><see langword="false"/> if itself and <paramref name="obj"/> are both <see langword="null"/>, or <see cref="M:KeepCoding.StrictRecord`2.Equals(KeepCoding.StrictRecord{`0,`1})"/> returns <see langword="true"/>. Otherwise, <see langword="true"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.StrictRecord`2.GetHashCode">
+            <summary>
+            Gets the hash code.
+            </summary>
+            <returns>The hash code.</returns>
+        </member>
+        <member name="M:KeepCoding.StrictRecord`2.ToString">
+            <summary>
+            Uses <see cref="M:KeepCoding.Helper.Stringify``1(``0,KeepCoding.StringifyFormat)"/> for the inner <see cref="P:KeepCoding.StrictRecord`2.Value"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KeepCoding.StrictRecord`2.From(`0)">
+            <summary>
+            Creates a <see langword="new"/> instance of <see cref="T:KeepCoding.StrictRecord`2"/> from the specified <typeparamref name="TThis"/>.
+            </summary>
+            <param name="item">The item to make a <see langword="new"/> instance of <see cref="T:KeepCoding.StrictRecord`2"/> from.</param>
+            <returns>A new instance of <see cref="T:KeepCoding.StrictRecord`2"/> with the inner <see cref="P:KeepCoding.StrictRecord`2.Value"/> set to <paramref name="item"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.StrictRecord`2.Validate">
+            <summary>
+            Called whenever <see cref="M:KeepCoding.StrictRecord`2.From(`0)"/> is used. This method can be used to <see langword="throw"/> invalid values.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.StrictRecord`2.Equals(KeepCoding.StrictRecord{`0,`1})">
+            <summary>
+            Determines whether two records don't contain the same <see cref="P:KeepCoding.StrictRecord`2.Value"/>.
+            </summary>
+            <param name="other">The other instance to compare.</param>
+            <returns><see langword="false"/> if itself and <paramref name="other"/> are both <see langword="null"/>, or <see cref="M:KeepCoding.StrictRecord`2.Equals(KeepCoding.StrictRecord{`0,`1})"/> returns <see langword="true"/>. Otherwise, <see langword="true"/>.</returns>
+        </member>
         <member name="T:KeepCoding.Internal.RoutineBase">
             <summary>
             Provides the base <see langword="class"/> for the multiple routine types.
@@ -428,15 +584,15 @@
             <seealso cref="T:KeepCoding.Routine"/>
             <returns><see cref="P:KeepCoding.Internal.RoutineBase.Coroutines"/> as <see cref="T:System.Collections.IEnumerable"/> using <see cref="M:System.Collections.Generic.List`1.GetEnumerator"/>.</returns>
         </member>
-        <member name="T:KeepCoding.Internal.TupleBase">
+        <member name="T:KeepCoding.Internal.Tuple">
             <summary>
             Provides the base <see langword="class"/> for the multiple tuple types.
             </summary>
             <remarks>
-            <see cref="T:KeepCoding.Internal.TupleBase"/> provides the general functionality that different types of tuples share in common with. As each different type of tuple gives different amounts of generics, this base <see langword="class"/> is therefore non-generic and provides every method that doesn't require it. This can therefore be used as a way of passing in an ambiguous type of tuple.
+            <see cref="T:KeepCoding.Internal.Tuple"/> provides the general functionality that different types of tuples share in common with. As each different type of tuple gives different amounts of generics, this base <see langword="class"/> is therefore non-generic and provides every method that doesn't require it. This can therefore be used as a way of passing in an ambiguous type of tuple.
             </remarks>
             <example>
-            The following example illustrates a method for returning the last item of any tuple that uses <see cref="T:KeepCoding.Internal.TupleBase"/>.
+            The following example illustrates a method for returning the last item of any tuple that uses <see cref="T:KeepCoding.Internal.Tuple"/>.
             <code>using KeepCoding.Internal;
             
             public static class Extensions
@@ -468,15 +624,15 @@
             </example>
             <seealso cref="M:KeepCoding.TypeHelper.ToTuple``2(``0,``1)"/>
         </member>
-        <member name="P:KeepCoding.Internal.TupleBase.Item(System.Byte)">
+        <member name="P:KeepCoding.Internal.Tuple.Item(System.Byte)">
             <summary>
             Passes an index into the tuple, where items are considered ordered and part of an array.
             </summary>
             <value>
-            <see cref="P:KeepCoding.Internal.TupleBase.Items"/> with the index specified.
+            <see cref="P:KeepCoding.Internal.Tuple.Items"/> with the index specified.
             </value>
             <remarks>
-            A <see cref="T:KeepCoding.Internal.TupleBase"/> will always throw an <see cref="T:System.IndexOutOfRangeException"/> regardless if the getter or setter is called as it contains no items to index into. The purpose of this indexer is to provide all derived classes the same <see cref="T:System.IndexOutOfRangeException"/> message. As there is type ambiguity between multiple generics, the <see langword="return"/> type has to be <see cref="T:System.Object"/> as any value is passed into each item.
+            A <see cref="T:KeepCoding.Internal.Tuple"/> will always throw an <see cref="T:System.IndexOutOfRangeException"/> regardless if the getter or setter is called as it contains no items to index into. The purpose of this indexer is to provide all derived classes the same <see cref="T:System.IndexOutOfRangeException"/> message. As there is type ambiguity between multiple generics, the <see langword="return"/> type has to be <see cref="T:System.Object"/> as any value is passed into each item.
             </remarks>
             <example>
             The following example illustrates how an <see cref="T:System.IndexOutOfRangeException"/> will always be thrown no matter what index is passed in.
@@ -515,12 +671,12 @@
             }
             </code>
             </example>
-            <seealso cref="P:KeepCoding.Internal.TupleBase.Items"/>
-            <param name="index">The index to pass into <see cref="P:KeepCoding.Internal.TupleBase.Items"/>.</param>
+            <seealso cref="P:KeepCoding.Internal.Tuple.Items"/>
+            <param name="index">The index to pass into <see cref="P:KeepCoding.Internal.Tuple.Items"/>.</param>
             <exception cref="T:System.IndexOutOfRangeException">The parameter <paramref name="index"/> is out of range because there are no items in this tuple type.</exception>
             <returns><see cref="T:System.IndexOutOfRangeException"/>, ignoring <paramref name="index"/>.</returns>
         </member>
-        <member name="P:KeepCoding.Internal.TupleBase.Length">
+        <member name="P:KeepCoding.Internal.Tuple.Length">
             <summary>
             Determines the amount of items in the tuple type.
             </summary>
@@ -528,10 +684,10 @@
             The number of generics in the current type.
             </value>
             <remarks>
-            The length is the amount of items in the tuple, which can be used to index <see cref="P:KeepCoding.Internal.TupleBase.Items"/> or the indexer <see cref="P:KeepCoding.Internal.TupleBase.Item(System.Byte)"/>.
+            The length is the amount of items in the tuple, which can be used to index <see cref="P:KeepCoding.Internal.Tuple.Items"/> or the indexer <see cref="P:KeepCoding.Internal.Tuple.Item(System.Byte)"/>.
             </remarks>
             <example>
-            The following example illustrates how a method can use the <see cref="P:KeepCoding.Internal.TupleBase.Length"/> parameter as a way of determining the tuple item count being odd. <see cref="M:KeepCoding.ArrayHelper.ConvertAll``2(``0[],System.Converter{``0,``1})"/> is used to convert all tuples to <see cref="T:System.Boolean"/>.
+            The following example illustrates how a method can use the <see cref="P:KeepCoding.Internal.Tuple.Length"/> parameter as a way of determining the tuple item count being odd. <see cref="M:KeepCoding.ArrayHelper.ConvertAll``2(``0[],System.Converter{``0,``1})"/> is used to convert all tuples to <see cref="T:System.Boolean"/>.
             <code>using KeepCoding;
             using KeepCoding.Internal;
             
@@ -561,19 +717,19 @@
             <code>[Foo #1] False, True, False, True, False
             </code>
             </example>
-            <seealso cref="P:KeepCoding.Internal.TupleBase.Item(System.Byte)"/>
-            <seealso cref="P:KeepCoding.Internal.TupleBase.Items"/>
+            <seealso cref="P:KeepCoding.Internal.Tuple.Item(System.Byte)"/>
+            <seealso cref="P:KeepCoding.Internal.Tuple.Items"/>
             <seealso cref="M:KeepCoding.ArrayHelper.ConvertAll``2(``0[],System.Converter{``0,``1})"/>
         </member>
-        <member name="P:KeepCoding.Internal.TupleBase.UpperBound">
+        <member name="P:KeepCoding.Internal.Tuple.UpperBound">
             <summary>
             Determines the upperbound of the amount of the length.
             </summary>
             <value>
-            <see cref="P:KeepCoding.Internal.TupleBase.Length"/> - 1.
+            <see cref="P:KeepCoding.Internal.Tuple.Length"/> - 1.
             </value>
             <remarks>
-            This can be used for indexing <see cref="P:KeepCoding.Internal.TupleBase.Items"/> or the indexer <see cref="P:KeepCoding.Internal.TupleBase.Item(System.Byte)"/>, getting the last item of the tuple. Calling <see cref="P:KeepCoding.Internal.TupleBase.UpperBound"/> assumes that there is at least 1 generic in this type.
+            This can be used for indexing <see cref="P:KeepCoding.Internal.Tuple.Items"/> or the indexer <see cref="P:KeepCoding.Internal.Tuple.Item(System.Byte)"/>, getting the last item of the tuple. Calling <see cref="P:KeepCoding.Internal.Tuple.UpperBound"/> assumes that there is at least 1 generic in this type.
             </remarks>
             <example>
             The following example illusrates a method that retrieves the last item of the tuple.
@@ -609,11 +765,11 @@
             </code>
             </example>
             <exception cref="T:System.InvalidOperationException">The length is 0, and therefore the upper bound doesn't exist.</exception>
-            <seealso cref="P:KeepCoding.Internal.TupleBase.Item(System.Byte)"/>
-            <seealso cref="P:KeepCoding.Internal.TupleBase.Length"/>
-            <seealso cref="P:KeepCoding.Internal.TupleBase.Items"/>
+            <seealso cref="P:KeepCoding.Internal.Tuple.Item(System.Byte)"/>
+            <seealso cref="P:KeepCoding.Internal.Tuple.Length"/>
+            <seealso cref="P:KeepCoding.Internal.Tuple.Items"/>
         </member>
-        <member name="P:KeepCoding.Internal.TupleBase.Items">
+        <member name="P:KeepCoding.Internal.Tuple.Items">
             <summary>
             Converts all items to an array.
             </summary>
@@ -624,7 +780,7 @@
             As the types are not determined, they have to be boxed in <see cref="T:System.Object"/>.
             </remarks>
             <example>
-            The following example illustrates how an entire tuple can be printed using <see cref="P:KeepCoding.Internal.TupleBase.Items"/>, since <see cref="M:KeepCoding.Logger.Log``1(``0,System.Object[])"/> can print arrays.
+            The following example illustrates how an entire tuple can be printed using <see cref="P:KeepCoding.Internal.Tuple.Items"/>, since <see cref="M:KeepCoding.Logger.Log``1(``0,System.Object[])"/> can print arrays.
             <code>using KeepCoding;
             
             public sealed class FooModule : ModuleScript
@@ -641,44 +797,44 @@
             </example>
             <seealso cref="M:KeepCoding.Logger.Log``1(``0,System.Object[])"/>
         </member>
-        <member name="M:KeepCoding.Internal.TupleBase.op_Equality(KeepCoding.Internal.TupleBase,KeepCoding.Internal.TupleBase)">
+        <member name="M:KeepCoding.Internal.Tuple.op_Equality(KeepCoding.Internal.Tuple,KeepCoding.Internal.Tuple)">
             <summary>
             Overrides comparison by checking for individual item equality rather than itself.
             </summary>
             <remarks>
-            For more details about comparison, look at <see cref="M:KeepCoding.Internal.TupleBase.Equals(KeepCoding.Internal.TupleBase)"/>.
+            For more details about comparison, look at <see cref="M:KeepCoding.Internal.Tuple.Equals(KeepCoding.Internal.Tuple)"/>.
             </remarks>
-            <param name="left">The left-hand side <see cref="T:KeepCoding.Internal.TupleBase"/> comparison to compare to.</param>
-            <param name="right">The right-hand side <see cref="T:KeepCoding.Internal.TupleBase"/> comparison to compare to.</param>
+            <param name="left">The left-hand side <see cref="T:KeepCoding.Internal.Tuple"/> comparison to compare to.</param>
+            <param name="right">The right-hand side <see cref="T:KeepCoding.Internal.Tuple"/> comparison to compare to.</param>
             <returns><see langword="true"/> if all items in the tuple equal the other items of the same index.</returns>
         </member>
-        <member name="M:KeepCoding.Internal.TupleBase.op_Inequality(KeepCoding.Internal.TupleBase,KeepCoding.Internal.TupleBase)">
+        <member name="M:KeepCoding.Internal.Tuple.op_Inequality(KeepCoding.Internal.Tuple,KeepCoding.Internal.Tuple)">
             <summary>
             Overrides comparison by checking for individual item equality rather than itself.
             </summary>
             <remarks>
-            For more details about comparison, look at <see cref="M:KeepCoding.Internal.TupleBase.Equals(KeepCoding.Internal.TupleBase)"/>.
+            For more details about comparison, look at <see cref="M:KeepCoding.Internal.Tuple.Equals(KeepCoding.Internal.Tuple)"/>.
             </remarks>
-            <param name="left">The left-hand side <see cref="T:KeepCoding.Internal.TupleBase"/> comparison to compare to.</param>
-            <param name="right">The right-hand side <see cref="T:KeepCoding.Internal.TupleBase"/> comparison to compare to.</param>
+            <param name="left">The left-hand side <see cref="T:KeepCoding.Internal.Tuple"/> comparison to compare to.</param>
+            <param name="right">The right-hand side <see cref="T:KeepCoding.Internal.Tuple"/> comparison to compare to.</param>
             <returns><see langword="true"/> if any item in the tuple does not equal the other item of the same index.</returns>
         </member>
-        <member name="M:KeepCoding.Internal.TupleBase.Equals(System.Object)">
+        <member name="M:KeepCoding.Internal.Tuple.Equals(System.Object)">
             <summary>
-            Compares itself and another object attempted to casted as <see cref="T:KeepCoding.Internal.TupleBase"/> to determine if they contain the same values.
+            Compares itself and another object attempted to casted as <see cref="T:KeepCoding.Internal.Tuple"/> to determine if they contain the same values.
             </summary>
             <remarks>
-            For more details about comparison, look at <see cref="M:KeepCoding.Internal.TupleBase.Equals(KeepCoding.Internal.TupleBase)"/>.
+            For more details about comparison, look at <see cref="M:KeepCoding.Internal.Tuple.Equals(KeepCoding.Internal.Tuple)"/>.
             </remarks>
             <param name="obj">The <see cref="T:System.Object"/> to compare to.</param>
             <returns><see langword="true"/> if all items in the tuple equal the other items of the same index.</returns>
         </member>
-        <member name="M:KeepCoding.Internal.TupleBase.Equals(KeepCoding.Internal.TupleBase)">
+        <member name="M:KeepCoding.Internal.Tuple.Equals(KeepCoding.Internal.Tuple)">
             <summary>
-            Compares itself and another <see cref="T:KeepCoding.Internal.TupleBase"/> to determine if they contain the same values.
+            Compares itself and another <see cref="T:KeepCoding.Internal.Tuple"/> to determine if they contain the same values.
             </summary>
             <remarks>
-            The comparison is done by taking both of their <see cref="P:KeepCoding.Internal.TupleBase.Items"/> values and comparing them with <see cref="M:System.Linq.Enumerable.SequenceEqual``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})"/>. Note that if the tuples are different sizes, this will automatically return <see langword="true"/>. For more information, <see cref="M:System.Object.Equals(System.Object)"/>.
+            The comparison is done by taking both of their <see cref="P:KeepCoding.Internal.Tuple.Items"/> values and comparing them with <see cref="M:System.Linq.Enumerable.SequenceEqual``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})"/>. Note that if the tuples are different sizes, this will automatically return <see langword="true"/>. For more information, <see cref="M:System.Object.Equals(System.Object)"/>.
             </remarks>
             <example>
             The following example illustrates the different ways this method can return true or false.
@@ -709,12 +865,12 @@
             [Foo #1] False
             </code>
             </example>
-            <param name="other">The <see cref="T:KeepCoding.Internal.TupleBase"/> to compare itself to.</param>
+            <param name="other">The <see cref="T:KeepCoding.Internal.Tuple"/> to compare itself to.</param>
             <returns><see langword="true"/> if both of them have the same items, or are both <see langword="null"/>.</returns>
         </member>
-        <member name="M:KeepCoding.Internal.TupleBase.GetHashCode">
+        <member name="M:KeepCoding.Internal.Tuple.GetHashCode">
             <summary>
-            Gets the hash code of <see cref="P:KeepCoding.Internal.TupleBase.Items"/>.
+            Gets the hash code of <see cref="P:KeepCoding.Internal.Tuple.Items"/>.
             </summary>
             <remarks>
             Hash codes are a way of quickly asserting equality. It converts all of the given relevant variables into hash codes and combines into a number that makes it unlikely for two different types to have the same hash code. That being said, it is still possible for the hash codes to be identical but not for the same values to have different hash codes, which is why it only should be used as the first step in determining equality and confirming by making the final comparisons to those with equal hash codes. For more information, see <see cref="M:System.Object.GetHashCode"/>.
@@ -738,15 +894,15 @@
             <code>[Foo #1] True
             </code>
             </example>
-            <seealso cref="P:KeepCoding.Internal.TupleBase.Items"/>
+            <seealso cref="P:KeepCoding.Internal.Tuple.Items"/>
             <returns>The hash code of this instance.</returns>
         </member>
-        <member name="M:KeepCoding.Internal.TupleBase.ToString">
+        <member name="M:KeepCoding.Internal.Tuple.ToString">
              <summary>
-             Joins <see cref="P:KeepCoding.Internal.TupleBase.Items"/> to a string, with a space as a delimiter.
+             Joins <see cref="P:KeepCoding.Internal.Tuple.Items"/> to a string, with a space as a delimiter.
              </summary>
              <remarks>
-             Each element of <see cref="P:KeepCoding.Internal.TupleBase.Items"/> is passed into <see cref="M:KeepCoding.Helper.Stringify``1(``0,KeepCoding.StringifyFormat)"/> to unpack iterators and allow each element to be seen. For more details about stringification, refer to <see cref="M:System.Object.ToString"/>.
+             Each element of <see cref="P:KeepCoding.Internal.Tuple.Items"/> is passed into <see cref="M:KeepCoding.Helper.Stringify``1(``0,KeepCoding.StringifyFormat)"/> to unpack iterators and allow each element to be seen. For more details about stringification, refer to <see cref="M:System.Object.ToString"/>.
              </remarks>
              <example>
              The following example illustrates how a tuple gets converted to a <see cref="T:System.String"/>.
@@ -766,19 +922,19 @@
              <code>[Foo #1] 0, test1, test2, test3, False
              </code>
              </example>
-             <seealso cref="P:KeepCoding.Internal.TupleBase.Items"/>
+             <seealso cref="P:KeepCoding.Internal.Tuple.Items"/>
              <seealso cref="M:KeepCoding.Helper.Stringify``1(``0,KeepCoding.StringifyFormat)"/>
-             <returns><see cref="P:KeepCoding.Internal.TupleBase.Items"/> from <see cref="M:KeepCoding.Helper.Stringify``1(``0,KeepCoding.StringifyFormat)"/>.</returns>
+             <returns><see cref="P:KeepCoding.Internal.Tuple.Items"/> from <see cref="M:KeepCoding.Helper.Stringify``1(``0,KeepCoding.StringifyFormat)"/>.</returns>
         </member>
-        <member name="M:KeepCoding.Internal.TupleBase.GetEnumerator">
+        <member name="M:KeepCoding.Internal.Tuple.GetEnumerator">
              <summary>
-             Gets the <see cref="T:System.Collections.IEnumerator"/> of <see cref="P:KeepCoding.Internal.TupleBase.Items"/>.
+             Gets the <see cref="T:System.Collections.IEnumerator"/> of <see cref="P:KeepCoding.Internal.Tuple.Items"/>.
              </summary>
              <remarks>
-             This method is needed to implement <see cref="T:System.Collections.IEnumerator"/> interface. It takes <see cref="P:KeepCoding.Internal.TupleBase.Items"/> and performs <see cref="M:System.Array.GetEnumerator"/>.
+             This method is needed to implement <see cref="T:System.Collections.IEnumerator"/> interface. It takes <see cref="P:KeepCoding.Internal.Tuple.Items"/> and performs <see cref="M:System.Array.GetEnumerator"/>.
              </remarks>
              <example>
-             The following example illustrates how items in <see cref="P:KeepCoding.Internal.TupleBase.Items"/> get converted into an <see cref="T:System.Collections.IEnumerator"/>, and using that <see cref="T:System.Collections.IEnumerator"/> to print every value.
+             The following example illustrates how items in <see cref="P:KeepCoding.Internal.Tuple.Items"/> get converted into an <see cref="T:System.Collections.IEnumerator"/>, and using that <see cref="T:System.Collections.IEnumerator"/> to print every value.
              <code>using System.Collections;
              using KeepCoding;
             
@@ -846,11 +1002,6 @@
             </summary>
             <returns><see cref="T:UnityEngine.WaitWhile"/> until <see cref="P:KeepCoding.Internal.WorkBase.IsRunning"/> is no longer true.</returns>
         </member>
-        <member name="M:KeepCoding.Internal.WorkBase.Finalize">
-            <summary>
-            This aborts the thread. It's to prevent the Editor from freezing from unloading the thread while it is in use, and potentially prevent issues in-game from similar actions.
-            </summary>
-        </member>
         <member name="T:KeepCoding.Internal.ModuleScriptEditor">
             <summary>
             Custom inspector for <see cref="T:KeepCoding.ModuleScript"/>. 
@@ -913,6 +1064,29 @@
         <member name="M:KeepCoding.Internal.EmptyIteratorException.#ctor(System.String,System.Exception)">
             <summary>
             An exception thrown when the iterator is empty.
+            </summary>
+            <param name="message">The message of the exception.</param>
+            <param name="innerException">An <see cref="T:System.Exception"/> within this exception.</param>
+        </member>
+        <member name="T:KeepCoding.Internal.ImmutableException">
+            <summary>
+            An exception thrown when a mutable action is performed on an immutable member.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Internal.ImmutableException.#ctor">
+            <summary>
+            An exception thrown when a mutable action is performed on an immutable member.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Internal.ImmutableException.#ctor(System.String)">
+            <summary>
+            An exception thrown when a mutable action is performed on an immutable member.
+            </summary>
+            <param name="message">The message of the exception.</param>
+        </member>
+        <member name="M:KeepCoding.Internal.ImmutableException.#ctor(System.String,System.Exception)">
+            <summary>
+            An exception thrown when a mutable action is performed on an immutable member.
             </summary>
             <param name="message">The message of the exception.</param>
             <param name="innerException">An <see cref="T:System.Exception"/> within this exception.</param>
@@ -1032,6 +1206,121 @@
             <param name="message">The message of the exception.</param>
             <param name="innerException">An <see cref="T:System.Exception"/> within this exception.</param>
         </member>
+        <member name="T:KeepCoding.Internal.ModuleEvent`1">
+            <summary>
+            A class that encapsulates an adder, getter, and setter, similar to a property.
+            </summary>
+            <typeparam name="T">The type of the inner variable on the getter.</typeparam>
+        </member>
+        <member name="T:KeepCoding.Internal.ModuleEvent`1.EventDictionary">
+            <summary>
+            A class that stores a dictionary, restricting what you are able to do.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Internal.ModuleEvent`1.EventDictionary.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:KeepCoding.Internal.ModuleEvent`1.EventDictionary"/>, setting the inner dictionary to a new instance.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Internal.ModuleEvent`1.EventDictionary.Clear">
+            <summary>
+            Clears the dictionary.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Internal.ModuleEvent`1.EventDictionary.Get(`0)">
+            <summary>
+            Gets the value from the specified key. If the key doesn't exist, <see langword="null"/> is returned.
+            </summary>
+            <param name="key">The key to use.</param>
+            <returns>The value from the key, or <see langword="null"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.Internal.ModuleEvent`1.EventDictionary.Remove(`0)">
+            <summary>
+            Removes a key from the dictionary. If the key doesn't exist, nothing happens.
+            </summary>
+            <param name="key">The key to use.</param>
+        </member>
+        <member name="M:KeepCoding.Internal.ModuleEvent`1.EventDictionary.Add(`0,System.Object)">
+            <summary>
+            Adds a key with a value to the dictionary.
+            </summary>
+            <param name="key">The key to add.</param>
+            <param name="value">The value to add.</param>
+        </member>
+        <member name="M:KeepCoding.Internal.ModuleEvent`1.#ctor(KeepCoding.Internal.ModuleEvent{`0}.Adder,KeepCoding.Internal.ModuleEvent{`0}.Getter,KeepCoding.Internal.ModuleEvent{`0}.Setter,KeepCoding.Internal.ModuleEvent{`0}.Signature,KeepCoding.Internal.ModuleEvent{`0}.Remover,KeepCoding.Internal.ModuleEvent{`0}.Converter)">
+            <summary>
+            Creates a <see langword="new"/> instance of <see cref="T:KeepCoding.Internal.ModuleEvent`1"/> with the underlying type passed in.
+            </summary>
+            <param name="adder">The encapsulated method that will add an event.</param>
+            <param name="getter">The encapsulated method that will get the value.</param>
+            <param name="setter">The encapsulated method that will set the value.</param>
+            <param name="signature">The encapsulated method that will get the <see cref="T:System.Type"/> of the target.</param>
+            <param name="remover">The encapsulated method that will remove the value.</param>
+            <param name="converter">The encapsulated method that changes the value before used in converting types.</param>
+        </member>
+        <member name="T:KeepCoding.Internal.ModuleEvent`1.Remover">
+            <summary>
+            Represents the remover operator.
+            </summary>
+            <param name="value">The value to use.</param>
+        </member>
+        <member name="T:KeepCoding.Internal.ModuleEvent`1.Adder">
+            <summary>
+            Represents an adder operator.
+            </summary>
+        </member>
+        <member name="T:KeepCoding.Internal.ModuleEvent`1.Setter">
+            <summary>
+            Represents a setter operator.
+            </summary>
+        </member>
+        <member name="T:KeepCoding.Internal.ModuleEvent`1.Converter">
+            <summary>
+            Converts the delegate to a different type.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <returns>The value converted to something else from <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="T:KeepCoding.Internal.ModuleEvent`1.Signature">
+            <summary>
+            Gets the <see cref="T:System.Type"/> of the target.
+            </summary>
+            <returns>The <see cref="T:System.Type"/> of the target.</returns>
+        </member>
+        <member name="T:KeepCoding.Internal.ModuleEvent`1.Getter">
+            <summary>
+            Represents a getter operator.
+            </summary>
+            <returns>The value from the operation.</returns>
+        </member>
+        <member name="M:KeepCoding.Internal.ModuleEvent`1.Add(`0)">
+            <summary>
+            Subscribes an event to the inner value.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Internal.ModuleEvent`1.Set(`0)">
+            <summary>
+            Sets the event to the inner value.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Internal.ModuleEvent`1.Get">
+            <summary>
+            Gets the value of the inner value.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KeepCoding.Internal.ModuleEvent`1.Remove(`0)">
+            <summary>
+            The remover operator.
+            </summary>
+            <param name="value">The value to use.</param>
+        </member>
+        <member name="M:KeepCoding.Internal.ModuleEvent`1.op_Implicit(KeepCoding.Internal.ModuleEvent{`0})~`0">
+            <summary>
+            Implicitly uses the getter.
+            </summary>
+            <param name="moduleEvent">The instance of this type to convert.</param>
+        </member>
         <member name="T:KeepCoding.Internal.ReflectionScript">
             <summary>
             Editor-only behaviour that gets values from <see cref="T:UnityEngine.Component"/>s in real-time.
@@ -1058,6 +1347,16 @@
             Logs multiple entries to the console.
             </summary>
             <param name="logs">The array of logs to individual output into the console.</param>
+        </member>
+        <member name="M:KeepCoding.Internal.ReflectionScript.Start">
+            <summary>
+            Deletes itself if being ran in-game.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Internal.ReflectionScript.FixedUpdate">
+            <summary>
+            Reflects and gets the values of the specified variables.
+            </summary>
         </member>
         <member name="T:KeepCoding.ArrayHelper">
             <summary>
@@ -1491,17 +1790,6 @@
             <param name="count">The number of elements in the section to search.</param>
             <param name="match">The <see cref="T:System.Predicate`1"/> that defines the conditions of the element to search for.</param>
             <returns>The zero-based index of the last occurrence of an element that matches the conditions defined by <see cref="T:System.Predicate`1"/>, if found; otherwise, -1.</returns>
-        </member>
-        <member name="M:KeepCoding.ArrayHelper.ForEach``1(``0[],System.Action{``0})">
-            <summary>
-            Performs the specified action on each element of the specified array.
-            </summary>
-            <remarks><seealso href="https://docs.microsoft.com/en-us/dotnet/api/system.array.foreach?view=net-5.0"/></remarks>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <typeparam name="T">The type of the elements of the array.</typeparam>
-            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> on whose elements the action is to be performed.</param>
-            <param name="action">The <see cref="T:System.Action`1"/> to perform on each element of <paramref name="array"/>.</param>
-            <returns><paramref name="array"/></returns>
         </member>
         <member name="M:KeepCoding.ArrayHelper.IndexOf(System.Array,System.Object)">
             <summary>
@@ -2848,13 +3136,14 @@
             <param name="modulo">The right-hand side operator.</param>
             <returns><paramref name="number"/> mod <paramref name="modulo"/>.</returns>
         </member>
-        <member name="M:KeepCoding.Helper.SetOrReplace``1(System.Collections.Generic.IDictionary{``0,System.Int32},``0,System.Func{System.Int32,System.Int32})">
+        <member name="M:KeepCoding.Helper.SetOrReplace``2(System.Collections.Generic.IDictionary{``0,``1},``0,System.Func{``1,``1})">
             <summary>
             Sets or replaces the value of a dictionary with a given function.
             </summary>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
             <exception cref="T:System.NullReferenceException"></exception>
-            <typeparam name="T">Type of the key of the dictionary.</typeparam>
+            <typeparam name="TKey">Type of the key of the dictionary.</typeparam>
+            <typeparam name="TValue">Type of the value of the dictionary.</typeparam>
             <param name="source">Dictionary to operate on.</param>
             <param name="key">Key at which the list is located in the dictionary.</param>
             <param name="func">The function that returns the new value.</param>
@@ -3865,19 +4154,6 @@
             <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
             <returns><paramref name="iterator"/></returns>
         </member>
-        <member name="M:KeepCoding.KeyHelper.ForEach``1(``0,System.Action{System.Object})">
-            <summary>
-            The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
-            </summary>
-            <remarks>
-            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-foreach-statement"/>
-            </remarks>
-            <exception cref="T:System.NullReferenceException"></exception>
-            <typeparam name="TEnumerable">The type of iterator.</typeparam>
-            <param name="iterator">The collection of items to go through one-by-one.</param>
-            <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
-            <returns><paramref name="iterator"/></returns>
-        </member>
         <member name="M:KeepCoding.KeyHelper.ForEach``2(``0,System.Action{``1})">
             <summary>
             The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
@@ -3920,19 +4196,6 @@
             <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
             <returns><paramref name="iterator"/></returns>
         </member>
-        <member name="M:KeepCoding.KeyHelper.ForEach``1(``0,System.Action{System.Object,System.Int32})">
-            <summary>
-            The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
-            </summary>
-            <remarks>
-            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-foreach-statement"/>
-            </remarks>
-            <exception cref="T:System.NullReferenceException"></exception>
-            <typeparam name="TEnumerator">The type of iterator.</typeparam>
-            <param name="iterator">The collection of items to go through one-by-one.</param>
-            <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
-            <returns><paramref name="iterator"/></returns>
-        </member>
         <member name="M:KeepCoding.KeyHelper.ForEach``2(``0,System.Action{``1,System.Int32})">
             <summary>
             The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
@@ -3958,6 +4221,32 @@
             <typeparam name="TDictionary">The type of iterator.</typeparam>
             <typeparam name="TKey">The type of each key in the iterator.</typeparam>
             <typeparam name="TValue">The type of each value in the iterator.</typeparam>
+            <param name="iterator">The collection of items to go through one-by-one.</param>
+            <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
+            <returns><paramref name="iterator"/></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.ForEachBoxed``1(``0,System.Action{System.Object})">
+            <summary>
+            The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-foreach-statement"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="TEnumerable">The type of iterator.</typeparam>
+            <param name="iterator">The collection of items to go through one-by-one.</param>
+            <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
+            <returns><paramref name="iterator"/></returns>
+        </member>
+        <member name="M:KeepCoding.KeyHelper.ForEachBoxed``1(``0,System.Action{System.Object,System.Int32})">
+            <summary>
+            The <see langword="foreach"/> statement executes a statement or a block of statements for each element in an instance of the type that implements the <see cref="T:System.Collections.IEnumerable"/> or <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface.
+            </summary>
+            <remarks>
+            <seealso href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-foreach-statement"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="TEnumerator">The type of iterator.</typeparam>
             <param name="iterator">The collection of items to go through one-by-one.</param>
             <param name="action">The action to do on each item in <paramref name="iterator"/>.</param>
             <returns><paramref name="iterator"/></returns>
@@ -4553,7 +4842,7 @@
             <typeparam name="T2">The second type of the tuple.</typeparam>
             <param name="item1">The first argument to pass into the tuple.</param>
             <param name="item2">The second argument to pass into the tuple.</param>
-            <returns>A new <seealso cref="T:KeepCoding.Tuple`2"/> containing <paramref name="item1"/> and <paramref name="item2"/></returns>
+            <returns>A new <seealso cref="T:KeepCoding.Tuple`2"/> containing <paramref name="item1"/> and <paramref name="item2"/>.</returns>
         </member>
         <member name="M:KeepCoding.TypeHelper.ToTuple``3(``0,``1,``2)">
             <summary>
@@ -4565,7 +4854,7 @@
             <param name="item1">The first argument to pass into the tuple.</param>
             <param name="item2">The second argument to pass into the tuple.</param>
             <param name="item3">The third argument to pass into the tuple.</param>
-            <returns>A new <seealso cref="T:KeepCoding.Tuple`3"/> containing <paramref name="item1"/>, <paramref name="item2"/>, and <paramref name="item3"/></returns>
+            <returns>A new <seealso cref="T:KeepCoding.Tuple`3"/> containing <paramref name="item1"/>, <paramref name="item2"/>, and <paramref name="item3"/>.</returns>
         </member>
         <member name="M:KeepCoding.TypeHelper.ToTuple``4(``0,``1,``2,``3)">
             <summary>
@@ -4579,7 +4868,107 @@
             <param name="item2">The second argument to pass into the tuple.</param>
             <param name="item3">The third argument to pass into the tuple.</param>
             <param name="item4">The fourth argument to pass into the tuple.</param>
-            <returns>A new <seealso cref="T:KeepCoding.Tuple`4"/> containing <paramref name="item1"/>, <paramref name="item2"/>, <paramref name="item3"/>, and <paramref name="item4"/></returns>
+            <returns>A new <seealso cref="T:KeepCoding.Tuple`4"/> containing <paramref name="item1"/>, <paramref name="item2"/>, <paramref name="item3"/>, and <paramref name="item4"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.TypeHelper.ToTuple``5(``0,``1,``2,``3,``4)">
+            <summary>
+            Converts arguments to a new <see cref="T:KeepCoding.Tuple`5"/>.
+            </summary>
+            <typeparam name="T1">The first type of the tuple.</typeparam>
+            <typeparam name="T2">The second type of the tuple.</typeparam>
+            <typeparam name="T3">The third type of the tuple.</typeparam>
+            <typeparam name="T4">The fourth type of the tuple.</typeparam>
+            <typeparam name="T5">The fifth type of the tuple.</typeparam>
+            <param name="item1">The first argument to pass into the tuple.</param>
+            <param name="item2">The second argument to pass into the tuple.</param>
+            <param name="item3">The third argument to pass into the tuple.</param>
+            <param name="item4">The fourth argument to pass into the tuple.</param>
+            <param name="item5">The fifth argument to pass into the tuple.</param>
+            <returns>A new <seealso cref="T:KeepCoding.Tuple`5"/> containing <paramref name="item1"/>, <paramref name="item2"/>, <paramref name="item3"/>, <paramref name="item4"/>, and <paramref name="item5"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.TypeHelper.ToTuple``6(``0,``1,``2,``3,``4,``5)">
+            <summary>
+            Converts arguments to a new <see cref="T:KeepCoding.Tuple`6"/>.
+            </summary>
+            <typeparam name="T1">The first type of the tuple.</typeparam>
+            <typeparam name="T2">The second type of the tuple.</typeparam>
+            <typeparam name="T3">The third type of the tuple.</typeparam>
+            <typeparam name="T4">The fourth type of the tuple.</typeparam>
+            <typeparam name="T5">The fifth type of the tuple.</typeparam>
+            <typeparam name="T6">The sixth type of the tuple.</typeparam>
+            <param name="item1">The first argument to pass into the tuple.</param>
+            <param name="item2">The second argument to pass into the tuple.</param>
+            <param name="item3">The third argument to pass into the tuple.</param>
+            <param name="item4">The fourth argument to pass into the tuple.</param>
+            <param name="item5">The fifth argument to pass into the tuple.</param>
+            <param name="item6">The sixth argument to pass into the tuple.</param>
+            <returns>A new <seealso cref="T:KeepCoding.Tuple`6"/> containing <paramref name="item1"/>, <paramref name="item2"/>, <paramref name="item3"/>, <paramref name="item4"/>, <paramref name="item5"/>, and <paramref name="item6"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.TypeHelper.ToTuple``7(``0,``1,``2,``3,``4,``5,``6)">
+            <summary>
+            Converts arguments to a new <see cref="T:KeepCoding.Tuple`7"/>.
+            </summary>
+            <typeparam name="T1">The first type of the tuple.</typeparam>
+            <typeparam name="T2">The second type of the tuple.</typeparam>
+            <typeparam name="T3">The third type of the tuple.</typeparam>
+            <typeparam name="T4">The fourth type of the tuple.</typeparam>
+            <typeparam name="T5">The fifth type of the tuple.</typeparam>
+            <typeparam name="T6">The sixth type of the tuple.</typeparam>
+            <typeparam name="T7">The seventh type of the tuple.</typeparam>
+            <param name="item1">The first argument to pass into the tuple.</param>
+            <param name="item2">The second argument to pass into the tuple.</param>
+            <param name="item3">The third argument to pass into the tuple.</param>
+            <param name="item4">The fourth argument to pass into the tuple.</param>
+            <param name="item5">The fifth argument to pass into the tuple.</param>
+            <param name="item6">The sixth argument to pass into the tuple.</param>
+            <param name="item7">The seventh argument to pass into the tuple.</param>
+            <returns>A new <seealso cref="T:KeepCoding.Tuple`7"/> containing <paramref name="item1"/>, <paramref name="item2"/>, <paramref name="item3"/>, <paramref name="item4"/>, <paramref name="item5"/>, <paramref name="item6"/>, and <paramref name="item7"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.TypeHelper.ToTuple``8(``0,``1,``2,``3,``4,``5,``6,``7)">
+            <summary>
+            Converts arguments to a new <see cref="T:KeepCoding.Tuple`8"/>.
+            </summary>
+            <typeparam name="T1">The first type of the tuple.</typeparam>
+            <typeparam name="T2">The second type of the tuple.</typeparam>
+            <typeparam name="T3">The third type of the tuple.</typeparam>
+            <typeparam name="T4">The fourth type of the tuple.</typeparam>
+            <typeparam name="T5">The fifth type of the tuple.</typeparam>
+            <typeparam name="T6">The sixth type of the tuple.</typeparam>
+            <typeparam name="T7">The seventh type of the tuple.</typeparam>
+            <typeparam name="T8">The eighth type of the tuple.</typeparam>
+            <param name="item1">The first argument to pass into the tuple.</param>
+            <param name="item2">The second argument to pass into the tuple.</param>
+            <param name="item3">The third argument to pass into the tuple.</param>
+            <param name="item4">The fourth argument to pass into the tuple.</param>
+            <param name="item5">The fifth argument to pass into the tuple.</param>
+            <param name="item6">The sixth argument to pass into the tuple.</param>
+            <param name="item7">The seventh argument to pass into the tuple.</param>
+            <param name="item8">The seventh argument to pass into the tuple.</param>
+            <returns>A new <seealso cref="T:KeepCoding.Tuple`8"/> containing <paramref name="item1"/>, <paramref name="item2"/>, <paramref name="item3"/>, <paramref name="item4"/>, <paramref name="item5"/>, <paramref name="item6"/>, <paramref name="item7"/>, and <paramref name="item8"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.TypeHelper.ToTuple``9(``0,``1,``2,``3,``4,``5,``6,``7,``8)">
+            <summary>
+            Converts arguments to a new <see cref="T:KeepCoding.Tuple`9"/>.
+            </summary>
+            <typeparam name="T1">The first type of the tuple.</typeparam>
+            <typeparam name="T2">The second type of the tuple.</typeparam>
+            <typeparam name="T3">The third type of the tuple.</typeparam>
+            <typeparam name="T4">The fourth type of the tuple.</typeparam>
+            <typeparam name="T5">The fifth type of the tuple.</typeparam>
+            <typeparam name="T6">The sixth type of the tuple.</typeparam>
+            <typeparam name="T7">The seventh type of the tuple.</typeparam>
+            <typeparam name="T8">The eighth type of the tuple.</typeparam>
+            <typeparam name="T9">The eighth type of the tuple.</typeparam>
+            <param name="item1">The first argument to pass into the tuple.</param>
+            <param name="item2">The second argument to pass into the tuple.</param>
+            <param name="item3">The third argument to pass into the tuple.</param>
+            <param name="item4">The fourth argument to pass into the tuple.</param>
+            <param name="item5">The fifth argument to pass into the tuple.</param>
+            <param name="item6">The sixth argument to pass into the tuple.</param>
+            <param name="item7">The seventh argument to pass into the tuple.</param>
+            <param name="item8">The seventh argument to pass into the tuple.</param>
+            <param name="item9">The seventh argument to pass into the tuple.</param>
+            <returns>A new <seealso cref="T:KeepCoding.Tuple`9"/> containing <paramref name="item1"/>, <paramref name="item2"/>, <paramref name="item3"/>, <paramref name="item4"/>, <paramref name="item5"/>, <paramref name="item6"/>, <paramref name="item7"/>, <paramref name="item8"/>, and <paramref name="item9"/>.</returns>
         </member>
         <member name="M:KeepCoding.TypeHelper.Add(UnityEngine.Vector2@,System.Single,System.Single)">
             <summary>
@@ -6769,7 +7158,7 @@
         </member>
         <member name="T:KeepCoding.Tuple`1">
             <summary>
-            A basic tuple data type for C# 4.
+            A basic tuple type that encapsulates members as properties.
             </summary>
         </member>
         <member name="M:KeepCoding.Tuple`1.#ctor(`0)">
@@ -6794,7 +7183,7 @@
         </member>
         <member name="P:KeepCoding.Tuple`1.Items">
             <summary>
-            All of the tuple's items as an array, ordered by item number.
+            All of the tuple's items as an array, ordered by item number, lowest to highest.
             </summary>
         </member>
         <member name="P:KeepCoding.Tuple`1.Item1">
@@ -6810,7 +7199,7 @@
         </member>
         <member name="T:KeepCoding.Tuple`2">
             <summary>
-            A basic tuple data type for C# 4. 
+            A basic tuple type that encapsulates members as properties.
             </summary>
         </member>
         <member name="M:KeepCoding.Tuple`2.#ctor(`0,`1)">
@@ -6822,7 +7211,7 @@
         </member>
         <member name="M:KeepCoding.Tuple`2.#ctor">
             <summary>
-            Creates a singleton tuple of default values.
+            Creates a tuple of size 2 of default values.
             </summary>
         </member>
         <member name="P:KeepCoding.Tuple`2.Item(System.Byte)">
@@ -6836,7 +7225,7 @@
         </member>
         <member name="P:KeepCoding.Tuple`2.Items">
             <summary>
-            All of the tuple's items as an array, ordered by item number.
+            All of the tuple's items as an array, ordered by item number, lowest to highest.
             </summary>
         </member>
         <member name="P:KeepCoding.Tuple`2.Item2">
@@ -6853,7 +7242,7 @@
         </member>
         <member name="T:KeepCoding.Tuple`3">
             <summary>
-            A basic tuple data type for C# 4. 
+            A basic tuple type that encapsulates members as properties.
             </summary>
         </member>
         <member name="M:KeepCoding.Tuple`3.#ctor(`0,`1,`2)">
@@ -6866,7 +7255,7 @@
         </member>
         <member name="M:KeepCoding.Tuple`3.#ctor">
             <summary>
-            Creates a singleton tuple of default values.
+            Creates a tuple of size 3 of default values.
             </summary>
         </member>
         <member name="P:KeepCoding.Tuple`3.Item(System.Byte)">
@@ -6880,7 +7269,7 @@
         </member>
         <member name="P:KeepCoding.Tuple`3.Items">
             <summary>
-            All of the tuple's items as an array, ordered by item number.
+            All of the tuple's items as an array, ordered by item number, lowest to highest.
             </summary>
         </member>
         <member name="P:KeepCoding.Tuple`3.Item3">
@@ -6898,7 +7287,7 @@
         </member>
         <member name="T:KeepCoding.Tuple`4">
             <summary>
-            A basic tuple data type for C# 4. 
+            A basic tuple type that encapsulates members as properties.
             </summary>
         </member>
         <member name="M:KeepCoding.Tuple`4.#ctor(`0,`1,`2,`3)">
@@ -6912,7 +7301,7 @@
         </member>
         <member name="M:KeepCoding.Tuple`4.#ctor">
             <summary>
-            Creates a singleton tuple of default values.
+            Creates a tuple of size 4 of default values.
             </summary>
         </member>
         <member name="P:KeepCoding.Tuple`4.Item(System.Byte)">
@@ -6926,7 +7315,7 @@
         </member>
         <member name="P:KeepCoding.Tuple`4.Items">
             <summary>
-            All of the tuple's items as an array, ordered by item number.
+            All of the tuple's items as an array, ordered by item number, lowest to highest.
             </summary>
         </member>
         <member name="P:KeepCoding.Tuple`4.Item4">
@@ -6942,6 +7331,271 @@
             <param name="item2">The variable to assign the second element of the tuple.</param>
             <param name="item3">The variable to assign the third element of the tuple.</param>
             <param name="item4">The variable to assign the fourth element of the tuple.</param>
+        </member>
+        <member name="T:KeepCoding.Tuple`5">
+            <summary>
+            A basic tuple type that encapsulates members as properties.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`5.#ctor(`0,`1,`2,`3,`4)">
+            <summary>
+            Creates a tuple of size 5.
+            </summary>
+            <param name="item1">The item to pass into the first property.</param>
+            <param name="item2">The item to pass into the second property.</param>
+            <param name="item3">The item to pass into the third property.</param>
+            <param name="item4">The item to pass into the fourth property.</param>
+            <param name="item5">The item to pass into the fifth property.</param>
+        </member>
+        <member name="M:KeepCoding.Tuple`5.#ctor">
+            <summary>
+            Creates a tuple of size 5 of default values.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`5.Item(System.Byte)">
+            <summary>
+            Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <param name="i">The index to use.</param>
+            <returns>The item indexed into.</returns>
+        </member>
+        <member name="P:KeepCoding.Tuple`5.Items">
+            <summary>
+            All of the tuple's items as an array, ordered by item number, lowest to highest.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`5.Item5">
+            <summary>
+            The fifth item of the tuple.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`5.Destruct(`0@,`1@,`2@,`3@,`4@)">
+            <summary>
+            Destructs the tuple.
+            </summary>
+            <param name="item1">The variable to assign the first element of the tuple.</param>
+            <param name="item2">The variable to assign the second element of the tuple.</param>
+            <param name="item3">The variable to assign the third element of the tuple.</param>
+            <param name="item4">The variable to assign the fourth element of the tuple.</param>
+            <param name="item5">The variable to assign the fifth element of the tuple.</param>
+        </member>
+        <member name="T:KeepCoding.Tuple`6">
+            <summary>
+            A basic tuple type that encapsulates members as properties.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`6.#ctor(`0,`1,`2,`3,`4,`5)">
+            <summary>
+            Creates a tuple of size 6.
+            </summary>
+            <param name="item1">The item to pass into the first property.</param>
+            <param name="item2">The item to pass into the second property.</param>
+            <param name="item3">The item to pass into the third property.</param>
+            <param name="item4">The item to pass into the fourth property.</param>
+            <param name="item5">The item to pass into the fifth property.</param>
+            <param name="item6">The item to pass into the sixth property.</param>
+        </member>
+        <member name="M:KeepCoding.Tuple`6.#ctor">
+            <summary>
+            Creates a tuple of size 6 of default values.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`6.Item(System.Byte)">
+            <summary>
+            Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <param name="i">The index to use.</param>
+            <returns>The item indexed into.</returns>
+        </member>
+        <member name="P:KeepCoding.Tuple`6.Items">
+            <summary>
+            All of the tuple's items as an array, ordered by item number, lowest to highest.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`6.Item6">
+            <summary>
+            The sixth item of the tuple.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`6.Destruct(`0@,`1@,`2@,`3@,`4@,`5@)">
+            <summary>
+            Destructs the tuple.
+            </summary>
+            <param name="item1">The variable to assign the first element of the tuple.</param>
+            <param name="item2">The variable to assign the second element of the tuple.</param>
+            <param name="item3">The variable to assign the third element of the tuple.</param>
+            <param name="item4">The variable to assign the fourth element of the tuple.</param>
+            <param name="item5">The variable to assign the fifth element of the tuple.</param>
+            <param name="item6">The variable to assign the sixth element of the tuple.</param>
+        </member>
+        <member name="T:KeepCoding.Tuple`7">
+            <summary>
+            A basic tuple type that encapsulates members as properties.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`7.#ctor(`0,`1,`2,`3,`4,`5,`6)">
+            <summary>
+            Creates a tuple of size 7.
+            </summary>
+            <param name="item1">The item to pass into the first property.</param>
+            <param name="item2">The item to pass into the second property.</param>
+            <param name="item3">The item to pass into the third property.</param>
+            <param name="item4">The item to pass into the fourth property.</param>
+            <param name="item5">The item to pass into the fifth property.</param>
+            <param name="item6">The item to pass into the sixth property.</param>
+            <param name="item7">The item to pass into the seventh property.</param>
+        </member>
+        <member name="M:KeepCoding.Tuple`7.#ctor">
+            <summary>
+            Creates a tuple of size 7 of default values.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`7.Item(System.Byte)">
+            <summary>
+            Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <param name="i">The index to use.</param>
+            <returns>The item indexed into.</returns>
+        </member>
+        <member name="P:KeepCoding.Tuple`7.Items">
+            <summary>
+            All of the tuple's items as an array, ordered by item number, lowest to highest.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`7.Item7">
+            <summary>
+            The seventh item of the tuple.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`7.Destruct(`0@,`1@,`2@,`3@,`4@,`5@,`6@)">
+            <summary>
+            Destructs the tuple.
+            </summary>
+            <param name="item1">The variable to assign the first element of the tuple.</param>
+            <param name="item2">The variable to assign the second element of the tuple.</param>
+            <param name="item3">The variable to assign the third element of the tuple.</param>
+            <param name="item4">The variable to assign the fourth element of the tuple.</param>
+            <param name="item5">The variable to assign the fifth element of the tuple.</param>
+            <param name="item6">The variable to assign the sixth element of the tuple.</param>
+            <param name="item7">The variable to assign the seventh element of the tuple.</param>
+        </member>
+        <member name="T:KeepCoding.Tuple`8">
+            <summary>
+            A basic tuple type that encapsulates members as properties.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`8.#ctor(`0,`1,`2,`3,`4,`5,`6,`7)">
+            <summary>
+            Creates a tuple of size 8.
+            </summary>
+            <param name="item1">The item to pass into the first property.</param>
+            <param name="item2">The item to pass into the second property.</param>
+            <param name="item3">The item to pass into the third property.</param>
+            <param name="item4">The item to pass into the fourth property.</param>
+            <param name="item5">The item to pass into the fifth property.</param>
+            <param name="item6">The item to pass into the sixth property.</param>
+            <param name="item7">The item to pass into the seventh property.</param>
+            <param name="item8">The item to pass into the eighth property.</param>
+        </member>
+        <member name="M:KeepCoding.Tuple`8.#ctor">
+            <summary>
+            Creates a tuple of size 8 of default values.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`8.Item(System.Byte)">
+            <summary>
+            Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <param name="i">The index to use.</param>
+            <returns>The item indexed into.</returns>
+        </member>
+        <member name="P:KeepCoding.Tuple`8.Items">
+            <summary>
+            All of the tuple's items as an array, ordered by item number, lowest to highest.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`8.Item8">
+            <summary>
+            The eighth item of the tuple.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`8.Destruct(`0@,`1@,`2@,`3@,`4@,`5@,`6@,`7@)">
+            <summary>
+            Destructs the tuple.
+            </summary>
+            <param name="item1">The variable to assign the first element of the tuple.</param>
+            <param name="item2">The variable to assign the second element of the tuple.</param>
+            <param name="item3">The variable to assign the third element of the tuple.</param>
+            <param name="item4">The variable to assign the fourth element of the tuple.</param>
+            <param name="item5">The variable to assign the fifth element of the tuple.</param>
+            <param name="item6">The variable to assign the sixth element of the tuple.</param>
+            <param name="item7">The variable to assign the seventh element of the tuple.</param>
+            <param name="item8">The variable to assign the eighth element of the tuple.</param>
+        </member>
+        <member name="T:KeepCoding.Tuple`9">
+            <summary>
+            A basic tuple type that encapsulates members as properties.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`9.#ctor(`0,`1,`2,`3,`4,`5,`6,`7,`8)">
+            <summary>
+            Creates a tuple of size 9.
+            </summary>
+            <param name="item1">The item to pass into the first property.</param>
+            <param name="item2">The item to pass into the second property.</param>
+            <param name="item3">The item to pass into the third property.</param>
+            <param name="item4">The item to pass into the fourth property.</param>
+            <param name="item5">The item to pass into the fifth property.</param>
+            <param name="item6">The item to pass into the sixth property.</param>
+            <param name="item7">The item to pass into the seventh property.</param>
+            <param name="item8">The item to pass into the eighth property.</param>
+            <param name="item9">The item to pass into the ninth property.</param>
+        </member>
+        <member name="M:KeepCoding.Tuple`9.#ctor">
+            <summary>
+            Creates a tuple of size 9 of default values.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`9.Item(System.Byte)">
+            <summary>
+            Indexable tuple. Be careful when using this as the compiler will not notice if you are using the wrong type.
+            </summary>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <param name="i">The index to use.</param>
+            <returns>The item indexed into.</returns>
+        </member>
+        <member name="P:KeepCoding.Tuple`9.Items">
+            <summary>
+            All of the tuple's items as an array, ordered by item number, lowest to highest.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.Tuple`9.Item9">
+            <summary>
+            The ninth item of the tuple.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Tuple`9.Destruct(`0@,`1@,`2@,`3@,`4@,`5@,`6@,`7@,`8@)">
+            <summary>
+            Destructs the tuple.
+            </summary>
+            <param name="item1">The variable to assign the first element of the tuple.</param>
+            <param name="item2">The variable to assign the second element of the tuple.</param>
+            <param name="item3">The variable to assign the third element of the tuple.</param>
+            <param name="item4">The variable to assign the fourth element of the tuple.</param>
+            <param name="item5">The variable to assign the fifth element of the tuple.</param>
+            <param name="item6">The variable to assign the sixth element of the tuple.</param>
+            <param name="item7">The variable to assign the seventh element of the tuple.</param>
+            <param name="item8">The variable to assign the eighth element of the tuple.</param>
+            <param name="item9">The variable to assign the ninth element of the tuple.</param>
         </member>
         <member name="T:KeepCoding.ColorblindInfo">
             <summary>
@@ -7558,81 +8212,192 @@
         </member>
         <member name="T:KeepCoding.ModuleContainer">
             <summary>
-            Container for both solvable and needy modules.
+            Contains and encapsulates both solvable and needy modules, in both modded and vanilla forms.
             </summary>
         </member>
         <member name="M:KeepCoding.ModuleContainer.#ctor(KeepCoding.CacheableBehaviour)">
             <summary>
-            Encapsulates either a solvable or needy module. Uses <see cref="M:KeepCoding.CacheableBehaviour.Get``1(System.Boolean)"/>.
+            Encapsulates either a modded solvable or modded needy module by using <see cref="M:KeepCoding.CacheableBehaviour.Get``1(System.Boolean)"/>. An exception is thrown if <see cref="T:KMBombModule"/> and <see cref="T:KMNeedyModule"/> are both <see langword="null"/> or both not <see langword="null"/>.
             </summary>
-            <param name="behaviour">The component to get the modules from.</param>
+            <exception cref="T:KeepCoding.Internal.ConstructorArgumentException"></exception>
+            <param name="behaviour">The component to get the module from.</param>
         </member>
         <member name="M:KeepCoding.ModuleContainer.#ctor(UnityEngine.Component)">
             <summary>
-            Encapsulates either a solvable or needy module. Uses <see cref="M:UnityEngine.Component.GetComponent``1"/>.
+            Encapsulates either a modded solvable or modded needy module by using <see cref="M:UnityEngine.Component.GetComponent``1"/>. An exception is thrown if <see cref="T:KMBombModule"/> and <see cref="T:KMNeedyModule"/> are both <see langword="null"/> or both not <see langword="null"/>.
             </summary>
-            <param name="component">The component to get the modules from.</param>
+            <exception cref="T:KeepCoding.Internal.ConstructorArgumentException"></exception>
+            <param name="component">The component to get the module from.</param>
         </member>
         <member name="M:KeepCoding.ModuleContainer.#ctor(KMBombModule)">
             <summary>
-            Encapsulates a solvable module.
+            Encapsulates a modded solvable module.
             </summary>
             <param name="solvable">The instance of a normal module.</param>
         </member>
         <member name="M:KeepCoding.ModuleContainer.#ctor(KMNeedyModule)">
             <summary>
-            Encapsulates a needy module.
+            Encapsulates a modded needy module.
             </summary>
             <param name="needy">The instance of a needy module.</param>
         </member>
         <member name="M:KeepCoding.ModuleContainer.#ctor(KMBombModule,KMNeedyModule)">
             <summary>
-            Encapsulates either a solvable or needy module.
+            Encapsulates either a modded solvable or modded needy module. An exception is thrown if <see cref="T:KMBombModule"/> and <see cref="T:KMNeedyModule"/> are both <see langword="null"/> or both not <see langword="null"/>.
             </summary>
             <exception cref="T:KeepCoding.Internal.ConstructorArgumentException"></exception>
             <param name="solvable">The instance of a normal module.</param>
             <param name="needy">The instance of a needy module.</param>
         </member>
+        <member name="M:KeepCoding.ModuleContainer.#ctor(UnityEngine.MonoBehaviour)">
+            <summary>
+            Encapsulates either a solvable or needy module. If a BombComponent (or derived) is passed in, the vanilla module component will be stored instead. Uses <see cref="M:UnityEngine.Component.GetComponent``1"/>.
+            </summary>
+            <param name="monoBehaviour">The <see cref="T:UnityEngine.MonoBehaviour"/> to get the module from.</param>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.IsEmptyOrTimer">
+            <summary>
+            Determines whether this instance is a non-module, which are <see cref="F:KeepCoding.ComponentPool.ComponentTypeEnum.Empty"/> or <see cref="F:KeepCoding.ComponentPool.ComponentTypeEnum.Timer"/>.
+            </summary>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.IsModded">
+            <summary>
+            Determines whether this instance contains a modded module.
+            </summary>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.IsModule">
+            <summary>
+            Determines whether this instance isn't a non-module, which are <see cref="F:KeepCoding.ComponentPool.ComponentTypeEnum.Empty"/> or <see cref="F:KeepCoding.ComponentPool.ComponentTypeEnum.Timer"/>.
+            </summary>
+        </member>
         <member name="P:KeepCoding.ModuleContainer.IsNeedy">
             <summary>
-            Determines whether this instance contains a <see cref="P:KeepCoding.ModuleContainer.Needy"/>.
+            Determines whether this instance contains a needy module.
             </summary>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.IsVanilla">
+            <summary>
+            Determines whether this instance contains a vanilla module.
+            </summary>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.IsSolvable">
+            <summary>
+            Determines whether this instance contains a solvable module.
+            </summary>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
         </member>
         <member name="P:KeepCoding.ModuleContainer.RequiresTimerVisibility">
             <summary>
             Set to true to only allow this module to be placed on the same face as the timer. Useful when the rules involve the timer in some way (like the Big Button), but should be used sparingly as it limits generation possibilities.
             </summary>
-            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.NeedyWarnAtFiveSeconds">
+            <summary>
+            Needy Only: Determines whether <see cref="P:KeepCoding.Sound.NeedyWarning"/> plays when 5 seconds or less remain.
+            </summary>
+            <exception cref="T:System.MissingMethodException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.NeedyStartingTime">
+            <summary>
+            Needy Only: The amount of time on the needy timer whenever this module is activated.
+            </summary>
+            <exception cref="T:System.MissingMethodException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
         </member>
         <member name="P:KeepCoding.ModuleContainer.Id">
             <summary>
-            The identifier for the module as referenced in missions. e.g. "BigButton" Also known as a "Module ID".
+            The identifier for the module as referenced in missions. e.g. "BigButton" Also known as a "Module ID". This value is immutable for vanilla modules, and an exception will be thrown when attempted.
             </summary>
-            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+            <exception cref="T:KeepCoding.Internal.ImmutableException"></exception>
         </member>
         <member name="P:KeepCoding.ModuleContainer.Name">
             <summary>
-            The nice display name shown to players. e.g. "The Button"
+            The nice display name shown to players. e.g. "The Button". This value is immutable for vanilla modules, and an exception will be thrown when attempted.
             </summary>
-            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+            <exception cref="T:KeepCoding.Internal.ImmutableException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.Vanilla">
+            <summary>
+            Returns BombComponent boxed as <see cref="T:System.Object"/>, or if <see langword="null"/>, throws a <see cref="T:System.NullReferenceException"/>.
+            </summary>
+            <exception cref="T:System.NullReferenceException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.Activate">
+            <summary>
+            Invoked when the lights turn on. This value is immutable for vanilla modules, and an exception will be thrown when attempted.
+            </summary>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+            <exception cref="T:KeepCoding.Internal.ImmutableException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.NeedyActivate">
+            <summary>
+            Modded Needy Only: Invoked when the needy activates.
+            </summary>
+            <exception cref="T:System.MissingMethodException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.NeedyDeactivate">
+            <summary>
+            Modded Needy Only: Invoked when the needy deactivates.
+            </summary>
+            <exception cref="T:System.MissingMethodException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.NeedyTimerExpired">
+            <summary>
+            Needy Only: Invoked when the needy timer expires.
+            </summary>
+            <exception cref="T:System.MissingMethodException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
         </member>
         <member name="P:KeepCoding.ModuleContainer.Solve">
             <summary>
             Call this when the entire module has been solved.
             </summary>
-            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
         </member>
         <member name="P:KeepCoding.ModuleContainer.Strike">
             <summary>
             Call this on any mistake that you want to cause a bomb strike.
             </summary>
-            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.NeedyTimerSet">
+            <summary>
+            Needy Only: An encapsulated <see cref="T:System.Action`1"/> that when called, sets the time remaining to the parameter passed in. This value is immutable for vanilla modules, and an exception will be thrown when attempted.
+            </summary>
+            <exception cref="T:System.MissingMethodException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+            <exception cref="T:KeepCoding.Internal.ImmutableException"></exception>
         </member>
         <member name="P:KeepCoding.ModuleContainer.RuleGeneration">
             <summary>
-            Returns the random seed used to generate the rules for this game. Not currently used.
+            Modded Only: Returns the random seed used to generate the rules for this game. Not currently used.
             </summary>
-            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
+            <exception cref="T:System.MissingMethodException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.NeedyTimerGet">
+            <summary>
+            Needy Only: An encapsulated <see cref="T:System.Func`1"/> that when called, gets the time remaining. This value is immutable for vanilla modules, and an exception will be thrown when attempted.
+            </summary>
+            <exception cref="T:System.MissingMethodException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+            <exception cref="T:KeepCoding.Internal.ImmutableException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.ResetDelay">
+            <summary>
+            Needy Only: The minimum and maximum delay for the needy to activate. <see cref="P:KeepCoding.Tuple`1.Item1"/> represents the minimum and <see cref="P:KeepCoding.Tuple`2.Item2"/> the maximum.
+            </summary>
+            <exception cref="T:System.MissingMethodException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
         </member>
         <member name="P:KeepCoding.ModuleContainer.Solvable">
             <summary>
@@ -7648,8 +8413,9 @@
         </member>
         <member name="P:KeepCoding.ModuleContainer.Module">
             <summary>
-            Returns <see cref="T:KMBombModule"/>, or if null, <see cref="T:KMNeedyModule"/>.
+            Returns <see cref="T:KMBombModule"/>, or if <see langword="null"/>, <see cref="T:KMNeedyModule"/>, or if <see langword="null"/>, BombComponent, or if <see langword="null"/>, throws.
             </summary>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedTypeException"></exception>
         </member>
         <member name="M:KeepCoding.ModuleContainer.op_Implicit(KMBombModule)~KeepCoding.ModuleContainer">
             <summary>
@@ -7679,16 +8445,33 @@
             <param name="container">The <see cref="T:KeepCoding.ModuleContainer"/> to get the <see cref="T:KMNeedyModule"/> from.</param>
             <returns>A <see cref="T:KMBombModule"/> from <see cref="P:KeepCoding.ModuleContainer.Needy"/>.</returns>
         </member>
-        <member name="M:KeepCoding.ModuleContainer.Assign(System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+        <member name="M:KeepCoding.ModuleContainer.Append(System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action{System.Single},System.Func{System.Int32},System.Func{System.Single})">
             <summary>
-            Assigns events to a module container, replacing their values.
+            Appends events to this instance, preserving their existing values.
             </summary>
-            <param name="onActivate">Called when the lights turn on.</param>
-            <param name="onNeedyActivation">Called when the needy activates.</param>
-            <param name="onNeedyDeactivation">Called when the needy deactivates.</param>
-            <param name="onPass">Called when the needy is solved.</param>
-            <param name="onStrike">Called when the needy strikes.</param>
-            <param name="onTimerExpired">Called when the timer runs out of time.</param>
+            <param name="activate">Called when the lights turn on.</param>
+            <param name="needyActivate">Called when the needy activates.</param>
+            <param name="needyDeactivate">Called when the needy deactivates.</param>
+            <param name="needyTimerExpired">Called when the timer runs out of time.</param>
+            <param name="solve">Called when the needy is solved.</param>
+            <param name="strike">Called when the needy strikes.</param>
+            <param name="needyTimerSet">Called when <see cref="M:KMNeedyModule.GetNeedyTimeRemaining"/> is called.</param>
+            <param name="ruleGeneration">Called when <see cref="M:KMBombModule.GetRuleGenerationSeed"/> or <see cref="M:KMNeedyModule.GetRuleGenerationSeed"/> is called.</param>
+            <param name="needyTimerGet">Called when <see cref="M:KMNeedyModule.SetNeedyTimeRemaining(System.Single)"/> is called.</param>
+        </member>
+        <member name="M:KeepCoding.ModuleContainer.Assign(System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action{System.Single},System.Func{System.Int32},System.Func{System.Single})">
+            <summary>
+            Assigns events to this instance, replacing their existing values.
+            </summary>
+            <param name="activate">Called when the lights turn on.</param>
+            <param name="needyActivate">Called when the needy activates.</param>
+            <param name="needyDeactivate">Called when the needy deactivates.</param>
+            <param name="needyTimerExpired">Called when the timer runs out of time.</param>
+            <param name="solve">Called when the needy is solved.</param>
+            <param name="strike">Called when the needy strikes.</param>
+            <param name="needyTimerSet">Called when <see cref="M:KMNeedyModule.GetNeedyTimeRemaining"/> is called.</param>
+            <param name="ruleGeneration">Called when <see cref="M:KMBombModule.GetRuleGenerationSeed"/> or <see cref="M:KMNeedyModule.GetRuleGenerationSeed"/> is called.</param>
+            <param name="needyTimerGet">Called when <see cref="M:KMNeedyModule.SetNeedyTimeRemaining(System.Single)"/> is called.</param>
         </member>
         <member name="M:KeepCoding.ModuleContainer.Equals(System.Object)">
             <summary>
@@ -8335,7 +9118,7 @@
         </member>
         <member name="P:KeepCoding.StringifyFormat.ArraySeparator">
             <summary>
-            Indicates how <see cref="T:KeepCoding.Internal.TupleBase"/> should start with.
+            Indicates how <see cref="T:KeepCoding.Internal.Tuple"/> should start with.
             </summary>
         </member>
         <member name="P:KeepCoding.StringifyFormat.ArrayStart">
@@ -8355,7 +9138,7 @@
         </member>
         <member name="P:KeepCoding.StringifyFormat.DictionarySeparator">
             <summary>
-            Indicates how <see cref="T:KeepCoding.Internal.TupleBase"/> should start with.
+            Indicates how <see cref="T:KeepCoding.Internal.Tuple"/> should start with.
             </summary>
         </member>
         <member name="P:KeepCoding.StringifyFormat.DictionaryStart">
@@ -8390,17 +9173,17 @@
         </member>
         <member name="P:KeepCoding.StringifyFormat.TupleEnd">
             <summary>
-            Indicates how <see cref="T:KeepCoding.Internal.TupleBase"/> should end with.
+            Indicates how <see cref="T:KeepCoding.Internal.Tuple"/> should end with.
             </summary>
         </member>
         <member name="P:KeepCoding.StringifyFormat.TupleSeparator">
             <summary>
-            Indicates how <see cref="T:KeepCoding.Internal.TupleBase"/> should start with.
+            Indicates how <see cref="T:KeepCoding.Internal.Tuple"/> should start with.
             </summary>
         </member>
         <member name="P:KeepCoding.StringifyFormat.TupleStart">
             <summary>
-            Indicates how <see cref="T:KeepCoding.Internal.TupleBase"/> should start with.
+            Indicates how <see cref="T:KeepCoding.Internal.Tuple"/> should start with.
             </summary>
         </member>
         <member name="P:KeepCoding.StringifyFormat.DecimalFormat">
@@ -8716,6 +9499,132 @@
             </remarks>
             <param name="command">The user's command.</param>
             <returns>A series of instructions for the Twitch Plays mod to handle as requested by the user.</returns>
+        </member>
+        <member name="T:KeepCoding.IAwake">
+            <summary>
+            <see cref="M:KeepCoding.IAwake.Awake"/> is called when the script instance is being loaded.
+            </summary>
+            <remarks>
+            <see cref="M:KeepCoding.IAwake.Awake"/> is used to initialize any variables or game state before the game starts. <see cref="M:KeepCoding.IAwake.Awake"/> is called only once during the lifetime of the script instance. <see cref="M:KeepCoding.IAwake.Awake"/> is called after all objects are initialized so you can safely speak to other objects or query them using for example <see cref="M:UnityEngine.GameObject.FindWithTag(System.String)"/>. Each GameObject's <see cref="M:KeepCoding.IAwake.Awake"/> is called in a random order between objects. Because of this, you should use <see cref="M:KeepCoding.IAwake.Awake"/> to set up references between scripts, and use <see cref="M:KeepCoding.IStart.Start"/> to pass any information back and forth. <see cref="M:KeepCoding.IAwake.Awake"/> is always called before any <see cref="M:KeepCoding.IStart.Start"/> functions. This allows you to order initialization of scripts. <see cref="M:KeepCoding.IAwake.Awake"/> can not act as a coroutine. Note: Use <see cref="M:KeepCoding.IAwake.Awake"/> instead of the constructor for initialization, as the serialized state of the <see cref="T:UnityEngine.Component"/> is undefined at construction time. <see cref="M:KeepCoding.IAwake.Awake"/> is called once, just like the constructor.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/2017.4/Documentation/ScriptReference/MonoBehaviour.Awake.html"/>
+        </member>
+        <member name="M:KeepCoding.IAwake.Awake">
+            <summary>
+            <see cref="M:KeepCoding.IAwake.Awake"/> is called when the script instance is being loaded.
+            </summary>
+            <remarks>
+            <see cref="M:KeepCoding.IAwake.Awake"/> is used to initialize any variables or game state before the game starts. <see cref="M:KeepCoding.IAwake.Awake"/> is called only once during the lifetime of the script instance. <see cref="M:KeepCoding.IAwake.Awake"/> is called after all objects are initialized so you can safely speak to other objects or query them using for example <see cref="M:UnityEngine.GameObject.FindWithTag(System.String)"/>. Each GameObject's <see cref="M:KeepCoding.IAwake.Awake"/> is called in a random order between objects. Because of this, you should use <see cref="M:KeepCoding.IAwake.Awake"/> to set up references between scripts, and use <see cref="M:KeepCoding.IStart.Start"/> to pass any information back and forth. <see cref="M:KeepCoding.IAwake.Awake"/> is always called before any <see cref="M:KeepCoding.IStart.Start"/> functions. This allows you to order initialization of scripts. <see cref="M:KeepCoding.IAwake.Awake"/> can not act as a coroutine. Note: Use <see cref="M:KeepCoding.IAwake.Awake"/> instead of the constructor for initialization, as the serialized state of the <see cref="T:UnityEngine.Component"/> is undefined at construction time. <see cref="M:KeepCoding.IAwake.Awake"/> is called once, just like the constructor.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/2017.4/Documentation/ScriptReference/MonoBehaviour.Awake.html"/>
+        </member>
+        <member name="T:KeepCoding.IFixedUpdate">
+            <summary>
+            Frame-rate independent <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/> message for physics calculations.
+            </summary>
+            <remarks>
+            <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/> has the frequency of the physics system; it is called every fixed frame-rate frame. Compute <see cref="T:UnityEngine.Physics"/> system calculations after <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/>. 0.02 seconds (50 calls per second) is the default time between calls. Use <see cref="P:UnityEngine.Time.fixedDeltaTime"/> to access this value. Alter it by setting it to your preferred value within a script, or, navigate to <c>Edit > Settings > Time > Fixed Timestep</c> and set it there. The <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/> frequency is more or less than <see cref="M:KeepCoding.IUpdate.Update"/>. If the application runs at 25 frames per second (fps), Unity calls it approximately twice per frame, Alternatively, 100 fps causes approximately two rendering frames with one <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/>. Control the required frame rate and <c>Fixed Timestep</c> rate from <c>Time</c> settings. Use <see cref="P:UnityEngine.Application.targetFrameRate"/> to set the frame rate. Use <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/> when using <see cref="T:UnityEngine.Rigidbody"/>. Set a force to a <see cref="T:UnityEngine.Rigidbody"/> and it applies each fixed frame. <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/> occurs at a measured time step that typically does not coincide with <see cref="M:KeepCoding.IUpdate.Update"/>. In order to get the elapsed time since last call to <see cref="M:KeepCoding.IUpdate.Update"/>, use <see cref="P:UnityEngine.Time.deltaTime"/>. This function is only called if the <see cref="T:UnityEngine.Behaviour"/> is enabled. Override this function in order to provide your <see cref="T:UnityEngine.Component"/>'s functionality.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/2017.4/Documentation/ScriptReference/MonoBehaviour.FixedUpdate.html"/>
+        </member>
+        <member name="M:KeepCoding.IFixedUpdate.FixedUpdate">
+            <summary>
+            Frame-rate independent <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/> message for physics calculations.
+            </summary>
+            <remarks>
+            <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/> has the frequency of the physics system; it is called every fixed frame-rate frame. Compute <see cref="T:UnityEngine.Physics"/> system calculations after <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/>. 0.02 seconds (50 calls per second) is the default time between calls. Use <see cref="P:UnityEngine.Time.fixedDeltaTime"/> to access this value. Alter it by setting it to your preferred value within a script, or, navigate to <c>Edit > Settings > Time > Fixed Timestep</c> and set it there. The <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/> frequency is more or less than <see cref="M:KeepCoding.IUpdate.Update"/>. If the application runs at 25 frames per second (fps), Unity calls it approximately twice per frame, Alternatively, 100 fps causes approximately two rendering frames with one <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/>. Control the required frame rate and <c>Fixed Timestep</c> rate from <c>Time</c> settings. Use <see cref="P:UnityEngine.Application.targetFrameRate"/> to set the frame rate. Use <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/> when using <see cref="T:UnityEngine.Rigidbody"/>. Set a force to a <see cref="T:UnityEngine.Rigidbody"/> and it applies each fixed frame. <see cref="M:KeepCoding.IFixedUpdate.FixedUpdate"/> occurs at a measured time step that typically does not coincide with <see cref="M:KeepCoding.IUpdate.Update"/>. In order to get the elapsed time since last call to <see cref="M:KeepCoding.IUpdate.Update"/>, use <see cref="P:UnityEngine.Time.deltaTime"/>. This function is only called if the <see cref="T:UnityEngine.Behaviour"/> is enabled. Override this function in order to provide your <see cref="T:UnityEngine.Component"/>'s functionality.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/2017.4/Documentation/ScriptReference/MonoBehaviour.FixedUpdate.html"/>
+        </member>
+        <member name="T:KeepCoding.ILateUpdate">
+            <summary>
+            <see cref="M:KeepCoding.ILateUpdate.LateUpdate"/> is called every frame, if the <see cref="T:UnityEngine.Behaviour"/> is enabled.
+            </summary>
+            <remarks>
+            <see cref="M:KeepCoding.ILateUpdate.LateUpdate"/> is called after all <see cref="M:KeepCoding.IUpdate.Update"/> functions have been called. This is useful to order script execution. For example a follow <see cref="T:UnityEngine.Camera"/> should always be implemented in <see cref="M:KeepCoding.ILateUpdate.LateUpdate"/> because it tracks objects that might have moved inside <see cref="M:KeepCoding.IUpdate.Update"/>. In order to get the elapsed time since last call to <see cref="M:KeepCoding.ILateUpdate.LateUpdate"/>, use <see cref="P:UnityEngine.Time.deltaTime"/>. This function is only called if the <see cref="T:UnityEngine.Behaviour"/> is enabled. Override this function in order to provide your <see cref="T:UnityEngine.Component"/>'s functionality.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/2017.4/Documentation/ScriptReference/MonoBehaviour.LateUpdate.html"/>
+        </member>
+        <member name="M:KeepCoding.ILateUpdate.LateUpdate">
+            <summary>
+            <see cref="M:KeepCoding.ILateUpdate.LateUpdate"/> is called every frame, if the <see cref="T:UnityEngine.Behaviour"/> is enabled.
+            </summary>
+            <remarks>
+            <see cref="M:KeepCoding.ILateUpdate.LateUpdate"/> is called after all <see cref="M:KeepCoding.IUpdate.Update"/> functions have been called. This is useful to order script execution. For example a follow <see cref="T:UnityEngine.Camera"/> should always be implemented in <see cref="M:KeepCoding.ILateUpdate.LateUpdate"/> because it tracks objects that might have moved inside <see cref="M:KeepCoding.IUpdate.Update"/>. In order to get the elapsed time since last call to <see cref="M:KeepCoding.ILateUpdate.LateUpdate"/>, use <see cref="P:UnityEngine.Time.deltaTime"/>. This function is only called if the <see cref="T:UnityEngine.Behaviour"/> is enabled. Override this function in order to provide your <see cref="T:UnityEngine.Component"/>'s functionality.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/2017.4/Documentation/ScriptReference/MonoBehaviour.LateUpdate.html"/>
+        </member>
+        <member name="T:KeepCoding.IReset">
+            <summary>
+            Reset to default values.
+            </summary>
+            <remarks>
+            <see cref="M:KeepCoding.IReset.Reset"/> is called when the user hits the Reset button in the Inspector's context menu or when adding the <see cref="T:UnityEngine.Component"/> the first time. This function is only called in editor mode. <see cref="M:KeepCoding.IReset.Reset"/> is most commonly used to give good default values in the inspector.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/2017.4/Documentation/ScriptReference/MonoBehaviour.Reset.html"/>
+        </member>
+        <member name="M:KeepCoding.IReset.Reset">
+            <summary>
+            Reset to default values.
+            </summary>
+            <remarks>
+            <see cref="M:KeepCoding.IReset.Reset"/> is called when the user hits the Reset button in the Inspector's context menu or when adding the <see cref="T:UnityEngine.Component"/> the first time. This function is only called in editor mode. <see cref="M:KeepCoding.IReset.Reset"/> is most commonly used to give good default values in the inspector.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/2017.4/Documentation/ScriptReference/MonoBehaviour.Reset.html"/>
+        </member>
+        <member name="T:KeepCoding.IStart">
+            <summary>
+            <see cref="M:KeepCoding.IStart.Start"/> is called on the frame when a script is enabled just before any of the <see cref="M:KeepCoding.IUpdate.Update"/> methods is called the first time.
+            </summary>
+            <remarks>
+            Like the <see cref="M:KeepCoding.IAwake.Awake"/> function, <see cref="M:KeepCoding.IStart.Start"/> is called exactly once in the lifetime of the script. However, <see cref="M:KeepCoding.IAwake.Awake"/> is called when the script object is initialised, regardless of whether or not the script is enabled. <see cref="M:KeepCoding.IStart.Start"/> may not be called on the same frame as <see cref="M:KeepCoding.IAwake.Awake"/> if the script is not enabled at initialisation time. The <see cref="M:KeepCoding.IAwake.Awake"/> function is called on all objects in the scene before any object's <see cref="M:KeepCoding.IStart.Start"/> function is called. This fact is useful in cases where object A's initialisation code needs to rely on object B's already being initialised; B's initialisation should be done in <see cref="M:KeepCoding.IAwake.Awake"/> while A's should be done in <see cref="M:KeepCoding.IStart.Start"/>. Where objects are instantiated during gameplay, their <see cref="M:KeepCoding.IAwake.Awake"/> function will naturally be called after the <see cref="M:KeepCoding.IStart.Start"/> functions of scene objects have already completed.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.Start.html"/>
+        </member>
+        <member name="M:KeepCoding.IStart.Start">
+            <summary>
+            <see cref="M:KeepCoding.IStart.Start"/> is called on the frame when a script is enabled just before any of the <see cref="M:KeepCoding.IUpdate.Update"/> methods is called the first time.
+            </summary>
+            <remarks>
+            Like the <see cref="M:KeepCoding.IAwake.Awake"/> function, <see cref="M:KeepCoding.IStart.Start"/> is called exactly once in the lifetime of the script. However, <see cref="M:KeepCoding.IAwake.Awake"/> is called when the script object is initialised, regardless of whether or not the script is enabled. <see cref="M:KeepCoding.IStart.Start"/> may not be called on the same frame as <see cref="M:KeepCoding.IAwake.Awake"/> if the script is not enabled at initialisation time. The <see cref="M:KeepCoding.IAwake.Awake"/> function is called on all objects in the scene before any object's <see cref="M:KeepCoding.IStart.Start"/> function is called. This fact is useful in cases where object A's initialisation code needs to rely on object B's already being initialised; B's initialisation should be done in <see cref="M:KeepCoding.IAwake.Awake"/> while A's should be done in <see cref="M:KeepCoding.IStart.Start"/>. Where objects are instantiated during gameplay, their <see cref="M:KeepCoding.IAwake.Awake"/> function will naturally be called after the <see cref="M:KeepCoding.IStart.Start"/> functions of scene objects have already completed.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.Start.html"/>
+        </member>
+        <member name="T:KeepCoding.IStartCoroutine">
+            <summary>
+            <see cref="M:KeepCoding.IStartCoroutine.Start"/> is called on the frame when a script is enabled just before any of the <see cref="M:KeepCoding.IUpdate.Update"/> methods is called the first time.
+            </summary>
+            <remarks>
+            Like the <see cref="M:KeepCoding.IAwake.Awake"/> function, <see cref="M:KeepCoding.IStartCoroutine.Start"/> is called exactly once in the lifetime of the script. However, <see cref="M:KeepCoding.IAwake.Awake"/> is called when the script object is initialised, regardless of whether or not the script is enabled. <see cref="M:KeepCoding.IStartCoroutine.Start"/> may not be called on the same frame as <see cref="M:KeepCoding.IAwake.Awake"/> if the script is not enabled at initialisation time. The <see cref="M:KeepCoding.IAwake.Awake"/> function is called on all objects in the scene before any object's <see cref="M:KeepCoding.IStartCoroutine.Start"/> function is called. This fact is useful in cases where object A's initialisation code needs to rely on object B's already being initialised; B's initialisation should be done in <see cref="M:KeepCoding.IAwake.Awake"/> while A's should be done in <see cref="M:KeepCoding.IStartCoroutine.Start"/>. Where objects are instantiated during gameplay, their <see cref="M:KeepCoding.IAwake.Awake"/> function will naturally be called after the <see cref="M:KeepCoding.IStartCoroutine.Start"/> functions of scene objects have already completed.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.Start.html"/>
+        </member>
+        <member name="M:KeepCoding.IStartCoroutine.Start">
+            <summary>
+            <see cref="M:KeepCoding.IStartCoroutine.Start"/> is called on the frame when a script is enabled just before any of the <see cref="M:KeepCoding.IUpdate.Update"/> methods is called the first time.
+            </summary>
+            <remarks>
+            Like the <see cref="M:KeepCoding.IAwake.Awake"/> function, <see cref="M:KeepCoding.IStartCoroutine.Start"/> is called exactly once in the lifetime of the script. However, <see cref="M:KeepCoding.IAwake.Awake"/> is called when the script object is initialised, regardless of whether or not the script is enabled. <see cref="M:KeepCoding.IStartCoroutine.Start"/> may not be called on the same frame as <see cref="M:KeepCoding.IAwake.Awake"/> if the script is not enabled at initialisation time. The <see cref="M:KeepCoding.IAwake.Awake"/> function is called on all objects in the scene before any object's <see cref="M:KeepCoding.IStartCoroutine.Start"/> function is called. This fact is useful in cases where object A's initialisation code needs to rely on object B's already being initialised; B's initialisation should be done in <see cref="M:KeepCoding.IAwake.Awake"/> while A's should be done in <see cref="M:KeepCoding.IStartCoroutine.Start"/>. Where objects are instantiated during gameplay, their <see cref="M:KeepCoding.IAwake.Awake"/> function will naturally be called after the <see cref="M:KeepCoding.IStartCoroutine.Start"/> functions of scene objects have already completed.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.Start.html"/>
+        </member>
+        <member name="T:KeepCoding.IUpdate">
+            <summary>
+            <see cref="M:KeepCoding.IUpdate.Update"/> is called every frame, if the <see cref="T:UnityEngine.MonoBehaviour"/> is enabled.
+            </summary>
+            <remarks>
+            <see cref="M:KeepCoding.IUpdate.Update"/> is the most commonly used function to implement any kind of game script. Not every <see cref="T:UnityEngine.MonoBehaviour"/> script needs <see cref="M:KeepCoding.IUpdate.Update"/>. In order to get the elapsed time since last call to <see cref="M:KeepCoding.IUpdate.Update"/>, use <see cref="P:UnityEngine.Time.deltaTime"/>. This function is only called if the <see cref="T:UnityEngine.Behaviour"/> is enabled. Override this function in order to provide your <see cref="T:UnityEngine.Component"/>'s functionality.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.Update.html"/>
+        </member>
+        <member name="M:KeepCoding.IUpdate.Update">
+            <summary>
+            <see cref="M:KeepCoding.IUpdate.Update"/> is called every frame, if the <see cref="T:UnityEngine.MonoBehaviour"/> is enabled.
+            </summary>
+            <remarks>
+            <see cref="M:KeepCoding.IUpdate.Update"/> is the most commonly used function to implement any kind of game script. Not every <see cref="T:UnityEngine.MonoBehaviour"/> script needs <see cref="M:KeepCoding.IUpdate.Update"/>. In order to get the elapsed time since last call to <see cref="M:KeepCoding.IUpdate.Update"/>, use <see cref="P:UnityEngine.Time.deltaTime"/>. This function is only called if the <see cref="T:UnityEngine.Behaviour"/> is enabled. Override this function in order to provide your <see cref="T:UnityEngine.Component"/>'s functionality.
+            </remarks>
+            <seealso href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.Update.html"/>
         </member>
         <member name="T:KeepCoding.AudioScript">
             <summary>
@@ -9152,6 +10061,12 @@
             The amount of time left on the bomb, in seconds, rounded down.
             </summary>
         </member>
+        <member name="P:KeepCoding.ModuleScript.RuleSeedId">
+            <summary>
+            Gets the rule seed number.
+            </summary>
+            <returns>The rule seed number, by default 1.</returns>
+        </member>
         <member name="P:KeepCoding.ModuleScript.Version">
             <summary>
             The version number of the entire mod.
@@ -9186,14 +10101,14 @@
             Note that this variable is not available on <see cref="M:KeepCoding.ModuleScript.Awake"/> or <see cref="M:KeepCoding.ModuleScript.OnAwake"/>. A small amount of time is needed for this property to be set.
             </remarks>
         </member>
+        <member name="P:KeepCoding.ModuleScript.Sounds">
+            <summary>
+            Contains an instance for every <see cref="T:KeepCoding.Sound"/> played by this module using <see cref="M:KeepCoding.ModuleScript.PlaySound(UnityEngine.Transform,System.Boolean,KeepCoding.Sound[])"/> or any of its overloads.
+            </summary>
+        </member>
         <member name="P:KeepCoding.ModuleScript.Module">
             <summary>
             Contains either <see cref="T:KMBombModule"/> or <see cref="T:KMNeedyModule"/>, and allows for running commands through context.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.ModuleScript.Modules">
-            <summary>
-            Contains every modded module in <see cref="P:KeepCoding.ModuleScript.Bomb"/>, separated by type.
             </summary>
         </member>
         <member name="P:KeepCoding.ModuleScript.RuleSeed">
@@ -9201,24 +10116,38 @@
             The pseudo-random number generator whose number generations are based on the current Rule Seed.
             </summary>
         </member>
-        <member name="P:KeepCoding.ModuleScript.Sounds">
+        <member name="P:KeepCoding.ModuleScript.Modules">
             <summary>
-            Contains an instance for every <see cref="T:KeepCoding.Sound"/> played by this module using <see cref="M:KeepCoding.ModuleScript.PlaySound(UnityEngine.Transform,System.Boolean,KeepCoding.Sound[])"/> or any of its overloads.
+            Contains every modded module in <see cref="P:KeepCoding.ModuleScript.Bomb"/>, separated by type.
             </summary>
         </member>
-        <member name="M:KeepCoding.ModuleScript.Assign(System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+        <member name="M:KeepCoding.ModuleScript.Append(System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action{System.Single},System.Func{System.Int32},System.Func{System.Single})">
             <summary>
-            Assigns events specified into <see cref="P:KeepCoding.ModuleScript.Module"/>. Reassigning them will replace their values.
+            Appends events to this instance's <see cref="P:KeepCoding.ModuleScript.Module"/>, preserving their existing values.
             </summary>
-            <remarks>
-            An event that is null will be skipped. This extension method simplifies all of the KMFramework events into Actions or Functions.
-            </remarks>
-            <param name="onActivate">Called when the lights turn on.</param>
-            <param name="onNeedyActivation">Called when the needy activates.</param>
-            <param name="onNeedyDeactivation">Called when the needy deactivates.</param>
-            <param name="onPass">Called when the needy is solved.</param>
-            <param name="onStrike">Called when the needy strikes.</param>
-            <param name="onTimerExpired">Called when the timer runs out of time.</param>
+            <param name="activate">Called when the lights turn on.</param>
+            <param name="needyActivate">Called when the needy activates.</param>
+            <param name="needyDeactivate">Called when the needy deactivates.</param>
+            <param name="needyTimerExpired">Called when the timer runs out of time.</param>
+            <param name="solve">Called when the needy is solved.</param>
+            <param name="strike">Called when the needy strikes.</param>
+            <param name="needyTimerSet">Called when <see cref="M:KMNeedyModule.GetNeedyTimeRemaining"/> is called.</param>
+            <param name="ruleGeneration">Called when <see cref="M:KMBombModule.GetRuleGenerationSeed"/> or <see cref="M:KMNeedyModule.GetRuleGenerationSeed"/> is called.</param>
+            <param name="needyTimerGet">Called when <see cref="M:KMNeedyModule.SetNeedyTimeRemaining(System.Single)"/> is called.</param>
+        </member>
+        <member name="M:KeepCoding.ModuleScript.Assign(System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action{System.Single},System.Func{System.Int32},System.Func{System.Single})">
+            <summary>
+            Assigns events to this instance's <see cref="P:KeepCoding.ModuleScript.Module"/>, replacing their existing values.
+            </summary>
+            <param name="activate">Called when the lights turn on.</param>
+            <param name="needyActivate">Called when the needy activates.</param>
+            <param name="needyDeactivate">Called when the needy deactivates.</param>
+            <param name="needyTimerExpired">Called when the timer runs out of time.</param>
+            <param name="solve">Called when the needy is solved.</param>
+            <param name="strike">Called when the needy strikes.</param>
+            <param name="needyTimerSet">Called when <see cref="M:KMNeedyModule.GetNeedyTimeRemaining"/> is called.</param>
+            <param name="ruleGeneration">Called when <see cref="M:KMBombModule.GetRuleGenerationSeed"/> or <see cref="M:KMNeedyModule.GetRuleGenerationSeed"/> is called.</param>
+            <param name="needyTimerGet">Called when <see cref="M:KMNeedyModule.SetNeedyTimeRemaining(System.Single)"/> is called.</param>
         </member>
         <member name="M:KeepCoding.ModuleScript.ButtonEffect(KMSelectable,System.Single,KeepCoding.Sound[])">
             <summary>
@@ -9343,12 +10272,6 @@
             <param name="key">The key of the variable, a lot like a variable name.</param>
             <param name="value">The value to store in the key.</param>
         </member>
-        <member name="M:KeepCoding.ModuleScript.GetRuleSeedId">
-            <summary>
-            Gets the rule seed number.
-            </summary>
-            <returns>The rule seed number, by default 1.</returns>
-        </member>
         <member name="M:KeepCoding.ModuleScript.GetIgnoredModules(System.String)">
             <summary>
             Retrieves the ignore list from the Boss Module Manager mod used primarily by boss modules.
@@ -9395,6 +10318,13 @@
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
             <param name="sounds">The sounds, these can either be <see cref="T:System.String"/>, <see cref="T:UnityEngine.AudioClip"/>, or <see cref="T:KMSoundOverride.SoundEffect"/>.</param>
             <returns>A <see cref="T:KMAudio.KMAudioRef"/> for each argument you provide.</returns>
+        </member>
+        <member name="M:KeepCoding.ModuleScript.ModulesOfBomb(KMBomb)">
+            <summary>
+            Allows you to get the collection of <see cref="T:KeepCoding.ModuleContainer"/> from a <see cref="T:KMBomb"/>.
+            </summary>
+            <param name="bomb">The instance of <see cref="T:KMBomb"/> that has modules.</param>
+            <returns>All modules within <paramref name="bomb"/>.</returns>
         </member>
         <member name="M:KeepCoding.ModuleScript.Read``1(System.String,System.String,System.Boolean)">
             <summary>
@@ -10604,6 +11534,161 @@
             <summary>
             Calculates a quotient and remainder by dividing this integer by <paramref name="other"/>.
             </summary>
+        </member>
+        <member name="T:KeepCoding.HashCode">
+            <summary>
+            Combines the hash code for multiple values into a single hash code. xxHash32 is used for the hash code. <see href="https://github.com/Cyan4973/xxHash"/>
+            </summary>
+            <remarks>
+            You can use HashCode to combine multiple values (for example, fields on a structure or class) into a single hash code. This structure operates in one of two ways, static methods that accept a set of up to eight values to combine, and two instance methods that operate in a streaming fashion, accepting values one at a time.
+            </remarks>
+        </member>
+        <member name="M:KeepCoding.HashCode.Add``1(``0)">
+            <summary>
+            Adds a single value to the hash code.
+            </summary>
+            <typeparam name="T">The type of the value to add to the hash code.</typeparam>
+            <param name="value">The value to add to the hash code.</param>
+        </member>
+        <member name="M:KeepCoding.HashCode.Add``1(``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Adds a single value to the hash code, specifying the type that provides the hash code function.
+            </summary>
+            <typeparam name="T">The type of the value to add to the hash code.</typeparam>
+            <param name="value">The value to add to the hash code.</param>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> to use to calculate the hash code. This value can be a null reference (Nothing in Visual Basic), which will use the default equality comparer for <typeparamref name="T"/>.</param>
+        </member>
+        <member name="M:KeepCoding.HashCode.Combine``1(``0)">
+            <summary>
+            Diffuses the hash code returned by the specified value.
+            </summary>
+            <remarks>
+            Some data structures assume that hash codes are diffused across a large range. This method improves the quality of the hash code returned by the value and is useful when the underlying data type is simple, for example, an integer value.
+            </remarks>
+            <typeparam name="T1">The type of the value to add the hash code.</typeparam>
+            <param name="value1">The value to add to the hash code.</param>
+            <returns>The hash code that represents the single value.</returns>
+        </member>
+        <member name="M:KeepCoding.HashCode.Combine``2(``0,``1)">
+            <summary>
+            Combines two values into a hash code.
+            </summary>
+            <typeparam name="T1">The type of the first value to combine into the hash code.</typeparam>
+            <typeparam name="T2">The type of the second value to combine into the hash code.</typeparam>
+            <param name="value1">The first value to combine into the hash code.</param>
+            <param name="value2">The second value to combine into the hash code.</param>
+            <returns>The hash code that represents the two values.</returns>
+        </member>
+        <member name="M:KeepCoding.HashCode.Combine``3(``0,``1,``2)">
+            <summary>
+            Combines three values into a hash code.
+            </summary>
+            <typeparam name="T1">The type of the first value to combine into the hash code.</typeparam>
+            <typeparam name="T2">The type of the second value to combine into the hash code.</typeparam>
+            <typeparam name="T3">The type of the third value to combine into the hash code.</typeparam>
+            <param name="value1">The first value to combine into the hash code.</param>
+            <param name="value2">The second value to combine into the hash code.</param>
+            <param name="value3">The third value to combine into the hash code.</param>
+            <returns>The hash code that represents the three values.</returns>
+        </member>
+        <member name="M:KeepCoding.HashCode.Combine``4(``0,``1,``2,``3)">
+            <summary>
+            Combines four values into a hash code.
+            </summary>
+            <typeparam name="T1">The type of the first value to combine into the hash code.</typeparam>
+            <typeparam name="T2">The type of the second value to combine into the hash code.</typeparam>
+            <typeparam name="T3">The type of the third value to combine into the hash code.</typeparam>
+            <typeparam name="T4">The type of the fourth value to combine into the hash code.</typeparam>
+            <param name="value1">The first value to combine into the hash code.</param>
+            <param name="value2">The second value to combine into the hash code.</param>
+            <param name="value3">The third value to combine into the hash code.</param>
+            <param name="value4">The fourth value to combine into the hash code.</param>
+            <returns>The hash code that represents the four values.</returns>
+        </member>
+        <member name="M:KeepCoding.HashCode.Combine``5(``0,``1,``2,``3,``4)">
+            <summary>
+            Combines five values into a hash code.
+            </summary>
+            <typeparam name="T1">The type of the first value to combine into the hash code.</typeparam>
+            <typeparam name="T2">The type of the second value to combine into the hash code.</typeparam>
+            <typeparam name="T3">The type of the third value to combine into the hash code.</typeparam>
+            <typeparam name="T4">The type of the fourth value to combine into the hash code.</typeparam>
+            <typeparam name="T5">The type of the fifth value to combine into the hash code.</typeparam>
+            <param name="value1">The first value to combine into the hash code.</param>
+            <param name="value2">The second value to combine into the hash code.</param>
+            <param name="value3">The third value to combine into the hash code.</param>
+            <param name="value4">The fourth value to combine into the hash code.</param>
+            <param name="value5">The fifth value to combine into the hash code.</param>
+            <returns>The hash code that represents the five values.</returns>
+        </member>
+        <member name="M:KeepCoding.HashCode.Combine``6(``0,``1,``2,``3,``4,``5)">
+            <summary>
+            Combines six values into a hash code.
+            </summary>
+            <typeparam name="T1">The type of the first value to combine into the hash code.</typeparam>
+            <typeparam name="T2">The type of the second value to combine into the hash code.</typeparam>
+            <typeparam name="T3">The type of the third value to combine into the hash code.</typeparam>
+            <typeparam name="T4">The type of the fourth value to combine into the hash code.</typeparam>
+            <typeparam name="T5">The type of the fifth value to combine into the hash code.</typeparam>
+            <typeparam name="T6">The type of the sixth value to combine into the hash code.</typeparam>
+            <param name="value1">The first value to combine into the hash code.</param>
+            <param name="value2">The second value to combine into the hash code.</param>
+            <param name="value3">The third value to combine into the hash code.</param>
+            <param name="value4">The fourth value to combine into the hash code.</param>
+            <param name="value5">The fifth value to combine into the hash code.</param>
+            <param name="value6">The sixth value to combine into the hash code.</param>
+            <returns>The hash code that represents the six values.</returns>
+        </member>
+        <member name="M:KeepCoding.HashCode.Combine``7(``0,``1,``2,``3,``4,``5,``6)">
+            <summary>
+            Combines seven values into a hash code.
+            </summary>
+            <typeparam name="T1">The type of the first value to combine into the hash code.</typeparam>
+            <typeparam name="T2">The type of the second value to combine into the hash code.</typeparam>
+            <typeparam name="T3">The type of the third value to combine into the hash code.</typeparam>
+            <typeparam name="T4">The type of the fourth value to combine into the hash code.</typeparam>
+            <typeparam name="T5">The type of the fifth value to combine into the hash code.</typeparam>
+            <typeparam name="T6">The type of the sixth value to combine into the hash code.</typeparam>
+            <typeparam name="T7">The type of the seventh value to combine into the hash code.</typeparam>
+            <param name="value1">The first value to combine into the hash code.</param>
+            <param name="value2">The second value to combine into the hash code.</param>
+            <param name="value3">The third value to combine into the hash code.</param>
+            <param name="value4">The fourth value to combine into the hash code.</param>
+            <param name="value5">The fifth value to combine into the hash code.</param>
+            <param name="value6">The sixth value to combine into the hash code.</param>
+            <param name="value7">The seventh value to combine into the hash code.</param>
+            <returns>The hash code that represents the seven values.</returns>
+        </member>
+        <member name="M:KeepCoding.HashCode.Combine``8(``0,``1,``2,``3,``4,``5,``6,``7)">
+            <summary>
+            Combines eight values into a hash code.
+            </summary>
+            <typeparam name="T1">The type of the first value to combine into the hash code.</typeparam>
+            <typeparam name="T2">The type of the second value to combine into the hash code.</typeparam>
+            <typeparam name="T3">The type of the third value to combine into the hash code.</typeparam>
+            <typeparam name="T4">The type of the fourth value to combine into the hash code.</typeparam>
+            <typeparam name="T5">The type of the fifth value to combine into the hash code.</typeparam>
+            <typeparam name="T6">The type of the sixth value to combine into the hash code.</typeparam>
+            <typeparam name="T7">The type of the seventh value to combine into the hash code.</typeparam>
+            <typeparam name="T8">The type of the eighth value to combine into the hash code.</typeparam>
+            <param name="value1">The first value to combine into the hash code.</param>
+            <param name="value2">The second value to combine into the hash code.</param>
+            <param name="value3">The third value to combine into the hash code.</param>
+            <param name="value4">The fourth value to combine into the hash code.</param>
+            <param name="value5">The fifth value to combine into the hash code.</param>
+            <param name="value6">The sixth value to combine into the hash code.</param>
+            <param name="value7">The seventh value to combine into the hash code.</param>
+            <param name="value8">The eighth value to combine into the hash code.</param>
+            <returns>The hash code that represents the eight values.</returns>
+        </member>
+        <member name="M:KeepCoding.HashCode.ToHashCode">
+            <summary>
+            Calculates the final hash code after consecutive <see cref="M:KeepCoding.HashCode.Add(System.Int32)"/>/<see cref="M:KeepCoding.HashCode.Add(System.UInt32,System.UInt32)"/> invocations.
+            </summary>
+            <remarks>
+            This method must be called at most once per instance of <see cref="T:KeepCoding.HashCode"/>.
+            </remarks>
+            <returns>The calculated hash code.</returns>
         </member>
         <member name="T:KeepCoding.Number">
             <summary>

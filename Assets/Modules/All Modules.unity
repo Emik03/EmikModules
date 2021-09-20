@@ -236,6 +236,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 108214176304997670, guid: 57cf7acf203e53c4f83ccc0607c2ff47,
+        type: 2}
+      propertyPath: m_Range
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57cf7acf203e53c4f83ccc0607c2ff47, type: 2}
   m_IsPrefabParent: 0
@@ -514,17 +519,22 @@ Prefab:
     - target: {fileID: 114483548890468804, guid: ff9ca9050f0cb3c4e88109c0c3f0e8a3,
         type: 2}
       propertyPath: DimensionOverride
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114483548890468804, guid: ff9ca9050f0cb3c4e88109c0c3f0e8a3,
         type: 2}
       propertyPath: RotationOverride
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114483548890468804, guid: ff9ca9050f0cb3c4e88109c0c3f0e8a3,
         type: 2}
       propertyPath: SlownessOverride
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114483548890468804, guid: ff9ca9050f0cb3c4e88109c0c3f0e8a3,
+        type: 2}
+      propertyPath: ForceRotation
+      value: +X-Y & +Z-W
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff9ca9050f0cb3c4e88109c0c3f0e8a3, type: 2}
