@@ -1208,7 +1208,7 @@
         </member>
         <member name="T:KeepCoding.Internal.ModuleEvent`1">
             <summary>
-            A class that encapsulates an adder, getter, and setter, similar to a property.
+            A class that encapsulates an adder, getter, remover, and setter, similar to a property.
             </summary>
             <typeparam name="T">The type of the inner variable on the getter.</typeparam>
         </member>
@@ -1221,6 +1221,13 @@
             <summary>
             Creates a new instance of <see cref="T:KeepCoding.Internal.ModuleEvent`1.EventDictionary"/>, setting the inner dictionary to a new instance.
             </summary>
+        </member>
+        <member name="M:KeepCoding.Internal.ModuleEvent`1.EventDictionary.Add(`0,System.Object)">
+            <summary>
+            Adds a key with a value to the dictionary.
+            </summary>
+            <param name="key">The key to add.</param>
+            <param name="value">The value to add.</param>
         </member>
         <member name="M:KeepCoding.Internal.ModuleEvent`1.EventDictionary.Clear">
             <summary>
@@ -1240,14 +1247,7 @@
             </summary>
             <param name="key">The key to use.</param>
         </member>
-        <member name="M:KeepCoding.Internal.ModuleEvent`1.EventDictionary.Add(`0,System.Object)">
-            <summary>
-            Adds a key with a value to the dictionary.
-            </summary>
-            <param name="key">The key to add.</param>
-            <param name="value">The value to add.</param>
-        </member>
-        <member name="M:KeepCoding.Internal.ModuleEvent`1.#ctor(KeepCoding.Internal.ModuleEvent{`0}.Adder,KeepCoding.Internal.ModuleEvent{`0}.Getter,KeepCoding.Internal.ModuleEvent{`0}.Setter,KeepCoding.Internal.ModuleEvent{`0}.Signature,KeepCoding.Internal.ModuleEvent{`0}.Remover,KeepCoding.Internal.ModuleEvent{`0}.Converter)">
+        <member name="M:KeepCoding.Internal.ModuleEvent`1.#ctor(KeepCoding.Internal.ModuleEvent{`0}.Adder,KeepCoding.Internal.ModuleEvent{`0}.Getter,KeepCoding.Internal.ModuleEvent{`0}.Remover,KeepCoding.Internal.ModuleEvent{`0}.Setter,KeepCoding.Internal.ModuleEvent{`0}.Signature,KeepCoding.Internal.ModuleEvent{`0}.Converter)">
             <summary>
             Creates a <see langword="new"/> instance of <see cref="T:KeepCoding.Internal.ModuleEvent`1"/> with the underlying type passed in.
             </summary>
@@ -1258,21 +1258,23 @@
             <param name="remover">The encapsulated method that will remove the value.</param>
             <param name="converter">The encapsulated method that changes the value before used in converting types.</param>
         </member>
+        <member name="T:KeepCoding.Internal.ModuleEvent`1.Adder">
+            <summary>
+            Represents an adder operator.
+            </summary>
+            <param name="value">The value to use.</param>
+        </member>
         <member name="T:KeepCoding.Internal.ModuleEvent`1.Remover">
             <summary>
             Represents the remover operator.
             </summary>
             <param name="value">The value to use.</param>
         </member>
-        <member name="T:KeepCoding.Internal.ModuleEvent`1.Adder">
-            <summary>
-            Represents an adder operator.
-            </summary>
-        </member>
         <member name="T:KeepCoding.Internal.ModuleEvent`1.Setter">
             <summary>
             Represents a setter operator.
             </summary>
+            <param name="value">The value to use.</param>
         </member>
         <member name="T:KeepCoding.Internal.ModuleEvent`1.Converter">
             <summary>
@@ -1307,7 +1309,7 @@
             <summary>
             Gets the value of the inner value.
             </summary>
-            <returns></returns>
+            <returns>The returned value of the <see cref="T:KeepCoding.Internal.ModuleEvent`1.Getter"/>.</returns>
         </member>
         <member name="M:KeepCoding.Internal.ModuleEvent`1.Remove(`0)">
             <summary>
@@ -10118,8 +10120,11 @@
         </member>
         <member name="P:KeepCoding.ModuleScript.Modules">
             <summary>
-            Contains every modded module in <see cref="P:KeepCoding.ModuleScript.Bomb"/>, separated by type.
+            Contains every module in the <see cref="T:KMBomb"/> that this module is in.
             </summary>
+            <remarks>
+            This collection also includes vanilla modules, including <see cref="F:KeepCoding.ComponentPool.ComponentTypeEnum.Empty"/> components and <see cref="F:KeepCoding.ComponentPool.ComponentTypeEnum.Timer"/>. You can filter the collection with <see cref="P:KeepCoding.ModuleContainer.IsVanilla"/>, <see cref="P:KeepCoding.ModuleContainer.IsModded"/>, <see cref="P:KeepCoding.ModuleContainer.IsSolvable"/>, or <see cref="P:KeepCoding.ModuleContainer.IsNeedy"/>, <see cref="P:KeepCoding.ModuleContainer.IsEmptyOrTimer"/>, or <see cref="P:KeepCoding.ModuleContainer.IsModule"/>.
+            </remarks>
         </member>
         <member name="M:KeepCoding.ModuleScript.Append(System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action{System.Single},System.Func{System.Int32},System.Func{System.Single})">
             <summary>
@@ -10323,6 +10328,9 @@
             <summary>
             Allows you to get the collection of <see cref="T:KeepCoding.ModuleContainer"/> from a <see cref="T:KMBomb"/>.
             </summary>
+            <remarks>
+            This collection also includes vanilla modules, including <see cref="F:KeepCoding.ComponentPool.ComponentTypeEnum.Empty"/> components and <see cref="F:KeepCoding.ComponentPool.ComponentTypeEnum.Timer"/>. You can filter the collection with <see cref="P:KeepCoding.ModuleContainer.IsVanilla"/>, <see cref="P:KeepCoding.ModuleContainer.IsModded"/>, <see cref="P:KeepCoding.ModuleContainer.IsSolvable"/>, or <see cref="P:KeepCoding.ModuleContainer.IsNeedy"/>, <see cref="P:KeepCoding.ModuleContainer.IsEmptyOrTimer"/>, or <see cref="P:KeepCoding.ModuleContainer.IsModule"/>.
+            </remarks>
             <param name="bomb">The instance of <see cref="T:KMBomb"/> that has modules.</param>
             <returns>All modules within <paramref name="bomb"/>.</returns>
         </member>
@@ -10684,7 +10692,7 @@
             Allows access relating to the game's main master channel for audio.
             </summary>
         </member>
-        <member name="P:KeepCoding.Game.MasterAudio.IsGroupInfo">
+        <member name="M:KeepCoding.Game.MasterAudio.IsGroupInfo(System.String,System.String)">
             <summary>
             Determines whether a given string has a group info.
             </summary>
@@ -10693,8 +10701,11 @@
             </remarks>
             <exception cref="T:System.NotSupportedException"></exception>
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="source">The source of the sound, which is typically the assembly name which uses the bundle that contains the sound.</param>
+            <param name="sound">The name of the sound.</param>
+            <returns><see langword="true"/> if <paramref name="source"/> with <paramref name="sound"/> has a group info, otherwise <see langword="false"/>.</returns>
         </member>
-        <member name="P:KeepCoding.Game.MasterAudio.GroupInfo">
+        <member name="M:KeepCoding.Game.MasterAudio.GroupInfo(System.String,System.String)">
             <summary>
             Gets the group info of a given string. To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to AudioGroupInfo type to restore its functionality.
             </summary>
@@ -10703,6 +10714,9 @@
             </remarks>
             <exception cref="T:System.NotSupportedException"></exception>
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="source">The source of the sound, which is typically the assembly name which uses the bundle that contains the sound.</param>
+            <param name="sound">The name of the sound.</param>
+            <returns>The <see cref="T:System.Object"/> which contains the GroupInfo of the desired <paramref name="source"/> and <paramref name="sound"/>, or <see langword="null"/> if no such GroupInfo exists.</returns>
         </member>
         <member name="T:KeepCoding.Game.Mission">
             <summary>
@@ -10764,7 +10778,7 @@
             Allows access to methods relating mod paths.
             </summary>
         </member>
-        <member name="P:KeepCoding.Game.ModManager.GetDisabledModPaths">
+        <member name="M:KeepCoding.Game.ModManager.GetDisabledModPaths">
             <summary>
             Gets all of the disabled mod paths.
             </summary>
@@ -10773,8 +10787,9 @@
             </remarks>
             <exception cref="T:System.NotSupportedException"></exception>
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> of disabled mod paths.</returns>
         </member>
-        <member name="P:KeepCoding.Game.ModManager.GetAllModPathsFromSource">
+        <member name="M:KeepCoding.Game.ModManager.GetAllModPathsFromSource(KeepCoding.Game.ModSourceEnum)">
             <summary>
             Gets all of the mod paths within the <see cref="T:KeepCoding.Game.ModSourceEnum"/> constraint.
             </summary>
@@ -10783,8 +10798,10 @@
             </remarks>
             <exception cref="T:System.NotSupportedException"></exception>
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="source">The <see cref="T:KeepCoding.Game.ModSourceEnum"/> source that the mod needs to come from to be included in the <see cref="T:System.Collections.Generic.List`1"/>.</param>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> of all mod paths from a given <see cref="T:KeepCoding.Game.ModSourceEnum"/>.</returns>
         </member>
-        <member name="P:KeepCoding.Game.ModManager.GetEnabledModPaths">
+        <member name="M:KeepCoding.Game.ModManager.GetEnabledModPaths(KeepCoding.Game.ModSourceEnum)">
             <summary>
             Gets all of the enabled mod paths within the <see cref="T:KeepCoding.Game.ModSourceEnum"/> constraint.
             </summary>
@@ -10793,6 +10810,8 @@
             </remarks>
             <exception cref="T:System.NotSupportedException"></exception>
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="source">The <see cref="T:KeepCoding.Game.ModSourceEnum"/> source that the mod needs to come from to be included in the <see cref="T:System.Collections.Generic.List`1"/>.</param>
+            <returns>A <see cref="T:System.Collections.Generic.List`1"/> of all enabled mod paths from a given <see cref="T:KeepCoding.Game.ModSourceEnum"/>.</returns>
         </member>
         <member name="T:KeepCoding.Game.PlayerSettings">
             <summary>
@@ -11034,27 +11053,35 @@
             Implies that the library from TheDarkSid3r's Keep Talking and Nobody Explodes Rewritten be used, and its values are returned.
             </summary>
         </member>
-        <member name="P:KeepCoding.Game.AddStrikes">
+        <member name="M:KeepCoding.Game.AddStrikes(KMBomb,System.Int32,System.Boolean)">
             <summary>
-            Adds an amount of strikes on the bomb.
+            Adds an amount of strikes on the bomb, and returns the bomb object used, or <see langword="null"/>.
             </summary>
             <remarks>
             Default: Internal Logger method call.
             </remarks>
             <exception cref="T:System.NotSupportedException"></exception>
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="bomb">The <see cref="T:KMBomb"/> component which is attached to the inner Bomb component.</param>
+            <param name="strikeDelta">The amount of strikes to add.</param>
+            <param name="allowExplosion">Whether it should check whether the bomb should explode from strikes.</param>
+            <returns>The bomb <see cref="T:System.Object"/> of the bomb used to assign strikes.</returns>
         </member>
-        <member name="P:KeepCoding.Game.SetStrikes">
+        <member name="M:KeepCoding.Game.SetStrikes(KMBomb,System.Int32,System.Boolean)">
             <summary>
-            Sets an amount of strikes on the bomb.
+            Sets the amount of strikes on the bomb, and returns the bomb object used, or <see langword="null"/>.
             </summary>
             <remarks>
             Default: Internal Logger method call.
             </remarks>
             <exception cref="T:System.NotSupportedException"></exception>
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="bomb">The <see cref="T:KMBomb"/> component which is attached to the inner Bomb component.</param>
+            <param name="newStrikes">The strikes to set.</param>
+            <param name="allowExplosion">Whether it should check whether the bomb should explode from strikes.</param>
+            <returns>The bomb <see cref="T:System.Object"/> of the bomb used to assign strikes.</returns>
         </member>
-        <member name="P:KeepCoding.Game.Bomb">
+        <member name="M:KeepCoding.Game.Bomb(KMBomb)">
             <summary>
             Gets the game's internal bomb component, not to be mistaken with <see cref="T:KMBomb"/>. To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to Bomb or <see cref="T:UnityEngine.MonoBehaviour"/> type to restore its functionality.
             </summary>
@@ -11063,8 +11090,10 @@
             </remarks>
             <exception cref="T:System.NotSupportedException"></exception>
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="bomb">The <see cref="T:KMBomb"/> instance that is on the same <see cref="T:UnityEngine.GameObject"/> as the Bomb component.</param>
+            <returns>The internal Bomb <see cref="T:UnityEngine.Component"/> that the game uses.</returns>
         </member>
-        <member name="P:KeepCoding.Game.Timer">
+        <member name="M:KeepCoding.Game.Timer(KMBomb)">
             <summary>
             Gets the game's internal timer component. To prevent a reference to the game, the type is boxed in <see cref="T:System.Object"/>. You can cast it to TimerComponent or <see cref="T:UnityEngine.MonoBehaviour"/> type to restore its functionality.
             </summary>
@@ -11073,8 +11102,10 @@
             </remarks>
             <exception cref="T:System.NotSupportedException"></exception>
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="bomb">The <see cref="T:KMBomb"/> instance that is on the same <see cref="T:UnityEngine.GameObject"/> as the Bomb component, which is needed to access the Timer component.</param>
+            <returns>The internal Timer <see cref="T:UnityEngine.Component"/> that the game uses.</returns>
         </member>
-        <member name="P:KeepCoding.Game.Vanillas">
+        <member name="M:KeepCoding.Game.Vanillas(KMBomb)">
             <summary>
             Gets all of the vanilla modules from the bomb supplied, including needies. To prevent a reference to the game, the type is boxed in an <see cref="T:System.Object"/> <see cref="T:System.Array"/>. You can cast it to BombComponent type to restore its functionality.
             </summary>
@@ -11083,6 +11114,8 @@
             </remarks>
             <exception cref="T:System.NotSupportedException"></exception>
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="bomb">The <see cref="T:KMBomb"/> instance that is the parent <see cref="T:UnityEngine.GameObject"/> to all vanilla modules.</param>
+            <returns>All vanilla modules on the current <paramref name="bomb"/>.</returns>
         </member>
         <member name="P:KeepCoding.Game.Reference">
             <summary>
