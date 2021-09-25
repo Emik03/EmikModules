@@ -1022,6 +1022,37 @@
             Creates the force solve buttons.
             </summary>
         </member>
+        <member name="T:KeepCoding.Internal.AssertionException">
+            <summary>
+            An exception thrown when an assertion fails.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Internal.AssertionException.#ctor">
+            <summary>
+            An exception thrown when an assertion fails.
+            </summary>
+        </member>
+        <member name="M:KeepCoding.Internal.AssertionException.#ctor(System.String)">
+            <summary>
+            An exception thrown when an assertion fails.
+            </summary>
+            <param name="message">The message of the exception.</param>
+        </member>
+        <member name="M:KeepCoding.Internal.AssertionException.#ctor(System.String,System.Exception)">
+            <summary>
+            An exception thrown when an assertion fails.
+            </summary>
+            <param name="message">The message of the exception.</param>
+            <param name="innerException">An <see cref="T:System.Exception"/> within this exception.</param>
+        </member>
+        <member name="M:KeepCoding.Internal.AssertionException.#ctor(System.String,System.Object,System.Object)">
+            <summary>
+            An exception thrown when an assertion fails.
+            </summary>
+            <param name="name">The name of the received value.</param>
+            <param name="received">The received value.</param>
+            <param name="expected">The value of the expected value.</param>
+        </member>
         <member name="T:KeepCoding.Internal.ConstructorArgumentException">
             <summary>
             An exception thrown when the constructor throws an exception due to a bad argument.
@@ -2693,18 +2724,6 @@
             <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
             <param name="onUpdateChildren">Called when the selectable updates its children.</param>
         </member>
-        <member name="M:KeepCoding.EventHelper.StopSound(KMAudio.KMAudioRef[])">
-            <summary>
-            Stops all sounds for the entire <see cref="T:KMAudio.KMAudioRef"/> <see cref="T:System.Array"/>.
-            </summary>
-            <param name="audioRefs">The <see cref="T:KMAudio.KMAudioRef"/> <see cref="T:System.Array"/> to mute all sounds from, using <see cref="F:KMAudio.KMAudioRef.StopSound"/>.</param>
-        </member>
-        <member name="M:KeepCoding.EventHelper.StopSound(KeepCoding.Sound[])">
-            <summary>
-            Stops all sounds for the entire <see cref="T:KeepCoding.Sound"/> <see cref="T:System.Array"/>.
-            </summary>
-            <param name="sounds">The <see cref="T:KeepCoding.Sound"/> <see cref="T:System.Array"/> to mute all sounds from, using <see cref="F:KMAudio.KMAudioRef.StopSound"/>.</param>
-        </member>
         <member name="M:KeepCoding.EventHelper.Combine(System.Action,System.Action[])">
             <summary>
             Combines actions together, only if these actions are not <see langword="null"/>.
@@ -2816,6 +2835,13 @@
             <param name="self">The function to modify.</param>
             <param name="others">The functions to combine with <paramref name="self"/>.</param>
             <returns><paramref name="self"/> with <paramref name="others"/> appended.</returns>
+        </member>
+        <member name="M:KeepCoding.EventHelper.StopSounds``1(``0)">
+            <summary>
+            Stops all sounds for the entire <see cref="T:KMAudio.KMAudioRef"/> <see cref="T:System.Array"/>.
+            </summary>
+            <typeparam name="T">The type of iterator containing <see cref="T:KMAudio.KMAudioRef"/>.</typeparam>
+            <param name="audioRefs">The <see cref="T:KMAudio.KMAudioRef"/> <see cref="T:System.Array"/> to mute all sounds from, using <see cref="F:KMAudio.KMAudioRef.StopSound"/>.</param>
         </member>
         <member name="T:KeepCoding.Helper">
             <summary>
@@ -3070,7 +3096,7 @@
             <param name="length">The length of the array.</param>
             <param name="weighting">The odds of the boolean being true.</param>
             <returns>An array of random booleans of length <paramref name="length"/>, with probability based off of <paramref name="weighting"/>.</returns>
-            <returns></returns>
+            <returns>An <see cref="T:System.Array"/> of <see cref="T:System.Boolean"/> in which each index is randomly <see langword="true"/> or <see langword="false"/> based on <paramref name="weighting"/>.</returns>
         </member>
         <member name="M:KeepCoding.Helper.ToNumber(System.Char)">
             <summary>
@@ -3137,19 +3163,6 @@
             <param name="number">The left-hand side operator</param>
             <param name="modulo">The right-hand side operator.</param>
             <returns><paramref name="number"/> mod <paramref name="modulo"/>.</returns>
-        </member>
-        <member name="M:KeepCoding.Helper.SetOrReplace``2(System.Collections.Generic.IDictionary{``0,``1},``0,System.Func{``1,``1})">
-            <summary>
-            Sets or replaces the value of a dictionary with a given function.
-            </summary>
-            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
-            <exception cref="T:System.NullReferenceException"></exception>
-            <typeparam name="TKey">Type of the key of the dictionary.</typeparam>
-            <typeparam name="TValue">Type of the value of the dictionary.</typeparam>
-            <param name="source">Dictionary to operate on.</param>
-            <param name="key">Key at which the list is located in the dictionary.</param>
-            <param name="func">The function that returns the new value.</param>
-            <returns>The new value at the specified key.</returns>
         </member>
         <member name="M:KeepCoding.Helper.Ranges(System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -3610,14 +3623,6 @@
             <param name="expression">The expression that retrieves the method.</param>
             <returns>The method info of the function.</returns>
         </member>
-        <member name="M:KeepCoding.Helper.ToReadOnly``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Gets a <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> from the current <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
-            </summary>
-            <typeparam name="T">The type of <paramref name="source"/> and <see langword="return"/>.</typeparam>
-            <param name="source">The collection to turn into a <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/>.</param>
-            <returns>A <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> with values of <paramref name="source"/>.</returns>
-        </member>
         <member name="M:KeepCoding.Helper.SplitBy``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
             <summary>
             Splits an <see cref="T:System.Collections.IEnumerable"/> in two based on a method provided.
@@ -3627,14 +3632,44 @@
             <param name="predicate">The method that decides where the item ends up.</param>
             <returns>A <see cref="T:KeepCoding.Tuple`2"/> consisting of items from <paramref name="source"/> where <see cref="P:KeepCoding.Tuple`1.Item1"/> contains items that returned true in <paramref name="predicate"/>, and <see cref="P:KeepCoding.Tuple`2.Item2"/> otherwise.</returns>
         </member>
-        <member name="M:KeepCoding.Helper.Assert``1(``0,System.String)">
+        <member name="M:KeepCoding.Helper.Assert``1(``0)">
             <summary>
-            Throws a <see cref="T:UnityEngine.MissingComponentException"/> if the <see cref="T:UnityEngine.Object"/> given is <see langword="null"/>, then returning the <see cref="T:UnityEngine.Object"/> <paramref name="obj"/>.
+            Throws am <see cref="T:KeepCoding.Internal.AssertionException"/> if the <see cref="T:UnityEngine.Object"/> given is <see langword="null"/>, then returning the <see cref="T:UnityEngine.Object"/> <paramref name="obj"/>.
             </summary>
             <typeparam name="T">The type of <see cref="T:UnityEngine.Object"/>.</typeparam>
-            <param name="obj">The <see cref="T:UnityEngine.Object"/> to do a null check on.</param>
-            <param name="message">The message of the exception.</param>
-            <returns>The component <paramref name="obj"/>.</returns>
+            <param name="obj">The <see cref="T:UnityEngine.Object"/> to do a <see langword="null"/> check on.</param>
+            <returns><paramref name="obj"/></returns>
+        </member>
+        <member name="M:KeepCoding.Helper.Assert``1(``0,System.String)">
+            <summary>
+            Throws an <see cref="T:KeepCoding.Internal.AssertionException"/> if the argument passed in is <see langword="null"/>
+            </summary>
+            <typeparam name="T">The type of the item to assert for non-nullability.</typeparam>
+            <param name="item">The item to use a <see langword="null"/> check on.</param>
+            <param name="name">The name of <paramref name="item"/>.</param>
+            <returns><paramref name="item"/></returns>
+        </member>
+        <member name="M:KeepCoding.Helper.Assert``1(``0,System.Predicate{``0},System.String,System.String)">
+            <summary>
+            Throws an <see cref="T:KeepCoding.Internal.AssertionException"/> if the method passed in <see langword="return"/>s <see langword="false"/>.
+            </summary>
+            <typeparam name="T">The type of the initial comparison.</typeparam>
+            <param name="item">The item to pass into the method.</param>
+            <param name="assertion">The assertion, <see langword="true"/> indicates success and will <see langword="return"/> <paramref name="item"/>, <see langword="false"/> will throw an <see cref="T:KeepCoding.Internal.AssertionException"/>.</param>
+            <param name="name">The name of <paramref name="item"/>.</param>
+            <param name="expect">The string representation of what <paramref name="assertion"/> does and expects.</param>
+            <returns><paramref name="item"/></returns>
+        </member>
+        <member name="M:KeepCoding.Helper.Assert``2(``0,``1,System.String)">
+            <summary>
+            Throws an <see cref="T:KeepCoding.Internal.AssertionException"/> if both arguments passed in <see langword="return"/> <see langword="false"/> on <see cref="M:System.Object.Equals(System.Object)"/>.
+            </summary>
+            <typeparam name="T">The type of the initial comparison.</typeparam>
+            <typeparam name="TOther">The type of the item to compare.</typeparam>
+            <param name="item">The item to use as comparison.</param>
+            <param name="comparison">The item to compare to.</param>
+            <param name="name">The name of <paramref name="item"/>.</param>
+            <returns><paramref name="item"/></returns>
         </member>
         <member name="M:KeepCoding.Helper.Call``1(``0,System.Action{``0})">
             <summary>
@@ -3808,6 +3843,19 @@
             <param name="array">The array to be appended with.</param>
             <param name="item">The element to append to the <paramref name="array"/>.</param>
             <returns><paramref name="array"/>, but with an added <paramref name="item"/> as the first index.</returns>
+        </member>
+        <member name="M:KeepCoding.Helper.SetOrReplace``2(System.Collections.Generic.IDictionary{``0,``1},``0,System.Func{``1,``1})">
+            <summary>
+            Sets or replaces the value of a dictionary with a given function.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <typeparam name="TKey">Type of the key of the dictionary.</typeparam>
+            <typeparam name="TValue">Type of the value of the dictionary.</typeparam>
+            <param name="source">Dictionary to operate on.</param>
+            <param name="key">Key at which the list is located in the dictionary.</param>
+            <param name="func">The function that returns the new value.</param>
+            <returns>The new value at the specified key.</returns>
         </member>
         <member name="M:KeepCoding.Helper.Apply``2(``0[],System.Func{``0,System.Int32,``1})">
             <summary>
@@ -5167,6 +5215,14 @@
             <param name="z">The z value.</param>
             <param name="w">The w value.</param>
             <returns>A new instance of <paramref name="vector"/>, with the arguments replacing the values.</returns>
+        </member>
+        <member name="M:KeepCoding.TypeHelper.ToReadOnly``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Gets a <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> from the current <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <typeparam name="T">The type of <paramref name="source"/> and <see langword="return"/>.</typeparam>
+            <param name="source">The collection to turn into a <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/>.</param>
+            <returns>A <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> with values of <paramref name="source"/>.</returns>
         </member>
         <member name="M:KeepCoding.TypeHelper.ToVersion(System.String)">
             <summary>
@@ -7108,54 +7164,83 @@
             The seed used for the randomization.
             </summary>
         </member>
-        <member name="M:KeepCoding.MonoRandom.NextBytes(System.Byte[])">
+        <member name="M:KeepCoding.MonoRandom.NextBytes(System.Byte[],System.Boolean)">
             <summary>
             Fills the elements of a specified array of bytes with random numbers.
             </summary>
             <exception cref="T:System.NullReferenceException"></exception>
             <param name="buffer">An array of bytes to contain random numbers.</param>
+            <param name="isLogging">Determines whether it should log the result.</param>
         </member>
-        <member name="M:KeepCoding.MonoRandom.Next">
+        <member name="M:KeepCoding.MonoRandom.Log``1(``0,UnityEngine.LogType)">
+            <summary>
+            Logs message, but formats it to be compliant with the Logfile Analyzer.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="message">The message to log.</param>
+            <param name="logType">The type of logging. Different logging types have different icons within the editor.</param>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.Log``1(``0,System.Object[])">
+            <summary>
+            Logs multiple entries, but formats it to be compliant with the Logfile Analyzer.
+            </summary>
+            <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
+            <param name="message">The message to log.</param>
+            <param name="args">All of the arguments to embed into <paramref name="message"/>.</param>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.LogMultiple(System.String[])">
+            <summary>
+            Logs multiple entries to the console.
+            </summary>
+            <param name="logs">The array of logs to individual output into the console.</param>
+        </member>
+        <member name="M:KeepCoding.MonoRandom.Next(System.Boolean)">
             <summary>
             Returns a nonnegative random number.
             </summary>
             <returns>A 32-bit signed integer greater than or equal to zero and less than <see cref="F:System.Int32.MaxValue"/>.</returns>
+            <param name="isLogging">Determines whether it should log the result.</param>
         </member>
-        <member name="M:KeepCoding.MonoRandom.Next(System.Int32)">
+        <member name="M:KeepCoding.MonoRandom.Next(System.Int32,System.Boolean)">
             <summary>
             Returns a nonnegative random number less than the specified maximum.
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
             <param name="maxValue">The exclusive upper bound of the random number to be generated. <paramref name="maxValue" /> must be greater than or equal to zero.</param>
+            <param name="isLogging">Determines whether it should log the result.</param>
             <returns>A 32-bit signed integer greater than or equal to zero, and less than <paramref name="maxValue" />; that is, the range of return values ordinarily includes zero but not <paramref name="maxValue" />. However, if <paramref name="maxValue" /> equals zero, <paramref name="maxValue" /> is returned.</returns>
         </member>
-        <member name="M:KeepCoding.MonoRandom.Next(System.Int32,System.Int32)">
+        <member name="M:KeepCoding.MonoRandom.Next(System.Int32,System.Int32,System.Boolean)">
             <summary>
             Returns a random number within a specified range.
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
             <param name="minValue">The inclusive lower bound of the random number returned.</param>
             <param name="maxValue">The exclusive upper bound of the random number returned. <paramref name="maxValue" /> must be greater than or equal to <paramref name="minValue" />.</param>
+            <param name="isLogging">Determines whether it should log the result.</param>
             <returns>A 32-bit signed integer greater than or equal to <paramref name="minValue" /> and less than <paramref name="maxValue" />; that is, the range of return values includes <paramref name="minValue" /> but not <paramref name="maxValue" />. If <paramref name="minValue" /> equals <paramref name="maxValue" />, <paramref name="minValue" /> is returned.</returns>
         </member>
-        <member name="M:KeepCoding.MonoRandom.NextDouble">
+        <member name="M:KeepCoding.MonoRandom.NextDouble(System.Boolean)">
             <summary>
             Returns a random number between 0.0 and 1.0.
             </summary>
+            <param name="isLogging">Determines whether it should log the result.</param>
             <returns>A double-precision floating point number greater than or equal to 0.0, and less than 1.0.</returns>
         </member>
-        <member name="M:KeepCoding.MonoRandom.Sample">
+        <member name="M:KeepCoding.MonoRandom.Sample(System.Boolean)">
             <summary>
             Returns a random number between 0.0 and 1.0.
             </summary>
+            <param name="isLogging">Determines whether it should log the result.</param>
             <returns>A double-precision floating point number greater than or equal to 0.0, and less than 1.0.</returns>
         </member>
-        <member name="M:KeepCoding.MonoRandom.Shuffle``1(``0)">
+        <member name="M:KeepCoding.MonoRandom.Shuffle``1(``0,System.Boolean)">
             <summary>
             Shuffles a list using an in-place algorithm; the original list is modified.
             </summary>
             <typeparam name="T">The type of list to shuffle.</typeparam>
             <param name="list">The list to shuffle.</param>
+            <param name="isLogging">Determines whether it should log the result.</param>
             <returns><paramref name="list"/> shuffled using Fisher-Yates shuffle.</returns>
         </member>
         <member name="T:KeepCoding.Tuple`1">
@@ -8137,11 +8222,24 @@
             <param name="obj">The comparison.</param>
             <returns>Whether both objects are equal.</returns>
         </member>
+        <member name="M:KeepCoding.Logger.Equals(KeepCoding.Logger)">
+            <summary>
+            Determines if both <see cref="T:KeepCoding.Logger"/> instances are equal.
+            </summary>
+            <param name="loggable">The comparison.</param>
+            <returns>Whether both <see cref="T:KeepCoding.Logger"/>s are equal.</returns>
+        </member>
         <member name="M:KeepCoding.Logger.GetHashCode">
             <summary>
             Gets the hash code of the object.
             </summary>
             <returns>The hash code.</returns>
+        </member>
+        <member name="M:KeepCoding.Logger.ToString">
+            <summary>
+            A string representation of this <see cref="T:KeepCoding.Logger"/> instance.
+            </summary>
+            <returns>The format of the logging.</returns>
         </member>
         <member name="T:KeepCoding.ModInfo">
             <summary>
@@ -8221,14 +8319,14 @@
             <summary>
             Encapsulates either a modded solvable or modded needy module by using <see cref="M:KeepCoding.CacheableBehaviour.Get``1(System.Boolean)"/>. An exception is thrown if <see cref="T:KMBombModule"/> and <see cref="T:KMNeedyModule"/> are both <see langword="null"/> or both not <see langword="null"/>.
             </summary>
-            <exception cref="T:KeepCoding.Internal.ConstructorArgumentException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
             <param name="behaviour">The component to get the module from.</param>
         </member>
         <member name="M:KeepCoding.ModuleContainer.#ctor(UnityEngine.Component)">
             <summary>
             Encapsulates either a modded solvable or modded needy module by using <see cref="M:UnityEngine.Component.GetComponent``1"/>. An exception is thrown if <see cref="T:KMBombModule"/> and <see cref="T:KMNeedyModule"/> are both <see langword="null"/> or both not <see langword="null"/>.
             </summary>
-            <exception cref="T:KeepCoding.Internal.ConstructorArgumentException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
             <param name="component">The component to get the module from.</param>
         </member>
         <member name="M:KeepCoding.ModuleContainer.#ctor(KMBombModule)">
@@ -8247,7 +8345,7 @@
             <summary>
             Encapsulates either a modded solvable or modded needy module. An exception is thrown if <see cref="T:KMBombModule"/> and <see cref="T:KMNeedyModule"/> are both <see langword="null"/> or both not <see langword="null"/>.
             </summary>
-            <exception cref="T:KeepCoding.Internal.ConstructorArgumentException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
             <param name="solvable">The instance of a normal module.</param>
             <param name="needy">The instance of a needy module.</param>
         </member>
@@ -8307,6 +8405,20 @@
         <member name="P:KeepCoding.ModuleContainer.NeedyStartingTime">
             <summary>
             Needy Only: The amount of time on the needy timer whenever this module is activated.
+            </summary>
+            <exception cref="T:System.MissingMethodException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.NeedyMinResetInterval">
+            <summary>
+            Needy Only: The minimum delay for the needy to activate.
+            </summary>
+            <exception cref="T:System.MissingMethodException"></exception>
+            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
+        </member>
+        <member name="P:KeepCoding.ModuleContainer.NeedyMaxResetInterval">
+            <summary>
+            Needy Only: The maximum delay for the needy to activate.
             </summary>
             <exception cref="T:System.MissingMethodException"></exception>
             <exception cref="T:UnityEngine.MissingReferenceException"></exception>
@@ -8393,13 +8505,6 @@
             <exception cref="T:System.MissingMethodException"></exception>
             <exception cref="T:UnityEngine.MissingReferenceException"></exception>
             <exception cref="T:KeepCoding.Internal.ImmutableException"></exception>
-        </member>
-        <member name="P:KeepCoding.ModuleContainer.ResetDelay">
-            <summary>
-            Needy Only: The minimum and maximum delay for the needy to activate. <see cref="P:KeepCoding.Tuple`1.Item1"/> represents the minimum and <see cref="P:KeepCoding.Tuple`2.Item2"/> the maximum.
-            </summary>
-            <exception cref="T:System.MissingMethodException"></exception>
-            <exception cref="T:UnityEngine.MissingReferenceException"></exception>
         </member>
         <member name="P:KeepCoding.ModuleContainer.Solvable">
             <summary>
@@ -9074,6 +9179,13 @@
             <summary>
             Stops the <see cref="P:KeepCoding.Sound.Reference"/>'s sound.
             </summary>
+        </member>
+        <member name="M:KeepCoding.Sound.StopSounds``1(``0)">
+            <summary>
+            Stops all sounds for the entire <see cref="T:KeepCoding.Sound"/> <see cref="T:System.Array"/>.
+            </summary>
+            <typeparam name="T">The collection of sounds to stop.</typeparam>
+            <param name="sounds">The <see cref="T:KeepCoding.Sound"/> <see cref="T:System.Array"/> to mute all sounds from, using <see cref="F:KMAudio.KMAudioRef.StopSound"/>.</param>
         </member>
         <member name="M:KeepCoding.Sound.Equals(System.Object)">
             <summary>
@@ -11127,11 +11239,6 @@
         <member name="T:KeepCoding.PathManager">
             <summary>
             Allows loading external information stored on the module. Default values are returned either when run on the editor or when an <see cref="T:System.IO.IOException"/> and similar occur. The default values are specified in the remarks of each method.
-            </summary>
-        </member>
-        <member name="P:KeepCoding.PathManager.AssemblyName">
-            <summary>
-            Gets this library's <see cref="P:KeepCoding.PathManager.AssemblyName"/>.
             </summary>
         </member>
         <member name="P:KeepCoding.PathManager.Version">

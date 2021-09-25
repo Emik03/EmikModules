@@ -24,7 +24,7 @@ public class NetheriteTPScript : TPScript<NetheriteScript>
 
     public override IEnumerator ForceSolve()
     {
-        int[] answer = Module.Sequence.Select(i => i = Module.ApplyRules(i - 1) - 1).Skip(Module.Stage).ToArray();
+        int[] answer = Module.Sequence.Select(i => Module.ApplyRules(i - 1) - 1).Skip(Module.Stage).ToArray();
         yield return OnInteractSequence(Module.Buttons, Wait, answer);
     }
 }

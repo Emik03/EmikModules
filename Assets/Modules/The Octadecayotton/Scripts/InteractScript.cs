@@ -1,9 +1,11 @@
-﻿using TheOctadecayotton;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
-using Rnd = UnityEngine.Random;
+using System.Diagnostics;
 using System.Linq;
+using TheOctadecayotton;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
+using Rnd = UnityEngine.Random;
 
 public class InteractScript : MonoBehaviour
 {

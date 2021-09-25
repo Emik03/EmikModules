@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KeepCoding;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -240,7 +241,7 @@ public class TheOctadecayottonScript : MonoBehaviour
 
                 if (times.Length == Interact.Dimension)
                 {
-                    if (Interact.startingSphere.Select((a, n) => a.Value != Interact.AnchorSphere.ElementAt(n).Value).All(b => !b))
+                    if (Interact.startingSphere.Select((a, n) => a.Value == Interact.AnchorSphere.ElementAt(n).Value).All(b => b))
                     {
                         yield return "solve";
                         yield return "awardpointsonsolve " + AwardPoints();

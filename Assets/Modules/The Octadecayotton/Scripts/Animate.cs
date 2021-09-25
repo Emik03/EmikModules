@@ -123,7 +123,7 @@ namespace TheOctadecayotton
             if (_octadecayotton.Info.GetTime() < 60)
             {
                 shortTime = true;
-                _octadecayotton.Module.HandlePass();
+                _interact.StartCoroutine(DelayedSolve());
             }
 
             yield return ExpandSpheres(-4, 1 / 128f);
@@ -133,6 +133,12 @@ namespace TheOctadecayotton
                 _octadecayotton.Module.HandlePass();
 
             yield return DestroyHypercube();
+        }
+
+        private IEnumerator DelayedSolve()
+        {
+            yield return new WaitForSecondsRealtime(1);
+            _octadecayotton.Module.HandlePass();
         }
 
         internal IEnumerator ExpandSpheres(int amp, float speed)

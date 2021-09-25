@@ -3755,7 +3755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca10a1a5ff72dc47994f75442a09337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TwitchHelpMessage: '!{0} <##> (# is a-h) | Moves piece in first character to second
+  TwitchHelpMessage: '!{0} <##> (# is a-k) | Moves piece in first character to second
     character. | Example: !{0} ab'
   TwitchManualCode: 
   TwitchAbandonModule: []
@@ -3770,7 +3770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3de649175ea8424cb9e96dfb632e992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ruleSeedId: 1
+  _editorRuleSeed: 1
   Debugger:
     _isEnabled: 1
     _length: 11
