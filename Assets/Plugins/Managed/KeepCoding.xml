@@ -2845,7 +2845,7 @@
         </member>
         <member name="T:KeepCoding.Helper">
             <summary>
-            General extension class covering both KMFramework and native datatypes.
+            General extension class.
             </summary>
         </member>
         <member name="F:KeepCoding.Helper.Alphabet">
@@ -3415,6 +3415,13 @@
             </summary>
             <param name="source">The item to get all fields and properties.</param>
             <returns>All fields and properties of <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:KeepCoding.Helper.ToModules(KMBomb)">
+            <summary>
+            Gets all modules from a given bomb. For a cached variant, use <see cref="M:KeepCoding.ModuleScript.ModulesOfBomb(KMBomb)"/>.
+            </summary>
+            <param name="bomb">The bomb to get all modules in the form of a <see cref="T:KeepCoding.ModuleContainer"/> <see cref="T:System.Collections.IEnumerable"/>.</param>
+            <returns>A collection of <see cref="T:KeepCoding.ModuleContainer"/>, including vanillas, from <paramref name="bomb"/>.</returns>
         </member>
         <member name="M:KeepCoding.Helper.AsEnumerable``1(System.Collections.Generic.IEnumerator{``0})">
             <summary>
@@ -9232,7 +9239,7 @@
         </member>
         <member name="P:KeepCoding.StringifyFormat.ArraySeparator">
             <summary>
-            Indicates how <see cref="T:KeepCoding.Internal.Tuple"/> should start with.
+            Indicates how <see cref="T:System.Collections.IEnumerator"/>s and <see cref="T:System.Collections.IEnumerable"/>s should start with.
             </summary>
         </member>
         <member name="P:KeepCoding.StringifyFormat.ArrayStart">
@@ -9252,7 +9259,7 @@
         </member>
         <member name="P:KeepCoding.StringifyFormat.DictionarySeparator">
             <summary>
-            Indicates how <see cref="T:KeepCoding.Internal.Tuple"/> should start with.
+            Indicates how <see cref="T:System.Collections.IDictionary"/> should start with.
             </summary>
         </member>
         <member name="P:KeepCoding.StringifyFormat.DictionaryStart">
@@ -9791,12 +9798,22 @@
             </summary>
             <param name="dynamicAudio">The instance of <see cref="T:KeepCoding.AudioScript"/> to retrieve <see cref="P:KeepCoding.AudioScript.AudioSource"/> from.</param>
         </member>
+        <member name="M:KeepCoding.AudioScript.Awake">
+            <summary>
+            Sets up base functionality for the audio. If you declare this method yourself, make sure to call <c>base.Awake()</c> to ensure that this component initializes correctly, or use <see cref="M:KeepCoding.AudioScript.OnAwake"/> instead.
+            </summary>
+        </member>
         <member name="M:KeepCoding.AudioScript.Fade(System.Single,System.Single)">
             <summary>
             Fades the audio source to a specific volume from a specified duration of time linearly.
             </summary>
             <param name="volume">The volume to get to.</param>
             <param name="time">The amount of time it takes to get to <paramref name="volume"/>.</param>
+        </member>
+        <member name="M:KeepCoding.AudioScript.Update">
+            <summary>
+            Updates the volume of <see cref="P:KeepCoding.AudioScript.AudioSource"/>. If you declare this method yourself, make sure to call <c>base.Update()</c> to ensure that this component retains functionality, or use <see cref="M:KeepCoding.AudioScript.OnUpdate"/> instead.
+            </summary>
         </member>
         <member name="M:KeepCoding.AudioScript.OnAwake">
             <summary>
@@ -9885,16 +9902,6 @@
         <member name="M:KeepCoding.AudioScript.Unpause">
             <summary>
             Unpauses the paused playback of this <see cref="P:KeepCoding.AudioScript.AudioSource"/>.
-            </summary>
-        </member>
-        <member name="M:KeepCoding.AudioScript.Awake">
-            <summary>
-            Sets up base functionality for the audio. If you declare this method yourself, make sure to call <c>base.Awake()</c> to ensure that this component initializes correctly, or use <see cref="M:KeepCoding.AudioScript.OnAwake"/> instead.
-            </summary>
-        </member>
-        <member name="M:KeepCoding.AudioScript.Update">
-            <summary>
-            Updates the volume of <see cref="P:KeepCoding.AudioScript.AudioSource"/>. If you declare this method yourself, make sure to call <c>base.Update()</c> to ensure that this component retains functionality, or use <see cref="M:KeepCoding.AudioScript.OnUpdate"/> instead.
             </summary>
         </member>
         <member name="T:KeepCoding.CacheableBehaviour">
@@ -10212,7 +10219,7 @@
             The bomb that this module is in.
             </summary>
             <remarks>
-            Note that this variable is not available on <see cref="M:KeepCoding.ModuleScript.Awake"/> or <see cref="M:KeepCoding.ModuleScript.OnAwake"/>. A small amount of time is needed for this property to be set.
+            Note that this variable is not available instantly. <see cref="M:KeepCoding.ModuleScript.OnActivate"/> is recommended, or a <see cref="T:UnityEngine.Coroutine"/> that waits for this value to be set.
             </remarks>
         </member>
         <member name="P:KeepCoding.ModuleScript.Sounds">
@@ -10235,7 +10242,7 @@
             Contains every module in the <see cref="T:KMBomb"/> that this module is in.
             </summary>
             <remarks>
-            This collection also includes vanilla modules, including <see cref="F:KeepCoding.ComponentPool.ComponentTypeEnum.Empty"/> components and <see cref="F:KeepCoding.ComponentPool.ComponentTypeEnum.Timer"/>. You can filter the collection with <see cref="P:KeepCoding.ModuleContainer.IsVanilla"/>, <see cref="P:KeepCoding.ModuleContainer.IsModded"/>, <see cref="P:KeepCoding.ModuleContainer.IsSolvable"/>, or <see cref="P:KeepCoding.ModuleContainer.IsNeedy"/>, <see cref="P:KeepCoding.ModuleContainer.IsEmptyOrTimer"/>, or <see cref="P:KeepCoding.ModuleContainer.IsModule"/>.
+            Note that this variable is not available instantly. <see cref="M:KeepCoding.ModuleScript.OnActivate"/> is recommended, or a <see cref="T:UnityEngine.Coroutine"/> that waits for this value to be set. A small amount of time is needed for this property to be set. This collection also includes vanilla modules, including <see cref="F:KeepCoding.ComponentPool.ComponentTypeEnum.Empty"/> components and <see cref="F:KeepCoding.ComponentPool.ComponentTypeEnum.Timer"/>. You can filter the collection with <see cref="P:KeepCoding.ModuleContainer.IsVanilla"/>, <see cref="P:KeepCoding.ModuleContainer.IsModded"/>, <see cref="P:KeepCoding.ModuleContainer.IsSolvable"/>, or <see cref="P:KeepCoding.ModuleContainer.IsNeedy"/>, <see cref="P:KeepCoding.ModuleContainer.IsEmptyOrTimer"/>, or <see cref="P:KeepCoding.ModuleContainer.IsModule"/>.
             </remarks>
         </member>
         <member name="M:KeepCoding.ModuleScript.Append(System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action{System.Single},System.Func{System.Int32},System.Func{System.Single})">
@@ -10265,6 +10272,11 @@
             <param name="needyTimerSet">Called when <see cref="M:KMNeedyModule.GetNeedyTimeRemaining"/> is called.</param>
             <param name="ruleGeneration">Called when <see cref="M:KMBombModule.GetRuleGenerationSeed"/> or <see cref="M:KMNeedyModule.GetRuleGenerationSeed"/> is called.</param>
             <param name="needyTimerGet">Called when <see cref="M:KMNeedyModule.SetNeedyTimeRemaining(System.Single)"/> is called.</param>
+        </member>
+        <member name="M:KeepCoding.ModuleScript.Awake">
+            <summary>
+            Sets up base functionality for the module. If you declare this method yourself, make sure to call <c>base.Awake()</c> to ensure that the module initializes correctly, or use <see cref="M:KeepCoding.ModuleScript.OnAwake"/> instead.
+            </summary>
         </member>
         <member name="M:KeepCoding.ModuleScript.ButtonEffect(KMSelectable,System.Single,KeepCoding.Sound[])">
             <summary>
@@ -10389,13 +10401,6 @@
             <param name="key">The key of the variable, a lot like a variable name.</param>
             <param name="value">The value to store in the key.</param>
         </member>
-        <member name="M:KeepCoding.ModuleScript.GetIgnoredModules(System.String)">
-            <summary>
-            Retrieves the ignore list from the Boss Module Manager mod used primarily by boss modules.
-            </summary>
-            <param name="moduleName">The name of the module to retrieve from.</param>
-            <returns>If successful, the boss module's ignore list, otherwise a new empty string array.</returns>
-        </member>
         <member name="M:KeepCoding.ModuleScript.PlaySound(UnityEngine.Transform,System.Boolean,KeepCoding.Sound[])">
             <summary>
             Plays a sound. Requires <see cref="T:KMAudio"/> to be assigned.
@@ -10403,7 +10408,6 @@
             <exception cref="T:KeepCoding.Internal.EmptyIteratorException"></exception>
             <exception cref="T:System.InvalidOperationException"></exception>
             <exception cref="T:UnityEngine.MissingComponentException"></exception>
-            <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
             <exception cref="T:KeepCoding.Internal.UnrecognizedValueException"></exception>
             <param name="transform">The location or sound source of the sound.</param>
             <param name="loop">Whether all sounds listed should loop or not.</param>
@@ -10460,11 +10464,6 @@
             <param name="key">The key of the variable, a lot like a variable name.</param>
             <param name="allowDefault">Whether it should throw an exception if no value is found, or provide the default value instead.</param>
             <returns>Every instance of the value from the every instance of the module specified.</returns>
-        </member>
-        <member name="M:KeepCoding.ModuleScript.Awake">
-            <summary>
-            Sets up base functionality for the module. If you declare this method yourself, make sure to call <c>base.Awake()</c> to ensure that the module initializes correctly, or use <see cref="M:KeepCoding.ModuleScript.OnAwake"/> instead.
-            </summary>
         </member>
         <member name="M:KeepCoding.ModuleScript.OnDestroy">
             <summary>
@@ -10720,6 +10719,28 @@
             <param name="otherwise">The output to return if <paramref name="condition"/> is false.</param>
             <returns><paramref name="then"/> or <paramref name="otherwise"/>, depending on <paramref name="condition"/>.</returns>
         </member>
+        <member name="M:KeepCoding.TPScript`1.UntilSolve">
+            <summary>
+            You can <see langword="yield"/> <see langword="return"/> this to repeatedly <see langword="yield"/> <see langword="return"/> <see langword="true"/> until the module is solved.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KeepCoding.TPScript`1.YieldWhile``1(``0,System.Func{System.Boolean})">
+            <summary>
+            You can <see langword="yield"/> <see langword="return"/> this to repeatedly <see langword="yield"/> <see langword="return"/> an item until a condition is no longer met.
+            </summary>
+            <param name="item">The item to yield repeatedly.</param>
+            <param name="condition">The condition to repeatedly check until it returns <see langword="false"/>.</param>
+            <returns><paramref name="item"/> continously until <paramref name="condition"/> is <see langword="false"/></returns>
+        </member>
+        <member name="M:KeepCoding.TPScript`1.YieldUntil``1(``0,System.Func{System.Boolean})">
+            <summary>
+            You can <see langword="yield"/> <see langword="return"/> this to repeatedly <see langword="yield"/> <see langword="return"/> an item until a condition is met.
+            </summary>
+            <param name="item">The item to yield repeatedly.</param>
+            <param name="condition">The condition to repeatedly check until it returns <see langword="false"/>.</param>
+            <returns><paramref name="item"/> continously until <paramref name="condition"/> is <see langword="true"/></returns>
+        </member>
         <member name="M:KeepCoding.TPScript`1.OnInteractSequence(KMSelectable[],System.Single)">
             <summary>
             Presses a sequence of buttons in order of <paramref name="selectables"/>, waiting <paramref name="wait"/> seconds in-between each, and interrupting as soon as <see cref="P:KeepCoding.ModuleScript.HasStruck"/> is <see langword="true"/>.
@@ -10739,7 +10760,7 @@
         </member>
         <member name="M:KeepCoding.TPScript`1.ProcessTwitchCommand(System.String)">
             <summary>
-            This method gets grabbed by Twitch Plays. It grabs <see cref="M:KeepCoding.TPScript`1.Process(System.String)"/> and flattens it using <see cref="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Collections.IEnumerator})"/>.
+            This method gets grabbed by Twitch Plays. It grabs <see cref="M:KeepCoding.TPScript`1.Process(System.String)"/> and flattens it using <see cref="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Collections.IEnumerator})"/>, and auto-implements the colorblind command if supported.
             </summary>
             <param name="command">The command of the user.</param>
             <returns>A list of instructions for Twitch Plays.</returns>
@@ -10750,21 +10771,25 @@
             </summary>
             <returns>A list of instructions for Twitch Plays.</returns>
         </member>
-        <member name="M:KeepCoding.TPScript`1.YieldWhile``1(``0,System.Func{System.Boolean})">
+        <member name="T:KeepCoding.External">
             <summary>
-            You can <see langword="yield"/> <see langword="return"/> this to repeatedly <see langword="yield"/> <see langword="return"/> an item until a condition is no longer met.
+            Provides methods to retrieve information from other external mods.
             </summary>
-            <param name="item">The item to yield repeatedly.</param>
-            <param name="condition">The condition to repeatedly check until it returns <see langword="false"/>.</param>
-            <returns><paramref name="item"/> continously until <paramref name="condition"/> is <see langword="false"/></returns>
         </member>
-        <member name="M:KeepCoding.TPScript`1.YieldUntil``1(``0,System.Func{System.Boolean})">
+        <member name="M:KeepCoding.External.GetRuleSeedId(KeepCoding.ModuleContainer,System.Int32)">
             <summary>
-            You can <see langword="yield"/> <see langword="return"/> this to repeatedly <see langword="yield"/> <see langword="return"/> an item until a condition is met.
+            Gets the rule seed number, or a default value.
             </summary>
-            <param name="item">The item to yield repeatedly.</param>
-            <param name="condition">The condition to repeatedly check until it returns <see langword="false"/>.</param>
-            <returns><paramref name="item"/> continously until <paramref name="condition"/> is <see langword="true"/></returns>
+            <param name="module">The module to retrieve the id from.</param>
+            <param name="editorValue">The value to <see langword="return"/> if played on the Unity Editor.</param>
+            <returns>If successful, the rule seed's number that is used as the seed in <see cref="T:KeepCoding.MonoRandom"/>. The default value is 1, or <paramref name="editorValue"/> if played in the Unity Editor.</returns>
+        </member>
+        <member name="M:KeepCoding.External.GetIgnoredModules(KeepCoding.ModuleContainer)">
+            <summary>
+            Retrieves the ignore list from the Boss Module Manager mod used primarily by boss modules.
+            </summary>
+            <param name="module">The module to retrieve the name from.</param>
+            <returns>If successful, the boss module's ignore list, otherwise a new empty string array.</returns>
         </member>
         <member name="T:KeepCoding.Game">
             <summary>

@@ -46,6 +46,9 @@ public class OneDimensionalChessTPScript : TPScript<OneDimensionalChessScript>
         if (Module.last.HasValue)
             Module.Buttons[Module.last.Value].OnInteract();
 
+        if (!Module.isWinning)
+            yield return Module.GetGoodPosition();
+
         while (!Module.IsSolved)
         {
             var game = new CGameResult { };
@@ -53,9 +56,7 @@ public class OneDimensionalChessTPScript : TPScript<OneDimensionalChessScript>
             bool isReady = false;
 
             while (!Module.isReady)
-            {
                 yield return true;
-            }
 
             new Thread(() =>
             {
@@ -68,10 +69,14 @@ public class OneDimensionalChessTPScript : TPScript<OneDimensionalChessScript>
 
             int[] indices = new[] { (int)game.Origin, game.Destination };
 
-            if (indices.Any(i => i == -1))
+            // Prevents invalid moves from being played in case if the library returns it.
+            if (indices.Any(i => i == -1) || indices.Distinct().Count() == 1)
+            {
                 Module.Solve("The autosolver seemed to trip up a bit there. Force-solving now.");
-            else
-                yield return OnInteractSequence(Module.Buttons, 1 / 64f, indices);
+                yield break;
+            }
+
+            yield return OnInteractSequence(Module.Buttons, 1 / 64f, indices);
         }
     }
 }

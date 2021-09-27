@@ -266,7 +266,7 @@ public class OneDimensionalChessScript : ModuleScript
         RenderPosition(position);
     }
 
-    private IEnumerator GetGoodPosition()
+    internal IEnumerator GetGoodPosition()
     {
         isWinning = true;
         isReady = false;
