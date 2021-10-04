@@ -3580,12 +3580,12 @@
             <exception cref="T:System.NullReferenceException"></exception>
             <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> that contains merged elements of two input sequences.</returns>
         </member>
-        <member name="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Collections.IEnumerator})">
+        <member name="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Object})">
             <summary>
             Flattens an <see cref="T:System.Collections.IEnumerator"/> such that nested <see cref="T:System.Collections.IEnumerator"/> calls get replaced with the output of those calls.
             </summary>
             <param name="source">The <see cref="T:System.Collections.IEnumerator"/> to flatten.</param>
-            <param name="except">If <see langword="false"/>, <see cref="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Collections.IEnumerator})"/> gets called recursively and each item from that output gets returned individually, otherwise the item is simply returned.</param>
+            <param name="except">If <see langword="false"/>, <see cref="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Object})"/> gets called recursively and each item from that output gets returned individually, otherwise the item is simply returned.</param>
             <returns><paramref name="source"/> where <see langword="yield"/> <see langword="return"/> <see cref="T:System.Collections.IEnumerator"/>s gets replaced with the output of those calls.</returns>
         </member>
         <member name="M:KeepCoding.Helper.GetUnsolvedModuleIDs(KMBombInfo)">
@@ -3649,7 +3649,7 @@
         </member>
         <member name="M:KeepCoding.Helper.Assert``1(``0,System.String)">
             <summary>
-            Throws an <see cref="T:KeepCoding.Internal.AssertionException"/> if the argument passed in is <see langword="null"/>
+            Throws an <see cref="T:KeepCoding.Internal.AssertionException"/> if the argument passed in is <see langword="null"/>.
             </summary>
             <typeparam name="T">The type of the item to assert for non-nullability.</typeparam>
             <param name="item">The item to use a <see langword="null"/> check on.</param>
@@ -7071,20 +7071,26 @@
         </member>
         <member name="M:KeepCoding.ModConfig`1.#ctor">
             <summary>
-            Creates a new <see cref="T:KeepCoding.ModConfig`1"/> with the target file name and an optional event of when the file is read.
+            Creates a new <see cref="T:KeepCoding.ModConfig`1"/> with the target file name and an optional event of when the file is read. A file will automatically be made if it doesn't exist. A JSON property defined in the type <typeparamref name="TSerialize"/> that isn't in the file will automatically write to the file with said property.
             </summary>
+            <remarks>
+            In the editor, the constructor will not merge the default values of the type with the file.
+            </remarks>
             <exception cref="T:KeepCoding.Internal.ConstructorArgumentException"></exception>
         </member>
         <member name="M:KeepCoding.ModConfig`1.#ctor(System.String)">
             <summary>
-            Creates a new <see cref="T:KeepCoding.ModConfig`1"/> with the target file name and an optional event of when the file is read.
+            Creates a new <see cref="T:KeepCoding.ModConfig`1"/> with the target file name and an optional event of when the file is read. A file will automatically be made if it doesn't exist. A JSON property defined in the type <typeparamref name="TSerialize"/> that isn't in the file will automatically write to the file with said property.
             </summary>
+            <remarks>
+            In the editor, the constructor will not merge the default values of the type with the file.
+            </remarks>
             <exception cref="T:KeepCoding.Internal.ConstructorArgumentException"></exception>
             <param name="fileName">The file name to get.</param>
         </member>
         <member name="P:KeepCoding.ModConfig`1.HasReadSucceeded">
             <summary>
-            Whether or not there has been a successful read of the settings file.
+            Whether or not there has been a successful read of the settings file. This value will always be false in the editor.
             </summary>
         </member>
         <member name="M:KeepCoding.ModConfig`1.Log``1(``0,UnityEngine.LogType)">
@@ -7113,6 +7119,9 @@
             <summary>
             Reads, merges, and writes the settings to the settings file. To protect the user settings, this does nothing if the read isn't successful.
             </summary>
+            <remarks>
+            In the editor, this method does nothing.
+            </remarks>
             <exception cref="T:System.NullReferenceException"></exception>
             <param name="value">The value to merge the file with.</param>
             <param name="isDiscarding">Determines whether it should remove values from the original file that isn't contained within the type, or has the incorrect type.</param>
@@ -7121,6 +7130,9 @@
             <summary>
             Writes the settings to the settings file. To protect the user settings, this does nothing if the last read wasn't successful.
             </summary>
+            <remarks>
+            In the editor, this method does nothing.
+            </remarks>
             <exception cref="T:System.NullReferenceException"></exception>
             <param name="value">The value to overwrite the settings file with.</param>
         </member>
@@ -7128,6 +7140,9 @@
             <summary>
             Writes the string to the settings file. To protect the user settings, this does nothing if the last read wasn't successful.
             </summary>
+            <remarks>
+            In the editor, this method does nothing.
+            </remarks>
             <exception cref="T:KeepCoding.Internal.NullIteratorException"></exception>
             <param name="value">The contents to write.</param>
         </member>
@@ -7141,12 +7156,18 @@
             <summary>
             Deserializes, then reserializes the file according to <see cref="M:KeepCoding.ModConfig`1.SerializeSettings(`0)"/>.
             </summary>
+            <remarks>
+            In the editor, this method serializes the default value of the constructor in <typeparamref name="TSerialize"/>.
+            </remarks>
             <returns>A string representation of the value from <see cref="M:KeepCoding.ModConfig`1.Read"/>.</returns>
         </member>
         <member name="M:KeepCoding.ModConfig`1.Read">
             <summary>
             Reads the settings from the settings file. If the settings couldn't be read, the default settings will be returned.
             </summary>
+            <remarks>
+            In the editor, this method returns the default value of the constructor in <typeparamref name="TSerialize"/>.
+            </remarks>
         </member>
         <member name="T:KeepCoding.MonoRandom">
             <summary>
@@ -10351,6 +10372,15 @@
             Called when the module destroys itself, after the bomb unloads.
             </summary>
         </member>
+        <member name="M:KeepCoding.ModuleScript.OnException(System.String)">
+            <summary>
+            Called when an unhandled exception relating to this module has been thrown.
+            </summary>
+            <remarks>
+            Unlike other virtual methods, this one has implementation. You may choose to invoke <c>base.OnException()</c> if you want the module to automatically log and solve.
+            </remarks>
+            <param name="message">The message of the exception.</param>
+        </member>
         <member name="M:KeepCoding.ModuleScript.OnModuleStrike(KeepCoding.ModuleContainer)">
             <summary>
             Called when any module on the current bomb has issued a strike.
@@ -10760,14 +10790,14 @@
         </member>
         <member name="M:KeepCoding.TPScript`1.ProcessTwitchCommand(System.String)">
             <summary>
-            This method gets grabbed by Twitch Plays. It grabs <see cref="M:KeepCoding.TPScript`1.Process(System.String)"/> and flattens it using <see cref="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Collections.IEnumerator})"/>, and auto-implements the colorblind command if supported.
+            This method gets grabbed by Twitch Plays. It grabs <see cref="M:KeepCoding.TPScript`1.Process(System.String)"/> and flattens it using <see cref="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Object})"/>, and auto-implements the colorblind command if supported.
             </summary>
             <param name="command">The command of the user.</param>
             <returns>A list of instructions for Twitch Plays.</returns>
         </member>
         <member name="M:KeepCoding.TPScript`1.TwitchHandleForcedSolve">
             <summary>
-            This method gets grabbed by Twitch Plays. It grabs <see cref="M:KeepCoding.TPScript`1.ForceSolve"/> and flattens it using <see cref="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Collections.IEnumerator})"/>.
+            This method gets grabbed by Twitch Plays. It grabs <see cref="M:KeepCoding.TPScript`1.ForceSolve"/> and flattens it using <see cref="M:KeepCoding.Helper.Flatten(System.Collections.IEnumerator,System.Predicate{System.Object})"/>.
             </summary>
             <returns>A list of instructions for Twitch Plays.</returns>
         </member>
