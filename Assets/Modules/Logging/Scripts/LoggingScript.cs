@@ -43,7 +43,14 @@ public class LoggingScript : ModuleScript
             .Where(m => m.IsSolvable)
             .ToArray();
 
-        solvable.ForEach(m => m.Solve.Add(() => Log("Solve ({0}/{1}): {2}.", ++_solves, solvable.Length, m.Name)));
+        solvable.ForEach(m =>
+        {
+            Action action = () => Log("Solve ({0}/{1}): {2}.", ++_solves, solvable.Length, m.Name);
+
+            action += () => m.Solve.Remove(action);
+
+            m.Solve.Add(action);
+        });
 
         Modules.ForEach(m => m.Strike.Add(() => Log("Strike: {0}.", m.Name)));
 
