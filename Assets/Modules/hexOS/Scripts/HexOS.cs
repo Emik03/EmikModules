@@ -503,7 +503,7 @@ public class HexOS : MonoBehaviour
         // The exact amount of seconds for the audio clip to go quiet is 10.122 seconds.
         yield return new WaitForSecondsRealtime(10.122f);
 
-        Debug.LogFormat("[hexOS #{0}]: The correct number for octOS was submitted, module solved! +36 additional points!", _moduleId);
+        Debug.LogFormat("[hexOS #{0}]: The correct number for octOS was submitted, module solved! +41 additional points!", _moduleId);
         isSolved = true;
         Module.HandlePass();
 
