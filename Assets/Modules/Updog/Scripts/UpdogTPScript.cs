@@ -24,10 +24,7 @@ public class UpdogTPScript : TPScript<UpdogScript>
             yield return SendToChatError("All arguments must end with \"L\" for Left, \"D\" for Down, \"U\" for Up, or \"R\" for Right.");
 
         else
-        {
-            yield return null;
             yield return PushButtons(split, validFirst, validSecond);
-        }
     }
 
     public override IEnumerator ForceSolve()
@@ -61,7 +58,7 @@ public class UpdogTPScript : TPScript<UpdogScript>
         foreach (string str in strs)
         {
             // If the module has struck, the command should interupt to prevent further strikes.
-            if (Module.isStrike) 
+            if (Module.HasStruck) 
                 break;
 
             // Specifies dog/normal.
@@ -78,6 +75,6 @@ public class UpdogTPScript : TPScript<UpdogScript>
             yield return new WaitForSecondsRealtime(0.2f);
         }
 
-        Module.isStrike = false;
+        Module.HasStruck = false;
     }
 }

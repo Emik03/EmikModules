@@ -7,13 +7,14 @@ using KeepCoding;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-public class TemplateScript : ModuleScript, IAwake, IStartCoroutine
+public class TemplateScript : ModuleScript
 {
-    private readonly Dictionary<GameObject, object> _dictionary = new Dictionary<GameObject, object>();
+    [SerializeField]
+    private TextMesh _textMesh;
 
-    public IEnumerator Start()
+    public void Start()
     {
-        yield return new WaitWhile(() => Modules == null);
+        Debug.Log(_textMesh.text = "Example Example Text");
     }
 }
 

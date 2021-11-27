@@ -381,6 +381,7 @@ public class Sorting : MonoBehaviour
             Audio.PlaySoundAtTransform(SFX.Srt.Strike, Module.transform);
             Module.HandleStrike();
             _doAction = false;
+            _bogoSort = false;
 
             background.GetComponent<MeshRenderer>().material.color = _strikeBackgroundColor;
 

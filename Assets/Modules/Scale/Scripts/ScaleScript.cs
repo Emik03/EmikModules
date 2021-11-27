@@ -126,7 +126,7 @@ public class ScaleScript : ModuleScript
                 CubeLength,
                 Dimension);
 
-            _cubes.Call((r, i) =>
+            _cubes.ForEach((r, i) =>
             {
                 float[] scale = scales[_cubes.IndexOf(c => c == r)];
 

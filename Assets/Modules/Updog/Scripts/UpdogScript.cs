@@ -16,8 +16,6 @@ public class UpdogScript : ModuleScript
     internal bool[] ValidMoves { get { return _maze.GetValidMovements(ref _position); } }
     internal int OrderOffset { get { return _order[_interactCount % 4] ? 4 : 0; } }
 
-    internal bool isStrike;
-
     private IntTuple _position, _initialPosition;
     private String[] _maze, _initialMaze;
 
@@ -125,7 +123,6 @@ public class UpdogScript : ModuleScript
         _position = _initialPosition;
 
         _initialMaze.Copy(_maze);
-        isStrike = true;
 
         Strike(message);
     }
