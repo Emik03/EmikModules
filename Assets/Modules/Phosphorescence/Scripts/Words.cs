@@ -197,7 +197,7 @@ namespace PhosphorescenceModule
             Debug.LogWarningFormat("The smallest length of a given index is: {0}", GetShortestLength());
             Debug.LogWarningFormat("The longest length of a given index is: {0}", GetLongestLength());
 
-            Debug.LogWarningFormat("The indexes that don't meet the required {0} length are: {1}", MinAcceptableWordSet, ValidWords.Where(a => a.Length < MinAcceptableWordSet).Select(a => Array.IndexOf(ValidWords, a)).Join(", "));
+            Debug.LogWarningFormat("The indices that don't meet the required {0} length are: {1}", MinAcceptableWordSet, ValidWords.Where(a => a.Length < MinAcceptableWordSet).Select(a => Array.IndexOf(ValidWords, a)).Join(", "));
 
             Debug.LogWarningFormat("The amount of distinct to total words are: {0}/{1}.", GetCount(distinct: true), GetCount(distinct: false));
             Debug.LogWarningFormat("The words that are completely unique are: {0}.", ValidDistinctWords.GroupBy(x => x).Where(g => g.Count() == 1).Select(y => y.Key).Join(", "));
