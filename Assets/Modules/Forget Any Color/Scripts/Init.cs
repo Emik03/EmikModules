@@ -1,5 +1,7 @@
-﻿using System;
+﻿using KeepCoding;
+using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace ForgetAnyColor
@@ -48,7 +50,7 @@ namespace ForgetAnyColor
                 finalStage = Math.Min(FAC.Info.GetSolvableModuleNames().Where(m => !Arrays.Ignore.Contains(m)).Count(), ushort.MaxValue);
 
             // Reset the static variable in case it got changed.
-            modulesPerStage = Math.Min((int)Math.Ceiling((double)finalStage / 4), 4);
+            modulesPerStage = GetModulesPerStageCount();
 
             // In the event there are no other solvable modules, this prevents a division by zero exception.
             if (modulesPerStage == 0)
@@ -87,6 +89,19 @@ namespace ForgetAnyColor
 
             // Automatically start a new stage.
             coroutine.StartNewStage();
+        }
+
+        private int GetModulesPerStageCount()
+        {
+            string description = Game.Mission.Description;
+
+            var match = description == null ? null : Regex.Match(description, @"\[Forget Any Color\] \d");
+
+            byte result;
+
+            return match != null && match.Success && byte.TryParse(match.Value.Replace("[Forget Any Color] ", ""), out result) && result != 0
+                ? result
+                : Math.Min((int)Math.Ceiling((double)finalStage / 4), 4);
         }
 
         private static Rule[][] GenerateRules(MonoRandom rnd, ref FACScript FAC)

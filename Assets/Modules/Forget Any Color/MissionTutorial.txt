@@ -1,0 +1,21 @@
+Forget Any Color scans through the description of the mission.
+
+It will scan for the following pattern, which can exist anywhere in the description: 
+
+[Forget Any Color] #
+where # is a number from 1-9
+
+This number represents the number of solves required to enter the next stage.
+
+
+
+Example:
+
+This is your typical mod description.
+More flavor text.
+Lorem ipsum.
+[Forget Any Color] 2
+
+To test if your formatting is correct, use this website: https://regexr.com/
+Set expression to \[Forget Any Color\] \d
+Set the text to be your mission description.
