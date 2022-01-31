@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
+using KeepCoding;
+using NUnit.Framework;
 using UnityEngine;
 // ReSharper disable UnusedMember.Global
 
@@ -224,6 +228,31 @@ public static class GeneralExtensions
             }
         }
         return list;
+    }
+
+    /// <summary>
+    /// Brings the elements of the given list into a random order.
+    /// </summary>
+    /// <typeparam name="T">Type of elements in the list.</typeparam>
+    /// <param name="list">List to shuffle.</param>
+    /// <returns>The list operated on.</returns>
+    public static T Shuffle<T>(this T list, Func<int, int, int> selector) where T : IList<T>, new()
+    {
+        if (list == null)
+            throw new ArgumentNullException("list");
+
+        if (selector == null)
+            throw new ArgumentNullException("selector");
+
+        var result = new T();
+
+        if (result.IsReadOnly)
+            throw new InvalidOperationException("Cannot shuffle a read-only collection.");
+
+        for (int i = 0; i < list.Count; i++)
+            result.Insert(selector(0, i + 1), list[i]);
+
+        return result;
     }
 
     /// <summary>

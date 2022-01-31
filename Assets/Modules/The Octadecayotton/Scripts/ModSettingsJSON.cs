@@ -92,6 +92,9 @@ namespace TheOctadecayotton
         {
             string description = Game.Mission.Description;
 
+            if (Game.Mission.ID == "mod_pantheonPack_pantheonCalculation")
+                description = "[The Octadecayotton] 9,3,8,0,0,0,0";
+
             if (description == null)
                 return true;
 

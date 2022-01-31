@@ -530,10 +530,10 @@ namespace ReformedRoleReversalModule
 
             int[] revertedWires = Algorithms.RevertLookup(wires, ref lookup);
 
-            string method = parameter < 5 ? "lastInstanceOfPurple" : "lastInstanceOfBlue";
+            string method = parameter < 5 ? "lastInstanceOfBlue" : "lastInstanceOfPurple";
 
             if (revertedWires.Sum() % divisible == 0)
-                condition.Wire = Algorithms.Find(method: method, key: ref parameter, wires: revertedWires);
+                condition.Wire = Algorithms.Find(method: method, key: ref parameter, wires: wires);
 
             return condition;
         }
