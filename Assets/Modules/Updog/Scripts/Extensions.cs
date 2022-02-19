@@ -22,9 +22,9 @@ namespace Updog
             return (i - 1) / 2; 
         }
 
-        internal static void Copy<T>(this T[] source, T[] destination)
-        { 
-            Array.Copy(source, destination, source.Length); 
+        internal static void Copy(this String[] source, String[] destination)
+        {
+            Array.Copy(source.Select(s => new String(s.ToString())).ToArray(), destination, source.Length); 
         }
 
         internal static bool IsSolved(this String[] strings)
