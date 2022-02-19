@@ -55,6 +55,8 @@ public class UpdogTPScript : TPScript<UpdogScript>
 
     private IEnumerator PushButtons(string[] strs, string validFirst, string validSecond)
     {
+        Module.HasStruck = false;
+
         foreach (string str in strs)
         {
             // If the module has struck, the command should interupt to prevent further strikes.
