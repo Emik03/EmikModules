@@ -49,17 +49,11 @@ public class QuaverTPScript : MonoBehaviour
         {
             yield return null;
 
-            if (!Quaver.init.ready)
-                yield return "sendtochaterror The module isn't in submission mode!";
-
-            else if ((split.Length != 2 && !Quaver.init.select.perColumn) || (split.Length != 5 && Quaver.init.select.perColumn))
-                yield return "sendtochaterror Incorrect amount of values!";
-
-            else if (!IsSubmitValid(split))
-                yield return "sendtochaterror At least one value is invalid!";
-
-            else
-                yield return Input(split);
+            yield return !Quaver.init.ready
+                ? "sendtochaterror The module isn't in submission mode!"
+                : split.Length != 2 && !Quaver.init.select.perColumn || split.Length != 5 && Quaver.init.select.perColumn
+                ? "sendtochaterror Incorrect amount of values!"
+                : !IsSubmitValid(split) ? "sendtochaterror At least one value is invalid!" : (object)Input(split);
         }
         else if (Regex.IsMatch(split[0], @"^\s*start\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
         {
@@ -76,7 +70,7 @@ public class QuaverTPScript : MonoBehaviour
             else if (split.Length > 2)
                 yield return "sendtochaterror Too many parameters!";
 
-            else if (split.Length == 2 && !int.TryParse(split[1], out scrollSpeed) && (scrollSpeed == 0 || (scrollSpeed >= 10 && scrollSpeed <= 30)))
+            else if (split.Length == 2 && (!int.TryParse(split[1], out scrollSpeed) || scrollSpeed == 0 || scrollSpeed >= 10 && scrollSpeed <= 30))
                 yield return "sendtochaterror Parameter specified is invalid! Scroll speed's range is 10-30.";
 
             else

@@ -47,6 +47,9 @@ namespace Logging
             if (!pair.HasValue)
                 return null;
 
+            if (pair.Value.Value.Length <= LineLength)
+                return new KeyValuePair<string, List<string>>(pair.Value.Key, pair.Value.Value.Yield().ToList());
+
             var format = new StringBuilder(pair.Value.Value);
 
             int lowerBound = 0;
@@ -56,11 +59,11 @@ namespace Logging
                 if (lowerBound >= i)
                 {
                     lowerBound += LineLength;
-                    format.Insert(lowerBound, "\n");
                     i = lowerBound + LineLength;
+                    continue;
                 }
 
-                else if (char.IsWhiteSpace(pair.Value.Value[i]))
+                if (char.IsWhiteSpace(pair.Value.Value[i]))
                 {
                     format[i] = '\n';
 
