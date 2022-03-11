@@ -54,21 +54,22 @@ namespace Logging
 
             int lowerBound = 0;
 
-            for (int i = LineLength; i < pair.Value.Value.Length; i--)
+            for (int i = LineLength; i < format.Length; i--)
             {
                 if (lowerBound >= i)
                 {
                     lowerBound += LineLength;
+                    format.Insert(lowerBound, '\n');
                     i = lowerBound + LineLength;
                     continue;
                 }
 
-                if (char.IsWhiteSpace(pair.Value.Value[i]))
+                if (char.IsWhiteSpace(format[i]))
                 {
                     format[i] = '\n';
 
                     lowerBound = i + 1;
-                    i += LineLength;
+                    i += LineLength + 1;
                 }
             }
 
