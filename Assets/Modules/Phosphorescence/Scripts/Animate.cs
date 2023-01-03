@@ -56,7 +56,7 @@ namespace PhosphorescenceModule
             string[] answers = _select.buttons.GetAllAnswers(_init.solution, _init.index);
 
             // I really don't want answers to contain this anywhere.
-            if (answers.Contains("FAG") || answers.Contains("NIG"))
+            if (answers.Contains("FAG") || answers.Contains("NIG") || answers.Contains("RAP"))
                 goto restart;
 
             // Log the current answer.

@@ -258,7 +258,10 @@ public class PointlessMachinesScript : ModuleScript
     {
         PlaySound(SFX.Pm.Solve);
 
-        8.For(_ => Instantiate(Light, LightParent, false).GetComponent<LightScript>().enabled = true);
+        8.For(_ =>
+        {
+            Instantiate(Light, LightParent, false).GetComponent<LightScript>().enabled = false;
+        });
 
         Get<AudioScript>().Fade(volume: 0, time: 0.3f);
 

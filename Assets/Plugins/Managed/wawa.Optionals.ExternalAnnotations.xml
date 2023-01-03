@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assembly name="wawa.Optionals">
+  <member name="P:Wawa.Optionals.Maybe`1.Value">
+    <attribute ctor="M:JetBrains.Annotations.ProvidesContextAttribute.#ctor" />
+  </member>
+</assembly>

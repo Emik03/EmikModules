@@ -6,12 +6,12 @@ public class LightScript : CacheableBehaviour
 {
 	private static int _instantiation;
 
-	private IEnumerator Start() 
-	{
-		Get<Light>().enabled = true;
-        Get<Light>().range *= transform.lossyScale.x;
+	private IEnumerator Start()
+    {
+        Get<Light>().enabled = true;
+        //Get<Light>().range *= transform.lossyScale.x;
 
-        _instantiation++;
+        int use = _instantiation++;
 
         float f = 0;
 
@@ -19,7 +19,7 @@ public class LightScript : CacheableBehaviour
         {
             f += Time.deltaTime;
 
-            float frequency = (Mathf.Pow(f, 4) + (Mathf.PI * _instantiation)) / 4;
+            float frequency = (Mathf.Pow(f, 4) + (Mathf.PI * use)) / 4;
             float distance = f < 2.8f ? (Easing.OutQuart(f, 2.8f, 0, 2.8f) * 200) + 20 : BackOut((3.3f - f) * 2) * 20;
 
             transform.localPosition = new Vector3(Mathf.Sin(frequency) * distance, distance / 2, Mathf.Cos(frequency) * distance);

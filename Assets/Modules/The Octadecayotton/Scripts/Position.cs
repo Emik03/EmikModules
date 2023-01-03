@@ -41,7 +41,7 @@ namespace TheOctadecayotton
             // L = 12, M = 13, N = 14
             { 4, 2, 1 }, { 1, 4, 2, }, { 2, 1, 4 },
             // I = 15, J = 16, K = 17
-            { .5f, .5f, .5f }
+            { 6.9f, 4.2f, 1.9f }, { 1.9f, 6.9f, 4.2f, }, { 4.2f, 1.9f, 6.9f },
         };
 
         internal bool[] InitialPosition { get; private set; }

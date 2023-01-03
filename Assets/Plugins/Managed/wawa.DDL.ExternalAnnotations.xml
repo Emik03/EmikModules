@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assembly name="wawa.DDL">
+  <member name="M:Wawa.DDL.Access.FromGame``2(``0,System.Converter{``0,``1},``1)">
+    <parameter name="factory">
+      <attribute ctor="M:JetBrains.Annotations.RequireStaticDelegateAttribute.#ctor" />
+    </parameter>
+  </member>
+</assembly>

@@ -18,14 +18,23 @@ public class NetheriteScript : ModuleScript
     internal int Stage { get; set; }
 
     private int CurrentlySolvingId { get; set; }
+
     private int NetheriteId { get; set; }
-    private int NetheriteCount { get { return IsEditor ? 3 : Get<KMBombInfo>().GetSolvableModuleNames().Count(m => m == Module.Name); } }
-    
+
+    private int NetheriteCount
+    {
+        get
+        {
+            return IsEditor ? 3 : Get<KMBombInfo>().GetSolvableModuleNames().Count(m => m == Module.Name);
+        }
+    }
+
     private float? Voltage
     {
         get
         {
             var query = Get<KMBombInfo>().QueryWidgets("volt", "");
+
             return query.Count != 0
                 ? (float?)float.Parse(JsonConvert.DeserializeObject<VoltData>(query.First()).Voltage)
                 : null;
@@ -38,16 +47,37 @@ public class NetheriteScript : ModuleScript
         {
             int[] vs = new int[11];
             vs[0] = SerialWithSolves.ElementAtWrap(0).DigitalRoot();
+
             for (int i = 1; i < vs.Length; i++)
                 vs[i] = (SerialWithSolves.ElementAtWrap(i) + vs[i - 1]).DigitalRoot();
+
             return vs;
         }
     }
 
-    private IEnumerable<int> Serial { get { return Get<KMBombInfo>().GetSerialNumberNumbers(); } }
-    private IEnumerable<int> SerialWithSolves { get { return Serial.Prepend(NetheriteId); } }
+    private IEnumerable<int> Serial
+    {
+        get
+        {
+            return Get<KMBombInfo>().GetSerialNumberNumbers();
+        }
+    }
 
-    private NetheriteScript[] AllNetherites { get { return GetComponentInParent<KMBomb>().GetComponentsInChildren<NetheriteScript>(); } }
+    private IEnumerable<int> SerialWithSolves
+    {
+        get
+        {
+            return Helper.Prepend(Serial, NetheriteId);
+        }
+    }
+
+    private NetheriteScript[] AllNetherites
+    {
+        get
+        {
+            return GetComponentInParent<KMBomb>().GetComponentsInChildren<NetheriteScript>();
+        }
+    }
 
     private void Start()
     {
@@ -92,10 +122,15 @@ public class NetheriteScript : ModuleScript
         if (Sequence[Stage] != ApplyRules(i) || CurrentlySolvingId != Id)
         {
             PlaySound(SFX.N.Hit);
-            Strike("While trying to mine for the {0} time, the value {1} was submitted, when {2} was expected! Strike!".Form(
-                (Stage + 1).ToOrdinal(),
-                ApplyRules(i),
-                Sequence[Stage]));
+
+            Strike(
+                "While trying to mine for the {0} time, the value {1} was submitted, when {2} was expected! Strike!"
+                   .Form(
+                        (Stage + 1).ToOrdinal(),
+                        ApplyRules(i),
+                        Sequence[Stage]
+                    )
+            );
         }
 
         // This makes the module component appear to crack more.
@@ -104,11 +139,13 @@ public class NetheriteScript : ModuleScript
         // This solves the module.
         if (Stage >= Sequence.Length)
         {
-            AllNetherites.ForEach(n =>
-            {
-                n.NetheriteId++;
-                n.CurrentlySolvingId = 0;
-            });
+            AllNetherites.ForEach(
+                n =>
+                {
+                    n.NetheriteId++;
+                    n.CurrentlySolvingId = 0;
+                }
+            );
 
             // Makes the module disappear.
             ModuleRenderer.transform.localScale = Vector3.zero;
@@ -144,12 +181,20 @@ public class NetheriteScript : ModuleScript
         // These are the rules for when a Voltage Meter widget is not on the bomb.
         else
         {
-            if (Get<KMBombInfo>().GetOnIndicators().Count().ToString().Any(a => Serial.Sum().ToString().Any(b => a == b))
-                || Serial.Any(a => a == Get<KMBombInfo>().GetOnIndicators().Count()))
+            if (Get<KMBombInfo>()
+                   .GetOnIndicators()
+                   .Count()
+                   .ToString()
+                   .Any(a => Serial.Sum().ToString().Any(b => a == b)) ||
+                Serial.Any(a => a == Get<KMBombInfo>().GetOnIndicators().Count()))
                 i = FlipIndexHorizontally(i);
 
-            if (Get<KMBombInfo>().GetOffIndicators().Count().ToString().Any(a => Serial.Sum().ToString().Any(b => a == b))
-                || Serial.Any(a => a == Get<KMBombInfo>().GetOffIndicators().Count()))
+            if (Get<KMBombInfo>()
+                   .GetOffIndicators()
+                   .Count()
+                   .ToString()
+                   .Any(a => Serial.Sum().ToString().Any(b => a == b)) ||
+                Serial.Any(a => a == Get<KMBombInfo>().GetOffIndicators().Count()))
                 i = FlipIndexVertically(i);
         }
 

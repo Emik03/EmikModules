@@ -26,7 +26,7 @@ namespace SortingModule
             for (int i = 0; i < buttonList.Length; i++)
                 buttonList[i] = initialButtons[i];
 
-            Type classType = typeof(SortingAlgorithms);
+            var classType = typeof(SortingAlgorithms);
 
             //format the text so that it's ready to be called as a method name
             MethodInfo method = classType.GetMethod(FormatMethodName(algorithm));

@@ -14,7 +14,7 @@ public class TemplateScript : ModuleScript
 
     public void Start()
     {
-        Debug.Log(_textMesh.text = "Example Example Text");
+        //Debug.Log(_textMesh.text = "Example Example Text");
     }
 }
 
