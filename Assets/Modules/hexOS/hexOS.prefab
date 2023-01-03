@@ -4248,10 +4248,10 @@ MonoBehaviour:
   VideoOct: {fileID: 328349943190975812}
   VideoGrid: {fileID: 328304267202025814}
   Clips:
-  - {fileID: 32900000, guid: 3a05c258b2843bb4a919fcd0a9b18e59, type: 3}
-  - {fileID: 32900000, guid: 0df43c0688f1ae445aae71b131788495, type: 3}
-  - {fileID: 32900000, guid: 76792e3d200b3f6478024c3998619c08, type: 3}
-  - {fileID: 32900000, guid: 4bb1b0ca22a078b4784811b0a18981d5, type: 3}
+  - {fileID: 32900000, guid: 5163bca05f01748babea1690ece8a292, type: 3}
+  - {fileID: 32900000, guid: 037f0424925a3400cb8be726f0374144, type: 3}
+  - {fileID: 32900000, guid: 685ccabdea9a848d391d14fa372cac61, type: 3}
+  - {fileID: 32900000, guid: b3c45f5d879894a5c97a34e11cd7ecae, type: 3}
 --- !u!114 &114688583882370378
 MonoBehaviour:
   m_ObjectHideFlags: 1
