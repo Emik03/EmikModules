@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<assembly name="wawa.IO">
-  <member name="P:Wawa.IO.Config`1.FilePath">
-    <attribute ctor="M:JetBrains.Annotations.ProvidesContextAttribute.#ctor" />
-  </member>
-</assembly>
