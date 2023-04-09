@@ -21,7 +21,7 @@ public class Etterna : MonoBehaviour
     byte[] correct = new byte[4];
 
     private bool _lightsOn = false, _started = false;
-    private readonly byte[] _color = new byte[4];
+    private byte[] _color;
     private static int _moduleIdCounter = 1;
     private int _moduleId = 0;
     private float _cycle = 0;
@@ -111,6 +111,7 @@ public class Etterna : MonoBehaviour
         }
 
         _lightsOn = true;
+        GenerateRuleseed(GetComponent<KMRuleSeedable>().GetRNG());
         Init();
     }
 
@@ -124,6 +125,16 @@ public class Etterna : MonoBehaviour
             HandlePress();
             return false;
         };
+    }
+
+    /// <summary>
+    /// Generates the appropriate arrow table as shown in the rule-seeded manual.
+    /// </summary>
+    private void GenerateRuleseed(MonoRandom rng)
+    {
+        if (rng.Seed == 1)
+            return; //The colors are already correct at their default values.
+        _colors = _colors.OrderBy(_ => rng.NextDouble()).ToArray();
     }
 
     /// <summary>
@@ -278,42 +289,19 @@ public class Etterna : MonoBehaviour
     {
         //sets positions
         Dictionary<byte, float> z = new Dictionary<byte, float>(4) { { 0, 0.22f }, { 1, 0.1233333f }, { 2, 0.0266666f }, { 3, -0.07f } };
+        z = z.OrderBy(_ => Random.value).ToDictionary(k => k.Key, k => k.Value);
         for (byte i = 0; i < Arrow.Length; i++)
-        {
-            byte rng;
-            float pos;
+            //apply the position (no 2 arrows can be the same position)
+            Arrow[i].transform.localPosition = new Vector3(Arrow[i].transform.localPosition.x, Arrow[i].transform.localPosition.y, z[i]);
 
-            //pick random index from dictionary only if it exists
-            do rng = (byte)Random.Range(0, 4);
-            while (!z.TryGetValue(rng, out pos));
-
-            //apply the position, remove it from dictionary so no 2 arrows can be the same position
-            Arrow[i].transform.localPosition = new Vector3(Arrow[i].transform.localPosition.x, Arrow[i].transform.localPosition.y, pos);
-            z.Remove(rng);
-        }
-
-        bool validArrow;
-        byte index = 0, min = 0;
-        //gets random indexes
-        for (byte i = 0; i < Arrow.Length; i++)
-        {
-            validArrow = false;
-            //tries to generate number, if linear search succeeds then stop
-            do
-            {
-                index = (byte)Random.Range(0, 8);
-                for (byte j = min; j < _colors.Length; j++)
-                    if (_colors[j] == index)
-                    {
-                        min = (byte)(j + 1);
-                        validArrow = true;
-                        break;
-                    }
-            } while (!validArrow);
-
-            //sets next index
-            _color[i] = index;
-        }
+        //Take a sequence of four valid colors (in order) from the color array
+        _color = Enumerable
+            .Range(0, 32)
+            .OrderBy(_ => Random.value)
+            .Take(4)
+            .OrderBy(b => b)
+            .Select(b => _colors[b])
+            .ToArray();
 
         //logging
         byte biggerThan;
@@ -334,12 +322,13 @@ public class Etterna : MonoBehaviour
     }
 
     //contains the entire list of colors, should not ever be changed!
-    private static readonly byte[] _colors = new byte[32]
+    private static readonly byte[] _default_colors = new byte[32]
     {
         0, 7, 6, 5, 4, 7, 3, 7, 2, 5, 6, 7,
         1, 7, 6, 5, 2, 7, 3, 7, 4, 5, 6, 7,
         0, 7, 6, 5, 4, 7, 3, 7,
     };
+    private byte[] _colors = _default_colors.ToArray();
 
     /// <summary>
     /// Determines whether the input from the TwitchPlays chat command is valid or not.
