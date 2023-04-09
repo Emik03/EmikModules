@@ -132,6 +132,7 @@ public class Etterna : MonoBehaviour
     /// </summary>
     private void GenerateRuleseed(MonoRandom rng)
     {
+        Debug.LogFormat("[Etterna #{0}] Using ruleseed {0}.", _moduleId, rng.Seed);
         if (rng.Seed == 1)
             return; //The colors are already correct at their default values.
         _colors = _colors.OrderBy(_ => rng.NextDouble()).ToArray();
