@@ -2510,6 +2510,7 @@ GameObject:
   - component: {fileID: 114593107408930692}
   - component: {fileID: 114323316815797644}
   - component: {fileID: 114362513797052730}
+  - component: {fileID: 114735570251487818}
   m_Layer: 0
   m_Name: PointlessMachines
   m_TagString: Untagged
@@ -14944,6 +14945,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Mobile/DiffuseTint
+--- !u!114 &114735570251487818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797826212090932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf69c2de51bd3c43bbd9bc22578ee08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seed: 1
 --- !u!114 &114738324622796146
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -53,6 +53,7 @@ public class PointlessMachinesScript : ModuleScript
 
         Log("The flashes are {0}.".Form(flashes));
 
+        GenerateRuleseed(Get<KMRuleSeedable>().GetRNG());
         Calculate(flashes, new List<int>());
 
         answer = flashes.Select(f => _conversion[f]).ToArray();
@@ -61,6 +62,107 @@ public class PointlessMachinesScript : ModuleScript
 
         StartCoroutine(KMBombListen());
         StartCoroutine(MachineHandler(flashes));
+    }
+
+    private static readonly Func<Flash[], int, bool>[] _majorRules = new Func<Flash[], int, bool>[]
+    {
+        (a, i) => a[i] == a.Indistinct().First(),
+        (a, i) => a[5 - i] == a.Indistinct().First(),
+        (_, i) => i > 2,
+        (_, i) => i < 3,
+        (_, i) => i % 2 == 0,
+        (_, i) => i % 2 == 1,
+        (a, i) => a[i] != a.Indistinct().First()
+    };
+    private static readonly Func<Flash[], int, int>[] _variableRules = new Func<Flash[], int, int>[]
+    {
+        (_, i) => (i + 5) % 6,
+        (_, i) => (i + 3) % 6,
+        (_, i) => 1,
+        (a, _) => a.LastIndexOf(a.Indistinct().First()),
+        (_, i) => (i + 1) % 6,
+        (_, i) => (i + 2) % 6,
+        (_, i) => (i + 4) % 6,
+        (_, i) => 0,
+        (_, i) => 2,
+        (_, i) => 3,
+        (_, i) => 4,
+        (_, i) => 5,
+        (a, _) => a.IndexOf(a.Indistinct().First()),
+        (_, i) => 5 - i,
+        (_, i) => 5 - ((i + 3) % 6)
+    };
+    private static readonly Func<Flash[], int, Flash>[] _constantRules = new Func<Flash[], int, Flash>[]
+    {
+        (a, i) => a[(a.IndexOf((f, x) => f == a[i] && x != i) + 1) % 6],
+        (a, i) => a[5 - ((i + 3) % 6)],
+        (a, _) => a[4],
+        (a, _) => a.Indistinct().First(),
+        (a, i) => a[(i + 5) % 6],
+        (a, i) => a[(i + 1) % 6],
+        (a, i) => a[(i + 3) % 6],
+        (a, i) => a[(i + 2) % 6],
+        (a, i) => a[(i + 4) % 6],
+        (a, _) => a[0],
+        (a, _) => a[1],
+        (a, _) => a[2],
+        (a, _) => a[3],
+        (a, _) => a[5],
+        (a, i) => a[5 - i]
+    };
+    private static readonly View[] _directions = new View[]
+    {
+        View.Up,
+        View.Left,
+        View.Up | View.Right,
+        View.Down | View.Right,
+        View.Up | View.Left,
+        View.Right,
+        View.Down,
+        View.Down| View.Left
+    };
+    private static readonly Flash[] _manualOrder = new Flash[] { Flash.White, Flash.Purple, Flash.Red, Flash.Blue, Flash.Yellow };
+
+    private Func<Flash[], int, bool> _majorRuleA, _majorRuleB, _majorRuleC;
+    private Func<Flash[], int, int> _variableRuleA, _variableRuleB, _variableRuleC, _variableRuleD;
+    private Func<Flash[], int, Flash> _constantRuleA, _constantRuleB, _constantRuleC, _constantRuleD;
+    private void GenerateRuleseed(MonoRandom rng)
+    {
+        Log("Using ruleseed {0}.", rng.Seed);
+        Func<Flash[], int, bool>[] maj;
+        Func<Flash[], int, int>[] var;
+        Func<Flash[], int, Flash>[] con;
+        View[] dirs;
+        if (rng.Seed == 1)
+        {
+            maj = _majorRules;
+            var = _variableRules;
+            con = _constantRules;
+            dirs = _directions;
+        }
+        else
+        {
+            maj = _majorRules.OrderBy(_ => rng.NextDouble()).Take(3).ToArray();
+            var = _variableRules.OrderBy(_ => rng.NextDouble()).Take(4).ToArray();
+            con = _constantRules.Skip(1).OrderBy(_ => rng.NextDouble()).Take(4).ToArray();
+            dirs = _directions.OrderBy(_ => rng.NextDouble()).Take(5).ToArray();
+        }
+
+        _majorRuleA = maj[0];
+        _majorRuleB = maj[1];
+        _majorRuleC = maj[2];
+        _variableRuleA = var[0];
+        _variableRuleB = var[1];
+        _variableRuleC = var[2];
+        _variableRuleD = var[3];
+        _constantRuleA = con[0];
+        _constantRuleB = con[1];
+        _constantRuleC = con[2];
+        _constantRuleD = con[3];
+        _flashTypes = Enumerable.Range(0, 5).ToDictionary(i => _manualOrder[i], i => dirs[i]);
+
+        Log(_variableRuleD(new Flash[] { Flash.White, Flash.Purple, Flash.Red, Flash.Blue, Flash.Yellow, Flash.Red }, 4));
+        Log(_constantRuleD(new Flash[] { Flash.White, Flash.Purple, Flash.Red, Flash.Blue, Flash.Yellow, Flash.Red }, 4));
     }
 
     public override void OnActivate()
@@ -93,7 +195,7 @@ public class PointlessMachinesScript : ModuleScript
             flashes = default(Flash).GetValues().Append(default(Flash).GetValues().PickRandom()).Shuffle();
             comp = flashes.Select((f, i) => f.ToTuple(i)).Where(t => t.Item1 == flashes.Indistinct().First()).Select(t => t.Item2).ToArray();
         }
-        while (Math.Abs(comp[0] - comp[1]) == 1); 
+        while (Math.Abs(comp[0] - comp[1]) == 1);
 
         return flashes;
     }
@@ -164,16 +266,32 @@ public class PointlessMachinesScript : ModuleScript
         if (iter == 0)
             return AddEntry(current.Call(c => Log("The 1st condition is used because {0} is the last color.".Form(c))), GetConstantView(current).Call(c => Log("The {0} variable in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))), GetConstantView(current).Call(c => Log("The {0} constant in the sequence is {1}.".Form((index + 1).ToOrdinal(), c)))).Call(c => Log("{0} is equal to {1}.".Form(current, c)));
 
-        if (current == flashes.Indistinct().First())
-            return AddEntry(current.Call(c => Log("The 2nd condition is used because {0} shows up twice.".Form(c))), Calculate(flashes, indicesUsed, index - 1, iter - 1).Call(c => Log("The {0} variable in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))), GetConstantView(flashes.ElementAtWrap(flashes.Select((f, n) => f.ToTuple(n)).Where(t => t.Item1 == current && t.Item2 != index).Select(t => t.Item2).First() + 1).Call(c => Log("The {0} constant in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))))).Call(c => Log("{0} is equal to {1}.".Form(current, c)));
+        if (_majorRuleA(flashes, index))
+            return AddEntry(
+                current.Call(_ => Log("The 2nd condition is used.")),
+                Calculate(flashes, indicesUsed, _variableRuleA(flashes, index), iter - 1).Call(c => Log("The {0} variable in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))),
+                GetConstantView(_constantRuleA(flashes, index).Call(c => Log("The {0} constant in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))))
+                ).Call(c => Log("{0} is equal to {1}.".Form(current, c)));
 
-        if (flashes.ToArray().Reverse().Select((f, n) => f.ToTuple(n)).Where(t => t.Item1 == flashes.Indistinct().First()).Any(t => t.Item2 == index))
-            return AddEntry(current.Call(c => Log("The 3rd condition is used because {0} is opposite of a non-unique color.".Form(c))), Calculate(flashes, indicesUsed, index + 3, iter - 1).Call(c => Log("The {0} variable in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))), GetConstantView(flashes.ElementAtWrap(2 - index).Call(c => Log("The {0} constant in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))))).Call(c => Log("{0} is equal to {1}.".Form(current, c)));
+        if (_majorRuleB(flashes, index))
+            return AddEntry(
+                current.Call(_ => Log("The 3rd condition is used.")),
+                Calculate(flashes, indicesUsed, _variableRuleB(flashes, index), iter - 1).Call(c => Log("The {0} variable in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))),
+                GetConstantView(_constantRuleB(flashes, index).Call(c => Log("The {0} constant in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))))
+                ).Call(c => Log("{0} is equal to {1}.".Form(current, c)));
 
-        if (index >= flashes.Length / 2)
-            return AddEntry(current.Call(c => Log("The 4th condition is used because {0} is on the second half of the sequence.".Form(c))), Calculate(flashes, indicesUsed, 1, iter - 1).Call(c => Log("The {0} variable in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))), GetConstantView(flashes[4]).Call(c => Log("The {0} constant in the sequence is {1}.".Form((index + 1).ToOrdinal(), c)))).Call(c => Log("{0} is equal to {1}.".Form(current, c)));
+        if (_majorRuleC(flashes, index))
+            return AddEntry(
+                current.Call(_ => Log("The 4th condition is used.")),
+                Calculate(flashes, indicesUsed, _variableRuleC(flashes, index), iter - 1).Call(c => Log("The {0} variable in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))),
+                GetConstantView(_constantRuleC(flashes, index).Call(c => Log("The {0} constant in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))))
+                ).Call(c => Log("{0} is equal to {1}.".Form(current, c)));
 
-        return AddEntry(current.Call(c => Log("The 5th condition is used because {0} matches none of the other conditions.".Form(c))), Calculate(flashes, indicesUsed, flashes.LastIndexOf(flashes.Indistinct().First()), iter - 1).Call(c => Log("The {0} variable in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))), GetConstantView(flashes.Indistinct().First().Call(c => Log("The {0} constant in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))))).Call(c => Log("{0} is equal to {1}.".Form(current, c)));
+        return AddEntry(
+            current.Call(_ => Log("The 5th condition is used.")),
+            Calculate(flashes, indicesUsed, _variableRuleD(flashes, index), iter - 1).Call(c => Log("The {0} variable in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))),
+            GetConstantView(_constantRuleD(flashes, index).Call(c => Log("The {0} constant in the sequence is {1}.".Form((index + 1).ToOrdinal(), c))))
+            ).Call(c => Log("{0} is equal to {1}.".Form(current, c)));
     }
 
     private View AddEntry(Flash flash, View view, View otherView)
@@ -229,9 +347,9 @@ public class PointlessMachinesScript : ModuleScript
 
         var submit = view.ToString().Split(", ").Select(s => s.First());
 
-        Hinges.ForEach(h => 
+        Hinges.ForEach(h =>
         {
-            if (submit.Count() == 1 && submit.ElementAt(0) == h.name[0] 
+            if (submit.Count() == 1 && submit.ElementAt(0) == h.name[0]
             || submit.Count() == 2 && submit.All(c => h.name.Contains(c)))
                 h.Flash();
         });
@@ -308,17 +426,10 @@ public class PointlessMachinesScript : ModuleScript
         return direction;
     }
 
+    private Dictionary<Flash, View> _flashTypes;
     private View GetConstantView(Flash flash)
     {
-        switch (flash)
-        {
-            case Flash.Purple: return View.Left;
-            case Flash.Yellow: return View.Left | View.Up;
-            case Flash.White: return View.Up;
-            case Flash.Red: return View.Up | View.Right;
-            case Flash.Blue: return View.Down | View.Right;
-            default: throw new NotImplementedException("Unrecognised flash type: " + flash);
-        }
+        return _flashTypes[flash];
     }
 
     private Vector3 WrappedVector(Vector3 vector)
