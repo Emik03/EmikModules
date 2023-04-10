@@ -378,7 +378,7 @@ public class PointlessMachinesScript : ModuleScript
 
         8.For(_ =>
         {
-            Instantiate(Light, LightParent, false).GetComponent<LightScript>().enabled = false;
+            Instantiate(Light, LightParent, false).GetComponent<LightScript>().enabled = true;
         });
 
         Get<AudioScript>().Fade(volume: 0, time: 0.3f);
