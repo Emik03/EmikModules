@@ -1,19 +1,25 @@
 {
-    "Author": "Emik",
-    "Compatibility": "Compatible",
-    "DefuserDifficulty": "VeryEasy",
-    "Description": "Mine a block of Ancient Debris with your bare hands in exact locations. Tags: red-background, red-module, pixelated, 9-buttons, 3x3-grid, minecraft, mining, cube",
-    "ExpertDifficulty": "Easy",
-    "ModuleID": "Netherite",
-    "Name": "Netherite",
-    "Origin": "Mods",
-    "Published": "2021-03-04",
-    "SortKey": "NETHERITE",
-    "SourceUrl": "https://github.com/Emik03/EmikModules",
-    "Souvenir": {
-        "Status": "NotACandidate"
-    },
-    "SteamID": "???",
-    "Symbol": "N",
-    "Type": "Regular"
+  "Compatibility": "Compatible",
+  "Contributors": {
+    "Developer": [ "Emik" ],
+    "Manual graphics": [ "JG" ]
+  },
+  "DefuserDifficulty": "VeryEasy",
+  "Description": "Mine a block of Ancient Debris with your bare hands in exact locations. Tags: red-background, red-module, pixelated, 9-buttons, 3x3-grid, minecraft, mining, cube",
+  "ExpertDifficulty": "Easy",
+  "ModuleID": "Netherite",
+  "Name": "Netherite",
+  "Origin": "Mods",
+  "Published": "2021-03-04",
+  "RuleSeedSupport": "Supported",
+  "SortKey": "NETHERITE",
+  "SourceUrl": "https://github.com/Emik03/EmikModules",
+  "Souvenir": { "Status": "NotACandidate" },
+  "SteamID": "2416640196",
+  "Symbol": "N",
+  "TutorialVideos": [ {
+    "Language": "English",
+    "Url": "https://youtu.be/X-6xIYzJyS0"
+  } ],
+  "Type": "Regular"
 }
