@@ -96,15 +96,11 @@ public class NetheriteScript : ModuleScript
             }
             else
             {
-                A = Get<KMBombInfo>()
-                       .GetOnIndicators()
-                       .Count()
+                A = _edgeworkCheckC()
                        .ToString()
                        .Any(a => Serial.Sum().ToString().Any(b => a == b)) ||
                     Serial.Any(a => a == _edgeworkCheckC());
-                B = Get<KMBombInfo>()
-                       .GetOffIndicators()
-                       .Count()
+                B = _edgeworkCheckC()
                        .ToString()
                        .Any(a => Serial.Sum().ToString().Any(b => a == b)) ||
                     Serial.Any(a => a == _edgeworkCheckD());
@@ -324,17 +320,13 @@ public class NetheriteScript : ModuleScript
         }
         else
         {
-            if (Get<KMBombInfo>()
-                   .GetOnIndicators()
-                   .Count()
+            if (_edgeworkCheckC()
                    .ToString()
                    .Any(a => Serial.Sum().ToString().Any(b => a == b)) ||
                 Serial.Any(a => a == _edgeworkCheckC()))
                 flips |= 2;
 
-            if (Get<KMBombInfo>()
-                   .GetOffIndicators()
-                   .Count()
+            if (_edgeworkCheckD()
                    .ToString()
                    .Any(a => Serial.Sum().ToString().Any(b => a == b)) ||
                 Serial.Any(a => a == _edgeworkCheckD()))
