@@ -98,12 +98,12 @@ public class NetheriteScript : ModuleScript
             {
                 A = _edgeworkCheckC()
                        .ToString()
-                       .Any(a => Serial.Sum().ToString().Any(b => a == b)) ||
-                    Serial.Any(a => a == _edgeworkCheckC());
-                B = _edgeworkCheckC()
+                       .Any(a => Serial.Sum().ToString().Any(b => a == b) ||
+                    Serial.Any(b => a == b));
+                B = _edgeworkCheckD()
                        .ToString()
-                       .Any(a => Serial.Sum().ToString().Any(b => a == b)) ||
-                    Serial.Any(a => a == _edgeworkCheckD());
+                       .Any(a => Serial.Sum().ToString().Any(b => a == b) ||
+                    Serial.Any(b => a == b));
             }
 
             Log("Rules are {0} and {1}.", A ? "true" : "false", B ? "true" : "false");
@@ -322,14 +322,14 @@ public class NetheriteScript : ModuleScript
         {
             if (_edgeworkCheckC()
                    .ToString()
-                   .Any(a => Serial.Sum().ToString().Any(b => a == b)) ||
-                Serial.Any(a => a == _edgeworkCheckC()))
+                   .Any(a => Serial.Sum().ToString().Any(b => a == b) ||
+                Serial.Any(b => a == b)))
                 flips |= 2;
 
             if (_edgeworkCheckD()
                    .ToString()
-                   .Any(a => Serial.Sum().ToString().Any(b => a == b)) ||
-                Serial.Any(a => a == _edgeworkCheckD()))
+                   .Any(a => Serial.Sum().ToString().Any(b => a == b) ||
+                Serial.Any(b => a == b)))
                 flips |= 1;
         }
 
