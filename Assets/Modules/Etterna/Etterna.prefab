@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 114466871040107044}
   - component: {fileID: 114717984972801046}
   - component: {fileID: 114074449050494720}
+  - component: {fileID: 114617582483609550}
   m_Layer: 0
   m_Name: Etterna
   m_TagString: Untagged
@@ -1236,6 +1237,18 @@ MonoBehaviour:
   ModuleType: etterna
   ModuleDisplayName: Etterna
   RequiresTimerVisibility: 0
+--- !u!114 &114617582483609550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724327009805274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf69c2de51bd3c43bbd9bc22578ee08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seed: 1
 --- !u!114 &114676204725116032
 MonoBehaviour:
   m_ObjectHideFlags: 1

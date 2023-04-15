@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 198802930228036328}
   - component: {fileID: 199370123089912266}
   - component: {fileID: 114619989645863350}
+  - component: {fileID: 114545082134866940}
   m_Layer: 0
   m_Name: Netherite
   m_TagString: Untagged
@@ -663,8 +664,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525655870359756}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 0, z: 0.2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4982840535317632}
@@ -1862,6 +1863,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TwitchHelpMessage: '!{0} ########### | Each # is a digit 1-9, presses in reading
     order regardless of rules | Example: !{0} 12345678901'
+  TwitchManualCode: 
+  TwitchAbandonModule: []
 --- !u!114 &114410911671362770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1898,6 +1901,18 @@ MonoBehaviour:
   AllowSelectionWrapY: 0
   ForceSelectionHighlight: 0
   ForceInteractionHighlight: 0
+--- !u!114 &114545082134866940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525655870359756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf69c2de51bd3c43bbd9bc22578ee08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seed: 1
 --- !u!114 &114602012386956900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1958,6 +1973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21105e41039bcca4fb7c26a8a371144f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _editorRuleSeed: 1
   Buttons:
   - {fileID: 114258027034445410}
   - {fileID: 114672134545626292}
@@ -2353,7 +2369,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2088171697
+  randomSeed: 1673854567
   InitialModule:
     serializedVersion: 3
     enabled: 1

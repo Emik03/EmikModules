@@ -9,7 +9,8 @@ public class LightScript : CacheableBehaviour
 	private IEnumerator Start()
     {
         Get<Light>().enabled = true;
-        //Get<Light>().range *= transform.lossyScale.x;
+        // 100 corrects for the scaling within the module.
+        Get<Light>().range *= transform.lossyScale.x * 100f;
 
         int use = _instantiation++;
 

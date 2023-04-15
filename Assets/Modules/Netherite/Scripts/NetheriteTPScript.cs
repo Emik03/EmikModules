@@ -1,6 +1,7 @@
 ﻿using KeepCoding;
 using System.Collections;
 using System.Linq;
+using UnityEngine;
 
 public class NetheriteTPScript : TPScript<NetheriteScript>
 {
@@ -8,6 +9,10 @@ public class NetheriteTPScript : TPScript<NetheriteScript>
 
     public override IEnumerator Process(string command)
     {
+        string check = "";
+        if (Module._is2FA)
+            check = KModkit.KMBombInfoExtensions.GetTwoFactorCodes(Module.Get<KMBombInfo>()).Join(".");
+
         yield return null;
 
         int[] inputs = command.ToCharArray().ToNumbers(min: 1, max: 9);
@@ -19,12 +24,27 @@ public class NetheriteTPScript : TPScript<NetheriteScript>
         if (stop.Any(b => b))
             yield break;
 
-        yield return OnInteractSequence(Module.Buttons, Wait, inputs.Select(i => i - 1).ToArray());
+        for (int i = 0; i < inputs.Length; i++)
+        {
+            Module.Buttons[inputs[i] - 1].OnInteract();
+            if (i < inputs.Length - 1)
+                yield return new WaitForSecondsRealtime(0.2f);
+            if (Module._is2FA && check != KModkit.KMBombInfoExtensions.GetTwoFactorCodes(Module.Get<KMBombInfo>()).Join("."))
+            {
+                yield return SendToChatError("A Two-Factor code changed! {0} inputs were processed.".Form(i+1));
+                yield break;
+            }
+        }
     }
 
     public override IEnumerator ForceSolve()
     {
-        int[] answer = Module.Sequence.Select(i => Module.ApplyRules(i - 1) - 1).Skip(Module.Stage).ToArray();
-        yield return OnInteractSequence(Module.Buttons, Wait, answer);
+        int[] answer = Module.Sequence.Skip(Module.Stage).ToArray();
+        for (int i = 0; i < answer.Length; i++)
+        {
+            Module.Buttons[Enumerable.Range(0, 9).First(b => Module.ApplyRules(b) == answer[i])].OnInteract();
+            if (i < answer.Length - 1)
+                yield return new WaitForSecondsRealtime(0.2f);
+        }
     }
 }

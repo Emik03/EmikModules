@@ -67,7 +67,7 @@ public class NetheriteScript : ModuleScript
     {
         get
         {
-            return Helper.Prepend(Serial, NetheriteId);
+            return Helper.Prepend(_serialOrder(Serial), NetheriteId + _rulseedOffset);
         }
     }
 
@@ -83,19 +83,155 @@ public class NetheriteScript : ModuleScript
     {
         Buttons.Assign(onInteract: OnInteract);
 
+        GenerateRuleseed(Get<KMRuleSeedable>().GetRNG());
         NetheriteId = 1;
 
-        Log("The 3x3 board will submit the following values:");
+        if (!_is2FA || !_edgeworkCheck())
+        {
+            bool A, B;
+            if (_edgeworkCheck())
+            {
+                A = _edgeworkCheckA();
+                B = _edgeworkCheckB();
+            }
+            else
+            {
+                A = _edgeworkCheckC()
+                       .ToString()
+                       .Any(a => Serial.Sum().ToString().Any(b => a == b) ||
+                    Serial.Any(b => a == b));
+                B = _edgeworkCheckD()
+                       .ToString()
+                       .Any(a => Serial.Sum().ToString().Any(b => a == b) ||
+                    Serial.Any(b => a == b));
+            }
 
-        // This logs the entire board.
-        for (int i = 0; i < 3; i++)
-            Log(Enumerable.Range(i * 3, 3).Select(j => ApplyRules(j)).Join(" "));
+            Log("Rules are {0} and {1}.", A ? "true" : "false", B ? "true" : "false");
+
+            Log("The 3x3 board will submit the following values:");
+
+            // This logs the entire board.
+            for (int i = 0; i < 3; i++)
+                Log(Enumerable.Range(i * 3, 3).Select(j => ApplyRules(j)).Join(" "));
+        }
+        else
+        {
+            Log("The 3x3 board will submit the following values for each possible rule combination:");
+            Log("(False False)");
+            for (int i = 0; i < 3; i++)
+                Log(Enumerable.Range(i * 3, 3).Select(j => _tables[0][j]).Join(" "));
+            Log("(False True)");
+            for (int i = 0; i < 3; i++)
+                Log(Enumerable.Range(i * 3, 3).Select(j => _tables[1][j]).Join(" "));
+            Log("(True False)");
+            for (int i = 0; i < 3; i++)
+                Log(Enumerable.Range(i * 3, 3).Select(j => _tables[2][j]).Join(" "));
+            Log("(True True)");
+            for (int i = 0; i < 3; i++)
+                Log(Enumerable.Range(i * 3, 3).Select(j => _tables[3][j]).Join(" "));
+        }
 
         // The only way to adjust the answer is to transmutate NetheriteID, this allows us to log each answer.
         for (NetheriteId = 1; NetheriteId <= NetheriteCount; NetheriteId++)
             Log("The expected sequence ({0} netherite) is {1}.", NetheriteId.ToOrdinal(), Sequence.Join());
 
         NetheriteId = 1;
+    }
+
+    private int _rulseedOffset;
+    private System.Func<IEnumerable<int>, IEnumerable<int>> _serialOrder = i => i;
+    internal System.Func<bool> _edgeworkCheck, _edgeworkCheckA, _edgeworkCheckB;
+    private System.Func<int> _edgeworkCheckC, _edgeworkCheckD;
+    internal bool _is2FA;
+    private int[][] _tables = new int[][]
+    {
+        new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
+        new int[] { 7, 8, 9, 4, 5, 6, 1, 2, 3 },
+        new int[] { 3, 2, 1, 6, 5, 4, 9, 8, 7 },
+        new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 },
+        new int[] { 1, 4, 7, 2, 5, 8, 3, 6, 9 },
+        new int[] { 7, 4, 1, 8, 5, 2, 9, 6, 3 },
+        new int[] { 3, 6, 9, 2, 5, 8, 1, 4, 7 },
+        new int[] { 9, 6, 3, 8, 5, 2, 7, 4, 1 }
+    };
+    private void GenerateRuleseed(MonoRandom rng)
+    {
+        Log("Using ruleseed {0}.", rng.Seed);
+
+        _edgeworkCheck = () => Voltage != null;
+        _edgeworkCheckA = () => Voltage % 1 != 0;
+        _edgeworkCheckB = () => Voltage > 5;
+        _edgeworkCheckC = Get<KMBombInfo>().GetOnIndicators().Count;
+        _edgeworkCheckD = Get<KMBombInfo>().GetOffIndicators().Count;
+        if (rng.Seed == 1)
+            return;
+        _rulseedOffset = rng.Next(10) - 1;
+        if (rng.Next(2) == 1)
+            _serialOrder = i => i.Reverse();
+        int modded = rng.Next(3);
+        System.Func<bool>[] conds = new System.Func<bool>[0];
+        switch (modded)
+        {
+            case 0: // Voltage Meter
+                _edgeworkCheck = () => Voltage != null;
+                conds = new System.Func<bool>[]
+                {
+                    () => Voltage % 1 == 0,
+                    () => Voltage % 1 != 0,
+                    () => Voltage > 5,
+                    () => Voltage < 6,
+                    () => (int)Voltage % 2 == 0,
+                    () => (int)Voltage % 2 == 1
+                };
+                break;
+            case 1: // Modded Ports
+                string[] vanillaPorts = "DVI/PS2/RJ45/StereoRCA/Parallel/Serial".Split("/");
+                _edgeworkCheck = () => Get<KMBombInfo>()
+                    .GetPorts()
+                    .Any(port => !vanillaPorts.Contains(port));
+                conds = new System.Func<bool>[]
+                {
+                    () => Get<KMBombInfo>().GetPorts().Contains("AC"),
+                    () => Get<KMBombInfo>().GetPorts().Contains("ComponentVideo"),
+                    () => Get<KMBombInfo>().GetPorts().Contains("HDMI"),
+                    () => Get<KMBombInfo>().GetPorts().Contains("CompositeVideo"),
+                    () => Get<KMBombInfo>().GetPorts().Contains("VGA"),
+                    () => Get<KMBombInfo>().GetPorts().Contains("USB"),
+                    () => Get<KMBombInfo>().GetPorts().Contains("PCMCIA")
+                };
+                break;
+            case 2: // 2FA
+                _is2FA = true;
+                _edgeworkCheck = Get<KMBombInfo>().IsTwoFactorPresent;
+                conds = new System.Func<bool>[]
+                {
+                    () => Get<KMBombInfo>().GetTwoFactorCodes().Any(i => i % 2 == 1),
+                    () => Get<KMBombInfo>().GetTwoFactorCodes().Any(i => i % 2 == 0),
+                    () => Get<KMBombInfo>().GetTwoFactorCodes().Any(i => (i.ToString()[0] - '0') % 2 == 1),
+                    () => Get<KMBombInfo>().GetTwoFactorCodes().Any(i => (i.ToString()[0] - '0') % 2 == 0)
+                };
+                break;
+        }
+        conds = conds.OrderBy(_ => rng.NextDouble()).Take(2).ToArray();
+        _edgeworkCheckA = conds[0];
+        _edgeworkCheckB = conds[1];
+        var conds2 = new System.Func<int>[]
+        {
+            Get<KMBombInfo>().GetOnIndicators().Count,
+            Get<KMBombInfo>().GetOffIndicators().Count,
+            Get<KMBombInfo>().GetBatteryCount,
+            Get<KMBombInfo>().GetBatteryHolderCount,
+            Get<KMBombInfo>().GetPortCount,
+            Get<KMBombInfo>().GetPortPlateCount,
+            () => (int)(Get<KMBombInfo>().GetModuleNames().Count / 10f),
+            () => (int)(Get<KMBombInfo>().GetModuleNames().Count / 10f) == (Get<KMBombInfo>().GetModuleNames().Count / 10f)
+                ?(int)(Get<KMBombInfo>().GetModuleNames().Count / 10f)
+                :(int)(Get<KMBombInfo>().GetModuleNames().Count / 10f) + 1,
+        };
+        conds2 = conds2.OrderBy(_ => rng.NextDouble()).Take(2).ToArray();
+        _edgeworkCheckC = conds2[0];
+        _edgeworkCheckD = conds2[1];
+        _tables = _tables.OrderBy(_ => rng.NextDouble()).ToArray();
     }
 
     private void OnInteract(int i)
@@ -133,6 +269,11 @@ public class NetheriteScript : ModuleScript
             );
         }
 
+        // If there is another Netherite on the bomb which is partially cracked,
+        // you CANNOT crack any other Netherites until that block is fully cracked.
+        if (CurrentlySolvingId != Id)
+            return;
+
         // This makes the module component appear to crack more.
         ModuleRenderer.material.mainTexture = ModuleTextures.ElementAtOrDefault(++Stage);
 
@@ -168,47 +309,30 @@ public class NetheriteScript : ModuleScript
 
     internal int ApplyRules(int i)
     {
-        // These are the rules for when a Voltage Meter widget is on the bomb.
-        if (Voltage != null)
+        byte flips = 0;
+        if (_edgeworkCheck())
         {
-            if (Voltage % 1 != 0)
-                i = FlipIndexHorizontally(i);
+            if (_edgeworkCheckA())
+                flips |= 2;
 
-            if (Voltage > 5)
-                i = FlipIndexVertically(i);
+            if (_edgeworkCheckB())
+                flips |= 1;
         }
-
-        // These are the rules for when a Voltage Meter widget is not on the bomb.
         else
         {
-            if (Get<KMBombInfo>()
-                   .GetOnIndicators()
-                   .Count()
+            if (_edgeworkCheckC()
                    .ToString()
-                   .Any(a => Serial.Sum().ToString().Any(b => a == b)) ||
-                Serial.Any(a => a == Get<KMBombInfo>().GetOnIndicators().Count()))
-                i = FlipIndexHorizontally(i);
+                   .Any(a => Serial.Sum().ToString().Any(b => a == b) ||
+                Serial.Any(b => a == b)))
+                flips |= 2;
 
-            if (Get<KMBombInfo>()
-                   .GetOffIndicators()
-                   .Count()
+            if (_edgeworkCheckD()
                    .ToString()
-                   .Any(a => Serial.Sum().ToString().Any(b => a == b)) ||
-                Serial.Any(a => a == Get<KMBombInfo>().GetOffIndicators().Count()))
-                i = FlipIndexVertically(i);
+                   .Any(a => Serial.Sum().ToString().Any(b => a == b) ||
+                Serial.Any(b => a == b)))
+                flips |= 1;
         }
 
-        // We have to increment i by 1 due to an off-by-one error.
-        return ++i;
-    }
-
-    private static int FlipIndexHorizontally(int i)
-    {
-        return (i / 3 * 3) + (2 - (i % 3));
-    }
-
-    private static int FlipIndexVertically(int i)
-    {
-        return (i % 3) + (3 * (2 - (i / 3)));
+        return _tables[flips][i];
     }
 }
