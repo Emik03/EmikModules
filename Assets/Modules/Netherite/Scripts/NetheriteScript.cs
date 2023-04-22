@@ -96,14 +96,8 @@ public class NetheriteScript : ModuleScript
             }
             else
             {
-                A = _edgeworkCheckC()
-                       .ToString()
-                       .Any(a => Serial.Sum().ToString().Any(b => a == b) ||
-                    Serial.Any(b => a == b));
-                B = _edgeworkCheckD()
-                       .ToString()
-                       .Any(a => Serial.Sum().ToString().Any(b => a == b) ||
-                    Serial.Any(b => a == b));
+                A = SerialEdgework(_edgeworkCheckC());
+                B = SerialEdgework(_edgeworkCheckD());
             }
 
             Log("Rules are {0} and {1}.", A ? "true" : "false", B ? "true" : "false");
@@ -136,6 +130,14 @@ public class NetheriteScript : ModuleScript
             Log("The expected sequence ({0} netherite) is {1}.", NetheriteId.ToOrdinal(), Sequence.Join());
 
         NetheriteId = 1;
+    }
+
+    private bool SerialEdgework(int i)
+    {
+        return i.
+            ToString()
+            .Any(a => Serial.Sum().ToString().Any(b => a == b) ||
+                Serial.Join("").Any(b => a == b));
     }
 
     private int _rulseedOffset;
@@ -320,16 +322,10 @@ public class NetheriteScript : ModuleScript
         }
         else
         {
-            if (_edgeworkCheckC()
-                   .ToString()
-                   .Any(a => Serial.Sum().ToString().Any(b => a == b) ||
-                Serial.Any(b => a == b)))
+            if (SerialEdgework(_edgeworkCheckC()))
                 flips |= 2;
 
-            if (_edgeworkCheckD()
-                   .ToString()
-                   .Any(a => Serial.Sum().ToString().Any(b => a == b) ||
-                Serial.Any(b => a == b)))
+            if (SerialEdgework(_edgeworkCheckD()))
                 flips |= 1;
         }
 
