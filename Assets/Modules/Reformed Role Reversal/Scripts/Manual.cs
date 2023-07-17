@@ -692,7 +692,7 @@ namespace ReformedRoleReversalModule
 
             string method = parameters[1] < 5 ? "lastInstanceOfPurple" : "lastInstanceOfBlue";
 
-            if (new Arrays(Info).GetEdgework(parameters[0]) < wires.Where(x => x.Equals(parameters[0])).Count())
+            if (new Arrays(Info).GetEdgework(parameters[0]) < wires.Where(x => x.Equals(parameters[1])).Count())
                 condition.Wire = Algorithms.Find(method: method, key: ref parameters[1], wires: wires);
 
             return condition;
