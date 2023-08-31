@@ -174,5 +174,8 @@ public class QuaverTPScript : MonoBehaviour
                 yield return new WaitForSecondsRealtime(0.05f);
             }
         }
+
+        // Waits for the module to solve or strike.
+        yield return new WaitForSecondsRealtime(3f);
     }
 }
