@@ -86,9 +86,9 @@ namespace Linq
             }
             else
             {
+                _linq.Strike("Strike! {0} is not correct.".Form(buttonStates.Select(b => b ? "O" : "-").Join("")));
                 Array.Copy(initialButtonStates, buttonStates, 6);
                 UpdateButtons();
-                _linq.Strike("Strike! {0} is not correct.".Form(buttonStates.Select(b => b ? "O" : "-").Join("")));
             }
 
             return;
