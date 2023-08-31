@@ -1,8 +1,6 @@
-﻿using System;
+﻿// SPDX-License-Identifier: MPL-2.0
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Bad;
 using KeepCoding;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -10,11 +8,29 @@ using Object = UnityEngine.Object;
 public class TemplateScript : ModuleScript
 {
     [SerializeField]
-    private TextMesh _textMesh;
+    TextMesh _textMesh;
 
-    public void Start()
+    public IEnumerator Start()
     {
         //Debug.Log(_textMesh.text = "Example Example Text");
+
+        yield return null;
+    }
+
+    Func<bool> A(object o)
+    {
+        var del = (Func<bool>)Delegate.CreateDelegate(
+            typeof(Func<bool>),
+            ((KMBombModule)o).OnPass.Target,
+            ((KMBombModule)o).OnPass.Method
+        );
+
+        Log(((KMBombModule)o).OnPass.Target);
+        Log(((KMBombModule)o).OnPass.Method);
+        Log(del);
+        Log(del());
+
+        return del;
     }
 }
 
@@ -25,9 +41,10 @@ namespace Bad
     [Serializable]
     public sealed class VineThudException : Exception
     {
-        private readonly Application.LogCallback _callback;
+        readonly Application.LogCallback _callback;
 
-        public VineThudException(string message = "BOOM", Action onThrow = null) : base(message) 
+        public VineThudException(string message = "BOOM", Action onThrow = null)
+            : base(message)
         {
             if (onThrow == null)
                 onThrow = Default();
@@ -42,7 +59,7 @@ namespace Bad
             Application.logMessageReceived -= _callback;
         }
 
-        private static Action Default()
+        static Action Default()
         {
             return () =>
             {
@@ -51,7 +68,7 @@ namespace Bad
             };
         }
 
-        private static Application.LogCallback HandleLog(Action onThrow)
+        static Application.LogCallback HandleLog(Action onThrow)
         {
             return (exception, stackTrace, logType) =>
             {
@@ -61,7 +78,7 @@ namespace Bad
             };
         }
 
-        private static IEnumerator PlaySound(GameObject go)
+        static IEnumerator PlaySound(GameObject go)
         {
             var audio = go.GetComponent<AudioSource>();
 
