@@ -21,6 +21,9 @@ namespace PhosphorescenceModule
             _render = render;
         }
 
+        /// <summary>Contains slurs and other unwanted characters with negative associations.</summary>
+        private static readonly string[] s_nonos = { "\x46\x41\x47", "\x4e\x49\x47", "\x52\x41\x50" };
+
         private readonly PhosphorescenceScript _pho;
         private readonly Init _init;
         private readonly Select _select;
@@ -56,7 +59,7 @@ namespace PhosphorescenceModule
             string[] answers = _select.buttons.GetAllAnswers(_init.solution, _init.index);
 
             // I really don't want answers to contain this anywhere.
-            if (answers.Contains("FAG") || answers.Contains("NIG") || answers.Contains("RAP"))
+            if (s_nonos.Any(answers.Contains))
                 goto restart;
 
             // Log the current answer.
