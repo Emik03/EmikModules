@@ -78,7 +78,7 @@ namespace Logging
 
         private KeyValuePair<string, string>? Seperate(string condition)
         {
-            var regex = new Regex(@"\[(.+#\d+)\]:* ");
+            var regex = new Regex(@"\[([^\[\]]+#\d+)\]:* ");
             var match = regex.Match(condition);
 
             if (!match.Success)
