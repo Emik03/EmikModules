@@ -155,7 +155,7 @@ namespace HexOSModule
             "shorn of unsightly limbs and organs",
             "more stitch and scar than human",
             "if only marble",
-            "grew back so quickly",
+            "grew back so easily",
             "they have stolen away my spirit",
             "memories scattered into the slipstream",
             "i have no idea who i used to be",
