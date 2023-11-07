@@ -102,7 +102,7 @@ namespace TheOctadecayotton
                 return n1 * (f -= 2.25f / d1) * f + 0.9375f;
             return n1 * (f -= 2.625f / d1) * f + 0.984375f;
         }
-
+        
         internal static float ElasticInOut(this float x)
         {
             const float c5 = (float)(2 * Math.PI) / 4.5f;

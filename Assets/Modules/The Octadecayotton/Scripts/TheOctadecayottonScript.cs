@@ -13,9 +13,9 @@ public class TheOctadecayottonScript : MonoBehaviour
     public KMAudio Audio;
     public KMBombInfo Info;
     public KMBombModule Module;
-    public KMModSettings ModSettings;
     public KMSelectable ModuleSelectable, SubModuleSelectable;
     public MeshRenderer SelectableRenderer;
+    public GameObject SphereA, SphereB;
 
     [Range(ModSettingsJSON.Min, ModSettingsJSON.Max)]
     public byte DimensionOverride;
@@ -47,6 +47,9 @@ public class TheOctadecayottonScript : MonoBehaviour
         SubModuleSelectable.OnInteract += Interact.OnInteract(this, false, dimension - Info.GetSolvableModuleNames().Where(i => i == "The Octadecayotton").Count());
         SubModuleSelectable.OnHighlight += () => SelectableRenderer.enabled = true;
         SubModuleSelectable.OnHighlightEnded += () => SelectableRenderer.enabled = false;
+
+        SphereA.GetComponentInChildren<Light>().enabled = false;
+        SphereB.GetComponentInChildren<Light>().enabled = false;
     }
 
 #pragma warning disable 414
@@ -149,6 +152,9 @@ public class TheOctadecayottonScript : MonoBehaviour
             if (Interact.Dimension != 0)
                 yield return "sendtochaterror Since the module has been activated at least once, this value can no longer change.";
 
+            if (dimensionOverride > 12)
+                yield return "sendtochaterror For performance reasons, stay is unavailable with more than 12 dimensions.";
+
             else
             {
                 colorAssist = !colorAssist;
@@ -196,15 +202,15 @@ public class TheOctadecayottonScript : MonoBehaviour
                 yield return "sendtochaterror Since the module has been activated at least once, this value can no longer change.";
 
             else if (split.Length != 1)
-                yield return "sendtochaterror " + (split.Length == 0 ? "No arguments are specified. Expected: 3-12." : "Too many arguments are specified. Expected: 3-12.");
+                yield return "sendtochaterror " + (split.Length == 0 ? "No arguments are specified. Expected: 3-15." : "Too many arguments are specified. Expected: 3-15.");
 
-            else if(!int.TryParse(split[0], out n))
+            else if (!int.TryParse(split[0], out n))
                 yield return "sendtochaterror The argument must be a number.";
 
-            else if (n > 12 && n <= 18)
+            else if (n > 15 && n <= 27)
                 yield return "sendtochaterror you want to crash the stream? lol";
 
-            else if (n < 3 || n > 12)
+            else if (n < 3 || n > 15)
                 yield return "sendtochaterror The number of dimensions specified is not supported.";
 
             else if (!ZenModeActive && n < 9 && !Application.isEditor)
@@ -214,6 +220,12 @@ public class TheOctadecayottonScript : MonoBehaviour
             {
                 dimensionOverride = n;
                 yield return "sendtochat This module now activates with " + n + " dimensions.";
+                if (colorAssist && n > 12)
+                {
+                    colorAssist = false;
+                    yield return "sendtochat For performance reasons, stay is unavailable with more than 12 dimensions.";
+                    yield return "sendtochat The module will not maintain the colors of each sphere.";
+                }
             }
         }
 
@@ -248,7 +260,7 @@ public class TheOctadecayottonScript : MonoBehaviour
                     {
                         yield return "solve";
                         yield return "awardpointsonsolve " + AwardPoints();
-                    }    
+                    }
 
                     else
                         yield return "strike";
@@ -295,7 +307,10 @@ public class TheOctadecayottonScript : MonoBehaviour
 
     private int AwardPoints()
     {
-        var dimPoints = new Dictionary<int, int>() { { 3, 13 }, { 4, 22 }, { 5, 28 }, { 6, 35 }, { 7, 50 }, { 8, 65 }, { 9, 80 }, { 10, 110 }, { 11, 130 }, { 12, 225 } };
+        var dimPoints = new Dictionary<int, int>() { { 3, 13 }, { 4, 22 }, { 5, 28 }, { 6, 35 }, { 7, 50 }, { 8, 65 }, { 9, 80 }, { 10, 110 }, { 11, 130 }, { 12, 225 },
+            // Temporary scores:
+            { 13, 250 }, { 14, 275 }, { 15, 300 }
+        };
         return (int)Math.Floor(dimPoints[Interact.Dimension] * ((1 / 4f) + (Interact.Rotations.Length / 4f))) - dimPoints[9];
     }
 }

@@ -65,9 +65,9 @@ namespace TheOctadecayotton
 
         /// <summary>
         /// Contains the min/max amount of dimensions. Do keep in mind that the Axis enum needs sufficient amount of elements, as well as the array in Position.cs if you ever plan on changing this.
-        /// WARNING: Changing the minimum value below 3 or maximum value above 20 requires large restructuring of the module's rules. Exactly 20 is also untested and may cause problems.
+        /// WARNING: Changing the minimum value below 3 or maximum value above 30 requires large restructuring of the module's rules. Exactly 30 is also untested and may cause problems.
         /// </summary>
-        public const int Min = 3, Max = 18;
+        public const int Min = 3, Max = 27;
 
         /// <summary>
         /// Gets the value from ModSettings.
