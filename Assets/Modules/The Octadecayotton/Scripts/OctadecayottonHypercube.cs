@@ -8,7 +8,7 @@ namespace TheOctadecayotton
 {
     public class OctadecayottonHypercube : MonoBehaviour
     {
-        const float ScaleFactor = 16f;
+        const float ScaleFactor = 16f, BigScaleFactor = 2f;
 
         const int MaxDimensions = 30;
         const int MaxRotations = 5;
@@ -61,20 +61,20 @@ namespace TheOctadecayotton
             _renderer.material.SetInt("_skipSpheres", 0);
 
             var maxOffset = MaxAxes(_dimension)
-                + new Vector3(2f, 2f, 2f) / ScaleFactor;
+                + new Vector3(2f, 2f, 2f) / (dim > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor);
             _renderer.material.SetVector("_maxOffset", maxOffset);
             if (stretch)
             {
                 _renderer.transform.localScale = new Vector3(1f / maxOffset.x, 1f / maxOffset.y, 1f / maxOffset.z);
-                _sphereA.transform.localScale = new Vector3(1f / maxOffset.x, 1f / maxOffset.y, 1f / maxOffset.z) / ScaleFactor * 2.5f;
-                _sphereB.transform.localScale = new Vector3(1f / maxOffset.x, 1f / maxOffset.y, 1f / maxOffset.z) / ScaleFactor * 2.5f;
+                _sphereA.transform.localScale = new Vector3(1f / maxOffset.x, 1f / maxOffset.y, 1f / maxOffset.z) / (dim > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor) * 2.5f;
+                _sphereB.transform.localScale = new Vector3(1f / maxOffset.x, 1f / maxOffset.y, 1f / maxOffset.z) / (dim > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor) * 2.5f;
             }
             else
             {
                 var scale = 1f / Mathf.Max(maxOffset.x, maxOffset.y, maxOffset.z);
                 _renderer.transform.localScale = new Vector3(scale, scale, scale);
-                _sphereA.transform.localScale = new Vector3(scale, scale, scale) / ScaleFactor * 2.5f;
-                _sphereB.transform.localScale = new Vector3(scale, scale, scale) / ScaleFactor * 2.5f;
+                _sphereA.transform.localScale = new Vector3(scale, scale, scale) / (dim > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor) * 2.5f;
+                _sphereB.transform.localScale = new Vector3(scale, scale, scale) / (dim > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor) * 2.5f;
             }
 
             _sphereA.GetComponentInChildren<Light>().range = 2 / Mathf.Pow(_dimension, 2) * octa.Interact.transform.lossyScale.x;
@@ -193,12 +193,12 @@ namespace TheOctadecayotton
             }
 
             var maxOffset = MaxAxes(_dimension)
-                + new Vector3(2f, 2f, 2f) / ScaleFactor;
+                + new Vector3(2f, 2f, 2f) / (_dimension > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor);
             var pos = Enumerable
                 .Range(0, _dimension)
                 .Select(i => which[(Axis)i] ? _basisVectors[i] : Vector4.zero)
                 .Aggregate((a, b) => a + b)
-                + Vector4.one / ScaleFactor;
+                + Vector4.one / (_dimension > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor);
 
             if (_stretch)
             {
@@ -354,7 +354,7 @@ namespace TheOctadecayotton
                     new Vector3(1f,2f,1f),
                     new Vector3(0f,1f,1f),
                     new Vector3(2f,1f,1f)
-                }.Select(v => v / ScaleFactor).ToArray();
+                }.Select(v => v / ScaleFactor / BigScaleFactor).ToArray();
             return new Vector3[]
                 {
                     new Vector3(1.000000f, 1.707107f, 0.292893f),
@@ -463,8 +463,7 @@ namespace TheOctadecayotton
 
             int sphereCount = 1 << Mathf.Min(dim, MeshLimit);
 
-            var total = MaxAxes(dim)
-                + new Vector3(2f, 2f, 2f) / ScaleFactor;
+            var total = MaxAxes(dim) + new Vector3(2f, 2f, 2f) / (dim > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor);
 
             int w = (int)Mathf.Pow(sphereCount, 1f / 3f);
             var steps = MaxAxes(special != 0 ? 12 : dim) / (w - 1);
