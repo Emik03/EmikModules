@@ -37,7 +37,7 @@
             uniform int _rotationSizes[MAX_ROTATIONS];
             uniform int _rotations;
             uniform float _t;
-            uniform int _indexOffset;
+            uniform uint _indexOffset;
             uniform float4 _maxOffset;
             uniform int _skipSpheres;
             uniform float _blendSphereColor;
@@ -83,12 +83,12 @@
             #define P2 500000089
             #define P3 2000000011
             #define P4 500000071
-            void next(inout bool ix[MAX_DIMENSIONS], in int num)
+            void next(inout bool ix[MAX_DIMENSIONS], in uint num)
             {
                 num *= P1;
                 num += P2;
                 num %= 1 << min(_dimensions, MESH_LIMIT);
-                int num2 = _indexOffset;
+                uint num2 = _indexOffset;
                 num2 *= P3;
                 num2 += P4;
                 num2 %= max(1 <<_dimensions, 1);
