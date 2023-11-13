@@ -83,32 +83,32 @@ namespace TheOctadecayotton
             // 12d is small enough and has large enough spheres that we use the fancy spheres.
             if (dim == 12)
             {
-                _filter.sharedMesh = octa.colorAssist ? GenerateMeshOfDimensions(11, special: 1) : _specialMesh;
+                _filter.sharedMesh = _specialMesh;
                 _allRenderers = new MeshRenderer[2];
                 _allRenderers[0] = _renderer;
                 _allRenderers[1] = Instantiate(_renderer.gameObject, _renderer.transform.parent, true).GetComponent<MeshRenderer>();
-                _allRenderers[1].GetComponent<MeshFilter>().sharedMesh = octa.colorAssist ? GenerateMeshOfDimensions(11, special: 2) : _specialMesh2;
+                _allRenderers[1].GetComponent<MeshFilter>().sharedMesh = _specialMesh2;
                 _allRenderers[1].transform.localScale = _renderer.transform.localScale;
                 _allRenderers[1].transform.localPosition = _renderer.transform.localPosition;
             }
             else if (dim <= MeshLimit)
             {
-                _filter.sharedMesh = octa.colorAssist ? GenerateMeshOfDimensions(dim) : MeshOfDimensions(dim);
+                _filter.sharedMesh = MeshOfDimensions(dim);
                 _allRenderers = new MeshRenderer[] { _renderer };
             }
             else
             {
-                _filter.sharedMesh = octa.colorAssist ? GenerateMeshOfDimensions(dim) : MeshOfDimensions(dim);
+                _filter.sharedMesh = MeshOfDimensions(dim);
                 int amountNeeded = (1 << (dim - MeshLimit)) - 1;
                 _allRenderers = new MeshRenderer[amountNeeded + 1];
                 _allRenderers[0] = _renderer;
                 for (int i = 1; i <= amountNeeded; i++)
                 {
-                    if (octa.colorAssist || i % 16 == 0)
+                    if (i % 16 == 0)
                         yield return null;
                     _allRenderers[i] = Instantiate(_renderer.gameObject, _renderer.transform.parent, true).GetComponent<MeshRenderer>();
                     if (octa.colorAssist)
-                        _allRenderers[i].GetComponent<MeshFilter>().sharedMesh = octa.colorAssist ? GenerateMeshOfDimensions(dim) : MeshOfDimensions(dim);
+                        _allRenderers[i].GetComponent<MeshFilter>().sharedMesh = MeshOfDimensions(dim);
                     _allRenderers[i].material.SetInt("_indexOffset", i);
                     _allRenderers[i].transform.localScale = _renderer.transform.localScale;
                     _allRenderers[i].transform.localPosition = _renderer.transform.localPosition;
