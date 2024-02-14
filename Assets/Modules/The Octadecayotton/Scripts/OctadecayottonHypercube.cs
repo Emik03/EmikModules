@@ -10,7 +10,7 @@ namespace TheOctadecayotton
     {
         const float ScaleFactor = 16f, BigScaleFactor = 2f;
 
-        const int MaxDimensions = 30;
+        const int MaxDimensions = 27;
         const int MaxRotations = 5;
         const int MaxAxesPerRotation = 5;
 

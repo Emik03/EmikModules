@@ -17,7 +17,7 @@
 
             // These constants can be modified, but should be kept as low as possible.
             // The maximum number of dimensions this shader can support.
-            #define MAX_DIMENSIONS 30
+            #define MAX_DIMENSIONS 27
             // The maximum number of subrotations in one rotation.
             // Corresponds to RotationOptions.MaxRotations
             #define MAX_ROTATIONS 5
