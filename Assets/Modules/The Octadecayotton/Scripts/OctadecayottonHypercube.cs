@@ -347,6 +347,19 @@ namespace TheOctadecayotton
                     Destroy(rend.gameObject);
         }
 
+        private void OnDestroy()
+        {
+            for (int i = 0; i < _asyncMeshTemplates.Length; i++)
+            {
+                if (_meshTemplates[i] != null)
+                    _asyncMeshTemplates[i] = null;
+            }
+            if (_specialMesh != null)
+                _asyncSpecialMesh = null;
+            if (_specialMeshB != null)
+                _asyncSpecialMeshB = null;
+        }
+
         private Rotation[][] _rotations;
         private float _prevProgress = 0f;
         internal void SetRotationProgress(float t)
