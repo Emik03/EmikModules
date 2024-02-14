@@ -129,7 +129,7 @@
                 int blah2 = blah + _indexOffset;
 
                 bool indices[MAX_DIMENSIONS];
-                for(int i = 0; i < MESH_LIMIT; i++)
+                for(int i = 0; i < MAX_DIMENSIONS; i++)
                 {
                     indices[i] = blah & 1;
                     blah >>= 1;

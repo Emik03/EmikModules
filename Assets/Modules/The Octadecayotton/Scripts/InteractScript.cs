@@ -157,10 +157,12 @@ public class InteractScript : MonoBehaviour
                 StartCoroutine(_animate.Solve());
 
             else if (_inputs.Count == (Dimension == 3 ? 1 : 3))
+            {
                 _octadecayotton.PlaySound(SFX.Oct.StartingSphere);
+                _hypercube.HighlightSphere(startingSphere);
 
-            _hypercube.HighlightSphere(startingSphere);
-            Fade();
+                Fade();
+            }
 
             _inputs = new List<Axis>();
         }
