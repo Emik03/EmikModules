@@ -15,8 +15,23 @@ namespace TheOctadecayotton
         const int MaxRotations = 5;
         const int MaxAxesPerRotation = 5;
 
-        const int LODBarrier = 12;
-        const int MeshLimit = 13;
+        static int LODBarrier
+        {
+            get
+            {
+                // The LOD isn't strictly necessary - there are no limits enforcing it - but you won't be able to tell anyways at this scale.
+                return _experimentalRendering ? 18 : 12;
+            }
+        }
+        static int MeshLimit
+        {
+            get
+            {
+                // It takes a good while for the CPU to parrot the largest meshes to the GPU (which Unity forces onto the main thread),
+                // and we don't actually need to consolidate the biggest meshes, so the limit is 21 instead of 27.
+                return _experimentalRendering ? 21 : 13;
+            }
+        }
 
         private MeshRenderer _renderer;
         private MeshFilter _filter;
@@ -63,6 +78,7 @@ namespace TheOctadecayotton
             _renderer.material.SetVectorArray("_sphereBasis", BaseMesh(dim == 12 ? 1 : dim).Select(v => (Vector4)v).ToList());
             _renderer.material.SetVectorArray("_basis", _basisVectors);
             _renderer.material.SetInt("_skipSpheres", 0);
+            _renderer.material.SetInt("_meshLimit", MeshLimit);
 
             var maxOffset = MaxAxes(_dimension)
                 + new Vector3(2f, 2f, 2f) / (dim > LODBarrier ? ScaleFactor * BigScaleFactor : ScaleFactor);

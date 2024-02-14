@@ -24,9 +24,6 @@
             // The maximum number of axes in one subrotation.
             // Corresponds to RotationOptions.MaxLengthPerRotation
             #define MAX_AXES_PER_ROTATION 5
-            // The maximum number of dimensions in one mesh.
-            // Corresponds to OctadecayottonHypercube.MeshLimit
-            #define MESH_LIMIT 13
             // The maximum number of vertices in one sphere.
             #define SPHERE_VERTICES 17
 
@@ -46,6 +43,7 @@
             uniform float _jitterScale;
             uniform bool _solveAnimation;
             uniform float4 _sphereBasis[SPHERE_VERTICES];
+            uniform int _meshLimit;
 
             struct appdata
             {
@@ -87,27 +85,27 @@
             {
                 num *= P1;
                 num += P2;
-                num %= 1 << min(_dimensions, MESH_LIMIT);
+                num %= 1 << min(_dimensions, _meshLimit);
                 uint num2 = _indexOffset;
                 num2 *= P3;
                 num2 += P4;
                 num2 %= max(1 <<_dimensions, 1);
 
-                for(int i = 0; i < MESH_LIMIT; i++)
+                for(int i = 0; i < _meshLimit; i++)
                 {
                     ix[i] = num & 1;
                     num >>= 1;
                 }
-                for(i = MESH_LIMIT; i < _dimensions; i++)
+                for(i = _meshLimit; i < _dimensions; i++)
                 {
                     ix[i] = num2 & 1;
                     num2 >>= 1;
                 }
-                for(i = 0; i < _dimensions - MESH_LIMIT; i++)
+                for(i = 0; i < _dimensions - _meshLimit; i++)
                 {
                     bool temp = ix[i];
-                    ix[i] = ix[i + MESH_LIMIT];
-                    ix[i + MESH_LIMIT] = temp;
+                    ix[i] = ix[i + _meshLimit];
+                    ix[i + _meshLimit] = temp;
                 }
             }
 
@@ -135,7 +133,7 @@
                     blah >>= 1;
                 }
                 blah = _indexOffset;
-                for(i = MESH_LIMIT; i < _dimensions; i++)
+                for(i = _meshLimit; i < _dimensions; i++)
                 {
                     indices[i] = abs(fmod(blah, 2) - 1) < .5;
                     blah >>= 1;
