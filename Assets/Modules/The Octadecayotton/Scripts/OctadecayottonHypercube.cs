@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 
 namespace TheOctadecayotton
@@ -14,14 +15,17 @@ namespace TheOctadecayotton
         const int MaxRotations = 5;
         const int MaxAxesPerRotation = 5;
 
+        const int LODBarrier = 12;
+        const int MeshLimit = 13;
+
         private MeshRenderer _renderer;
         private MeshFilter _filter;
         private MeshRenderer[] _allRenderers;
         private TheOctadecayottonScript _octa;
 
-        const int MeshLimit = 13;
         private int _dimension;
         private bool _stretch;
+        private static bool _experimentalRendering;
 
         private GameObject _sphereA, _sphereB;
 
@@ -61,35 +65,34 @@ namespace TheOctadecayotton
             _renderer.material.SetInt("_skipSpheres", 0);
 
             var maxOffset = MaxAxes(_dimension)
-                + new Vector3(2f, 2f, 2f) / (dim > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor);
+                + new Vector3(2f, 2f, 2f) / (dim > LODBarrier ? ScaleFactor * BigScaleFactor : ScaleFactor);
             _renderer.material.SetVector("_maxOffset", maxOffset);
             if (stretch)
             {
                 _renderer.transform.localScale = new Vector3(1f / maxOffset.x, 1f / maxOffset.y, 1f / maxOffset.z);
-                _sphereA.transform.localScale = new Vector3(1f / maxOffset.x, 1f / maxOffset.y, 1f / maxOffset.z) / (dim > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor) * 2.5f;
-                _sphereB.transform.localScale = new Vector3(1f / maxOffset.x, 1f / maxOffset.y, 1f / maxOffset.z) / (dim > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor) * 2.5f;
+                _sphereA.transform.localScale = new Vector3(1f / maxOffset.x, 1f / maxOffset.y, 1f / maxOffset.z) / (dim > LODBarrier ? ScaleFactor * BigScaleFactor : ScaleFactor) * 2.5f;
+                _sphereB.transform.localScale = new Vector3(1f / maxOffset.x, 1f / maxOffset.y, 1f / maxOffset.z) / (dim > LODBarrier ? ScaleFactor * BigScaleFactor : ScaleFactor) * 2.5f;
             }
             else
             {
                 var scale = 1f / Mathf.Max(maxOffset.x, maxOffset.y, maxOffset.z);
                 _renderer.transform.localScale = new Vector3(scale, scale, scale);
-                _sphereA.transform.localScale = new Vector3(scale, scale, scale) / (dim > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor) * 2.5f;
-                _sphereB.transform.localScale = new Vector3(scale, scale, scale) / (dim > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor) * 2.5f;
+                _sphereA.transform.localScale = new Vector3(scale, scale, scale) / (dim > LODBarrier ? ScaleFactor * BigScaleFactor : ScaleFactor) * 2.5f;
+                _sphereB.transform.localScale = new Vector3(scale, scale, scale) / (dim > LODBarrier ? ScaleFactor * BigScaleFactor : ScaleFactor) * 2.5f;
             }
 
             _sphereA.GetComponentInChildren<Light>().range = 2 / Mathf.Pow(_dimension, 2) * octa.Interact.transform.lossyScale.x;
             _sphereB.GetComponentInChildren<Light>().range = 2 / Mathf.Pow(_dimension, 2) * octa.Interact.transform.lossyScale.x;
 
-            // 12d is small enough and has large enough spheres that we use the fancy spheres.
-            if (dim == 12)
+            if (dim == 12 && !_experimentalRendering)
             {
-                _filter.sharedMesh = _specialMesh;
-                _allRenderers = new MeshRenderer[2];
-                _allRenderers[0] = _renderer;
-                _allRenderers[1] = Instantiate(_renderer.gameObject, _renderer.transform.parent, true).GetComponent<MeshRenderer>();
-                _allRenderers[1].GetComponent<MeshFilter>().sharedMesh = _specialMesh2;
-                _allRenderers[1].transform.localScale = _renderer.transform.localScale;
-                _allRenderers[1].transform.localPosition = _renderer.transform.localPosition;
+                _filter.sharedMesh = _specialMesh = _specialMesh ?? (_asyncSpecialMesh ?? GenerateMeshOfDimensions(12, 1)).Mesh;
+
+                var r2 = Instantiate(_renderer.gameObject, _renderer.transform.parent, true).GetComponent<MeshRenderer>();
+                r2.GetComponent<MeshFilter>().sharedMesh = _specialMeshB = _specialMeshB ?? (_asyncSpecialMeshB ?? GenerateMeshOfDimensions(12, 2)).Mesh;
+                r2.transform.localScale = _renderer.transform.localScale;
+                r2.transform.localPosition = _renderer.transform.localPosition;
+                _allRenderers = new MeshRenderer[] { _renderer, r2 };
             }
             else if (dim <= MeshLimit)
             {
@@ -98,7 +101,7 @@ namespace TheOctadecayotton
             }
             else
             {
-                _filter.sharedMesh = MeshOfDimensions(dim);
+                _filter.sharedMesh = MeshOfDimensions(MeshLimit);
                 int amountNeeded = (1 << (dim - MeshLimit)) - 1;
                 _allRenderers = new MeshRenderer[amountNeeded + 1];
                 _allRenderers[0] = _renderer;
@@ -107,8 +110,6 @@ namespace TheOctadecayotton
                     if (i % 16 == 0)
                         yield return null;
                     _allRenderers[i] = Instantiate(_renderer.gameObject, _renderer.transform.parent, true).GetComponent<MeshRenderer>();
-                    if (octa.colorAssist)
-                        _allRenderers[i].GetComponent<MeshFilter>().sharedMesh = MeshOfDimensions(dim);
                     _allRenderers[i].material.SetInt("_indexOffset", i);
                     _allRenderers[i].transform.localScale = _renderer.transform.localScale;
                     _allRenderers[i].transform.localPosition = _renderer.transform.localPosition;
@@ -119,10 +120,9 @@ namespace TheOctadecayotton
             {
                 _meshes = _allRenderers.Select(r => r.GetComponent<MeshFilter>()).ToArray();
                 _colorAssistColors = Enumerable.Range(0, 1 << _dimension).Select(i => ColorFromIndex(i)).ToArray();
-                if (_dimension == 12)
+
+                if (_dimension == 12 && !_experimentalRendering)
                     _meshSizes = new int[] { 1 << 11, 1 << 11 };
-                else if (_dimension < 11)
-                    _meshSizes = new int[] { 1 << _dimension };
                 else if (_dimension <= MeshLimit)
                     _meshSizes = new int[] { 1 << _dimension };
                 else
@@ -193,12 +193,12 @@ namespace TheOctadecayotton
             }
 
             var maxOffset = MaxAxes(_dimension)
-                + new Vector3(2f, 2f, 2f) / (_dimension > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor);
+                + new Vector3(2f, 2f, 2f) / (_dimension > LODBarrier ? ScaleFactor * BigScaleFactor : ScaleFactor);
             var pos = Enumerable
                 .Range(0, _dimension)
                 .Select(i => which[(Axis)i] ? _basisVectors[i] : Vector4.zero)
                 .Aggregate((a, b) => a + b)
-                + Vector4.one / (_dimension > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor);
+                + Vector4.one / (_dimension > LODBarrier ? ScaleFactor * BigScaleFactor : ScaleFactor);
 
             if (_stretch)
             {
@@ -308,7 +308,7 @@ namespace TheOctadecayotton
 
         internal void DisableSpheres(uint count)
         {
-            int limit = _dimension == 12 ? 11 : MeshLimit;
+            int limit = _dimension == 12 && !_experimentalRendering ? 11 : MeshLimit;
 
             var offsets = count >> limit;
             var indices = count ^ (offsets << limit);
@@ -345,7 +345,7 @@ namespace TheOctadecayotton
 
         internal static Vector3[] BaseMesh(int dim)
         {
-            if (dim > 11)
+            if (dim > LODBarrier)
                 return new Vector3[]
                 {
                     new Vector3(1f,1f,0f),
@@ -379,7 +379,7 @@ namespace TheOctadecayotton
 
         internal static int[] BaseTris(int dim)
         {
-            if (dim > 11)
+            if (dim > LODBarrier)
                 return new int[]
                 {
                     0, 2, 4,
@@ -427,46 +427,145 @@ namespace TheOctadecayotton
         }
 
         private static Mesh[] _meshTemplates;
-        private static Mesh _specialMesh, _specialMesh2;
+        private static Mesh _specialMesh, _specialMeshB;
+        private static MeshData[] _asyncMeshTemplates;
+        private static MeshData _asyncSpecialMesh, _asyncSpecialMeshB;
 
         private void Awake()
         {
             if (_meshTemplates != null)
                 return;
 
-#if !UNITY_EDITOR
-            _meshTemplates = Enumerable.Range(3, MaxDimensions - 2).Select(d => GenerateMeshOfDimensions(d)).ToArray();
-#else
-            // In the editor, creating all the meshes is annoyingly slow,
-            // but it's not a problem in-game to hold up bomb loading by a second or two (only once).
             _meshTemplates = new Mesh[MaxDimensions - 2];
-#endif
-            _specialMesh = GenerateMeshOfDimensions(11, special: 1);
-            _specialMesh2 = GenerateMeshOfDimensions(11, special: 2);
+            _asyncMeshTemplates = new MeshData[MaxDimensions - 2];
+            _experimentalRendering = ModSettingsJSON.GetExperimentalRenderingEnabled();
+
+            Debug.LogFormat("<The Octadecayotton> Experimental rendering is {0}.", _experimentalRendering ? "ON" : "OFF");
+            Debug.Log("<The Octadecayotton> Generating meshes on another thread: dimentions 3-12 in high detail, dimension 13 high detail");
+            if (_experimentalRendering)
+                Debug.Log("<The Octadecayotton> Also generating two special meshes: dimension 12 in high detail");
+
+            // Larger meshes take a while to generate, so we do that on another thread.
+            new Thread(GenerateMeshes).Start();
+
+            StartCoroutine(FinalizeMeshes());
+        }
+
+        private IEnumerator FinalizeMeshes()
+        {
+            if (!_experimentalRendering)
+            {
+                while (_asyncSpecialMesh == null)
+                    yield return new WaitForSeconds(0.1f);
+                yield return _asyncSpecialMesh.FinalizeAsync();
+                _specialMesh = _asyncSpecialMesh.Mesh;
+
+                while (_asyncSpecialMeshB == null)
+                    yield return new WaitForSeconds(0.1f);
+                yield return _asyncSpecialMeshB.FinalizeAsync();
+                _specialMeshB = _asyncSpecialMeshB.Mesh;
+            }
+
+            for (int i = 3; i <= MeshLimit; i++)
+            {
+                if (!_experimentalRendering && i == 12)
+                    continue;
+                while (_asyncMeshTemplates[i - 3] == null)
+                    yield return new WaitForSeconds(0.1f);
+                yield return _asyncMeshTemplates[i - 3].FinalizeAsync();
+                _meshTemplates[i - 3] = _asyncMeshTemplates[i - 3].Mesh;
+            }
+        }
+
+        private void GenerateMeshes()
+        {
+            if (!_experimentalRendering)
+            {
+                _asyncSpecialMesh = GenerateMeshOfDimensions(12, 1);
+                _asyncSpecialMeshB = GenerateMeshOfDimensions(12, 2);
+            }
+
+            for (int dim = 3; dim <= MeshLimit; dim++)
+                if (_meshTemplates[dim - 3] == null && (dim != 12 || _experimentalRendering))
+                    _asyncMeshTemplates[dim - 3] = GenerateMeshOfDimensions(dim);
         }
 
         internal static Mesh MeshOfDimensions(int dim)
         {
             if (_meshTemplates[dim - 3] == null)
-                _meshTemplates[dim - 3] = GenerateMeshOfDimensions(dim);
+                _meshTemplates[dim - 3] = (_asyncMeshTemplates[dim - 3] ?? GenerateMeshOfDimensions(dim)).Mesh;
             return _meshTemplates[dim - 3];
         }
 
-        // Due to Unity limitations, more than 13 dimensions won't work.
-        // Specifically, a mesh can only effectively have 65535 vertices.
-        // The 6-vertex base mesh needs a limit of 13d.
-        // The 17-vertex base mesh needs a limit of 11d.
-        internal static Mesh GenerateMeshOfDimensions(int dim, int special = 0)
+        private class MeshData
+        {
+            public Vector3[] Vertices;
+            public int[] Triangles;
+            public Vector2[] UV;
+            public string Name;
+            public Bounds Bounds;
+
+            private Mesh _mesh;
+            public Mesh Mesh
+            {
+                get
+                {
+                    return _mesh ?? Finalize();
+                }
+            }
+
+            public IEnumerator FinalizeAsync()
+            {
+                Debug.Log("<The Octadecayotton> Finalizing mesh " + Name);
+                _mesh = new Mesh
+                {
+                    name = Name,
+                    bounds = Bounds
+                };
+                if (_experimentalRendering)
+                    _mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
+                _mesh.vertices = (Vertices);
+                yield return null;
+                _mesh.triangles = Triangles;
+                yield return null;
+                _mesh.uv = UV;
+            }
+
+            private Mesh Finalize()
+            {
+                var it = FinalizeAsync();
+                while (it.MoveNext()) ;
+                return _mesh;
+            }
+        }
+
+        // In Unity, a mesh can only have 2^32 vertices due to how faces index into the list of vertices.
+        // On most GPUs, this limit is much lower: 2^16 without expensive software emulation.
+        // The experimental rendering option allows the module to use the 2^32 limit.
+        // For added performance at high dimesnsions, we use a LOD system:
+        // 12D Octas and smaller use a 17-vertex sphere model (a UV sphere which looks pentagonal from many angles).
+        // 13D Octas and larger use a 6-vertex sphere model (an octahedron).
+        // Importantly, on modern GPUs, vertices and tris (faces) are the largest limiting factor for a detailed mesh like this.
+        // This is why we prefer an octahedron (6 verts, 8 tris) to a cube (8 verts, 12 tris).
+        //
+        // With the 2^32 limit, every size of Octa fits in one mesh at high detail.
+        // With the 2^16 limit, high detail Octas fit into the indexing space of one mesh up to 11D,
+        // while low detail Octas can fit into one mesh up to 13D. Dimensions above this
+        // use multiple meshes to achieve the same effect (as well as 12D to use high detail meshes).
+        private static MeshData GenerateMeshOfDimensions(int dim, int special = 0)
         {
             Vector3[] verts = BaseMesh(dim);
             int[] tris = BaseTris(dim);
 
             int sphereCount = 1 << Mathf.Min(dim, MeshLimit);
 
-            var total = MaxAxes(dim) + new Vector3(2f, 2f, 2f) / (dim > 11 ? ScaleFactor * BigScaleFactor : ScaleFactor);
+            if (special != 0)
+                sphereCount /= 2;
+
+            var total = MaxAxes(dim) + new Vector3(2f, 2f, 2f) / (dim > LODBarrier ? ScaleFactor * BigScaleFactor : ScaleFactor);
 
             int w = (int)Mathf.Pow(sphereCount, 1f / 3f);
-            var steps = MaxAxes(special != 0 ? 12 : dim) / (w - 1);
+            var steps = MaxAxes(dim) / (w - 1);
             Func<int, Vector3> offset = (i) =>
             {
                 int x = i % w;
@@ -477,41 +576,56 @@ namespace TheOctadecayotton
                 return new Vector3(steps.x * x, steps.y * y, steps.z * z);
             };
 
-            Mesh m = new Mesh();
-            m.SetVertices(
-                Enumerable
-                .Range(0, sphereCount)
-                .SelectMany(i => verts
-                    .Select(v => v + offset(i)).ToArray()
-                    )
-                .ToList());
-            m.SetTriangles(
-                Enumerable
-                .Range(0, sphereCount)
-                .SelectMany(sphere => tris.Select(ix => ix + verts.Length * sphere))
-                .ToList(), 0);
-            m.SetUVs(0,
-                Enumerable
-                .Range((special == 2) ? 1 << 11 : 0, sphereCount)
-                .SelectMany(i => Enumerable.Range(0, verts.Length).Select(j => new Vector2(i, j)))
-                .ToList());
-            m.SetColors(
-                Enumerable
-                .Range(0, sphereCount)
-                //.Select(_ => new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f))
-                .Select(i => new Color((float)i / sphereCount, (float)i / sphereCount, (float)i / sphereCount, 1f))
-                .SelectMany(c => Enumerable.Repeat(c, verts.Length))
-                .ToList());
+            int vertLength = verts.Length;
+            int trisLength = tris.Length;
 
-            List<Vector3> verts2 = new List<Vector3>();
-            m.GetVertices(verts2);
-            //Debug.Log(verts2.Count);
-            //Debug.Log((2 << dim) * 6);
+            Vector3[] vertices = new Vector3[sphereCount * vertLength];
+            for (int i = 0; i < sphereCount; i++)
+            {
+                var off = offset(i);
+                var ix = i * vertLength;
+                for (int j = 0; j < vertLength; j++)
+                    vertices[ix + j] = verts[j] + off;
+            }
 
-            m.name = "Octa" + dim + "d";
-            m.bounds = new Bounds(total / 2, total);
+            int[] triangles = new int[sphereCount * trisLength];
+            for (int i = 0; i < sphereCount; i++)
+            {
+                int ix = i * vertLength, ix2 = i * trisLength;
+                for (int j = 0; j < trisLength; j++)
+                    triangles[ix2 + j] = tris[j] + ix;
+            }
 
-            return m;
+            var uvCount = sphereCount * vertLength;
+            Vector2[] uvs = new Vector2[uvCount];
+            if (special == 2)
+            {
+                for (int i = 0; i < sphereCount; i++)
+                {
+                    var ix = i * vertLength;
+                    var ix2 = i + uvCount;
+                    for (int j = 0; j < vertLength; j++)
+                        uvs[ix + j] = new Vector2(ix2, j);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < sphereCount; i++)
+                {
+                    var ix = i * vertLength;
+                    for (int j = 0; j < vertLength; j++)
+                        uvs[ix + j] = new Vector2(i, j);
+                }
+            }
+
+            return new MeshData
+            {
+                Vertices = vertices,
+                Triangles = triangles,
+                UV = uvs,
+                Name = "Octa" + dim + "d" + (special == 0 ? "" : special == 1 ? "A" : "B"),
+                Bounds = new Bounds(total / 2, total)
+            };
         }
     }
 }

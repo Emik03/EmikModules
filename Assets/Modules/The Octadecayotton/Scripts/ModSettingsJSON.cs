@@ -19,6 +19,7 @@ namespace TheOctadecayotton
             Dimension = 9;
             Rotation = 3;
             Slowness = 8;
+            HowToUse = "Enables 32-bit vertex indexing. Enabling this may improve rendering on high-end devices. Requires a restart to take effect. (default: false)";
         }
 
         /// <summary>
@@ -64,6 +65,19 @@ namespace TheOctadecayotton
         public bool StretchToFit { get; private set; }
 
         /// <summary>
+        /// Enables 32-bit vertex indexing. Enabling this may improve rendering on high-end devices. Requires a restart to take effect.
+        /// </summary>
+        [JsonProperty("TheOctadecayotton -> ExperimentalRendering")]
+        public bool ExperimentalRendering { get; private set; }
+
+        /// <summary>
+        /// Exists as a hack to get KeepCoding to migrate the settings file correctly.
+        /// </summary>
+        [JsonProperty("HowToUse17")]
+        public string HowToUse { get; private set; }
+
+
+        /// <summary>
         /// Contains the min/max amount of dimensions. Do keep in mind that the Axis enum needs sufficient amount of elements, as well as the array in Position.cs if you ever plan on changing this.
         /// WARNING: Changing the minimum value below 3 or maximum value above 30 requires large restructuring of the module's rules. Exactly 30 is also untested and may cause problems.
         /// </summary>
@@ -86,6 +100,16 @@ namespace TheOctadecayotton
             isUsingBounce = settings.IsUsingBounce;
             isUsingElastic = settings.IsUsingElastic;
             stretchToFit = settings.StretchToFit;
+        }
+
+        /// <summary>
+        /// Gets the value of <see cref="ExperimentalRendering"/> for the current settings.
+        /// </summary>
+        public static bool GetExperimentalRenderingEnabled()
+        {
+            new ModConfig<ModSettingsJSON>();
+            var settings = new ModConfig<ModSettingsJSON>().Read();
+            return settings.ExperimentalRendering;
         }
 
         public static bool LoadMission(TheOctadecayottonScript octadecayotton, ref int dimension, ref int rotation, ref int slowness, ref bool colorAssist, ref bool isUsingBounce, ref bool isUsingElastic, ref bool stretchToFit)

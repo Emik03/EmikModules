@@ -52,5 +52,8 @@
   "HowToUse15": "Makes rotations use the InOutElastic ease, not suitable for serious play. (default: false)",
 
   "TheOctadecayotton -> StretchToFit": false,
-  "HowToUse16": "Stretches the individual X, Y, and Z axes on the tesseract to always take up the entire module. This does cause proportions to be skewed. (default: false)"
+  "HowToUse16": "Stretches the individual X, Y, and Z axes on the tesseract to always take up the entire module. This does cause proportions to be skewed. (default: false)",
+
+  "TheOctadecayotton -> ExperimentalRendering": false,
+  "HowToUse17": "Enables 32-bit vertex indexing. Enabling this may improve rendering on high-end devices. Requires a restart to take effect. (default: false)"
 }
