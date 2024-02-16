@@ -191,32 +191,6 @@ public class Sorting : MonoBehaviour
         Debug.LogFormat("[Sorting #{0}] Algorithm recieved: {1}", _moduleId, Screen.text);
 
         //_initialButtons = new byte[5] { 1, 2, 3, 4, 5 };
-        if (System.DateTime.Now.Month != 4 || System.DateTime.Now.Day != 1)
-            return;
-
-        Screen.text = "BOGO";
-
-        Debug.LogFormat("[Sorting #{0}] BogoSort activated!", _moduleId);
-        Debug.LogFormat("[Sorting #{0}] All logs from this module are now disabled to prevent spam during BogoSort.", _moduleId);
-
-        _bogoSort = true;
-
-        for (int i = 0; i < _buttons.Length; i++)
-        {
-            byte rng = (byte)Random.Range(10, 100);
-
-            //get random numbers
-            if (!_buttons.Contains(rng))
-            {
-                _buttons[i] = rng;
-
-                Debug.LogFormat("[Sorting #{0}] Button {1} has the label \"{2}\".", _moduleId, i + 1, rng);
-            }
-
-            //duplicate number prevention
-            else
-                i--;
-        }
     }
 
     /// <summary>
