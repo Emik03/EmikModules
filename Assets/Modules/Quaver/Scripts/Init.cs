@@ -42,5 +42,10 @@ namespace QuaverModule
                 quaver.Buttons[j].OnInteract += select.Press(j);
             }
         }
+
+        internal void Press(int btn)
+        {
+            quaver.Buttons[btn].OnInteract();
+        }
     }
 }
