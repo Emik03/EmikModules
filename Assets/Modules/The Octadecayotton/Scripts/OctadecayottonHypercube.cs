@@ -150,7 +150,13 @@ namespace TheOctadecayotton
         private void SetColors()
         {
             for (int i = 0; i < _meshes.Length; i++)
-                _meshes[i].mesh.SetColors(_colorAssistColors.Skip(_meshSizes.Take(i).Sum()).Take(_meshSizes[i]).SelectMany(c => Enumerable.Repeat(c, _dimension <= 12 ? 17 : 6)).ToList());
+                _meshes[i].mesh.SetColors(
+                    _colorAssistColors
+                        .Skip(_meshSizes.Take(i).Sum())
+                        .Take(_meshSizes[i])
+                        .SelectMany(c => Enumerable.Repeat(c, _dimension <= LODBarrier ? 17 : 6))
+                        .ToList()
+                    );
 
             foreach (var thing in _allRenderers)
                 thing.material.SetFloat("_blendSphereColor", 1f);
