@@ -207,10 +207,10 @@ public class TheOctadecayottonScript : MonoBehaviour
             else if (!int.TryParse(split[0], out n))
                 yield return "sendtochaterror The argument must be a number.";
 
-            else if (n > 15 && n <= 27)
-                yield return "sendtochaterror you want to crash the stream? lol";
+            else if (n > 18 && n <= 27)
+                yield return "sendtochaterror Huge dimension counts are disabled to reduce lag.";
 
-            else if (n < 3 || n > 18)
+            else if (n < 3 || n > 27)
                 yield return "sendtochaterror The number of dimensions specified is not supported.";
 
             else if (!ZenModeActive && n < 9 && !Application.isEditor)
