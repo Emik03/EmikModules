@@ -69,7 +69,7 @@ public class TheOctadecayottonScript : MonoBehaviour
         else if (Regex.IsMatch(split[0], @"^\s*settings\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
         {
             yield return null;
-            yield return @"sendtochat NOTE, SETTINGS CANNOT BE CHANGED AFTER MODULE INITIATION! | !{1} set 3-12 (Sets dimension count, in Normal/Time mode you may not start with less than 9) | !{1} spin <#> (Sets rotation count, in Normal/Time mode you may not start with less than 3, sets the amount of rotations) | !1 slowness <#> (Determines how slow the spheres move where lower = faster movement with each +/-1 being twice as slow/fast, in Normal/Time mode you may not set this to more than 9) | !1 stay (Toggle: Keeps each sphere's colors as they rotate rather than updating based on position) | !{1} stretch (Toggle: Only affects dimensions not divisible by 3, stretches the X, Y, and Z planes to fit the module, however it causes some axes to become exaggerated) | !{1} springiness (Toggle: Uses InOutBounce ease, do not use on serious TP bombs) | !{1} supple (Toggle: Uses InOutElastic ease, do not use on serious TP bombs)";
+            yield return @"sendtochat NOTE, SETTINGS CANNOT BE CHANGED AFTER MODULE INITIATION! | !{1} set 3-18 (Sets dimension count, in Normal/Time mode you may not start with less than 9) | !{1} spin <#> (Sets rotation count, in Normal/Time mode you may not start with less than 3, sets the amount of rotations) | !1 slowness <#> (Determines how slow the spheres move where lower = faster movement with each +/-1 being twice as slow/fast, in Normal/Time mode you may not set this to more than 9) | !1 stay (Toggle: Keeps each sphere's colors as they rotate rather than updating based on position) | !{1} stretch (Toggle: Only affects dimensions not divisible by 3, stretches the X, Y, and Z planes to fit the module, however it causes some axes to become exaggerated) | !{1} springiness (Toggle: Uses InOutBounce ease, do not use on serious TP bombs) | !{1} supple (Toggle: Uses InOutElastic ease, do not use on serious TP bombs)";
         }
 
         else if (Regex.IsMatch(split[0], @"^\s*spin\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
@@ -210,7 +210,7 @@ public class TheOctadecayottonScript : MonoBehaviour
             else if (n > 15 && n <= 27)
                 yield return "sendtochaterror you want to crash the stream? lol";
 
-            else if (n < 3 || n > 15)
+            else if (n < 3 || n > 18)
                 yield return "sendtochaterror The number of dimensions specified is not supported.";
 
             else if (!ZenModeActive && n < 9 && !Application.isEditor)
@@ -309,7 +309,7 @@ public class TheOctadecayottonScript : MonoBehaviour
     {
         var dimPoints = new Dictionary<int, int>() { { 3, 13 }, { 4, 22 }, { 5, 28 }, { 6, 35 }, { 7, 50 }, { 8, 65 }, { 9, 80 }, { 10, 110 }, { 11, 130 }, { 12, 225 },
             // Temporary scores:
-            { 13, 250 }, { 14, 275 }, { 15, 300 }
+            { 13, 250 }, { 14, 275 }, { 15, 300 }, { 16, 325 }, { 17, 350 }, { 18, 375 }
         };
         return (int)Math.Floor(dimPoints[Interact.Dimension] * ((1 / 4f) + (Interact.Rotations.Length / 4f))) - dimPoints[9];
     }
