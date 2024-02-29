@@ -4001,6 +4001,7 @@ MonoBehaviour:
   - {fileID: 102725374044906542}
   - {fileID: 102055734269959524}
   - {fileID: 102197595528867598}
+  ModuleSlectable: {fileID: 114471981019461520}
 --- !u!114 &114037191641996002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4496,15 +4497,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 0}
   Children:
+  - {fileID: 0}
   - {fileID: 114154331729309482}
-  - {fileID: 114154331729309482}
-  - {fileID: 114154331729309482}
+  - {fileID: 0}
   - {fileID: 114081128329778404}
   - {fileID: 114174067008550962}
   - {fileID: 114237777017365150}
+  - {fileID: 0}
   - {fileID: 114460183701677388}
-  - {fileID: 114460183701677388}
-  - {fileID: 114460183701677388}
+  - {fileID: 0}
   IsPassThrough: 0
   ChildRowLength: 3
   Highlight: {fileID: 114835057197058638}
