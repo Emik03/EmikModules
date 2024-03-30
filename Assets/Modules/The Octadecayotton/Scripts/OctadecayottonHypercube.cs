@@ -491,25 +491,34 @@ namespace TheOctadecayotton
         {
             if (!_experimentalRendering)
             {
-                while (_asyncSpecialMesh == null)
+                while (_asyncSpecialMesh == null && _specialMesh == null)
                     yield return new WaitForSeconds(0.1f);
-                yield return _asyncSpecialMesh.FinalizeAsync();
-                _specialMesh = _asyncSpecialMesh.Mesh;
+                if (_specialMesh == null)
+                {
+                    yield return _asyncSpecialMesh.FinalizeAsync();
+                    _specialMesh = _asyncSpecialMesh.Mesh;
+                }
 
-                while (_asyncSpecialMeshB == null)
+                while (_asyncSpecialMeshB == null && _specialMeshB == null)
                     yield return new WaitForSeconds(0.1f);
-                yield return _asyncSpecialMeshB.FinalizeAsync();
-                _specialMeshB = _asyncSpecialMeshB.Mesh;
+                if (_specialMeshB == null)
+                {
+                    yield return _asyncSpecialMeshB.FinalizeAsync();
+                    _specialMeshB = _asyncSpecialMeshB.Mesh;
+                }
             }
 
             for (int i = 3; i <= MeshLimit; i++)
             {
                 if (!_experimentalRendering && i == 12)
                     continue;
-                while (_asyncMeshTemplates[i - 3] == null)
+                while (_asyncMeshTemplates[i - 3] == null && _meshTemplates[i - 3] == null)
                     yield return new WaitForSeconds(0.1f);
-                yield return _asyncMeshTemplates[i - 3].FinalizeAsync();
-                _meshTemplates[i - 3] = _asyncMeshTemplates[i - 3].Mesh;
+                if (_meshTemplates[i - 3] == null)
+                {
+                    yield return _asyncMeshTemplates[i - 3].FinalizeAsync();
+                    _meshTemplates[i - 3] = _asyncMeshTemplates[i - 3].Mesh;
+                }
             }
         }
 
@@ -517,12 +526,14 @@ namespace TheOctadecayotton
         {
             if (!_experimentalRendering)
             {
-                _asyncSpecialMesh = GenerateMeshOfDimensions(12, 1);
-                _asyncSpecialMeshB = GenerateMeshOfDimensions(12, 2);
+                if (_asyncSpecialMesh == null && _specialMesh == null)
+                    _asyncSpecialMesh = GenerateMeshOfDimensions(12, 1);
+                if (_asyncSpecialMeshB == null && _specialMeshB == null)
+                    _asyncSpecialMeshB = GenerateMeshOfDimensions(12, 2);
             }
 
             for (int dim = 3; dim <= MeshLimit; dim++)
-                if (_meshTemplates[dim - 3] == null && (dim != 12 || _experimentalRendering))
+                if (_meshTemplates[dim - 3] == null && _asyncMeshTemplates[dim - 3] == null && (dim != 12 || _experimentalRendering))
                     _asyncMeshTemplates[dim - 3] = GenerateMeshOfDimensions(dim);
         }
 
