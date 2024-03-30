@@ -574,18 +574,16 @@ namespace TheOctadecayotton
             public IEnumerator FinalizeAsync()
             {
                 Debug.Log("<The Octadecayotton> Finalizing mesh " + Name);
-                _mesh = new Mesh
-                {
-                    name = Name,
-                    bounds = Bounds
-                };
+                _mesh = new Mesh { name = Name };
                 if (_experimentalRendering)
                     _mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
-                _mesh.vertices = (Vertices);
+                _mesh.vertices = Vertices;
                 yield return null;
                 _mesh.triangles = Triangles;
                 yield return null;
                 _mesh.uv = UV;
+                yield return null;
+                _mesh.bounds = Bounds;
             }
 
             private Mesh Finalize()
@@ -675,13 +673,18 @@ namespace TheOctadecayotton
                 }
             }
 
+            // HACK: this results in too little culling for smaller modules where this applies.
+            total = (_experimentalRendering && dim == 21) || (!_experimentalRendering && dim == 13)
+                ? MaxAxes(MaxDimensions) + new Vector3(2f, 2f, 2f) / (MaxDimensions > LODBarrier ? ScaleFactor * BigScaleFactor : ScaleFactor)
+                : total;
+
             return new MeshData
             {
                 Vertices = vertices,
                 Triangles = triangles,
                 UV = uvs,
                 Name = "Octa" + dim + "d" + (special == 0 ? "" : special == 1 ? "A" : "B"),
-                Bounds = new Bounds(total / 2, total)
+                Bounds = new Bounds(total * 0.5f, total)
             };
         }
     }
