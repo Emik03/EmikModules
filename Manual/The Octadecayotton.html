@@ -277,7 +277,7 @@
                     </ul>
                 </li>
             </ul>
-            <table style="text-align:right;">
+            <table class="huge-table-that-needs-shrinking" style="text-align:right">
                 <tr class="odd">
                     <th>+</th>
                     <th>X</th>
@@ -808,7 +808,7 @@
                     0.
                 </li>
             </ul>
-            <table>
+            <table class="huge-table-that-needs-shrinking">
                 <tr>
                     <th class="odd">Decimal &lt;-&gt; Binary</th>
                 </tr>
@@ -884,7 +884,7 @@
                     1, 1 -> 0) according to this the table below.
                 </li>
             </ul>
-            <table>
+            <table class="huge-table-that-needs-shrinking">
                 <tr>
                     <th class="odd">Axis &lt;-&gt; Position</th>
                 </tr>
@@ -1125,6 +1125,7 @@
     const dima0Set3 = document.querySelectorAll('.dim-a0-set3');
     const dima0Set4 = document.querySelectorAll('.dim-a0-set4');
     const dima0Set5 = document.querySelectorAll('.dim-a0-set5');
+    const hugeTablesThatNeedShrinking = document.querySelectorAll('.huge-table-that-needs-shrinking');
     const dimModulo = document.getElementById('dim-modulo');
     const dimModuloExplanation = document.getElementById('dim-modulo-explanation');
 
@@ -1268,6 +1269,8 @@
             dimMod3Not0[i].style.display = index % 3 !== 0 ? '' : 'none';
         for (let i = 0; i < dimMod32.length; i++)
             dimMod32[i].style.display = index === 2 ? '' : 'none';
+        for (let i = 0; i < hugeTablesThatNeedShrinking.length; i++)
+            hugeTablesThatNeedShrinking[i].style.fontSize = `${index <= 9 ? 100 : index <= 15 ? [87, 62, 73][i] : [57, 36, 49][i]}%`;
     }
 </script>
 </body>
