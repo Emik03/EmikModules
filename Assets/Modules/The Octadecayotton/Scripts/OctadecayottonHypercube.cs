@@ -340,16 +340,17 @@ namespace TheOctadecayotton
 
         internal void DisableSpheres(uint count)
         {
-            int limit = _dimension == 12 && !_experimentalRendering ? 11 : MeshLimit;
+            bool special = _dimension == 12 && !_experimentalRendering;
 
+            int limit = MeshLimit;
             var offsets = count >> limit;
             var indices = count ^ (offsets << limit);
             for (int i = 0; i < _allRenderers.Length; i++)
             {
                 MeshRenderer thing = _allRenderers[i];
-                if (offsets > i)
+                if (offsets > i && !special)
                     thing.material.SetInt("_skipSpheres", 2 << MeshLimit);
-                else if (offsets == i)
+                else if (offsets == i || special)
                     thing.material.SetInt("_skipSpheres", (int)indices);
                 else
                     thing.material.SetInt("_skipSpheres", 0);
@@ -658,7 +659,7 @@ namespace TheOctadecayotton
                 for (int i = 0; i < sphereCount; i++)
                 {
                     var ix = i * vertLength;
-                    var ix2 = i + uvCount;
+                    var ix2 = i + sphereCount;
                     for (int j = 0; j < vertLength; j++)
                         uvs[ix + j] = new Vector2(ix2, j);
                 }
