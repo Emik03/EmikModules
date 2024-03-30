@@ -307,10 +307,16 @@ public class TheOctadecayottonScript : MonoBehaviour
 
     private int AwardPoints()
     {
-        var dimPoints = new Dictionary<int, int>() { { 3, 13 }, { 4, 22 }, { 5, 28 }, { 6, 35 }, { 7, 50 }, { 8, 65 }, { 9, 80 }, { 10, 110 }, { 11, 130 }, { 12, 225 },
-            // Temporary scores:
-            { 13, 250 }, { 14, 275 }, { 15, 300 }, { 16, 325 }, { 17, 350 }, { 18, 375 }
+        var dimPoints = new Dictionary<int, int>()
+        {
+            { 3, 13 }, { 4, 22 }, { 5, 28 },
+            { 6, 35 }, { 7, 50 }, { 8, 65 },
+            { 9, 80 }, { 10, 110 }, { 11, 130 },
+            { 12, 225 }, { 13, 275 }, { 14, 325 },
+            { 15, 375 }, { 16, 425 }, { 17, 475 },
+            { 18, 525 },
         };
+
         return (int)Math.Floor(dimPoints[Interact.Dimension] * ((1 / 4f) + (Interact.Rotations.Length / 4f))) - dimPoints[9];
     }
 }
