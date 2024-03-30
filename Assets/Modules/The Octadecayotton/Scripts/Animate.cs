@@ -73,6 +73,8 @@ namespace TheOctadecayotton
             var sphereCount = 1 << _dimension;
             float duration = sphereCount / Mathf.Pow(2f, Mathf.Max(_interact.Dimension - 7f, 0f)) *
                 0.02f * Mathf.Pow(2f, Mathf.Max(9f - _interact.Dimension, 0f));
+            if (_dimension > 15)
+                duration *= 4;
             while (Time.time - t < duration)
             {
                 _hypercube.DisableSpheres((uint)(sphereCount * (Time.time - t) / duration));
@@ -107,8 +109,23 @@ namespace TheOctadecayotton
                 _interact.StartCoroutine(DelayedSolve());
             }
 
-            yield return ExpandSpheres(-4, 128f);
-            yield return ShuffleSpheres(512f);
+            if (_interact.Dimension > 15)
+            {
+                yield return ExpandSpheres(_interact.Dimension > 18 ? -2 : -4, 2.56f);
+                yield return ShuffleSpheres(10.24f);
+                yield return ShuffleSpheres(10.24f);
+                yield return ShuffleSpheres(10.24f);
+                yield return ExpandSpheres(-2, 2.56f);
+                var shuffle = _interact.StartCoroutine(ShuffleSpheres(40.96f));
+                yield return new WaitForSeconds(5f);
+                yield return ExpandSpheres(0.75f, 30f);
+                yield return shuffle;
+            }
+            else
+            {
+                yield return ExpandSpheres(-4, 2.56f);
+                yield return ShuffleSpheres(10.24f);
+            }
 
             if (!shortTime)
                 _octadecayotton.Module.HandlePass();
@@ -122,23 +139,21 @@ namespace TheOctadecayotton
             _octadecayotton.Module.HandlePass();
         }
 
-        internal IEnumerator ExpandSpheres(int amp, float time)
+        internal IEnumerator ExpandSpheres(float amp, float time)
         {
-            var duration = time * 0.02f;
             float t = Time.time;
             var startScale = _hypercube.transform.parent.localScale;
-            while (Time.time - t < duration)
+            while (Time.time - t < time)
             {
-                _hypercube.transform.parent.localScale = startScale * Easing.InOutCubic(Time.time - t, 1, amp, duration);
+                _hypercube.transform.parent.localScale = startScale * Easing.InOutCubic(Time.time - t, 1, amp, time);
                 yield return null;
             }
-            _hypercube.transform.parent.localScale = Vector3.one * amp;
+            _hypercube.transform.parent.localScale = startScale * amp;
         }
 
         internal IEnumerator ShuffleSpheres(float time)
         {
-            var duration = time * 0.02f;
-            int[] primes = new int[] 
+            int[] primes = new int[]
             {
                 10000019, 10000079, 10000103, 10000121, 10000139, 10000141, 10000169, 10000189, 10000223, 10000229,
                 10000247, 10000253, 10000261, 10000271, 10000303, 10000339, 10000349, 10000357, 10000363, 10000379,
@@ -164,9 +179,9 @@ namespace TheOctadecayotton
             _hypercube.SetPrimes(primes.Shuffle().Take(4).ToArray());
             _hypercube.SetSolving(true);
             float t = Time.time;
-            while (Time.time - t < duration)
+            while (Time.time - t < time)
             {
-                _hypercube.SetRotationProgress(Easing.InOutCubic(Time.time - t, 0, 1, duration));
+                _hypercube.SetRotationProgress(Easing.InOutCubic(Time.time - t, 0, 1, time));
                 yield return null;
             }
 
@@ -196,7 +211,7 @@ namespace TheOctadecayotton
 
             _isFinished = false;
             _interact.StartCoroutine(DestroyHypercube());
-            yield return ExpandSpheres(0, 512f);
+            yield return ExpandSpheres(0, 10.24f);
             yield return new WaitUntil(() => _isFinished);
 
             _octadecayotton.Module.HandleStrike();
