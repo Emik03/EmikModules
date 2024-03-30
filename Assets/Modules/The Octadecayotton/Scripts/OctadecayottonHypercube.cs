@@ -476,9 +476,10 @@ namespace TheOctadecayotton
             _experimentalRendering = ModSettingsJSON.GetExperimentalRenderingEnabled();
 
             Debug.LogFormat("<The Octadecayotton> Experimental rendering is {0}.", _experimentalRendering ? "ON" : "OFF");
-            Debug.Log("<The Octadecayotton> Generating meshes on another thread: dimentions 3-12 in high detail, dimension 13 high detail");
             if (_experimentalRendering)
-                Debug.Log("<The Octadecayotton> Also generating two special meshes: dimension 12 in high detail");
+                Debug.Log("<The Octadecayotton> Generating meshes on another thread: dimentions 3-18 in high detail, dimensions 19-21 low detail");
+            else
+                Debug.Log("<The Octadecayotton> Generating meshes on another thread: dimentions 3-11 in high detail, dimension 13 low detail, 2x dimension 12 in high detail");
 
             // Larger meshes take a while to generate, so we do that on another thread.
             new Thread(GenerateMeshes).Start();
