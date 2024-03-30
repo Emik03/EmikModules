@@ -185,7 +185,7 @@ internal static class SFX
             StartupHard = "TheOctadecayottonStartupHard",
             Strike = "TheOctadecayottonStrike";
 
-        internal static string StartupHarder { get { return "TheOctadecayottonStartupHarder".Add(Random.Range(1, 6)); } }
+        internal static string StartupHarder { get { return "TheOctadecayottonStartupHarder".Add(Random.Range(1, 4)); } }
     }
 
     /// <summary>
