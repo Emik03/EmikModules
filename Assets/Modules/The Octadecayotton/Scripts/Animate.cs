@@ -71,7 +71,7 @@ namespace TheOctadecayotton
         {
             float t = Time.time;
             var sphereCount = 1 << _dimension;
-            float duration = sphereCount / Mathf.Pow(2f, Mathf.Max(_interact.Dimension - 7f, 0f)) * 
+            float duration = sphereCount / Mathf.Pow(2f, Mathf.Max(_interact.Dimension - 7f, 0f)) *
                 0.02f * Mathf.Pow(2f, Mathf.Max(9f - _interact.Dimension, 0f));
             while (Time.time - t < duration)
             {
@@ -95,7 +95,7 @@ namespace TheOctadecayotton
             yield return new WaitForSecondsRealtime(1);
 
             Debug.LogFormat("[The Octadecayotton #{0}]: Module disarmed.", _octadecayotton.moduleId);
-            _octadecayotton.PlaySound(_interact.Dimension > 9 ? SFX.Oct.SolveHard : SFX.Oct.Solve);
+            _octadecayotton.PlaySound(_interact.Dimension > 15 ? SFX.Oct.SolveHarder : _interact.Dimension > 9 ? SFX.Oct.SolveHard : SFX.Oct.Solve);
 
             _hypercube.ForceColor(Color.white);
             _hypercube.UnhighlightSpheres();

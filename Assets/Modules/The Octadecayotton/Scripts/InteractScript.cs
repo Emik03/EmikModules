@@ -76,7 +76,7 @@ public class InteractScript : MonoBehaviour
             var spawnCube = StartCoroutine(_hypercube.AddMeshes(Dimension, octadecayotton.stretchToFit, octadecayotton));
             StartCoroutine(_animate.CreateHypercube(Dimension, _hypercube, spawnCube));
 
-            octadecayotton.PlaySound(Dimension > 9 ? SFX.Oct.StartupHard : SFX.Oct.Startup);
+            octadecayotton.PlaySound(Dimension > 15 ? SFX.Oct.StartupHarder : Dimension > 9 ? SFX.Oct.StartupHard : SFX.Oct.Startup);
             octadecayotton.ModuleSelectable.AddInteractionPunch(Dimension > 9 ? 64 : 32);
 
             Rotations = !Application.isEditor || octadecayotton.ForceRotation.IsNullOrEmpty()
