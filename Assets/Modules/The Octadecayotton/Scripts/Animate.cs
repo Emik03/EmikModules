@@ -67,13 +67,13 @@ namespace TheOctadecayotton
             //yield return Solve();
         }
 
-        internal IEnumerator DestroyHypercube()
+        internal IEnumerator DestroyHypercube(bool strike = false)
         {
             float t = Time.time;
             var sphereCount = 1 << _dimension;
             float duration = sphereCount / Mathf.Pow(2f, Mathf.Max(_interact.Dimension - 7f, 0f)) *
                 0.02f * Mathf.Pow(2f, Mathf.Max(9f - _interact.Dimension, 0f));
-            if (_dimension > 15)
+            if (_dimension > 15 && !strike)
                 duration *= 4;
             while (Time.time - t < duration)
             {
@@ -210,7 +210,7 @@ namespace TheOctadecayotton
             _interact.ModuleRenderer.material.mainTexture = _interact.NeutralTexture;
 
             _isFinished = false;
-            _interact.StartCoroutine(DestroyHypercube());
+            _interact.StartCoroutine(DestroyHypercube(strike: true));
             yield return ExpandSpheres(0, 10.24f);
             yield return new WaitUntil(() => _isFinished);
 
