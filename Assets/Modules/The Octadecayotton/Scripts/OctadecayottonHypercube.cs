@@ -292,6 +292,16 @@ namespace TheOctadecayotton
                 thing.material.SetInt("_solveAnimation", yes ? 1 : 0);
         }
 
+        internal void SetPrimes(int[] p)
+        {
+            foreach (var thing in _allRenderers)
+            {
+                thing.material.SetInt("P1", p[0]);
+                thing.material.SetInt("P2", p[1]);
+                thing.material.SetInt("P3", p[2]);
+                thing.material.SetInt("P4", p[3]);
+            }
+        }
 
         private IEnumerable<T> PadLimit<T>(IEnumerable<T> items, int limit)
         {

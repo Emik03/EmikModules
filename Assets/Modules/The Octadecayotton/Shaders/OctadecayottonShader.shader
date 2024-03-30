@@ -77,10 +77,10 @@
                 return sum;
             }
 
-            #define P1 2000000153
-            #define P2 500000089
-            #define P3 2000000011
-            #define P4 500000071
+            uniform int P1;
+            uniform int P2;
+            uniform int P3;
+            uniform int P4;
             void next(inout bool ix[MAX_DIMENSIONS], in uint num)
             {
                 num *= P1;
