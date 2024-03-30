@@ -28,7 +28,7 @@ namespace TheOctadecayotton
 
             const float maxJitter = 1f / 6f;
 
-            float duration = dimension > 9 ? 11f : 3f;
+            float duration = dimension > 15 ? 5f : dimension > 9 ? 11f : 3f;
             float t = Time.time;
             Vector3 scale = Vector3.one * (dimension > 18 ? 3 : 1);
             hypercube.transform.parent.localPosition = new Vector3(0.5f, dimension > 18 ? 1.5f : .5f, 0.5f);
