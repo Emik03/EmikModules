@@ -88,29 +88,29 @@
 
         @-webkit-keyframes chromatic-aberration {
             0% {
-                text-shadow: 1px 1px 0px cyan, -1px -1px 0 red;
+                text-shadow: 1px 1px 0 cyan, -1px -1px 0 red;
             }
 
             50% {
-                text-shadow: 1px 1px 0px lime, -1px -1px 0 magenta;
+                text-shadow: 1px 1px 0 lime, -1px -1px 0 magenta;
             }
 
             100% {
-                text-shadow: 1px 1px 0px cyan, -1px -1px 0 red;
+                text-shadow: 1px 1px 0 cyan, -1px -1px 0 red;
             }
         }
 
         @keyframes chromatic-aberration {
             0% {
-                text-shadow: 1px 1px 0px cyan, -1px -1px 0 red;
+                text-shadow: 1px 1px 0 cyan, -1px -1px 0 red;
             }
 
             50% {
-                text-shadow: 1px 1px 0px lime, -1px -1px 0 magenta;
+                text-shadow: 1px 1px 0 lime, -1px -1px 0 magenta;
             }
 
             100% {
-                text-shadow: 1px 1px 0px cyan, -1px -1px 0 red;
+                text-shadow: 1px 1px 0 cyan, -1px -1px 0 red;
             }
         }
     </style>
@@ -534,7 +534,7 @@
                     </ul>
                 </li>
 
-                <li>When the first initial axis has been reached, discard all of the initial axes, reverse their
+                <li>When the first initial axis has been reached, discard all the initial axes, reverse their
                     order, and combine them.
                     <ul>
                         <li>Back to the example, we know that +X goes to +Z, +Z goes to -Y, and +Y
@@ -543,13 +543,13 @@
                         </li>
                     </ul>
                 <li>The resulting sequence is called a subtransformation. In a given transformation there can be
-                    1 to 5 simulatenous subtransformations happening at the same time.
+                    1 to 5 simultaneous subtransformations happening at the same time.
                 </li>
                 <li>These subtransformations are completely isolated from each other, as while they do have an
                     effect on the individual sphere's paths, the axes do not, as any axis can only be in 1
                     subtransformation at any time.
                 </li>
-                <li>Subtransformations have multiple ways to be spelled because they are cylical (they have no
+                <li>Subtransformations have multiple ways to be spelled because they are cyclical (they have no
                     beginning or end, and one element affects the next), and subtransformations do not have a
                     concrete order to each other. However, the module does not require either case.
                     <ul>
@@ -1024,7 +1024,7 @@
                     <ol>
                         <li>The first binary digit will match the first digit of the gray code.</li>
                         <li>The next digit is a 1 if the sum of the previous digit of the binary code and the
-                            current position's gray code is exactly 1. Otherwise 0.
+                            current position's gray code is exactly 1. Otherwise, 0.
                         </li>
                         <li>Repeat step 2 until <span class="dim-number"></span> digits are obtained. This is the
                             binary code.
@@ -1209,7 +1209,7 @@
         for (let i = 0; i < dima0Set3.length; i++)
             dima0Set3[i].innerHTML = ['set the 3<sup>rd</sup> digit', 'set the 3<sup>rd</sup> digit', 'set the 3<sup>rd</sup> digit', 'set the 5<sup>th</sup> and 6<sup>th</sup> digits', 'set the 5<sup>th</sup> and 6<sup>th</sup> digits', 'set the 5<sup>th</sup> and 6<sup>th</sup> digits', 'set the 7<sup>th</sup>, 8<sup>th</sup>, and 9<sup>th</sup> digits', 'set the 7<sup>th</sup>, 8<sup>th</sup>, and 9<sup>th</sup> digits', 'set the 7<sup>th</sup>, 8<sup>th</sup>, and 9<sup>th</sup> digits', 'set the 9<sup>th</sup>, 10<sup>th</sup>, 11<sup>th</sup>, and 12<sup>th</sup> digits', 'set the 9<sup>th</sup>, 10<sup>th</sup>, 11<sup>th</sup>, and 12<sup>th</sup> digits', 'set the 9<sup>th</sup>, 10<sup>th</sup>, 11<sup>th</sup>, and 12<sup>th</sup> digits', 'set the 11<sup>th</sup>, 12<sup>th</sup>, 13<sup>th</sup>, 14<sup>th</sup>, and 15<sup>th</sup> digits', 'set the 11<sup>th</sup>, 12<sup>th</sup>, 13<sup>th</sup>, 14<sup>th</sup>, and 15<sup>th</sup> digits', 'set the 11<sup>th</sup>, 12<sup>th</sup>, 13<sup>th</sup>, 14<sup>th</sup>, and 15<sup>th</sup> digits', 'set the 13<sup>th</sup>, 14<sup>th</sup>, 15<sup>th</sup>, 16<sup>th</sup>, 17<sup>th</sup>, and 18<sup>th</sup> digits', 'set the 13<sup>th</sup>, 14<sup>th</sup>, 15<sup>th</sup>, 16<sup>th</sup>, 17<sup>th</sup>, and 18<sup>th</sup> digits', 'set the 13<sup>th</sup>, 14<sup>th</sup>, 15<sup>th</sup>, 16<sup>th</sup>, 17<sup>th</sup>, and 18<sup>th</sup> digits', 'set the 15<sup>th</sup>, 16<sup>th</sup>, 17<sup>th</sup>, 18<sup>th</sup>, 19<sup>th</sup>, 20<sup>th</sup>, and 21<sup>st</sup> digits', 'set the 15<sup>th</sup>, 16<sup>th</sup>, 17<sup>th</sup>, 18<sup>th</sup>, 19<sup>th</sup>, 20<sup>th</sup>, and 21<sup>st</sup> digits', 'set the 15<sup>th</sup>, 16<sup>th</sup>, 17<sup>th</sup>, 18<sup>th</sup>, 19<sup>th</sup>, 20<sup>th</sup>, and 21<sup>st</sup> digits', 'set the 17<sup>th</sup>, 18<sup>th</sup>, 19<sup>th</sup>, 20<sup>th</sup>, 21<sup>st</sup>, 22<sup>nd</sup>, 23<sup>rd</sup>, and 24<sup>th</sup> digits', 'set the 17<sup>th</sup>, 18<sup>th</sup>, 19<sup>th</sup>, 20<sup>th</sup>, 21<sup>st</sup>, 22<sup>nd</sup>, 23<sup>rd</sup>, and 24<sup>th</sup> digits', 'set the 17<sup>th</sup>, 18<sup>th</sup>, 19<sup>th</sup>, 20<sup>th</sup>, 21<sup>st</sup>, 22<sup>nd</sup>, 23<sup>rd</sup>, and 24<sup>th</sup> digits', 'set the 19<sup>th</sup>, 20<sup>th</sup>, 21<sup>st</sup>, 22<sup>nd</sup>, 23<sup>rd</sup>, 24<sup>th</sup>, 25<sup>th</sup>, 26<sup>th</sup>, and 27<sup>th</sup> digits'][index];
         for (let i = 0; i < dima0Set4.length; i++)
-            dima0Set4[i].innerHTML = ['huh?', 'set the 4<sup>th</sup> digit', 'set the 4<sup>th</sup> digit', 'huh?', 'set the 7<sup>th</sup> digits', 'set the 7<sup>th</sup> and 8<sup>th</sup> digits', 'huh?', 'set the 10<sup>th</sup> digit', 'set the 10<sup>th</sup> digit', 'huh?', 'set the 13<sup>th</sup> digit', 'set the 13<sup>th</sup> digit', 'huh?', 'set the 16<sup>th</sup> digit', 'set the 16<sup>th</sup> digit', 'huh?', 'set the 19<sup>th</sup> digit', 'set the 19<sup>th</sup> digit', 'huh?', 'set the 22<sup>th</sup> digit', 'set the 22<sup>th</sup> digit', 'huh?', 'set the 25<sup>th</sup> digit', 'set the 25<sup>th</sup> digit', 'huh?'][index];
+            dima0Set4[i].innerHTML = ['huh?', 'set the 4<sup>th</sup> digit', 'set the 4<sup>th</sup> digit', 'huh?', 'set the 7<sup>th</sup> digits', 'set the 7<sup>th</sup> and 8<sup>th</sup> digits', 'huh?', 'set the 10<sup>th</sup> digit', 'set the 10<sup>th</sup> digit', 'huh?', 'set the 13<sup>th</sup> digit', 'set the 13<sup>th</sup> digit', 'huh?', 'set the 16<sup>th</sup> digit', 'set the 16<sup>th</sup> digit', 'huh?', 'set the 19<sup>th</sup> digit', 'set the 19<sup>th</sup> digit', 'huh?', 'set the 22<sup>nd</sup> digit', 'set the 22<sup>nd</sup> digit', 'huh?', 'set the 25<sup>th</sup> digit', 'set the 25<sup>th</sup> digit', 'huh?'][index];
         for (let i = 0; i < dima0Set5.length; i++)
             dima0Set5[i].innerHTML = ['huh?', 'huh?', 'set the 5<sup>th</sup> digit', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?', 'huh?'][index];
         dimModulo.innerHTML = index + 3 < 6 ? 'modulo ' + Math.pow(2, index + 3) : '';
