@@ -1,5 +1,5 @@
 # On the Subject of [Emik's Modules](https://steamcommunity.com/sharedfiles/filedetails/?id=2416640196)
-*half of this mod's filesize are just PDFs*
+*two thirds of this mod's filesize are just PDFs*
 ---
 This repository item aims to combine all of my mods into one, making future maintainability much easier in the event that someone needs to take over.
 
