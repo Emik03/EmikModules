@@ -9,7 +9,7 @@ Each # represents a specific mod setting.
 
 
 
-1st #: Number of Dimensions (3-12, default 9)
+1st #: Number of Dimensions (3-27, default 9)
 
 2nd #: Number of Rotations (0-255, default 3)
 
