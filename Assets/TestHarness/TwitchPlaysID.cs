@@ -58,7 +58,7 @@ public class TwitchPlaysID : MonoBehaviour
 	public static bool AnarchyMode;
 	public static bool TimeMode;
 	public static bool ZenMode;
-	
+
 
 	private bool HandleStrike()
 	{
@@ -170,7 +170,7 @@ public class TwitchPlaysID : MonoBehaviour
 					}
 				}
 			}
-			
+
 		}
 		else
 		{
@@ -179,7 +179,7 @@ public class TwitchPlaysID : MonoBehaviour
 
 		yield break;
 	}
-	
+
 	private void SolveModule()
 	{
 		TPCoroutineQueue.AddForcedSolve(ForceSolveModule());
@@ -197,7 +197,7 @@ public class TwitchPlaysID : MonoBehaviour
 		IDTextMesh.text = ModuleID.ToString();
 		FindTwitchCommandMethod();
 		transform.gameObject.SetActive(true);
-		
+
 		BombModule = Module.GetComponent<KMBombModule>();
 		NeedyModule = Module.GetComponent<KMNeedyModule>();
 		if (BombModule != null)
@@ -326,10 +326,19 @@ public class TwitchPlaysID : MonoBehaviour
 		Component[] allComponents = Module.gameObject.GetComponentsInChildren<Component>(true);
 		foreach (Component component in allComponents)
 		{
-			System.Type type = component.GetType().BaseType;
+			System.Type type = component.GetType();
 			MethodInfo method = type.GetMethod("ProcessTwitchCommand", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 			MethodInfo forceSolveMethod = type.GetMethod("TwitchHandleForcedSolve", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-			if (method == null && forceSolveMethod == null) continue;
+
+            if (method == null && forceSolveMethod == null)
+            {
+			    type = component.GetType().BaseType;
+			    method = type.GetMethod("ProcessTwitchCommand", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+			    forceSolveMethod = type.GetMethod("TwitchHandleForcedSolve", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+                if (method == null && forceSolveMethod == null)
+                    continue;
+            }
 
 			TwitchCommandComponent = component;
 			ProcessTwitchCommandMethod = method;
@@ -601,7 +610,7 @@ public class TwitchPlaysID : MonoBehaviour
 	}
 
 	static readonly Dictionary<Component, HashSet<KMSelectable>> ComponentHelds = new Dictionary<Component, HashSet<KMSelectable>> { };
-	
+
 	IEnumerator SimulateModule(string command)
 	{
 		if (Solved && !AnarchyMode) yield break;
@@ -685,7 +694,7 @@ public class TwitchPlaysID : MonoBehaviour
 				yield return focus.Current;
 		}
 
-		
+
 		Quaternion initialModuleQuaternion = Module.localRotation;
 		bool tryCancelSequence = false;
 		bool multipleStrikes = false;

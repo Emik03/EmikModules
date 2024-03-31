@@ -102,7 +102,7 @@ public class HexOS : MonoBehaviour
 
         if (LoadMission())
             GetModSetting();
-        
+
         // Hides ciphers
         for (byte i = 0; i < Ciphers.Length; i++)
             Ciphers[i].transform.localPosition = new Vector3(Ciphers[i].transform.localPosition.x, -2.1f, Ciphers[i].transform.localPosition.z);
@@ -207,7 +207,7 @@ public class HexOS : MonoBehaviour
         _octOS = settings.ForceOctOS;
         _fastStrike = settings.FastStrike;
         _experimentalShake = settings.ExperimentalShake;
-        _forceAltSolve = settings.ForceAltSolve;
+        _forceAltSolve = settings.ForceAltSolve || (DateTime.Now.Month == 4 && DateTime.Now.Day == 1);
         _flashOtherColors = Math.Min(settings.FlashOtherColors, (byte)6);
         _delayPerBeat = Math.Min(Math.Abs(settings.DelayPerBeat), 1);
         _customSolveQuote = settings.CustomSolveQuote;

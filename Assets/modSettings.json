@@ -12,7 +12,7 @@
   "HowToUse3": "Have the module shake upon every played beat, don't use this on serious bombs. :) (default: false)",
 
   "hexOS -> ForceAltSolve": false,
-  "HowToUse4": "Force the module to play the alternative solve sequence regardless of Forget The Colors' existence. (default: false)",
+  "HowToUse4": "Force the module to play the alternative solve sequence. (default: false)",
 
   "hexOS -> FlashOtherColors": 5,
   "HowToUse5": "Alter the amount of times other colors flash. Cannot exceed 6. (default: 5)",
@@ -34,7 +34,7 @@
 
 
   "TheOctadecayotton -> Dimensions": 9,
-  "HowToUse10": "Amount of dimensions, for accessibility/practice. Ranges 3-12. WARNING: Higher dimension may cause lag. (default: 9)",
+  "HowToUse10": "Amount of dimensions, for accessibility/practice. Ranges 3-27. WARNING: Higher dimension may cause lag. (default: 9)",
 
   "TheOctadecayotton -> Rotations": 3,
   "HowToUse11": "Amount of rotations, for accessibility/practice. Ranges 0-255. (default: 3)",
@@ -52,5 +52,8 @@
   "HowToUse15": "Makes rotations use the InOutElastic ease, not suitable for serious play. (default: false)",
 
   "TheOctadecayotton -> StretchToFit": false,
-  "HowToUse16": "Stretches the individual X, Y, and Z axes on the tesseract to always take up the entire module. This does cause proportions to be skewed. (default: false)"
+  "HowToUse16": "Stretches the individual X, Y, and Z axes on the tesseract to always take up the entire module. This does cause proportions to be skewed. (default: false)",
+
+  "TheOctadecayotton -> ExperimentalRendering": false,
+  "HowToUse17": "Enables 32-bit vertex indexing. Enabling this may improve rendering on high-end devices. Requires a restart to take effect. (default: false)"
 }

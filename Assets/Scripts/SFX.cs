@@ -4,14 +4,14 @@ using UnityEngine;
 /// <summary>
 /// Contains all sounds for every module.
 /// </summary>
-internal static class SFX 
+internal static class SFX
 {
     /// <summary>
     /// 1D Chess
     /// </summary>
     internal static class _1dch
     {
-        internal const string 
+        internal const string
             Capture = "1DChessCapture",
             Check = "1DChessCheck",
             Click = "1DChessClick",
@@ -31,7 +31,7 @@ internal static class SFX
     {
         internal static string Flip { get { return "Coinage".Add(Random.Range(1, 4)); } }
 
-        internal const string 
+        internal const string
             Solve = "CoinageSolve",
             Strike = "CoinageStrike";
     }
@@ -64,7 +64,7 @@ internal static class SFX
         {
             return "ForgetAnyColorNext".Add(i);
         }
-        
+
         internal static string Stage(int i)
         {
             return "ForgetAnyColorStage".Add(i);
@@ -89,7 +89,7 @@ internal static class SFX
     /// </summary>
     internal static class Hex
     {
-        internal const string 
+        internal const string
             Cancel = "hexOScancel",
             Clap = "hexOSclap",
             Click = "hexOSclick",
@@ -127,7 +127,7 @@ internal static class SFX
     /// </summary>
     internal static class Log
     {
-        internal const string 
+        internal const string
             Select = "LoggingSelect",
             Solve = "LoggingSolve";
     }
@@ -149,7 +149,7 @@ internal static class SFX
     /// </summary>
     internal static class Nc
     {
-        internal const string 
+        internal const string
             Solve = "NamingConventionsSolve",
             Strike = "NamingConventionsStrike",
             Tick = "NamingConventionsTick",
@@ -164,7 +164,7 @@ internal static class SFX
         internal static string Dig { get { return "NetheriteDig".Add(Random.Range(1, 6)); } }
         internal static string Hit { get { return "NetheriteHit".Add(Random.Range(1, 6)); } }
 
-        internal const string 
+        internal const string
             Ping = "NetheritePing",
             Solve = "NetheriteSolve";
     }
@@ -179,10 +179,13 @@ internal static class SFX
             InteractInterrupt = "TheOctadecayottonInteractInterrupt",
             Solve = "TheOctadecayottonSolve",
             SolveHard = "TheOctadecayottonSolveHard",
+            SolveHarder = "TheOctadecayottonSolveHarder",
             StartingSphere = "TheOctadecayottonStartingSphere",
             Startup = "TheOctadecayottonStartup",
             StartupHard = "TheOctadecayottonStartupHard",
             Strike = "TheOctadecayottonStrike";
+
+        internal static string StartupHarder { get { return "TheOctadecayottonStartupHarder".Add(Random.Range(1, 4)); } }
     }
 
     /// <summary>
@@ -205,7 +208,7 @@ internal static class SFX
     {
         internal static class Voice
         {
-            internal const string 
+            internal const string
                 BombDisarmed = "Phosphorescence_voice_bombdisarmed",
                 ChallengeComplete = "Phosphorescence_voice_challengecomplete",
                 GameOver = "Phosphorescence_voice_gameover",
@@ -255,7 +258,7 @@ internal static class SFX
     /// </summary>
     internal static class Pht
     {
-        internal const string 
+        internal const string
             Solve = "PlaceholderTalkDisarm",
             Shuffle = "PlaceholderTalkShuffle",
             Strike = "PlaceholderTalkStrike";
@@ -325,7 +328,7 @@ internal static class SFX
     /// </summary>
     internal static class Rv
     {
-        internal const string 
+        internal const string
             Solve = "RoleReversalRopesSolved",
             Strike = "RoleReversalRopesStrike";
     }
@@ -335,7 +338,7 @@ internal static class SFX
     /// </summary>
     internal static class Sc
     {
-        
+
     }
 
     /// <summary>
