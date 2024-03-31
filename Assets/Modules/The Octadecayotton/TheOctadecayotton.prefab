@@ -859,6 +859,11 @@ MonoBehaviour:
   SlownessOverride: 8
   ForceRotation: 
   ForceStartingSphere: 
+  UseExperimentalRendering: 0
+  StretchToFitOverride: 0
+  ColorAssistOverride: 0
+  BounceOverride: 0
+  ElasticOverride: 0
 --- !u!114 &114676204725116032
 MonoBehaviour:
   m_ObjectHideFlags: 1

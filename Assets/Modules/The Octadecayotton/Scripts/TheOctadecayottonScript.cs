@@ -26,7 +26,7 @@ public class TheOctadecayottonScript : MonoBehaviour
     public string ForceRotation, ForceStartingSphere;
 
 #if UNITY_EDITOR
-    public bool UseExperimentalRendering;
+    public bool UseExperimentalRendering, StretchToFitOverride, ColorAssistOverride, BounceOverride, ElasticOverride;
 #endif
 
     internal bool isUsingBounce, isUsingElastic, stretchToFit, colorAssist;
@@ -46,6 +46,13 @@ public class TheOctadecayottonScript : MonoBehaviour
 
         if (ModSettingsJSON.LoadMission(this, ref dimension, ref rotation, ref slowness, ref colorAssist, ref isUsingBounce, ref isUsingElastic, ref stretchToFit))
             ModSettingsJSON.Get(this, out dimension, out rotation, out slowness, out colorAssist, out isUsingBounce, out isUsingElastic, out stretchToFit);
+
+#if UNITY_EDITOR
+        stretchToFit = StretchToFitOverride;
+        colorAssist = ColorAssistOverride;
+        isUsingBounce = BounceOverride;
+        isUsingElastic = ElasticOverride;
+#endif
 
         ModuleSelectable.OnInteract += Interact.Init(this, true, dimension - Info.GetSolvableModuleNames().Where(i => i == "The Octadecayotton").Count());
         SubModuleSelectable.OnInteract += Interact.OnInteract(this, false, dimension - Info.GetSolvableModuleNames().Where(i => i == "The Octadecayotton").Count());
