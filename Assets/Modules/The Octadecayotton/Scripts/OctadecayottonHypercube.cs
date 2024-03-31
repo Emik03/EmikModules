@@ -484,7 +484,11 @@ namespace TheOctadecayotton
 
             _meshTemplates = new Mesh[MaxDimensions - 2];
             _asyncMeshTemplates = new MeshData[MaxDimensions - 2];
+#if UNITY_EDITOR
+            _experimentalRendering = GetComponentInParent<TheOctadecayottonScript>().UseExperimentalRendering;
+#else
             _experimentalRendering = ModSettingsJSON.GetExperimentalRenderingEnabled();
+#endif
 
             Debug.LogFormat("<The Octadecayotton> Experimental rendering is {0}.", _experimentalRendering ? "ON" : "OFF");
             if (_experimentalRendering)

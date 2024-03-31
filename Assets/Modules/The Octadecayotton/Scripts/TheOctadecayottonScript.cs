@@ -25,6 +25,10 @@ public class TheOctadecayottonScript : MonoBehaviour
     public byte SlownessOverride;
     public string ForceRotation, ForceStartingSphere;
 
+#if UNITY_EDITOR
+    public bool UseExperimentalRendering;
+#endif
+
     internal bool isUsingBounce, isUsingElastic, stretchToFit, colorAssist;
     internal static int ModuleIdCounter { get; private set; }
     internal static int Activated { get; set; }
