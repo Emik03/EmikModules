@@ -1002,6 +1002,19 @@
             in the event of an <see cref="T:System.Exception" /> related to files.
             </returns>
         </member>
+        <member name="T:Wawa.IO.Internals.TypePairEqualityComparer`1">
+            <summary>Provides an <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> for <see cref="T:System.Collections.Generic.KeyValuePair`2"/>.</summary>
+            <typeparam name="T">The key type.</typeparam>
+        </member>
+        <member name="P:Wawa.IO.Internals.TypePairEqualityComparer`1.Instance">
+            <summary>Gets the singleton instance.</summary>
+        </member>
+        <member name="M:Wawa.IO.Internals.TypePairEqualityComparer`1.System#Collections#Generic#IEqualityComparer{System#Collections#Generic#KeyValuePair{T,System#Type}}#Equals(System.Collections.Generic.KeyValuePair{`0,System.Type},System.Collections.Generic.KeyValuePair{`0,System.Type})">
+            <inheritdoc />
+        </member>
+        <member name="M:Wawa.IO.Internals.TypePairEqualityComparer`1.System#Collections#Generic#IEqualityComparer{System#Collections#Generic#KeyValuePair{T,System#Type}}#GetHashCode(System.Collections.Generic.KeyValuePair{`0,System.Type})">
+            <inheritdoc />
+        </member>
         <member name="T:Wawa.IO.Config">
             <summary>Implementations for <see cref="T:Wawa.IO.Config`1"/>.</summary>
         </member>

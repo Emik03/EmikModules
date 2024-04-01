@@ -9,21 +9,21 @@ namespace OneDimensionalChess
     {
         internal const string LibraryName = "rustmate";
 
-        static readonly Func<string, int, bool, CGameResult> _calculate =
-            PathFinder
-               .GetUnmanaged<Func<string, int, bool, CGameResult>>(LibraryName, "best_move")
-               .UnwrapOr((_, __, ___) => { throw new DllNotFoundException("best_move"); });
+        static Func<string, int, bool, CGameResult> _calculate;
 
-        static readonly Func<string, sbyte, sbyte, bool> _isLegalMove =
-            PathFinder
-               .GetUnmanaged<Func<string, sbyte, sbyte, bool>>(LibraryName, "legality")
-               .UnwrapOr((_, __, ___) => { throw new DllNotFoundException("legality"); });
+        static Func<string, sbyte, sbyte, bool> _isLegalMove;
 
         internal static Func<string, int, bool, CGameResult> Calculate
         {
             get
             {
-                return _calculate;
+                return _calculate != null
+                    ? _calculate
+                    : PathFinder.GetUnmanaged<Func<string, int, bool, CGameResult>>(LibraryName, "best_move")
+                       .Match(
+                            x => _calculate = x,
+                            _ => (__, ___, ____) => { throw new DllNotFoundException("best_move"); }
+                        );
             }
         }
 
@@ -31,7 +31,13 @@ namespace OneDimensionalChess
         {
             get
             {
-                return _isLegalMove;
+                return _isLegalMove != null
+                    ? _isLegalMove
+                    : PathFinder.GetUnmanaged<Func<string, sbyte, sbyte, bool>>(LibraryName, "legality")
+                       .Match(
+                            x => _isLegalMove = x,
+                            _ => (__, ___, ____) => { throw new DllNotFoundException("legality"); }
+                        );
             }
         }
     }
