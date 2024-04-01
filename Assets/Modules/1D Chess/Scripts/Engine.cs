@@ -1,18 +1,38 @@
-﻿using System.Runtime.InteropServices;
+﻿// SPDX-License-Identifier: MPL-2.0
 using System;
+using Wawa.IO;
+using Wawa.Optionals;
 
 namespace OneDimensionalChess
 {
-    internal static class Engine
+    static class Engine
     {
-        [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern CGameResult best_move(String state, Int32 max_moves, Boolean white_first);
-        internal static Func<string, int, bool, CGameResult> Calculate { get { return best_move; } }
-
-        [DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern Boolean legality(String position, SByte origin, SByte destination);
-        internal static Func<string, sbyte, sbyte, bool> IsLegalMove { get { return legality; } }
-
         internal const string LibraryName = "rustmate";
+
+        static readonly Func<string, int, bool, CGameResult> _calculate =
+            PathFinder
+               .GetUnmanaged<Func<string, int, bool, CGameResult>>(LibraryName, "best_move")
+               .UnwrapOr((_, __, ___) => { throw new DllNotFoundException("best_move"); });
+
+        static readonly Func<string, sbyte, sbyte, bool> _isLegalMove =
+            PathFinder
+               .GetUnmanaged<Func<string, sbyte, sbyte, bool>>(LibraryName, "legality")
+               .UnwrapOr((_, __, ___) => { throw new DllNotFoundException("legality"); });
+
+        internal static Func<string, int, bool, CGameResult> Calculate
+        {
+            get
+            {
+                return _calculate;
+            }
+        }
+
+        internal static Func<string, sbyte, sbyte, bool> IsLegalMove
+        {
+            get
+            {
+                return _isLegalMove;
+            }
+        }
     }
 }

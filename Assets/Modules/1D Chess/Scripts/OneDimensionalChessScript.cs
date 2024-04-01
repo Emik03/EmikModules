@@ -50,7 +50,6 @@ public class OneDimensionalChessScript : ModuleScript
         new Color32(111, 133, 200, 255)
     };
 
-    private static bool _isRustLoaded;
     private static int _threadUsages;
     private int _boardLength, _movesLeft;
     private PieceCounter _counter;
@@ -65,20 +64,6 @@ public class OneDimensionalChessScript : ModuleScript
             Debugger = new CustomValues { IsEnabled = false };
         }
 
-        // This will load the Rust library. It causes problems in the editor, which is why it is in here.
-        if (!_isRustLoaded)
-        {
-            try
-            {
-                PathManager.LoadLibrary(Engine.LibraryName);
-            }
-            catch (FileNotFoundException e)
-            {
-                Panic("The Rust library failed to load! Please provide a FULL log file to @Emik#0001 on Discord", e);
-                return;
-            }
-        }
-
         // This is a test to make sure the library works, if it isn't loaded the module will solve here.
         try
         {
@@ -90,9 +75,6 @@ public class OneDimensionalChessScript : ModuleScript
             Panic("The Rust library file couldn't be found! Please reinstall the module, and check for the integrity of the /dlls folder! There should be a .so, .dylib, and .bundle file in the root, as well as 2 folders containing a dll.", e);
             return;
         }
-
-        // Once we get here, we know that the library works, and therefore don't need to attempt to load it again.
-        _isRustLoaded = true;
 
         _bestMove = new Work<string, int, bool, CGameResult>(
             work: Engine.Calculate,
@@ -438,7 +420,7 @@ public class OneDimensionalChessScript : ModuleScript
         for (int i = 0; i < BoardRenderers.Length; i++)
         {
             // This prevents a tile from looking the same as its 2 previous neighbours.
-            do 
+            do
                 texture = BoardTextures.PickRandom();
             while (i >= 2 && (
                 BoardRenderers[i - 1].material.mainTexture == texture ||
