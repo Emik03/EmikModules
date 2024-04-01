@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assembly name="wawa.Optionals">
+  <member name="M:Wawa.Optionals.Maybe.TryGet``1(Wawa.Optionals.Maybe{``0},``0@)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <parameter name="that">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+    <parameter name="result">
+      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.None``1">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Match``1(Wawa.Optionals.Maybe{``0},System.Action{``0},System.Action{Wawa.Optionals.Unit})">
+    <parameter name="that">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+    <parameter name="some">
+      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+    <parameter name="none">
+      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.And``1(Wawa.Optionals.Maybe{``0},Wawa.Optionals.Maybe{``0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Or``1(Wawa.Optionals.Maybe{``0},Wawa.Optionals.Maybe{``0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Xor``1(Wawa.Optionals.Maybe{``0},Wawa.Optionals.Maybe{``0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Some``1(``0)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Filter``1(System.Collections.Generic.IEnumerable{Wawa.Optionals.Maybe{``0}})">
+    <attribute ctor="M:JetBrains.Annotations.LinqTunnelAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <parameter name="source">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Flatten``1(Wawa.Optionals.Maybe{Wawa.Optionals.Maybe{``0}})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Flatten``1(Wawa.Optionals.Maybe{Wawa.Optionals.Maybe{Wawa.Optionals.Maybe{``0}}})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Flatten``1(Wawa.Optionals.Maybe{Wawa.Optionals.Maybe{Wawa.Optionals.Maybe{Wawa.Optionals.Maybe{``0}}}})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.From``1(``0)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <parameter name="that">
+      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.From``1(System.Nullable{``0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.AsMaybe``1(System.Nullable{``0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.AsNullable``1(Wawa.Optionals.Maybe{``0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Match``2(Wawa.Optionals.Maybe{``0},System.Func{``0,Wawa.Optionals.Maybe{``1}})">
+    <parameter name="some">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Match``2(Wawa.Optionals.Maybe{``0},System.Func{``0,``1})">
+    <parameter name="some">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Match``2(Wawa.Optionals.Maybe{``0},``1)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Unwrap``1(Wawa.Optionals.Maybe{``0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.UnwrapOr``1(Wawa.Optionals.Maybe{``0},``0)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.UnwrapOr``1(Wawa.Optionals.Maybe{``0},System.Func{Wawa.Optionals.Unit,``0})">
+    <parameter name="otherwise">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.UnwrapOrDefault``1(Wawa.Optionals.Maybe{``0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.UnwrapOrNew``1(Wawa.Optionals.Maybe{``0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Match``2(Wawa.Optionals.Maybe{``0},System.Func{``0,``1},System.Func{Wawa.Optionals.Unit,``1})">
+    <parameter name="some">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+    <parameter name="none">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe.Match``2(Wawa.Optionals.Maybe{``0},``1,``1)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="F:Wawa.Optionals.Maybe.UnwrapMessage">
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.#ctor(`0)">
+    <parameter name="value">
+      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.get_IsNone">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.get_IsSome">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.get_Value">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#get_IsReadOnly">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#ICollection#get_IsSynchronized">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#ICollection#get_Count">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.ValueRangeAttribute.#ctor(System.Int64,System.Int64)">
+      <argument>0</argument>
+      <argument>1</argument>
+    </attribute>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#get_Count">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.ValueRangeAttribute.#ctor(System.Int64,System.Int64)">
+      <argument>0</argument>
+      <argument>1</argument>
+    </attribute>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#ICollection#get_SyncRoot">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#get_Item(System.Int32)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#set_Item(System.Int32,`0)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_Implicit(`0)~Wawa.Optionals.Maybe{`0}">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <parameter name="value">
+      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_Explicit(Wawa.Optionals.Maybe{`0})~`0">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_True(Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_False(Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_Equality(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_Inequality(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_LessThan(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_LessThanOrEqual(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_GreaterThan(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_GreaterThanOrEqual(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_BitwiseOr(Wawa.Optionals.Maybe{`0},`0)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_BitwiseOr(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_BitwiseAnd(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.op_ExclusiveOr(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.Equals(System.Object)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.GetHashCode">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.CompareTo(Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.ToString">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.CopyTo(System.Array,System.Int32)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.CopyTo(`0[],System.Int32)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <parameter name="arrayIndex">
+      <attribute ctor="M:JetBrains.Annotations.NonNegativeValueAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.Contains(`0)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.Equals(Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.Equals(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.GetHashCode(Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.ToString(System.String,System.IFormatProvider)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <parameter name="format">
+      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    </parameter>
+    <parameter name="formatProvider">
+      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.Clone">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#IEnumerable#GetEnumerator">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.GetEnumerator">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#Add(`0)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#Clear">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#Insert(System.Int32,`0)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#RemoveAt(System.Int32)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#Remove(`0)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#IComparer{Wawa#Optionals#Maybe{T}}#Compare(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#IndexOf(`0)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.ValueRangeAttribute.#ctor(System.Int64,System.Int64)">
+      <argument>-1</argument>
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="P:Wawa.Optionals.Maybe`1.IsNone">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="P:Wawa.Optionals.Maybe`1.IsSome">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="P:Wawa.Optionals.Maybe`1.Value">
+    <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.ProvidesContextAttribute.#ctor" />
+  </member>
+  <member name="P:Wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#IsReadOnly">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="P:Wawa.Optionals.Maybe`1.System#Collections#ICollection#IsSynchronized">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="P:Wawa.Optionals.Maybe`1.System#Collections#ICollection#Count">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="P:Wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#Count">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="P:Wawa.Optionals.Maybe`1.System#Collections#ICollection#SyncRoot">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="P:Wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#Item(System.Int32)">
+    <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+  </member>
+  <member name="F:Wawa.Optionals.Maybe`1.NoneMessage">
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Unit.get_Value">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Unit.op_Equality(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <parameter name="left">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+    <parameter name="right">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Unit.op_Inequality(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <parameter name="left">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+    <parameter name="right">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Unit.op_LessThan(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <parameter name="left">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+    <parameter name="right">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Unit.op_LessThanOrEqual(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <parameter name="left">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+    <parameter name="right">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Unit.op_GreaterThan(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <parameter name="left">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+    <parameter name="right">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Unit.op_GreaterThanOrEqual(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <parameter name="left">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+    <parameter name="right">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Unit.GetHashCode">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.ValueRangeAttribute.#ctor(System.Int64)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="M:Wawa.Optionals.Unit.ToString(System.String,System.IFormatProvider)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Unit.ToString">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Unit.Equals(System.Object)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Unit.GetEnumerator">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Unit.System#IEquatable{Wawa#Optionals#Unit}#Equals(Wawa.Optionals.Unit)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <parameter name="other">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Unit.System#Collections#Generic#IEqualityComparer{Wawa#Optionals#Unit}#Equals(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <parameter name="x">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+    <parameter name="y">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Unit.System#Collections#Generic#IEqualityComparer{Wawa#Optionals#Unit}#GetHashCode(Wawa.Optionals.Unit)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.ValueRangeAttribute.#ctor(System.Int64)">
+      <argument>0</argument>
+    </attribute>
+    <parameter name="obj">
+      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Wawa.Optionals.Unit.System#ICloneable#Clone">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.Optionals.Unit.System#IComparable{Wawa#Optionals#Unit}#CompareTo(Wawa.Optionals.Unit)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.ValueRangeAttribute.#ctor(System.Int64)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="M:Wawa.Optionals.Unit.System#Collections#Generic#IComparer{Wawa#Optionals#Unit}#Compare(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.ValueRangeAttribute.#ctor(System.Int64)">
+      <argument>0</argument>
+    </attribute>
+  </member>
+  <member name="M:Wawa.Optionals.Unit.System#Collections#IEnumerable#GetEnumerator">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="F:Wawa.Optionals.Unit.AsString">
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  </member>
+</assembly>
