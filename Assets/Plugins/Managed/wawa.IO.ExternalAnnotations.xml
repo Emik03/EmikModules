@@ -240,19 +240,31 @@
   <member name="F:Wawa.IO.ModInfo.s_default">
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
   </member>
-  <member name="M:Wawa.IO.PathFinder.AssemblyLog(System.String)">
+  <member name="M:Wawa.IO.PathFinder.get_Caller">
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.IO.PathFinder.get_Who">
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.IO.PathFinder.get_Which">
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
+  </member>
+  <member name="M:Wawa.IO.PathFinder.AssemblyLog(System.String,UnityEngine.LogType,System.String)">
     <parameter name="message">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    </parameter>
+    <parameter name="member">
+      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
     </parameter>
   </member>
   <member name="M:Wawa.IO.PathFinder.GetDirectory(System.String)">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <parameter name="modId">
       <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
     </parameter>
   </member>
   <member name="M:Wawa.IO.PathFinder.GetFile(System.String,System.String)">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <parameter name="filePath">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
       <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
@@ -263,12 +275,13 @@
     </parameter>
   </member>
   <member name="M:Wawa.IO.PathFinder.GetModInfo(System.String)">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <parameter name="modId">
       <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
     </parameter>
   </member>
   <member name="M:Wawa.IO.PathFinder.GetAssets``1(System.String,System.String)">
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <parameter name="filePath">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
       <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
@@ -279,6 +292,7 @@
     </parameter>
   </member>
   <member name="M:Wawa.IO.PathFinder.GetUnmanaged``1(System.String,System.String,System.String)">
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <parameter name="libPath">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
       <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
@@ -291,16 +305,11 @@
       <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
     </parameter>
   </member>
-  <member name="M:Wawa.IO.PathFinder.IsModLoaded(System.ValueType)">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-    <parameter name="x">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
   <member name="M:Wawa.IO.PathFinder.MapNeedsUpdating">
     <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
   </member>
   <member name="M:Wawa.IO.PathFinder.Join(System.String,System.String@)">
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     <parameter name="root">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
@@ -313,8 +322,16 @@
       <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
     </parameter>
   </member>
+  <member name="M:Wawa.IO.PathFinder.FindDirectory(System.String)">
+    <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
+    <parameter name="key">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
   <member name="M:Wawa.IO.PathFinder.FindLibrary(System.String,System.String@)">
     <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <parameter name="file">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
       <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
@@ -326,51 +343,18 @@
       <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
     </parameter>
   </member>
-  <member name="M:Wawa.IO.PathFinder.CollectModsWithDuplicateIds(System.Collections.Generic.IEnumerable{System.ValueType})">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.ItemNotNullAttribute.#ctor" />
-    <parameter name="mods">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.ItemNotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.PathFinder.CollectModsWithNullIds(System.Collections.Generic.IEnumerable{System.ValueType})">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.ItemNotNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-    <parameter name="mods">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.ItemNotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.PathFinder.InvertModDictionary(System.Collections.Generic.IEnumerable{System.ValueType})">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-    <parameter name="mods">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.ItemNotNullAttribute.#ctor" />
-    </parameter>
-  </member>
   <member name="M:Wawa.IO.PathFinder.UpdateModIdToDirectoryMapping">
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.PathFinder.InvalidBecause(System.String[],System.String)">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-    <parameter name="ids">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.ItemNotNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="reason">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
   </member>
   <member name="M:Wawa.IO.PathFinder.GetEditorModInfo">
     <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
   </member>
   <member name="M:Wawa.IO.PathFinder.DefineMethod(System.Reflection.Emit.ModuleBuilder,System.String@,System.String@,System.Type@,System.Type[]@)">
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <parameter name="dynamicMod">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>
@@ -390,6 +374,7 @@
   </member>
   <member name="M:Wawa.IO.PathFinder.CreateUnmanagedMethod``1(System.String,System.String@)">
     <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <parameter name="dllName">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
       <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
@@ -408,9 +393,6 @@
   <member name="P:Wawa.IO.PathFinder.Which">
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
   </member>
-  <member name="F:Wawa.IO.PathFinder.DuplicateReason">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
   <member name="F:Wawa.IO.PathFinder.Library">
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
   </member>
@@ -426,13 +408,7 @@
   <member name="F:Wawa.IO.PathFinder.ModInfoInstanceEditor">
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
   </member>
-  <member name="F:Wawa.IO.PathFinder.NullReason">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
   <member name="F:Wawa.IO.PathFinder.OSX">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.PathFinder.Separator">
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
   </member>
   <member name="F:Wawa.IO.PathFinder.Windows">
@@ -445,6 +421,9 @@
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
   </member>
   <member name="F:Wawa.IO.PathFinder.UnityAssembly">
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  </member>
+  <member name="F:Wawa.IO.PathFinder.Version0">
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
   </member>
   <member name="F:Wawa.IO.PathFinder.s_directories">

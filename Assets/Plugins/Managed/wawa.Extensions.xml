@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>wawa.IO</name>
+        <name>wawa.Extensions</name>
     </assembly>
     <members>
         <member name="T:System.Diagnostics.Contracts.PureAttribute">
@@ -958,400 +958,333 @@
         <member name="F:NullGuard.ValidationFlags.All">
             <summary>Wildcard.</summary>
         </member>
-        <member name="T:Wawa.IO.Internals.Globals">
+        <member name="T:Wawa.Extensions.KMExtensions">
             <summary>Contains static methods able to be accessed from anywhere within this library.</summary>
         </member>
-        <member name="F:Wawa.IO.Internals.Globals.Ordinal">
-            <summary>The default string comparison throughout the library.</summary>
-        </member>
-        <member name="M:Wawa.IO.Internals.Globals.SuppressIO``1(``0,System.Action{``0}@)">
-            <summary>Runs and catches various exception types found in IO operations.</summary>
-            <typeparam name="T">The type of parameter.</typeparam>
-            <param name="item">The item to pass in.</param>
-            <param name="action">The name to run.</param>
-        </member>
-        <member name="M:Wawa.IO.Internals.Globals.OrdinalEquals(System.String,System.String@)">
-            <summary>Compares two strings based on <see cref="F:System.StringComparison.Ordinal"/>.</summary>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
-            <returns>Whether the two values are the same based on <see cref="F:System.StringComparison.Ordinal"/>.</returns>
-        </member>
-        <member name="M:Wawa.IO.Internals.Globals.Get``2(``0,System.Func{``0,``1}@,System.Func{``0,``1}@,System.Int32)">
-            <summary>Computes an expensive computation, then caches it in subsequent calls.</summary>
-            <remarks><para>This method assumes that every caller member's name is unique from each other.</para></remarks>
-            <typeparam name="T">The type of the parameter.</typeparam>
-            <typeparam name="TResult">The type of return.</typeparam>
-            <param name="key">The parameter of the method.</param>
-            <param name="factory">The expensive callback.</param>
-            <param name="editor">The expensive callback exclusive to the editor.</param>
-            <param name="caller">The caller member name.</param>
-            <returns>The value from the first time <paramref name="factory" /> was invoked.</returns>
-        </member>
-        <member name="M:Wawa.IO.Internals.Globals.SuppressIO``2(``0,System.Func{``0,``1}@,System.Boolean)">
+        <member name="M:Wawa.Extensions.KMExtensions.Add(KMAudio.KMAudioRef,System.Action)">
             <summary>
-            Runs and returns the parameter, and catches various exception types found in IO operations.
-            A caught <see cref="T:System.Exception" /> will <see langword="return" /> <see langword="default" />.
+            Adds the specified delegate parameter if not <see langword="null"/> into the <see cref="T:KMAudio.KMAudioRef"/>.
             </summary>
-            <typeparam name="T">The type of parameter.</typeparam>
-            <typeparam name="TResult">The type of return.</typeparam>
-            <param name="item">The item to pass in.</param>
-            <param name="func">The name to run.</param>
-            <param name="force">Whether to force execution regardless if in editor or not.</param>
-            <returns>
-            The returned value of <paramref file="func" />, or <see langword="default" />
-            in the event of an <see cref="T:System.Exception" /> related to files.
-            </returns>
-        </member>
-        <member name="T:Wawa.IO.Internals.TypePairEqualityComparer`1">
-            <summary>Provides an <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> for <see cref="T:System.Collections.Generic.KeyValuePair`2"/>.</summary>
-            <typeparam name="T">The key type.</typeparam>
-        </member>
-        <member name="P:Wawa.IO.Internals.TypePairEqualityComparer`1.Instance">
-            <summary>Gets the singleton instance.</summary>
-        </member>
-        <member name="M:Wawa.IO.Internals.TypePairEqualityComparer`1.System#Collections#Generic#IEqualityComparer{System#Collections#Generic#KeyValuePair{T,System#Type}}#Equals(System.Collections.Generic.KeyValuePair{`0,System.Type},System.Collections.Generic.KeyValuePair{`0,System.Type})">
-            <inheritdoc />
-        </member>
-        <member name="M:Wawa.IO.Internals.TypePairEqualityComparer`1.System#Collections#Generic#IEqualityComparer{System#Collections#Generic#KeyValuePair{T,System#Type}}#GetHashCode(System.Collections.Generic.KeyValuePair{`0,System.Type})">
-            <inheritdoc />
-        </member>
-        <member name="T:Wawa.IO.Config">
-            <summary>Implementations for <see cref="T:Wawa.IO.Config`1"/>.</summary>
-        </member>
-        <member name="F:Wawa.IO.Config.Folder">
-            <summary>The name of the folder that contains locally stored mod settings.</summary>
-        </member>
-        <member name="F:Wawa.IO.Config.Suffix">
-            <summary>The suffix for the default file name for mod settings.</summary>
-        </member>
-        <member name="F:Wawa.IO.Config.Tutorial">
-            <summary>The key substring that is ignored in mod configs.</summary>
-        </member>
-        <member name="M:Wawa.IO.Config.Serialize``1(``0)">
-            <summary>Serializes settings the same way it's written to the file. Supports settings that use enums.</summary>
-            <typeparam name="TSerialize">The type to serialize the value.</typeparam>
-            <param name="value">The value to serialize.</param>
-            <returns>A <see cref="T:System.String"/> representation of <paramref name="value"/> by serializing it as JSON.</returns>
-        </member>
-        <member name="M:Wawa.IO.Config.Write``1(Wawa.IO.Config{``0},System.String)">
-            <summary>Writes the string to the settings file.</summary>
-            <remarks><para>
-            To protect the user settings, this does nothing if the last read wasn't successful.
-            </para><para>
-            In the editor, this method does nothing.
-            </para></remarks>
-            <typeparam name="T">The generic used in <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.IO.Config`1"/>.</param>
-            <param name="value">The contents to write.</param>
-            <returns>The parameter <paramref name="that"/>.</returns>
-        </member>
-        <member name="M:Wawa.IO.Config.Write``1(Wawa.IO.Config{``0},``0)">
-            <summary>Writes the settings to the settings file.</summary>
-            <remarks><para>
-            To protect the user settings, this does nothing if the last read wasn't successful.
-            </para><para>
-            In the editor, this method does nothing.
-            </para></remarks>
-            <typeparam name="T">The generic used in <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.IO.Config`1"/>.</param>
-            <param name="value">The value to overwrite the settings file with.</param>
-            <returns>The value <see langword="default"/>.</returns>
-        </member>
-        <member name="M:Wawa.IO.Config.Merge``1(Wawa.IO.Config{``0},``0,System.Boolean)">
-            <summary>Reads, merges, and writes the settings to the settings file.</summary>
-            <remarks><para>
-            To protect the user settings, this does nothing if the last read wasn't successful.
-            </para><para>
-            In the editor, this method does nothing.
-            </para></remarks>
-            <typeparam name="T">The generic used in <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.IO.Config`1"/>.</param>
-            <param name="value">The value to merge the file with.</param>
-            <param name="isDiscarding">
-            Determines whether it should remove values from the original
-            file that isn't contained within the type, or has the incorrect type.
+            <param name="audio">
+            The <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:KMAudio.KMAudioRef"/>
+            instances to invoke <see cref="F:KMAudio.KMAudioRef.StopSound"/>.
             </param>
-            <returns>The parameter <paramref name="that"/>.</returns>
+            <param name="onStopSound">Called when the sound is prematurely stopped.</param>
+            <returns>The parameter <paramref name="audio"/>.</returns>
         </member>
-        <member name="M:Wawa.IO.Config.Read``1(Wawa.IO.Config{``0})">
-            <summary>Reads the settings from the settings file.</summary>
-            <remarks><para>
-            If the settings couldn't be read, the default settings will be returned.
-            </para><para>
-            In the editor, this method returns the default value of the constructor in <typeparamref name="T"/>.
-            </para></remarks>
-            <typeparam name="T">The generic used in <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.IO.Config`1"/>.</param>
-            <returns>
-            If the read and deserialization was successful, a <typeparamref name="T"/> containing the values from the file,
-            otherwise a new instance of <typeparamref name="T"/>.
-            </returns>
-        </member>
-        <member name="T:Wawa.IO.Config`1">
-            <summary>Meant for information that needs to be deserialized within the mod settings folder.</summary>
-            <remarks><para>
-            Originally by samfundev: https://github.com/samfundev/KTANE-Utilities/blob/master/ModConfig.cs.
-            </para><para>
-            All constructors in this type have the following side effects:
-            </para><list type="bullet">
-            <item><description>A file will automatically be made if it doesn't exist.</description></item>
-            <item><description>
-            A JSON property defined in the type <typeparamref name="T"/> that doesn't exist in the file
-            will automatically be appended with a new default instance of <typeparamref name="T"/>'s values.
-            </description></item>
-            <item><description>
-            In the editor, this constructor will not merge the default of type <typeparamref name="T"/> with the file.
-            </description></item>
-            </list></remarks>
-            <typeparam name="T">The type to serialize and deserialize the file.</typeparam>
-        </member>
-        <member name="M:Wawa.IO.Config`1.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Wawa.IO.Config`1"/> class.</summary>
-            <remarks><list type="bullet">
-            <item><description>
-            The target file name is implicitly gotten by the name of the assembly that called this constructor.
-            </description></item>
-            <item><description>A file will automatically be made if it doesn't exist.</description></item>
-            <item><description>
-            A JSON property defined in the type <typeparamref name="T"/> that doesn't exist in the file
-            will automatically be appended with a new default instance of <typeparamref name="T"/>'s values.
-            </description></item>
-            <item><description>
-            In the editor, this constructor will not merge the default of type <typeparamref name="T"/> with the file.
-            </description></item>
-            </list></remarks>
-        </member>
-        <member name="M:Wawa.IO.Config`1.#ctor(System.String)">
-            <summary>Initializes a new instance of the <see cref="T:Wawa.IO.Config`1"/> class.</summary>
-            <remarks><list type="bullet">
-            <item><description>Allows specification of the target file name.</description></item>
-            <item><description>A file will automatically be made if it doesn't exist.</description></item>
-            <item><description>
-            A JSON property defined in the type <typeparamref name="T"/> that doesn't exist in the file
-            will automatically be appended with a new default instance of <typeparamref name="T"/>'s values.
-            </description></item>
-            <item><description>
-            In the editor, this constructor will not merge the default of type <typeparamref name="T"/> with the file.
-            </description></item>
-            </list></remarks>
-            <param name="fileName">The file name to get.</param>
-        </member>
-        <member name="P:Wawa.IO.Config`1.HasRead">
-            <summary>Gets a value indicating whether or not there has been a successful read of the settings file.</summary>
-            <remarks><para>This value will always be false in the editor.</para></remarks>
-        </member>
-        <member name="P:Wawa.IO.Config`1.FilePath">
-            <summary>Gets the path of the file to read and write.</summary>
-        </member>
-        <member name="M:Wawa.IO.Config`1.Clone">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.Config`1.Equals(Wawa.IO.Config{`0},Wawa.IO.Config{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.Config`1.GetHashCode(Wawa.IO.Config{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.Config`1.Equals(Wawa.IO.Config{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.Config`1.op_Equality(Wawa.IO.Config{`0},Wawa.IO.Config{`0})">
-            <summary>Determines whether both instances are both <see langword="null"/> or both instances.</summary>
-            <param name="left">The left-hand side operator.</param>
-            <param name="right">The right-hand side operator.</param>
-            <returns>
-            The value <see langword="true"/> if both share the same <see cref="P:Wawa.IO.Config`1.FilePath"/>,
-            otherwise <see langword="false"/>.
-            </returns>
-        </member>
-        <member name="M:Wawa.IO.Config`1.op_Inequality(Wawa.IO.Config{`0},Wawa.IO.Config{`0})">
-            <summary>Determines whether both instances are one of <see langword="null"/> and the other instanced.</summary>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
-            <returns>
-            The value <see langword="true"/> if both do not share the same <see cref="P:Wawa.IO.Config`1.FilePath"/>,
-            otherwise <see langword="false"/>.
-            </returns>
-        </member>
-        <member name="M:Wawa.IO.Config`1.Equals(System.Object)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.Config`1.GetHashCode">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.Config`1.ToString">
+        <member name="M:Wawa.Extensions.KMExtensions.Set(KMAudio.KMAudioRef,System.Action)">
             <summary>
-            Deserializes, then re-serializes the file according to <see cref="M:Wawa.IO.Config.Serialize``1(``0)"/>.
-            In the editor, this method serializes the default value of the constructor in <typeparamref name="T"/>.
+            Sets the specified delegate parameter if not <see langword="null"/> into the <see cref="T:KMAudio.KMAudioRef"/>.
             </summary>
-            <returns>A string representation of the value from <see cref="M:Wawa.IO.Config.Read``1(Wawa.IO.Config{``0})"/>.</returns>
+            <param name="audio">
+            The <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:KMAudio.KMAudioRef"/>
+            instances to invoke <see cref="F:KMAudio.KMAudioRef.StopSound"/>.
+            </param>
+            <param name="onStopSound">Called when the sound is prematurely stopped.</param>
+            <returns>The parameter <paramref name="audio"/>.</returns>
         </member>
-        <member name="T:Wawa.IO.ModInfo">
+        <member name="M:Wawa.Extensions.KMExtensions.Add(KMBombInfo,System.Action,System.Action)">
+            <summary>Sets specified delegate parameters into the <see cref="T:KMSelectable"/>.</summary>
+            <param name="info">The <see cref="T:KMBombInfo"/> to hook.</param>
+            <param name="onBombExploded">Called when the bomb explodes.</param>
+            <param name="onBombSolved">Called when the bomb is defused.</param>
+            <returns>The parameter <paramref name="info"/>.</returns>
+        </member>
+        <member name="M:Wawa.Extensions.KMExtensions.Set(KMBombInfo,System.Action,System.Action)">
+            <summary>Sets specified delegate parameters into the <see cref="T:KMSelectable"/>.</summary>
+            <param name="info">The <see cref="T:KMBombInfo"/> to hook.</param>
+            <param name="onBombExploded">Called when the bomb explodes.</param>
+            <param name="onBombSolved">Called when the bomb is defused.</param>
+            <returns>The parameter <paramref name="info"/>.</returns>
+        </member>
+        <member name="M:Wawa.Extensions.KMExtensions.Add(KMBombModule,System.Action,System.Action,System.Action)">
+            <summary>Sets specified delegate parameters into the <see cref="T:KMBombModule"/>.</summary>
+            <param name="module">The <see cref="T:KMBombModule"/> to hook.</param>
+            <param name="onActivate">Called when the lights turn on.</param>
+            <param name="onPass">Called when the module is solved.</param>
+            <param name="onStrike">Called when the module strikes.</param>
+            <returns>The parameter <paramref name="module"/>.</returns>
+        </member>
+        <member name="M:Wawa.Extensions.KMExtensions.Set(KMBombModule,System.Action,System.Action,System.Action)">
+            <summary>Sets specified delegate parameters into the <see cref="T:KMBombModule"/>.</summary>
+            <param name="module">The <see cref="T:KMBombModule"/> to hook.</param>
+            <param name="onActivate">Called when the lights turn on.</param>
+            <param name="onPass">Called when the module is solved.</param>
+            <param name="onStrike">Called when the module strikes.</param>
+            <returns>The parameter <paramref name="module"/>.</returns>
+        </member>
+        <member name="M:Wawa.Extensions.KMExtensions.Add(KMGameInfo,System.Action,System.Action,System.Action)">
+            <summary>Sets specified delegate parameters into the <see cref="T:KMGameInfo"/>.</summary>
+            <param name="game">The <see cref="T:KMGameInfo"/> to hook.</param>
+            <param name="onStateChange">Called when the state of the game changes.</param>
+            <param name="onAlarmClockChange">
+            Called when the alarm clock changes state, and passes in whether it's on or off.
+            </param>
+            <param name="onLightsChange">Called when the lights change state, and passes in whether it's on or off.</param>
+            <returns>The parameter <paramref name="game"/>.</returns>
+        </member>
+        <member name="M:Wawa.Extensions.KMExtensions.Set(KMGameInfo,System.Action,System.Action,System.Action)">
+            <summary>Sets specified delegate parameters into the <see cref="T:KMGameInfo"/>.</summary>
+            <param name="game">The <see cref="T:KMGameInfo"/> to hook.</param>
+            <param name="onStateChange">Called when the state of the game changes.</param>
+            <param name="onAlarmClockChange">
+            Called when the alarm clock changes state, and passes in whether it's on or off.
+            </param>
+            <param name="onLightsChange">Called when the lights change state, and passes in whether it's on or off.</param>
+            <returns>The parameter <paramref name="game"/>.</returns>
+        </member>
+        <member name="M:Wawa.Extensions.KMExtensions.Add(KMNeedyModule,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+            <summary>Sets specified delegate parameters into the <see cref="T:KMNeedyModule"/>.</summary>
+            <param name="needy">The <see cref="T:KMNeedyModule"/> to hook.</param>
+            <param name="onActivate">Called when the lights turn on.</param>
+            <param name="onNeedyActivation">Called when the needy activates.</param>
+            <param name="onNeedyDeactivation">Called when the needy deactivates.</param>
+            <param name="onPass">Called when the needy is solved.</param>
+            <param name="onStrike">Called when the needy strikes.</param>
+            <param name="onTimerExpired">Called when the timer runs out of time.</param>
+            <returns>The parameter <paramref name="needy"/>.</returns>
+        </member>
+        <member name="M:Wawa.Extensions.KMExtensions.Set(KMNeedyModule,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+            <summary>Sets specified delegate parameters into the <see cref="T:KMNeedyModule"/>.</summary>
+            <param name="needy">The <see cref="T:KMNeedyModule"/> to hook.</param>
+            <param name="onActivate">Called when the lights turn on.</param>
+            <param name="onNeedyActivation">Called when the needy activates.</param>
+            <param name="onNeedyDeactivation">Called when the needy deactivates.</param>
+            <param name="onPass">Called when the needy is solved.</param>
+            <param name="onStrike">Called when the needy strikes.</param>
+            <param name="onTimerExpired">Called when the timer runs out of time.</param>
+            <returns>The parameter <paramref name="needy"/>.</returns>
+        </member>
+        <member name="M:Wawa.Extensions.KMExtensions.Add(KMSelectable,System.Nullable{System.Boolean},System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+            <summary>Adds specified delegate parameters into the <see cref="T:KMSelectable"/>.</summary>
+            <param name="selectable">The <see cref="T:KMSelectable"/> to hook.</param>
+            <param name="isParent">
+            The <see langword="return"/> value of <see cref="F:KMSelectable.OnCancel"/>
+            and <see cref="F:KMSelectable.OnInteract"/>.
+            If <see langword="null"/>, the value is evaluated at runtime to be <see langword="true"/> if
+            <see cref="F:KMSelectable.Children"/> is a populated <see cref="T:System.Array"/>, and <see langword="false"/> otherwise.
+            </param>
+            <param name="onCancel">Called when player backs out of this selectable.</param>
+            <param name="onDefocus">
+            Called when a different selectable becomes the focus, or the module has been backed out of.
+            </param>
+            <param name="onDeselect">Called when the selectable stops being the current selectable.</param>
+            <param name="onFocus">
+            Called when a module is focused, this is when it is interacted with from the bomb face level
+            and its children can be selected.
+            </param>
+            <param name="onHighlight">Called when the highlight is turned on.</param>
+            <param name="onHighlightEnded">Called when the highlight is turned off.</param>
+            <param name="onInteract">Called when player interacts with the selectable.</param>
+            <param name="onInteractEnded">
+            Called when a player interacting with the selectable releases the mouse or controller button.
+            </param>
+            <param name="onInteractionPunch">Called when the interaction punch method is called.</param>
+            <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
+            <param name="onRight">Called when the right controller stick is pulled while selected.</param>
+            <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
+            <param name="onUpdateChildren">Called when the selectable updates its children.</param>
+            <returns>The parameter <paramref name="selectable"/>.</returns>
+        </member>
+        <member name="M:Wawa.Extensions.KMExtensions.Notify(KMSelectable,KMSelectable)">
+            <summary>Notifies the game that the children list has been updated.</summary>
+            <remarks><para>
+            This is a swap-in replacement for <see cref="M:KMSelectable.UpdateChildren(KMSelectable)"/>,
+            since that method only works in the editor.
+            </para></remarks>
+            <param name="selectable">The <see cref="T:KMSelectable"/> to update its children.</param>
+            <param name="childrenToSelect">The child <see cref="T:KMSelectable"/> to force a selection on, if specified.</param>
+            <returns>The parameter <paramref name="selectable"/>.</returns>
+        </member>
+        <member name="M:Wawa.Extensions.KMExtensions.Set(KMSelectable,System.Nullable{System.Boolean},System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+            <summary>Sets specified delegate parameters into the <see cref="T:KMSelectable"/>.</summary>
+            <param name="selectable">The <see cref="T:KMSelectable"/> to hook.</param>
+            <param name="isParent">
+            The <see langword="return"/> value of <see cref="F:KMSelectable.OnCancel"/>
+            and <see cref="F:KMSelectable.OnInteract"/>.
+            If <see langword="null"/>, the value is evaluated at runtime to be <see langword="true"/> if
+            <see cref="F:KMSelectable.Children"/> is a populated <see cref="T:System.Array"/>, and <see langword="false"/> otherwise.
+            </param>
+            <param name="onCancel">Called when player backs out of this selectable.</param>
+            <param name="onDefocus">
+            Called when a different selectable becomes the focus, or the module has been backed out of.
+            </param>
+            <param name="onDeselect">Called when the selectable stops being the current selectable.</param>
+            <param name="onFocus">
+            Called when a module is focused, this is when it is interacted
+            with from the bomb face level and its children can be selected.
+            </param>
+            <param name="onHighlight">Called when the highlight is turned on.</param>
+            <param name="onHighlightEnded">Called when the highlight is turned off.</param>
+            <param name="onInteract">Called when player interacts with the selectable.</param>
+            <param name="onInteractEnded">
+            Called when a player interacting with the selectable releases the mouse or controller button.
+            </param>
+            <param name="onInteractionPunch">Called when the interaction punch method is called.</param>
+            <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
+            <param name="onRight">Called when the right controller stick is pulled while selected.</param>
+            <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
+            <param name="onUpdateChildren">Called when the selectable updates its children.</param>
+            <returns>The parameter <paramref name="selectable"/>.</returns>
+        </member>
+        <member name="M:Wawa.Extensions.KMExtensions.Add``1(``0,System.Action{System.Int32})">
             <summary>
-            Contains the properties needed to perform JSON-deserialization
-            of a modInfo.json located in the root directory of a mod.
+            Adds the specified delegate parameter if not <see langword="null"/> into the <see cref="T:System.Collections.Generic.IEnumerable`1"/>
+            of <see cref="T:KMSelectable"/> instances. An <see cref="T:System.Int32"/> is passed in the <see cref="T:System.Action`1"/>
+            based on the index from the collection.
             </summary>
+            <typeparam name="T">
+            The type of <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing <see cref="T:KMSelectable"/> instances.
+            </typeparam>
+            <param name="audio">
+            The <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:KMAudio.KMAudioRef"/>
+            instances to invoke <see cref="F:KMAudio.KMAudioRef.StopSound"/>.
+            </param>
+            <param name="onStopSound">Called when the sound is prematurely stopped.</param>
+            <returns>The parameter <paramref name="audio"/>.</returns>
         </member>
-        <member name="F:Wawa.IO.ModInfo.FileName">
-            <summary>The file name used for this type.</summary>
-        </member>
-        <member name="P:Wawa.IO.ModInfo.Author">
-            <summary>Gets the author(s) of the mod.</summary>
-        </member>
-        <member name="P:Wawa.IO.ModInfo.Description">
-            <summary>Gets the description of the mod.</summary>
-        </member>
-        <member name="P:Wawa.IO.ModInfo.Id">
-            <summary>Gets the id of the mod.</summary>
-        </member>
-        <member name="P:Wawa.IO.ModInfo.Title">
-            <summary>Gets the title of the mod.</summary>
-        </member>
-        <member name="P:Wawa.IO.ModInfo.UnityVersion">
-            <summary>Gets the Unity version used to compile the mod.</summary>
-        </member>
-        <member name="P:Wawa.IO.ModInfo.Version">
-            <summary>Gets the version number of the mod.</summary>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.Clone">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.Equals(Wawa.IO.ModInfo,Wawa.IO.ModInfo)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.GetHashCode(Wawa.IO.ModInfo)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.Equals(Wawa.IO.ModInfo)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.op_Equality(Wawa.IO.ModInfo,Wawa.IO.ModInfo)">
-            <summary>Determines whether both instances contain the same values.</summary>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
-            <returns>The value <see langword="true"/> if both instances contain the same values.</returns>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.op_Inequality(Wawa.IO.ModInfo,Wawa.IO.ModInfo)">
-            <summary>Determines whether both instances do not contain the same values.</summary>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
-            <returns>The value <see langword="true"/> if both instances do not contain the same values.</returns>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.Deserialize(System.String)">
-            <summary>Tries to deserialize the parameter as <see cref="T:Wawa.IO.ModInfo"/>.</summary>
-            <param name="contents">The contents to a modInfo.json.</param>
-            <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1"/> containing either a <see langword="new"/> instance
-            of <see cref="T:Wawa.IO.ModInfo"/> which has the information of the file if the serialization is successful,
-            or no value if the file couldn't be read/located.
-            </returns>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.ReadThenDeserialize(System.String)">
+        <member name="M:Wawa.Extensions.KMExtensions.Set``1(``0,System.Action{System.Int32})">
             <summary>
-            Attempts to read the specified path to try to deserialize its contents as <see cref="T:Wawa.IO.ModInfo"/>.
+            Sets the specified delegate parameter if not <see langword="null"/> into the <see cref="T:System.Collections.Generic.IEnumerable`1"/>
+            of <see cref="T:KMSelectable"/> instances. An <see cref="T:System.Int32"/> is passed in the <see cref="T:System.Action`1"/>
+            based on the index from the collection.
             </summary>
-            <param name="filePath">The contents to a modInfo.json.</param>
-            <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1"/> containing either a <see langword="new"/> instance
-            of <see cref="T:Wawa.IO.ModInfo"/> which has the information of the file if the serialization is successful,
-            or no value if the file couldn't be read/located.
-            </returns>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.Equals(System.Object)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.GetHashCode">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.ToString">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.FromInternalModInfo(System.Object)">
-            <summary>Creates a <see cref="T:Wawa.IO.ModInfo"/> from the same type in the game.</summary>
-            <param name="metadata">The instance containing the metadata of the mod.</param>
-            <returns>
-            A new <see cref="T:Wawa.IO.ModInfo"/> instance containing the same data as <paramref name="metadata"/>,
-            or the default instance if <paramref name="metadata"/> isn't the type from the game.
-            </returns>
-        </member>
-        <member name="T:Wawa.IO.PathFinder">
-            <summary>Access to the paths and contents of files within folder mod directory.</summary>
-        </member>
-        <member name="P:Wawa.IO.PathFinder.Caller">
-            <summary>Gets the <see cref="T:System.Reflection.AssemblyName"/> of the caller that invoked the method calling this.</summary>
-            <remarks><para>This is used by the library to log itself, and obtain information about callers.</para></remarks>
-        </member>
-        <member name="P:Wawa.IO.PathFinder.Who">
-            <summary>Gets the name of <see cref="P:Wawa.IO.PathFinder.Caller"/>.</summary>
-        </member>
-        <member name="P:Wawa.IO.PathFinder.Which">
-            <summary>Gets the version of <see cref="P:Wawa.IO.PathFinder.Caller"/>.</summary>
-        </member>
-        <member name="M:Wawa.IO.PathFinder.AssemblyLog(System.String,UnityEngine.LogType,System.String)">
-            <summary>Logs a message to the Unity Console with the assembly's name that called this.</summary>
-            <param name="message">The message to log.</param>
-            <param name="logType">The log level.</param>
-            <param name="member">The caller member.</param>
-        </member>
-        <member name="M:Wawa.IO.PathFinder.GetDirectory(System.String)">
-            <summary>Gets the absolute directory of the mod.</summary>
-            <param name="modId">
-            The mod id to get the mod directory from.
-            If <see langword="null" />, implicitly gets the directory of the mod from the file of the assembly.
+            <typeparam name="T">
+            The type of <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing <see cref="T:KMSelectable"/> instances.
+            </typeparam>
+            <param name="audio">
+            The <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:KMAudio.KMAudioRef"/>
+            instances to invoke <see cref="F:KMAudio.KMAudioRef.StopSound"/>.
             </param>
-            <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1" />, consisting of either folder <see cref="T:System.String" /> of the absolute directory
-            of the file if there is a folder mod id entry within the game's mod dictionary, or <see langword="default" />.
-            </returns>
+            <param name="onStopSound">Called when the sound is prematurely stopped.</param>
+            <returns>The parameter <paramref name="audio"/>.</returns>
         </member>
-        <member name="M:Wawa.IO.PathFinder.GetFile(System.String,System.String)">
-            <summary>Gets the absolute directory of the file located inside the mod directory.</summary>
-            <param name="filePath">The file located inside folder mod directory.</param>
-            <param name="modId">
-            The mod id to get the mod directory from.
-            If <see langword="null" />, implicitly gets the directory of the mod from the file of the assembly.
+        <member name="M:Wawa.Extensions.KMExtensions.Add``1(``0,System.Nullable{System.Boolean},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32})">
+            <summary>
+            Adds specified delegate parameters into the <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:KMSelectable"/> instances.
+            An <see cref="T:System.Int32"/> is passed in the <see cref="T:System.Action`1"/> based on the index from the collection.
+            </summary>
+            <typeparam name="T">
+            The type of <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing <see cref="T:KMSelectable"/> instances.
+            </typeparam>
+            <param name="selectables">The <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:KMSelectable"/> instances to hook.</param>
+            <param name="isParent">
+            The <see langword="return"/> value of <see cref="F:KMSelectable.OnCancel"/>
+            and <see cref="F:KMSelectable.OnInteract"/>.
+            If <see langword="null"/>, the value is evaluated at runtime to be <see langword="true"/> if
+            <see cref="F:KMSelectable.Children"/> is a populated <see cref="T:System.Array"/>, and <see langword="false"/> otherwise.
             </param>
-            <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1" />, consisting of either folder <see cref="T:System.String" /> of the absolute directory
-            of the file if the mod directory and file were found, or <see langword="default" />.
-            </returns>
+            <param name="onCancel">Called when player backs out of this selectable.</param>
+            <param name="onDefocus">
+            Called when a different selectable becomes the focus, or the module has been backed out of.
+            </param>
+            <param name="onDeselect">Called when the selectable stops being the current selectable.</param>
+            <param name="onFocus">
+            Called when a module is focused, this is when it is interacted with from the bomb face level
+            and its children can be selected.
+            </param>
+            <param name="onHighlight">Called when the highlight is turned on.</param>
+            <param name="onHighlightEnded">Called when the highlight is turned off.</param>
+            <param name="onInteract">Called when player interacts with the selectable.</param>
+            <param name="onInteractEnded">
+            Called when a player interacting with the selectable releases the mouse or controller button.
+            </param>
+            <param name="onInteractionPunch">Called when the interaction punch method is called.</param>
+            <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
+            <param name="onRight">Called when the right controller stick is pulled while selected.</param>
+            <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
+            <param name="onUpdateChildren">Called when the selectable updates its children.</param>
+            <returns>The parameter <paramref name="selectables"/>.</returns>
         </member>
-        <member name="M:Wawa.IO.PathFinder.GetModInfo(System.String)">
-            <summary>Gets and deserializes the <see cref="T:Wawa.IO.ModInfo" /> file located in every mod's root directory.</summary>
-            <param name="modId">
-            The mod id to get the mod directory from.
-            If <see langword="null" />, implicitly gets the directory of the mod from the file of the assembly.
+        <member name="M:Wawa.Extensions.KMExtensions.Notify``1(``0,KMSelectable[])">
+            <summary>Notifies the game that the children list has been updated.</summary>
+            <remarks><para>
+            This is a swap-in replacement for <see cref="M:KMSelectable.UpdateChildren(KMSelectable)"/>,
+            since that method only works in the editor.
+            </para></remarks>
+            <typeparam name="T">
+            The type of <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing <see cref="T:KMSelectable"/> instances.
+            </typeparam>
+            <param name="selectables">
+            The <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:KMSelectable"/> instances to update its children.
             </param>
-            <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1" />, consisting of either folder <see cref="T:Wawa.IO.ModInfo" /> if the file was read
-            and deserialized successfully, or <see langword="default" />.
-            </returns>
+            <param name="childrenToSelect">
+            The <see cref="T:System.Array"/> of children <see cref="T:KMSelectable"/> to force selections on, if specified.
+            </param>
+            <returns>The parameter <paramref name="selectables"/>.</returns>
         </member>
-        <member name="M:Wawa.IO.PathFinder.GetAssets``1(System.String,System.String)">
-            <summary>Loads and returns assets from disk.</summary>
-            <typeparam name="T">The type of asset to get.</typeparam>
-            <param name="filePath">The file which contains the assets.</param>
-            <param name="modId">
-            The mod id to get the mod directory from.
-            If <see langword="null" />, implicitly gets the directory of the mod from the file of the assembly.
+        <member name="M:Wawa.Extensions.KMExtensions.Notify``2(``0,``1)">
+            <summary>Notifies the game that the children list has been updated.</summary>
+            <remarks><para>
+            This is a swap-in replacement for <see cref="M:KMSelectable.UpdateChildren(KMSelectable)"/>,
+            since that method only works in the editor.
+            </para></remarks>
+            <typeparam name="T">
+            The type of <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing <see cref="T:KMSelectable"/> instances.
+            </typeparam>
+            <typeparam name="TChild">
+            The type of <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing child <see cref="T:KMSelectable"/> instances.
+            </typeparam>
+            <param name="selectables">
+            The <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:KMSelectable"/> instances to update its children.
             </param>
-            <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1" />, consisting of either an <see cref="T:System.Array" /> of <typeparamref file="T" />
-            from the assets in the file specified, or <see langword="default" /> in the event of an error.
-            </returns>
+            <param name="childrenToSelect">
+            The <see cref="T:System.Collections.Generic.IEnumerable`1"/> of children <see cref="T:KMSelectable"/> to force selections on, if specified.
+            </param>
+            <returns>The parameter <paramref name="selectables"/>.</returns>
         </member>
-        <member name="M:Wawa.IO.PathFinder.GetUnmanaged``1(System.String,System.String,System.String)">
-            <summary>Gets an unmanaged function from an external library.</summary>
-            <typeparam name="T">The signature of the function.</typeparam>
-            <param name="libPath">The external file.</param>
-            <param name="ffiMethodName">The name of the method.</param>
-            <param name="modId">
-            The mod id to get the mod directory from.
-            If <see langword="null" />, implicitly gets the directory of the mod from the file of the assembly.
+        <member name="M:Wawa.Extensions.KMExtensions.Set``1(``0,System.Nullable{System.Boolean},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32},System.Action{System.Int32})">
+            <summary>
+            Sets specified delegate parameters into the <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:KMSelectable"/> instances.
+            An <see cref="T:System.Int32"/> is passed in the <see cref="T:System.Action`1"/> based on the index from the collection.
+            </summary>
+            <typeparam name="T">
+            The type of <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing <see cref="T:KMSelectable"/> instances.
+            </typeparam>
+            <param name="selectables">
+            The <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:KMSelectable"/> instances to hook.
             </param>
-            <returns>
-            The value <see langword="true" /> if copying the file was successful, otherwise <see langword="false" />.
-            </returns>
+            <param name="isParent">
+            The <see langword="return"/> value of <see cref="F:KMSelectable.OnCancel"/>
+            and <see cref="F:KMSelectable.OnInteract"/>.
+            If <see langword="null"/>, the value is evaluated at runtime to be <see langword="true"/> if
+            <see cref="F:KMSelectable.Children"/> is a populated <see cref="T:System.Array"/>, and <see langword="false"/> otherwise.
+            </param>
+            <param name="onCancel">Called when player backs out of this selectable.</param>
+            <param name="onDefocus">
+            Called when a different selectable becomes the focus, or the module has been backed out of.
+            </param>
+            <param name="onDeselect">Called when the selectable stops being the current selectable.</param>
+            <param name="onFocus">
+            Called when a module is focused, this is when it is interacted
+            with from the bomb face level and its children can be selected.
+            </param>
+            <param name="onHighlight">Called when the highlight is turned on.</param>
+            <param name="onHighlightEnded">Called when the highlight is turned off.</param>
+            <param name="onInteract">Called when player interacts with the selectable.</param>
+            <param name="onInteractEnded">
+            Called when a player interacting with the selectable releases the mouse or controller button.
+            </param>
+            <param name="onInteractionPunch">Called when the interaction punch method is called.</param>
+            <param name="onLeft">Called when the left controller stick is pulled while selected.</param>
+            <param name="onRight">Called when the right controller stick is pulled while selected.</param>
+            <param name="onSelect">Called whenever the selectable becomes the current selectable.</param>
+            <param name="onUpdateChildren">Called when the selectable updates its children.</param>
+            <returns>The parameter <paramref name="selectables"/>.</returns>
+        </member>
+        <member name="M:Wawa.Extensions.KMExtensions.Stop``1(``0)">
+            <summary>
+            Invokes <see cref="F:KMAudio.KMAudioRef.StopSound"/> for all elements in the
+            <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:KMAudio.KMAudioRef"/> instances.
+            </summary>
+            <typeparam name="T">
+            The type of <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing <see cref="T:KMSelectable"/> instances.
+            </typeparam>
+            <param name="audio">
+            The <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:KMAudio.KMAudioRef"/>
+            instances to invoke <see cref="F:KMAudio.KMAudioRef.StopSound"/>.
+            </param>
+            <returns>The parameter <paramref name="audio"/>.</returns>
         </member>
     </members>
 </doc>

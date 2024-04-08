@@ -1,0 +1,9 @@
+<Project>
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildProjectFullPath)../../../../../../'))"/>
+    <PropertyGroup>
+        <!--        <ArtifactsPath>$([System.IO.Path]::GetFullPath('$(MSBuildProjectFullPath)../../../Assets/Plugins/Managed'))</ArtifactsPath>-->
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="../../Assets/Plugins/Managed/wawa*.dll" Private="false"/>
+    </ItemGroup>
+</Project>

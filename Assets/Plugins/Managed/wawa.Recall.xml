@@ -1,0 +1,2371 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>wawa.Recall</name>
+    </assembly>
+    <members>
+        <member name="T:System.Diagnostics.Contracts.PureAttribute">
+            <summary>Indicates that a type or method is pure, that is, it does not make any visible state changes.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DisallowNullAttribute">
+            <summary>Specifies that null is disallowed as an input even if the corresponding type allows it.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute">
+            <summary>Applied to a method that will never return under any circumstance.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute">
+            <summary>
+            Specifies that the method will not return if the associated Boolean parameter is passed the specified value.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute"/> class
+            with the specified parameter value.
+            </summary>
+            <param name="parameterValue">
+            The condition parameter value. Code after the method will be considered unreachable
+            by diagnostics if the argument to the associated parameter matches this value.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.ParameterValue">
+            <summary>
+            Gets a value indicating whether the condition parameter value
+            is <see langword="true"/> or <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.op_Implicit(System.Boolean)~System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of DoesNotReturnIfAttribute by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)"/>.
+            </summary>
+            <param name="parameterValue">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of DoesNotReturnIfAttribute by passing the parameter <paramref name="parameterValue"/> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)"/>.
+            </returns>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute">
+            <summary>Specifies that an output may be null even if the corresponding type disallows it.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullAttribute">
+            <summary>
+            Specifies that an output will not be null even if the corresponding type allows it.
+            Specifies that an input argument was not null when the call returns.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute">
+            <summary>
+            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue"/>,
+            the parameter may be null even if the corresponding type disallows it.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute"/> class
+            with the specified return value condition.
+            </summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter may be null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue">
+            <summary>
+            Gets a value indicating whether the return value condition
+            is <see langword="true"/> or <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.op_Implicit(System.Boolean)~System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of MaybeNullWhenAttribute by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)"/>.
+            </summary>
+            <param name="returnValue">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of MaybeNullWhenAttribute by passing the parameter <paramref name="returnValue"/> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)"/>.
+            </returns>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
+            <summary>
+            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>,
+            the parameter will not be null even if the corresponding type allows it.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute"/>
+            class with the specified return value condition.
+            </summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter will not be null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
+            <summary>
+            Gets a value indicating whether the return value condition is <see langword="true"/> or <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.op_Implicit(System.Boolean)~System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of NotNullWhenAttribute by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)"/>.
+            </summary>
+            <param name="returnValue">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of NotNullWhenAttribute by passing the parameter <paramref name="returnValue"/> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)"/>.
+            </returns>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute">
+            <summary>Specifies that the output will be non-null if the named parameter is non-null.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute"/> class
+            with the associated parameter name.
+            </summary>
+            <param name="parameterName">
+            The associated parameter name.
+            The output will be non-null if the argument to the parameter specified is non-null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.ParameterName">
+            <summary>Gets the associated parameter name.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.op_Implicit(System.String)~System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of NotNullIfNotNullAttribute by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)"/>.
+            </summary>
+            <param name="parameterName">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of NotNullIfNotNullAttribute by passing the parameter <paramref name="parameterName"/> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)"/>.
+            </returns>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
+            <summary>
+            Specifies that the method or property will ensure that the
+            listed field and property members have not-null values.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute"/>
+            class with a field or property member.
+            </summary>
+            <param name="member">
+            The field or property member that is promised to be not-null.
+            </param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute"/> class
+            with the list of field and property members.
+            </summary>
+            <param name="members">
+            The list of field and AttributeTargets.Property members that are promised to be not-null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.Members">
+            <summary>Gets field or AttributeTargets.Property member names.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.op_Implicit(System.String)~System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of MemberNotNullAttribute by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)"/>.
+            </summary>
+            <param name="member">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of MemberNotNullAttribute by passing the parameter <paramref name="member"/> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)"/>.
+            </returns>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.op_Implicit(System.String[])~System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of MemberNotNullAttribute by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])"/>.
+            </summary>
+            <param name="members">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of MemberNotNullAttribute by passing the parameter <paramref name="members"/> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])"/>.
+            </returns>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute">
+            <summary>
+            Specifies that the method or property will ensure that the listed field and property members
+            have not-null values when returning with the specified return value condition.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute"/> class
+            with the specified return value condition and a field or property member.
+            </summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter will not be null.
+            </param>
+            <param name="member">The field or property member that is promised to be not-null.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute"/> class
+            with the specified return value condition and list of field and property members.
+            </summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter will not be null.
+            </param>
+            <param name="members">
+            The list of field and property members that are promised to be not-null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.ReturnValue">
+            <summary>
+            Gets a value indicating whether the return value condition
+            is <see langword="true"/> or <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.Members">
+            <summary>Gets field or property member names.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute">
+            <summary>
+            Specifies that this constructor sets all required members for the current type,
+            and callers do not need to set any required members themselves.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute">
+            <summary>Specifies the syntax used in a string.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.CompositeFormat">
+            <summary>The syntax identifier for strings containing composite formats for string formatting.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.DateOnlyFormat">
+            <summary>The syntax identifier for strings containing date format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.DateTimeFormat">
+            <summary>The syntax identifier for strings containing date and time format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.EnumFormat">
+            <summary>The syntax identifier for strings containing <see cref="T:System.Enum"/> format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.GuidFormat">
+            <summary>The syntax identifier for strings containing <see cref="T:System.Guid"/> format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Json">
+            <summary>The syntax identifier for strings containing JavaScript Object Notation (JSON).</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.NumericFormat">
+            <summary>The syntax identifier for strings containing numeric format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Regex">
+            <summary>The syntax identifier for strings containing regular expressions.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.TimeOnlyFormat">
+            <summary>The syntax identifier for strings containing time format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.TimeSpanFormat">
+            <summary>The syntax identifier for strings containing <see cref="T:System.TimeSpan"/> format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Uri">
+            <summary>The syntax identifier for strings containing URIs.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Xml">
+            <summary>The syntax identifier for strings containing XML.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute"/> class
+            with the identifier of the syntax used.
+            </summary>
+            <param name="syntax">The syntax identifier.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String,System.Object[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute"/> class
+            with the identifier of the syntax used.
+            </summary>
+            <param name="syntax">The syntax identifier.</param>
+            <param name="arguments">Optional arguments associated with the specific syntax employed.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Syntax">
+            <summary>Gets the identifier of the syntax used.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Arguments">
+            <summary>Gets the optional arguments associated with the specific syntax employed.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.op_Implicit(System.String)~System.Diagnostics.CodeAnalysis.StringSyntaxAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of StringSyntaxAttribute by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)"/>.
+            </summary>
+            <param name="syntax">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of StringSyntaxAttribute by passing the parameter <paramref name="syntax"/> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)"/>.
+            </returns>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.UnscopedRefAttribute">
+            <summary>Used to indicate a byref escapes and is not scoped.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute">
+            <summary>Indicates that an API is experimental and it may change in the future.</summary>
+            <remarks><para>
+            This attribute allows call sites to be flagged with a diagnostic that indicates that an experimental
+            feature is used. Authors can use this attribute to ship preview features in their assemblies.
+            </para></remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute"/> class, specifying the
+            ID that the compiler will use when reporting a use of the API the attribute applies to.
+            </summary>
+            <param name="diagnosticId">
+            The ID that the compiler will use when reporting a use of the API the attribute applies to.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.DiagnosticId">
+            <summary>
+            Gets the ID that the compiler will use when reporting a use of the API the attribute applies to.
+            </summary>
+            <value>The unique diagnostic ID.</value>
+            <remarks><para>
+            The diagnostic ID is shown in build output for warnings and errors.
+            This property represents the unique ID that can be used to suppress the warnings or errors, if needed.
+            </para></remarks>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.UrlFormat">
+            <summary>
+            Gets or sets the URL for corresponding documentation. The API accepts a format string
+            instead of an actual URL, creating a generic URL that includes the diagnostic ID.
+            </summary>
+            <value>The format string that represents a URL to corresponding documentation.</value>
+            <remarks><para>
+            An example format string is <c>https://contoso.com/obsoletion-warnings/{0}</c>.
+            </para></remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.op_Implicit(System.String)~System.Diagnostics.CodeAnalysis.ExperimentalAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of ExperimentalAttribute by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)"/>.
+            </summary>
+            <param name="diagnosticId">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of ExperimentalAttribute by passing the parameter <paramref name="diagnosticId"/> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)"/>.
+            </returns>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.InterceptsLocationAttribute">
+            <summary>Indicates that a location is intercepted by this method.</summary>
+            <param name="filePath">The file path to the intercepted location.</param>
+            <param name="line">The line number to the intercepted location.</param>
+            <param name="character">The character number to the intercepted location.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.InterceptsLocationAttribute.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>Indicates that a location is intercepted by this method.</summary>
+            <param name="filePath">The file path to the intercepted location.</param>
+            <param name="line">The line number to the intercepted location.</param>
+            <param name="character">The character number to the intercepted location.</param>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CollectionBuilderAttribute">
+            <summary>
+            Initialize the attribute to refer to the <paramref name="methodName"/>
+            method on the <paramref name="builderType"/> type.
+            </summary>
+            <param name="builderType">The type of the builder to use to construct the collection.</param>
+            <param name="methodName">The name of the method on the builder to use to construct the collection.</param>
+            <remarks><para>
+            <paramref name="methodName"/> must refer to a static method that accepts a single parameter of
+            type <c>ReadOnlySpan&lt;T&gt;</c> and returns an instance of the collection being built containing
+            a copy of the data from that span. In future releases of .NET, additional patterns may be supported.
+            </para></remarks>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.CollectionBuilderAttribute.#ctor(System.Type,System.String)">
+            <summary>
+            Initialize the attribute to refer to the <paramref name="methodName"/>
+            method on the <paramref name="builderType"/> type.
+            </summary>
+            <param name="builderType">The type of the builder to use to construct the collection.</param>
+            <param name="methodName">The name of the method on the builder to use to construct the collection.</param>
+            <remarks><para>
+            <paramref name="methodName"/> must refer to a static method that accepts a single parameter of
+            type <c>ReadOnlySpan&lt;T&gt;</c> and returns an instance of the collection being built containing
+            a copy of the data from that span. In future releases of .NET, additional patterns may be supported.
+            </para></remarks>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CollectionBuilderAttribute.BuilderType">
+            <summary>Gets the type of the builder to use to construct the collection.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CollectionBuilderAttribute.MethodName">
+            <summary>Gets the name of the method on the builder to use to construct the collection.</summary>
+            <remarks><para>
+            This should match the metadata name of the target method.
+            For example, this might be ".ctor" if targeting the type's constructor.
+            </para></remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsExternalInit">
+            <summary>
+            Reserved to be used by the compiler for tracking metadata.
+            This class should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute">
+            <summary>
+            Indicates the type of the async method builder that should be used by a language compiler to
+            build the attributed async method or to build the attributed type when used as the return type
+            of an async method.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)">
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute"/> class.</summary>
+            <param name="builderType">The <see cref="T:System.Type"/> of the associated builder.</param>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.BuilderType">
+            <summary>Gets the <see cref="T:System.Type"/> of the associated builder.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.op_Implicit(System.Type)~System.Runtime.CompilerServices.AsyncMethodBuilderAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of AsyncMethodBuilderAttribute by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)"/>.
+            </summary>
+            <param name="builderType">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of AsyncMethodBuilderAttribute by passing the parameter <paramref name="builderType"/> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)"/>.
+            </returns>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.InterpolatedStringHandlerAttribute">
+            <summary>Indicates the attributed type is to be used as an interpolated string handler.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute">
+            <summary>
+            Indicates which arguments to a method involving an interpolated string handler should be passed to that handler.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute"/> class.
+            </summary>
+            <remarks><para>
+            The empty string may be used as the name of the receiver in an instance method.
+            </para></remarks>
+            <param name="argument">The name of the argument that should be passed to the handler.</param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute"/> class.
+            </summary>
+            <remarks><para>
+            The empty string may be used as the name of the receiver in an instance method.
+            </para></remarks>
+            <param name="arguments">The names of the arguments that should be passed to the handler.</param>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.Arguments">
+            <summary>Gets the names of the arguments that should be passed to the handler.</summary>
+            <remarks><para>
+            The empty string may be used as the name of the receiver in an instance method.
+            </para></remarks>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.op_Implicit(System.String)~System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of InterpolatedStringHandlerArgumentAttribute by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)"/>.
+            </summary>
+            <param name="argument">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of InterpolatedStringHandlerArgumentAttribute by passing the parameter <paramref name="argument"/> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)"/>.
+            </returns>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.op_Implicit(System.String[])~System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of InterpolatedStringHandlerArgumentAttribute by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])"/>.
+            </summary>
+            <param name="arguments">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of InterpolatedStringHandlerArgumentAttribute by passing the parameter <paramref name="arguments"/> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])"/>.
+            </returns>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.ModuleInitializerAttribute">
+            <summary>
+            Used to indicate to the compiler that a method should be called in its containing module's initializer.
+            </summary>
+            <remarks><para>
+            When one or more valid methods with this attribute are found in a compilation,
+            the compiler will emit a module initializer that calls each of the attributed methods.<br />
+            Certain requirements are imposed on any method targeted with this attribute:
+            </para><list type="bullet">
+            <item><description>The method must be <see langword="static"/>.</description></item>
+            <item><description>
+            The method must be an ordinary member method, as opposed to a property accessor,
+            constructor, local function, and so on.
+            </description></item>
+            <item><description>The method must be parameterless..</description></item>
+            <item><description>The method must return <see langword="void"/>.</description></item>
+            <item><description>The method must not be generic or be contained in a generic type.</description></item>
+            <item><description>
+            The method's effective accessibility must be <see langword="internal"/> or <see langword="public"/>.
+            </description></item>
+            </list><para>
+            For more information, see the
+            <a href="https://github.com/dotnet/runtime/blob/main/docs/design/specs/Ecma-335-Augments.md#module-initializer">
+            ECMA specification
+            </a>.
+            </para></remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CallerFilePathAttribute">
+            <summary>
+            Allows you to obtain the full path of the source file that contains the caller.
+            This is the file path at the time of compile.
+            </summary>
+            <remarks><para>
+            You apply the <see cref="T:System.Runtime.CompilerServices.CallerFilePathAttribute"/> attribute to an optional parameter that has a default value.
+            You must specify an explicit default value for the optional parameter.
+            You can't apply this attribute to parameters that aren't specified as optional.
+            </para></remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CallerLineNumberAttribute">
+            <summary>Allows you to obtain the line number in the source file at which the method is called.</summary>
+            <remarks><para>
+            You apply the <see cref="T:System.Runtime.CompilerServices.CallerLineNumberAttribute"/> attribute to an optional parameter that
+            has a default value. You must specify an explicit default value for the optional parameter.
+            You can't apply this attribute to parameters that aren't specified as optional.
+            </para></remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CallerMemberNameAttribute">
+            <summary>Allows you to obtain the method or property name of the caller to the method.</summary>
+            <remarks><para>
+            You apply the <see cref="T:System.Runtime.CompilerServices.CallerMemberNameAttribute"/> attribute to an optional parameter that
+            has a default value. You must specify an explicit default value for the optional parameter.
+            You can't apply this attribute to parameters that aren't specified as optional.
+            </para></remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute">
+            <summary>Indicates that a parameter captures the expression passed for another parameter as a string.</summary>
+            <remarks><para>This attribute is implemented in the compiler for C# 10 and later versions only.</para></remarks>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute"/> class.</summary>
+            <param name="parameterName">
+            The name of the parameter whose expression should be captured as a string.
+            </param>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.ParameterName">
+            <summary>Gets the name of the parameter whose expression should be captured as a string.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.op_Implicit(System.String)~System.Runtime.CompilerServices.CallerArgumentExpressionAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of CallerArgumentExpressionAttribute by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)"/>.
+            </summary>
+            <param name="parameterName">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of CallerArgumentExpressionAttribute by passing the parameter <paramref name="parameterName"/> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)"/>.
+            </returns>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.SkipLocalsInitAttribute">
+            <summary>
+            Used to indicate to the compiler that the <c>.locals init</c> flag should not be set in method headers.
+            </summary>
+            <remarks><para>
+            This attribute is unsafe because it may reveal uninitialized memory to the application in certain
+            instances (e.g., reading from uninitialized stackalloc'd memory). If applied to a method directly,
+            the attribute applies to that method and all nested functions (lambdas, local functions) below it.
+            If applied to a type or module, it applies to all methods nested inside. This attribute is intentionally
+            not permitted on assemblies. Use at the module level instead to apply to multiple type declarations.
+            </para></remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute">
+            <summary>
+            Indicates that an API is in preview. This attribute allows call sites to be
+            flagged with a diagnostic that indicates that a preview feature is used.
+            Authors can use this attribute to ship preview features in their assemblies.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute"/> class.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute"/> class
+            with the specified message.
+            </summary>
+            <param name="message">An optional message associated with this attribute instance.</param>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.Message">
+            <summary>Gets the optional message associated with this attribute instance.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.Url">
+            <summary>Gets or sets the optional URL associated with this attribute instance.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.op_Implicit(System.String)~System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of RequiresPreviewFeaturesAttribute by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor(System.String)"/>.
+            </summary>
+            <param name="message">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of RequiresPreviewFeaturesAttribute by passing the parameter <paramref name="message"/> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor(System.String)"/>.
+            </returns>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute">
+            <summary>
+            Indicates that compiler support for a particular feature is
+            required for the location where this attribute is applied.
+            </summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.RefStructs">
+            <summary>The <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName"/> used for the ref structs C# feature.</summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.RequiredMembers">
+            <summary>The <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName"/> used for the required members C# feature.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute"/> class.</summary>
+            <param name="featureName">The name of the compiler feature.</param>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName">
+            <summary>Gets the name of the compiler feature.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.IsOptional">
+            <summary>
+            Gets or sets a value indicating whether the compiler can choose to allow access to the location
+            where this attribute is applied if it does not understand <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName"/>.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.op_Implicit(System.String)~System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of CompilerFeatureRequiredAttribute by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)"/>.
+            </summary>
+            <param name="featureName">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of CompilerFeatureRequiredAttribute by passing the parameter <paramref name="featureName"/> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)"/>.
+            </returns>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.RequiredMemberAttribute">
+            <summary>Specifies that a type has required members or that a member is required.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.InlineArrayAttribute">
+            <summary>Indicates that the instance's storage is sequentially replicated "length" times.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.InlineArrayAttribute.#ctor(System.Int32)">
+            <summary>Indicates that the instance's storage is sequentially replicated "length" times.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.InlineArrayAttribute.Length">
+            <summary>Gets the length of the inlined array.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.InlineArrayAttribute.op_Implicit(System.Int32)~System.Runtime.CompilerServices.InlineArrayAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of InlineArrayAttribute by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.InlineArrayAttribute.#ctor(System.Int32)"/>.
+            </summary>
+            <param name="length">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of InlineArrayAttribute by passing the parameter <paramref name="length"/> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.InlineArrayAttribute.#ctor(System.Int32)"/>.
+            </returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.GeneratedRegexAttribute">
+            <summary>
+            Instructs the System.Text.RegularExpressions source generator to
+            generate an implementation of the specified regular expression.
+            </summary>
+            <remarks>
+            <para>
+            The generator associated with this attribute only supports C#. It only supplies an implementation when applied
+            to static, partial, parameterless, non-generic methods that are typed to return <see cref="T:System.Text.RegularExpressions.Regex"/>.
+            </para>
+            <para>
+            When the <see cref="T:System.Text.RegularExpressions.Regex"/> supports case-insensitive matches (either by passing
+            <see cref="F:System.Text.RegularExpressions.RegexOptions.IgnoreCase"/> or using the inline <c>(?i)</c> switch in the pattern) the regex engines
+            will use an internal casing table to transform the passed in pattern into an equivalent case-sensitive one.
+            For example, given the pattern <c>abc</c>, the engines will transform it to the equivalent pattern
+            <c>[Aa][Bb][Cc]</c>. The equivalences found in this internal casing table can change over time, for example in
+            the case new characters are added to a new version of Unicode. When using the source generator, this
+            transformation happens at compile time, which means the casing table used to find the equivalences will depend
+            on the target framework at compile time. This differs from the rest of the <see cref="T:System.Text.RegularExpressions.Regex"/> engines, which
+            perform this transformation at run-time, meaning they will always use casing table for the current runtime.
+            </para></remarks>
+        </member>
+        <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/> class with the specified pattern.
+            </summary>
+            <param name="pattern">The regular expression pattern to match.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/>
+            class with the specified pattern and options.
+            </summary>
+            <param name="pattern">The regular expression pattern to match.</param>
+            <param name="options">
+            A bitwise combination of the enumeration values that modify the regular expression.
+            </param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/>
+            class with the specified pattern and options.
+            </summary>
+            <param name="pattern">The regular expression pattern to match.</param>
+            <param name="options">
+            A bitwise combination of the enumeration values that modify the regular expression.
+            </param>
+            <param name="cultureName">
+            The name of a culture to be used for case sensitive comparisons.
+            <paramref name="cultureName"/> is not case-sensitive.
+            </param>
+            <remarks><para>
+            For a list of predefined culture names on Windows systems, see the Language tag column in the
+            list of language/region names supported by
+            <a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c">
+            Windows
+            </a>.
+            Culture names follow the standard defined by <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>.
+            In addition, starting with Windows 10, <paramref name="cultureName"/> can be any valid BCP-47 language tag.
+            </para><para>
+            If <paramref name="cultureName"/> is <see cref="F:System.String.Empty"/>, the invariant culture will be used.
+            </para></remarks>
+        </member>
+        <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/>
+            class with the specified pattern, options, and timeout.
+            </summary>
+            <param name="pattern">The regular expression pattern to match.</param>
+            <param name="options">
+            A bitwise combination of the enumeration values that modify the regular expression.
+            </param>
+            <param name="matchTimeoutMilliseconds">
+            A time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite"/>
+            to indicate that the method should not time out.
+            </param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/>
+            class with the specified pattern, options, and timeout.
+            </summary>
+            <param name="pattern">The regular expression pattern to match.</param>
+            <param name="options">
+            A bitwise combination of the enumeration values that modify the regular expression.
+            </param>
+            <param name="matchTimeoutMilliseconds">
+            A time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite"/>
+            to indicate that the method should not time out.</param>
+            <param name="cultureName">
+            The name of a culture to be used for case sensitive comparisons.
+            <paramref name="cultureName"/> is not case-sensitive.
+            </param>
+            <remarks><para>
+            For a list of predefined culture names on Windows systems, see the Language tag column in the
+            list of language/region names supported by
+            <a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c">
+            Windows
+            </a>.
+            Culture names follow the standard defined by <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>.
+            In addition, starting with Windows 10, <paramref name="cultureName"/> can be any valid BCP-47 language tag.
+            </para><para>
+            If <paramref name="cultureName"/> is <see cref="F:System.String.Empty"/>, the invariant culture will be used.
+            </para></remarks>
+        </member>
+        <member name="P:System.Text.RegularExpressions.GeneratedRegexAttribute.MatchTimeoutMilliseconds">
+            <summary>
+            Gets a time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite"/>
+            to indicate that the method should not time out.
+            </summary>
+        </member>
+        <member name="P:System.Text.RegularExpressions.GeneratedRegexAttribute.CultureName">
+            <summary>Gets the name of the culture to be used for case sensitive comparisons.</summary>
+        </member>
+        <member name="P:System.Text.RegularExpressions.GeneratedRegexAttribute.Pattern">
+            <summary>Gets the regular expression pattern to match.</summary>
+        </member>
+        <member name="P:System.Text.RegularExpressions.GeneratedRegexAttribute.Options">
+            <summary>Gets a bitwise combination of the enumeration values that modify the regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.op_Implicit(System.String)~System.Text.RegularExpressions.GeneratedRegexAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of GeneratedRegexAttribute by using the constructor
+            <see cref="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String)"/>.
+            </summary>
+            <param name="pattern">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of GeneratedRegexAttribute by passing the parameter <paramref name="pattern"/> to the constructor
+            <see cref="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String)"/>.
+            </returns>
+        </member>
+        <member name="T:Emik.MatchAttribute">
+            <summary>Declares a contract that the generic parameter must include the qualified member.</summary>
+        </member>
+        <member name="M:Emik.MatchAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions)">
+            <summary>Initializes a new instance of the <see cref="T:Emik.MatchAttribute"/> class.</summary>
+            <param name="pattern">The regular expression pattern to match.</param>
+            <param name="options">The bitwise combination of the enumeration values that modify the regular expression.</param>
+        </member>
+        <member name="P:Emik.MatchAttribute.Pattern">
+            <summary>Gets the regular expression to match.</summary>
+        </member>
+        <member name="P:Emik.MatchAttribute.Options">
+            <summary>Gets the bitwise combination of the enumeration values that modify the regular expression.</summary>
+        </member>
+        <member name="T:Emik.RegexDeconstructors">
+            <summary>Declares a contract that the generic parameter must include the qualified member.</summary>
+        </member>
+        <member name="T:Emik.ChoiceAttribute">
+            <summary>
+            Indicates to Emik.SourceGenerators.Choices to extend the type, transforming it to a disjoint union.
+            </summary>
+        </member>
+        <member name="M:Emik.ChoiceAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:Emik.ChoiceAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            </summary>
+            <param name="set">The type of fields that define the annotated union.</param>
+        </member>
+        <member name="M:Emik.ChoiceAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            </summary>
+            <param name="isPubliclyMutable">Determines if mutability is private or public.</param>
+        </member>
+        <member name="M:Emik.ChoiceAttribute.#ctor(System.Type,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            </summary>
+            <param name="set">The type of fields that define the annotated union.</param>
+            <param name="isPubliclyMutable">Determines if mutability is private or public.</param>
+        </member>
+        <member name="M:Emik.ChoiceAttribute.#ctor(System.Boolean,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            </summary>
+            <param name="isPubliclyMutable">Determines if mutability is private or public.</param>
+            <param name="set">The type of fields that define the annotated union.</param>
+        </member>
+        <member name="P:Emik.ChoiceAttribute.IsPubliclyMutable">
+            <summary>
+            When specified, determines whether the type is mutable publicly.
+            </summary>
+        </member>
+        <member name="P:Emik.ChoiceAttribute.Set">
+            <summary>
+            When specified, gets the set of fields that define the annotated union.
+            </summary>
+        </member>
+        <member name="T:Emik.NoImplicitOperatorAttribute">
+            <summary>
+            Prevents the analyzer from generating the implicit conversion into this constructor.
+            </summary>
+        </member>
+        <member name="T:Emik.NoStructuralTypingAttribute">
+            <summary>Signifies to ignore this when determining potential interfaces that can be implemented.</summary>
+            <remarks>
+            <para>
+            The behavior of this attribute depends on what you apply it on:
+            </para>
+            <list type="table">
+               <listheader>
+                   <term>Target</term>
+                   <description>Behavior</description>
+               </listheader>
+               <item>
+                   <term>Type Member</term>
+                   <description>Ignores the type altogether. No generation is ever performed on it.</description>
+               </item>
+               <item>
+                   <term>Member</term>
+                   <description>Ignores only this particular member when evaluating potential interfaces.</description>
+               </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="T:NullGuard.AllowNullAttribute">
+            <summary>Prevents the injection of null checking (implicit mode only).</summary>
+        </member>
+        <member name="T:NullGuard.NullGuardAttribute">
+            <summary>Prevents the injection of null checking (implicit mode only).</summary>
+            <param name="flags">
+            The <see cref="T:NullGuard.ValidationFlags"/> to use for the target this attribute is being applied to.
+            </param>
+        </member>
+        <member name="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)">
+            <summary>Prevents the injection of null checking (implicit mode only).</summary>
+            <param name="flags">
+            The <see cref="T:NullGuard.ValidationFlags"/> to use for the target this attribute is being applied to.
+            </param>
+        </member>
+        <member name="M:NullGuard.NullGuardAttribute.op_Implicit(NullGuard.ValidationFlags)~NullGuard.NullGuardAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of NullGuardAttribute by using the constructor
+            <see cref="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)"/>.
+            </summary>
+            <param name="flags">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of NullGuardAttribute by passing the parameter <paramref name="flags"/> to the constructor
+            <see cref="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)"/>.
+            </returns>
+        </member>
+        <member name="T:NullGuard.ValidationFlags">
+            <summary>Used by <see cref="T:NullGuard.NullGuardAttribute"/> to target specific categories of members.</summary>
+        </member>
+        <member name="F:NullGuard.ValidationFlags.None">
+            <summary>Does nothing.</summary>
+        </member>
+        <member name="F:NullGuard.ValidationFlags.Properties">
+            <summary>
+            Adds null guard checks to properties getter (cannot return null) and setter (cannot be set to null).
+            </summary>
+        </member>
+        <member name="F:NullGuard.ValidationFlags.Arguments">
+            <summary>
+            Method arguments are checked to make sure they are not null. This only
+            applies to normal arguments, and the incoming value of a ref argument.
+            </summary>
+        </member>
+        <member name="F:NullGuard.ValidationFlags.AllPublicArguments">
+            <summary>Processes all methods (arguments and return values) and properties.</summary>
+        </member>
+        <member name="F:NullGuard.ValidationFlags.OutValues">
+            <summary>Out and ref arguments of a method are checked for null just before the method returns.</summary>
+        </member>
+        <member name="F:NullGuard.ValidationFlags.ReturnValues">
+            <summary>Checks the return value of a method for null.</summary>
+        </member>
+        <member name="F:NullGuard.ValidationFlags.Methods">
+            <summary>Processes all arguments (normal, out and ref) and return values of methods.</summary>
+        </member>
+        <member name="F:NullGuard.ValidationFlags.AllPublic">
+            <summary>Checks everything (properties, all method args and return values).</summary>
+        </member>
+        <member name="F:NullGuard.ValidationFlags.NonPublic">
+            <summary>Applies the other flags to all non-public members as well.</summary>
+        </member>
+        <member name="F:NullGuard.ValidationFlags.All">
+            <summary>Wildcard.</summary>
+        </member>
+        <member name="T:Wawa.Recall.Internals.Globals">
+            <summary>Contains static methods able to be accessed from anywhere within this library.</summary>
+        </member>
+        <member name="T:Wawa.Recall.Internals.Globals.DelegateLot`1">
+            <summary>Contains cached elements.</summary>
+            <typeparam name="T">The type of item.</typeparam>
+        </member>
+        <member name="P:Wawa.Recall.Internals.Globals.DelegateLot`1.Id">
+            <summary>Gets the function that returns the parameter.</summary>
+        </member>
+        <member name="T:Wawa.Recall.Internals.Globals.Lot`1">
+            <summary>Contains cached elements.</summary>
+            <typeparam name="T">The type of item.</typeparam>
+        </member>
+        <member name="P:Wawa.Recall.Internals.Globals.Lot`1.Id">
+            <summary>Gets the function that returns the parameter.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Internals.Globals.Lot`1.Empty">
+            <summary>Gets the empty set.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Internals.Globals.Caller">
+            <summary>Gets the <see cref="T:System.Reflection.AssemblyName"/> of the caller that invoked the method calling this.</summary>
+            <remarks><para>This is used by the library to log itself, and obtain information about callers.</para></remarks>
+        </member>
+        <member name="P:Wawa.Recall.Internals.Globals.Who">
+            <summary>Gets the name of <see cref="P:Wawa.Recall.Internals.Globals.Caller"/>.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Internals.Globals.Which">
+            <summary>Gets the version of <see cref="P:Wawa.Recall.Internals.Globals.Caller"/>.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Internals.Globals.IsKtane">
+            <summary>Gets a value indicating whether the runtime is in-game.</summary>
+            <remarks><para>Opposite of <see cref="P:UnityEngine.Application.isEditor"/>, but as a pure getter.</para></remarks>
+        </member>
+        <member name="M:Wawa.Recall.Internals.Globals.Invoke``1(System.Action)">
+            <summary>Returns the function that invokes the method.</summary>
+            <typeparam name="T">The type of argument of the returning <see cref="T:System.Action`1"/>.</typeparam>
+            <param name="value">The method to invoke.</param>
+            <returns>The <see cref="T:System.Action`1"/> that invokes the parameter <paramref name="value"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Internals.Globals.False(System.Action)">
+            <summary>Returns <see langword="false"/> after invoking the method.</summary>
+            <param name="value">The method to invoke.</param>
+            <returns>
+            The <see cref="T:System.Func`1"/> that returns <see langword="false"/>
+            after invoking the parameter <paramref name="value"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.Internals.Globals.Core(UnityEngine.MonoBehaviour)">
+            <summary>Converts this instance to the core module.</summary>
+            <param name="that">The object to convert.</param>
+            <returns><paramref name="that"/> <see langword="as"/> <see cref="T:UnityEngine.MonoBehaviour"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Internals.Globals.Core(UnityEngine.MonoBehaviour)">
+            <summary>Converts this instance to the unity module.</summary>
+            <param name="that">The object to convert.</param>
+            <returns><paramref name="that"/> <see langword="as"/> <see cref="T:UnityEngine.MonoBehaviour"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Internals.Globals.GetPath(UnityEngine.Transform)">
+            <summary>Gets the path of the current <see cref="T:UnityEngine.Transform"/>.</summary>
+            <param name="current">The current <see cref="T:UnityEngine.Transform"/>.</param>
+            <returns>The path in the hierarchy to the parameter <paramref name="current"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Internals.Globals.GetPath(UnityEngine.Component,System.String)">
+            <summary>Gets the path of the current <see cref="T:UnityEngine.Component"/>.</summary>
+            <param name="component">The current <see cref="T:UnityEngine.Component"/>.</param>
+            <param name="label">An additional label to attach to the end.</param>
+            <returns>The path in the hierarchy to the parameter <paramref name="component"/>.</returns>
+        </member>
+        <member name="T:Wawa.Recall.Chest">
+            <summary>Internal storage of events used by <see cref="T:Wawa.Recall.Hook`1"/> to remove delegates.</summary>
+        </member>
+        <member name="M:Wawa.Recall.Chest.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Wawa.Recall.Chest.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Wawa.Recall.Chest.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Wawa.Recall.Chest.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Wawa.Recall.Chest.Clear">
+            <summary>Clears the dictionary.</summary>
+        </member>
+        <member name="M:Wawa.Recall.Chest.Add(System.Delegate@,System.Delegate@)">
+            <summary>Adds an entry to the dictionary.</summary>
+            <param name="key">The key of the key-value-pair to add.</param>
+            <param name="value">The value of the key-value-pair to add.</param>
+            <returns>The value <see langword="true"/> if the mutation succeeds, otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Chest.Remove(System.Delegate@)">
+            <summary>
+            Removes an entry to the dictionary, if the value doesn't exist in the dictionary, nothing happens.
+            </summary>
+            <param name="key">The key to remove from the dictionary.</param>
+            <returns>The value <see langword="true"/> if the mutation succeeds, otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Chest.Get(System.Delegate@)">
+            <summary>
+            Gets the value from the inner dictionary.
+            If the value doesn't exist in the dictionary, then <see langword="null"/> is returned instead.
+            </summary>
+            <param name="key">The key to use on the dictionary.</param>
+            <returns>The key <paramref name="key"/> indexed into the inner dictionary, or <see langword="null"/>.</returns>
+        </member>
+        <member name="T:Wawa.Recall.Generator">
+            <summary>Implementations for <see cref="T:Wawa.Recall.Prop`1"/> and its derivatives.</summary>
+        </member>
+        <member name="M:Wawa.Recall.Generator.TrySet``1(Wawa.Recall.HookMay{``0},``0)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.TrySet``1(Wawa.Recall.Hook{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.TrySet``1(Wawa.Recall.HookMay{``0},System.Action)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.TrySet``1(Wawa.Recall.Hook{``0},System.Action)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.TryAdd``1(Wawa.Recall.HookMay{``0},``0)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.TryAdd``1(Wawa.Recall.Hook{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.TryAdd``1(Wawa.Recall.HookMay{``0},System.Action)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.TryAdd``1(Wawa.Recall.Hook{``0},System.Action)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.TryRemove``1(Wawa.Recall.HookMay{``0},``0)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.TryRemove``1(Wawa.Recall.Hook{``0},System.Delegate)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.TryRemove``1(Wawa.Recall.HookMay{``0},System.Action)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.TryRemove``1(Wawa.Recall.Hook{``0},System.Delegate)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.Set``1(Wawa.Recall.PropDef{``0},``0)">
+            <summary>Sets the inner value to the parameter <paramref name="value"/>.</summary>
+            <typeparam name="T">The type parameter of <see cref="T:Wawa.Recall.Prop`1"/>.</typeparam>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Prop`1"/>.</param>
+            <param name="value">The value to set the inner value with.</param>
+            <returns>The parameter <paramref name="that"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Generator.TrySet``1(Wawa.Recall.PropMay{``0},``0)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.TrySet``1(Wawa.Recall.Prop{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.ExpectSet``1(Wawa.Recall.PropMay{``0},``0)">
+            <summary>Sets the inner value with the provided <paramref name="value"/>. Will throw on fail.</summary>
+            <typeparam name="T">The type parameter of <see cref="T:Wawa.Recall.Prop`1"/>.</typeparam>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Prop`1"/>.</param>
+            <param name="value">The value to set the inner value with.</param>
+            <exception cref="T:System.InvalidOperationException">The parameter <paramref name="that"/> is immutable.</exception>
+            <returns>The parameter <paramref name="that"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Generator.SetRaw``1(Wawa.Recall.HookDef{``0},``0)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.Set``1(Wawa.Recall.PropDef{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.Set``1(Wawa.Recall.HookDef{``0},System.Action)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.Set``1(Wawa.Recall.PropDef{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.ExpectSetRaw``1(Wawa.Recall.HookMay{``0},``0)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.ExpectSet``1(Wawa.Recall.PropMay{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.ExpectSet``1(Wawa.Recall.HookMay{``0},System.Action)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.ExpectSet``1(Wawa.Recall.PropMay{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.AddRaw``1(Wawa.Recall.HookDef{``0},``0)">
+            <summary>Adds the parameter <paramref name="value"/> from the inner value.</summary>
+            <typeparam name="T">The type parameter of <see cref="T:Wawa.Recall.Prop`1"/>.</typeparam>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Prop`1"/>.</param>
+            <param name="value">The value to set the inner value with.</param>
+            <returns>The parameter <paramref name="that"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Generator.Add``1(Wawa.Recall.HookDef{``0},System.Action)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.AddRaw``1(Wawa.Recall.HookDef{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.ExpectAddRaw``1(Wawa.Recall.HookMay{``0},``0)">
+            <summary>Adds the parameter <paramref name="value"/> from the inner value. Will throw on fail.</summary>
+            <typeparam name="T">The type parameter of <see cref="T:Wawa.Recall.Prop`1"/>.</typeparam>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Prop`1"/>.</param>
+            <param name="value">The value to set the inner value with.</param>
+            <exception cref="T:System.InvalidOperationException">The parameter <paramref name="that"/> is immutable.</exception>
+            <returns>The parameter <paramref name="that"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Generator.ExpectAdd``1(Wawa.Recall.HookMay{``0},System.Action)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.ExpectAddRaw``1(Wawa.Recall.HookMay{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.RemoveRaw``1(Wawa.Recall.HookDef{``0},``0)">
+            <summary>Removes the parameter <paramref name="value"/> from the inner value.</summary>
+            <typeparam name="T">The type parameter of <see cref="T:Wawa.Recall.Prop`1"/>.</typeparam>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Prop`1"/>.</param>
+            <param name="value">The value to set the inner value with.</param>
+            <returns>The parameter <paramref name="that"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Generator.Remove``1(Wawa.Recall.HookDef{``0},System.Action)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.RemoveRaw``1(Wawa.Recall.HookDef{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.Clear``1(Wawa.Recall.Hook{``0})">
+            <summary>Clears all hooks set by this instance.</summary>
+            <typeparam name="T">The type parameter of <see cref="T:Wawa.Recall.Prop`1"/>.</typeparam>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Hook`1"/>.</param>
+            <returns>The parameter <paramref name="that"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Generator.Clear``1(Wawa.Recall.HookDef{``0})">
+            <inheritdoc cref="M:Wawa.Recall.Generator.Clear``1(Wawa.Recall.Hook{``0})"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.Clear``1(Wawa.Recall.HookMay{``0})">
+            <inheritdoc cref="M:Wawa.Recall.Generator.Clear``1(Wawa.Recall.Hook{``0})"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.ExpectRemoveRaw``1(Wawa.Recall.HookMay{``0},``0)">
+            <summary>Removes the parameter <paramref name="value"/> from the inner value. Will throw on fail.</summary>
+            <typeparam name="T">The type parameter of <see cref="T:Wawa.Recall.Prop`1"/>.</typeparam>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Prop`1"/>.</param>
+            <param name="value">The value to set the inner value with.</param>
+            <exception cref="T:System.InvalidOperationException">The parameter <paramref name="that"/> is immutable.</exception>
+            <returns>The parameter <paramref name="that"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Generator.ExpectRemove``1(Wawa.Recall.HookMay{``0},System.Action)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.ExpectRemoveRaw``1(Wawa.Recall.HookMay{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.Logger(Wawa.Recall.IVanilla,System.String)">
+            <summary>Gets the logger of the <see cref="T:Wawa.Recall.IVanilla"/>.</summary>
+            <param name="vanilla">The current <see cref="T:Wawa.Recall.IVanilla"/>.</param>
+            <param name="label">An additional label to attach to the end.</param>
+            <returns>The callable function that logs the current path of the encapsulated value.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Generator.Do``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <inheritdoc cref="M:Wawa.Recall.Generator.Do``1(``0,System.Action{``0})"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.Do``1(``0,System.Action{``0})">
+            <summary>Executes the function, then returns the parameter <paramref name="that"/>.</summary>
+            <remarks><para>
+            Types that implement <see cref="T:Wawa.Recall.IVanilla"/> generally expose lots of callbacks.
+            As such it may be desired to pass a reference of <paramref name="that"/> into the callback.
+            This function acts as a Y-combinator, allowing you to assign a temporary variable that can bind to the callback.
+            </para></remarks>
+            <typeparam name="T">The type of context value.</typeparam>
+            <param name="that">The value to pass into the callback.</param>
+            <param name="action">The callback.</param>
+            <returns>The parameter <paramref name="that"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Generator.Get``1(Wawa.Recall.Prop{``0})">
+            <summary>Gets the inner value.</summary>
+            <typeparam name="T">The type parameter of <see cref="T:Wawa.Recall.Prop`1"/>.</typeparam>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Prop`1"/>.</param>
+            <returns>The value returned from the callback, or <see langword="default"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Generator.TrySet``1(Wawa.Recall.Prop{``0},``0)">
+            <summary>Attempts to set the inner value to the parameter <paramref name="value"/>.</summary>
+            <typeparam name="T">The type parameter of <see cref="T:Wawa.Recall.Prop`1"/>.</typeparam>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Prop`1"/>.</param>
+            <param name="value">The value to set the inner value with.</param>
+            <returns>The value <see langword="true"/> if the value set was successful, otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Generator.TrySet``1(Wawa.Recall.Hook{``0},``0)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.TrySet``1(Wawa.Recall.Prop{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.TrySet``1(Wawa.Recall.Hook{``0},System.Action)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.TrySet``1(Wawa.Recall.Hook{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.TryAdd``1(Wawa.Recall.Hook{``0},``0)">
+            <summary>Attempts to add the parameter <paramref name="value"/> from the inner value.</summary>
+            <typeparam name="T">The type parameter of <see cref="T:Wawa.Recall.Prop`1"/>.</typeparam>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Prop`1"/>.</param>
+            <param name="value">The value to set the inner value with.</param>
+            <returns>The value <see langword="true"/> if mutation succeeded, otherwise; <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Generator.TryAdd``1(Wawa.Recall.Hook{``0},System.Action)">
+            <inheritdoc cref="M:Wawa.Recall.Generator.TryAdd``1(Wawa.Recall.Hook{``0},``0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Generator.TryRemove``1(Wawa.Recall.Hook{``0},System.Delegate)">
+            <summary>Attempts to remove the parameter <paramref name="value"/> from the inner value.</summary>
+            <typeparam name="T">The type parameter of <see cref="T:Wawa.Recall.Prop`1"/>.</typeparam>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Prop`1"/>.</param>
+            <param name="value">The value to set the inner value with.</param>
+            <returns>The value <see langword="true"/> if mutation succeeded, otherwise; <see langword="false"/>.</returns>
+        </member>
+        <member name="T:Wawa.Recall.HookDef`1">
+            <summary>
+            Encapsulates a getter <see cref="T:System.Delegate"/> and a setter <see cref="T:System.Delegate"/> to get and set an inner value to
+            provide a friendly and easy way to get or set one of multiple types with different <see cref="T:System.Type"/> signatures
+            by using a general <see cref="T:System.Type"/> that acts as a bridge between them. The getter may <see langword="return"/>
+            <see langword="null"/>, and therefore is encapsulated in a <see cref="T:Wawa.Optionals.Maybe`1"/>.
+            </summary>
+            <typeparam name="T">The generic which acts as the bridge between multiple types.</typeparam>
+        </member>
+        <member name="M:Wawa.Recall.HookDef`1.#ctor(System.Object,System.String,System.Func{System.Object,`0},System.Func{System.Action,`0},System.Func{`0,`0})">
+            <summary>Initializes a new instance of the <see cref="T:Wawa.Recall.HookDef`1"/> class.</summary>
+            <param name="instance">The instance to get the value from.</param>
+            <param name="name">The name of <see cref="T:System.Reflection.FieldInfo"/> to get the value of.</param>
+            <param name="getterOverride">Overrides the getter in the event that the field cannot be found.</param>
+            <param name="converter">The converter from <see cref="T:System.Action"/> to <typeparamref name="T"/>.</param>
+            <param name="wrapper">Specifies the transformation before storing in the <see cref="T:Wawa.Recall.Chest"/>.</param>
+        </member>
+        <member name="P:Wawa.Recall.HookDef`1.Value">
+            <inheritdoc/>
+        </member>
+        <member name="M:Wawa.Recall.HookDef`1.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="T:Wawa.Recall.HookMay`1">
+            <summary>
+            Encapsulates a getter <see cref="T:System.Delegate"/> and a setter <see cref="T:System.Delegate"/> to get and set an inner value to
+            provide a friendly and easy way to get or set one of multiple types with different <see cref="T:System.Type"/> signatures
+            by using a general <see cref="T:System.Type"/> that acts as a bridge between them. The getter may <see langword="return"/>
+            <see langword="null"/>, and therefore is encapsulated in a <see cref="T:Wawa.Optionals.Maybe`1"/>.
+            </summary>
+            <typeparam name="T">The generic which acts as the bridge between multiple types.</typeparam>
+        </member>
+        <member name="M:Wawa.Recall.HookMay`1.#ctor(System.Object,System.String,System.Func{System.Object,`0},System.Func{System.Action,`0})">
+            <summary>Initializes a new instance of the <see cref="T:Wawa.Recall.HookMay`1"/> class.</summary>
+            <param name="instance">The instance to get the value from.</param>
+            <param name="name">The name of <see cref="T:System.Reflection.FieldInfo"/> to get the value of.</param>
+            <param name="getterOverride">Overrides the getter in the event that the field cannot be found.</param>
+            <param name="converter">The converter from <see cref="T:System.Action"/> to <typeparamref name="T"/>.</param>
+        </member>
+        <member name="P:Wawa.Recall.HookMay`1.Value">
+            <inheritdoc/>
+        </member>
+        <member name="M:Wawa.Recall.HookMay`1.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="T:Wawa.Recall.Hook`1">
+            <summary>
+            Encapsulates a getter <see cref="T:System.Delegate"/> and a setter <see cref="T:System.Delegate"/> to get and set an inner value to
+            provide a friendly and easy way to get or set one of multiple types with different <see cref="T:System.Type"/> signatures
+            by using a general <see cref="T:System.Type"/> that acts as a bridge between them. The getter may <see langword="return"/>
+            <see langword="null"/>, and therefore is encapsulated in a <see cref="T:Wawa.Optionals.Maybe`1"/>.
+            </summary>
+            <typeparam name="T">The generic which acts as the bridge between multiple types.</typeparam>
+        </member>
+        <member name="M:Wawa.Recall.Hook`1.#ctor(System.Object,System.String,System.Func{System.Object,`0},System.Func{System.Action,`0},System.Func{`0,`0})">
+            <summary>Initializes a new instance of the <see cref="T:Wawa.Recall.Hook`1"/> class.</summary>
+            <param name="instance">The instance to get the value from.</param>
+            <param name="name">The name of <see cref="T:System.Reflection.FieldInfo"/> to get the value of.</param>
+            <param name="getterOverride">Overrides the getter in the event that the field cannot be found.</param>
+            <param name="converter">The converter from <see cref="T:System.Action"/> to <typeparamref name="T"/>.</param>
+            <param name="wrapper">Specifies the transformation before storing in the <see cref="T:Wawa.Recall.Chest"/>.</param>
+        </member>
+        <member name="M:Wawa.Recall.Hook`1.#ctor(System.Object,System.Reflection.FieldInfo,System.Func{System.Object,`0},System.Func{System.Action,`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wawa.Recall.Hook`1"/> class.
+            </summary>
+            <param name="instance">The instance to get the value from.</param>
+            <param name="info">The <see cref="T:System.Reflection.FieldInfo"/> to access.</param>
+            <param name="getterOverride">Overrides the getter in the event that the field cannot be found.</param>
+            <param name="converter">The converter from <see cref="T:System.Action"/> to <typeparamref name="T"/>.</param>
+        </member>
+        <member name="P:Wawa.Recall.Hook`1.Container">
+            <summary>Gets the container.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Hook`1.Converter">
+            <summary>Gets the converter from <see cref="T:System.Action"/> to <typeparamref name="T"/>.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Hook`1.Wrapper">
+            <summary>Gets the wrapper, used to intercept how the underlying function gets invoked.</summary>
+        </member>
+        <member name="T:Wawa.Recall.PropDef`1">
+            <summary>
+            Encapsulates a getter <see cref="T:System.Delegate"/> and a setter <see cref="T:System.Delegate"/> to get and set an inner value to
+            provide a friendly and easy way to get or set one of multiple types with different <see cref="T:System.Type"/> signatures
+            by using a general <see cref="T:System.Type"/> that acts as a bridge between them. The getter may <see langword="return"/>
+            <see langword="null"/>, and therefore is encapsulated in a <see cref="T:Wawa.Optionals.Maybe`1"/>.
+            </summary>
+            <typeparam name="T">The generic which acts as the bridge between multiple types.</typeparam>
+        </member>
+        <member name="M:Wawa.Recall.PropDef`1.#ctor(System.Object,System.String,System.Func{System.Object,`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wawa.Recall.PropDef`1"/> class.
+            </summary>
+            <param name="instance">The instance to get the value from.</param>
+            <param name="name">The name of <see cref="T:System.Reflection.FieldInfo"/> to get the value of.</param>
+            <param name="getterOverride">Overrides the getter in the event that the field cannot be found.</param>
+        </member>
+        <member name="P:Wawa.Recall.PropDef`1.Value">
+            <inheritdoc/>
+        </member>
+        <member name="M:Wawa.Recall.PropDef`1.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="T:Wawa.Recall.PropMay`1">
+            <summary>
+            Encapsulates a getter <see cref="T:System.Delegate"/> and a setter <see cref="T:System.Delegate"/> to get and set an inner value to
+            provide a friendly and easy way to get or set one of multiple types with different <see cref="T:System.Type"/> signatures
+            by using a general <see cref="T:System.Type"/> that acts as a bridge between them. The getter may <see langword="return"/>
+            <see langword="null"/>, and therefore is encapsulated in a <see cref="T:Wawa.Optionals.Maybe`1"/>.
+            </summary>
+            <typeparam name="T">The generic which acts as the bridge between multiple types.</typeparam>
+        </member>
+        <member name="M:Wawa.Recall.PropMay`1.#ctor(System.Object,System.String,System.Func{System.Object,`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wawa.Recall.PropMay`1"/> class.
+            </summary>
+            <param name="instance">The instance to get the value from.</param>
+            <param name="name">The name of <see cref="T:System.Reflection.FieldInfo"/> to get the value of.</param>
+            <param name="getterOverride">Overrides the getter in the event that the field cannot be found.</param>
+        </member>
+        <member name="P:Wawa.Recall.PropMay`1.Value">
+            <inheritdoc/>
+        </member>
+        <member name="M:Wawa.Recall.PropMay`1.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="T:Wawa.Recall.Prop`1">
+            <summary>
+            Encapsulates a getter <see cref="T:System.Delegate"/> and a setter <see cref="T:System.Delegate"/> to get and set an inner value to provide a friendly and easy way to get or set one of multiple types with different <see cref="T:System.Type"/> signatures by using a general <see cref="T:System.Type"/> that acts as a bridge between them.
+            </summary>
+            <typeparam name="T">The generic which acts as the bridge between multiple types.</typeparam>
+        </member>
+        <member name="M:Wawa.Recall.Prop`1.#ctor(System.Object,System.String,System.Func{System.Object,`0})">
+            <summary>Initializes a new instance of the <see cref="T:Wawa.Recall.Prop`1"/> class.</summary>
+            <param name="instance">The instance to get the value from.</param>
+            <param name="name">The name of <see cref="T:System.Reflection.FieldInfo"/> to get the value of.</param>
+            <param name="getterOverride">Overrides the getter in the event that the field cannot be found.</param>
+        </member>
+        <member name="M:Wawa.Recall.Prop`1.#ctor(System.Object,System.Reflection.FieldInfo,System.Func{System.Object,`0})">
+            <summary>Initializes a new instance of the <see cref="T:Wawa.Recall.Prop`1"/> class.</summary>
+            <param name="instance">The instance to get the value from.</param>
+            <param name="info">The <see cref="T:System.Reflection.FieldInfo"/> to access.</param>
+            <param name="getterOverride">Overrides the getter in the event that the field cannot be found.</param>
+        </member>
+        <member name="P:Wawa.Recall.Prop`1.Instance">
+            <summary>Gets the instance which contains the values.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Prop`1.Info">
+            <summary>Gets the field to access.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Prop`1.GetterOverride">
+            <summary>Gets the overriden getter that is used when the field couldn't be found.</summary>
+        </member>
+        <member name="M:Wawa.Recall.Prop`1.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Wawa.Recall.Prop`1.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Wawa.Recall.IValued`1">
+            <summary>An interface for all property-like class behaviors.</summary>
+            <typeparam name="T">The type of value to <see langword="return"/> from the getter.</typeparam>
+        </member>
+        <member name="P:Wawa.Recall.IValued`1.Value">
+            <summary>Gets the value.</summary>
+        </member>
+        <member name="T:Wawa.Recall.IVanilla">
+            <summary>An interface for all encapsulations of vanilla objects.</summary>
+        </member>
+        <member name="P:Wawa.Recall.IVanilla.IsVanilla">
+            <summary>Gets a value indicating whether this instance contains a vanilla instance.</summary>
+        </member>
+        <member name="P:Wawa.Recall.IVanilla.IsModded">
+            <summary>Gets a value indicating whether this instance contains a modded instance.</summary>
+        </member>
+        <member name="P:Wawa.Recall.IVanilla.Vanilla">
+            <summary>Gets the encapsulated vanilla component, if it exists.</summary>
+        </member>
+        <member name="P:Wawa.Recall.IVanilla.Value">
+            <summary>Gets the encapsulated component.</summary>
+        </member>
+        <member name="T:Wawa.Recall.Modules">
+            <summary>
+            The different types of modules in the game used to discern the type of vanilla module.
+            Modded modules are grouped as <see cref="F:Wawa.Recall.Modules.Mod"/> and <see cref="F:Wawa.Recall.Modules.NeedyMod"/> depending on
+            whether they have a <see cref="T:KMBombModule"/> and <see cref="T:KMNeedyModule"/> respectively.
+            </summary>
+            <remarks><para>
+            This enum is a one-to-one copy of <c>Assets.Scripts.Missions.ComponentTypeEnum</c>,
+            and as such, casting from or to these two types is defined behaviour.
+            </para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.Empty">
+            <summary>No module. Uses the bomb backing component.</summary>
+        </member>
+        <member name="F:Wawa.Recall.Modules.Timer">
+            <summary>The vanilla timer component which ticks down the bomb's time.</summary>
+        </member>
+        <member name="F:Wawa.Recall.Modules.Wires">
+            <summary>On the Subject of Wires.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/Wires.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.BigButton">
+            <summary>On the Subject of The Button.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/The%20Button.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.Keypad">
+            <summary>On the Subject of Keypads.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/Keypad.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.Simon">
+            <summary>On the Subject of Simon Says.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/Simon%20Says.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.WhosOnFirst">
+            <summary>On the Subject of Who's on First.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/Who's%20On%20First.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.Memory">
+            <summary>On the Subject of Memory.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/Memory.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.Morse">
+            <summary>On the Subject of Morse Code.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/Morse%20Code.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.Venn">
+            <summary>On the Subject of Complicated Wires.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/Complicated%20Wires.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.WireSequence">
+            <summary>On the Subject of Wire Sequences.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/Wire%20Sequences.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.Maze">
+            <summary>On the Subject of Mazes.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/Maze.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.Password">
+            <summary>On the Subject of Passwords.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/Password.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.NeedyVentGas">
+            <summary>On the Subject of Venting Gas.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/Venting%20Gas.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.NeedyCapacitor">
+            <summary>On the Subject of Capacitor Discharge.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/Capacitor%20Discharge.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.NeedyKnob">
+            <summary>On the Subject of Knobs.</summary>
+            <remarks><para>Manual: https://ktane.timwi.de/HTML/Knob.html.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.Modules.Mod">
+            <summary>Any solvable modded module which uses a <see cref="T:KMBombModule"/>.</summary>
+        </member>
+        <member name="F:Wawa.Recall.Modules.NeedyMod">
+            <summary>Any needy modded module which uses a <see cref="T:KMNeedyModule"/>.</summary>
+        </member>
+        <member name="T:Wawa.Recall.StatusLights">
+            <summary>The different kinds of status lights.</summary>
+            <remarks><para>The game uses separate game objects for each status light kind.</para></remarks>
+        </member>
+        <member name="F:Wawa.Recall.StatusLights.None">
+            <summary>No status light.</summary>
+        </member>
+        <member name="F:Wawa.Recall.StatusLights.Off">
+            <summary>The status light that is off.</summary>
+        </member>
+        <member name="F:Wawa.Recall.StatusLights.Solve">
+            <summary>The status light that is green, representing a solve.</summary>
+        </member>
+        <member name="F:Wawa.Recall.StatusLights.Strike">
+            <summary>The status light that is red, representing a strike.</summary>
+        </member>
+        <member name="T:Wawa.Recall.Entity">
+            <summary>
+            Encapsulates a solvable or needy module in either its vanilla or modded counterpart,
+            and extends functionality to get or mutate its inner values and events without worrying the kind of module it is.
+            </summary>
+            <summary>
+            Encapsulates a solvable or needy module in either its vanilla or modded counterpart,
+            and extends functionality to get or mutate its inner values and events without worrying the kind of module it is.
+            </summary>
+        </member>
+        <member name="M:Wawa.Recall.Entity.#ctor(KMBombModule)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wawa.Recall.Entity"/> class.
+            This guarantees the module kind solvable and modded.
+            </summary>
+            <param name="solvable">The <see cref="T:KMBombModule"/> instance to encapsulate.</param>
+        </member>
+        <member name="M:Wawa.Recall.Entity.#ctor(KMNeedyModule)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wawa.Recall.Entity"/> class. This guarantees the module kind needy and modded.
+            </summary>
+            <param name="needy">The <see cref="T:KMNeedyModule"/> instance to encapsulate.</param>
+        </member>
+        <member name="M:Wawa.Recall.Entity.#ctor(UnityEngine.MonoBehaviour)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wawa.Recall.Entity"/> class. This guarantees the module kind vanilla.
+            </summary>
+            <param name="bombComponent">The <see cref="T:UnityEngine.MonoBehaviour"/> instance to use to obtain the components.</param>
+        </member>
+        <member name="P:Wawa.Recall.Entity.Value">
+            <summary>Gets the value which is guaranteed to be a <see cref="T:UnityEngine.MonoBehaviour"/>.</summary>
+        </member>
+        <member name="M:Wawa.Recall.Entity.op_Equality(Wawa.Recall.Entity,Wawa.Recall.Entity)">
+            <summary>
+            Determines whether both instances point to the same component.
+            </summary>
+            <param name="left">The left-hand side.</param>
+            <param name="right">The right-hand side.</param>
+            <returns>
+            The value <see langword="true"/> if both of them point to the same component, otherwise <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.Entity.op_Inequality(Wawa.Recall.Entity,Wawa.Recall.Entity)">
+            <summary>Determines whether both instances do not point to the same component.</summary>
+            <param name="left">The left-hand side.</param>
+            <param name="right">The right-hand side.</param>
+            <returns>
+            The value <see langword="true"/> if both of them do not point to the same component,
+            otherwise <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.Entity.op_Implicit(KMBombModule)~Wawa.Recall.Entity">
+            <summary>Implicitly calls the constructor.</summary>
+            <param name="solvable">The <see cref="T:KMBombModule"/> to pass in to the constructor.</param>
+        </member>
+        <member name="M:Wawa.Recall.Entity.op_Implicit(KMNeedyModule)~Wawa.Recall.Entity">
+            <summary>
+            Implicitly calls the constructor.
+            </summary>
+            <param name="needy">The <see cref="T:KMNeedyModule"/> to pass in to the constructor.</param>
+        </member>
+        <member name="M:Wawa.Recall.Entity.FromKMBombModule(KMBombModule)">
+            <summary>
+            Converts the <see cref="T:KMBombModule"/> to a <see langword="new"/> <see cref="T:Wawa.Recall.Entity"/>.
+            </summary>
+            <param name="solvable">The <see cref="T:KMBombModule"/> instance to convert.</param>
+            <returns>
+            A <see langword="new"/> <see cref="T:Wawa.Recall.Entity"/> instance encapsulating <paramref name="solvable"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.Entity.FromKMNeedyModule(KMNeedyModule)">
+            <summary>
+            Converts the <see cref="T:KMNeedyModule"/> to a <see langword="new"/> <see cref="T:Wawa.Recall.Entity"/>.
+            </summary>
+            <param name="needy">The <see cref="T:KMNeedyModule"/> instance to convert.</param>
+            <returns>A <see langword="new"/> <see cref="T:Wawa.Recall.Entity"/> instance encapsulating <paramref name="needy"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Entity.GetChildren(UnityEngine.GameObject)">
+            <summary>
+            Gets all modules that are children of a provided <see cref="T:UnityEngine.GameObject"/>, and caches it in a thread-safe manner.
+            </summary>
+            <param name="gameObject">The <see cref="T:UnityEngine.GameObject"/> to get the modules from.</param>
+            <returns>
+            A <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> of type <see cref="T:Wawa.Recall.Entity"/>
+            which contains every module from <paramref name="gameObject"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.Entity.LogEverything">
+            <summary>Hooks the logger to all instances.</summary>
+            <remarks><para>
+            Since the logger is implicitly created within this function, the logging cannot easily
+            be reversed without using the nuclear option <see cref="M:Wawa.Recall.Generator.Clear``1(Wawa.Recall.Hook{``0})"/>.
+            </para></remarks>
+            <returns>All entities in the current scene, where each collection represents a separate bomb.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Entity.FromComponent(UnityEngine.Component)">
+            <summary>
+            Gets the <see cref="T:Wawa.Recall.Entity"/> of this <see cref="T:Wawa.Recall.Selected"/>.
+            An empty value is given if there is no attached <see cref="T:Wawa.Recall.Entity"/> on the <see cref="T:Wawa.Recall.Selected"/>.
+            </summary>
+            <param name="component">
+            The <see cref="T:UnityEngine.Component"/> to find components of using <see cref="M:UnityEngine.Component.GetComponent``1"/>.
+            </param>
+            <returns>
+            A <see cref="T:Wawa.Optionals.Maybe`1"/>, consisting of either a <see cref="T:Wawa.Recall.Entity"/>
+            that is attached to this instance, or <see langword="default"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.Entity.Equals(Wawa.Recall.Entity)">
+            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Entity.Equals(Wawa.Recall.Entity,Wawa.Recall.Entity)">
+            <inheritdoc cref="M:System.Collections.Generic.IEqualityComparer`1.Equals(`0,`0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Entity.GetHashCode(Wawa.Recall.Entity)">
+            <inheritdoc cref="M:System.Collections.Generic.IEqualityComparer`1.GetHashCode(`0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Entity.Clone">
+            <inheritdoc cref="M:System.ICloneable.Clone"/>
+        </member>
+        <member name="M:Wawa.Recall.Entity.Change(Wawa.Recall.StatusLights)">
+            <summary>Alters the status light to <paramref name="lights"/>.</summary>
+            <remarks><para>In the editor, this method does nothing.</para></remarks>
+            <param name="lights">The status lights to enable.</param>
+            <returns>The instance itself.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Entity.FakeStrike">
+            <summary>Plays the strike sound effect and flashes the status light red, without registering a strike.</summary>
+            <remarks><para>In the editor, this method does nothing.</para></remarks>
+            <returns>The instance itself.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Entity.Equals(System.Object)">
+            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
+        </member>
+        <member name="M:Wawa.Recall.Entity.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Wawa.Recall.Entity.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:Wawa.Recall.Entity.IsEmptyOrTimer">
+            <summary>
+            Gets a value indicating whether this instance is a non-module;
+            either <see cref="F:Wawa.Recall.Modules.Empty"/> or <see cref="F:Wawa.Recall.Modules.Timer"/>.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.IsModded">
+            <summary>Gets a value indicating whether this instance contains a modded module.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.IsModdedNeedy">
+            <summary>Gets a value indicating whether this instance contains a modded needy module.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.IsModdedSolvable">
+            <summary>Gets a value indicating whether this instance contains a modded solvable module.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.IsModule">
+            <summary>
+            Gets a value indicating whether this instance is a module;
+            not <see cref="F:Wawa.Recall.Modules.Empty"/> or <see cref="F:Wawa.Recall.Modules.Timer"/>.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.IsNeedy">
+            <summary>Gets a value indicating whether this instance contains a needy module.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.IsSolvable">
+            <summary>Gets a value indicating whether this instance contains a solvable module.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.IsVanilla">
+            <summary>Gets a value indicating whether this instance contains a vanilla component.</summary>
+            <remarks><para>This includes <see cref="F:Wawa.Recall.Modules.Empty"/> and <see cref="F:Wawa.Recall.Modules.Timer"/>.</para></remarks>
+        </member>
+        <member name="P:Wawa.Recall.Entity.IsVanillaModule">
+            <summary>Gets a value indicating whether this instance contains a vanilla module.</summary>
+            <remarks><para>This excludes <see cref="F:Wawa.Recall.Modules.Empty"/> and <see cref="F:Wawa.Recall.Modules.Timer"/>.</para></remarks>
+        </member>
+        <member name="P:Wawa.Recall.Entity.IsVanillaNeedy">
+            <summary>Gets a value indicating whether this instance contains a vanilla needy.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.IsVanillaSolvable">
+            <summary>Gets a value indicating whether this instance contains a vanilla solvable.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.Solvable">
+            <summary>Gets the encapsulated <see cref="T:KMBombModule"/> from this instance, if it exists.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.Needy">
+            <summary>Gets the encapsulated <see cref="T:KMNeedyModule"/> from this instance, if it exists.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.Vanilla">
+            <summary>Gets the encapsulated BombComponent from this instance, if it exists.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.Kind">
+            <summary>
+            Gets the type of component, to differentiate the different kinds of vanilla modules.
+            Modded modules are grouped as <see cref="F:Wawa.Recall.Modules.Mod"/> or <see cref="F:Wawa.Recall.Modules.NeedyMod"/> depending on type.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.RequiresTimerVisibility">
+            <summary>
+            Gets whether to only allow this module to be placed on the same face as the timer.
+            Useful when the rules involve the timer in some way (like the Big Button),
+            but should be used sparingly as it limits generation possibilities.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.NeedyWarnAtFiveSeconds">
+            <summary>Gets whether the needy warning sound effect plays when 5 seconds or less remain. Needy Only.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.NeedyStartingTime">
+            <summary>Gets the amount of time on the needy timer whenever this module is activated. Needy Only.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.NeedyMinResetInterval">
+            <summary>Gets the minimum delay for the needy to activate. Needy Only.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.NeedyMaxResetInterval">
+            <summary>Gets the maximum delay for the needy to activate. Needy Only.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.Id">
+            <summary>
+            Gets the identifier for the module as referenced in missions. e.g. "BigButton" Also known as a "Module ID".
+            This value is immutable for vanilla modules.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.Name">
+            <summary>
+            Gets the nice display name shown to players. e.g. "The Button". This value is immutable for vanilla modules.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.Activate">
+            <summary>
+            Gets the <see cref="T:System.Action"/> that is invoked when the lights turn on.
+            This value is immutable for vanilla modules.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.NeedyActivate">
+            <summary>Gets the <see cref="T:System.Action"/> that is invoked when the needy activates. Modded Needy Only.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.NeedyDeactivate">
+            <summary>Gets the <see cref="T:System.Action"/> that is invoked when the needy deactivates. Modded Needy Only.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.NeedyTimerExpired">
+            <summary>
+            Gets the <see cref="T:System.Action"/> that is invoked when the needy timer expires. Modded Needy Only.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.Solve">
+            <summary>Gets the <see cref="T:System.Action"/> that is called when the entire module has been solved.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.Strike">
+            <summary>Gets the <see cref="T:System.Action"/> that is called on any mistake that causes a bomb strike.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.NeedyTimerSet">
+            <summary>
+            Gets a <see cref="T:System.Action`1"/> that when called, sets the time remaining to the parameter passed in.
+            This value is immutable for vanilla modules. Needy Only.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.RuleGeneration">
+            <summary>
+            Gets a <see cref="T:System.Func`1"/> that when called, gets the random seed
+            used to generate the rules for this game. Not currently used. Modded Only.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Entity.NeedyTimerGet">
+            <summary>
+            Gets a <see cref="T:System.Func`1"/> that when called, gets the time remaining.
+            This value is immutable for vanilla modules. Needy Only.
+            </summary>
+        </member>
+        <member name="T:Wawa.Recall.EntityCore">
+            <summary>Implementations for <see cref="T:Wawa.Recall.Entity"/>.</summary>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.AsEntity(KMBombModule)">
+            <summary>Creates an instance of <see cref="T:Wawa.Recall.Entity"/> where <see cref="P:Wawa.Recall.Entity.Solvable"/> is set.</summary>
+            <param name="solvable">The <see cref="T:KMBombModule"/> to pass in <see cref="T:Wawa.Recall.Entity"/>.</param>
+            <returns>A new instance of <see cref="T:Wawa.Recall.Entity"/> which encapsulates <paramref name="solvable"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.AsEntity(KMNeedyModule)">
+            <summary>Creates an instance of <see cref="T:Wawa.Recall.Entity"/> where <see cref="P:Wawa.Recall.Entity.Needy"/> is set.</summary>
+            <param name="needy">The <see cref="T:KMNeedyModule"/> to pass in <see cref="T:Wawa.Recall.Entity"/>.</param>
+            <returns>A new instance of <see cref="T:Wawa.Recall.Entity"/> which encapsulates <paramref name="needy"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.Add(Wawa.Recall.Entity,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+            <summary>Adds the parameter values to the corresponding hooks, when applicable.</summary>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Entity"/>.</param>
+            <param name="onActivate">Invoked when the lights turn on.</param>
+            <param name="onNeedyActivate">Invoked when the needy activates.</param>
+            <param name="onNeedyDeactivate">Invoked when the needy deactivates.</param>
+            <param name="onNeedyTimerExpired">Invoked when the needy timer expires.</param>
+            <param name="onNeedyTimerGet">Invoked to get the time remaining of the needy timer.</param>
+            <param name="onNeedyTimerSet">Invoked to set the time of the needy timer.</param>
+            <param name="onRuleGeneration">Invoked to get the random seed used to generate rules for the game.</param>
+            <param name="onSolve">Invoked when the entire module has been solved.</param>
+            <param name="onStrike">Invoked on any mistake that causes a bomb strike.</param>
+            <returns>Itself.</returns>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.Set(Wawa.Recall.Entity,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+            <summary>Sets the parameter values to the corresponding hooks, when applicable.</summary>
+            <inheritdoc cref="M:Wawa.Recall.EntityCore.Add(Wawa.Recall.Entity,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)"/>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.Remove(Wawa.Recall.Entity,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+            <summary>Removes the parameter values to the corresponding hooks, when applicable.</summary>
+            <inheritdoc cref="M:Wawa.Recall.EntityCore.Add(Wawa.Recall.Entity,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)"/>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.AddRaw(Wawa.Recall.Entity,System.Func{System.Single},System.Action{System.Single},System.Func{System.Int32},System.Func{System.Boolean},System.Func{System.Boolean})">
+            <summary>Adds the parameter values to the corresponding hooks, when applicable.</summary>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Entity"/>.</param>
+            <param name="needyTimerGet">Invoked to get the time remaining of the needy timer.</param>
+            <param name="needyTimerSet">Invoked to set the time of the needy timer.</param>
+            <param name="ruleGeneration">Invoked to get the random seed used to generate rules for the game.</param>
+            <param name="onSolve">Invoked when the entire module has been solved.</param>
+            <param name="onStrike">Invoked on any mistake that causes a bomb strike.</param>
+            <returns>Itself.</returns>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.RemoveRaw(Wawa.Recall.Entity,System.Func{System.Single},System.Action{System.Single},System.Func{System.Int32},System.Func{System.Boolean},System.Func{System.Boolean})">
+            <summary>Removes the parameter values to the corresponding hooks, when applicable.</summary>
+            <inheritdoc cref="M:Wawa.Recall.EntityCore.AddRaw(Wawa.Recall.Entity,System.Func{System.Single},System.Action{System.Single},System.Func{System.Int32},System.Func{System.Boolean},System.Func{System.Boolean})"/>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.SetRaw(Wawa.Recall.Entity,System.Func{System.Single},System.Action{System.Single},System.Func{System.Int32},System.Func{System.Boolean},System.Func{System.Boolean})">
+            <summary>Sets the parameter values to the corresponding hooks, when applicable.</summary>
+            <inheritdoc cref="M:Wawa.Recall.EntityCore.AddRaw(Wawa.Recall.Entity,System.Func{System.Single},System.Action{System.Single},System.Func{System.Int32},System.Func{System.Boolean},System.Func{System.Boolean})"/>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.Log(Wawa.Recall.Entity)">
+            <summary>Hooks the logger to each instance.</summary>
+            <remarks><para>
+            Since the logger is implicitly created within this function, the logging cannot easily
+            be reversed without using the nuclear option <see cref="M:Wawa.Recall.Generator.Clear``1(Wawa.Recall.Hook{``0})"/>.
+            </para></remarks>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Selected"/>.</param>
+            <returns>The parameter <paramref name="that"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.Log(System.Collections.Generic.IEnumerable{Wawa.Recall.Entity})">
+            <inheritdoc cref="M:Wawa.Recall.EntityCore.Log(Wawa.Recall.Entity)"/>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.Log(System.Collections.Generic.IEnumerable{Wawa.Optionals.Maybe{Wawa.Recall.Entity}})">
+            <inheritdoc cref="M:Wawa.Recall.EntityCore.Log(Wawa.Recall.Entity)"/>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.ToHighlightable(Wawa.Recall.Entity)">
+            <summary>
+            Gets the <see cref="T:Wawa.Recall.Highlighted"/> of this <see cref="T:Wawa.Recall.Entity"/>.
+            An empty value is given if there is no attached <see cref="T:Wawa.Recall.Selected"/> on the <see cref="T:Wawa.Recall.Entity"/>.
+            </summary>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Entity"/>.</param>
+            <returns>
+            A <see cref="T:Wawa.Optionals.Maybe`1"/>, consisting of either a <see cref="T:Wawa.Recall.Selected"/>
+            that is attached to this instance, or <see langword="default"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.ToSelectable(Wawa.Recall.Entity)">
+            <summary>
+            Gets the <see cref="T:Wawa.Recall.Selected"/> of this <see cref="T:Wawa.Recall.Entity"/>.
+            An empty value is given if there is no attached <see cref="T:Wawa.Recall.Selected"/> on the <see cref="T:Wawa.Recall.Entity"/>.
+            </summary>
+            <param name="entity">This instance of <see cref="T:Wawa.Recall.Entity"/>.</param>
+            <returns>
+            A <see cref="T:Wawa.Optionals.Maybe`1"/>, consisting of either a <see cref="T:Wawa.Recall.Selected"/>
+            that is attached to this instance, or <see langword="default"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.GetChildren(UnityEngine.GameObject)">
+            <summary>Gets all modules that are children of a provided <see cref="T:UnityEngine.GameObject"/>.</summary>
+            <param name="gameObject">The <see cref="T:UnityEngine.GameObject"/> to get the modules from.</param>
+            <returns>
+            A <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> of type <see cref="T:Wawa.Recall.Entity"/>
+            which contains every module from <paramref name="gameObject"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.ToEntities(KMBomb)">
+            <summary>Gets all modules that are children of a provided <see cref="T:KMBomb"/>.</summary>
+            <param name="bomb">The <see cref="T:KMBomb"/> to get the modules from.</param>
+            <returns>A <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> of type <see cref="T:Wawa.Recall.Entity"/> which contains every module from <paramref name="bomb"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.ToEntities(System.Collections.Generic.IEnumerable{KMBombModule})">
+            <summary>Creates an <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> where each element has been converted.</summary>
+            <param name="solvables">The collection.</param>
+            <returns>An immutable array.</returns>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.ToEntities(System.Collections.Generic.IEnumerable{KMNeedyModule})">
+            <summary>Creates an <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> where each element has been converted.</summary>
+            <param name="needies">The collection.</param>
+            <returns>An immutable array.</returns>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.ToHighlighters(System.Collections.Generic.IEnumerable{Wawa.Recall.Entity})">
+            <summary>Creates an <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> where each element has been converted.</summary>
+            <param name="entities">The collection.</param>
+            <returns>An immutable array.</returns>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.ToSelectors(System.Collections.Generic.IEnumerable{Wawa.Recall.Entity})">
+            <summary>Creates an <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> where each element has been converted.</summary>
+            <param name="entities">The collection.</param>
+            <returns>An immutable array.</returns>
+        </member>
+        <member name="M:Wawa.Recall.EntityCore.ToManyEntities(System.Collections.Generic.IEnumerable{KMBomb})">
+            <summary>Creates an <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> where each element has been converted.</summary>
+            <param name="bombs">The collection.</param>
+            <returns>An immutable array.</returns>
+        </member>
+        <member name="T:Wawa.Recall.Highlighted">
+            <summary>
+            Encapsulates a vanilla or modded highlight, and extends functionality to get or
+            mutate its inner values and events without worrying the kind of highlight it is.
+            </summary>
+            <summary>
+            Encapsulates a vanilla or modded highlight, and extends functionality to get or
+            mutate its inner values and events without worrying the kind of highlight it is.
+            </summary>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.#ctor(KMHighlightable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wawa.Recall.Highlighted"/> class.
+            This guarantees the highlightable kind solvable.
+            </summary>
+            <param name="highlightable">The <see cref="T:KMHighlightable"/> instance to encapsulate.</param>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.#ctor(UnityEngine.MonoBehaviour)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wawa.Recall.Highlighted"/> class.
+            This guarantees the highlightable kind vanilla.
+            </summary>
+            <param name="highlightable">The Selectable instance to encapsulate.</param>
+        </member>
+        <member name="P:Wawa.Recall.Highlighted.Value">
+            <summary>Gets the value which is guaranteed to be a <see cref="T:UnityEngine.MonoBehaviour"/>.</summary>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.op_Equality(Wawa.Recall.Highlighted,Wawa.Recall.Highlighted)">
+            <summary>
+            Determines whether both instances point to the same component.
+            </summary>
+            <param name="left">The left-hand side.</param>
+            <param name="right">The right-hand side.</param>
+            <returns>The value <see langword="true"/> if both of them point to the same component, otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.op_Implicit(KMHighlightable)~Wawa.Recall.Highlighted">
+            <summary>
+            Implicitly calls the constructor.
+            </summary>
+            <param name="highlightable">The <see cref="T:KMHighlightable"/> to pass in to the constructor.</param>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.op_Inequality(Wawa.Recall.Highlighted,Wawa.Recall.Highlighted)">
+            <summary>
+            Determines whether both instances do not point to the same component.
+            </summary>
+            <param name="left">The left-hand side.</param>
+            <param name="right">The right-hand side.</param>
+            <returns>The value <see langword="true"/> if both of them do not point to the same component, otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.FromKMHighlightable(KMHighlightable)">
+            <summary>
+            Converts the <see cref="T:KMBombModule"/> to a <see langword="new"/> <see cref="T:Wawa.Recall.Selected"/>.
+            </summary>
+            <param name="highlightable">The <see cref="T:KMBombModule"/> instance to convert.</param>
+            <returns>A <see langword="new"/> <see cref="T:Wawa.Recall.Selected"/> instance encapsulating <paramref name="highlightable"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.FromComponent(UnityEngine.Component)">
+            <summary>
+            Gets a new instance of <see cref="T:Wawa.Recall.Highlighted"/> based on the first found highlightable of the <see cref="T:UnityEngine.Component"/>.
+            </summary>
+            <param name="component">
+            The <see cref="T:UnityEngine.Component"/> to find components of using <see cref="M:UnityEngine.Component.GetComponent``1"/>.
+            </param>
+            <returns>
+            A <see cref="T:Wawa.Optionals.Maybe`1"/>, consisting of either a <see cref="T:Wawa.Recall.Selected"/>
+            that is attached to this instance, or <see langword="default"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.Equals(Wawa.Recall.Highlighted)">
+            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.Equals(Wawa.Recall.Highlighted,Wawa.Recall.Highlighted)">
+            <inheritdoc cref="M:System.Collections.Generic.IEqualityComparer`1.Equals(`0,`0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.GetHashCode(Wawa.Recall.Highlighted)">
+            <inheritdoc cref="M:System.Collections.Generic.IEqualityComparer`1.GetHashCode(`0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.Clone">
+            <inheritdoc cref="M:System.ICloneable.Clone"/>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.Equals(System.Object)">
+            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Wawa.Recall.Highlighted.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:Wawa.Recall.Highlighted.IsModded">
+            <summary>Gets a value indicating whether this instance contains a modded highlightable.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Highlighted.IsVanilla">
+            <summary>Gets a value indicating whether this instance contains a vanilla highlightable.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Highlighted.Modded">
+            <summary>Gets the encapsulated <see cref="T:KMHighlightable"/> from this instance.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Highlighted.Vanilla">
+            <summary>Gets the encapsulated <c>Highlightable</c> from this instance.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Highlighted.Outline">
+            <summary>Gets the outline thickness amount.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Highlighted.Scale">
+            <summary>
+            Gets the scaling. A non-zero value for a custom highlight scale. Otherwise,
+            leave it at <see cref="P:UnityEngine.Vector3.zero"/> for default scaling.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Highlighted.Ignore">
+            <summary>
+            Gets the value that if true, the highlight would only activate directly: it
+            will not be activated when a parent highlight is activated. Vanilla Only.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Highlighted.Override">
+            <summary>
+            Gets the value that if true, the highlight would only activate directly: it will not
+            be activated when a parent highlight is activated. Vanilla Only.
+            </summary>
+        </member>
+        <member name="T:Wawa.Recall.HighlightedCore">
+            <summary>Implementations for <see cref="T:Wawa.Recall.Highlighted"/>.</summary>
+        </member>
+        <member name="M:Wawa.Recall.HighlightedCore.AsHighlighter(KMHighlightable)">
+            <summary>Creates an instance of <see cref="T:Wawa.Recall.Entity"/> where <see cref="P:Wawa.Recall.Entity.Solvable"/> is set.</summary>
+            <param name="highlightable">The <see cref="T:KMBombModule"/> to pass in <see cref="T:Wawa.Recall.Entity"/>.</param>
+            <returns>A new instance of <see cref="T:Wawa.Recall.Entity"/> which encapsulates <paramref name="highlightable"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.HighlightedCore.ToEntity(Wawa.Recall.Highlighted)">
+            <summary>
+            Gets the <see cref="T:Wawa.Recall.Entity"/> of this <see cref="T:Wawa.Recall.Highlighted"/>.
+            An empty value is given if there is no attached <see cref="T:Wawa.Recall.Entity"/> on the <see cref="T:Wawa.Recall.Highlighted"/>.
+            </summary>
+            <param name="highlighted">This instance of <see cref="T:Wawa.Recall.Highlighted"/>.</param>
+            <returns>
+            A <see cref="T:Wawa.Optionals.Maybe`1"/>, consisting of either a <see cref="T:Wawa.Recall.Entity"/>
+            that is attached to this instance, or <see langword="default"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.HighlightedCore.ToEntities(System.Collections.Generic.IEnumerable{Wawa.Recall.Highlighted})">
+            <summary>Creates a <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> where each element has been converted.</summary>
+            <param name="highlighters">The collection.</param>
+            <returns>An immutable array.</returns>
+        </member>
+        <member name="M:Wawa.Recall.HighlightedCore.ToHighlighters(System.Collections.Generic.IEnumerable{KMHighlightable})">
+            <summary>Creates a <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> where each element has been converted.</summary>
+            <param name="highlightables">The collection.</param>
+            <returns>An immutable array.</returns>
+        </member>
+        <member name="T:Wawa.Recall.Selected">
+            <summary>
+            Encapsulates a vanilla or modded selectable, and extends functionality to get or
+            mutate its inner values and events without worrying the kind of selectable it is.
+            </summary>
+            <summary>
+            Encapsulates a vanilla or modded selectable, and extends functionality to get or
+            mutate its inner values and events without worrying the kind of selectable it is.
+            </summary>
+        </member>
+        <member name="M:Wawa.Recall.Selected.#ctor(KMSelectable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wawa.Recall.Selected"/> class. This guarantees the selectable kind solvable.
+            </summary>
+            <param name="selectable">The <see cref="T:KMSelectable"/> instance to encapsulate.</param>
+        </member>
+        <member name="M:Wawa.Recall.Selected.#ctor(UnityEngine.MonoBehaviour)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Wawa.Recall.Selected"/> class. This guarantees the selectable kind vanilla.
+            </summary>
+            <param name="selectable">The Selectable instance to encapsulate.</param>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Value">
+            <summary>Gets the value which is guaranteed to be a <see cref="T:UnityEngine.MonoBehaviour"/>.</summary>
+        </member>
+        <member name="M:Wawa.Recall.Selected.op_Equality(Wawa.Recall.Selected,Wawa.Recall.Selected)">
+            <summary>Determines whether both instances point to the same component.</summary>
+            <param name="left">The left-hand side.</param>
+            <param name="right">The right-hand side.</param>
+            <returns>
+            The value <see langword="true"/> if both of them point to the same component, otherwise <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.Selected.op_Inequality(Wawa.Recall.Selected,Wawa.Recall.Selected)">
+            <summary>Determines whether both instances do not point to the same component.</summary>
+            <param name="left">The left-hand side.</param>
+            <param name="right">The right-hand side.</param>
+            <returns>
+            The value <see langword="true"/> if both of them do not point
+            to the same component, otherwise <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.Selected.op_Implicit(KMSelectable)~Wawa.Recall.Selected">
+            <summary>Implicitly calls the constructor.</summary>
+            <param name="selectable">The <see cref="T:KMSelectable"/> to pass in to the constructor.</param>
+        </member>
+        <member name="M:Wawa.Recall.Selected.FromKMSelectable(KMSelectable)">
+            <summary>
+            Converts the <see cref="T:KMBombModule"/> to a <see langword="new"/> <see cref="T:Wawa.Recall.Selected"/>.
+            </summary>
+            <param name="selectable">The <see cref="T:KMBombModule"/> instance to convert.</param>
+            <returns>A <see langword="new"/> <see cref="T:Wawa.Recall.Selected"/> instance encapsulating <paramref name="selectable"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.Selected.FromComponent(UnityEngine.Component)">
+            <summary>
+            Gets a new instance of <see cref="T:Wawa.Recall.Selected"/> based on
+            the first found selectable of the <see cref="T:UnityEngine.Component"/>.
+            </summary>
+            <param name="component">
+            The <see cref="T:UnityEngine.Component"/> to find components of using <see cref="M:UnityEngine.Component.GetComponent``1"/>.
+            </param>
+            <returns>
+            A <see cref="T:Wawa.Optionals.Maybe`1"/>, consisting of either a <see cref="T:Wawa.Recall.Selected"/>
+            that is attached to this instance, or <see langword="default"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.Selected.Equals(Wawa.Recall.Selected)">
+            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Selected.Equals(Wawa.Recall.Selected,Wawa.Recall.Selected)">
+            <inheritdoc cref="M:System.Collections.Generic.IEqualityComparer`1.Equals(`0,`0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Selected.GetHashCode(Wawa.Recall.Selected)">
+            <inheritdoc cref="M:System.Collections.Generic.IEqualityComparer`1.GetHashCode(`0)"/>
+        </member>
+        <member name="M:Wawa.Recall.Selected.Clone">
+            <inheritdoc cref="M:System.ICloneable.Clone"/>
+        </member>
+        <member name="M:Wawa.Recall.Selected.Equals(System.Object)">
+            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
+        </member>
+        <member name="M:Wawa.Recall.Selected.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Wawa.Recall.Selected.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:Wawa.Recall.Selected.ChildLength">
+            <summary>
+            Gets the number of children the selectable has. Calling <see cref="P:Wawa.Recall.Selected.ChildLength"/> is more efficient
+            than <see cref="P:Wawa.Recall.Selected.Children"/> then using <see cref="P:System.Collections.ObjectModel.ReadOnlyCollection`1.Count"/> because
+            <see cref="P:Wawa.Recall.Selected.Children"/> constructs a new <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> every time.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Highlighted">
+            <summary>Gets the <see cref="P:Wawa.Recall.Selected.Highlighted"/> for this <see cref="T:Wawa.Recall.Selected"/>.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Select">
+            <summary>
+            Gets the <see cref="T:System.Action"/> that is called whenever this selectable becomes the current selectable.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Deselect">
+            <summary>
+            Gets the <see cref="T:System.Action"/> that is called whenever this selectable stops being the current selectable.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Cancel">
+            <summary>
+            Gets the <see cref="T:System.Func`1"/> that is called whenever the player backs out of this
+            selectable, an example would be zooming out of a module. Returning <see langword="true"/>
+            backs out of the selectable and makes its parent the current, and <see langword="false"/>
+            does not back out of the selectable and keeps the selectable as the current.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Interact">
+            <summary>
+            Gets the <see cref="T:System.Func`1"/> that is called whenever the player interacts with
+            this selectable. Done on button down. Returning <see langword="true"/> makes the selectable
+            behave as a module with children, and <see langword="false"/> as a button with no children.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.InteractEnded">
+            <summary>
+            Gets the <see cref="T:System.Action"/> that is called whenever the player is interacting
+            with this selectable and releases the mouse or controller button.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Highlight">
+            <summary>Gets the <see cref="T:System.Action"/> that is called whenever the highlight is turned on.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.HighlightEnded">
+            <summary>Gets the <see cref="T:System.Action"/> that is called whenever the highlight is turned off.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Focus">
+            <summary>
+            Gets the <see cref="T:System.Action"/> that is called whenever the module is focused,
+            this is when it is interacted with from the bomb face level and this module's children can be selected.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Defocus">
+            <summary>
+            Gets the <see cref="T:System.Action"/> that is called whenever the module is defocused,
+            this is when a different selectable becomes the focus or the module has been backed out of.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Left">
+            <summary>
+            Gets the <see cref="T:System.Action"/> that is called whenever the player
+            pulls selection stick left while this selectable is focused.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Right">
+            <summary>
+            Gets the <see cref="T:System.Action"/> that is called whenever player
+            pulls selection stick right while this selectable is focused.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.InteractionPunch">
+            <summary>
+            Gets the <see cref="T:System.Action"/> that when called, performs an interaction punch
+            or bomb shake with the impact level based on the parameter passed in. Modded Only.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.UpdateChildren">
+            <summary>
+            Gets the <see cref="T:System.Action"/> that when called, updates the list of children,
+            with the parameter being the <see cref="T:KMSelectable"/> to select. Modded Only.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Modded">
+            <summary>
+            Gets the encapsulated <see cref="T:KMSelectable"/> from this instance
+            as <see cref="T:Wawa.Optionals.Maybe`1"/> due to ambiguity in this value being set.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Vanilla">
+            <summary>Gets the encapsulated <c>Selectable</c> from this instance.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Parent">
+            <summary>Gets the parent of this selectable.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.AllowWrapX">
+            <summary>Gets a value indicating whether gamepad selection should wrap around left/right.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.AllowWrapY">
+            <summary>Gets a value indicating whether gamepad selection should wrap around up/down.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.ForceSelectionHighlight">
+            <summary>
+            Gets a value indicating whether it forces highlight to be selection highlight,
+            this is yellow in game. Should be used when interaction will drill down to child selectables.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.ForceInteractionHighlight">
+            <summary>
+            Gets a value indicating whether it forces highlight to be interaction highlight,
+            this is red in game. Should be used when interaction will trigger a behavior.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.IsPassThrough">
+            <summary>
+            Gets a value indicating whether this selectable is essentially a container, currently used for bomb faces.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.ChildRowLength">
+            <summary>Gets the number of selectables per row for gamepad controls.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.DefaultIndex">
+            <summary>Gets the particular child as the default index for gamepad controls.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Colliders">
+            <summary>Gets the interaction colliders for mouse other than the highlight. Modded Only.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Scale">
+            <summary>
+            Gets the scaling. A non-zero value for a custom highlight scale. Otherwise,
+            leave it at <see cref="P:UnityEngine.Vector3.zero"/> for default scaling. Vanilla Only.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.Children">
+            <summary>
+            Gets the list of child selectables. Order is important as it is treated
+            as a grid with row length defined by <see cref="P:Wawa.Recall.Selected.ChildRowLength"/>.
+            </summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.IsModded">
+            <summary>Gets a value indicating whether this instance contains a modded selectable.</summary>
+        </member>
+        <member name="P:Wawa.Recall.Selected.IsVanilla">
+            <summary>Gets a value indicating whether this instance contains a vanilla selectable.</summary>
+        </member>
+        <member name="T:Wawa.Recall.SelectedCore">
+            <summary>Implementations for <see cref="T:Wawa.Recall.Selected"/>.</summary>
+        </member>
+        <member name="M:Wawa.Recall.SelectedCore.ToEntity(Wawa.Recall.Selected)">
+            <summary>
+            Gets the <see cref="T:Wawa.Recall.Entity"/> of this <see cref="T:Wawa.Recall.Selected"/>.
+            An empty value is given if there is no attached <see cref="T:Wawa.Recall.Entity"/> on the <see cref="T:Wawa.Recall.Selected"/>.
+            </summary>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Selected"/>.</param>
+            <returns>
+            A <see cref="T:Wawa.Optionals.Maybe`1"/>, consisting of either a <see cref="T:Wawa.Recall.Entity"/>
+            that is attached to this instance, or <see langword="default"/>.
+            </returns>
+        </member>
+        <member name="M:Wawa.Recall.SelectedCore.AsSelectable(KMSelectable)">
+            <summary>Creates an instance of <see cref="T:Wawa.Recall.Entity"/> where <see cref="P:Wawa.Recall.Entity.Solvable"/> is set.</summary>
+            <param name="that">The <see cref="T:KMBombModule"/> to pass in <see cref="T:Wawa.Recall.Entity"/>.</param>
+            <returns>A new instance of <see cref="T:Wawa.Recall.Entity"/> which encapsulates <paramref name="that"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.SelectedCore.Add(Wawa.Recall.Selected,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+            <summary>Adds the parameter values to the corresponding hooks, when applicable.</summary>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Selected"/>.</param>
+            <param name="onCancel">Invoked when the player backs out of the selectable.</param>
+            <param name="onDefocus">Invoked when the selectable is defocused.</param>
+            <param name="onDeselect">Invoked when this stops being the current selectable.</param>
+            <param name="onFocus">Invoked when the selectable is focused.</param>
+            <param name="onHighlight">Invoked whenever the highlight is turned on.</param>
+            <param name="onHighlightEnded">Invoked whenever the highlight is turned off.</param>
+            <param name="onInteract">Invoked when the player interacts with the selectable.</param>
+            <param name="onInteractEnded">Invoked when the player releases the mouse or controller button.</param>
+            <param name="onLeft">Invoked when the player pulls the selection stick left while selected.</param>
+            <param name="onRight">Invoked when the player pulls the selection stick right while selected.</param>
+            <param name="onSelect">Invoked when this becomes the current selectable.</param>
+            <param name="onUpdateChildren">Invoked when the list of children are updated.</param>
+            <returns>The parameter <paramref name="that"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.SelectedCore.Remove(Wawa.Recall.Selected,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+            <summary>Removes the parameter values to the corresponding hooks, when applicable.</summary>
+            <inheritdoc cref="M:Wawa.Recall.SelectedCore.Add(Wawa.Recall.Selected,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)"/>
+        </member>
+        <member name="M:Wawa.Recall.SelectedCore.Set(Wawa.Recall.Selected,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)">
+            <summary>Sets the parameter values to the corresponding hooks, when applicable.</summary>
+            <inheritdoc cref="M:Wawa.Recall.SelectedCore.Add(Wawa.Recall.Selected,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action,System.Action)"/>
+        </member>
+        <member name="M:Wawa.Recall.SelectedCore.AddRaw(Wawa.Recall.Selected,System.Func{System.Boolean},System.Func{System.Boolean},System.Action{KMSelectable})">
+            <summary>Removes the parameter values to the corresponding hooks, when applicable.</summary>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Selected"/>.</param>
+            <param name="onCancel">Invoked when the player backs out of the selectable.</param>
+            <param name="onInteract">Invoked when the player interacts with the selectable.</param>
+            <param name="onUpdateChildren">Invoked when the list of children are updated.</param>
+            <returns>The parameter <paramref name="that"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.SelectedCore.RemoveRaw(Wawa.Recall.Selected,System.Func{System.Boolean},System.Func{System.Boolean},System.Action{KMSelectable})">
+            <summary>Removes the parameter values to the corresponding hooks, when applicable.</summary>
+            <inheritdoc cref="M:Wawa.Recall.SelectedCore.AddRaw(Wawa.Recall.Selected,System.Func{System.Boolean},System.Func{System.Boolean},System.Action{KMSelectable})"/>
+        </member>
+        <member name="M:Wawa.Recall.SelectedCore.SetRaw(Wawa.Recall.Selected,System.Func{System.Boolean},System.Func{System.Boolean},System.Action{KMSelectable})">
+            <summary>Removes the parameter values to the corresponding hooks, when applicable.</summary>
+            <inheritdoc cref="M:Wawa.Recall.SelectedCore.AddRaw(Wawa.Recall.Selected,System.Func{System.Boolean},System.Func{System.Boolean},System.Action{KMSelectable})"/>
+        </member>
+        <member name="M:Wawa.Recall.SelectedCore.Log(Wawa.Recall.Selected)">
+            <summary>Hooks the logger to each instance.</summary>
+            <remarks><para>
+            Since the logger is implicitly created within this function, the logging cannot easily
+            be reversed without using the nuclear option <see cref="M:Wawa.Recall.Generator.Clear``1(Wawa.Recall.Hook{``0})"/>.
+            </para></remarks>
+            <param name="that">This instance of <see cref="T:Wawa.Recall.Selected"/>.</param>
+            <returns>The parameter <paramref name="that"/>.</returns>
+        </member>
+        <member name="M:Wawa.Recall.SelectedCore.Log(System.Collections.Generic.IEnumerable{Wawa.Recall.Selected})">
+            <inheritdoc cref="M:Wawa.Recall.SelectedCore.Log(Wawa.Recall.Selected)"/>
+        </member>
+        <member name="M:Wawa.Recall.SelectedCore.Log(System.Collections.Generic.IEnumerable{Wawa.Optionals.Maybe{Wawa.Recall.Selected}})">
+            <inheritdoc cref="M:Wawa.Recall.SelectedCore.Log(Wawa.Recall.Selected)"/>
+        </member>
+        <member name="M:Wawa.Recall.SelectedCore.ToEntities(System.Collections.Generic.IEnumerable{Wawa.Recall.Selected})">
+            <summary>Creates an <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> where each element has been converted.</summary>
+            <param name="that">The collection.</param>
+            <returns>An immutable array.</returns>
+        </member>
+        <member name="M:Wawa.Recall.SelectedCore.ToSelectables(System.Collections.Generic.IEnumerable{KMSelectable})">
+            <summary>Creates an <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1"/> where each element has been converted.</summary>
+            <param name="that">The collection.</param>
+            <returns>An immutable array.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>wawa.IO</name>
+        <name>wawa.Editors</name>
     </assembly>
     <members>
         <member name="T:System.Diagnostics.Contracts.PureAttribute">
@@ -958,400 +958,71 @@
         <member name="F:NullGuard.ValidationFlags.All">
             <summary>Wildcard.</summary>
         </member>
-        <member name="T:Wawa.IO.Internals.Globals">
+        <member name="T:Wawa.Editors.Internals.DeleteMe">
+            <summary>A temporary <see cref="T:UnityEngine.MonoBehaviour"/> that does nothing other than throw an error in play mode.</summary>
+        </member>
+        <member name="M:Wawa.Editors.Internals.DeleteMe.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Wawa.Editors.Internals.Globals">
             <summary>Contains static methods able to be accessed from anywhere within this library.</summary>
         </member>
-        <member name="F:Wawa.IO.Internals.Globals.Ordinal">
+        <member name="F:Wawa.Editors.Internals.Globals.Ordinal">
             <summary>The default string comparison throughout the library.</summary>
         </member>
-        <member name="M:Wawa.IO.Internals.Globals.SuppressIO``1(``0,System.Action{``0}@)">
-            <summary>Runs and catches various exception types found in IO operations.</summary>
-            <typeparam name="T">The type of parameter.</typeparam>
-            <param name="item">The item to pass in.</param>
-            <param name="action">The name to run.</param>
+        <member name="P:Wawa.Editors.Internals.Globals.Who">
+            <summary>Gets the name of <see cref="P:Wawa.Editors.Internals.Globals.Caller"/>.</summary>
         </member>
-        <member name="M:Wawa.IO.Internals.Globals.OrdinalEquals(System.String,System.String@)">
-            <summary>Compares two strings based on <see cref="F:System.StringComparison.Ordinal"/>.</summary>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
-            <returns>Whether the two values are the same based on <see cref="F:System.StringComparison.Ordinal"/>.</returns>
-        </member>
-        <member name="M:Wawa.IO.Internals.Globals.Get``2(``0,System.Func{``0,``1}@,System.Func{``0,``1}@,System.Int32)">
-            <summary>Computes an expensive computation, then caches it in subsequent calls.</summary>
-            <remarks><para>This method assumes that every caller member's name is unique from each other.</para></remarks>
-            <typeparam name="T">The type of the parameter.</typeparam>
-            <typeparam name="TResult">The type of return.</typeparam>
-            <param name="key">The parameter of the method.</param>
-            <param name="factory">The expensive callback.</param>
-            <param name="editor">The expensive callback exclusive to the editor.</param>
-            <param name="caller">The caller member name.</param>
-            <returns>The value from the first time <paramref name="factory" /> was invoked.</returns>
-        </member>
-        <member name="M:Wawa.IO.Internals.Globals.SuppressIO``2(``0,System.Func{``0,``1}@,System.Boolean)">
-            <summary>
-            Runs and returns the parameter, and catches various exception types found in IO operations.
-            A caught <see cref="T:System.Exception" /> will <see langword="return" /> <see langword="default" />.
-            </summary>
-            <typeparam name="T">The type of parameter.</typeparam>
-            <typeparam name="TResult">The type of return.</typeparam>
-            <param name="item">The item to pass in.</param>
-            <param name="func">The name to run.</param>
-            <param name="force">Whether to force execution regardless if in editor or not.</param>
-            <returns>
-            The returned value of <paramref file="func" />, or <see langword="default" />
-            in the event of an <see cref="T:System.Exception" /> related to files.
-            </returns>
-        </member>
-        <member name="T:Wawa.IO.Internals.TypePairEqualityComparer`1">
-            <summary>Provides an <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> for <see cref="T:System.Collections.Generic.KeyValuePair`2"/>.</summary>
-            <typeparam name="T">The key type.</typeparam>
-        </member>
-        <member name="P:Wawa.IO.Internals.TypePairEqualityComparer`1.Instance">
-            <summary>Gets the singleton instance.</summary>
-        </member>
-        <member name="M:Wawa.IO.Internals.TypePairEqualityComparer`1.System#Collections#Generic#IEqualityComparer{System#Collections#Generic#KeyValuePair{T,System#Type}}#Equals(System.Collections.Generic.KeyValuePair{`0,System.Type},System.Collections.Generic.KeyValuePair{`0,System.Type})">
-            <inheritdoc />
-        </member>
-        <member name="M:Wawa.IO.Internals.TypePairEqualityComparer`1.System#Collections#Generic#IEqualityComparer{System#Collections#Generic#KeyValuePair{T,System#Type}}#GetHashCode(System.Collections.Generic.KeyValuePair{`0,System.Type})">
-            <inheritdoc />
-        </member>
-        <member name="T:Wawa.IO.Config">
-            <summary>Implementations for <see cref="T:Wawa.IO.Config`1"/>.</summary>
-        </member>
-        <member name="F:Wawa.IO.Config.Folder">
-            <summary>The name of the folder that contains locally stored mod settings.</summary>
-        </member>
-        <member name="F:Wawa.IO.Config.Suffix">
-            <summary>The suffix for the default file name for mod settings.</summary>
-        </member>
-        <member name="F:Wawa.IO.Config.Tutorial">
-            <summary>The key substring that is ignored in mod configs.</summary>
-        </member>
-        <member name="M:Wawa.IO.Config.Serialize``1(``0)">
-            <summary>Serializes settings the same way it's written to the file. Supports settings that use enums.</summary>
-            <typeparam name="TSerialize">The type to serialize the value.</typeparam>
-            <param name="value">The value to serialize.</param>
-            <returns>A <see cref="T:System.String"/> representation of <paramref name="value"/> by serializing it as JSON.</returns>
-        </member>
-        <member name="M:Wawa.IO.Config.Write``1(Wawa.IO.Config{``0},System.String)">
-            <summary>Writes the string to the settings file.</summary>
-            <remarks><para>
-            To protect the user settings, this does nothing if the last read wasn't successful.
-            </para><para>
-            In the editor, this method does nothing.
-            </para></remarks>
-            <typeparam name="T">The generic used in <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.IO.Config`1"/>.</param>
-            <param name="value">The contents to write.</param>
-            <returns>The parameter <paramref name="that"/>.</returns>
-        </member>
-        <member name="M:Wawa.IO.Config.Write``1(Wawa.IO.Config{``0},``0)">
-            <summary>Writes the settings to the settings file.</summary>
-            <remarks><para>
-            To protect the user settings, this does nothing if the last read wasn't successful.
-            </para><para>
-            In the editor, this method does nothing.
-            </para></remarks>
-            <typeparam name="T">The generic used in <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.IO.Config`1"/>.</param>
-            <param name="value">The value to overwrite the settings file with.</param>
-            <returns>The value <see langword="default"/>.</returns>
-        </member>
-        <member name="M:Wawa.IO.Config.Merge``1(Wawa.IO.Config{``0},``0,System.Boolean)">
-            <summary>Reads, merges, and writes the settings to the settings file.</summary>
-            <remarks><para>
-            To protect the user settings, this does nothing if the last read wasn't successful.
-            </para><para>
-            In the editor, this method does nothing.
-            </para></remarks>
-            <typeparam name="T">The generic used in <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.IO.Config`1"/>.</param>
-            <param name="value">The value to merge the file with.</param>
-            <param name="isDiscarding">
-            Determines whether it should remove values from the original
-            file that isn't contained within the type, or has the incorrect type.
-            </param>
-            <returns>The parameter <paramref name="that"/>.</returns>
-        </member>
-        <member name="M:Wawa.IO.Config.Read``1(Wawa.IO.Config{``0})">
-            <summary>Reads the settings from the settings file.</summary>
-            <remarks><para>
-            If the settings couldn't be read, the default settings will be returned.
-            </para><para>
-            In the editor, this method returns the default value of the constructor in <typeparamref name="T"/>.
-            </para></remarks>
-            <typeparam name="T">The generic used in <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.IO.Config`1"/>.</param>
-            <returns>
-            If the read and deserialization was successful, a <typeparamref name="T"/> containing the values from the file,
-            otherwise a new instance of <typeparamref name="T"/>.
-            </returns>
-        </member>
-        <member name="T:Wawa.IO.Config`1">
-            <summary>Meant for information that needs to be deserialized within the mod settings folder.</summary>
-            <remarks><para>
-            Originally by samfundev: https://github.com/samfundev/KTANE-Utilities/blob/master/ModConfig.cs.
-            </para><para>
-            All constructors in this type have the following side effects:
-            </para><list type="bullet">
-            <item><description>A file will automatically be made if it doesn't exist.</description></item>
-            <item><description>
-            A JSON property defined in the type <typeparamref name="T"/> that doesn't exist in the file
-            will automatically be appended with a new default instance of <typeparamref name="T"/>'s values.
-            </description></item>
-            <item><description>
-            In the editor, this constructor will not merge the default of type <typeparamref name="T"/> with the file.
-            </description></item>
-            </list></remarks>
-            <typeparam name="T">The type to serialize and deserialize the file.</typeparam>
-        </member>
-        <member name="M:Wawa.IO.Config`1.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Wawa.IO.Config`1"/> class.</summary>
-            <remarks><list type="bullet">
-            <item><description>
-            The target file name is implicitly gotten by the name of the assembly that called this constructor.
-            </description></item>
-            <item><description>A file will automatically be made if it doesn't exist.</description></item>
-            <item><description>
-            A JSON property defined in the type <typeparamref name="T"/> that doesn't exist in the file
-            will automatically be appended with a new default instance of <typeparamref name="T"/>'s values.
-            </description></item>
-            <item><description>
-            In the editor, this constructor will not merge the default of type <typeparamref name="T"/> with the file.
-            </description></item>
-            </list></remarks>
-        </member>
-        <member name="M:Wawa.IO.Config`1.#ctor(System.String)">
-            <summary>Initializes a new instance of the <see cref="T:Wawa.IO.Config`1"/> class.</summary>
-            <remarks><list type="bullet">
-            <item><description>Allows specification of the target file name.</description></item>
-            <item><description>A file will automatically be made if it doesn't exist.</description></item>
-            <item><description>
-            A JSON property defined in the type <typeparamref name="T"/> that doesn't exist in the file
-            will automatically be appended with a new default instance of <typeparamref name="T"/>'s values.
-            </description></item>
-            <item><description>
-            In the editor, this constructor will not merge the default of type <typeparamref name="T"/> with the file.
-            </description></item>
-            </list></remarks>
-            <param name="fileName">The file name to get.</param>
-        </member>
-        <member name="P:Wawa.IO.Config`1.HasRead">
-            <summary>Gets a value indicating whether or not there has been a successful read of the settings file.</summary>
-            <remarks><para>This value will always be false in the editor.</para></remarks>
-        </member>
-        <member name="P:Wawa.IO.Config`1.FilePath">
-            <summary>Gets the path of the file to read and write.</summary>
-        </member>
-        <member name="M:Wawa.IO.Config`1.Clone">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.Config`1.Equals(Wawa.IO.Config{`0},Wawa.IO.Config{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.Config`1.GetHashCode(Wawa.IO.Config{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.Config`1.Equals(Wawa.IO.Config{`0})">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.Config`1.op_Equality(Wawa.IO.Config{`0},Wawa.IO.Config{`0})">
-            <summary>Determines whether both instances are both <see langword="null"/> or both instances.</summary>
-            <param name="left">The left-hand side operator.</param>
-            <param name="right">The right-hand side operator.</param>
-            <returns>
-            The value <see langword="true"/> if both share the same <see cref="P:Wawa.IO.Config`1.FilePath"/>,
-            otherwise <see langword="false"/>.
-            </returns>
-        </member>
-        <member name="M:Wawa.IO.Config`1.op_Inequality(Wawa.IO.Config{`0},Wawa.IO.Config{`0})">
-            <summary>Determines whether both instances are one of <see langword="null"/> and the other instanced.</summary>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
-            <returns>
-            The value <see langword="true"/> if both do not share the same <see cref="P:Wawa.IO.Config`1.FilePath"/>,
-            otherwise <see langword="false"/>.
-            </returns>
-        </member>
-        <member name="M:Wawa.IO.Config`1.Equals(System.Object)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.Config`1.GetHashCode">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.Config`1.ToString">
-            <summary>
-            Deserializes, then re-serializes the file according to <see cref="M:Wawa.IO.Config.Serialize``1(``0)"/>.
-            In the editor, this method serializes the default value of the constructor in <typeparamref name="T"/>.
-            </summary>
-            <returns>A string representation of the value from <see cref="M:Wawa.IO.Config.Read``1(Wawa.IO.Config{``0})"/>.</returns>
-        </member>
-        <member name="T:Wawa.IO.ModInfo">
-            <summary>
-            Contains the properties needed to perform JSON-deserialization
-            of a modInfo.json located in the root directory of a mod.
-            </summary>
-        </member>
-        <member name="F:Wawa.IO.ModInfo.FileName">
-            <summary>The file name used for this type.</summary>
-        </member>
-        <member name="P:Wawa.IO.ModInfo.Author">
-            <summary>Gets the author(s) of the mod.</summary>
-        </member>
-        <member name="P:Wawa.IO.ModInfo.Description">
-            <summary>Gets the description of the mod.</summary>
-        </member>
-        <member name="P:Wawa.IO.ModInfo.Id">
-            <summary>Gets the id of the mod.</summary>
-        </member>
-        <member name="P:Wawa.IO.ModInfo.Title">
-            <summary>Gets the title of the mod.</summary>
-        </member>
-        <member name="P:Wawa.IO.ModInfo.UnityVersion">
-            <summary>Gets the Unity version used to compile the mod.</summary>
-        </member>
-        <member name="P:Wawa.IO.ModInfo.Version">
-            <summary>Gets the version number of the mod.</summary>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.Clone">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.Equals(Wawa.IO.ModInfo,Wawa.IO.ModInfo)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.GetHashCode(Wawa.IO.ModInfo)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.Equals(Wawa.IO.ModInfo)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.op_Equality(Wawa.IO.ModInfo,Wawa.IO.ModInfo)">
-            <summary>Determines whether both instances contain the same values.</summary>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
-            <returns>The value <see langword="true"/> if both instances contain the same values.</returns>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.op_Inequality(Wawa.IO.ModInfo,Wawa.IO.ModInfo)">
-            <summary>Determines whether both instances do not contain the same values.</summary>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
-            <returns>The value <see langword="true"/> if both instances do not contain the same values.</returns>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.Deserialize(System.String)">
-            <summary>Tries to deserialize the parameter as <see cref="T:Wawa.IO.ModInfo"/>.</summary>
-            <param name="contents">The contents to a modInfo.json.</param>
-            <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1"/> containing either a <see langword="new"/> instance
-            of <see cref="T:Wawa.IO.ModInfo"/> which has the information of the file if the serialization is successful,
-            or no value if the file couldn't be read/located.
-            </returns>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.ReadThenDeserialize(System.String)">
-            <summary>
-            Attempts to read the specified path to try to deserialize its contents as <see cref="T:Wawa.IO.ModInfo"/>.
-            </summary>
-            <param name="filePath">The contents to a modInfo.json.</param>
-            <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1"/> containing either a <see langword="new"/> instance
-            of <see cref="T:Wawa.IO.ModInfo"/> which has the information of the file if the serialization is successful,
-            or no value if the file couldn't be read/located.
-            </returns>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.Equals(System.Object)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.GetHashCode">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.ToString">
-            <inheritdoc/>
-        </member>
-        <member name="M:Wawa.IO.ModInfo.FromInternalModInfo(System.Object)">
-            <summary>Creates a <see cref="T:Wawa.IO.ModInfo"/> from the same type in the game.</summary>
-            <param name="metadata">The instance containing the metadata of the mod.</param>
-            <returns>
-            A new <see cref="T:Wawa.IO.ModInfo"/> instance containing the same data as <paramref name="metadata"/>,
-            or the default instance if <paramref name="metadata"/> isn't the type from the game.
-            </returns>
-        </member>
-        <member name="T:Wawa.IO.PathFinder">
-            <summary>Access to the paths and contents of files within folder mod directory.</summary>
-        </member>
-        <member name="P:Wawa.IO.PathFinder.Caller">
+        <member name="P:Wawa.Editors.Internals.Globals.Caller">
             <summary>Gets the <see cref="T:System.Reflection.AssemblyName"/> of the caller that invoked the method calling this.</summary>
             <remarks><para>This is used by the library to log itself, and obtain information about callers.</para></remarks>
         </member>
-        <member name="P:Wawa.IO.PathFinder.Who">
-            <summary>Gets the name of <see cref="P:Wawa.IO.PathFinder.Caller"/>.</summary>
+        <member name="P:Wawa.Editors.Internals.Globals.Which">
+            <summary>Gets the version of <see cref="P:Wawa.Editors.Internals.Globals.Caller"/>.</summary>
         </member>
-        <member name="P:Wawa.IO.PathFinder.Which">
-            <summary>Gets the version of <see cref="P:Wawa.IO.PathFinder.Caller"/>.</summary>
+        <member name="M:Wawa.Editors.Internals.Globals.AssemblyError(System.String)">
+            <summary>Logs a message to the Unity Console with the assembly's name that called this as an error.</summary>
+            <param name="message">The message to log as an error.</param>
         </member>
-        <member name="M:Wawa.IO.PathFinder.AssemblyLog(System.String,UnityEngine.LogType,System.String)">
+        <member name="M:Wawa.Editors.Internals.Globals.AssemblyLog(System.String)">
             <summary>Logs a message to the Unity Console with the assembly's name that called this.</summary>
             <param name="message">The message to log.</param>
-            <param name="logType">The log level.</param>
-            <param name="member">The caller member.</param>
         </member>
-        <member name="M:Wawa.IO.PathFinder.GetDirectory(System.String)">
-            <summary>Gets the absolute directory of the mod.</summary>
-            <param name="modId">
-            The mod id to get the mod directory from.
-            If <see langword="null" />, implicitly gets the directory of the mod from the file of the assembly.
-            </param>
+        <member name="M:Wawa.Editors.Internals.Globals.IsErr(UnityEngine.Networking.UnityWebRequest,System.Byte[]@)">
+            <summary>Determines if the request has failed.</summary>
+            <param name="web">The <see cref="T:UnityEngine.Networking.UnityWebRequest"/> to check.</param>
+            <param name="data">The raw bytes from the request. Valid if method returns <see langword="false"/>.</param>
             <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1" />, consisting of either folder <see cref="T:System.String" /> of the absolute directory
-            of the file if there is a folder mod id entry within the game's mod dictionary, or <see langword="default" />.
+            The value <see langword="true"/> if a network or http error occured, otherwise <see langword="false"/>.
             </returns>
         </member>
-        <member name="M:Wawa.IO.PathFinder.GetFile(System.String,System.String)">
-            <summary>Gets the absolute directory of the file located inside the mod directory.</summary>
-            <param name="filePath">The file located inside folder mod directory.</param>
-            <param name="modId">
-            The mod id to get the mod directory from.
-            If <see langword="null" />, implicitly gets the directory of the mod from the file of the assembly.
-            </param>
-            <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1" />, consisting of either folder <see cref="T:System.String" /> of the absolute directory
-            of the file if the mod directory and file were found, or <see langword="default" />.
-            </returns>
+        <member name="T:Wawa.Editors.Internals.ModBundle">
+            <summary>Contains a method invoked by Unity to add a potentially missing tag.</summary>
         </member>
-        <member name="M:Wawa.IO.PathFinder.GetModInfo(System.String)">
-            <summary>Gets and deserializes the <see cref="T:Wawa.IO.ModInfo" /> file located in every mod's root directory.</summary>
-            <param name="modId">
-            The mod id to get the mod directory from.
-            If <see langword="null" />, implicitly gets the directory of the mod from the file of the assembly.
-            </param>
-            <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1" />, consisting of either folder <see cref="T:Wawa.IO.ModInfo" /> if the file was read
-            and deserialized successfully, or <see langword="default" />.
-            </returns>
+        <member name="F:Wawa.Editors.Internals.ModBundle.Tag">
+            <summary>The tag that indicates that the asset be included in exporting.</summary>
         </member>
-        <member name="M:Wawa.IO.PathFinder.GetAssets``1(System.String,System.String)">
-            <summary>Loads and returns assets from disk.</summary>
-            <typeparam name="T">The type of asset to get.</typeparam>
-            <param name="filePath">The file which contains the assets.</param>
-            <param name="modId">
-            The mod id to get the mod directory from.
-            If <see langword="null" />, implicitly gets the directory of the mod from the file of the assembly.
-            </param>
-            <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1" />, consisting of either an <see cref="T:System.Array" /> of <typeparamref file="T" />
-            from the assets in the file specified, or <see langword="default" /> in the event of an error.
-            </returns>
+        <member name="T:Wawa.Editors.Internals.Scaffold">
+            <summary>Source generator.</summary>
         </member>
-        <member name="M:Wawa.IO.PathFinder.GetUnmanaged``1(System.String,System.String,System.String)">
-            <summary>Gets an unmanaged function from an external library.</summary>
-            <typeparam name="T">The signature of the function.</typeparam>
-            <param name="libPath">The external file.</param>
-            <param name="ffiMethodName">The name of the method.</param>
-            <param name="modId">
-            The mod id to get the mod directory from.
-            If <see langword="null" />, implicitly gets the directory of the mod from the file of the assembly.
-            </param>
-            <returns>
-            The value <see langword="true" /> if copying the file was successful, otherwise <see langword="false" />.
-            </returns>
+        <member name="M:Wawa.Editors.Internals.Scaffold.Solvable">
+            <summary>Creates a solvable module.</summary>
+        </member>
+        <member name="M:Wawa.Editors.Internals.Scaffold.Needy">
+            <summary>Creates a needy module.</summary>
+        </member>
+        <member name="T:Wawa.Editors.Internals.Update">
+            <summary>Updates libraries.</summary>
+        </member>
+        <member name="M:Wawa.Editors.Internals.Update.Fetch(System.String[])">
+            <summary>Fetches and downloads a set of libraries concurrently.</summary>
+            <param name="fetches">The libraries to fetch.</param>
+        </member>
+        <member name="T:Wawa.Editors.Internals.WawaEditor">
+            <summary>Adds a simple UI to download and update this family of libraries.</summary>
+        </member>
+        <member name="F:Wawa.Editors.Internals.WawaEditor.This">
+            <summary>The name of this library.</summary>
         </member>
     </members>
 </doc>
