@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <IsKtane>true</IsKtane>
+        <NoWarn>$(NoWarn);SA1600</NoWarn>
+        <TargetFramework>net35</TargetFramework>
+    </PropertyGroup>
+</Project>
