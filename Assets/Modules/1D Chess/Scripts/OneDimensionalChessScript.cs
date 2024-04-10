@@ -281,7 +281,7 @@ public class OneDimensionalChessScript : ModuleScript
                 isEvaluating = true;
                 game = Engine.Calculate(position, Position.Depth, true);
 
-                if (!Mathf.Abs(game.Evaluation).InRange(114, 116))
+                if (!Mathf.Abs(game.Evaluation).InRange(Debugger.IsEnabled ? 127 - Debugger.Mate * 2 : 114, Debugger.IsEnabled ? 128 - Debugger.Mate * 2 : 116))
                     continue;
 
                 // Sometimes the evaluation is in favor of black, we need to advance the game by one move so that it is black to move.

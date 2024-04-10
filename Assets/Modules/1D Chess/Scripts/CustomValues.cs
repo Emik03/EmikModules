@@ -10,8 +10,11 @@ namespace OneDimensionalChess
         [SerializeField]
         private bool _isEnabled;
 
-        [Range(Min, Max), SerializeField]
+        [Range(5, Max), SerializeField]
         private byte _length;
+
+        [Range(1, Max), SerializeField]
+        private byte _mate;
 
         [Range(1, 3), SerializeField]
         private byte _blackPieces, _whitePieces;
@@ -20,11 +23,13 @@ namespace OneDimensionalChess
         private string _position;
 #pragma warning restore 649, IDE0044 // Add readonly modifier
 
-        internal const int Min = 8, Max = 10;
+        internal const int Min = 8, Max = 11;
 
         public bool IsEnabled { get { return _isEnabled; } set { _isEnabled = value; } }
 
         public byte Length { get { return _length; } }
+        
+        public byte Mate { get { return _mate; } }
 
         public byte BlackPieces { get { return _blackPieces; } }
 

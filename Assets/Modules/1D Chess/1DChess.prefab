@@ -3772,8 +3772,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _editorRuleSeed: 1
   Debugger:
-    _isEnabled: 1
+    _isEnabled: 0
     _length: 11
+    _mate: 8
     _blackPieces: 4
     _whitePieces: 4
     _position: 

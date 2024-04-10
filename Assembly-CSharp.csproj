@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LangVersion>4</LangVersion>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
+    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
+    <_TargetFrameworkDirectories>non_empty_path_generated_by_rider_editor_plugin</_TargetFrameworkDirectories>
+    <_FullFrameworkReferenceAssemblyPaths>non_empty_path_generated_by_rider_editor_plugin</_FullFrameworkReferenceAssemblyPaths>
+    <DisableHandlePackageFileConflicts>true</DisableHandlePackageFileConflicts>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace>
+    </RootNamespace>
+    <ProjectGuid>{98089FB1-2914-9FEE-0A32-9E19D810E4E7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2017_4_22;UNITY_2017_4;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_LINUX;PLATFORM_STANDALONE;UNITY_STANDALONE_LINUX;UNITY_STANDALONE;UNITY_STANDALONE_LINUX_API;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_SPATIALTRACKING;ENABLE_MODULAR_UNITYENGINE_ASSEMBLIES;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_LINUX;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.Runtime.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.Xml.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\ModSettingsMetadata.cs" />
+    <Compile Include="Assets\Modules\1D Chess\Scripts\CGameResult.cs" />
+    <Compile Include="Assets\Modules\1D Chess\Scripts\CustomValues.cs" />
+    <Compile Include="Assets\Modules\1D Chess\Scripts\Engine.cs" />
+    <Compile Include="Assets\Modules\1D Chess\Scripts\OneDimensionalChessScript.cs" />
+    <Compile Include="Assets\Modules\1D Chess\Scripts\OneDimensionalChessTPScript.cs" />
+    <Compile Include="Assets\Modules\1D Chess\Scripts\Piece.cs" />
+    <Compile Include="Assets\Modules\1D Chess\Scripts\PieceColor.cs" />
+    <Compile Include="Assets\Modules\1D Chess\Scripts\PieceCounter.cs" />
+    <Compile Include="Assets\Modules\1D Chess\Scripts\PieceType.cs" />
+    <Compile Include="Assets\Modules\1D Chess\Scripts\Position.cs" />
+    <Compile Include="Assets\Modules\Coinage\Scripts\CoinageScript.cs" />
+    <Compile Include="Assets\Modules\Coinage\Scripts\CoinageTPScript.cs" />
+    <Compile Include="Assets\Modules\Coinage\Scripts\StatusLightScript.cs" />
+    <Compile Include="Assets\Modules\Etterna\Scripts\Etterna.cs" />
+    <Compile Include="Assets\Modules\Forget Any Color\Scripts\Arrays.cs" />
+    <Compile Include="Assets\Modules\Forget Any Color\Scripts\Calculate.cs" />
+    <Compile Include="Assets\Modules\Forget Any Color\Scripts\FACScript.cs" />
+    <Compile Include="Assets\Modules\Forget Any Color\Scripts\Figure.cs" />
+    <Compile Include="Assets\Modules\Forget Any Color\Scripts\ForgetAnyColorCoroutineScript.cs" />
+    <Compile Include="Assets\Modules\Forget Any Color\Scripts\ForgetAnyColorTPScript.cs" />
+    <Compile Include="Assets\Modules\Forget Any Color\Scripts\Functions.cs" />
+    <Compile Include="Assets\Modules\Forget Any Color\Scripts\Init.cs" />
+    <Compile Include="Assets\Modules\Forget Any Color\Scripts\Render.cs" />
+    <Compile Include="Assets\Modules\Forget Any Color\Scripts\Rule.cs" />
+    <Compile Include="Assets\Modules\Forget Any Color\Scripts\Selectable.cs" />
+    <Compile Include="Assets\Modules\Forget The Colors\Scripts\Calculate.cs" />
+    <Compile Include="Assets\Modules\Forget The Colors\Scripts\Ease.cs" />
+    <Compile Include="Assets\Modules\Forget The Colors\Scripts\FTCScript.cs" />
+    <Compile Include="Assets\Modules\Forget The Colors\Scripts\Generate.cs" />
+    <Compile Include="Assets\Modules\Forget The Colors\Scripts\HandleSelect.cs" />
+    <Compile Include="Assets\Modules\Forget The Colors\Scripts\Init.cs" />
+    <Compile Include="Assets\Modules\Forget The Colors\Scripts\ModuleRender.cs" />
+    <Compile Include="Assets\Modules\Forget The Colors\Scripts\Rule.cs" />
+    <Compile Include="Assets\Modules\Forget The Colors\Scripts\Strings.cs" />
+    <Compile Include="Assets\Modules\hexOS\Scripts\HexOS.cs" />
+    <Compile Include="Assets\Modules\hexOS\Scripts\HexOSStrings.cs" />
+    <Compile Include="Assets\Modules\Linq\Scripts\Function.cs" />
+    <Compile Include="Assets\Modules\Linq\Scripts\LinqFunctions.cs" />
+    <Compile Include="Assets\Modules\Linq\Scripts\LinqScript.cs" />
+    <Compile Include="Assets\Modules\Linq\Scripts\LinqSelect.cs" />
+    <Compile Include="Assets\Modules\Linq\Scripts\LinqTPScript.cs" />
+    <Compile Include="Assets\Modules\Linq\Scripts\LinqValidate.cs" />
+    <Compile Include="Assets\Modules\Logging\Scripts\LoggingScript.cs" />
+    <Compile Include="Assets\Modules\Logging\Scripts\LoggingTPScript.cs" />
+    <Compile Include="Assets\Modules\Logging\Scripts\Logs.cs" />
+    <Compile Include="Assets\Modules\Lying Indicators\Scripts\LyingIndicators.cs" />
+    <Compile Include="Assets\Modules\Naming Conventions\Scripts\DataType.cs" />
+    <Compile Include="Assets\Modules\Naming Conventions\Scripts\NamingConventionsScript.cs" />
+    <Compile Include="Assets\Modules\Naming Conventions\Scripts\NamingConventionsTPScript.cs" />
+    <Compile Include="Assets\Modules\Needy\Scripts\Needy.cs" />
+    <Compile Include="Assets\Modules\Needy\Scripts\NeedyTwitch.cs" />
+    <Compile Include="Assets\Modules\Netherite\Scripts\NetheriteScript.cs" />
+    <Compile Include="Assets\Modules\Netherite\Scripts\NetheriteTPScript.cs" />
+    <Compile Include="Assets\Modules\Netherite\Scripts\VoltData.cs" />
+    <Compile Include="Assets\Modules\Palindromes\Scripts\Palindromes.cs" />
+    <Compile Include="Assets\Modules\Palindromes\Scripts\PalindromesSolver.cs" />
+    <Compile Include="Assets\Modules\Phosphorescence\Scripts\Animate.cs" />
+    <Compile Include="Assets\Modules\Phosphorescence\Scripts\ButtonType.cs" />
+    <Compile Include="Assets\Modules\Phosphorescence\Scripts\Function.cs" />
+    <Compile Include="Assets\Modules\Phosphorescence\Scripts\Init.cs" />
+    <Compile Include="Assets\Modules\Phosphorescence\Scripts\ModSettingsJSON.cs" />
+    <Compile Include="Assets\Modules\Phosphorescence\Scripts\PhosphorescenceScript.cs" />
+    <Compile Include="Assets\Modules\Phosphorescence\Scripts\PhosphorescenceTPScript.cs" />
+    <Compile Include="Assets\Modules\Phosphorescence\Scripts\Render.cs" />
+    <Compile Include="Assets\Modules\Phosphorescence\Scripts\Select.cs" />
+    <Compile Include="Assets\Modules\Phosphorescence\Scripts\Words.cs" />
+    <Compile Include="Assets\Modules\Placeholder Talk\Scripts\placeholderTalk.cs" />
+    <Compile Include="Assets\Modules\Pointless Machines\Scripts\Flash.cs" />
+    <Compile Include="Assets\Modules\Pointless Machines\Scripts\HingeScript.cs" />
+    <Compile Include="Assets\Modules\Pointless Machines\Scripts\LightScript.cs" />
+    <Compile Include="Assets\Modules\Pointless Machines\Scripts\PointlessMachinesScript.cs" />
+    <Compile Include="Assets\Modules\Pointless Machines\Scripts\PointlessMachinesTPScript.cs" />
+    <Compile Include="Assets\Modules\Pointless Machines\Scripts\View.cs" />
+    <Compile Include="Assets\Modules\Quaver\Scripts\ArrowScript.cs" />
+    <Compile Include="Assets\Modules\Quaver\Scripts\Convert.cs" />
+    <Compile Include="Assets\Modules\Quaver\Scripts\Generate.cs" />
+    <Compile Include="Assets\Modules\Quaver\Scripts\Init.cs" />
+    <Compile Include="Assets\Modules\Quaver\Scripts\QuaverScript.cs" />
+    <Compile Include="Assets\Modules\Quaver\Scripts\QuaverTPScript.cs" />
+    <Compile Include="Assets\Modules\Quaver\Scripts\RenderScript.cs" />
+    <Compile Include="Assets\Modules\Quaver\Scripts\Select.cs" />
+    <Compile Include="Assets\Modules\Quaver\Scripts\Unity.cs" />
+    <Compile Include="Assets\Modules\Reformed Role Reversal\Scripts\Algorithms.cs" />
+    <Compile Include="Assets\Modules\Reformed Role Reversal\Scripts\Arrays.cs" />
+    <Compile Include="Assets\Modules\Reformed Role Reversal\Scripts\Condition.cs" />
+    <Compile Include="Assets\Modules\Reformed Role Reversal\Scripts\HandleManual.cs" />
+    <Compile Include="Assets\Modules\Reformed Role Reversal\Scripts\Init.cs" />
+    <Compile Include="Assets\Modules\Reformed Role Reversal\Scripts\Interact.cs" />
+    <Compile Include="Assets\Modules\Reformed Role Reversal\Scripts\Manual.cs" />
+    <Compile Include="Assets\Modules\Reformed Role Reversal\Scripts\ReformedRoleReversal.cs" />
+    <Compile Include="Assets\Modules\Reformed Role Reversal\Scripts\ReformedRoleReversalCoroutineHandler.cs" />
+    <Compile Include="Assets\Modules\Reformed Role Reversal\Scripts\TwitchPlaysHandler.cs" />
+    <Compile Include="Assets\Modules\Role Reversal\Scripts\roleReversal.cs" />
+    <Compile Include="Assets\Modules\Scale\Scripts\Axis.cs" />
+    <Compile Include="Assets\Modules\Scale\Scripts\FloatingScript.cs" />
+    <Compile Include="Assets\Modules\Scale\Scripts\ScaleMath.cs" />
+    <Compile Include="Assets\Modules\Scale\Scripts\ScaleScript.cs" />
+    <Compile Include="Assets\Modules\Sorting\Scripts\Algorithms.cs" />
+    <Compile Include="Assets\Modules\Sorting\Scripts\Sorting.cs" />
+    <Compile Include="Assets\Modules\Template Module\Script\TemplateScript.cs" />
+    <Compile Include="Assets\Modules\Template Module\Script\TemplateTPScript.cs" />
+    <Compile Include="Assets\Modules\The Octadecayotton\Scripts\Animate.cs" />
+    <Compile Include="Assets\Modules\The Octadecayotton\Scripts\Axis.cs" />
+    <Compile Include="Assets\Modules\The Octadecayotton\Scripts\Calculate.cs" />
+    <Compile Include="Assets\Modules\The Octadecayotton\Scripts\InteractScript.cs" />
+    <Compile Include="Assets\Modules\The Octadecayotton\Scripts\ModSettingsJSON.cs" />
+    <Compile Include="Assets\Modules\The Octadecayotton\Scripts\OctadecayottonHypercube.cs" />
+    <Compile Include="Assets\Modules\The Octadecayotton\Scripts\Position.cs" />
+    <Compile Include="Assets\Modules\The Octadecayotton\Scripts\Rotation.cs" />
+    <Compile Include="Assets\Modules\The Octadecayotton\Scripts\RotationOptions.cs" />
+    <Compile Include="Assets\Modules\The Octadecayotton\Scripts\TheOctadecayottonExtensions.cs" />
+    <Compile Include="Assets\Modules\The Octadecayotton\Scripts\TheOctadecayottonScript.cs" />
+    <Compile Include="Assets\Modules\Updog\Scripts\Casing.cs" />
+    <Compile Include="Assets\Modules\Updog\Scripts\Colors.cs" />
+    <Compile Include="Assets\Modules\Updog\Scripts\Extensions.cs" />
+    <Compile Include="Assets\Modules\Updog\Scripts\Mazes.cs" />
+    <Compile Include="Assets\Modules\Updog\Scripts\Spelling.cs" />
+    <Compile Include="Assets\Modules\Updog\Scripts\UpdogScript.cs" />
+    <Compile Include="Assets\Modules\Updog\Scripts\UpdogTPScript.cs" />
+    <Compile Include="Assets\Modules\Updog\Scripts\Words.cs" />
+    <Compile Include="Assets\Scripts\AudioPatcher.cs" />
+    <Compile Include="Assets\Scripts\Easing.cs" />
+    <Compile Include="Assets\Scripts\GeneralExtensions.cs" />
+    <Compile Include="Assets\Scripts\KMBombInfoExtensions.cs" />
+    <Compile Include="Assets\Scripts\KMBossModule.cs" />
+    <Compile Include="Assets\Scripts\KMColorblindMode.cs" />
+    <Compile Include="Assets\Scripts\KMRuleSeedable.cs" />
+    <Compile Include="Assets\Scripts\PrivateWhenPlayingAttribute.cs" />
+    <Compile Include="Assets\Scripts\ReadOnlyWhenPlayingAttribute.cs" />
+    <Compile Include="Assets\Scripts\SFX.cs" />
+    <Compile Include="Assets\Scripts\WrappableText.cs" />
+    <Compile Include="Assets\TestHarness\EdgeworkConfiguration.cs" />
+    <Compile Include="Assets\TestHarness\NeedyTimer.cs" />
+    <Compile Include="Assets\TestHarness\SevenSegDisplay.cs" />
+    <Compile Include="Assets\TestHarness\StatusLight\StatusLight.cs" />
+    <Compile Include="Assets\TestHarness\TestHarness.cs" />
+    <Compile Include="Assets\TestHarness\TestHighlightable.cs" />
+    <Compile Include="Assets\TestHarness\TestSelectable.cs" />
+    <Compile Include="Assets\TestHarness\TestSelectableArea.cs" />
+    <Compile Include="Assets\TestHarness\THWidget.cs" />
+    <Compile Include="Assets\TestHarness\TimerModule.cs" />
+    <Compile Include="Assets\TestHarness\TwitchPlaysID.cs" />
+    <Compile Include="Assets\TestHarness\Widgets\BatteryWidget.cs" />
+    <Compile Include="Assets\TestHarness\Widgets\CustomWidget.cs" />
+    <Compile Include="Assets\TestHarness\Widgets\IndicatorWidget.cs" />
+    <Compile Include="Assets\TestHarness\Widgets\ModWidget.cs" />
+    <Compile Include="Assets\TestHarness\Widgets\PortWidget.cs" />
+    <Compile Include="Assets\TestHarness\Widgets\SerialNumber.cs" />
+    <Compile Include="Assets\TestHarness\Widgets\TwoFactorWidget.cs" />
+    <Compile Include="Assets\TestHarness\Widgets\Widget.cs" />
+    <None Include="Assets\Modules\The Octadecayotton\Shaders\SphereShader.shader" />
+    <None Include="Assets\Shaders\KT_Mobile-Diffuse-tint-transparent.shader" />
+    <None Include="Assets\Modules\Forget Any Color\MissionTutorial.txt" />
+    <None Include="Assets\Modules\Reformed Role Reversal\Shaders\KT_Mobile-Diffuse-tint-transparent.shader" />
+    <None Include="Assets\Examples\Assets\Shaders\KT_3D_Text-Diffuse.shader" />
+    <None Include="Assets\Examples\Assets\Shaders\BlendTwoTexturesUnlit.shader" />
+    <None Include="Assets\Examples\Assets\Shaders\BlendTwoTexturesLitAndUnlitVertexColor.shader" />
+    <None Include="Assets\Modules\Forget The Colors\Materials\Fonts\OFL.txt" />
+    <None Include="Assets\Modules\The Octadecayotton\Shaders\NerfedSphereShader.shader" />
+    <None Include="Assets\Examples\Assets\Shaders\KT_Mobile-Diffuse.shader" />
+    <None Include="Assets\Shaders\KT_3D_Text_Layered.shader" />
+    <None Include="Assets\Modules\Lying Indicators\Data\EmikModuleList.txt" />
+    <None Include="Assets\Examples\Assets\Shaders\KT_3D_Text.shader" />
+    <None Include="Assets\Modules\The Octadecayotton\Shaders\OctadecayottonShader.shader" />
+    <None Include="Assets\Modules\Phosphorescence\MissionTutorial.txt" />
+    <None Include="Assets\Modules\Reformed Role Reversal\Shaders\KT_3D_Text_Layered.shader" />
+    <None Include="Assets\Modules\hexOS\MissionTutorial.txt" />
+    <None Include="Assets\TestHarness\Shaders\Outline.shader" />
+    <None Include="Assets\Examples\Assets\Shaders\MobileTransparentDiffuseUnderlay.shader" />
+    <None Include="Assets\TestHarness\_THIS_FOLDER_IS_EXCLUDED_FROM_BUNDLES.txt" />
+    <None Include="Assets\TestHarness\Widgets\Shaders\3DText.shader" />
+    <None Include="Assets\Examples\Assets\Shaders\UnlitTransparentVertexColorUnderlay.shader" />
+    <None Include="Assets\Modules\Phosphorescence\Data\WordList.txt" />
+    <None Include="Assets\Examples\Assets\Shaders\KT_Mobile-Diffuse-tint.shader" />
+    <None Include="Assets\Modules\The Octadecayotton\MissionTutorial.txt" />
+    <None Include="Assets\Examples\Assets\Shaders\UnlitTexturedLightmap.shader" />
+    <None Include="Assets\Modules\Scale\Shaders\ScaleShader.shader" />
+    <None Include="Assets\Examples\Assets\Shaders\BlendTwoTexturesLitAndUnlit.shader" />
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UNETModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UNETModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WebModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.WebModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StyleSheetsModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.StyleSheetsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticlesLegacyModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ParticlesLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIAutomation">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GoogleAudioSpatializer">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>/home/emik/Unity/Hub/Editor/2017.4.22f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="KMFramework">
+      <HintPath>/media/f/RiderProjects/UnitySandbox/EmikModules/Assets/Plugins/Managed/KMFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="wawa.Unity">
+      <HintPath>/media/f/RiderProjects/UnitySandbox/EmikModules/Assets/Plugins/Managed/wawa.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="wawa.Recall">
+      <HintPath>/media/f/RiderProjects/UnitySandbox/EmikModules/Assets/Plugins/Managed/wawa.Recall.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>/media/f/RiderProjects/UnitySandbox/EmikModules/Assets/Plugins/Managed/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="KeepCoding">
+      <HintPath>/media/f/RiderProjects/UnitySandbox/EmikModules/Assets/Plugins/Managed/KeepCoding.dll</HintPath>
+    </Reference>
+    <Reference Include="wawa.TwitchPlays">
+      <HintPath>/media/f/RiderProjects/UnitySandbox/EmikModules/Assets/Plugins/Managed/wawa.TwitchPlays.dll</HintPath>
+    </Reference>
+    <Reference Include="wawa.Modules">
+      <HintPath>/media/f/RiderProjects/UnitySandbox/EmikModules/Assets/Plugins/Managed/wawa.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="wawa.Extensions">
+      <HintPath>/media/f/RiderProjects/UnitySandbox/EmikModules/Assets/Plugins/Managed/wawa.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="wawa.DDL">
+      <HintPath>/media/f/RiderProjects/UnitySandbox/EmikModules/Assets/Plugins/Managed/wawa.DDL.dll</HintPath>
+    </Reference>
+    <Reference Include="wawa.IO">
+      <HintPath>/media/f/RiderProjects/UnitySandbox/EmikModules/Assets/Plugins/Managed/wawa.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="wawa.Optionals">
+      <HintPath>/media/f/RiderProjects/UnitySandbox/EmikModules/Assets/Plugins/Managed/wawa.Optionals.dll</HintPath>
+    </Reference>
+    <Reference Include="Canvas">
+      <HintPath>/media/f/RiderProjects/UnitySandbox/EmikModules/Assets/Plugins/Managed/Canvas.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>/home/emik/.config/unity3d/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>/home/emik/.config/unity3d/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StandardEvents">
+      <HintPath>/home/emik/.config/unity3d/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
