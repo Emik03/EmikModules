@@ -48,6 +48,6 @@ MonoBehaviour:
     \n  [*] [url=https://ktane.timwi.de/HTML/Quaver.html]Quaver[/url]\r\n  [*] [url=https://ktane.timwi.de/HTML/Reformed%20Role%20Reversal.html]ReformedRoleReversal[/url]\r\n
     \ [*] [url=https://ktane.timwi.de/HTML/Role%20Reversal.html]roleReversal[/url]\r\n
     \ [*] [url=https://ktane.timwi.de/HTML/Sorting.html]sorting[/url]\r\n  [*] [url=https://ktane.timwi.de/HTML/Updog.html]Updog[/url]\r\n[/list]"
-  version: 2.0.4
+  version: 2.0.5
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 588042eeb44adae4cb0611f300e65f5e, type: 3}
