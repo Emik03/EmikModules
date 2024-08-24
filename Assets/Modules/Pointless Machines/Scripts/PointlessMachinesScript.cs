@@ -27,6 +27,8 @@ public class PointlessMachinesScript : ModuleScript
 
     private Vector3 _neutral;
 
+    private Flash[] _souvenirFlashes;
+
     private void Start()
     {
         Get<AudioScript>().Play(SFX.Pm.Loop, loop: true, volume: 0);
@@ -49,19 +51,19 @@ public class PointlessMachinesScript : ModuleScript
             Get<AudioScript>().Fade(volume: 0, time: 3);
         });
 
-        var flashes = GetFlashes();
+        _souvenirFlashes = GetFlashes();
 
-        Log("The flashes are {0}.".Form(flashes));
+        Log("The flashes are {0}.".Form(_souvenirFlashes));
 
         GenerateRuleseed(Get<KMRuleSeedable>().GetRNG());
-        Calculate(flashes, new List<int>());
+        Calculate(_souvenirFlashes, new List<int>());
 
-        answer = flashes.Select(f => _conversion[f]).ToArray();
+        answer = _souvenirFlashes.Select(f => _conversion[f]).ToArray();
 
         Log("The answer is {0}.".Form(answer.Combine(delimiter: ", then ")));
 
         StartCoroutine(KMBombListen());
-        StartCoroutine(MachineHandler(flashes));
+        StartCoroutine(MachineHandler(_souvenirFlashes));
     }
 
     private static readonly Func<Flash[], int, bool>[] _majorRules = new Func<Flash[], int, bool>[]
