@@ -22,6 +22,9 @@ public class UpdogScript : ModuleScript
     private bool[] _order;
     private int _interactCount;
 
+    private string _souvenirWord;
+    private Color[] _souvenirColors;
+
     public override void OnActivate()
     {
         Arrows.Assign(onInteract: ArrowsInteract);
@@ -93,6 +96,9 @@ public class UpdogScript : ModuleScript
 
     private IEnumerator Flash(Color[] colors, string text)
     {
+        _souvenirWord = text;
+        _souvenirColors = colors;
+
         const float Time = 0.375f;
 
         string[] colorblind = colors.AsString(text);
