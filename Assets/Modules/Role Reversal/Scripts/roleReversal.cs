@@ -1050,13 +1050,13 @@ public class roleReversal : MonoBehaviour
         byte b;
         //cut wire 1-7
         if (submit)
-            return byte.TryParse(par, out b) && b < 8 && b != 0;
+            return byte.TryParse(par, out b) && b < 8 && b > 0;
 
         //wire 1-7 (1 is tutorial), condition 0-8 (0 is section header)
         if (par.Length != 3)
             return false;
 
-        return char.GetNumericValue(par.ToCharArray()[0]) < 8 && char.GetNumericValue(par.ToCharArray()[0]) != 0 && par.ToCharArray()[1] == '.' && char.GetNumericValue(par.ToCharArray()[2]) != 0 && char.GetNumericValue(par.ToCharArray()[2]) < 9;
+        return char.GetNumericValue(par.ToCharArray()[0]) < 8 && char.GetNumericValue(par.ToCharArray()[0]) > 0 && par.ToCharArray()[1] == '.' && char.GetNumericValue(par.ToCharArray()[2]) > 0 && char.GetNumericValue(par.ToCharArray()[2]) < 9;
     }
 
 #pragma warning disable 414
