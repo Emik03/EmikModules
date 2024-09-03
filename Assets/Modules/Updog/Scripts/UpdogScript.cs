@@ -21,10 +21,10 @@ public class UpdogScript : ModuleScript
 
     private bool[] _order;
     private int _interactCount;
-
+#pragma warning disable 414 // Used via reflection
     private string _souvenirWord;
     private Color[] _souvenirColors;
-
+#pragma warning restore
     public override void OnActivate()
     {
         Arrows.Assign(onInteract: ArrowsInteract);
