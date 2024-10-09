@@ -163,7 +163,7 @@ public class TheOctadecayottonScript : MonoBehaviour
             if (Interact.Dimension != 0)
                 yield return "sendtochaterror Since the module has been activated at least once, this value can no longer change.";
 
-            if (dimensionOverride > 12)
+            else if (dimensionOverride > 12)
                 yield return "sendtochaterror For performance reasons, stay is unavailable with more than 12 dimensions.";
 
             else
