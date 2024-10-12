@@ -367,7 +367,11 @@ internal static class SFX
     /// </summary>
     internal static class Ud
     {
-        internal const string Solve = "Updog";
+        internal const string Solve = "UpdogSolve";
+        internal const string Strike = "UpdogStrike";
+        internal const string Dog = "UpdogDog";
+        internal const string Explosion = "UpdogExplosion";
+        internal const string Heal = "UpdogHeal";
     }
 
     private static readonly string _version = PathManager.GetModInfo("EmikModules").Version;
