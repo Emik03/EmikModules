@@ -78,9 +78,7 @@ public class UpdogScript : ModuleScript
             return;
         }
 
-        PlaySound(SFX.Ud.Solve);
-
-        PlaySound(SFX.Ud.Explosion);
+        PlaySound(SFX.Ud.Solve, SFX.Ud.Explosion);
         StartCoroutine(AnimateExplosion());
 
         Solve("Solved! :)");
