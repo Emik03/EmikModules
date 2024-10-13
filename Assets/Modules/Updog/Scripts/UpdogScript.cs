@@ -11,6 +11,10 @@ public class UpdogScript : ModuleScript
     public KMSelectable[] Arrows, Center;
     public Renderer CenterRenderer;
     public TextMesh Text;
+    public Texture2D[] TobySprites;
+    public Renderer[] DogButtonRenderers;
+    public SpriteRenderer ExplosionRenderer;
+    public Sprite[] ExplosionSprites;
 
     internal bool IsOnBone { get { return _maze[_position.Item1][_position.Item2] == 'x'; } }
     internal bool[] ValidMoves { get { return _maze.GetValidMovements(ref _position); } }
@@ -18,6 +22,8 @@ public class UpdogScript : ModuleScript
 
     private IntTuple _position, _initialPosition;
     private String[] _maze, _initialMaze;
+
+    private int[] _animationIndex = new int[4];
 
     private bool[] _order;
     private int _interactCount;
@@ -29,8 +35,6 @@ public class UpdogScript : ModuleScript
     {
         Arrows.Assign(onInteract: ArrowsInteract);
         Center.Assign(onInteract: CenterInteract);
-
-        GetChild<Light>().range = 0.05f * transform.lossyScale.x;
 
         var colors = Colors.GetFinal;
         var word = Words.GetRandom;
@@ -68,11 +72,18 @@ public class UpdogScript : ModuleScript
 
         _maze[_position.Item1][_position.Item2] = ' ';
 
-        if (_maze.IsSolved())
+        if (!_maze.IsSolved())
         {
-            PlaySound(SFX.Ud.Solve);
-            Solve("Solved! :)");
+            PlaySound(SFX.Ud.Heal);
+            return;
         }
+
+        PlaySound(SFX.Ud.Solve, SFX.Ud.Explosion);
+        StartCoroutine(AnimateExplosion());
+
+        Solve("Solved! :)");
+        for (int ix = 0; ix < 4; ix++)
+            StartCoroutine(AnimateSolve(ix));
     }
 
     public override void OnColorblindChanged(bool isEnabled) { }
@@ -82,16 +93,87 @@ public class UpdogScript : ModuleScript
         if (IsSolved)
             return;
 
-        ButtonEffect(Arrows[i], 1, Sound.ButtonPress);
+        ButtonEffect(Arrows[i], 1, i >= 4 ? (KeepCoding.Sound)SFX.Ud.Dog : Sound.ButtonPress);
+
+        if (i >= 4)
+        {
+            StartCoroutine(AnimateDog(i - 4));
+        }
 
         if (_order[_interactCount % 4] ^ i >= 4)
             OnStrike("The wrong type of button has been pushed, causing the dog to trip and fall. Strike for being unable to walk correctly!");
-        
+
         else if (!_maze.IsValidMove(this, ref _position, i % 4))
             OnStrike("The dog violently crashed into the wall, hurting him. Strike for animal cruelty!");
-        
+
         else
             _interactCount++;
+    }
+
+    private IEnumerator AnimateDog(int ix)
+    {
+        const float Delay = 0.2f;
+
+        var mat = DogButtonRenderers[ix].material;
+
+        _animationIndex[ix]++;
+        var anim = _animationIndex[ix];
+
+        mat.mainTexture = TobySprites[3];
+        yield return new WaitForSeconds(Delay * 2);
+        if (_animationIndex[ix] != anim)
+            yield break;
+
+        for (int i = 0; i < 6; i++)
+        {
+            mat.mainTexture = TobySprites[1];
+            yield return new WaitForSeconds(Delay);
+            if (_animationIndex[ix] != anim)
+                yield break;
+            mat.mainTexture = TobySprites[2];
+            yield return new WaitForSeconds(Delay);
+            if (_animationIndex[ix] != anim)
+                yield break;
+        }
+        mat.mainTexture = TobySprites[0];
+    }
+
+    private IEnumerator AnimateSolve(int ix)
+    {
+        const float Delay = 0.66f;
+
+        yield return AnimateDog(ix);
+
+        var offset = Random.Range(7f, 30f);
+        yield return new WaitForSeconds(offset);
+
+        var mat = DogButtonRenderers[ix].material;
+
+        mat.mainTextureScale = new Vector2(0.85f, 0.85f);
+        mat.mainTextureOffset = new Vector2(0.075f, 0.075f);
+
+        while (true)
+        {
+            mat.mainTexture = TobySprites[4];
+            yield return new WaitForSeconds(Delay);
+            mat.mainTexture = TobySprites[5];
+            yield return new WaitForSeconds(Delay);
+        }
+    }
+
+    private IEnumerator AnimateExplosion()
+    {
+        const float Delay = 0.05f;
+
+        ExplosionRenderer.gameObject.SetActive(true);
+
+        for (int i = 0; i < ExplosionSprites.Length; i++)
+        {
+            ExplosionRenderer.sprite = ExplosionSprites[i];
+            yield return new WaitForSeconds(Delay);
+        }
+
+        ExplosionRenderer.gameObject.SetActive(false);
     }
 
     private IEnumerator Flash(Color[] colors, string text)
@@ -106,21 +188,22 @@ public class UpdogScript : ModuleScript
 
         while (!IsSolved)
         {
-            UpdateCenter(IsColorblind ? colorblind.ElementAtWrap(i) : text, colors.ElementAtWrap(i));
+            UpdateCenter(IsColorblind ? colorblind.ElementAtWrap(i) : text, colors.ElementAtWrap(i), IsColorblind ? 1f : 1.25f);
             yield return new WaitForSecondsRealtime(Time);
             i++;
         }
 
-        UpdateCenter(Colors.White, Colors.white);
+        UpdateCenter(Colors.White, Colors.white, 1f);
     }
 
-    private void UpdateCenter(string str, Color color)
+    private void UpdateCenter(string str, Color color, float scale)
     {
-        var lightColors = new[] { Colors.yellow, Colors.green, Colors.white};
+        var lightColors = new[] { Colors.yellow, Colors.green, Colors.white };
 
         Text.text = str;
         Text.color = lightColors.IsAnyEqual(color) ? Color.black : Color.white;
         CenterRenderer.material.color = color;
+        Text.transform.localScale = Text.transform.localScale.Set(x: scale);
     }
 
     private void OnStrike(string message)
@@ -129,6 +212,8 @@ public class UpdogScript : ModuleScript
         _position = _initialPosition;
 
         _initialMaze.Copy(_maze);
+
+        PlaySound(SFX.Ud.Strike);
 
         Strike(message);
     }

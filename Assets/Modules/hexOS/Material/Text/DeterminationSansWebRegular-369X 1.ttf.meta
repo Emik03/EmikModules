@@ -5,8 +5,8 @@ TrueTypeFontImporter:
   serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 0
-  characterPadding: 1
+  characterSpacing: 4
+  characterPadding: 4
   includeFontData: 1
   fontName: Determination Sans Web
   fontNames:
