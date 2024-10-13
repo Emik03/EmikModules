@@ -6,9 +6,7 @@ This repository item aims to combine all of my mods into one, making future main
 - To build the contents of this mod, download this version of Unity. [Windows](https://download.unity3d.com/download_unity/eb4bc6fa7f1d/UnityDownloadAssistant-2017.4.22f1.exe)/[Mac](https://download.unity3d.com/download_unity/eb4bc6fa7f1d/UnityDownloadAssistant-2017.4.22f1.dmg)
 - Download the repository, and open it with Unity.
 - Click on the dropdown "Keep Talking Modkit" and press "Build AssetBundle", or press F6.
-- A folder called build is created, open the EmikModules folder and create a new folder called "dlls".
-- Drag the .so and .dylib files from Assets\Plugins\Rustmate into the root of dlls.
-- Create 2 folders, called "x86" and "x86_64", and drop the .dll file of rustmate inside both.
+- A directory called `build` is created, copy the directory `./Assets/Plugins/Rustmate/lib` to the inside of `./build/EmikModules`.
 - Create a folder called "mods" inside of the root directory of the game.
 - Copy the entire EmikModules folder to that folder.
 - Open the game and enable mods when prompted.
