@@ -1,7 +1,7 @@
 ﻿// SPDX-License-Identifier: MPL-2.0
 using System;
-using Wawa.IO;
-using Wawa.Optionals;
+using wawa.IO;
+using wawa.Optionals;
 
 namespace OneDimensionalChess
 {

@@ -13,7 +13,6 @@ public class TemplateScript : ModuleScript
     public IEnumerator Start()
     {
         Debug.unityLogger.LogFormat(LogType.Log, this, "foobar {0}", "hi");
-    	Log(Wawa.Modules.Stringifier.Stringify((Enum)System.Reflection.BindingFlags.IgnoreCase));
 
         //Debug.Log(_textMesh.text = "Example Example Text");
 
