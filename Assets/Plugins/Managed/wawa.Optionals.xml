@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <doc>
     <assembly>
         <name>wawa.Optionals</name>
@@ -20,7 +20,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute" /> class
             with the specified parameter value.
             </summary>
             <param name="parameterValue">
@@ -31,18 +31,20 @@
         <member name="P:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.ParameterValue">
             <summary>
             Gets a value indicating whether the condition parameter value
-            is <see langword="true"/> or <see langword="false"/>.
+            is <see langword="true" /> or <see langword="false" />.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.op_Implicit(System.Boolean)~System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of DoesNotReturnIfAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)" />.
             </summary>
             <param name="parameterValue">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of DoesNotReturnIfAttribute by passing the parameter <paramref name="parameterValue"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute" />
+            by passing the parameter <paramref name="parameterValue" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)" />.
             </returns>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute">
@@ -56,13 +58,13 @@
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute">
             <summary>
-            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue"/>,
+            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue" />,
             the parameter may be null even if the corresponding type disallows it.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute" /> class
             with the specified return value condition.
             </summary>
             <param name="returnValue">
@@ -72,29 +74,31 @@
         <member name="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue">
             <summary>
             Gets a value indicating whether the return value condition
-            is <see langword="true"/> or <see langword="false"/>.
+            is <see langword="true" /> or <see langword="false" />.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.op_Implicit(System.Boolean)~System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of MaybeNullWhenAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)" />.
             </summary>
             <param name="returnValue">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of MaybeNullWhenAttribute by passing the parameter <paramref name="returnValue"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute" />
+            by passing the parameter <paramref name="returnValue" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)" />.
             </returns>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
             <summary>
-            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>,
+            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue" />,
             the parameter will not be null even if the corresponding type allows it.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute"/>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute" />
             class with the specified return value condition.
             </summary>
             <param name="returnValue">
@@ -103,18 +107,20 @@
         </member>
         <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
             <summary>
-            Gets a value indicating whether the return value condition is <see langword="true"/> or <see langword="false"/>.
+            Gets a value indicating whether the return value condition is <see langword="true" /> or <see langword="false" />.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.op_Implicit(System.Boolean)~System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of NotNullWhenAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)" />.
             </summary>
             <param name="returnValue">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of NotNullWhenAttribute by passing the parameter <paramref name="returnValue"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute" />
+            by passing the parameter <paramref name="returnValue" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)" />.
             </returns>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute">
@@ -122,7 +128,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute" /> class
             with the associated parameter name.
             </summary>
             <param name="parameterName">
@@ -135,13 +141,15 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.op_Implicit(System.String)~System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of NotNullIfNotNullAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)" />.
             </summary>
             <param name="parameterName">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of NotNullIfNotNullAttribute by passing the parameter <paramref name="parameterName"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute" />
+            by passing the parameter <paramref name="parameterName" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
@@ -152,7 +160,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute"/>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute" />
             class with a field or property member.
             </summary>
             <param name="member">
@@ -161,7 +169,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute" /> class
             with the list of field and property members.
             </summary>
             <param name="members">
@@ -173,24 +181,28 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.op_Implicit(System.String)~System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of MemberNotNullAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)" />.
             </summary>
             <param name="member">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of MemberNotNullAttribute by passing the parameter <paramref name="member"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute" />
+            by passing the parameter <paramref name="member" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.op_Implicit(System.String[])~System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of MemberNotNullAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])" />.
             </summary>
             <param name="members">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of MemberNotNullAttribute by passing the parameter <paramref name="members"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute" />
+            by passing the parameter <paramref name="members" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])" />.
             </returns>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute">
@@ -201,7 +213,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute" /> class
             with the specified return value condition and a field or property member.
             </summary>
             <param name="returnValue">
@@ -211,7 +223,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute" /> class
             with the specified return value condition and list of field and property members.
             </summary>
             <param name="returnValue">
@@ -224,7 +236,7 @@
         <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.ReturnValue">
             <summary>
             Gets a value indicating whether the return value condition
-            is <see langword="true"/> or <see langword="false"/>.
+            is <see langword="true" /> or <see langword="false" />.
             </summary>
         </member>
         <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.Members">
@@ -249,10 +261,10 @@
             <summary>The syntax identifier for strings containing date and time format specifiers.</summary>
         </member>
         <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.EnumFormat">
-            <summary>The syntax identifier for strings containing <see cref="T:System.Enum"/> format specifiers.</summary>
+            <summary>The syntax identifier for strings containing <see cref="T:System.Enum" /> format specifiers.</summary>
         </member>
         <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.GuidFormat">
-            <summary>The syntax identifier for strings containing <see cref="T:System.Guid"/> format specifiers.</summary>
+            <summary>The syntax identifier for strings containing <see cref="T:System.Guid" /> format specifiers.</summary>
         </member>
         <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Json">
             <summary>The syntax identifier for strings containing JavaScript Object Notation (JSON).</summary>
@@ -267,7 +279,7 @@
             <summary>The syntax identifier for strings containing time format specifiers.</summary>
         </member>
         <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.TimeSpanFormat">
-            <summary>The syntax identifier for strings containing <see cref="T:System.TimeSpan"/> format specifiers.</summary>
+            <summary>The syntax identifier for strings containing <see cref="T:System.TimeSpan" /> format specifiers.</summary>
         </member>
         <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Uri">
             <summary>The syntax identifier for strings containing URIs.</summary>
@@ -277,14 +289,14 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute" /> class
             with the identifier of the syntax used.
             </summary>
             <param name="syntax">The syntax identifier.</param>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String,System.Object[])">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute" /> class
             with the identifier of the syntax used.
             </summary>
             <param name="syntax">The syntax identifier.</param>
@@ -298,13 +310,15 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.op_Implicit(System.String)~System.Diagnostics.CodeAnalysis.StringSyntaxAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of StringSyntaxAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)" />.
             </summary>
             <param name="syntax">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of StringSyntaxAttribute by passing the parameter <paramref name="syntax"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute" />
+            by passing the parameter <paramref name="syntax" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.UnscopedRefAttribute">
@@ -319,7 +333,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute"/> class, specifying the
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute" /> class, specifying the
             ID that the compiler will use when reporting a use of the API the attribute applies to.
             </summary>
             <param name="diagnosticId">
@@ -348,13 +362,15 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.op_Implicit(System.String)~System.Diagnostics.CodeAnalysis.ExperimentalAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of ExperimentalAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)" />.
             </summary>
             <param name="diagnosticId">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of ExperimentalAttribute by passing the parameter <paramref name="diagnosticId"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute" />
+            by passing the parameter <paramref name="diagnosticId" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:System.Runtime.CompilerServices.InterceptsLocationAttribute">
@@ -371,26 +387,26 @@
         </member>
         <member name="T:System.Runtime.CompilerServices.CollectionBuilderAttribute">
             <summary>
-            Initialize the attribute to refer to the <paramref name="methodName"/>
-            method on the <paramref name="builderType"/> type.
+            Initialize the attribute to refer to the <paramref name="methodName" />
+            method on the <paramref name="builderType" /> type.
             </summary>
             <param name="builderType">The type of the builder to use to construct the collection.</param>
             <param name="methodName">The name of the method on the builder to use to construct the collection.</param>
             <remarks><para>
-            <paramref name="methodName"/> must refer to a static method that accepts a single parameter of
+            <paramref name="methodName" /> must refer to a static method that accepts a single parameter of
             type <c>ReadOnlySpan&lt;T&gt;</c> and returns an instance of the collection being built containing
             a copy of the data from that span. In future releases of .NET, additional patterns may be supported.
             </para></remarks>
         </member>
         <member name="M:System.Runtime.CompilerServices.CollectionBuilderAttribute.#ctor(System.Type,System.String)">
             <summary>
-            Initialize the attribute to refer to the <paramref name="methodName"/>
-            method on the <paramref name="builderType"/> type.
+            Initialize the attribute to refer to the <paramref name="methodName" />
+            method on the <paramref name="builderType" /> type.
             </summary>
             <param name="builderType">The type of the builder to use to construct the collection.</param>
             <param name="methodName">The name of the method on the builder to use to construct the collection.</param>
             <remarks><para>
-            <paramref name="methodName"/> must refer to a static method that accepts a single parameter of
+            <paramref name="methodName" /> must refer to a static method that accepts a single parameter of
             type <c>ReadOnlySpan&lt;T&gt;</c> and returns an instance of the collection being built containing
             a copy of the data from that span. In future releases of .NET, additional patterns may be supported.
             </para></remarks>
@@ -419,21 +435,23 @@
             </summary>
         </member>
         <member name="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)">
-            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute"/> class.</summary>
-            <param name="builderType">The <see cref="T:System.Type"/> of the associated builder.</param>
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute" /> class.</summary>
+            <param name="builderType">The <see cref="T:System.Type" /> of the associated builder.</param>
         </member>
         <member name="P:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.BuilderType">
-            <summary>Gets the <see cref="T:System.Type"/> of the associated builder.</summary>
+            <summary>Gets the <see cref="T:System.Type" /> of the associated builder.</summary>
         </member>
         <member name="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.op_Implicit(System.Type)~System.Runtime.CompilerServices.AsyncMethodBuilderAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of AsyncMethodBuilderAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)" />.
             </summary>
             <param name="builderType">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of AsyncMethodBuilderAttribute by passing the parameter <paramref name="builderType"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute" />
+            by passing the parameter <paramref name="builderType" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)" />.
             </returns>
         </member>
         <member name="T:System.Runtime.CompilerServices.InterpolatedStringHandlerAttribute">
@@ -446,7 +464,7 @@
         </member>
         <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute"/> class.
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute" /> class.
             </summary>
             <remarks><para>
             The empty string may be used as the name of the receiver in an instance method.
@@ -455,7 +473,7 @@
         </member>
         <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute"/> class.
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute" /> class.
             </summary>
             <remarks><para>
             The empty string may be used as the name of the receiver in an instance method.
@@ -470,24 +488,28 @@
         </member>
         <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.op_Implicit(System.String)~System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of InterpolatedStringHandlerArgumentAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)" />.
             </summary>
             <param name="argument">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of InterpolatedStringHandlerArgumentAttribute by passing the parameter <paramref name="argument"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute" />
+            by passing the parameter <paramref name="argument" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.op_Implicit(System.String[])~System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of InterpolatedStringHandlerArgumentAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])" />.
             </summary>
             <param name="arguments">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of InterpolatedStringHandlerArgumentAttribute by passing the parameter <paramref name="arguments"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute" />
+            by passing the parameter <paramref name="arguments" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])" />.
             </returns>
         </member>
         <member name="T:System.Runtime.CompilerServices.ModuleInitializerAttribute">
@@ -499,16 +521,16 @@
             the compiler will emit a module initializer that calls each of the attributed methods.<br />
             Certain requirements are imposed on any method targeted with this attribute:
             </para><list type="bullet">
-            <item><description>The method must be <see langword="static"/>.</description></item>
+            <item><description>The method must be <see langword="static" />.</description></item>
             <item><description>
             The method must be an ordinary member method, as opposed to a property accessor,
             constructor, local function, and so on.
             </description></item>
             <item><description>The method must be parameterless..</description></item>
-            <item><description>The method must return <see langword="void"/>.</description></item>
+            <item><description>The method must return <see langword="void" />.</description></item>
             <item><description>The method must not be generic or be contained in a generic type.</description></item>
             <item><description>
-            The method's effective accessibility must be <see langword="internal"/> or <see langword="public"/>.
+            The method's effective accessibility must be <see langword="internal" /> or <see langword="public" />.
             </description></item>
             </list><para>
             For more information, see the
@@ -523,7 +545,7 @@
             This is the file path at the time of compile.
             </summary>
             <remarks><para>
-            You apply the <see cref="T:System.Runtime.CompilerServices.CallerFilePathAttribute"/> attribute to an optional parameter that has a default value.
+            You apply the <see cref="T:System.Runtime.CompilerServices.CallerFilePathAttribute" /> attribute to an optional parameter that has a default value.
             You must specify an explicit default value for the optional parameter.
             You can't apply this attribute to parameters that aren't specified as optional.
             </para></remarks>
@@ -531,7 +553,7 @@
         <member name="T:System.Runtime.CompilerServices.CallerLineNumberAttribute">
             <summary>Allows you to obtain the line number in the source file at which the method is called.</summary>
             <remarks><para>
-            You apply the <see cref="T:System.Runtime.CompilerServices.CallerLineNumberAttribute"/> attribute to an optional parameter that
+            You apply the <see cref="T:System.Runtime.CompilerServices.CallerLineNumberAttribute" /> attribute to an optional parameter that
             has a default value. You must specify an explicit default value for the optional parameter.
             You can't apply this attribute to parameters that aren't specified as optional.
             </para></remarks>
@@ -539,7 +561,7 @@
         <member name="T:System.Runtime.CompilerServices.CallerMemberNameAttribute">
             <summary>Allows you to obtain the method or property name of the caller to the method.</summary>
             <remarks><para>
-            You apply the <see cref="T:System.Runtime.CompilerServices.CallerMemberNameAttribute"/> attribute to an optional parameter that
+            You apply the <see cref="T:System.Runtime.CompilerServices.CallerMemberNameAttribute" /> attribute to an optional parameter that
             has a default value. You must specify an explicit default value for the optional parameter.
             You can't apply this attribute to parameters that aren't specified as optional.
             </para></remarks>
@@ -549,7 +571,7 @@
             <remarks><para>This attribute is implemented in the compiler for C# 10 and later versions only.</para></remarks>
         </member>
         <member name="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)">
-            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute"/> class.</summary>
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute" /> class.</summary>
             <param name="parameterName">
             The name of the parameter whose expression should be captured as a string.
             </param>
@@ -559,13 +581,15 @@
         </member>
         <member name="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.op_Implicit(System.String)~System.Runtime.CompilerServices.CallerArgumentExpressionAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of CallerArgumentExpressionAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)" />.
             </summary>
             <param name="parameterName">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of CallerArgumentExpressionAttribute by passing the parameter <paramref name="parameterName"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute" />
+            by passing the parameter <paramref name="parameterName" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:System.Runtime.CompilerServices.SkipLocalsInitAttribute">
@@ -588,11 +612,11 @@
             </summary>
         </member>
         <member name="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute"/> class.</summary>
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute" /> class.</summary>
         </member>
         <member name="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute" /> class
             with the specified message.
             </summary>
             <param name="message">An optional message associated with this attribute instance.</param>
@@ -605,13 +629,15 @@
         </member>
         <member name="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.op_Implicit(System.String)~System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of RequiresPreviewFeaturesAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor(System.String)" />.
             </summary>
             <param name="message">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of RequiresPreviewFeaturesAttribute by passing the parameter <paramref name="message"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute" />
+            by passing the parameter <paramref name="message" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute">
@@ -621,13 +647,13 @@
             </summary>
         </member>
         <member name="F:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.RefStructs">
-            <summary>The <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName"/> used for the ref structs C# feature.</summary>
+            <summary>The <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName" /> used for the ref structs C# feature.</summary>
         </member>
         <member name="F:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.RequiredMembers">
-            <summary>The <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName"/> used for the required members C# feature.</summary>
+            <summary>The <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName" /> used for the required members C# feature.</summary>
         </member>
         <member name="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)">
-            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute"/> class.</summary>
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute" /> class.</summary>
             <param name="featureName">The name of the compiler feature.</param>
         </member>
         <member name="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName">
@@ -636,18 +662,20 @@
         <member name="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.IsOptional">
             <summary>
             Gets or sets a value indicating whether the compiler can choose to allow access to the location
-            where this attribute is applied if it does not understand <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName"/>.
+            where this attribute is applied if it does not understand <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName" />.
             </summary>
         </member>
         <member name="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.op_Implicit(System.String)~System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of CompilerFeatureRequiredAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)" />.
             </summary>
             <param name="featureName">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of CompilerFeatureRequiredAttribute by passing the parameter <paramref name="featureName"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute" />
+            by passing the parameter <paramref name="featureName" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:System.Runtime.CompilerServices.RequiredMemberAttribute">
@@ -664,14 +692,37 @@
         </member>
         <member name="M:System.Runtime.CompilerServices.InlineArrayAttribute.op_Implicit(System.Int32)~System.Runtime.CompilerServices.InlineArrayAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of InlineArrayAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.InlineArrayAttribute.#ctor(System.Int32)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.InlineArrayAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.InlineArrayAttribute.#ctor(System.Int32)" />.
             </summary>
             <param name="length">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of InlineArrayAttribute by passing the parameter <paramref name="length"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.InlineArrayAttribute.#ctor(System.Int32)"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.InlineArrayAttribute" />
+            by passing the parameter <paramref name="length" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.InlineArrayAttribute.#ctor(System.Int32)" />.
             </returns>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute">
+            <summary>
+            Specifies the priority of a member in overload resolution. When unspecified, the default priority is 0.
+            </summary>
+            <param name="priority">
+            The priority of the attributed member. Higher numbers are prioritized, lower
+            numbers are deprioritized. 0 is the default if no attribute is present.
+            </param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute.#ctor(System.Int32)">
+            <summary>
+            Specifies the priority of a member in overload resolution. When unspecified, the default priority is 0.
+            </summary>
+            <param name="priority">
+            The priority of the attributed member. Higher numbers are prioritized, lower
+            numbers are deprioritized. 0 is the default if no attribute is present.
+            </param>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute.Priority">
+            <summary>Gets the priority of the member.</summary>
         </member>
         <member name="T:System.Text.RegularExpressions.GeneratedRegexAttribute">
             <summary>
@@ -681,29 +732,29 @@
             <remarks>
             <para>
             The generator associated with this attribute only supports C#. It only supplies an implementation when applied
-            to static, partial, parameterless, non-generic methods that are typed to return <see cref="T:System.Text.RegularExpressions.Regex"/>.
+            to static, partial, parameterless, non-generic methods that are typed to return <see cref="T:System.Text.RegularExpressions.Regex" />.
             </para>
             <para>
-            When the <see cref="T:System.Text.RegularExpressions.Regex"/> supports case-insensitive matches (either by passing
-            <see cref="F:System.Text.RegularExpressions.RegexOptions.IgnoreCase"/> or using the inline <c>(?i)</c> switch in the pattern) the regex engines
+            When the <see cref="T:System.Text.RegularExpressions.Regex" /> supports case-insensitive matches (either by passing
+            <see cref="F:System.Text.RegularExpressions.RegexOptions.IgnoreCase" /> or using the inline <c>(?i)</c> switch in the pattern) the regex engines
             will use an internal casing table to transform the passed in pattern into an equivalent case-sensitive one.
             For example, given the pattern <c>abc</c>, the engines will transform it to the equivalent pattern
             <c>[Aa][Bb][Cc]</c>. The equivalences found in this internal casing table can change over time, for example in
             the case new characters are added to a new version of Unicode. When using the source generator, this
             transformation happens at compile time, which means the casing table used to find the equivalences will depend
-            on the target framework at compile time. This differs from the rest of the <see cref="T:System.Text.RegularExpressions.Regex"/> engines, which
+            on the target framework at compile time. This differs from the rest of the <see cref="T:System.Text.RegularExpressions.Regex" /> engines, which
             perform this transformation at run-time, meaning they will always use casing table for the current runtime.
             </para></remarks>
         </member>
         <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/> class with the specified pattern.
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" /> class with the specified pattern.
             </summary>
             <param name="pattern">The regular expression pattern to match.</param>
         </member>
         <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/>
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" />
             class with the specified pattern and options.
             </summary>
             <param name="pattern">The regular expression pattern to match.</param>
@@ -713,7 +764,7 @@
         </member>
         <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/>
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" />
             class with the specified pattern and options.
             </summary>
             <param name="pattern">The regular expression pattern to match.</param>
@@ -722,7 +773,7 @@
             </param>
             <param name="cultureName">
             The name of a culture to be used for case sensitive comparisons.
-            <paramref name="cultureName"/> is not case-sensitive.
+            <paramref name="cultureName" /> is not case-sensitive.
             </param>
             <remarks><para>
             For a list of predefined culture names on Windows systems, see the Language tag column in the
@@ -731,14 +782,14 @@
             Windows
             </a>.
             Culture names follow the standard defined by <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>.
-            In addition, starting with Windows 10, <paramref name="cultureName"/> can be any valid BCP-47 language tag.
+            In addition, starting with Windows 10, <paramref name="cultureName" /> can be any valid BCP-47 language tag.
             </para><para>
-            If <paramref name="cultureName"/> is <see cref="F:System.String.Empty"/>, the invariant culture will be used.
+            If <paramref name="cultureName" /> is <see cref="F:System.String.Empty" />, the invariant culture will be used.
             </para></remarks>
         </member>
         <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions,System.Int32)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/>
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" />
             class with the specified pattern, options, and timeout.
             </summary>
             <param name="pattern">The regular expression pattern to match.</param>
@@ -746,13 +797,13 @@
             A bitwise combination of the enumeration values that modify the regular expression.
             </param>
             <param name="matchTimeoutMilliseconds">
-            A time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite"/>
+            A time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite" />
             to indicate that the method should not time out.
             </param>
         </member>
         <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions,System.Int32,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/>
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" />
             class with the specified pattern, options, and timeout.
             </summary>
             <param name="pattern">The regular expression pattern to match.</param>
@@ -760,11 +811,11 @@
             A bitwise combination of the enumeration values that modify the regular expression.
             </param>
             <param name="matchTimeoutMilliseconds">
-            A time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite"/>
+            A time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite" />
             to indicate that the method should not time out.</param>
             <param name="cultureName">
             The name of a culture to be used for case sensitive comparisons.
-            <paramref name="cultureName"/> is not case-sensitive.
+            <paramref name="cultureName" /> is not case-sensitive.
             </param>
             <remarks><para>
             For a list of predefined culture names on Windows systems, see the Language tag column in the
@@ -773,14 +824,14 @@
             Windows
             </a>.
             Culture names follow the standard defined by <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>.
-            In addition, starting with Windows 10, <paramref name="cultureName"/> can be any valid BCP-47 language tag.
+            In addition, starting with Windows 10, <paramref name="cultureName" /> can be any valid BCP-47 language tag.
             </para><para>
-            If <paramref name="cultureName"/> is <see cref="F:System.String.Empty"/>, the invariant culture will be used.
+            If <paramref name="cultureName" /> is <see cref="F:System.String.Empty" />, the invariant culture will be used.
             </para></remarks>
         </member>
         <member name="P:System.Text.RegularExpressions.GeneratedRegexAttribute.MatchTimeoutMilliseconds">
             <summary>
-            Gets a time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite"/>
+            Gets a time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite" />
             to indicate that the method should not time out.
             </summary>
         </member>
@@ -795,20 +846,22 @@
         </member>
         <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.op_Implicit(System.String)~System.Text.RegularExpressions.GeneratedRegexAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of GeneratedRegexAttribute by using the constructor
-            <see cref="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" /> by using the constructor
+            <see cref="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String)" />.
             </summary>
             <param name="pattern">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of GeneratedRegexAttribute by passing the parameter <paramref name="pattern"/> to the constructor
-            <see cref="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" />
+            by passing the parameter <paramref name="pattern" /> to the constructor
+            <see cref="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:Emik.MatchAttribute">
             <summary>Declares a contract that the generic parameter must include the qualified member.</summary>
         </member>
         <member name="M:Emik.MatchAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions)">
-            <summary>Initializes a new instance of the <see cref="T:Emik.MatchAttribute"/> class.</summary>
+            <summary>Initializes a new instance of the <see cref="T:Emik.MatchAttribute" /> class.</summary>
             <param name="pattern">The regular expression pattern to match.</param>
             <param name="options">The bitwise combination of the enumeration values that modify the regular expression.</param>
         </member>
@@ -826,33 +879,43 @@
             Indicates to Emik.SourceGenerators.Choices to extend the type, transforming it to a disjoint union.
             </summary>
         </member>
+        <member name="T:Emik.ChoiceAttribute.Private">
+            <summary>
+            Indicates that the type is mutable, but only within the type.
+            </summary>
+        </member>
+        <member name="T:Emik.ChoiceAttribute.Public">
+            <summary>
+            Indicates that the type is publicly mutable.
+            </summary>
+        </member>
         <member name="M:Emik.ChoiceAttribute.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute" /> class.
             </summary>
         </member>
         <member name="M:Emik.ChoiceAttribute.#ctor(System.Type)">
             <summary>
-            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute" /> class.
             </summary>
             <param name="set">The type of fields that define the annotated union.</param>
         </member>
         <member name="M:Emik.ChoiceAttribute.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute" /> class.
             </summary>
             <param name="isPubliclyMutable">Determines if mutability is private or public.</param>
         </member>
         <member name="M:Emik.ChoiceAttribute.#ctor(System.Type,System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute" /> class.
             </summary>
             <param name="set">The type of fields that define the annotated union.</param>
             <param name="isPubliclyMutable">Determines if mutability is private or public.</param>
         </member>
         <member name="M:Emik.ChoiceAttribute.#ctor(System.Boolean,System.Type)">
             <summary>
-            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute" /> class.
             </summary>
             <param name="isPubliclyMutable">Determines if mutability is private or public.</param>
             <param name="set">The type of fields that define the annotated union.</param>
@@ -867,61 +930,28 @@
             When specified, gets the set of fields that define the annotated union.
             </summary>
         </member>
+        <member name="T:Emik.Choice">
+            <summary>
+            Provides IntelliSense when a dot is typed after <c>Choice</c> and not <c>ChoiceAttribute</c>.
+            </summary>
+        </member>
+        <member name="T:Emik.Choice.Private">
+            <summary>
+            Indicates that the type is mutable, but only within the type.
+            </summary>
+        </member>
+        <member name="T:Emik.Choice.Public">
+            <summary>
+            Indicates that the type is publicly mutable.
+            </summary>
+        </member>
         <member name="T:Emik.NoImplicitOperatorAttribute">
             <summary>
             Prevents the analyzer from generating the implicit conversion into this constructor.
             </summary>
         </member>
-        <member name="T:Emik.NoStructuralTypingAttribute">
-            <summary>Signifies to ignore this when determining potential interfaces that can be implemented.</summary>
-            <remarks>
-            <para>
-            The behavior of this attribute depends on what you apply it on:
-            </para>
-            <list type="table">
-               <listheader>
-                   <term>Target</term>
-                   <description>Behavior</description>
-               </listheader>
-               <item>
-                   <term>Type Member</term>
-                   <description>Ignores the type altogether. No generation is ever performed on it.</description>
-               </item>
-               <item>
-                   <term>Member</term>
-                   <description>Ignores only this particular member when evaluating potential interfaces.</description>
-               </item>
-            </list>
-            </remarks>
-        </member>
-        <member name="T:NullGuard.AllowNullAttribute">
-            <summary>Prevents the injection of null checking (implicit mode only).</summary>
-        </member>
-        <member name="T:NullGuard.NullGuardAttribute">
-            <summary>Prevents the injection of null checking (implicit mode only).</summary>
-            <param name="flags">
-            The <see cref="T:NullGuard.ValidationFlags"/> to use for the target this attribute is being applied to.
-            </param>
-        </member>
-        <member name="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)">
-            <summary>Prevents the injection of null checking (implicit mode only).</summary>
-            <param name="flags">
-            The <see cref="T:NullGuard.ValidationFlags"/> to use for the target this attribute is being applied to.
-            </param>
-        </member>
-        <member name="M:NullGuard.NullGuardAttribute.op_Implicit(NullGuard.ValidationFlags)~NullGuard.NullGuardAttribute">
-            <summary>
-            Implicitly converts the parameter by creating the new instance of NullGuardAttribute by using the constructor
-            <see cref="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)"/>.
-            </summary>
-            <param name="flags">The parameter to pass onto the constructor.</param>
-            <returns>
-            The new instance of NullGuardAttribute by passing the parameter <paramref name="flags"/> to the constructor
-            <see cref="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)"/>.
-            </returns>
-        </member>
         <member name="T:NullGuard.ValidationFlags">
-            <summary>Used by <see cref="T:NullGuard.NullGuardAttribute"/> to target specific categories of members.</summary>
+            <summary>Used by <see cref="T:NullGuard.NullGuardAttribute" /> to target specific categories of members.</summary>
         </member>
         <member name="F:NullGuard.ValidationFlags.None">
             <summary>Does nothing.</summary>
@@ -958,271 +988,309 @@
         <member name="F:NullGuard.ValidationFlags.All">
             <summary>Wildcard.</summary>
         </member>
-        <member name="T:Wawa.Optionals.Maybe">
-            <summary>Implementations for <see cref="T:Wawa.Optionals.Maybe`1"/>.</summary>
+        <member name="T:NullGuard.AllowNullAttribute">
+            <summary>Prevents the injection of null checking (implicit mode only).</summary>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.TryGet``1(Wawa.Optionals.Maybe{``0},``0@)">
-            <summary>Assigns a value with the inner value, or a <see langword="default"/> value if none exists.</summary>
-            <typeparam name="T">The generic type argument in <see cref="T:Wawa.Optionals.Maybe`1"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <param name="result">The resulting value, or <see langword="default"/>.</param>
+        <member name="T:NullGuard.NullGuardAttribute">
+            <summary>Prevents the injection of null checking (implicit mode only).</summary>
+            <param name="flags">
+            The <see cref="T:NullGuard.ValidationFlags" /> to use for the target this attribute is being applied to.
+            </param>
+        </member>
+        <member name="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)">
+            <summary>Prevents the injection of null checking (implicit mode only).</summary>
+            <param name="flags">
+            The <see cref="T:NullGuard.ValidationFlags" /> to use for the target this attribute is being applied to.
+            </param>
+        </member>
+        <member name="M:NullGuard.NullGuardAttribute.op_Implicit(NullGuard.ValidationFlags)~NullGuard.NullGuardAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:NullGuard.NullGuardAttribute" /> by using the constructor
+            <see cref="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)" />.
+            </summary>
+            <param name="flags">The parameter to pass onto the constructor.</param>
             <returns>
-            The value <see langword="true"/> if <paramref name="that"/> contains a value, otherwise <see langword="false"/>.
+            The new instance of <see cref="T:NullGuard.NullGuardAttribute" />
+            by passing the parameter <paramref name="flags" /> to the constructor
+            <see cref="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)" />.
             </returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.None``1">
-            <summary>Gets an empty <see cref="T:Wawa.Optionals.Maybe`1"/> of the desired type.</summary>
-            <typeparam name="T">The generic in <see cref="T:Wawa.Optionals.Maybe`1"/>.</typeparam>
+        <member name="T:wawa.Optionals.Maybe">
+            <summary>Implementations for <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[PublicAPI]</c></summary>
+        </member>
+        <member name="F:wawa.Optionals.Maybe.UnwrapMessage">
+            <summary>
+            The error message describing that <see cref="M:wawa.Optionals.Maybe.Unwrap``1(wawa.Optionals.Maybe{``0})" /> was called
+            on a <see cref="M:wawa.Optionals.Maybe.None``1" /> <see cref="T:wawa.Optionals.Maybe`1" /> instance
+            </summary>
+        </member>
+        <member name="M:wawa.Optionals.Maybe.TryGet``1(wawa.Optionals.Maybe{``0},``0@)">
+            <summary>Assigns a value with the inner value, or a <see langword="default" /> value if none exists.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The generic type argument in <see cref="T:wawa.Optionals.Maybe`1" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[InstantHandle]</c></param>
+            <param name="result">The resulting value, or <see langword="default" />.<p /><c>[CanBeNull]</c></param>
             <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1"/> that always has <see cref="P:Wawa.Optionals.Maybe`1.IsNone"/>
-            <see langword="return"/> <see langword="true"/>.
+            The value <see langword="true" /> if <paramref name="that" /> contains a value, otherwise <see langword="false" />.
             </returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Match``1(Wawa.Optionals.Maybe{``0},System.Action{``0},System.Action{Wawa.Optionals.Unit})">
-            <summary>Uses the callback corresponding to the inner value of <paramref name="that"/>.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <param name="some">The callback to run if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="true"/>.</param>
-            <param name="none">The callback to run if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="false"/>.</param>
-            <returns>The parameter <paramref name="that"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.None``1">
+            <summary>Gets an empty <see cref="T:wawa.Optionals.Maybe`1" /> of the desired type.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The generic in <see cref="T:wawa.Optionals.Maybe`1" />.</typeparam>
+            <returns>
+            A <see cref="T:wawa.Optionals.Maybe`1" /> that always has <see cref="P:wawa.Optionals.Maybe`1.IsNone" />
+            <see langword="return" /> <see langword="true" />.
+            </returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.And``1(Wawa.Optionals.Maybe{``0},Wawa.Optionals.Maybe{``0})">
-            <summary>Gives itself, or the parameter.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <param name="otherwise">The value to return if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="true"/>.</param>
-            <returns>The inner value, or the parameter <paramref name="otherwise"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.Match``1(wawa.Optionals.Maybe{``0},System.Action{``0},System.Action{wawa.Optionals.Unit})">
+            <summary>Uses the callback corresponding to the inner value of <paramref name="that" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[InstantHandle]</c></param>
+            <param name="some">The callback to run if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="true" />.<p /><c>[CanBeNull, InstantHandle]</c></param>
+            <param name="none">The callback to run if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="false" />.<p /><c>[CanBeNull, InstantHandle]</c></param>
+            <returns>The parameter <paramref name="that" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.And``1(Wawa.Optionals.Maybe{``0},System.Func{Wawa.Optionals.Unit,Wawa.Optionals.Maybe{``0}})">
-            <summary>Gives itself, or the parameter.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
+        <member name="M:wawa.Optionals.Maybe.And``1(wawa.Optionals.Maybe{``0},wawa.Optionals.Maybe{``0})">
+            <summary>Gives itself, or the parameter.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <param name="otherwise">The value to return if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="true" />.</param>
+            <returns>The inner value, or the parameter <paramref name="otherwise" />.</returns>
+        </member>
+        <member name="M:wawa.Optionals.Maybe.And``1(wawa.Optionals.Maybe{``0},System.Func{wawa.Optionals.Unit,wawa.Optionals.Maybe{``0}})">
+            <summary>Gives itself, or the parameter.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
             <param name="otherwise">
-            The callback to execute if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="true"/>.
+            The callback to execute if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="true" />.
             </param>
-            <returns>The inner value, or the parameter <paramref name="otherwise"/>.</returns>
+            <returns>The inner value, or the parameter <paramref name="otherwise" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Or``1(Wawa.Optionals.Maybe{``0},Wawa.Optionals.Maybe{``0})">
-            <summary>Gives itself, or the parameter.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <param name="otherwise">The value to return if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="false"/>.</param>
-            <returns>The inner value, or the parameter <paramref name="otherwise"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.Or``1(wawa.Optionals.Maybe{``0},wawa.Optionals.Maybe{``0})">
+            <summary>Gives itself, or the parameter.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <param name="otherwise">The value to return if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="false" />.</param>
+            <returns>The inner value, or the parameter <paramref name="otherwise" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Or``1(Wawa.Optionals.Maybe{``0},System.Func{Wawa.Optionals.Unit,Wawa.Optionals.Maybe{``0}})">
-            <summary>Gives itself, or the parameter.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
+        <member name="M:wawa.Optionals.Maybe.Or``1(wawa.Optionals.Maybe{``0},System.Func{wawa.Optionals.Unit,wawa.Optionals.Maybe{``0}})">
+            <summary>Gives itself, or the parameter.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
             <param name="otherwise">
-            The callback to execute if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="false"/>.
+            The callback to execute if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="false" />.
             </param>
-            <returns>The inner value, or the parameter <paramref name="otherwise"/>.</returns>
+            <returns>The inner value, or the parameter <paramref name="otherwise" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Xor``1(Wawa.Optionals.Maybe{``0},Wawa.Optionals.Maybe{``0})">
-            <summary>Gives itself, or the parameter.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <param name="otherwise">The value to return if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="false"/>.</param>
-            <returns>The inner value, or the parameter <paramref name="otherwise"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.Xor``1(wawa.Optionals.Maybe{``0},wawa.Optionals.Maybe{``0})">
+            <summary>Gives itself, or the parameter.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <param name="otherwise">The value to return if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="false" />.</param>
+            <returns>The inner value, or the parameter <paramref name="otherwise" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Some``1(``0)">
-            <summary>Wraps <typeparamref name="T"/> in a <see cref="T:Wawa.Optionals.Maybe`1"/>.</summary>
-            <remarks><para>Value types are the only types that cannot be <see langword="null"/>.</para></remarks>
-            <typeparam name="T">The type of parameter and generic in <see cref="T:Wawa.Optionals.Maybe`1"/>.</typeparam>
-            <param name="that">This instance of <typeparamref name="T"/>.</param>
-            <returns>A new instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.Some``1(``0)">
+            <summary>Wraps <typeparamref name="T" /> in a <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[PublicAPI]</c></summary>
+            <remarks><para>Value types are the only types that cannot be <see langword="null" />.</para></remarks>
+            <typeparam name="T">The type of parameter and generic in <see cref="T:wawa.Optionals.Maybe`1" />.</typeparam>
+            <param name="that">This instance of <typeparamref name="T" />.</param>
+            <returns>A new instance of <see cref="T:wawa.Optionals.Maybe`1" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Filter``1(System.Collections.Generic.IEnumerable{Wawa.Optionals.Maybe{``0}})">
-            <summary>Filters a collection with only that of items with a value.</summary>
-            <typeparam name="T">The type of parameter and generic in <see cref="T:Wawa.Optionals.Maybe`1"/>.</typeparam>
-            <param name="source">This collection of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <returns>A filtered collection only consisting of unwrapped <typeparamref name="T"/> values.</returns>
+        <member name="M:wawa.Optionals.Maybe.Filter``1(System.Collections.Generic.IEnumerable{wawa.Optionals.Maybe{``0}})">
+            <summary>Filters a collection with only that of items with a value.<p /><c>[LinqTunnel, NotNull, PublicAPI]</c></summary>
+            <typeparam name="T">The type of parameter and generic in <see cref="T:wawa.Optionals.Maybe`1" />.</typeparam>
+            <param name="source">This collection of <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[InstantHandle]</c></param>
+            <returns>A filtered collection only consisting of unwrapped <typeparamref name="T" /> values.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Flatten``1(Wawa.Optionals.Maybe{Wawa.Optionals.Maybe{``0}})">
-            <summary>Flattens a nested <see cref="T:Wawa.Optionals.Maybe`1"/>.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <returns>The nested <see cref="T:Wawa.Optionals.Maybe`1"/>, or <see langword="default"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.Flatten``1(wawa.Optionals.Maybe{wawa.Optionals.Maybe{``0}})">
+            <summary>Flattens a nested <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <returns>The nested <see cref="T:wawa.Optionals.Maybe`1" />, or <see langword="default" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Flatten``1(Wawa.Optionals.Maybe{Wawa.Optionals.Maybe{Wawa.Optionals.Maybe{``0}}})">
-            <summary>Flattens a nested <see cref="T:Wawa.Optionals.Maybe`1"/>.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <returns>The nested <see cref="T:Wawa.Optionals.Maybe`1"/>, or <see langword="default"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.Flatten``1(wawa.Optionals.Maybe{wawa.Optionals.Maybe{wawa.Optionals.Maybe{``0}}})">
+            <summary>Flattens a nested <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <returns>The nested <see cref="T:wawa.Optionals.Maybe`1" />, or <see langword="default" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Flatten``1(Wawa.Optionals.Maybe{Wawa.Optionals.Maybe{Wawa.Optionals.Maybe{Wawa.Optionals.Maybe{``0}}}})">
-            <summary>Flattens a nested <see cref="T:Wawa.Optionals.Maybe`1"/>.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <returns>The nested <see cref="T:Wawa.Optionals.Maybe`1"/>, or <see langword="default"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.Flatten``1(wawa.Optionals.Maybe{wawa.Optionals.Maybe{wawa.Optionals.Maybe{wawa.Optionals.Maybe{``0}}}})">
+            <summary>Flattens a nested <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <returns>The nested <see cref="T:wawa.Optionals.Maybe`1" />, or <see langword="default" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.From``1(``0)">
-            <summary>Wraps <typeparamref name="T"/> in a <see cref="T:Wawa.Optionals.Maybe`1"/>.</summary>
-            <typeparam name="T">The type of parameter and generic in <see cref="T:Wawa.Optionals.Maybe`1"/>.</typeparam>
-            <param name="that">This instance of <typeparamref name="T"/>.</param>
-            <returns>A new instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.From``1(``0)">
+            <summary>Wraps <typeparamref name="T" /> in a <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of parameter and generic in <see cref="T:wawa.Optionals.Maybe`1" />.</typeparam>
+            <param name="that">This instance of <typeparamref name="T" />.<p /><c>[CanBeNull]</c></param>
+            <returns>A new instance of <see cref="T:wawa.Optionals.Maybe`1" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.From``1(System.Nullable{``0})">
-            <summary>Wraps <typeparamref name="T"/> in a <see cref="T:Wawa.Optionals.Maybe`1"/>.</summary>
-            <typeparam name="T">The type of parameter and generic in <see cref="T:Wawa.Optionals.Maybe`1"/>.</typeparam>
-            <param name="that">This instance of <typeparamref name="T"/>.</param>
-            <returns>A new instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.From``1(System.Nullable{``0})">
+            <summary>Wraps <typeparamref name="T" /> in a <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of parameter and generic in <see cref="T:wawa.Optionals.Maybe`1" />.</typeparam>
+            <param name="that">This instance of <typeparamref name="T" />.</param>
+            <returns>A new instance of <see cref="T:wawa.Optionals.Maybe`1" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.AsMaybe``1(System.Nullable{``0})">
-            <summary>Creates a <see cref="T:System.Nullable`1"/> from a <see cref="T:Wawa.Optionals.Maybe`1"/>.</summary>
-            <remarks><para>This is an extension method for calling <see cref="M:Wawa.Optionals.Maybe.From``1(``0)"/>.</para></remarks>
-            <typeparam name="T">The type of parameter and generic in <see cref="T:Wawa.Optionals.Maybe`1"/>.</typeparam>
-            <param name="that">This instance of <typeparamref name="T"/>.</param>
-            <returns>The <see cref="T:Wawa.Optionals.Maybe`1"/> representing <paramref name="that"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.AsMaybe``1(System.Nullable{``0})">
+            <summary>Creates a <see cref="T:System.Nullable`1" /> from a <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[PublicAPI]</c></summary>
+            <remarks><para>This is an extension method for calling <see cref="M:wawa.Optionals.Maybe.From``1(``0)" />.</para></remarks>
+            <typeparam name="T">The type of parameter and generic in <see cref="T:wawa.Optionals.Maybe`1" />.</typeparam>
+            <param name="that">This instance of <typeparamref name="T" />.</param>
+            <returns>The <see cref="T:wawa.Optionals.Maybe`1" /> representing <paramref name="that" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.AsNullable``1(Wawa.Optionals.Maybe{``0})">
-            <summary>Creates a <see cref="T:Wawa.Optionals.Maybe`1"/> from a <see cref="T:System.Nullable`1"/>.</summary>
-            <remarks><para>This is an extension method for a ternary <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/>.</para></remarks>
-            <typeparam name="T">The type of parameter and generic in <see cref="T:System.Nullable`1"/>.</typeparam>
-            <param name="that">This instance of <typeparamref name="T"/>.</param>
-            <returns>The <see cref="T:System.Nullable`1"/> representing <paramref name="that"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.AsNullable``1(wawa.Optionals.Maybe{``0})">
+            <summary>Creates a <see cref="T:wawa.Optionals.Maybe`1" /> from a <see cref="T:System.Nullable`1" />.<p /><c>[PublicAPI]</c></summary>
+            <remarks><para>This is an extension method for a ternary <see cref="P:wawa.Optionals.Maybe`1.IsSome" />.</para></remarks>
+            <typeparam name="T">The type of parameter and generic in <see cref="T:System.Nullable`1" />.</typeparam>
+            <param name="that">This instance of <typeparamref name="T" />.</param>
+            <returns>The <see cref="T:System.Nullable`1" /> representing <paramref name="that" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Match``2(Wawa.Optionals.Maybe{``0},System.Func{``0,Wawa.Optionals.Maybe{``1}})">
-            <summary>Uses the callback corresponding to the inner value of <paramref name="that"/>.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <typeparam name="TResult">The <see langword="return"/> value of both callbacks.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <param name="some">The callback to run if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="true"/>.</param>
+        <member name="M:wawa.Optionals.Maybe.Match``2(wawa.Optionals.Maybe{``0},System.Func{``0,wawa.Optionals.Maybe{``1}})">
+            <summary>Uses the callback corresponding to the inner value of <paramref name="that" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <typeparam name="TResult">The <see langword="return" /> value of both callbacks.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <param name="some">The callback to run if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="true" />.<p /><c>[InstantHandle, NotNull]</c></param>
             <returns>The value returned from the corresponding callback.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Match``2(Wawa.Optionals.Maybe{``0},System.Func{``0,``1})">
-            <summary>Uses the callback corresponding to the inner value of <paramref name="that"/>.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <typeparam name="TResult">The <see langword="return"/> value of both callbacks.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <param name="some">The callback to run if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="true"/>.</param>
-            <returns>The value returned from the callback, or <see langword="default"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.Match``2(wawa.Optionals.Maybe{``0},System.Func{``0,``1})">
+            <summary>Uses the callback corresponding to the inner value of <paramref name="that" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <typeparam name="TResult">The <see langword="return" /> value of both callbacks.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <param name="some">The callback to run if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="true" />.<p /><c>[InstantHandle, NotNull]</c></param>
+            <returns>The value returned from the callback, or <see langword="default" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Match``2(Wawa.Optionals.Maybe{``0},``1)">
-            <summary>Gives the parameter corresponding to the inner value of <paramref name="that"/>.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <typeparam name="TResult">The <see langword="return"/> value of both callbacks.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <param name="some">The value to return if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="true"/>.</param>
-            <returns>The parameter, or <see langword="default"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.Match``2(wawa.Optionals.Maybe{``0},``1)">
+            <summary>Gives the parameter corresponding to the inner value of <paramref name="that" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <typeparam name="TResult">The <see langword="return" /> value of both callbacks.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <param name="some">The value to return if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="true" />.</param>
+            <returns>The parameter, or <see langword="default" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Unwrap``1(Wawa.Optionals.Maybe{``0})">
+        <member name="M:wawa.Optionals.Maybe.Unwrap``1(wawa.Optionals.Maybe{``0})">
             <summary>
-            Gets the value that is encapsulated. This value returned will not be <see langword="null"/>,
+            Gets the value that is encapsulated. This value returned will not be <see langword="null" />,
             and consequentially if it is.
-            </summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
+            <p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
             <exception cref="T:System.InvalidOperationException">
-            The parameter <paramref name="that"/> has <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> set to <see langword="false"/>.
+            The parameter <paramref name="that" /> has <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> set to <see langword="false" />.
             </exception>
             <returns>The inner value.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.UnwrapOr``1(Wawa.Optionals.Maybe{``0},``0)">
-            <summary>Gives the inner value, or the parameter.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <param name="otherwise">The value to return if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="false"/>.</param>
-            <returns>The inner value, or the parameter <paramref name="otherwise"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.UnwrapOr``1(wawa.Optionals.Maybe{``0},``0)">
+            <summary>Gives the inner value, or the parameter.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <param name="otherwise">The value to return if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="false" />.</param>
+            <returns>The inner value, or the parameter <paramref name="otherwise" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.UnwrapOr``1(Wawa.Optionals.Maybe{``0},System.Func{Wawa.Optionals.Unit,``0})">
-            <summary>Gives the inner value, or the returned value from the callback.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
+        <member name="M:wawa.Optionals.Maybe.UnwrapOr``1(wawa.Optionals.Maybe{``0},System.Func{wawa.Optionals.Unit,``0})">
+            <summary>Gives the inner value, or the returned value from the callback.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
             <param name="otherwise">
-            The callback to execute if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="false"/>.
-            </param>
-            <returns>The inner value, or the returned value from the parameter <paramref name="otherwise"/>.</returns>
+            The callback to execute if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="false" />.
+            <p /><c>[InstantHandle, NotNull]</c></param>
+            <returns>The inner value, or the returned value from the parameter <paramref name="otherwise" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.UnwrapOrDefault``1(Wawa.Optionals.Maybe{``0})">
-            <summary>Gives the inner value, or <see langword="default"/>.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <returns>The inner value, or <see langword="default"/>.</returns>
+        <member name="M:wawa.Optionals.Maybe.UnwrapOrDefault``1(wawa.Optionals.Maybe{``0})">
+            <summary>Gives the inner value, or <see langword="default" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <returns>The inner value, or <see langword="default" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.UnwrapOrNew``1(Wawa.Optionals.Maybe{``0})">
-            <summary>Gives the inner value, or a <see langword="new"/> instance.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <returns>The inner value, or a <see langword="new"/> instance.</returns>
+        <member name="M:wawa.Optionals.Maybe.UnwrapOrNew``1(wawa.Optionals.Maybe{``0})">
+            <summary>Gives the inner value, or a <see langword="new" /> instance.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <returns>The inner value, or a <see langword="new" /> instance.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Match``2(Wawa.Optionals.Maybe{``0},System.Func{``0,``1},System.Func{Wawa.Optionals.Unit,``1})">
-            <summary>Uses the callback corresponding to the inner value of <paramref name="that"/>.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <typeparam name="TResult">The <see langword="return"/> value of both callbacks.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <param name="some">The callback to run if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="true"/>.</param>
-            <param name="none">The callback to run if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="false"/>.</param>
+        <member name="M:wawa.Optionals.Maybe.Match``2(wawa.Optionals.Maybe{``0},System.Func{``0,``1},System.Func{wawa.Optionals.Unit,``1})">
+            <summary>Uses the callback corresponding to the inner value of <paramref name="that" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <typeparam name="TResult">The <see langword="return" /> value of both callbacks.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <param name="some">The callback to run if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="true" />.<p /><c>[InstantHandle, NotNull]</c></param>
+            <param name="none">The callback to run if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="false" />.<p /><c>[InstantHandle, NotNull]</c></param>
             <returns>The value returned from the corresponding callback.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe.Match``2(Wawa.Optionals.Maybe{``0},``1,``1)">
-            <summary>Gives the parameter corresponding to the inner value of <paramref name="that"/>.</summary>
-            <typeparam name="T">The type of value stored within <paramref name="that"/>.</typeparam>
-            <typeparam name="TResult">The <see langword="return"/> value of both callbacks.</typeparam>
-            <param name="that">This instance of <see cref="T:Wawa.Optionals.Maybe`1"/>.</param>
-            <param name="some">The value to return if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="true"/>.</param>
-            <param name="none">The value to return if <see cref="P:Wawa.Optionals.Maybe`1.IsSome"/> is <see langword="false"/>.</param>
+        <member name="M:wawa.Optionals.Maybe.Match``2(wawa.Optionals.Maybe{``0},``1,``1)">
+            <summary>Gives the parameter corresponding to the inner value of <paramref name="that" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <typeparam name="TResult">The <see langword="return" /> value of both callbacks.</typeparam>
+            <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
+            <param name="some">The value to return if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="true" />.</param>
+            <param name="none">The value to return if <see cref="P:wawa.Optionals.Maybe`1.IsSome" /> is <see langword="false" />.</param>
             <returns>The corresponding parameter.</returns>
         </member>
-        <member name="T:Wawa.Optionals.Maybe`1">
-            <summary>A type representing an optional value; Either Some and contains a value, or None, and does not.</summary>
+        <member name="T:wawa.Optionals.Maybe`1">
+            <summary>
+            A type representing an optional value; Either <c>Some</c> and contains a value, or <c>None</c>, and does not.
+            <p /><c>[PublicAPI]</c></summary>
             <param name="value">The value to encapsulate.</param>
             <typeparam name="T">The type to encapsulate and project as an optional value.</typeparam>
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.#ctor(`0)">
-            <summary>A type representing an optional value; Either Some and contains a value, or None, and does not.</summary>
-            <param name="value">The value to encapsulate.</param>
+        <member name="M:wawa.Optionals.Maybe`1.#ctor(`0)">
+            <summary>
+            A type representing an optional value; Either <c>Some</c> and contains a value, or <c>None</c>, and does not.
+            </summary>
+            <param name="value">The value to encapsulate.<p /><c>[CanBeNull]</c></param>
             <typeparam name="T">The type to encapsulate and project as an optional value.</typeparam>
         </member>
-        <member name="P:Wawa.Optionals.Maybe`1.IsNone">
-            <summary>Gets a value indicating whether the value encapsulated is <see langword="null" />.</summary>
+        <member name="P:wawa.Optionals.Maybe`1.IsNone">
+            <summary>Gets a value indicating whether the value encapsulated is <see langword="null" />.<p /><c>[PublicAPI]</c></summary>
         </member>
-        <member name="P:Wawa.Optionals.Maybe`1.IsSome">
-            <summary>Gets a value indicating whether the value encapsulated is not <see langword="null" />.</summary>
+        <member name="P:wawa.Optionals.Maybe`1.IsSome">
+            <summary>Gets a value indicating whether the value encapsulated is not <see langword="null" />.<p /><c>[PublicAPI]</c></summary>
         </member>
-        <member name="P:Wawa.Optionals.Maybe`1.Value">
-            <summary>Gets the value that is encapsulated. This value returned may be <see langword="null" />.</summary>
+        <member name="P:wawa.Optionals.Maybe`1.Value">
+            <summary>Gets the value that is encapsulated. This value returned may be <see langword="null" />.<p /><c>[CanBeNull, ProvidesContext, PublicAPI]</c></summary>
         </member>
-        <member name="P:Wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#IsReadOnly">
+        <member name="P:wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#IsReadOnly">
             <inheritdoc />
         </member>
-        <member name="P:Wawa.Optionals.Maybe`1.System#Collections#ICollection#IsSynchronized">
+        <member name="P:wawa.Optionals.Maybe`1.System#Collections#ICollection#IsSynchronized">
             <inheritdoc />
         </member>
-        <member name="P:Wawa.Optionals.Maybe`1.System#Collections#ICollection#Count">
+        <member name="P:wawa.Optionals.Maybe`1.System#Collections#ICollection#Count">
             <inheritdoc />
         </member>
-        <member name="P:Wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#Count">
+        <member name="P:wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#Count">
             <inheritdoc />
         </member>
-        <member name="P:Wawa.Optionals.Maybe`1.System#Collections#ICollection#SyncRoot">
+        <member name="P:wawa.Optionals.Maybe`1.System#Collections#ICollection#SyncRoot">
             <inheritdoc />
         </member>
-        <member name="P:Wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#Item(System.Int32)">
+        <member name="P:wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#Item(System.Int32)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_Implicit(`0)~Wawa.Optionals.Maybe{`0}">
-            <summary>Converts the <typeparamref name="T" /> to a <see langword="new" /> <see cref="T:Wawa.Optionals.Maybe`1" />.</summary>
-            <param name="value">The <typeparamref name="T" /> instance to convert.</param>
+        <member name="M:wawa.Optionals.Maybe`1.op_Implicit(`0)~wawa.Optionals.Maybe{`0}">
+            <summary>Converts the <typeparamref name="T" /> to a <see langword="new" /> <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[PublicAPI]</c></summary>
+            <param name="value">The <typeparamref name="T" /> instance to convert.<p /><c>[CanBeNull]</c></param>
             <returns>
-            A <see cref="T:Wawa.Optionals.Maybe`1" /> that is Some or None depending on
+            A <see cref="T:wawa.Optionals.Maybe`1" /> that is Some or None depending on
             whether <paramref name="value" /> is <see langword="null" />.
             </returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_Explicit(Wawa.Optionals.Maybe{`0})~`0">
-            <summary>Converts the <see cref="T:Wawa.Optionals.Maybe`1" /> to <typeparamref name="T" />.</summary>
+        <member name="M:wawa.Optionals.Maybe`1.op_Explicit(wawa.Optionals.Maybe{`0})~`0">
+            <summary>Converts the <see cref="T:wawa.Optionals.Maybe`1" /> to <typeparamref name="T" />.<p /><c>[PublicAPI]</c></summary>
             <param name="value">The <typeparamref name="T" /> instance to convert.</param>
             <returns>The inner value.</returns>
             <exception cref="T:System.InvalidOperationException">The parameter <paramref name="value" /> is a None value.</exception>
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_True(Wawa.Optionals.Maybe{`0})">
-            <inheritdoc cref="P:Wawa.Optionals.Maybe`1.IsSome"/>
+        <member name="M:wawa.Optionals.Maybe`1.op_True(wawa.Optionals.Maybe{`0})">
+            <inheritdoc cref="P:wawa.Optionals.Maybe`1.IsSome" />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_False(Wawa.Optionals.Maybe{`0})">
-            <inheritdoc cref="P:Wawa.Optionals.Maybe`1.IsNone"/>
+        <member name="M:wawa.Optionals.Maybe`1.op_False(wawa.Optionals.Maybe{`0})">
+            <inheritdoc cref="P:wawa.Optionals.Maybe`1.IsNone" />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_Equality(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
-            <summary>Determines whether both instances contain the same values.</summary>
+        <member name="M:wawa.Optionals.Maybe`1.op_Equality(wawa.Optionals.Maybe{`0},wawa.Optionals.Maybe{`0})">
+            <summary>Determines whether both instances contain the same values.<p /><c>[PublicAPI]</c></summary>
             <param name="left">The left-hand side.</param>
             <param name="right">The right-hand side.</param>
             <returns>
@@ -1230,212 +1298,212 @@
             otherwise <see langword="false" />.
             </returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_Inequality(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
-            <summary>Determines whether both instances do not contain the same values.</summary>
+        <member name="M:wawa.Optionals.Maybe`1.op_Inequality(wawa.Optionals.Maybe{`0},wawa.Optionals.Maybe{`0})">
+            <summary>Determines whether both instances do not contain the same values.<p /><c>[PublicAPI]</c></summary>
             <param name="left">The left-hand side.</param>
             <param name="right">The right-hand side.</param>
             <returns>
             The value <see langword="true" /> if both instances do not contain the same values,
             otherwise <see langword="false" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_LessThan(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
-            <summary>Determines whether the left-hand side is less than the right.</summary>
+        <member name="M:wawa.Optionals.Maybe`1.op_LessThan(wawa.Optionals.Maybe{`0},wawa.Optionals.Maybe{`0})">
+            <summary>Determines whether the left-hand side is less than the right.<p /><c>[PublicAPI]</c></summary>
             <param name="left">The left-hand side.</param>
             <param name="right">The right-hand side.</param>
             <returns>
-            The value <see langword="true"/> if the parameter <paramref name="left"/> is less
-            than the parameter <paramref name="right"/>; otherwise, <see langword="false"/>.
+            The value <see langword="true" /> if the parameter <paramref name="left" /> is less
+            than the parameter <paramref name="right" />; otherwise, <see langword="false" />.
             </returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_LessThanOrEqual(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
-            <summary>Determines whether the left-hand side is equal to or less than the right.</summary>
+        <member name="M:wawa.Optionals.Maybe`1.op_LessThanOrEqual(wawa.Optionals.Maybe{`0},wawa.Optionals.Maybe{`0})">
+            <summary>Determines whether the left-hand side is equal to or less than the right.<p /><c>[PublicAPI]</c></summary>
             <param name="left">The left-hand side.</param>
             <param name="right">The right-hand side.</param>
             <returns>
-            The value <see langword="true"/> if the parameter <paramref name="left"/> is equal to or less
-            than the parameter <paramref name="right"/>; otherwise, <see langword="false"/>.
+            The value <see langword="true" /> if the parameter <paramref name="left" /> is equal to or less
+            than the parameter <paramref name="right" />; otherwise, <see langword="false" />.
             </returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_GreaterThan(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
-            <summary>Determines whether the left-hand side is more than the right.</summary>
+        <member name="M:wawa.Optionals.Maybe`1.op_GreaterThan(wawa.Optionals.Maybe{`0},wawa.Optionals.Maybe{`0})">
+            <summary>Determines whether the left-hand side is more than the right.<p /><c>[PublicAPI]</c></summary>
             <param name="left">The left-hand side.</param>
             <param name="right">The right-hand side.</param>
             <returns>
-            The value <see langword="true"/> if the parameter <paramref name="left"/> is more
-            than the parameter <paramref name="right"/>; otherwise, <see langword="false"/>.
+            The value <see langword="true" /> if the parameter <paramref name="left" /> is more
+            than the parameter <paramref name="right" />; otherwise, <see langword="false" />.
             </returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_GreaterThanOrEqual(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
-            <summary>Determines whether the left-hand side is equal to or more than the right.</summary>
+        <member name="M:wawa.Optionals.Maybe`1.op_GreaterThanOrEqual(wawa.Optionals.Maybe{`0},wawa.Optionals.Maybe{`0})">
+            <summary>Determines whether the left-hand side is equal to or more than the right.<p /><c>[PublicAPI]</c></summary>
             <param name="left">The left-hand side.</param>
             <param name="right">The right-hand side.</param>
             <returns>
-            The value <see langword="true"/> if the parameter <paramref name="left"/> is equal to or more
-            than the parameter <paramref name="right"/>; otherwise, <see langword="false"/>.
+            The value <see langword="true" /> if the parameter <paramref name="left" /> is equal to or more
+            than the parameter <paramref name="right" />; otherwise, <see langword="false" />.
             </returns>
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_BitwiseOr(Wawa.Optionals.Maybe{`0},`0)">
-            <inheritdoc cref="M:Wawa.Optionals.Maybe.UnwrapOr``1(Wawa.Optionals.Maybe{``0},``0)"/>
+        <member name="M:wawa.Optionals.Maybe`1.op_BitwiseOr(wawa.Optionals.Maybe{`0},`0)">
+            <inheritdoc cref="M:wawa.Optionals.Maybe.UnwrapOr``1(wawa.Optionals.Maybe{``0},``0)" />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_BitwiseOr(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
-            <inheritdoc cref="M:Wawa.Optionals.Maybe.Or``1(Wawa.Optionals.Maybe{``0},Wawa.Optionals.Maybe{``0})"/>
+        <member name="M:wawa.Optionals.Maybe`1.op_BitwiseOr(wawa.Optionals.Maybe{`0},wawa.Optionals.Maybe{`0})">
+            <inheritdoc cref="M:wawa.Optionals.Maybe.Or``1(wawa.Optionals.Maybe{``0},wawa.Optionals.Maybe{``0})" />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_BitwiseAnd(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
-            <inheritdoc cref="M:Wawa.Optionals.Maybe.And``1(Wawa.Optionals.Maybe{``0},Wawa.Optionals.Maybe{``0})"/>
+        <member name="M:wawa.Optionals.Maybe`1.op_BitwiseAnd(wawa.Optionals.Maybe{`0},wawa.Optionals.Maybe{`0})">
+            <inheritdoc cref="M:wawa.Optionals.Maybe.And``1(wawa.Optionals.Maybe{``0},wawa.Optionals.Maybe{``0})" />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.op_ExclusiveOr(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
-            <inheritdoc cref="M:Wawa.Optionals.Maybe.Xor``1(Wawa.Optionals.Maybe{``0},Wawa.Optionals.Maybe{``0})"/>
+        <member name="M:wawa.Optionals.Maybe`1.op_ExclusiveOr(wawa.Optionals.Maybe{`0},wawa.Optionals.Maybe{`0})">
+            <inheritdoc cref="M:wawa.Optionals.Maybe.Xor``1(wawa.Optionals.Maybe{``0},wawa.Optionals.Maybe{``0})" />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.Equals(System.Object)">
+        <member name="M:wawa.Optionals.Maybe`1.Equals(System.Object)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.GetHashCode">
+        <member name="M:wawa.Optionals.Maybe`1.GetHashCode">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.CompareTo(Wawa.Optionals.Maybe{`0})">
+        <member name="M:wawa.Optionals.Maybe`1.CompareTo(wawa.Optionals.Maybe{`0})">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.ToString">
+        <member name="M:wawa.Optionals.Maybe`1.ToString">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.CopyTo(System.Array,System.Int32)">
+        <member name="M:wawa.Optionals.Maybe`1.CopyTo(System.Array,System.Int32)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.CopyTo(`0[],System.Int32)">
+        <member name="M:wawa.Optionals.Maybe`1.CopyTo(`0[],System.Int32)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.Contains(`0)">
+        <member name="M:wawa.Optionals.Maybe`1.Contains(`0)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.Equals(Wawa.Optionals.Maybe{`0})">
+        <member name="M:wawa.Optionals.Maybe`1.Equals(wawa.Optionals.Maybe{`0})">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.Equals(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
+        <member name="M:wawa.Optionals.Maybe`1.Equals(wawa.Optionals.Maybe{`0},wawa.Optionals.Maybe{`0})">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.GetHashCode(Wawa.Optionals.Maybe{`0})">
+        <member name="M:wawa.Optionals.Maybe`1.GetHashCode(wawa.Optionals.Maybe{`0})">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.ToString(System.String,System.IFormatProvider)">
+        <member name="M:wawa.Optionals.Maybe`1.ToString(System.String,System.IFormatProvider)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.Clone">
+        <member name="M:wawa.Optionals.Maybe`1.Clone">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.System#Collections#IEnumerable#GetEnumerator">
+        <member name="M:wawa.Optionals.Maybe`1.System#Collections#IEnumerable#GetEnumerator">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.GetEnumerator">
+        <member name="M:wawa.Optionals.Maybe`1.GetEnumerator">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#Add(`0)">
+        <member name="M:wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#Add(`0)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#Clear">
+        <member name="M:wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#Clear">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#Insert(System.Int32,`0)">
+        <member name="M:wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#Insert(System.Int32,`0)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#RemoveAt(System.Int32)">
+        <member name="M:wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#RemoveAt(System.Int32)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#Remove(`0)">
+        <member name="M:wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#Remove(`0)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#IComparer{Wawa#Optionals#Maybe{T}}#Compare(Wawa.Optionals.Maybe{`0},Wawa.Optionals.Maybe{`0})">
+        <member name="M:wawa.Optionals.Maybe`1.System#Collections#Generic#IComparer{wawa#Optionals#Maybe{T}}#Compare(wawa.Optionals.Maybe{`0},wawa.Optionals.Maybe{`0})">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#IndexOf(`0)">
+        <member name="M:wawa.Optionals.Maybe`1.System#Collections#Generic#IList{T}#IndexOf(`0)">
             <inheritdoc />
         </member>
-        <member name="T:Wawa.Optionals.Unit">
+        <member name="T:wawa.Optionals.Unit">
             <summary>
             A type that has exactly one value, and is used when there is no other meaningful value that could be returned.
-            </summary>
+            <p /><c>[PublicAPI]</c></summary>
         </member>
-        <member name="F:Wawa.Optionals.Unit.AsString">
-            <summary>Gets the string representation of <see cref="T:Wawa.Optionals.Unit"/>.</summary>
+        <member name="F:wawa.Optionals.Unit.AsString">
+            <summary>Gets the string representation of <see cref="T:wawa.Optionals.Unit" />.<p /><c>[NotNull, PublicAPI]</c></summary>
         </member>
-        <member name="P:Wawa.Optionals.Unit.Value">
-            <summary>Gets the singular value.</summary>
+        <member name="P:wawa.Optionals.Unit.Value">
+            <summary>Gets the singular value.<p /><c>[PublicAPI]</c></summary>
         </member>
-        <member name="M:Wawa.Optionals.Unit.op_Equality(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
-            <summary>Returns <see langword="true" />.</summary>
+        <member name="M:wawa.Optionals.Unit.op_Equality(wawa.Optionals.Unit,wawa.Optionals.Unit)">
+            <summary>Returns <see langword="true" />.<p /><c>[PublicAPI]</c></summary>
             <remarks><para>Since this type has one value, any instance is the same as each other.</para></remarks>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
+            <param name="left">The left-hand side.<p /><c>[InstantHandle]</c></param>
+            <param name="right">The right-hand side.<p /><c>[InstantHandle]</c></param>
             <returns>The value <see langword="true" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Unit.op_Inequality(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
-            <summary>Returns <see langword="false" />.</summary>
+        <member name="M:wawa.Optionals.Unit.op_Inequality(wawa.Optionals.Unit,wawa.Optionals.Unit)">
+            <summary>Returns <see langword="false" />.<p /><c>[PublicAPI]</c></summary>
             <remarks><para>Since this type has one value, any instance is the same as each other.</para></remarks>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
+            <param name="left">The left-hand side.<p /><c>[InstantHandle]</c></param>
+            <param name="right">The right-hand side.<p /><c>[InstantHandle]</c></param>
             <returns>The value <see langword="false" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Unit.op_LessThan(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
-            <summary>Returns <see langword="false" />.</summary>
+        <member name="M:wawa.Optionals.Unit.op_LessThan(wawa.Optionals.Unit,wawa.Optionals.Unit)">
+            <summary>Returns <see langword="false" />.<p /><c>[PublicAPI]</c></summary>
             <remarks><para>Since this type has one value, any instance is the same as each other.</para></remarks>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
+            <param name="left">The left-hand side.<p /><c>[InstantHandle]</c></param>
+            <param name="right">The right-hand side.<p /><c>[InstantHandle]</c></param>
             <returns>The value <see langword="false" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Unit.op_LessThanOrEqual(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
-            <summary>Returns <see langword="true" />.</summary>
+        <member name="M:wawa.Optionals.Unit.op_LessThanOrEqual(wawa.Optionals.Unit,wawa.Optionals.Unit)">
+            <summary>Returns <see langword="true" />.<p /><c>[PublicAPI]</c></summary>
             <remarks><para>Since this type has one value, any instance is the same as each other.</para></remarks>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
+            <param name="left">The left-hand side.<p /><c>[InstantHandle]</c></param>
+            <param name="right">The right-hand side.<p /><c>[InstantHandle]</c></param>
             <returns>The value <see langword="true" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Unit.op_GreaterThan(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
-            <summary>Returns <see langword="false" />.</summary>
+        <member name="M:wawa.Optionals.Unit.op_GreaterThan(wawa.Optionals.Unit,wawa.Optionals.Unit)">
+            <summary>Returns <see langword="false" />.<p /><c>[PublicAPI]</c></summary>
             <remarks><para>Since this type has one value, any instance is the same as each other.</para></remarks>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
+            <param name="left">The left-hand side.<p /><c>[InstantHandle]</c></param>
+            <param name="right">The right-hand side.<p /><c>[InstantHandle]</c></param>
             <returns>The value <see langword="false" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Unit.op_GreaterThanOrEqual(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
-            <summary>Returns <see langword="true" />.</summary>
+        <member name="M:wawa.Optionals.Unit.op_GreaterThanOrEqual(wawa.Optionals.Unit,wawa.Optionals.Unit)">
+            <summary>Returns <see langword="true" />.<p /><c>[PublicAPI]</c></summary>
             <remarks><para>Since this type has one value, any instance is the same as each other.</para></remarks>
-            <param name="left">The left-hand side.</param>
-            <param name="right">The right-hand side.</param>
+            <param name="left">The left-hand side.<p /><c>[InstantHandle]</c></param>
+            <param name="right">The right-hand side.<p /><c>[InstantHandle]</c></param>
             <returns>The value <see langword="true" />.</returns>
         </member>
-        <member name="M:Wawa.Optionals.Unit.GetHashCode">
+        <member name="M:wawa.Optionals.Unit.GetHashCode">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Unit.ToString(System.String,System.IFormatProvider)">
+        <member name="M:wawa.Optionals.Unit.ToString(System.String,System.IFormatProvider)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Unit.ToString">
+        <member name="M:wawa.Optionals.Unit.ToString">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Unit.Equals(System.Object)">
+        <member name="M:wawa.Optionals.Unit.Equals(System.Object)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Unit.GetEnumerator">
+        <member name="M:wawa.Optionals.Unit.GetEnumerator">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Unit.System#IEquatable{Wawa#Optionals#Unit}#Equals(Wawa.Optionals.Unit)">
+        <member name="M:wawa.Optionals.Unit.System#IEquatable{wawa#Optionals#Unit}#Equals(wawa.Optionals.Unit)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Unit.System#Collections#Generic#IEqualityComparer{Wawa#Optionals#Unit}#Equals(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
+        <member name="M:wawa.Optionals.Unit.System#Collections#Generic#IEqualityComparer{wawa#Optionals#Unit}#Equals(wawa.Optionals.Unit,wawa.Optionals.Unit)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Unit.System#Collections#Generic#IEqualityComparer{Wawa#Optionals#Unit}#GetHashCode(Wawa.Optionals.Unit)">
+        <member name="M:wawa.Optionals.Unit.System#Collections#Generic#IEqualityComparer{wawa#Optionals#Unit}#GetHashCode(wawa.Optionals.Unit)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Unit.System#ICloneable#Clone">
+        <member name="M:wawa.Optionals.Unit.System#ICloneable#Clone">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Unit.System#IComparable{Wawa#Optionals#Unit}#CompareTo(Wawa.Optionals.Unit)">
+        <member name="M:wawa.Optionals.Unit.System#IComparable{wawa#Optionals#Unit}#CompareTo(wawa.Optionals.Unit)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Unit.System#Collections#Generic#IComparer{Wawa#Optionals#Unit}#Compare(Wawa.Optionals.Unit,Wawa.Optionals.Unit)">
+        <member name="M:wawa.Optionals.Unit.System#Collections#Generic#IComparer{wawa#Optionals#Unit}#Compare(wawa.Optionals.Unit,wawa.Optionals.Unit)">
             <inheritdoc />
         </member>
-        <member name="M:Wawa.Optionals.Unit.System#Collections#IEnumerable#GetEnumerator">
+        <member name="M:wawa.Optionals.Unit.System#Collections#IEnumerable#GetEnumerator">
             <inheritdoc />
         </member>
     </members>

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <doc>
     <assembly>
         <name>wawa.DDL</name>
@@ -20,7 +20,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute" /> class
             with the specified parameter value.
             </summary>
             <param name="parameterValue">
@@ -31,18 +31,20 @@
         <member name="P:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.ParameterValue">
             <summary>
             Gets a value indicating whether the condition parameter value
-            is <see langword="true"/> or <see langword="false"/>.
+            is <see langword="true" /> or <see langword="false" />.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.op_Implicit(System.Boolean)~System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of DoesNotReturnIfAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)" />.
             </summary>
             <param name="parameterValue">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of DoesNotReturnIfAttribute by passing the parameter <paramref name="parameterValue"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute" />
+            by passing the parameter <paramref name="parameterValue" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)" />.
             </returns>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute">
@@ -56,13 +58,13 @@
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute">
             <summary>
-            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue"/>,
+            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue" />,
             the parameter may be null even if the corresponding type disallows it.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute" /> class
             with the specified return value condition.
             </summary>
             <param name="returnValue">
@@ -72,29 +74,31 @@
         <member name="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue">
             <summary>
             Gets a value indicating whether the return value condition
-            is <see langword="true"/> or <see langword="false"/>.
+            is <see langword="true" /> or <see langword="false" />.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.op_Implicit(System.Boolean)~System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of MaybeNullWhenAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)" />.
             </summary>
             <param name="returnValue">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of MaybeNullWhenAttribute by passing the parameter <paramref name="returnValue"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute" />
+            by passing the parameter <paramref name="returnValue" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)" />.
             </returns>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
             <summary>
-            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>,
+            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue" />,
             the parameter will not be null even if the corresponding type allows it.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute"/>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute" />
             class with the specified return value condition.
             </summary>
             <param name="returnValue">
@@ -103,18 +107,20 @@
         </member>
         <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
             <summary>
-            Gets a value indicating whether the return value condition is <see langword="true"/> or <see langword="false"/>.
+            Gets a value indicating whether the return value condition is <see langword="true" /> or <see langword="false" />.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.op_Implicit(System.Boolean)~System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of NotNullWhenAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)" />.
             </summary>
             <param name="returnValue">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of NotNullWhenAttribute by passing the parameter <paramref name="returnValue"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute" />
+            by passing the parameter <paramref name="returnValue" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)" />.
             </returns>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute">
@@ -122,7 +128,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute" /> class
             with the associated parameter name.
             </summary>
             <param name="parameterName">
@@ -135,13 +141,15 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.op_Implicit(System.String)~System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of NotNullIfNotNullAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)" />.
             </summary>
             <param name="parameterName">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of NotNullIfNotNullAttribute by passing the parameter <paramref name="parameterName"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute" />
+            by passing the parameter <paramref name="parameterName" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
@@ -152,7 +160,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute"/>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute" />
             class with a field or property member.
             </summary>
             <param name="member">
@@ -161,7 +169,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute" /> class
             with the list of field and property members.
             </summary>
             <param name="members">
@@ -173,24 +181,28 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.op_Implicit(System.String)~System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of MemberNotNullAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)" />.
             </summary>
             <param name="member">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of MemberNotNullAttribute by passing the parameter <paramref name="member"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute" />
+            by passing the parameter <paramref name="member" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.op_Implicit(System.String[])~System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of MemberNotNullAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])" />.
             </summary>
             <param name="members">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of MemberNotNullAttribute by passing the parameter <paramref name="members"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute" />
+            by passing the parameter <paramref name="members" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])" />.
             </returns>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute">
@@ -201,7 +213,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute" /> class
             with the specified return value condition and a field or property member.
             </summary>
             <param name="returnValue">
@@ -211,7 +223,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute" /> class
             with the specified return value condition and list of field and property members.
             </summary>
             <param name="returnValue">
@@ -224,7 +236,7 @@
         <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.ReturnValue">
             <summary>
             Gets a value indicating whether the return value condition
-            is <see langword="true"/> or <see langword="false"/>.
+            is <see langword="true" /> or <see langword="false" />.
             </summary>
         </member>
         <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.Members">
@@ -249,10 +261,10 @@
             <summary>The syntax identifier for strings containing date and time format specifiers.</summary>
         </member>
         <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.EnumFormat">
-            <summary>The syntax identifier for strings containing <see cref="T:System.Enum"/> format specifiers.</summary>
+            <summary>The syntax identifier for strings containing <see cref="T:System.Enum" /> format specifiers.</summary>
         </member>
         <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.GuidFormat">
-            <summary>The syntax identifier for strings containing <see cref="T:System.Guid"/> format specifiers.</summary>
+            <summary>The syntax identifier for strings containing <see cref="T:System.Guid" /> format specifiers.</summary>
         </member>
         <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Json">
             <summary>The syntax identifier for strings containing JavaScript Object Notation (JSON).</summary>
@@ -267,7 +279,7 @@
             <summary>The syntax identifier for strings containing time format specifiers.</summary>
         </member>
         <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.TimeSpanFormat">
-            <summary>The syntax identifier for strings containing <see cref="T:System.TimeSpan"/> format specifiers.</summary>
+            <summary>The syntax identifier for strings containing <see cref="T:System.TimeSpan" /> format specifiers.</summary>
         </member>
         <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Uri">
             <summary>The syntax identifier for strings containing URIs.</summary>
@@ -277,14 +289,14 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute" /> class
             with the identifier of the syntax used.
             </summary>
             <param name="syntax">The syntax identifier.</param>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String,System.Object[])">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute" /> class
             with the identifier of the syntax used.
             </summary>
             <param name="syntax">The syntax identifier.</param>
@@ -298,13 +310,15 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.op_Implicit(System.String)~System.Diagnostics.CodeAnalysis.StringSyntaxAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of StringSyntaxAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)" />.
             </summary>
             <param name="syntax">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of StringSyntaxAttribute by passing the parameter <paramref name="syntax"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute" />
+            by passing the parameter <paramref name="syntax" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.UnscopedRefAttribute">
@@ -319,7 +333,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute"/> class, specifying the
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute" /> class, specifying the
             ID that the compiler will use when reporting a use of the API the attribute applies to.
             </summary>
             <param name="diagnosticId">
@@ -348,13 +362,15 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.op_Implicit(System.String)~System.Diagnostics.CodeAnalysis.ExperimentalAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of ExperimentalAttribute by using the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute" /> by using the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)" />.
             </summary>
             <param name="diagnosticId">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of ExperimentalAttribute by passing the parameter <paramref name="diagnosticId"/> to the constructor
-            <see cref="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute" />
+            by passing the parameter <paramref name="diagnosticId" /> to the constructor
+            <see cref="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:System.Runtime.CompilerServices.InterceptsLocationAttribute">
@@ -371,26 +387,26 @@
         </member>
         <member name="T:System.Runtime.CompilerServices.CollectionBuilderAttribute">
             <summary>
-            Initialize the attribute to refer to the <paramref name="methodName"/>
-            method on the <paramref name="builderType"/> type.
+            Initialize the attribute to refer to the <paramref name="methodName" />
+            method on the <paramref name="builderType" /> type.
             </summary>
             <param name="builderType">The type of the builder to use to construct the collection.</param>
             <param name="methodName">The name of the method on the builder to use to construct the collection.</param>
             <remarks><para>
-            <paramref name="methodName"/> must refer to a static method that accepts a single parameter of
+            <paramref name="methodName" /> must refer to a static method that accepts a single parameter of
             type <c>ReadOnlySpan&lt;T&gt;</c> and returns an instance of the collection being built containing
             a copy of the data from that span. In future releases of .NET, additional patterns may be supported.
             </para></remarks>
         </member>
         <member name="M:System.Runtime.CompilerServices.CollectionBuilderAttribute.#ctor(System.Type,System.String)">
             <summary>
-            Initialize the attribute to refer to the <paramref name="methodName"/>
-            method on the <paramref name="builderType"/> type.
+            Initialize the attribute to refer to the <paramref name="methodName" />
+            method on the <paramref name="builderType" /> type.
             </summary>
             <param name="builderType">The type of the builder to use to construct the collection.</param>
             <param name="methodName">The name of the method on the builder to use to construct the collection.</param>
             <remarks><para>
-            <paramref name="methodName"/> must refer to a static method that accepts a single parameter of
+            <paramref name="methodName" /> must refer to a static method that accepts a single parameter of
             type <c>ReadOnlySpan&lt;T&gt;</c> and returns an instance of the collection being built containing
             a copy of the data from that span. In future releases of .NET, additional patterns may be supported.
             </para></remarks>
@@ -419,21 +435,23 @@
             </summary>
         </member>
         <member name="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)">
-            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute"/> class.</summary>
-            <param name="builderType">The <see cref="T:System.Type"/> of the associated builder.</param>
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute" /> class.</summary>
+            <param name="builderType">The <see cref="T:System.Type" /> of the associated builder.</param>
         </member>
         <member name="P:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.BuilderType">
-            <summary>Gets the <see cref="T:System.Type"/> of the associated builder.</summary>
+            <summary>Gets the <see cref="T:System.Type" /> of the associated builder.</summary>
         </member>
         <member name="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.op_Implicit(System.Type)~System.Runtime.CompilerServices.AsyncMethodBuilderAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of AsyncMethodBuilderAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)" />.
             </summary>
             <param name="builderType">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of AsyncMethodBuilderAttribute by passing the parameter <paramref name="builderType"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute" />
+            by passing the parameter <paramref name="builderType" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.AsyncMethodBuilderAttribute.#ctor(System.Type)" />.
             </returns>
         </member>
         <member name="T:System.Runtime.CompilerServices.InterpolatedStringHandlerAttribute">
@@ -446,7 +464,7 @@
         </member>
         <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute"/> class.
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute" /> class.
             </summary>
             <remarks><para>
             The empty string may be used as the name of the receiver in an instance method.
@@ -455,7 +473,7 @@
         </member>
         <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute"/> class.
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute" /> class.
             </summary>
             <remarks><para>
             The empty string may be used as the name of the receiver in an instance method.
@@ -470,24 +488,28 @@
         </member>
         <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.op_Implicit(System.String)~System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of InterpolatedStringHandlerArgumentAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)" />.
             </summary>
             <param name="argument">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of InterpolatedStringHandlerArgumentAttribute by passing the parameter <paramref name="argument"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute" />
+            by passing the parameter <paramref name="argument" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.op_Implicit(System.String[])~System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of InterpolatedStringHandlerArgumentAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])" />.
             </summary>
             <param name="arguments">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of InterpolatedStringHandlerArgumentAttribute by passing the parameter <paramref name="arguments"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute" />
+            by passing the parameter <paramref name="arguments" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])" />.
             </returns>
         </member>
         <member name="T:System.Runtime.CompilerServices.ModuleInitializerAttribute">
@@ -499,16 +521,16 @@
             the compiler will emit a module initializer that calls each of the attributed methods.<br />
             Certain requirements are imposed on any method targeted with this attribute:
             </para><list type="bullet">
-            <item><description>The method must be <see langword="static"/>.</description></item>
+            <item><description>The method must be <see langword="static" />.</description></item>
             <item><description>
             The method must be an ordinary member method, as opposed to a property accessor,
             constructor, local function, and so on.
             </description></item>
             <item><description>The method must be parameterless..</description></item>
-            <item><description>The method must return <see langword="void"/>.</description></item>
+            <item><description>The method must return <see langword="void" />.</description></item>
             <item><description>The method must not be generic or be contained in a generic type.</description></item>
             <item><description>
-            The method's effective accessibility must be <see langword="internal"/> or <see langword="public"/>.
+            The method's effective accessibility must be <see langword="internal" /> or <see langword="public" />.
             </description></item>
             </list><para>
             For more information, see the
@@ -523,7 +545,7 @@
             This is the file path at the time of compile.
             </summary>
             <remarks><para>
-            You apply the <see cref="T:System.Runtime.CompilerServices.CallerFilePathAttribute"/> attribute to an optional parameter that has a default value.
+            You apply the <see cref="T:System.Runtime.CompilerServices.CallerFilePathAttribute" /> attribute to an optional parameter that has a default value.
             You must specify an explicit default value for the optional parameter.
             You can't apply this attribute to parameters that aren't specified as optional.
             </para></remarks>
@@ -531,7 +553,7 @@
         <member name="T:System.Runtime.CompilerServices.CallerLineNumberAttribute">
             <summary>Allows you to obtain the line number in the source file at which the method is called.</summary>
             <remarks><para>
-            You apply the <see cref="T:System.Runtime.CompilerServices.CallerLineNumberAttribute"/> attribute to an optional parameter that
+            You apply the <see cref="T:System.Runtime.CompilerServices.CallerLineNumberAttribute" /> attribute to an optional parameter that
             has a default value. You must specify an explicit default value for the optional parameter.
             You can't apply this attribute to parameters that aren't specified as optional.
             </para></remarks>
@@ -539,7 +561,7 @@
         <member name="T:System.Runtime.CompilerServices.CallerMemberNameAttribute">
             <summary>Allows you to obtain the method or property name of the caller to the method.</summary>
             <remarks><para>
-            You apply the <see cref="T:System.Runtime.CompilerServices.CallerMemberNameAttribute"/> attribute to an optional parameter that
+            You apply the <see cref="T:System.Runtime.CompilerServices.CallerMemberNameAttribute" /> attribute to an optional parameter that
             has a default value. You must specify an explicit default value for the optional parameter.
             You can't apply this attribute to parameters that aren't specified as optional.
             </para></remarks>
@@ -549,7 +571,7 @@
             <remarks><para>This attribute is implemented in the compiler for C# 10 and later versions only.</para></remarks>
         </member>
         <member name="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)">
-            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute"/> class.</summary>
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute" /> class.</summary>
             <param name="parameterName">
             The name of the parameter whose expression should be captured as a string.
             </param>
@@ -559,13 +581,15 @@
         </member>
         <member name="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.op_Implicit(System.String)~System.Runtime.CompilerServices.CallerArgumentExpressionAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of CallerArgumentExpressionAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)" />.
             </summary>
             <param name="parameterName">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of CallerArgumentExpressionAttribute by passing the parameter <paramref name="parameterName"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute" />
+            by passing the parameter <paramref name="parameterName" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:System.Runtime.CompilerServices.SkipLocalsInitAttribute">
@@ -588,11 +612,11 @@
             </summary>
         </member>
         <member name="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute"/> class.</summary>
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute" /> class.</summary>
         </member>
         <member name="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute"/> class
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute" /> class
             with the specified message.
             </summary>
             <param name="message">An optional message associated with this attribute instance.</param>
@@ -605,13 +629,15 @@
         </member>
         <member name="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.op_Implicit(System.String)~System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of RequiresPreviewFeaturesAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor(System.String)" />.
             </summary>
             <param name="message">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of RequiresPreviewFeaturesAttribute by passing the parameter <paramref name="message"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute" />
+            by passing the parameter <paramref name="message" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.RequiresPreviewFeaturesAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute">
@@ -621,13 +647,13 @@
             </summary>
         </member>
         <member name="F:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.RefStructs">
-            <summary>The <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName"/> used for the ref structs C# feature.</summary>
+            <summary>The <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName" /> used for the ref structs C# feature.</summary>
         </member>
         <member name="F:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.RequiredMembers">
-            <summary>The <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName"/> used for the required members C# feature.</summary>
+            <summary>The <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName" /> used for the required members C# feature.</summary>
         </member>
         <member name="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)">
-            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute"/> class.</summary>
+            <summary>Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute" /> class.</summary>
             <param name="featureName">The name of the compiler feature.</param>
         </member>
         <member name="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName">
@@ -636,18 +662,20 @@
         <member name="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.IsOptional">
             <summary>
             Gets or sets a value indicating whether the compiler can choose to allow access to the location
-            where this attribute is applied if it does not understand <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName"/>.
+            where this attribute is applied if it does not understand <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName" />.
             </summary>
         </member>
         <member name="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.op_Implicit(System.String)~System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of CompilerFeatureRequiredAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)" />.
             </summary>
             <param name="featureName">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of CompilerFeatureRequiredAttribute by passing the parameter <paramref name="featureName"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute" />
+            by passing the parameter <paramref name="featureName" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:System.Runtime.CompilerServices.RequiredMemberAttribute">
@@ -664,14 +692,37 @@
         </member>
         <member name="M:System.Runtime.CompilerServices.InlineArrayAttribute.op_Implicit(System.Int32)~System.Runtime.CompilerServices.InlineArrayAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of InlineArrayAttribute by using the constructor
-            <see cref="M:System.Runtime.CompilerServices.InlineArrayAttribute.#ctor(System.Int32)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Runtime.CompilerServices.InlineArrayAttribute" /> by using the constructor
+            <see cref="M:System.Runtime.CompilerServices.InlineArrayAttribute.#ctor(System.Int32)" />.
             </summary>
             <param name="length">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of InlineArrayAttribute by passing the parameter <paramref name="length"/> to the constructor
-            <see cref="M:System.Runtime.CompilerServices.InlineArrayAttribute.#ctor(System.Int32)"/>.
+            The new instance of <see cref="T:System.Runtime.CompilerServices.InlineArrayAttribute" />
+            by passing the parameter <paramref name="length" /> to the constructor
+            <see cref="M:System.Runtime.CompilerServices.InlineArrayAttribute.#ctor(System.Int32)" />.
             </returns>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute">
+            <summary>
+            Specifies the priority of a member in overload resolution. When unspecified, the default priority is 0.
+            </summary>
+            <param name="priority">
+            The priority of the attributed member. Higher numbers are prioritized, lower
+            numbers are deprioritized. 0 is the default if no attribute is present.
+            </param>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute.#ctor(System.Int32)">
+            <summary>
+            Specifies the priority of a member in overload resolution. When unspecified, the default priority is 0.
+            </summary>
+            <param name="priority">
+            The priority of the attributed member. Higher numbers are prioritized, lower
+            numbers are deprioritized. 0 is the default if no attribute is present.
+            </param>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute.Priority">
+            <summary>Gets the priority of the member.</summary>
         </member>
         <member name="T:System.Text.RegularExpressions.GeneratedRegexAttribute">
             <summary>
@@ -681,29 +732,29 @@
             <remarks>
             <para>
             The generator associated with this attribute only supports C#. It only supplies an implementation when applied
-            to static, partial, parameterless, non-generic methods that are typed to return <see cref="T:System.Text.RegularExpressions.Regex"/>.
+            to static, partial, parameterless, non-generic methods that are typed to return <see cref="T:System.Text.RegularExpressions.Regex" />.
             </para>
             <para>
-            When the <see cref="T:System.Text.RegularExpressions.Regex"/> supports case-insensitive matches (either by passing
-            <see cref="F:System.Text.RegularExpressions.RegexOptions.IgnoreCase"/> or using the inline <c>(?i)</c> switch in the pattern) the regex engines
+            When the <see cref="T:System.Text.RegularExpressions.Regex" /> supports case-insensitive matches (either by passing
+            <see cref="F:System.Text.RegularExpressions.RegexOptions.IgnoreCase" /> or using the inline <c>(?i)</c> switch in the pattern) the regex engines
             will use an internal casing table to transform the passed in pattern into an equivalent case-sensitive one.
             For example, given the pattern <c>abc</c>, the engines will transform it to the equivalent pattern
             <c>[Aa][Bb][Cc]</c>. The equivalences found in this internal casing table can change over time, for example in
             the case new characters are added to a new version of Unicode. When using the source generator, this
             transformation happens at compile time, which means the casing table used to find the equivalences will depend
-            on the target framework at compile time. This differs from the rest of the <see cref="T:System.Text.RegularExpressions.Regex"/> engines, which
+            on the target framework at compile time. This differs from the rest of the <see cref="T:System.Text.RegularExpressions.Regex" /> engines, which
             perform this transformation at run-time, meaning they will always use casing table for the current runtime.
             </para></remarks>
         </member>
         <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/> class with the specified pattern.
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" /> class with the specified pattern.
             </summary>
             <param name="pattern">The regular expression pattern to match.</param>
         </member>
         <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/>
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" />
             class with the specified pattern and options.
             </summary>
             <param name="pattern">The regular expression pattern to match.</param>
@@ -713,7 +764,7 @@
         </member>
         <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/>
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" />
             class with the specified pattern and options.
             </summary>
             <param name="pattern">The regular expression pattern to match.</param>
@@ -722,7 +773,7 @@
             </param>
             <param name="cultureName">
             The name of a culture to be used for case sensitive comparisons.
-            <paramref name="cultureName"/> is not case-sensitive.
+            <paramref name="cultureName" /> is not case-sensitive.
             </param>
             <remarks><para>
             For a list of predefined culture names on Windows systems, see the Language tag column in the
@@ -731,14 +782,14 @@
             Windows
             </a>.
             Culture names follow the standard defined by <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>.
-            In addition, starting with Windows 10, <paramref name="cultureName"/> can be any valid BCP-47 language tag.
+            In addition, starting with Windows 10, <paramref name="cultureName" /> can be any valid BCP-47 language tag.
             </para><para>
-            If <paramref name="cultureName"/> is <see cref="F:System.String.Empty"/>, the invariant culture will be used.
+            If <paramref name="cultureName" /> is <see cref="F:System.String.Empty" />, the invariant culture will be used.
             </para></remarks>
         </member>
         <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions,System.Int32)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/>
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" />
             class with the specified pattern, options, and timeout.
             </summary>
             <param name="pattern">The regular expression pattern to match.</param>
@@ -746,13 +797,13 @@
             A bitwise combination of the enumeration values that modify the regular expression.
             </param>
             <param name="matchTimeoutMilliseconds">
-            A time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite"/>
+            A time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite" />
             to indicate that the method should not time out.
             </param>
         </member>
         <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions,System.Int32,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute"/>
+            Initializes a new instance of the <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" />
             class with the specified pattern, options, and timeout.
             </summary>
             <param name="pattern">The regular expression pattern to match.</param>
@@ -760,11 +811,11 @@
             A bitwise combination of the enumeration values that modify the regular expression.
             </param>
             <param name="matchTimeoutMilliseconds">
-            A time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite"/>
+            A time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite" />
             to indicate that the method should not time out.</param>
             <param name="cultureName">
             The name of a culture to be used for case sensitive comparisons.
-            <paramref name="cultureName"/> is not case-sensitive.
+            <paramref name="cultureName" /> is not case-sensitive.
             </param>
             <remarks><para>
             For a list of predefined culture names on Windows systems, see the Language tag column in the
@@ -773,14 +824,14 @@
             Windows
             </a>.
             Culture names follow the standard defined by <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>.
-            In addition, starting with Windows 10, <paramref name="cultureName"/> can be any valid BCP-47 language tag.
+            In addition, starting with Windows 10, <paramref name="cultureName" /> can be any valid BCP-47 language tag.
             </para><para>
-            If <paramref name="cultureName"/> is <see cref="F:System.String.Empty"/>, the invariant culture will be used.
+            If <paramref name="cultureName" /> is <see cref="F:System.String.Empty" />, the invariant culture will be used.
             </para></remarks>
         </member>
         <member name="P:System.Text.RegularExpressions.GeneratedRegexAttribute.MatchTimeoutMilliseconds">
             <summary>
-            Gets a time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite"/>
+            Gets a time-out interval (milliseconds), or <see cref="F:System.Threading.Timeout.Infinite" />
             to indicate that the method should not time out.
             </summary>
         </member>
@@ -795,20 +846,22 @@
         </member>
         <member name="M:System.Text.RegularExpressions.GeneratedRegexAttribute.op_Implicit(System.String)~System.Text.RegularExpressions.GeneratedRegexAttribute">
             <summary>
-            Implicitly converts the parameter by creating the new instance of GeneratedRegexAttribute by using the constructor
-            <see cref="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String)"/>.
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" /> by using the constructor
+            <see cref="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String)" />.
             </summary>
             <param name="pattern">The parameter to pass onto the constructor.</param>
             <returns>
-            The new instance of GeneratedRegexAttribute by passing the parameter <paramref name="pattern"/> to the constructor
-            <see cref="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String)"/>.
+            The new instance of <see cref="T:System.Text.RegularExpressions.GeneratedRegexAttribute" />
+            by passing the parameter <paramref name="pattern" /> to the constructor
+            <see cref="M:System.Text.RegularExpressions.GeneratedRegexAttribute.#ctor(System.String)" />.
             </returns>
         </member>
         <member name="T:Emik.MatchAttribute">
             <summary>Declares a contract that the generic parameter must include the qualified member.</summary>
         </member>
         <member name="M:Emik.MatchAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions)">
-            <summary>Initializes a new instance of the <see cref="T:Emik.MatchAttribute"/> class.</summary>
+            <summary>Initializes a new instance of the <see cref="T:Emik.MatchAttribute" /> class.</summary>
             <param name="pattern">The regular expression pattern to match.</param>
             <param name="options">The bitwise combination of the enumeration values that modify the regular expression.</param>
         </member>
@@ -826,33 +879,43 @@
             Indicates to Emik.SourceGenerators.Choices to extend the type, transforming it to a disjoint union.
             </summary>
         </member>
+        <member name="T:Emik.ChoiceAttribute.Private">
+            <summary>
+            Indicates that the type is mutable, but only within the type.
+            </summary>
+        </member>
+        <member name="T:Emik.ChoiceAttribute.Public">
+            <summary>
+            Indicates that the type is publicly mutable.
+            </summary>
+        </member>
         <member name="M:Emik.ChoiceAttribute.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute" /> class.
             </summary>
         </member>
         <member name="M:Emik.ChoiceAttribute.#ctor(System.Type)">
             <summary>
-            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute" /> class.
             </summary>
             <param name="set">The type of fields that define the annotated union.</param>
         </member>
         <member name="M:Emik.ChoiceAttribute.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute" /> class.
             </summary>
             <param name="isPubliclyMutable">Determines if mutability is private or public.</param>
         </member>
         <member name="M:Emik.ChoiceAttribute.#ctor(System.Type,System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute" /> class.
             </summary>
             <param name="set">The type of fields that define the annotated union.</param>
             <param name="isPubliclyMutable">Determines if mutability is private or public.</param>
         </member>
         <member name="M:Emik.ChoiceAttribute.#ctor(System.Boolean,System.Type)">
             <summary>
-            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute"/> class.
+            Initializes a new instance of the <see cref="T:Emik.ChoiceAttribute" /> class.
             </summary>
             <param name="isPubliclyMutable">Determines if mutability is private or public.</param>
             <param name="set">The type of fields that define the annotated union.</param>
@@ -867,61 +930,28 @@
             When specified, gets the set of fields that define the annotated union.
             </summary>
         </member>
+        <member name="T:Emik.Choice">
+            <summary>
+            Provides IntelliSense when a dot is typed after <c>Choice</c> and not <c>ChoiceAttribute</c>.
+            </summary>
+        </member>
+        <member name="T:Emik.Choice.Private">
+            <summary>
+            Indicates that the type is mutable, but only within the type.
+            </summary>
+        </member>
+        <member name="T:Emik.Choice.Public">
+            <summary>
+            Indicates that the type is publicly mutable.
+            </summary>
+        </member>
         <member name="T:Emik.NoImplicitOperatorAttribute">
             <summary>
             Prevents the analyzer from generating the implicit conversion into this constructor.
             </summary>
         </member>
-        <member name="T:Emik.NoStructuralTypingAttribute">
-            <summary>Signifies to ignore this when determining potential interfaces that can be implemented.</summary>
-            <remarks>
-            <para>
-            The behavior of this attribute depends on what you apply it on:
-            </para>
-            <list type="table">
-               <listheader>
-                   <term>Target</term>
-                   <description>Behavior</description>
-               </listheader>
-               <item>
-                   <term>Type Member</term>
-                   <description>Ignores the type altogether. No generation is ever performed on it.</description>
-               </item>
-               <item>
-                   <term>Member</term>
-                   <description>Ignores only this particular member when evaluating potential interfaces.</description>
-               </item>
-            </list>
-            </remarks>
-        </member>
-        <member name="T:NullGuard.AllowNullAttribute">
-            <summary>Prevents the injection of null checking (implicit mode only).</summary>
-        </member>
-        <member name="T:NullGuard.NullGuardAttribute">
-            <summary>Prevents the injection of null checking (implicit mode only).</summary>
-            <param name="flags">
-            The <see cref="T:NullGuard.ValidationFlags"/> to use for the target this attribute is being applied to.
-            </param>
-        </member>
-        <member name="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)">
-            <summary>Prevents the injection of null checking (implicit mode only).</summary>
-            <param name="flags">
-            The <see cref="T:NullGuard.ValidationFlags"/> to use for the target this attribute is being applied to.
-            </param>
-        </member>
-        <member name="M:NullGuard.NullGuardAttribute.op_Implicit(NullGuard.ValidationFlags)~NullGuard.NullGuardAttribute">
-            <summary>
-            Implicitly converts the parameter by creating the new instance of NullGuardAttribute by using the constructor
-            <see cref="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)"/>.
-            </summary>
-            <param name="flags">The parameter to pass onto the constructor.</param>
-            <returns>
-            The new instance of NullGuardAttribute by passing the parameter <paramref name="flags"/> to the constructor
-            <see cref="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)"/>.
-            </returns>
-        </member>
         <member name="T:NullGuard.ValidationFlags">
-            <summary>Used by <see cref="T:NullGuard.NullGuardAttribute"/> to target specific categories of members.</summary>
+            <summary>Used by <see cref="T:NullGuard.NullGuardAttribute" /> to target specific categories of members.</summary>
         </member>
         <member name="F:NullGuard.ValidationFlags.None">
             <summary>Does nothing.</summary>
@@ -958,169 +988,258 @@
         <member name="F:NullGuard.ValidationFlags.All">
             <summary>Wildcard.</summary>
         </member>
-        <member name="T:Wawa.DDL.Access">
+        <member name="T:NullGuard.AllowNullAttribute">
+            <summary>Prevents the injection of null checking (implicit mode only).</summary>
+        </member>
+        <member name="T:NullGuard.NullGuardAttribute">
+            <summary>Prevents the injection of null checking (implicit mode only).</summary>
+            <param name="flags">
+            The <see cref="T:NullGuard.ValidationFlags" /> to use for the target this attribute is being applied to.
+            </param>
+        </member>
+        <member name="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)">
+            <summary>Prevents the injection of null checking (implicit mode only).</summary>
+            <param name="flags">
+            The <see cref="T:NullGuard.ValidationFlags" /> to use for the target this attribute is being applied to.
+            </param>
+        </member>
+        <member name="M:NullGuard.NullGuardAttribute.op_Implicit(NullGuard.ValidationFlags)~NullGuard.NullGuardAttribute">
+            <summary>
+            Implicitly converts the parameter by creating the new instance of
+            <see cref="T:NullGuard.NullGuardAttribute" /> by using the constructor
+            <see cref="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)" />.
+            </summary>
+            <param name="flags">The parameter to pass onto the constructor.</param>
+            <returns>
+            The new instance of <see cref="T:NullGuard.NullGuardAttribute" />
+            by passing the parameter <paramref name="flags" /> to the constructor
+            <see cref="M:NullGuard.NullGuardAttribute.#ctor(NullGuard.ValidationFlags)" />.
+            </returns>
+        </member>
+        <member name="T:wawa.DDL.Access">
             <summary>A class for accessing things from the game.</summary>
         </member>
-        <member name="P:Wawa.DDL.Access.IsKtane">
-            <summary>Gets a value indicating whether the runtime is in-game.</summary>
-            <remarks><para>Opposite of <see cref="P:UnityEngine.Application.isEditor"/>, but as a pure getter.</para></remarks>
+        <member name="T:wawa.DDL.Access.Overrides`2">
+            <summary>The class for accessing external methods specifically exported for use in this library.</summary>
+            <typeparam name="T">The type of the parameter.</typeparam>
+            <typeparam name="TResult">The type of return.</typeparam>
         </member>
-        <member name="M:Wawa.DDL.Access.FromGame``2(``0,System.Converter{``0,``1},``1)">
+        <member name="F:wawa.DDL.Access.Overrides`2.s_cache">
+            <summary>The cache of delegates.</summary>
+        </member>
+        <member name="M:wawa.DDL.Access.Overrides`2.GetOrAdd(System.String)">
+            <summary>Gets or adds the method with the specified name.</summary>
+            <param name="name">The name of the method.</param>
+            <returns>The method.</returns>
+        </member>
+        <member name="M:wawa.DDL.Access.Overrides`2.Create``1(System.String)">
+            <summary>Creates the delegate around the method with the specified name.</summary>
+            <typeparam name="TO">The return type.</typeparam>
+            <param name="name">The name of the method.</param>
+            <returns>The delegate.</returns>
+        </member>
+        <member name="F:wawa.DDL.Access.Binds">
+            <summary>The flags for binding methods.</summary>
+        </member>
+        <member name="F:wawa.DDL.Access.s_type">
+            <summary>The type that contains the requested overrides.</summary>
+        </member>
+        <member name="P:wawa.DDL.Access.IsRewritten">
+            <summary>Gets a value indicating whether the runtime is in a non-official game.</summary>
+        </member>
+        <member name="P:wawa.DDL.Access.IsKtane">
+            <summary>Gets a value indicating whether the runtime is in-game.</summary>
+        </member>
+        <member name="M:wawa.DDL.Access.FromGame``1(System.Converter{System.DBNull,``0},``0,System.String)">
             <summary>Method for obtaining something from the game, ensuring that the Unity editor stays happy.</summary>
             <remarks><para>
             This API primarily exists for if you already have a reference to Assembly-CSharp.dll, typically involving using
             a class library to allow such a reference. If you do not use a class library, then this method can be ignored in
-            favor of wrappers such as <see cref="T:Wawa.DDL.Lookup"/>, <see cref="T:Wawa.DDL.Missions"/>, or <see cref="T:Wawa.DDL.Preferences"/>.
+            favor of wrappers such as <see cref="T:wawa.DDL.Lookup" />, <see cref="T:wawa.DDL.Missions" />, or <see cref="T:wawa.DDL.Preferences" />.
             </para><para>
-            Unlike the other APIs exposed by these libraries, the return value of <typeparamref name="TResult"/>'s
-            nullability may not be trusted if it is a reference type or <see cref="T:System.Nullable`1"/>, even when
-            <paramref name="def"/> itself is non-null. As such, enable nullable reference types or use
-            <see cref="M:Wawa.Optionals.Maybe.AsMaybe``1(System.Nullable{``0})"/> to enforce type safety.
+            Unlike the other APIs exposed by these libraries, the return value of <typeparamref name="T" />'s
+            nullability may not be trusted if it is a reference type or <see cref="T:System.Nullable`1" />, even when
+            <paramref name="def" /> itself is non-null. As such, enable nullable reference types or use
+            <see cref="M:wawa.Optionals.Maybe.AsMaybe``1(System.Nullable{``0})" /> to enforce type safety.
             </para><para>
-            To guarantee the DDL pattern, ensure that <typeparamref name="T"/> and <typeparamref name="TResult"/> are not
+            To guarantee the DDL pattern, ensure that <typeparamref name="T" /> is not from a potentially
+            unavailable reference, and avoid creating closures that capture state without first
+            downcasting to <see cref="T:System.Object" /> beforehand, and recasting within the closure.
+            </para><para>
+            Never assume functions or fields pulled directly from Assembly-CSharp.dll are safe and guaranteed non-null.
+            </para></remarks>
+            <typeparam name="T">The type of the return, be sure that this doesn't come from the game.</typeparam>
+            <param name="ktane">The factory containing one or more references that may be unavailable.<p /><c>[RequireStaticDelegate]</c></param>
+            <param name="def">The value to return instead, since <paramref name="ktane" /> is for in-game only.</param>
+            <param name="overriden">The name of the factory to invoke.</param>
+            <returns>The value from <paramref name="ktane" />, or <see langword="default" />.</returns>
+        </member>
+        <member name="M:wawa.DDL.Access.FromGame``2(``0,System.Converter{``0,``1},``1,System.String)">
+            <summary>Method for obtaining something from the game, ensuring that the Unity editor stays happy.</summary>
+            <remarks><para>
+            This API primarily exists for if you already have a reference to Assembly-CSharp.dll, typically involving using
+            a class library to allow such a reference. If you do not use a class library, then this method can be ignored in
+            favor of wrappers such as <see cref="T:wawa.DDL.Lookup" />, <see cref="T:wawa.DDL.Missions" />, or <see cref="T:wawa.DDL.Preferences" />.
+            </para><para>
+            Unlike the other APIs exposed by these libraries, the return value of <typeparamref name="TResult" />'s
+            nullability may not be trusted if it is a reference type or <see cref="T:System.Nullable`1" />, even when
+            <paramref name="def" /> itself is non-null. As such, enable nullable reference types or use
+            <see cref="M:wawa.Optionals.Maybe.AsMaybe``1(System.Nullable{``0})" /> to enforce type safety.
+            </para><para>
+            To guarantee the DDL pattern, ensure that <typeparamref name="T" /> and <typeparamref name="TResult" /> are not
             from a potentially unavailable reference, and avoid creating closures that capture state without first
-            downcasting to <see cref="T:System.Object"/> beforehand, and recasting within the closure.
+            downcasting to <see cref="T:System.Object" /> beforehand, and recasting within the closure.
             </para><para>
             Never assume functions or fields pulled directly from Assembly-CSharp.dll are safe and guaranteed non-null.
             </para></remarks>
             <typeparam name="T">The context item, be sure that this doesn't come from the game.</typeparam>
             <typeparam name="TResult">The type of the return, be sure that this doesn't come from the game.</typeparam>
             <param name="context">The context element to pass into the callback.</param>
-            <param name="factory">The factory containing one or more references that may be unavailable.</param>
-            <param name="def">The value to return instead, since <paramref name="factory"/> is for in-game only.</param>
-            <returns>The value from <paramref name="factory"/>, or <see langword="default" />.</returns>
+            <param name="ktane">The factory containing one or more references that may be unavailable.<p /><c>[RequireStaticDelegate]</c></param>
+            <param name="def">The value to return instead, since <paramref name="ktane" /> is for in-game only.</param>
+            <param name="overriden">The name of the factory to invoke.</param>
+            <returns>The value from <paramref name="ktane" />, or <see langword="default" />.</returns>
         </member>
-        <member name="T:Wawa.DDL.KMBombStrikeExtensions">
-            <summary>Exposes strike-related methods that <see cref="T:KMBomb"/> instances can act on.</summary>
+        <member name="T:wawa.DDL.KMBombStrikeExtensions">
+            <summary>Exposes strike-related methods that <see cref="T:KMBomb" /> instances can act on.</summary>
         </member>
-        <member name="M:Wawa.DDL.KMBombStrikeExtensions.GetStrikes(KMBomb)">
-            <summary>Gets the number of strikes.</summary>
+        <member name="M:wawa.DDL.KMBombStrikeExtensions.GetStrikes(KMBomb)">
+            <summary>Gets the number of strikes.<p /><c>[MustUseReturnValue, NonNegativeValue]</c></summary>
             <remarks><para>In the editor, this value always returns <c>0</c>.</para></remarks>
-            <param name="that">The <see cref="T:KMBomb"/> module instance to grab strikes from.</param>
+            <param name="that">The <see cref="T:KMBomb" /> module instance to grab strikes from.</param>
             <returns>The number of strikes.</returns>
         </member>
-        <member name="M:Wawa.DDL.KMBombStrikeExtensions.GetMaxStrikes(KMBomb)">
-            <summary>Gets the number of max strikes.</summary>
+        <member name="M:wawa.DDL.KMBombStrikeExtensions.GetMaxStrikes(KMBomb)">
+            <summary>Gets the number of max strikes.<p /><c>[MustUseReturnValue, NonNegativeValue]</c></summary>
             <remarks><para>In the editor, this value always returns <c>0</c>.</para></remarks>
-            <param name="that">The <see cref="T:KMBomb"/> module instance to grab max strikes from.</param>
+            <param name="that">The <see cref="T:KMBomb" /> module instance to grab max strikes from.</param>
             <returns>The number of max strikes.</returns>
         </member>
-        <member name="M:Wawa.DDL.KMBombStrikeExtensions.GetRate(KMBomb,System.Boolean)">
-            <summary>Gets the rate in which the timer ticks.</summary>
+        <member name="M:wawa.DDL.KMBombStrikeExtensions.GetRate(KMBomb,System.Boolean)">
+            <summary>Gets the rate in which the timer ticks.<p /><c>[MustUseReturnValue]</c></summary>
             <remarks><para>In the editor, this value always returns <c>1</c>.</para></remarks>
-            <param name="that">The <see cref="T:KMBomb"/> module instance to grab the rate from.</param>
+            <param name="that">The <see cref="T:KMBomb" /> module instance to grab the rate from.</param>
             <param name="signFlip">
-            When <see langword="true"/>, invert the returned value when
-            the component from <paramref name="that"/> ticks backwards.
+            When <see langword="true" />, invert the returned value when
+            the component from <paramref name="that" /> ticks backwards.
             </param>
             <returns>The speed of the ticking.</returns>
         </member>
-        <member name="M:Wawa.DDL.KMBombStrikeExtensions.Detonate(KMBomb)">
-            <summary>Detonates the bomb.</summary>
+        <member name="M:wawa.DDL.KMBombStrikeExtensions.Detonate(KMBomb)">
+            <summary>Detonates the bomb.<p /><c>[NonNegativeValue]</c></summary>
             <remarks><para>In the editor, this method does nothing.</para></remarks>
-            <param name="that">The <see cref="T:KMBomb"/> module instance to detonate.</param>
-            <returns>The parameter <paramref name="that"/>.</returns>
+            <param name="that">The <see cref="T:KMBomb" /> module instance to detonate.</param>
+            <returns>The parameter <paramref name="that" />.</returns>
         </member>
-        <member name="M:Wawa.DDL.KMBombStrikeExtensions.SetRate(KMBomb,System.Single,System.Boolean)">
+        <member name="M:wawa.DDL.KMBombStrikeExtensions.SetRate(KMBomb,System.Single,System.Boolean)">
             <summary>Sets the rate in which the timer ticks.</summary>
             <remarks><para>In the editor, this method does nothing.</para></remarks>
-            <param name="that">The <see cref="T:KMBomb"/> module instance to grab the rate from.</param>
+            <param name="that">The <see cref="T:KMBomb" /> module instance to grab the rate from.</param>
             <param name="value">The value to set it to.</param>
             <param name="signFlip">
-            When <see langword="true"/>, invert <paramref name="value"/> when
-            the component from <paramref name="that"/> ticks backwards.
+            When <see langword="true" />, invert <paramref name="value" /> when
+            the component from <paramref name="that" /> ticks backwards.
             </param>
-            <returns>The parameter <paramref name="that"/>.</returns>
+            <returns>The parameter <paramref name="that" />.</returns>
         </member>
-        <member name="M:Wawa.DDL.KMBombStrikeExtensions.SetStrikes(KMBomb,System.Int32,System.Boolean)">
-            <summary>Sets the number of strikes.</summary>
+        <member name="M:wawa.DDL.KMBombStrikeExtensions.SetStrikes(KMBomb,System.Int32,System.Boolean)">
+            <summary>Sets the number of strikes.<p /><c>[NonNegativeValue]</c></summary>
             <remarks><para>In the editor, this method does nothing.</para></remarks>
-            <param name="that">The <see cref="T:KMBomb"/> module instance to grab strikes from.</param>
+            <param name="that">The <see cref="T:KMBomb" /> module instance to grab strikes from.</param>
             <param name="value">The value to set it to.</param>
-            <param name="tryDetonate">When <see langword="true"/>, check for whether detonation should occur.</param>
-            <returns>The parameter <paramref name="that"/>.</returns>
+            <param name="tryDetonate">When <see langword="true" />, check for whether detonation should occur.</param>
+            <returns>The parameter <paramref name="that" />.</returns>
         </member>
-        <member name="M:Wawa.DDL.KMBombStrikeExtensions.SetMaxStrikes(KMBomb,System.Int32,System.Boolean)">
-            <summary>Sets the number of max strikes.</summary>
+        <member name="M:wawa.DDL.KMBombStrikeExtensions.SetMaxStrikes(KMBomb,System.Int32,System.Boolean)">
+            <summary>Sets the number of max strikes.<p /><c>[NonNegativeValue]</c></summary>
             <remarks><para>In the editor, this method does nothing.</para></remarks>
-            <param name="that">The <see cref="T:KMBomb"/> module instance to grab max strikes from.</param>
+            <param name="that">The <see cref="T:KMBomb" /> module instance to grab max strikes from.</param>
             <param name="value">The value to set it to.</param>
-            <param name="tryDetonate">When <see langword="true"/>, check for whether detonation should occur.</param>
-            <returns>The parameter <paramref name="that"/>.</returns>
+            <param name="tryDetonate">When <see langword="true" />, check for whether detonation should occur.</param>
+            <returns>The parameter <paramref name="that" />.</returns>
         </member>
-        <member name="T:Wawa.DDL.Lookup">
+        <member name="T:wawa.DDL.Lookup">
             <summary>Allows for querying general data from the game.</summary>
         </member>
-        <member name="P:Wawa.DDL.Lookup.Mods">
+        <member name="F:wawa.DDL.Lookup.Name">
+            <summary>The field name for the dictionary of loaded mods.</summary>
+        </member>
+        <member name="F:wawa.DDL.Lookup.Binds">
+            <summary>The binding flags for obtaining the dictionary of loaded mods.</summary>
+        </member>
+        <member name="P:wawa.DDL.Lookup.Mods">
             <summary>Gets the dictionary of loaded mods.</summary>
             <remarks><para>
-            In the editor, this value returns an instance of <see cref="T:System.Collections.Hashtable"/>, initialized as empty.
+            In the editor, this value returns an instance of <see cref="T:System.Collections.Hashtable" />, initialized as empty.
             </para></remarks>
         </member>
-        <member name="M:Wawa.DDL.Lookup.Localized(System.String)">
-            <summary>Gets the localized value of a <see cref="T:System.String"/> term.</summary>
-            <remarks><para>In the editor, this value returns <see cref="M:Wawa.Optionals.Maybe.None``1"/>.</para></remarks>
-            <param name="term">The term to get the localized <see cref="T:System.String"/> of.</param>
-            <returns>The localized <see cref="T:System.String"/> of the parameter <paramref name="term"/>.</returns>
+        <member name="M:wawa.DDL.Lookup.Localized(System.String)">
+            <summary>Gets the localized value of a <see cref="T:System.String" /> term.</summary>
+            <remarks><para>In the editor, this value returns <see cref="M:wawa.Optionals.Maybe.None``1" />.</para></remarks>
+            <param name="term">The term to get the localized <see cref="T:System.String" /> of.</param>
+            <returns>The localized <see cref="T:System.String" /> of the parameter <paramref name="term" />.</returns>
         </member>
-        <member name="M:Wawa.DDL.Lookup.ModNameOf(UnityEngine.Component)">
+        <member name="M:wawa.DDL.Lookup.ModNameOf(UnityEngine.Component)">
             <summary>Gets the mod name attached to the component.</summary>
-            <remarks><para>In the editor, this value returns <see cref="M:Wawa.Optionals.Maybe.None``1"/>.</para></remarks>
+            <remarks><para>In the editor, this value returns <see cref="M:wawa.Optionals.Maybe.None``1" />.</para></remarks>
             <param name="component">The component to get the mod source from.</param>
-            <returns>The mod name attached to the parameter <paramref name="component"/>.</returns>
+            <returns>The mod name attached to the parameter <paramref name="component" />.</returns>
         </member>
-        <member name="T:Wawa.DDL.Missions">
+        <member name="T:wawa.DDL.Missions">
             <summary>Allows access into current mission metadata.</summary>
         </member>
-        <member name="F:Wawa.DDL.Missions.ExampleDescription">
+        <member name="F:wawa.DDL.Missions.ExampleDescription">
             <summary>The default value for the respective property.</summary>
         </member>
-        <member name="F:Wawa.DDL.Missions.ExampleId">
+        <member name="F:wawa.DDL.Missions.ExampleId">
             <summary>The default value for the respective property.</summary>
         </member>
-        <member name="F:Wawa.DDL.Missions.ExampleLanguageCode">
+        <member name="F:wawa.DDL.Missions.ExampleLanguageCode">
             <summary>The default value for the respective property.</summary>
         </member>
-        <member name="F:Wawa.DDL.Missions.ExampleName">
+        <member name="F:wawa.DDL.Missions.ExampleName">
             <summary>The default value for the respective property.</summary>
         </member>
-        <member name="P:Wawa.DDL.Missions.IsPacingEvents">
+        <member name="P:wawa.DDL.Missions.HasPacingEvents">
             <summary>Gets or sets a value indicating whether pacing events are enabled.</summary>
-            <remarks><para>In the editor, this returns <see keyword="false"/>.</para></remarks>
+            <remarks><para>In the editor, this returns <see keyword="false" />.</para></remarks>
         </member>
-        <member name="P:Wawa.DDL.Missions.Description">
+        <member name="P:wawa.DDL.Missions.LightsOn">
+            <summary>Gets or sets a value indicating whether the lights are on.</summary>
+        </member>
+        <member name="P:wawa.DDL.Missions.Description">
             <summary>Gets the description as it appears in the bomb binder.</summary>
-            <remarks><para>In the editor, this returns <see cref="F:Wawa.DDL.Missions.ExampleDescription"/>.</para></remarks>
+            <remarks><para>In the editor, this returns <see cref="F:wawa.DDL.Missions.ExampleDescription" />.</para></remarks>
         </member>
-        <member name="P:Wawa.DDL.Missions.Id">
+        <member name="P:wawa.DDL.Missions.Id">
             <summary>Gets the ID of the mission.</summary>
-            <remarks><para>In the editor, this returns <see cref="F:Wawa.DDL.Missions.ExampleId"/>.</para></remarks>
+            <remarks><para>In the editor, this returns <see cref="F:wawa.DDL.Missions.ExampleId" />.</para></remarks>
         </member>
-        <member name="P:Wawa.DDL.Missions.LanguageCode">
+        <member name="P:wawa.DDL.Missions.LanguageCode">
             <summary>Gets the current language code.</summary>
-            <remarks><para>In the editor, this returns <see cref="F:Wawa.DDL.Missions.ExampleLanguageCode"/>.</para></remarks>
+            <remarks><para>In the editor, this returns <see cref="F:wawa.DDL.Missions.ExampleLanguageCode" />.</para></remarks>
         </member>
-        <member name="P:Wawa.DDL.Missions.Name">
+        <member name="P:wawa.DDL.Missions.Name">
             <summary>Gets the mission name as it appears in the bomb binder.</summary>
-            <remarks><para>In the editor, this returns <see cref="F:Wawa.DDL.Missions.ExampleName"/>.</para></remarks>
+            <remarks><para>In the editor, this returns <see cref="F:wawa.DDL.Missions.ExampleName" />.</para></remarks>
         </member>
-        <member name="T:Wawa.DDL.Preferences">
+        <member name="T:wawa.DDL.Preferences">
             <summary>Allows access into current user preferences.</summary>
         </member>
-        <member name="F:Wawa.DDL.Preferences.MaxVolume">
+        <member name="F:wawa.DDL.Preferences.MaxVolume">
             <summary>The maximum volume allowed by the game and default value for the respective properties.</summary>
         </member>
-        <member name="P:Wawa.DDL.Preferences.IsVR">
+        <member name="P:wawa.DDL.Preferences.IsVR">
             <summary>Gets a value indicating whether the game is being played on VR.</summary>
-            <remarks><para>In the editor, this value always returns <see langword="false"/>.</para></remarks>
+            <remarks><para>In the editor, this value always returns <see langword="false" />.</para></remarks>
         </member>
-        <member name="P:Wawa.DDL.Preferences.Music">
+        <member name="P:wawa.DDL.Preferences.Music">
             <summary>Gets or sets the current music volume from the dossier menu. Ranges 0 to 100.</summary>
-            <remarks><para>In the editor, this returns <see cref="F:Wawa.DDL.Preferences.MaxVolume"/>.</para></remarks>
+            <remarks><para>In the editor, this returns <see cref="F:wawa.DDL.Preferences.MaxVolume" />.</para></remarks>
         </member>
-        <member name="P:Wawa.DDL.Preferences.Sound">
+        <member name="P:wawa.DDL.Preferences.Sound">
             <summary>Gets or sets the current sound effect volume from the dossier menu. Ranges 0 to 100.</summary>
-            <remarks><para>In the editor, this returns <see cref="F:Wawa.DDL.Preferences.MaxVolume"/>.</para></remarks>
+            <remarks><para>In the editor, this returns <see cref="F:wawa.DDL.Preferences.MaxVolume" />.</para></remarks>
         </member>
     </members>
 </doc>

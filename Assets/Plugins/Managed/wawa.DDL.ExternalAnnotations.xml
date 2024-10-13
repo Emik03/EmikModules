@@ -1,137 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <assembly name="wawa.DDL">
-  <member name="M:Wawa.DDL.Access.get_IsKtane">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.DDL.Access.FromGame``2(``0,System.Converter{``0,``1},``1)">
-    <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    <parameter name="context">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="factory">
-      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  <member name="M:wawa.DDL.Access.FromGame``1(System.Converter{System.DBNull,``0},``0,System.String)">
+    <parameter name="ktane">
       <attribute ctor="M:JetBrains.Annotations.RequireStaticDelegateAttribute.#ctor" />
     </parameter>
-    <parameter name="def">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+  </member>
+  <member name="M:wawa.DDL.Access.FromGame``2(``0,System.Converter{``0,``1},``1,System.String)">
+    <parameter name="ktane">
+      <attribute ctor="M:JetBrains.Annotations.RequireStaticDelegateAttribute.#ctor" />
     </parameter>
   </member>
-  <member name="M:Wawa.DDL.KMBombStrikeExtensions.GetStrikes(.KMBomb)">
+  <member name="M:wawa.DDL.KMBombStrikeExtensions.Detonate(KMBomb)">
+    <attribute ctor="M:JetBrains.Annotations.NonNegativeValueAttribute.#ctor" />
+  </member>
+  <member name="M:wawa.DDL.KMBombStrikeExtensions.GetMaxStrikes(KMBomb)">
     <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.NonNegativeValueAttribute.#ctor" />
-    <parameter name="that">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
   </member>
-  <member name="M:Wawa.DDL.KMBombStrikeExtensions.GetMaxStrikes(.KMBomb)">
+  <member name="M:wawa.DDL.KMBombStrikeExtensions.GetRate(KMBomb,System.Boolean)">
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
+  </member>
+  <member name="M:wawa.DDL.KMBombStrikeExtensions.GetStrikes(KMBomb)">
     <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.NonNegativeValueAttribute.#ctor" />
-    <parameter name="that">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
   </member>
-  <member name="M:Wawa.DDL.KMBombStrikeExtensions.GetRate(.KMBomb,System.Boolean)">
-    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
-    <parameter name="that">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.DDL.KMBombStrikeExtensions.Detonate(.KMBomb)">
+  <member name="M:wawa.DDL.KMBombStrikeExtensions.SetMaxStrikes(KMBomb,System.Int32,System.Boolean)">
     <attribute ctor="M:JetBrains.Annotations.NonNegativeValueAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <parameter name="that">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
   </member>
-  <member name="M:Wawa.DDL.KMBombStrikeExtensions.SetRate(.KMBomb,System.Single,System.Boolean)">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <parameter name="that">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.DDL.KMBombStrikeExtensions.SetStrikes(.KMBomb,System.Int32,System.Boolean)">
+  <member name="M:wawa.DDL.KMBombStrikeExtensions.SetStrikes(KMBomb,System.Int32,System.Boolean)">
     <attribute ctor="M:JetBrains.Annotations.NonNegativeValueAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <parameter name="that">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
   </member>
-  <member name="M:Wawa.DDL.KMBombStrikeExtensions.SetMaxStrikes(.KMBomb,System.Int32,System.Boolean)">
-    <attribute ctor="M:JetBrains.Annotations.NonNegativeValueAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <parameter name="that">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
+  <member name="P:wawa.DDL.Preferences.Music">
+    <attribute ctor="M:JetBrains.Annotations.ValueRangeAttribute.#ctor(System.Int64,System.Int64)" />
   </member>
-  <member name="M:Wawa.DDL.Lookup.get_Mods">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.DDL.Lookup.Localized(System.String)">
-    <parameter name="term">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.DDL.Lookup.ModNameOf(UnityEngine.Component)">
-    <parameter name="component">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.DDL.Lookup.Factory">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="P:Wawa.DDL.Lookup.Mods">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.DDL.Lookup.Name">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.DDL.Missions.get_IsPacingEvents">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.DDL.Missions.get_Description">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.DDL.Missions.get_Id">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.DDL.Missions.get_LanguageCode">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.DDL.Missions.get_Name">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.DDL.Missions.ExampleDescription">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.DDL.Missions.ExampleId">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.DDL.Missions.ExampleLanguageCode">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.DDL.Missions.ExampleName">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.DDL.Preferences.get_IsVR">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.DDL.Preferences.get_Music">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.DDL.Preferences.get_Sound">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="P:Wawa.DDL.Preferences.Music">
-    <attribute ctor="M:JetBrains.Annotations.ValueRangeAttribute.#ctor(System.Int64,System.Int64)">
-      <argument>0</argument>
-      <argument>100</argument>
-    </attribute>
-  </member>
-  <member name="P:Wawa.DDL.Preferences.Sound">
-    <attribute ctor="M:JetBrains.Annotations.ValueRangeAttribute.#ctor(System.Int64,System.Int64)">
-      <argument>0</argument>
-      <argument>100</argument>
-    </attribute>
+  <member name="P:wawa.DDL.Preferences.Sound">
+    <attribute ctor="M:JetBrains.Annotations.ValueRangeAttribute.#ctor(System.Int64,System.Int64)" />
   </member>
 </assembly>

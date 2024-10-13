@@ -1,432 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <assembly name="wawa.IO">
-  <member name="M:Wawa.IO.Config.Serialize``1(``0)">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <parameter name="value">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.Config.Write``1(Wawa.IO.Config{``0},System.String)">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <parameter name="that">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="value">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.Config.Write``1(Wawa.IO.Config{``0},``0)">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <parameter name="that">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="value">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.Config.Merge``1(Wawa.IO.Config{``0},``0,System.Boolean)">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <parameter name="that">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="value">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="isDiscarding">
-      <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.Config.Read``1(Wawa.IO.Config{``0})">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <parameter name="that">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.Config.Lint(Newtonsoft.Json.Linq.JObject,Newtonsoft.Json.Linq.JObject@)">
-    <parameter name="toMerge">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="content">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.Config.TryCreateNewFile``1(Wawa.IO.Config{``0})">
-    <parameter name="that">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.Config.Parse(System.String)">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.Config.Deserialized``1(Wawa.IO.Config{``0})">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <parameter name="that">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="F:Wawa.IO.Config.Folder">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  <member name="F:wawa.IO.Config.Folder">
     <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
   </member>
-  <member name="F:Wawa.IO.Config.Suffix">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  <member name="F:wawa.IO.Config.Suffix">
     <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
   </member>
-  <member name="F:Wawa.IO.Config.Tutorial">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.Config`1.#ctor(System.String)">
+  <member name="M:wawa.IO.Config`1.#ctor(System.String)">
     <parameter name="fileName">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
       <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
     </parameter>
   </member>
-  <member name="M:Wawa.IO.Config`1.get_HasRead">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.Config`1.get_FilePath">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.Config`1.Clone">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.Config`1.Equals(Wawa.IO.Config{`0},Wawa.IO.Config{`0})">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.Config`1.GetHashCode(Wawa.IO.Config{`0})">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-    <parameter name="obj">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.Config`1.Equals(Wawa.IO.Config{`0})">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.Config`1.op_Equality(Wawa.IO.Config{`0},Wawa.IO.Config{`0})">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-    <parameter name="left">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="right">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.Config`1.op_Inequality(Wawa.IO.Config{`0},Wawa.IO.Config{`0})">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-    <parameter name="left">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="right">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.Config`1.Equals(System.Object)">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.Config`1.GetHashCode">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="P:Wawa.IO.Config`1.FilePath">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  <member name="P:wawa.IO.Config`1.FilePath">
     <attribute ctor="M:JetBrains.Annotations.ProvidesContextAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
   </member>
-  <member name="F:Wawa.IO.Config`1.s_folder">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.ModInfo.get_Author">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.ModInfo.get_Description">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.ModInfo.get_Id">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.ModInfo.get_Title">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.ModInfo.get_UnityVersion">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.ModInfo.get_Version">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.ModInfo.Clone">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.ModInfo.Equals(Wawa.IO.ModInfo,Wawa.IO.ModInfo)">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.ModInfo.GetHashCode(Wawa.IO.ModInfo)">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-    <parameter name="obj">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.ModInfo.Equals(Wawa.IO.ModInfo)">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.ModInfo.op_Equality(Wawa.IO.ModInfo,Wawa.IO.ModInfo)">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-    <parameter name="left">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="right">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.ModInfo.op_Inequality(Wawa.IO.ModInfo,Wawa.IO.ModInfo)">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-    <parameter name="left">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="right">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.ModInfo.Deserialize(System.String)">
-    <parameter name="contents">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.ModInfo.ReadThenDeserialize(System.String)">
+  <member name="M:wawa.IO.ModInfo.ReadThenDeserialize(System.String)">
     <parameter name="filePath">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
       <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
     </parameter>
   </member>
-  <member name="M:Wawa.IO.ModInfo.Equals(System.Object)">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.ModInfo.GetHashCode">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.ModInfo.ToString">
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.ModInfo.FromInternalModInfo(System.Object)">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-    <parameter name="metadata">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="P:Wawa.IO.ModInfo.Author">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="P:Wawa.IO.ModInfo.Description">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="P:Wawa.IO.ModInfo.Id">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="P:Wawa.IO.ModInfo.Title">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="P:Wawa.IO.ModInfo.UnityVersion">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="P:Wawa.IO.ModInfo.Version">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.ModInfo.FileName">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.ModInfo.s_default">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.PathFinder.get_Caller">
+  <member name="M:wawa.IO.PathFinder.get_Caller">
     <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
   </member>
-  <member name="M:Wawa.IO.PathFinder.get_Who">
-    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.PathFinder.get_Which">
-    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.PathFinder.AssemblyLog(System.String,UnityEngine.LogType,System.String)">
-    <parameter name="message">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="member">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.PathFinder.GetDirectory(System.String)">
-    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
-    <parameter name="modId">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.PathFinder.GetFile(System.String,System.String)">
+  <member name="M:wawa.IO.PathFinder.GetAssets``1(System.String,System.String)">
     <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <parameter name="filePath">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
       <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
     </parameter>
-    <parameter name="modId">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
   </member>
-  <member name="M:Wawa.IO.PathFinder.GetModInfo(System.String)">
+  <member name="M:wawa.IO.PathFinder.GetDirectory(System.String)">
     <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
-    <parameter name="modId">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
   </member>
-  <member name="M:Wawa.IO.PathFinder.GetAssets``1(System.String,System.String)">
+  <member name="M:wawa.IO.PathFinder.GetFile(System.String,System.String)">
     <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <parameter name="filePath">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
       <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
     </parameter>
-    <parameter name="modId">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
   </member>
-  <member name="M:Wawa.IO.PathFinder.GetUnmanaged``1(System.String,System.String,System.String)">
+  <member name="M:wawa.IO.PathFinder.GetModInfo(System.String)">
+    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
+  </member>
+  <member name="M:wawa.IO.PathFinder.GetUnmanaged``1(System.String,System.String,System.String)">
     <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
     <parameter name="libPath">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
       <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
     </parameter>
-    <parameter name="ffiMethodName">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="modId">
-      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.PathFinder.MapNeedsUpdating">
-    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.PathFinder.Join(System.String,System.String@)">
-    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <parameter name="root">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
-    </parameter>
-    <parameter name="folder">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.PathFinder.FindDirectory(System.String)">
-    <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
-    <parameter name="key">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.PathFinder.FindLibrary(System.String,System.String@)">
-    <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
-    <parameter name="file">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
-    </parameter>
-    <parameter name="root">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.PathFinder.UpdateModIdToDirectoryMapping">
-    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.PathFinder.GetEditorModInfo">
-    <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
-  </member>
-  <member name="M:Wawa.IO.PathFinder.DefineMethod(System.Reflection.Emit.ModuleBuilder,System.String@,System.String@,System.Type@,System.Type[]@)">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
-    <parameter name="dynamicMod">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="dllName">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="name">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="returnType">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="parameters">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.ItemNotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="M:Wawa.IO.PathFinder.CreateUnmanagedMethod``1(System.String,System.String@)">
-    <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
-    <attribute ctor="M:JetBrains.Annotations.MustUseReturnValueAttribute.#ctor" />
-    <parameter name="dllName">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.PathReferenceAttribute.#ctor" />
-      <attribute ctor="M:JetBrains.Annotations.UriStringAttribute.#ctor" />
-    </parameter>
-    <parameter name="name">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
-  <member name="P:Wawa.IO.PathFinder.Caller">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="P:Wawa.IO.PathFinder.Who">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="P:Wawa.IO.PathFinder.Which">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.PathFinder.Library">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.PathFinder.Linux">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.PathFinder.ModInfoEditor">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.PathFinder.ModInfoSerializerEditor">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.PathFinder.ModInfoInstanceEditor">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.PathFinder.OSX">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.PathFinder.Windows">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.PathFinder.X86">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.PathFinder.X86Wide">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.PathFinder.UnityAssembly">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.PathFinder.Version0">
-    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-  </member>
-  <member name="F:Wawa.IO.PathFinder.s_directories">
-    <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
   </member>
 </assembly>
