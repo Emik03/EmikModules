@@ -4,11 +4,9 @@
 This repository item aims to combine all of my mods into one, making future maintainability much easier in the event that someone needs to take over.
 
 - To build the contents of this mod, download this version of Unity. [Windows](https://download.unity3d.com/download_unity/eb4bc6fa7f1d/UnityDownloadAssistant-2017.4.22f1.exe)/[Mac](https://download.unity3d.com/download_unity/eb4bc6fa7f1d/UnityDownloadAssistant-2017.4.22f1.dmg)
-- Download the repository, and open it with Unity.
-- Click on the dropdown "Keep Talking Modkit" and press "Build AssetBundle", or press F6.
-- A directory called `build` is created, copy the directory `./Assets/Plugins/Rustmate/lib` to the inside of `./build/EmikModules`.
-- Create a folder called "mods" inside of the root directory of the game.
-- Copy the entire EmikModules folder to that folder.
+- Download this repository, and open it with Unity.
+- Click on the dropdown "Keep Talking Modkit", and press "Build AssetBundle" or press F6.
+- Copy `EmikModules` inside the new `build` directory to `./steam/steamapps/common/Keep Talking and Nobody Explodes/mods/`, or symlink the `build` directory with the afforementioned destination.
 - Open the game and enable mods when prompted.
 
 *In the unlikely event of a bug, please report them in [#bug-reports](url=https://discord.com/invite/ktane).*
