@@ -9,6 +9,9 @@
   <member name="M:wawa.Optionals.Maybe.And``1(wawa.Optionals.Maybe{``0},wawa.Optionals.Maybe{``0})">
     <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
   </member>
+  <member name="M:wawa.Optionals.Maybe.As``2(wawa.Optionals.Maybe{``0})">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
   <member name="M:wawa.Optionals.Maybe.AsMaybe``1(System.Nullable{``0})">
     <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
   </member>
@@ -137,6 +140,12 @@
       <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
     </parameter>
   </member>
+  <member name="M:wawa.Optionals.Maybe`1.As``1(wawa.Optionals.Maybe{`0})">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument>
+    </attribute>
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
   <member name="M:wawa.Optionals.Maybe`1.Clone">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>0</argument>
@@ -178,7 +187,7 @@
   </member>
   <member name="M:wawa.Optionals.Maybe`1.Equals(wawa.Optionals.Maybe{`0},wawa.Optionals.Maybe{`0})">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
-      <argument>1</argument>
+      <argument>0</argument>
     </attribute>
     <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
   </member>
@@ -202,7 +211,7 @@
   </member>
   <member name="M:wawa.Optionals.Maybe`1.GetHashCode(wawa.Optionals.Maybe{`0})">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
-      <argument>1</argument>
+      <argument>0</argument>
     </attribute>
     <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
   </member>
@@ -291,12 +300,21 @@
     <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
   </member>
   <member name="M:wawa.Optionals.Unit.Equals(System.Object)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
     <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
   </member>
   <member name="M:wawa.Optionals.Unit.GetEnumerator">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
     <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
   </member>
   <member name="M:wawa.Optionals.Unit.GetHashCode">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
     <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.ValueRangeAttribute.#ctor(System.Int64)">
       <argument>0</argument>
@@ -357,12 +375,19 @@
     </parameter>
   </member>
   <member name="M:wawa.Optionals.Unit.ToString">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
     <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
   </member>
   <member name="M:wawa.Optionals.Unit.ToString(System.String,System.IFormatProvider)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument>
+    </attribute>
     <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
   </member>
   <member name="P:wawa.Optionals.Unit.Value">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)" />
     <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
   </member>
 </assembly>

@@ -1034,6 +1034,12 @@
             The value <see langword="true" /> if <paramref name="that" /> contains a value, otherwise <see langword="false" />.
             </returns>
         </member>
+        <member name="M:wawa.Optionals.Maybe.Filter``1(System.Collections.Generic.IEnumerable{wawa.Optionals.Maybe{``0}})">
+            <summary>Filters a collection with only that of items with a value.<p /><c>[LinqTunnel, NotNull, PublicAPI]</c></summary>
+            <typeparam name="T">The type of parameter and generic in <see cref="T:wawa.Optionals.Maybe`1" />.</typeparam>
+            <param name="source">This collection of <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[InstantHandle]</c></param>
+            <returns>A filtered collection only consisting of unwrapped <typeparamref name="T" /> values.</returns>
+        </member>
         <member name="M:wawa.Optionals.Maybe.None``1">
             <summary>Gets an empty <see cref="T:wawa.Optionals.Maybe`1" /> of the desired type.<p /><c>[PublicAPI]</c></summary>
             <typeparam name="T">The generic in <see cref="T:wawa.Optionals.Maybe`1" />.</typeparam>
@@ -1096,12 +1102,6 @@
             <param name="that">This instance of <typeparamref name="T" />.</param>
             <returns>A new instance of <see cref="T:wawa.Optionals.Maybe`1" />.</returns>
         </member>
-        <member name="M:wawa.Optionals.Maybe.Filter``1(System.Collections.Generic.IEnumerable{wawa.Optionals.Maybe{``0}})">
-            <summary>Filters a collection with only that of items with a value.<p /><c>[LinqTunnel, NotNull, PublicAPI]</c></summary>
-            <typeparam name="T">The type of parameter and generic in <see cref="T:wawa.Optionals.Maybe`1" />.</typeparam>
-            <param name="source">This collection of <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[InstantHandle]</c></param>
-            <returns>A filtered collection only consisting of unwrapped <typeparamref name="T" /> values.</returns>
-        </member>
         <member name="M:wawa.Optionals.Maybe.Flatten``1(wawa.Optionals.Maybe{wawa.Optionals.Maybe{``0}})">
             <summary>Flattens a nested <see cref="T:wawa.Optionals.Maybe`1" />.<p /><c>[PublicAPI]</c></summary>
             <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
@@ -1139,12 +1139,11 @@
             <param name="that">This instance of <typeparamref name="T" />.</param>
             <returns>The <see cref="T:wawa.Optionals.Maybe`1" /> representing <paramref name="that" />.</returns>
         </member>
-        <member name="M:wawa.Optionals.Maybe.AsNullable``1(wawa.Optionals.Maybe{``0})">
-            <summary>Creates a <see cref="T:wawa.Optionals.Maybe`1" /> from a <see cref="T:System.Nullable`1" />.<p /><c>[PublicAPI]</c></summary>
-            <remarks><para>This is an extension method for a ternary <see cref="P:wawa.Optionals.Maybe`1.IsSome" />.</para></remarks>
-            <typeparam name="T">The type of parameter and generic in <see cref="T:System.Nullable`1" />.</typeparam>
-            <param name="that">This instance of <typeparamref name="T" />.</param>
-            <returns>The <see cref="T:System.Nullable`1" /> representing <paramref name="that" />.</returns>
+        <member name="M:wawa.Optionals.Maybe.As``2(wawa.Optionals.Maybe{``0})">
+            <summary>Upcasts this instance to <typeparamref name="TResult" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
+            <typeparam name="TResult">The type to value to upcast and return.</typeparam>
+            <returns>Itself, upcast to <typeparamref name="TResult" />.</returns>
         </member>
         <member name="M:wawa.Optionals.Maybe.Match``2(wawa.Optionals.Maybe{``0},System.Func{``0,wawa.Optionals.Maybe{``1}})">
             <summary>Uses the callback corresponding to the inner value of <paramref name="that" />.<p /><c>[PublicAPI]</c></summary>
@@ -1209,6 +1208,13 @@
             <typeparam name="T">The type of value stored within <paramref name="that" />.</typeparam>
             <param name="that">This instance of <see cref="T:wawa.Optionals.Maybe`1" />.</param>
             <returns>The inner value, or a <see langword="new" /> instance.</returns>
+        </member>
+        <member name="M:wawa.Optionals.Maybe.AsNullable``1(wawa.Optionals.Maybe{``0})">
+            <summary>Creates a <see cref="T:wawa.Optionals.Maybe`1" /> from a <see cref="T:System.Nullable`1" />.<p /><c>[PublicAPI]</c></summary>
+            <remarks><para>This is an extension method for a ternary <see cref="P:wawa.Optionals.Maybe`1.IsSome" />.</para></remarks>
+            <typeparam name="T">The type of parameter and generic in <see cref="T:System.Nullable`1" />.</typeparam>
+            <param name="that">This instance of <typeparamref name="T" />.</param>
+            <returns>The <see cref="T:System.Nullable`1" /> representing <paramref name="that" />.</returns>
         </member>
         <member name="M:wawa.Optionals.Maybe.Match``2(wawa.Optionals.Maybe{``0},System.Func{``0,``1},System.Func{wawa.Optionals.Unit,``1})">
             <summary>Uses the callback corresponding to the inner value of <paramref name="that" />.<p /><c>[PublicAPI]</c></summary>
@@ -1390,10 +1396,15 @@
         <member name="M:wawa.Optionals.Maybe`1.Clone">
             <inheritdoc />
         </member>
-        <member name="M:wawa.Optionals.Maybe`1.System#Collections#IEnumerable#GetEnumerator">
-            <inheritdoc />
+        <member name="M:wawa.Optionals.Maybe`1.As``1(wawa.Optionals.Maybe{`0})">
+            <summary>Downcasts this instance to <typeparamref name="TResult" />.<p /><c>[PublicAPI]</c></summary>
+            <typeparam name="TResult">The type to value to downcast and return.</typeparam>
+            <returns>Itself, downcast to <typeparamref name="TResult" />.</returns>
         </member>
         <member name="M:wawa.Optionals.Maybe`1.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:wawa.Optionals.Maybe`1.System#Collections#IEnumerable#GetEnumerator">
             <inheritdoc />
         </member>
         <member name="M:wawa.Optionals.Maybe`1.System#Collections#Generic#ICollection{T}#Add(`0)">

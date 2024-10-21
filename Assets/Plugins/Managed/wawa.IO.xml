@@ -1414,6 +1414,7 @@
         </member>
         <member name="M:wawa.IO.PathFinder.GetDirectory(System.String)">
             <summary>Gets the absolute directory of the mod.<p /><c>[MustUseReturnValue]</c></summary>
+            <remarks><para>In the editor, this value returns <see cref="M:wawa.Optionals.Maybe.None``1" />.</para></remarks>
             <param name="modId">
             The mod id to get the mod directory from.
             If <see langword="null" />, implicitly gets the directory of the mod from the name of the assembly.
@@ -1425,6 +1426,7 @@
         </member>
         <member name="M:wawa.IO.PathFinder.GetFile(System.String,System.String)">
             <summary>Gets the absolute directory of the file located inside the mod directory.<p /><c>[MustUseReturnValue]</c></summary>
+            <remarks><para>In the editor, this value returns <see cref="M:wawa.Optionals.Maybe.None``1" />.</para></remarks>
             <param name="filePath">The file located inside folder mod directory.<p /><c>[UriString]</c></param>
             <param name="modId">
             The mod id to get the mod directory from.
@@ -1448,6 +1450,7 @@
         </member>
         <member name="M:wawa.IO.PathFinder.GetAssets``1(System.String,System.String)">
             <summary>Loads and returns assets from disk.<p /><c>[MustUseReturnValue]</c></summary>
+            <remarks><para>In the editor, this value returns <see cref="M:wawa.Optionals.Maybe.None``1" />.</para></remarks>
             <typeparam name="T">The type of asset to get.</typeparam>
             <param name="filePath">The file which contains the assets.<p /><c>[UriString]</c></param>
             <param name="modId">
@@ -1469,7 +1472,8 @@
             If <see langword="null" />, implicitly gets the directory of the mod from the name of the assembly.
             </param>
             <returns>
-            The value <see langword="true" /> if copying the file was successful, otherwise <see langword="false" />.
+            A <see cref="T:wawa.Optionals.Maybe`1" />, consisting of either the <typeparamref file="T" /> which is linked
+            to the requested unmanaged function, or <see langword="default" /> in the event of an error.
             </returns>
         </member>
         <member name="M:wawa.IO.PathFinder.MapNeedsUpdating">
@@ -1497,8 +1501,9 @@
             <summary>Updates the directory cache.</summary>
             <returns>The updated directory cache.</returns>
         </member>
-        <member name="M:wawa.IO.PathFinder.GetEditorModInfo">
+        <member name="M:wawa.IO.PathFinder.GetEditorModInfo(System.String)">
             <summary>Gets the <see cref="T:wawa.IO.ModInfo" /> from the editor.</summary>
+            <param name="_">Unused.</param>
             <returns>The <see cref="T:wawa.IO.ModInfo" /> from the editor.</returns>
         </member>
         <member name="M:wawa.IO.PathFinder.DefineMethod(System.Reflection.Emit.ModuleBuilder,System.String@,System.String@,System.Type@,System.Type[]@)">
