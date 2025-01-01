@@ -17,7 +17,7 @@ namespace TheOctadecayotton
             if (inputs.Count == dimension)
             {
                 Debug.LogFormat("[The Octadecayotton #{0}]: Submitting the current sphere...", moduleId);
-                return startingSphere.Select((a, n) => a.Value != anchorSphere.ElementAt(n).Value).All(b => !b);
+                return startingSphere.Select(a => a.Value == anchorSphere[a.Key]).All(b => b);
             }
 
             if (inputs.Count != (dimension == 3 ? 1 : 3))
@@ -70,6 +70,7 @@ namespace TheOctadecayotton
 
         private static void LogPrimaryValues()
         {
+#if FALSE // I'm tired of seeing this logging.
             Debug.LogWarning("Filter out this table by pressing the warning icon in the top right of your unity!");
             for (int i = 0; i < Enum.GetValues(typeof(Axis)).GetLength(0); i++)
             {
@@ -78,6 +79,7 @@ namespace TheOctadecayotton
                     str += GetPrimaryValue(new Rotation(true, (Axis)i), new Rotation(true, (Axis)j), 0);
                 Debug.LogWarning(str);
             }
+#endif
         }
 
         private static Dictionary<Axis, bool> GetAnchorSphere(int[] pValues, Rotation[][][] rotations, ref int dimension, ref int moduleId)

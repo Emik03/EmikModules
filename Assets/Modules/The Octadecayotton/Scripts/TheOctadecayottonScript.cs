@@ -267,10 +267,12 @@ public class TheOctadecayottonScript : MonoBehaviour
 
                 if (times.Length == Interact.Dimension)
                 {
-                    if (Interact.startingSphere.Select((a, n) => a.Value == Interact.AnchorSphere.ElementAt(n).Value).All(b => b))
+                    if (Interact.startingSphere.Select(a => a.Value == Interact.AnchorSphere[a.Key]).All(b => b))
                     {
+                        var awardPoints = AwardPoints();
+                        Debug.LogFormat("[The Octadecayotton #{0}]: Awarding extra points: {1}", moduleId, awardPoints);
                         yield return "solve";
-                        yield return "awardpointsonsolve " + AwardPoints();
+                        yield return "awardpointsonsolve " + awardPoints;
                     }
 
                     else
@@ -323,9 +325,9 @@ public class TheOctadecayottonScript : MonoBehaviour
             { 3, 13 }, { 4, 22 }, { 5, 28 },
             { 6, 35 }, { 7, 50 }, { 8, 65 },
             { 9, 80 }, { 10, 110 }, { 11, 130 },
-            { 12, 225 }, { 13, 275 }, { 14, 325 },
-            { 15, 375 }, { 16, 425 }, { 17, 475 },
-            { 18, 525 },
+            { 12, 225 }, { 13, 290 }, { 14, 355 },
+            { 15, 420 }, { 16, 470 }, { 17, 535 },
+            { 18, 600 },
         };
 
         return (int)Math.Floor(dimPoints[Interact.Dimension] * ((1 / 4f) + (Interact.Rotations.Length / 4f))) - dimPoints[9];
