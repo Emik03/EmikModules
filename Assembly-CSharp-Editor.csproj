@@ -379,6 +379,9 @@
     <Reference Include="KeepCoding">
       <HintPath>/home/emik/UnitySandbox/EmikModules/Assets/Plugins/Managed/KeepCoding.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>/home/emik/UnitySandbox/EmikModules/Assets/Plugins/Managed/Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="wawa.DDL">
       <HintPath>/home/emik/UnitySandbox/EmikModules/Assets/Plugins/Managed/wawa.DDL.dll</HintPath>
     </Reference>
@@ -387,9 +390,6 @@
     </Reference>
     <Reference Include="wawa.Optionals">
       <HintPath>/home/emik/UnitySandbox/EmikModules/Assets/Plugins/Managed/wawa.Optionals.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>/home/emik/UnitySandbox/EmikModules/Assets/Plugins/Managed/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
       <HintPath>/home/emik/UnitySandbox/EmikModules/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>

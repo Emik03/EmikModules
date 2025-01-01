@@ -70,7 +70,7 @@ public class QuaverTPScript : MonoBehaviour
             else if (split.Length > 2)
                 yield return "sendtochaterror Too many parameters!";
 
-            else if (split.Length == 2 && (!int.TryParse(split[1], out scrollSpeed) || scrollSpeed == 0 || scrollSpeed >= 10 && scrollSpeed <= 30))
+            else if (split.Length != 2 || !int.TryParse(split[1], out scrollSpeed) || scrollSpeed < 10 || scrollSpeed > 30)
                 yield return "sendtochaterror Parameter specified is invalid! Scroll speed's range is 10-30.";
 
             else
