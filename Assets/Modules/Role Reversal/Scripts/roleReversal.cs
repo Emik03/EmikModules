@@ -301,7 +301,7 @@ public class roleReversal : MonoBehaviour
                 {
                     if (_convertedSeed[0] == '2')
                         _correctWire = 1;
-                        
+
                     else
                         _correctWire = 2;
 
@@ -581,7 +581,7 @@ public class roleReversal : MonoBehaviour
                     //if there is CAR or FRK label
                     if (Info.GetIndicators().Any("CAR".Contains) || Info.GetIndicators().Any("FRK".Contains))
                     {
-                        _correctWire = (sbyte)((Info.GetOnIndicators().Count() % 7) + 1);
+                        _correctWire = (sbyte)((Info.GetOnIndicators().Count() % 5) + 1);
                         souvenir = 5;
                         Debug.LogFormat("[Role Reversal #{0}] Condition 5 (If there is CAR or FRK label): True, cut wire {1}.", _moduleId, _correctWire);
                     }
@@ -623,7 +623,7 @@ public class roleReversal : MonoBehaviour
                     Debug.LogFormat("[Role Reversal #{0}] Condition 2 (If serial has a vowel): True, cut wire 6.", _moduleId);
                     break;
                 }
-                
+
                 //if all primary colors exist
                 if (redWires.Count >= 1 && yellowWires.Count >= 1 && blueWires.Count >= 1)
                     for (int i = 0; i < _convertedSeed.Count; i++)
@@ -1011,7 +1011,7 @@ public class roleReversal : MonoBehaviour
         "5 Wires (Condition: 2)\n\nIf there are any\norange wires, cut the\nfirst orange wire.",
         "5 Wires (Condition: 3)\n\nIf any yellow wires\nlie adjacently left\nto a green wire,\ncut the first\nyellow wire.",
         "5 Wires (Condition: 4)\n\nIf any yellow wires\nlie adjacently right\nto a green wire,\ncut the first\ngreen wire.",
-        "5 Wires (Condition: 5)\n\nIf indicator FRK or\nCAR exist, cut\n(N modulo 7) + 1 for\nN lit indicators.",
+        "5 Wires (Condition: 5)\n\nIf indicator FRK or\nCAR exist, cut\n(N modulo 5) + 1 for\nN lit indicators.",
         "5 Wires (Condition: 6)\n\nIf there is only one\npurple wire, cut that\npurple wire.",
         "5 Wires (Condition: 7)\n\nIf any indicators\nare off, cut the\nthird wire.",
         "5 Wires (Condition: 8)\n\nOtherwise, cut the\nsecond wire.",
