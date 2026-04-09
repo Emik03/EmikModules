@@ -130,8 +130,11 @@ public class HexOS : MonoBehaviour
 
         Activate();
 
-        if (_octOS)
-            OctGenerate();
+        if (!_octOS)
+            return;
+
+        _octAnswer = OctGenerate();
+        Debug.LogFormat("[hexOS #{0}]: The expected answer for the current octOS is {1}.", _moduleId, _octAnswer);
     }
 
     /// <summary>
